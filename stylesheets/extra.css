@@ -48,3 +48,8 @@
     height: 1.8rem;
   }
 }
+
+/* Esconde o nome do site no header — a logo já o representa */
+.md-header__title {
+  display: none;
+}
