@@ -58,12 +58,7 @@ Todos seguem a mesma estrutura, pra você sempre saber o que esperar:
 
 ## Próximos cursos planejados
 
-[PREENCHER: lista os cursos que estão no roadmap. Por exemplo:]
-
-- **Análise de transcriptoma (RNA-Seq)** — quantificação com Salmon, expressão diferencial com DESeq2
-- **Anotação genômica** — predição de genes, busca de domínios, GO terms
-- **Análise de variantes (SNPs/indels)** — chamada com bcftools, anotação com SnpEff
-- **Single-cell RNA-Seq** — Seurat, UMAP, identificação de clusters
+- **Montagem de genomas com dados Nanopore** - Controle de qualidade das leituras, montagem com ferramentas atuais para long-reads e avaliação da qualidade final do genoma obtido. O objetivo é capacitar participantes a compreender e aplicar um pipeline básico e reprodutível para montagem genômica.
 
 ## Sugerir um novo curso
 
