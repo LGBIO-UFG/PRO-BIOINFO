@@ -1,0 +1,81 @@
+site_name: PRO-BIOINFO
+use_directory_urls: false
+site_description: Programa de Extensão em Bioinformática
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    # Modo claro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    # Modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+markdown_extensions:
+  # Caixinhas (admonitions) e dobráveis
+  - admonition
+  - pymdownx.details
+
+  # Blocos de código (com botão de copiar, syntax highlight)
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+
+  # Abas
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Listas de tarefas com checkbox
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Ícones do Material via :material-nome:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # Outros úteis
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - def_list
+  - toc:
+      permalink: true
+
+nav:
+  - Início: index.md
+  - Sobre: sobre.md
+  - Equipe: equipe.md
+  - Cursos:
+      - cursos/index.md
+      - Bash / Linux: cursos/bash/index.md
+      - BLAST: cursos/blast/index.md
+      - Filogenia: cursos/filogenia/index.md
+  - Eventos:
+      - eventos/index.md
+      - CAFE-BIOINFO 2026: eventos/cafe-bioinfo-2026/index.md
+      - FUNBIOS 2026: eventos/funbios-2026/index.md
+  - Materiais: materiais/index.md
