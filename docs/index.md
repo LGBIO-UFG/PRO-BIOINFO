@@ -1,6 +1,6 @@
 # PRO-BIOINFO
 
-> Programa de Extensão em Bioinformática — LGBIO/UFG
+> Programa de Formação em Bioinformática — LGBIO/UFG
 
 Bem-vindo(a) ao site oficial do **PRO-BIOINFO**! Aqui você encontra os tutoriais, materiais e a programação dos cursos de bioinformática oferecidos pelo Laboratório de Genética e Biodiversidade (LGBIO) da Universidade Federal de Goiás.
 
