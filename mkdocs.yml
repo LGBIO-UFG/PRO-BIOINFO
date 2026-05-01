@@ -1,4 +1,9 @@
 site_name: PRO-BIOINFO
+site_name: PRO-BIOINFO
+site_url: https://LGBIO-UFG.github.io/PRO-BIOINFO/
+repo_url: https://github.com/LGBIO-UFG/PRO-BIOINFO
+repo_name: LGBIO-UFG/PRO-BIOINFO
+edit_uri: edit/main/docs/
 use_directory_urls: false
 site_description: Programa de Extensão em Bioinformática
 
