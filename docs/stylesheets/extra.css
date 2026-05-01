@@ -52,3 +52,16 @@
 .md-header__title * {
   display: none !important;
 }
+
+/* Garante que a logo apareça em qualquer tamanho de tela */
+.md-header__button.md-logo {
+  display: flex !important;
+}
+
+/* Em telas pequenas, reduz a logo pra caber junto do hamburger */
+@media screen and (max-width: 76.234375em) {
+  .md-header__button.md-logo img,
+  .md-header__button.md-logo svg {
+    height: 1.6rem;
+  }
+}
