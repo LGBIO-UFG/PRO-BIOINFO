@@ -1,0 +1,3220 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Programa de Extensão em Bioinformática">
+      
+      
+      
+        <link rel="canonical" href="https://LGBIO-UFG.github.io/PRO-BIOINFO/cursos/filogenia/index.html">
+      
+      
+        <link rel="prev" href="../blast/index.html">
+      
+      
+        <link rel="next" href="../../eventos/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Filogenia - PRO-BIOINFO</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#filogenia-molecular-inferencia-evolutiva-com-dados-moleculares" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../index.html" title="PRO-BIOINFO" class="md-header__button md-logo" aria-label="PRO-BIOINFO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PRO-BIOINFO
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Filogenia
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LGBIO-UFG/PRO-BIOINFO
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sobre.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Sobre
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../equipe.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Equipe
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+  Cursos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../eventos/index.html" class="md-tabs__link">
+          
+  
+  
+  Eventos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../materiais/index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Materiais
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="PRO-BIOINFO" class="md-nav__button md-logo" aria-label="PRO-BIOINFO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PRO-BIOINFO
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LGBIO-UFG/PRO-BIOINFO
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sobre.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../equipe.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Equipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash / Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blast/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLAST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filogenia
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filogenia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de aprendizagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-horaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga horária
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pré-requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-instalar-os-softwares" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como instalar os softwares
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dados-do-exercicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dados do exercício
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-1-alinhamento-das-sequencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 1 — Alinhamento das sequências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 1 — Alinhamento das sequências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-conhecendo-os-arquivos-de-entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Conhecendo os arquivos de entrada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-alinhamento-de-proteina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Alinhamento de proteína
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-alinhamento-de-nucleotideo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Alinhamento de nucleotídeo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-alinhamento-por-codon-pal2nal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Alinhamento por códon (pal2nal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-visualizando-o-alinhamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Visualizando o alinhamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 1.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-alinhar-misteriosas-com-as-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 2 — Alinhar misteriosas com as referências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 — Alinhar misteriosas com as referências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-combinar-referencias-misteriosas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Combinar referências + misteriosas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-alinhar-com-mafft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Alinhar com MAFFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-confirmacao-rapida-no-jalview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Confirmação rápida no Jalview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 2.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-3-filtragem-do-alinhamento-trimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 3 — Filtragem do alinhamento (trimAL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 3 — Filtragem do alinhamento (trimAL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-trimal-com-metodo-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 trimAL com método automático
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-inspecao-visual-apos-o-trimming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Inspeção visual após o trimming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 3.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-4-concatenar-os-alinhamentos-dos-dois-genes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 4 — Concatenar os alinhamentos dos dois genes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 4 — Concatenar os alinhamentos dos dois genes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-concatenando-com-catfasta2phyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Concatenando com catfasta2phyml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-verificacao-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Verificação rápida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 4.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-5-inferencia-da-arvore-filogenetica-iq-tree-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 5 — Inferência da árvore filogenética (IQ-TREE 3)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 5 — Inferência da árvore filogenética (IQ-TREE 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-inferencia-sem-outgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Inferência sem outgroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-inferencia-com-outgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Inferência com outgroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-interpretando-os-valores-de-suporte-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Interpretando os valores de suporte (bootstrap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 5.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-6-filogenia-com-particoes-por-gene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 6 — Filogenia com partições por gene
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 6 — Filogenia com partições por gene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-criar-o-arquivo-de-particoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Criar o arquivo de partições
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-rodar-o-iq-tree-com-particoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Rodar o IQ-TREE com partições
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-comparacao-entre-as-tres-arvores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Comparação entre as três árvores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 6.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-7-identificar-o-modelo-evolutivo-escolhido-modelfinderplus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 7 — Identificar o modelo evolutivo escolhido (ModelFinderPlus)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 7 — Identificar o modelo evolutivo escolhido (ModelFinderPlus)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-modelo-unico-rodadas-sem-particoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Modelo único (rodadas sem partições)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-modelos-por-particao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Modelos por partição
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-decifrando-o-nome-do-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Decifrando o nome do modelo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 7.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 7
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-8-visualizar-a-arvore-e-identificar-as-misteriosas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 8 — Visualizar a árvore e identificar as misteriosas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 8 — Visualizar a árvore e identificar as misteriosas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-dar-uma-olhada-na-arvore-como-texto-newick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Dar uma olhada na árvore como texto (Newick)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-subir-a-arvore-no-itol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Subir a árvore no iTOL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-customizacoes-uteis-no-itol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Customizações úteis no iTOL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-interpretando-atribuicao-taxonomica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Interpretando: atribuição taxonômica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 8.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 8
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voce-chegou-ao-fim-do-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Você chegou ao fim do tutorial 🎉
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Você chegou ao fim do tutorial 🎉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-se-aprofundar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para se aprofundar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eventos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Eventos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eventos/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eventos/cafe-bioinfo-2026/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAFE-BIOINFO 2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eventos/funbios-2026/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FUNBIOS 2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../materiais/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Materiais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de aprendizagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-horaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga horária
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pré-requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-instalar-os-softwares" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como instalar os softwares
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dados-do-exercicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dados do exercício
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-1-alinhamento-das-sequencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 1 — Alinhamento das sequências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 1 — Alinhamento das sequências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-conhecendo-os-arquivos-de-entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Conhecendo os arquivos de entrada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-alinhamento-de-proteina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Alinhamento de proteína
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-alinhamento-de-nucleotideo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Alinhamento de nucleotídeo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-alinhamento-por-codon-pal2nal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Alinhamento por códon (pal2nal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-visualizando-o-alinhamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Visualizando o alinhamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 1.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-alinhar-misteriosas-com-as-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 2 — Alinhar misteriosas com as referências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 — Alinhar misteriosas com as referências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-combinar-referencias-misteriosas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Combinar referências + misteriosas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-alinhar-com-mafft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Alinhar com MAFFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-confirmacao-rapida-no-jalview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Confirmação rápida no Jalview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 2.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-3-filtragem-do-alinhamento-trimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 3 — Filtragem do alinhamento (trimAL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 3 — Filtragem do alinhamento (trimAL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-trimal-com-metodo-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 trimAL com método automático
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-inspecao-visual-apos-o-trimming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Inspeção visual após o trimming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 3.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-4-concatenar-os-alinhamentos-dos-dois-genes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 4 — Concatenar os alinhamentos dos dois genes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 4 — Concatenar os alinhamentos dos dois genes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-concatenando-com-catfasta2phyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Concatenando com catfasta2phyml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-verificacao-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Verificação rápida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 4.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-5-inferencia-da-arvore-filogenetica-iq-tree-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 5 — Inferência da árvore filogenética (IQ-TREE 3)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 5 — Inferência da árvore filogenética (IQ-TREE 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-inferencia-sem-outgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Inferência sem outgroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-inferencia-com-outgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Inferência com outgroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-interpretando-os-valores-de-suporte-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Interpretando os valores de suporte (bootstrap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 5.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-6-filogenia-com-particoes-por-gene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 6 — Filogenia com partições por gene
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 6 — Filogenia com partições por gene">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-criar-o-arquivo-de-particoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Criar o arquivo de partições
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-rodar-o-iq-tree-com-particoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Rodar o IQ-TREE com partições
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-comparacao-entre-as-tres-arvores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Comparação entre as três árvores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 6.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-7-identificar-o-modelo-evolutivo-escolhido-modelfinderplus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 7 — Identificar o modelo evolutivo escolhido (ModelFinderPlus)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 7 — Identificar o modelo evolutivo escolhido (ModelFinderPlus)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-modelo-unico-rodadas-sem-particoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Modelo único (rodadas sem partições)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-modelos-por-particao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Modelos por partição
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-decifrando-o-nome-do-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Decifrando o nome do modelo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 7.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 7
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-8-visualizar-a-arvore-e-identificar-as-misteriosas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 8 — Visualizar a árvore e identificar as misteriosas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 8 — Visualizar a árvore e identificar as misteriosas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-dar-uma-olhada-na-arvore-como-texto-newick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Dar uma olhada na árvore como texto (Newick)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-subir-a-arvore-no-itol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Subir a árvore no iTOL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-customizacoes-uteis-no-itol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Customizações úteis no iTOL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-interpretando-atribuicao-taxonomica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Interpretando: atribuição taxonômica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício 8.1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 8
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voce-chegou-ao-fim-do-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Você chegou ao fim do tutorial 🎉
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Você chegou ao fim do tutorial 🎉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-se-aprofundar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para se aprofundar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="filogenia-molecular-inferencia-evolutiva-com-dados-moleculares">Filogenia molecular: inferência evolutiva com dados moleculares<a class="headerlink" href="#filogenia-molecular-inferencia-evolutiva-com-dados-moleculares" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Resumo</p>
+<p>Tutorial de inferência filogenética a partir de sequências moleculares, com aplicação em <strong>atribuição taxonômica</strong> — identificar a que espécie pertencem sequências "misteriosas" comparando-as com referências conhecidas.
+Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e visualização da árvore.</p>
+</div>
+<h2 id="objetivos-de-aprendizagem"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 2v2.07A8 8 0 0 0 4.07 11H2v2h2.07A8 8 0 0 0 11 19.93V22h2v-2.07A8 8 0 0 0 19.93 13H22v-2h-2.07A8 8 0 0 0 13 4.07V2m-2 4.08V8h2V6.09c2.5.41 4.5 2.41 4.92 4.91H16v2h1.91c-.41 2.5-2.41 4.5-4.91 4.92V16h-2v1.91C8.5 17.5 6.5 15.5 6.08 13H8v-2H6.09C6.5 8.5 8.5 6.5 11 6.08M12 11a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg></span> Objetivos de aprendizagem<a class="headerlink" href="#objetivos-de-aprendizagem" title="Permanent link">&para;</a></h2>
+<p>Ao final deste tutorial, você será capaz de:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Alinhar sequências de DNA e proteína com MAFFT e MUSCLE</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Fazer alinhamento por códon usando pal2nal</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Filtrar regiões de baixa qualidade com trimAL</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Concatenar alinhamentos de múltiplos genes</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Inferir uma árvore filogenética com IQ-TREE 3 (com e sem outgroup)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Usar partições para genes que evoluem em taxas diferentes</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Identificar o modelo evolutivo ótimo via ModelFinderPlus</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Visualizar a árvore final no iTOL</li>
+</ul>
+<h2 id="carga-horaria"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg></span> Carga horária<a class="headerlink" href="#carga-horaria" title="Permanent link">&para;</a></h2>
+<p><strong>4 horas</strong></p>
+<h2 id="pre-requisitos"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg></span> Pré-requisitos<a class="headerlink" href="#pre-requisitos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detalhes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Curso anterior</td>
+<td><a href="../bash/index.html">Bash / Linux para bioinfo</a></td>
+</tr>
+<tr>
+<td>Biologia molecular</td>
+<td>Conceitos básicos sobre genes mitocondriais (COI, CYTB), códon e tradução</td>
+</tr>
+<tr>
+<td>Softwares</td>
+<td>MAFFT, MUSCLE, pal2nal, trimAL, IQ-TREE 3, catfasta2phyml</td>
+</tr>
+<tr>
+<td>Visualização</td>
+<td><a href="https://www.jalview.org/">Jalview</a>, <a href="https://itol.embl.de/">iTOL</a></td>
+</tr>
+<tr>
+<td>Dados</td>
+<td>Arquivos FASTA disponíveis em <code>data/exemplos/filogenia/</code> deste repositório</td>
+</tr>
+</tbody>
+</table>
+<h3 id="como-instalar-os-softwares">Como instalar os softwares<a class="headerlink" href="#como-instalar-os-softwares" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Conda (recomendado)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>filogenia<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>mafft<span class="w"> </span>muscle<span class="w"> </span>trimal<span class="w"> </span>iqtree<span class="w"> </span>pal2nal
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>conda<span class="w"> </span>activate<span class="w"> </span>filogenia
+</span></code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ubuntu/Debian (apt)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>mafft<span class="w"> </span>muscle<span class="w"> </span>trimal<span class="w"> </span>iqtree
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="c1"># pal2nal e catfasta2phyml: instalação manual</span>
+</span></code></pre></div>
+<h2 id="dados-do-exercicio"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg></span> Dados do exercício<a class="headerlink" href="#dados-do-exercicio" title="Permanent link">&para;</a></h2>
+<p>Os arquivos do exercício estão em <code>data/exemplos/filogenia/</code> no repositório do PRO-BIOINFO:</p>
+<ul>
+<li><code>COI.faa</code>, <code>COI.fna</code> — sequências de COI (proteína e nucleotídeo) das espécies de referência</li>
+<li><code>CYTB.faa</code>, <code>CYTB.fna</code> — sequências de CYTB</li>
+<li><code>COI-mist.fna</code>, <code>CYTB-mist.fna</code> — sequências "misteriosas" (a serem identificadas)</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Clonar o repositório completo</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;usuario&gt;/PRO-BIOINFO.git
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">cd</span><span class="w"> </span>PRO-BIOINFO/data/exemplos/filogenia/
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Cenário do exercício</p>
+<p>Vamos imaginar que você recebeu duas sequências de origem desconhecida (uma de COI, outra de CYTB) e quer descobrir a que espécie pertencem, comparando-as com sequências de mamíferos conhecidos.</p>
+</div>
+<hr />
+<h2 id="etapa-1-alinhamento-das-sequencias"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7v2h2v8h2V7zm2-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 1 — Alinhamento das sequências<a class="headerlink" href="#etapa-1-alinhamento-das-sequencias" title="Permanent link">&para;</a></h2>
+<p>Antes de qualquer inferência filogenética, precisamos <strong>alinhar as sequências</strong> — colocar bases ou aminoácidos homólogos na mesma coluna. Esse passo é o que permite, depois, comparar posição por posição e estimar quantas mudanças evolutivas separam cada par de sequências.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que alinhar antes de inferir a árvore?</p>
+<p>O alinhamento garante que posições homólogas — isto é, que derivam do mesmo ancestral — fiquem alinhadas na mesma coluna. Gaps representam eventos de inserção ou deleção ao longo da evolução. Como os métodos filogenéticos comparam posição a posição, eles assumem que todas as sequências têm o mesmo comprimento e correspondência entre sítios, o que só é possível após um alinhamento adequado.</p>
+</div>
+<h3 id="11-conhecendo-os-arquivos-de-entrada">1.1 Conhecendo os arquivos de entrada<a class="headerlink" href="#11-conhecendo-os-arquivos-de-entrada" title="Permanent link">&para;</a></h3>
+<p>Os dados do exercício incluem dois genes mitocondriais (<strong>COI</strong> e <strong>CYTB</strong>) das espécies de referência, em duas formas — proteína e nucleotídeo — mais as sequências misteriosas a serem identificadas:</p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Conteúdo</th>
+<th>Quando usar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COI.faa</code></td>
+<td>COI das referências, em <strong>aminoácidos</strong></td>
+<td>Alinhamento de proteína</td>
+</tr>
+<tr>
+<td><code>COI.fna</code></td>
+<td>COI das referências, em <strong>nucleotídeos</strong></td>
+<td>Alinhamento de nucleotídeo</td>
+</tr>
+<tr>
+<td><code>CYTB.faa</code></td>
+<td>CYTB das referências, em aminoácidos</td>
+<td>Alinhamento de proteína</td>
+</tr>
+<tr>
+<td><code>CYTB.fna</code></td>
+<td>CYTB das referências, em nucleotídeos</td>
+<td>Alinhamento de nucleotídeo</td>
+</tr>
+<tr>
+<td><code>COI-mist.fna</code></td>
+<td>COI das sequências <strong>misteriosas</strong> (DNA)</td>
+<td>Comparação contra o conjunto de referência</td>
+</tr>
+<tr>
+<td><code>CYTB-mist.fna</code></td>
+<td>CYTB das sequências misteriosas (DNA)</td>
+<td>Comparação contra o conjunto de referência</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Proteína ou nucleotídeo: qual escolher?</p>
+<p>Alinhamentos de proteína são geralmente mais confiáveis para espécies distantes, pois os aminoácidos evoluem mais lentamente e preservam melhor a homologia. Já os nucleotídeos carregam mais variação, sendo úteis para distinguir espécies próximas. O alinhamento por códon combina essas vantagens: usa a robustez da proteína para alinhar e mantém a informação completa do DNA.</p>
+</div>
+<h3 id="12-alinhamento-de-proteina">1.2 Alinhamento de proteína<a class="headerlink" href="#12-alinhamento-de-proteina" title="Permanent link">&para;</a></h3>
+<p>Vamos começar pelo gene COI em sua versão de proteína (<code>COI.faa</code>). Existem várias ferramentas — duas das mais usadas são MAFFT e MUSCLE:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MAFFT (recomendado)</label><label for="__tabbed_3_2">MUSCLE</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mafft<span class="w"> </span>COI.faa<span class="w"> </span>&gt;<span class="w"> </span>COI.ali.faa
+</span></code></pre></div>
+<p>O MAFFT é rápido e tem várias estratégias automáticas. Sem flags, ele escolhe sozinho a estratégia mais adequada ao tamanho do conjunto.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>muscle<span class="w"> </span>-in<span class="w"> </span>COI.faa<span class="w"> </span>-out<span class="w"> </span>COI.muscle.ali.faa
+</span></code></pre></div>
+<p>O MUSCLE é outro alinhador clássico. O MUSCLE pode produzir alinhamentos ligeiramente mais precisos em conjuntos pequenos e bem conservados. Já o MAFFT é mais rápido e escala melhor para conjuntos grandes ou mais divergentes, sendo geralmente a escolha padrão em pipelines modernos.</p>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Convenção de nomes</p>
+<p>Usamos o sufixo <code>.ali</code> para deixar claro que é a versão <strong>alinhada</strong> do arquivo. Convenções como essa salvam horas no futuro: você sabe o que é cada arquivo só pelo nome.</p>
+</div>
+<h3 id="13-alinhamento-de-nucleotideo">1.3 Alinhamento de nucleotídeo<a class="headerlink" href="#13-alinhamento-de-nucleotideo" title="Permanent link">&para;</a></h3>
+<p>Para alinhar diretamente as sequências de nucleotídeo do COI:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mafft<span class="w"> </span>COI.fna<span class="w"> </span>&gt;<span class="w"> </span>COI.ali.fna
+</span></code></pre></div>
+<p>O alinhamento direto de nucleotídeos é adequado para sequências próximas, onde a estrutura de códons ainda está preservada. Em conjuntos mais divergentes, porém, substituições silenciosas e indels podem desalinhar códons, levando a inferências incorretas — nesses casos, o alinhamento por proteína ou por códon é mais robusto.</p>
+<h3 id="14-alinhamento-por-codon-pal2nal">1.4 Alinhamento por códon (pal2nal)<a class="headerlink" href="#14-alinhamento-por-codon-pal2nal" title="Permanent link">&para;</a></h3>
+<p>Quando temos tanto a proteína quanto o nucleotídeo da <strong>mesma região</strong>, podemos fazer um alinhamento <strong>por códon</strong>: alinhar pelas proteínas (mais conservadas) e depois projetar de volta nos nucleotídeos. Isso preserva a estrutura de leitura (ORF) e dá um alinhamento de DNA muito mais limpo.</p>
+<p>A ferramenta pal2nal faz exatamente isso:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pal2nal<span class="w"> </span>COI.ali.faa<span class="w"> </span>COI.fna<span class="w"> </span>-output<span class="w"> </span>fasta<span class="w"> </span>-codontable<span class="w"> </span><span class="m">2</span><span class="w"> </span>&gt;<span class="w"> </span>COI.ali.codon.fa
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Atenção: tabela de códon mitocondrial</p>
+<p>O parâmetro <code>-codontable 2</code> é <strong>crítico</strong> — usa a <strong>tabela genética mitocondrial de vertebrados</strong>, que difere da tabela padrão (a número 1) em alguns códons importantes:</p>
+<p>Por exemplo, o códon TGA, que na tabela padrão codifica um sinal de parada, na mitocôndria de vertebrados codifica o aminoácido triptofano (W). Já os códons AGA e AGG, que normalmente codificam arginina, funcionam como códons de parada na mitocôndria. Essas diferenças tornam essencial o uso da tabela correta.</p>
+<p>Se você esquecer essa flag, o pal2nal pode interpretar códons como <em>stop</em> e abortar a tradução no meio.</p>
+</div>
+<details class="info">
+<summary>Outras tabelas de códon comuns</summary>
+<p>Lista completa: <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi">Genetic Codes do NCBI</a>.</p>
+<p>Resumo das mais usadas em bioinformática:</p>
+<table>
+<thead>
+<tr>
+<th>Número</th>
+<th>Tabela</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Standard Code</td>
+<td>Genoma nuclear da maioria</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Vertebrate Mitochondrial</td>
+<td>Mitocôndria de vertebrados</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mold/Protozoan/Coelenterate Mitochondrial</td>
+<td>Mitocôndria de fungos, parasitas</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Invertebrate Mitochondrial</td>
+<td>Mitocôndria de invertebrados</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Bacterial, Archaeal and Plant Plastid</td>
+<td>Bactérias, arqueias, plastídios</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="15-visualizando-o-alinhamento">1.5 Visualizando o alinhamento<a class="headerlink" href="#15-visualizando-o-alinhamento" title="Permanent link">&para;</a></h3>
+<p>Antes de seguir, vale <strong>olhar</strong> o alinhamento — alinhamento ruim no início = árvore errada no fim. Uma das opções mais práticas é o <a href="https://www.jalview.org/">Jalview</a>, que abre arquivos FASTA alinhados e mostra colunas, conservação, qualidade.</p>
+<div class="admonition tip">
+<p class="admonition-title">O que olhar no Jalview</p>
+<ul>
+<li><strong>Colunas bem conservadas</strong> (cores uniformes) indicam regiões homólogas confiáveis.</li>
+<li><strong>Regiões com muitos gaps espalhados</strong> podem ser indicadores de erro de alinhamento — vale considerar trimming (próximo passo) ou re-alinhar com outros parâmetros.</li>
+<li><strong>Sequências com muito gap</strong> isoladas das outras podem ser parálogas, contaminação ou de baixa qualidade — considere remover.</li>
+</ul>
+</div>
+<h3 id="exercicio-11"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 1.1<a class="headerlink" href="#exercicio-11" title="Permanent link">&para;</a></h3>
+<p>Alinhe <strong>também</strong> o gene CYTB nas três modalidades (proteína com MAFFT, nucleotídeo com MAFFT, e por códon com pal2nal). Os arquivos de saída devem se chamar:</p>
+<ul>
+<li><code>CYTB.ali.faa</code></li>
+<li><code>CYTB.ali.fna</code></li>
+<li><code>CYTB.ali.codon.fa</code></li>
+</ul>
+<details class="success">
+<summary>Comandos esperados</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Proteína com MAFFT</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>mafft<span class="w"> </span>CYTB.faa<span class="w"> </span>&gt;<span class="w"> </span>CYTB.ali.faa
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Nucleotídeo com MAFFT</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>mafft<span class="w"> </span>CYTB.fna<span class="w"> </span>&gt;<span class="w"> </span>CYTB.ali.fna
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Códon com pal2nal (atenção à tabela 2)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>pal2nal<span class="w"> </span>CYTB.ali.faa<span class="w"> </span>CYTB.fna<span class="w"> </span>-output<span class="w"> </span>fasta<span class="w"> </span>-codontable<span class="w"> </span><span class="m">2</span><span class="w"> </span>&gt;<span class="w"> </span>CYTB.ali.codon.fa
+</span></code></pre></div>
+</details>
+<h3 id="checklist-da-etapa-1">Checklist da Etapa 1<a class="headerlink" href="#checklist-da-etapa-1" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>COI.ali.faa</code>, <code>COI.ali.fna</code>, <code>COI.ali.codon.fa</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>CYTB.ali.faa</code>, <code>CYTB.ali.fna</code>, <code>CYTB.ali.codon.fa</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Inspecionei pelo menos um dos alinhamentos no Jalview</li>
+</ul>
+<hr />
+<h2 id="etapa-2-alinhar-misteriosas-com-as-referencias"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v2h4v2h-2a2 2 0 0 0-2 2v4h6v-2h-4v-2h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 2 — Alinhar misteriosas com as referências<a class="headerlink" href="#etapa-2-alinhar-misteriosas-com-as-referencias" title="Permanent link">&para;</a></h2>
+<p>Para que a inferência filogenética posicione as sequências misteriosas dentro da árvore das referências, <strong>ambas precisam estar no mesmo alinhamento múltiplo</strong>. Alinhar separadamente quebraria a homologia posicional.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que alinhar tudo junto?</p>
+<p>Cada coluna do alinhamento representa uma posição homóloga compartilhada entre todos os táxons analisados. Se as sequências misteriosas e as referências fossem alinhadas separadamente, as colunas de cada alinhamento não corresponderiam necessariamente aos mesmos sítios evolutivos — o que comprometeria a comparabilidade e introduziria erro sistemático na inferência filogenética.</p>
+</div>
+<h3 id="21-combinar-referencias-misteriosas">2.1 Combinar referências + misteriosas<a class="headerlink" href="#21-combinar-referencias-misteriosas" title="Permanent link">&para;</a></h3>
+<p>Os arquivos do exercício já vêm com referências e misteriosas no mesmo FASTA: <code>COI-mist.fna</code> e <code>CYTB-mist.fna</code>. Por isso podemos pular direto para o alinhamento.</p>
+<div class="admonition tip">
+<p class="admonition-title">Se as sequências estiverem separadas em outros projetos</p>
+<p>Em casos reais, suas misteriosas podem estar em um arquivo <code>mist.fna</code> à parte das referências. Para juntá-las antes de alinhar, use <code>cat</code>:</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">    </span>cat<span class="w"> </span>COI.fna<span class="w"> </span>mist.fna<span class="w"> </span>&gt;<span class="w"> </span>COI-mist.fna
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>O `cat` concatena arquivos em sequência. Funciona com FASTA porque cada sequência é um bloco independente começando com `&gt;` — basta colocar todos os blocos no mesmo arquivo e o MAFFT lê normalmente.
+</code></pre></div>
+<h3 id="22-alinhar-com-mafft">2.2 Alinhar com MAFFT<a class="headerlink" href="#22-alinhar-com-mafft" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Gene COI (referências + misteriosas)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>mafft<span class="w"> </span>COI-mist.fna<span class="w"> </span>&gt;<span class="w"> </span>COI-mist.ali.fna
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Gene CYTB (referências + misteriosas)</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>mafft<span class="w"> </span>CYTB-mist.fna<span class="w"> </span>&gt;<span class="w"> </span>CYTB-mist.ali.fna
+</span></code></pre></div>
+<p>Aqui usamos o MAFFT diretamente sobre os nucleotídeos. Como o conjunto envolve mamíferos no mesmo gene mitocondrial (espécies relativamente próximas), o alinhamento de nucleotídeo direto já é confiável — não precisamos da etapa intermediária com <code>pal2nal</code> aqui.</p>
+<h3 id="23-confirmacao-rapida-no-jalview">2.3 Confirmação rápida no Jalview<a class="headerlink" href="#23-confirmacao-rapida-no-jalview" title="Permanent link">&para;</a></h3>
+<p>Antes de seguir para a filtragem, abre os dois alinhamentos no <a href="https://www.jalview.org/">Jalview</a> e confere:</p>
+<ul>
+<li>As <strong>misteriosas</strong> se alinharam dentro das mesmas colunas conservadas das referências?</li>
+<li>Há regiões com muito gap no início ou no fim, indicando que ali precisa ser cortado na próxima etapa?</li>
+<li>Alguma misteriosa está <strong>muito divergente</strong> das referências (gaps em massa)? Se sim, vale anotar — pode ser sequência distante, contaminação ou parálogo.</li>
+</ul>
+<h3 id="exercicio-21"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 2.1<a class="headerlink" href="#exercicio-21" title="Permanent link">&para;</a></h3>
+<p>Quantas sequências há em cada arquivo combinado (referências + misteriosas)? Use <code>grep</code> para contar.</p>
+<details class="success">
+<summary>Resposta</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>COI-mist.fna
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>CYTB-mist.fna
+</span></code></pre></div>
+<p>Cada <code>^&gt;</code> corresponde ao cabeçalho de uma sequência FASTA.</p>
+</details>
+<h3 id="checklist-da-etapa-2">Checklist da Etapa 2<a class="headerlink" href="#checklist-da-etapa-2" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>COI-mist.ali.fna</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>CYTB-mist.ali.fna</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Inspecionei pelo menos um dos alinhamentos no Jalview</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Confirmei que as misteriosas se alinham bem entre as referências</li>
+</ul>
+<hr />
+<h2 id="etapa-3-filtragem-do-alinhamento-trimal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2H9v2h4v2h-2v2h2v2H9v2h4a2 2 0 0 0 2-2M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 3 — Filtragem do alinhamento (trimAL)<a class="headerlink" href="#etapa-3-filtragem-do-alinhamento-trimal" title="Permanent link">&para;</a></h2>
+<p>Nem toda coluna do alinhamento contribui igualmente para a inferência da árvore. Regiões com muitos gaps, baixa conservação ou ruído aleatório podem <strong>atrapalhar mais do que ajudar</strong> — o sinal filogenético fica diluído. A filtragem (também chamada de <em>trimming</em>) remove essas colunas problemáticas antes de seguir para a inferência.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que filtrar?</p>
+<p>Colunas com muitos gaps ou alta variabilidade não informativa tendem a introduzir ruído, dificultando a recuperação do sinal evolutivo real. Ao remover essas posições, aumentamos a proporção de sítios informativos, o que geralmente resulta em árvores mais estáveis e com melhor suporte estatístico.</p>
+</div>
+<h3 id="31-trimal-com-metodo-automatico">3.1 trimAL com método automático<a class="headerlink" href="#31-trimal-com-metodo-automatico" title="Permanent link">&para;</a></h3>
+<p>O <strong>trimAL</strong> é uma das ferramentas mais usadas para esse fim. A flag <code>-automated1</code> aplica uma heurística que escolhe automaticamente entre <code>gappyout</code> e <code>strict</code> com base nas características do alinhamento — funciona bem como ponto de partida em quase todos os casos.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Gene COI</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>trimal<span class="w"> </span>-in<span class="w"> </span>COI-mist.ali.fna<span class="w"> </span>-automated1<span class="w"> </span>-out<span class="w"> </span>COI-mist.trim.ali.fna
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Gene CYTB</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>trimal<span class="w"> </span>-in<span class="w"> </span>CYTB-mist.ali.fna<span class="w"> </span>-automated1<span class="w"> </span>-out<span class="w"> </span>CYTB-mist.trim.ali.fna
+</span></code></pre></div>
+<details class="info">
+<summary>Outros métodos do trimAL (clique para expandir)</summary>
+<p>O <code>-automated1</code> é conveniente, mas vale conhecer alternativas para casos específicos:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-gappyout</code></td>
+<td>Remove colunas com muitos gaps; bom para alinhamentos com muitas inserções</td>
+</tr>
+<tr>
+<td><code>-strict</code></td>
+<td>Critério mais agressivo; bom quando o alinhamento já é muito conservado</td>
+</tr>
+<tr>
+<td><code>-strictplus</code></td>
+<td>Variação ainda mais conservadora do strict</td>
+</tr>
+<tr>
+<td><code>-gt 0.8</code></td>
+<td>Mantém apenas colunas com no máximo 20% de gaps (cutoff manual)</td>
+</tr>
+<tr>
+<td><code>-cons 60</code></td>
+<td>Garante que pelo menos 60% das colunas sejam mantidas</td>
+</tr>
+</tbody>
+</table>
+<p>Documentação completa: <a href="https://vicfero.github.io/trimal/">trimAL manual</a>.</p>
+</details>
+<h3 id="32-inspecao-visual-apos-o-trimming">3.2 Inspeção visual após o trimming<a class="headerlink" href="#32-inspecao-visual-apos-o-trimming" title="Permanent link">&para;</a></h3>
+<p>Abre os arquivos <code>*.trim.ali.fna</code> no Jalview e compara lado a lado com os originais (<code>*.ali.fna</code>). Você deve ver:</p>
+<ul>
+<li><strong>Menos colunas</strong> no total (regiões problemáticas foram removidas)</li>
+<li><strong>Maior consistência</strong> nas colunas mantidas (cores mais uniformes nas posições de cada base)</li>
+<li>As <strong>misteriosas continuam alinhadas</strong> dentro das referências, agora em colunas mais limpas</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Atenção: trimAL pode ser agressivo demais</p>
+<p>Em alinhamentos curtos ou com poucas sequências, o <code>-automated1</code> pode remover mais colunas do que o desejado. Sempre verifique se o alinhamento final ainda tem comprimento suficiente (idealmente algumas centenas de posições) e se as sequências misteriosas continuam bem representadas — caso contrário, prefira um critério mais permissivo.</p>
+</div>
+<h3 id="exercicio-31"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 3.1<a class="headerlink" href="#exercicio-31" title="Permanent link">&para;</a></h3>
+<p>Quantas colunas tinha o alinhamento de COI <strong>antes</strong> e <strong>depois</strong> da filtragem?</p>
+<details class="success">
+<summary>Comando esperado</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Imprime o tamanho da primeira sequência = número de colunas do alinhamento</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>COI-mist.ali.fna
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>COI-mist.trim.ali.fna
+</span></code></pre></div>
+<p>Como todas as sequências de um alinhamento têm o mesmo comprimento (incluindo gaps), basta medir uma. O segundo número deve ser <strong>menor</strong> — quanto, depende do quão "sujo" estava o alinhamento original.</p>
+</details>
+<h3 id="checklist-da-etapa-3">Checklist da Etapa 3<a class="headerlink" href="#checklist-da-etapa-3" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>COI-mist.trim.ali.fna</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>CYTB-mist.trim.ali.fna</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Comparei pelo menos um deles antes/depois no Jalview</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O alinhamento filtrado tem colunas suficientes para inferir a árvore</li>
+</ul>
+<hr />
+<h2 id="etapa-4-concatenar-os-alinhamentos-dos-dois-genes"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v4h2V7h-2v4h-2V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 4 — Concatenar os alinhamentos dos dois genes<a class="headerlink" href="#etapa-4-concatenar-os-alinhamentos-dos-dois-genes" title="Permanent link">&para;</a></h2>
+<p>Quando temos múltiplos genes alinhados separadamente, juntá-los em um <strong>único super-alinhamento</strong> (chamado de <strong>supermatriz</strong>) costuma resultar em uma árvore mais robusta. A ideia é simples: mais dados por táxon → mais sinal filogenético → resolução melhor de relações que cada gene sozinho talvez não conseguisse distinguir.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que concatenar?</p>
+<p>Genes diferentes podem evoluir em taxas distintas, mas compartilham, em geral, a mesma história evolutiva das espécies. Ao concatená-los, aumentamos a quantidade de informação por táxon, o que tende a melhorar a resolução da topologia e o suporte estatístico da árvore — especialmente quando cada gene isolado tem sinal limitado.</p>
+</div>
+<h3 id="41-concatenando-com-catfasta2phyml">4.1 Concatenando com catfasta2phyml<a class="headerlink" href="#41-concatenando-com-catfasta2phyml" title="Permanent link">&para;</a></h3>
+<p>A ferramenta <code>catfasta2phyml.pl</code> faz a concatenação respeitando os táxons: combina sequências do <strong>mesmo táxon</strong> entre os arquivos e preenche com gaps quando algum táxon falta em algum gene.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>catfasta2phyml.pl<span class="w"> </span>-c<span class="w"> </span>-f<span class="w"> </span>*mist.trim.ali.fna<span class="w"> </span>&gt;<span class="w"> </span>concatenado.fasta
+</span></code></pre></div>
+<p>O que cada pedaço significa:</p>
+<ul>
+<li><code>-c</code> — modo de <strong>concatenação</strong> (sem isso, o script só converte formato)</li>
+<li><code>-f</code> — saída em formato <strong>FASTA</strong> (sem essa flag, sai em Phylip)</li>
+<li><code>*mist.trim.ali.fna</code> — wildcard que pega <code>COI-mist.trim.ali.fna</code> <strong>e</strong> <code>CYTB-mist.trim.ali.fna</code></li>
+<li><code>&gt; concatenado.fasta</code> — redireciona a saída para um arquivo</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">⚠️ ANOTE as posições dos genes que aparecerem no terminal</p>
+<p>Depois de rodar o comando, o <code>catfasta2phyml.pl</code> imprime na tela algo parecido com:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>COI-mist.trim.ali.fna     = 1-581
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>CYTB-mist.trim.ali.fna    = 582-1281
+</span></code></pre></div>
+<p>Esses números — <strong>posições inicial e final</strong> de cada gene no super-alinhamento — vão ser usados na <strong>Etapa 6</strong> (filogenia com partições). <strong>Anote agora</strong> num arquivo <code>partitions-info.txt</code> ou em qualquer lugar que você não vá perder. Sem essas posições, não dá pra montar o arquivo de partição depois.</p>
+<div class="admonition tip">
+<p class="admonition-title">Truque: salvar a saída automaticamente</p>
+<p>Pra não depender de copiar manualmente, redirecione também o STDERR:</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">    </span>catfasta2phyml.pl<span class="w"> </span>-c<span class="w"> </span>-f<span class="w"> </span>*mist.trim.ali.fna<span class="w"> </span>&gt;<span class="w"> </span>concatenado.fasta<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>partitions-info.txt
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>O `2&gt;` captura as mensagens de erro/info (que é onde o script imprime as posições) num arquivo separado.
+</code></pre></div>
+</div>
+<h3 id="42-verificacao-rapida">4.2 Verificação rápida<a class="headerlink" href="#42-verificacao-rapida" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Quantas sequências há no concatenado?</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>concatenado.fasta
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Quantas colunas tem o super-alinhamento?</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>concatenado.fasta
+</span></code></pre></div>
+<ul>
+<li>O número de <strong>sequências</strong> deve bater com o de qualquer um dos genes individuais (cada táxon vira uma linha do super-alinhamento).</li>
+<li>O número de <strong>colunas</strong> deve ser a <strong>soma</strong> das colunas dos dois alinhamentos filtrados da Etapa 3.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">E se algum táxon faltar em um dos genes?</p>
+<p>O <code>catfasta2phyml.pl</code> preenche automaticamente com gaps a região correspondente ao gene ausente para aquele táxon. Isso é aceitável até certo ponto, mas uma alta proporção de dados ausentes (por exemplo, &gt;50% do alinhamento) pode reduzir a confiabilidade da inferência — nesses casos, vale considerar remover o táxon ou analisar os genes separadamente.</p>
+</div>
+<h3 id="exercicio-41"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 4.1<a class="headerlink" href="#exercicio-41" title="Permanent link">&para;</a></h3>
+<p>Confirme que a concatenação fez sentido: número de táxons igual ao dos arquivos individuais, e número de colunas igual à soma.</p>
+<details class="success">
+<summary>Comandos esperados</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Sequências em cada arquivo</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;COI:          </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;^&gt;&#39;</span><span class="w"> </span>COI-mist.trim.ali.fna<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CYTB:         </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;^&gt;&#39;</span><span class="w"> </span>CYTB-mist.trim.ali.fna<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Concatenado:  </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;^&gt;&#39;</span><span class="w"> </span>concatenado.fasta<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1"># Colunas em cada arquivo</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print &quot;COI:         &quot; length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>COI-mist.trim.ali.fna
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print &quot;CYTB:        &quot; length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>CYTB-mist.trim.ali.fna
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print &quot;Concat:      &quot; length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>concatenado.fasta
+</span></code></pre></div>
+<p>Esperado: as três contagens de sequência são iguais, e as colunas do concatenado = COI + CYTB.</p>
+</details>
+<h3 id="checklist-da-etapa-4">Checklist da Etapa 4<a class="headerlink" href="#checklist-da-etapa-4" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>concatenado.fasta</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Anotei</strong> as posições (inicial-final) de cada gene em <code>partitions-info.txt</code> ou similar</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conferi que o número de táxons e o comprimento batem</li>
+</ul>
+<hr />
+<h2 id="etapa-5-inferencia-da-arvore-filogenetica-iq-tree-3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v2H9v2h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h4V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 5 — Inferência da árvore filogenética (IQ-TREE 3)<a class="headerlink" href="#etapa-5-inferencia-da-arvore-filogenetica-iq-tree-3" title="Permanent link">&para;</a></h2>
+<p>Com o super-alinhamento pronto, finalmente podemos <strong>inferir a árvore</strong>. Vamos usar o <strong>IQ-TREE 3</strong>, que implementa Máxima Verossimilhança (ML) e é hoje uma das principais opções em inferência filogenética molecular — combina acurácia, velocidade e seleção automática de modelo.</p>
+<div class="admonition info">
+<p class="admonition-title">O que o IQ-TREE está fazendo?</p>
+<p>O IQ-TREE busca, entre as possíveis árvores, aquela que melhor explica os dados observados sob um modelo evolutivo — isto é, a árvore com maior verossimilhança. Durante esse processo, ele também estima os parâmetros do modelo e avalia o suporte estatístico dos clados por meio de reamostragem (bootstrap). Como o número de árvores possíveis cresce rapidamente com o número de táxons, essa busca é feita por métodos heurísticos, explorando o espaço de soluções de forma eficiente.</p>
+</div>
+<h3 id="51-inferencia-sem-outgroup">5.1 Inferência sem outgroup<a class="headerlink" href="#51-inferencia-sem-outgroup" title="Permanent link">&para;</a></h3>
+<p>A versão mais simples roda o IQ-TREE sem especificar nenhum táxon como referência externa:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>iqtree3<span class="w"> </span>-s<span class="w"> </span>concatenado.fasta<span class="w"> </span>-m<span class="w"> </span>MFP<span class="w"> </span>-pre<span class="w"> </span>arvore-ex1-sem-out<span class="w"> </span>-B<span class="w"> </span><span class="m">1000</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-s concatenado.fasta</code></td>
+<td>Arquivo de entrada (super-alinhamento)</td>
+</tr>
+<tr>
+<td><code>-m MFP</code></td>
+<td><strong>ModelFinder Plus</strong> — escolhe automaticamente o melhor modelo evolutivo</td>
+</tr>
+<tr>
+<td><code>-pre arvore-ex1-sem-out</code></td>
+<td>Prefixo dos arquivos de saída</td>
+</tr>
+<tr>
+<td><code>-B 1000</code></td>
+<td><strong>Ultrafast Bootstrap</strong> com 1000 réplicas para suporte de nós</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Arquivos gerados pelo IQ-TREE</p>
+<p>O comando produz vários arquivos com o prefixo escolhido. Os principais:</p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*.treefile</code></td>
+<td>A árvore final em formato Newick (texto)</td>
+</tr>
+<tr>
+<td><code>*.iqtree</code></td>
+<td>Relatório completo (modelo, ML score, suportes)</td>
+</tr>
+<tr>
+<td><code>*.log</code></td>
+<td>Log da execução</td>
+</tr>
+<tr>
+<td><code>*.contree</code></td>
+<td>Árvore de consenso construída a partir do bootstrap</td>
+</tr>
+<tr>
+<td><code>*.bionj</code></td>
+<td>Árvore inicial (BioNJ) usada como semente</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="52-inferencia-com-outgroup">5.2 Inferência com outgroup<a class="headerlink" href="#52-inferencia-com-outgroup" title="Permanent link">&para;</a></h3>
+<p>Quando temos um táxon que sabemos ser <strong>mais distante</strong> do grupo de interesse, podemos usá-lo como <strong>outgroup</strong> para enraizar a árvore. Neste exercício, a capivara (<em>Hydrochoerus hydrochaeris</em>) faz esse papel:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>iqtree3<span class="w"> </span>-s<span class="w"> </span>concatenado.fasta<span class="w"> </span>-m<span class="w"> </span>MFP<span class="w"> </span>-o<span class="w"> </span>Hydrochoerus_hydrochaeris<span class="w"> </span>-pre<span class="w"> </span>arvore-ex1-com-out<span class="w"> </span>-B<span class="w"> </span><span class="m">1000</span>
+</span></code></pre></div>
+<p>A única flag adicional é <code>-o</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-o Hydrochoerus_hydrochaeris</code></td>
+<td>Táxon de outgroup (use o <strong>nome exato</strong> do cabeçalho FASTA, sem espaços)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Para que serve o outgroup?</p>
+<p>O outgroup permite enraizar a árvore, definindo onde está a raiz e, portanto, a direção das divergências evolutivas. Sem um outgroup, a árvore é não-enraizada: ela mostra as relações entre os táxons, mas não indica qual linhagem se separou primeiro.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Como escolher um bom outgroup</p>
+<p>Um bom outgroup deve ser filogeneticamente próximo o suficiente para permitir um alinhamento confiável, mas distante o bastante para não pertencer ao grupo de interesse. Se for muito distante, pode introduzir erros por saturação ou alinhamento ruim; se for muito próximo, pode acabar sendo agrupado dentro do ingroup. Idealmente, deve haver evidência prévia de que ele é externo ao grupo analisado.</p>
+</div>
+<h3 id="53-interpretando-os-valores-de-suporte-bootstrap">5.3 Interpretando os valores de suporte (bootstrap)<a class="headerlink" href="#53-interpretando-os-valores-de-suporte-bootstrap" title="Permanent link">&para;</a></h3>
+<p>Cada nó da árvore final vem rotulado com um número de <strong>0 a 100</strong> — a porcentagem de réplicas de bootstrap que recuperaram aquele clado.</p>
+<table>
+<thead>
+<tr>
+<th>Valor de suporte</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>≥ 95</strong></td>
+<td>Clado bem suportado — alta confiança</td>
+</tr>
+<tr>
+<td><strong>80 – 95</strong></td>
+<td>Suporte moderado, mas razoável</td>
+</tr>
+<tr>
+<td><strong>50 – 80</strong></td>
+<td>Suporte fraco — relação dúbia, considere ambígua</td>
+</tr>
+<tr>
+<td><strong>&lt; 50</strong></td>
+<td>Efetivamente sem suporte</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Atenção: ultrafast bootstrap tende a inflar valores</p>
+<p>O <code>-B</code> (ultrafast bootstrap) é mais rápido que o bootstrap clássico (<code>-b</code>), mas <strong>gera valores mais altos</strong> para o mesmo dado. A regra de bolso é considerar <strong>≥ 95</strong> como bom suporte com <code>-B</code>, em vez dos ≥ 70 que seriam o cutoff clássico.</p>
+</div>
+<h3 id="exercicio-51"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 5.1<a class="headerlink" href="#exercicio-51" title="Permanent link">&para;</a></h3>
+<p>Qual foi o modelo evolutivo escolhido automaticamente pelo ModelFinderPlus?</p>
+<details class="success">
+<summary>Comando esperado</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best-fit&quot;</span><span class="w"> </span>arvore-ex1-com-out.log
+</span></code></pre></div>
+<p>A saída mostra algo do tipo <code>Best-fit model: GTR+F+I+G4 chosen according to BIC</code>. Esse modelo é o que o IQ-TREE usou em toda a inferência. Vamos voltar nele na Etapa 7.</p>
+</details>
+<h3 id="checklist-da-etapa-5">Checklist da Etapa 5<a class="headerlink" href="#checklist-da-etapa-5" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>arvore-ex1-sem-out.treefile</code> (sem outgroup)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>arvore-ex1-com-out.treefile</code> (com outgroup)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Identifiquei o modelo evolutivo escolhido pelo ModelFinder</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conferi que rodou sem erro (arquivo <code>*.iqtree</code> foi gerado)</li>
+</ul>
+<hr />
+<h2 id="etapa-6-filogenia-com-particoes-por-gene"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h4V7zm0 6h2v2h-2zm1-11a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 6 — Filogenia com partições por gene<a class="headerlink" href="#etapa-6-filogenia-com-particoes-por-gene" title="Permanent link">&para;</a></h2>
+<p>Quando concatenamos dois genes em um único super-alinhamento (Etapa 4), aplicar <strong>um único modelo evolutivo</strong> sobre toda a matriz pressupõe que ambos evoluem da mesma forma — o que raramente é verdade. Genes mitocondriais como COI e CYTB podem ter taxas, vieses de composição e padrões de substituição diferentes, por causa de pressões seletivas e papéis funcionais distintos.</p>
+<p>A solução é dividir o alinhamento em <strong>partições</strong> (uma por gene) e deixar o IQ-TREE estimar <strong>um modelo por partição</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que usar partições?</p>
+<p>Cada gene pode ter sua própria taxa evolutiva, composição de bases e padrões de substituição, refletindo diferentes pressões seletivas e funções biológicas. Aplicar um único modelo a todo o alinhamento ignora essas diferenças e pode distorcer a inferência. Ao usar partições, cada gene é modelado de forma independente, e a árvore resultante integra essas informações de maneira mais realista e biologicamente consistente.</p>
+</div>
+<h3 id="61-criar-o-arquivo-de-particoes">6.1 Criar o arquivo de partições<a class="headerlink" href="#61-criar-o-arquivo-de-particoes" title="Permanent link">&para;</a></h3>
+<p>O IQ-TREE entende partições no formato <strong>Nexus</strong>. Você precisa montar um arquivo <code>partitions.nex</code> no formato abaixo, <strong>substituindo os números</strong> pelas posições que você anotou na Etapa 4:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>#nexus
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>begin sets;
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  charset COI  = 1-581;
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>  charset CYTB = 582-1281;
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>end;
+</span></code></pre></div>
+<p>O que esse arquivo está dizendo:</p>
+<ul>
+<li><code>#nexus</code> — declaração obrigatória do formato</li>
+<li><code>begin sets; ... end;</code> — bloco de definição de partições</li>
+<li><code>charset NOME = INICIO-FIM</code> — define uma partição com nome <code>NOME</code> ocupando as colunas de <code>INICIO</code> até <code>FIM</code></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Use SUAS posições, não as do exemplo</p>
+<p>Os números <code>1-581</code> e <code>582-1281</code> são ilustrativos. <strong>Os seus números</strong> vieram do <code>catfasta2phyml.pl</code> na Etapa 4 e podem ser diferentes — depende de quanto cada gene perdeu na filtragem do trimAL. Confere no seu arquivo:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>cat<span class="w"> </span>partitions-info.txt
+</span></code></pre></div>
+<p>E coloca exatamente esses valores no <code>partitions.nex</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Atalho: criar o arquivo direto pelo terminal</p>
+<p>Em vez de abrir editor, dá pra gerar o arquivo com um here-document:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>partitions.nex<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="s">#nexus</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="s">begin sets;</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="s">  charset COI  = 1-581;</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="s">  charset CYTB = 582-1281;</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="s">end;</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="s">EOF</span>
+</span></code></pre></div>
+<p>O <code>&lt;&lt; 'EOF' ... EOF</code> é um <strong>here-document</strong>: tudo que estiver entre os dois <code>EOF</code> vai parar dentro do arquivo. Ajusta os números antes de rodar e confere depois com <code>cat partitions.nex</code>.</p>
+</div>
+<h3 id="62-rodar-o-iq-tree-com-particoes">6.2 Rodar o IQ-TREE com partições<a class="headerlink" href="#62-rodar-o-iq-tree-com-particoes" title="Permanent link">&para;</a></h3>
+<p>A única flag nova é <code>-p partitions.nex</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>iqtree3<span class="w"> </span>-s<span class="w"> </span>concatenado.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">        </span>-m<span class="w"> </span>MFP<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">        </span>-o<span class="w"> </span>Hydrochoerus_hydrochaeris<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">        </span>-p<span class="w"> </span>partitions.nex<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">        </span>-pre<span class="w"> </span>arvore-ex1-com-out-e-part<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">        </span>-B<span class="w"> </span><span class="m">1000</span>
+</span></code></pre></div>
+<blockquote>
+<p>O <code>\</code> no fim de cada linha é só pra quebrar o comando em várias linhas e ficar legível. Em uma linha só também funciona.</p>
+</blockquote>
+<p>A diferença em relação à Etapa 5: o IQ-TREE agora roda o ModelFinder <strong>separadamente para cada partição</strong>, escolhendo o melhor modelo pra COI e o melhor pra CYTB independentemente. A árvore final é estimada usando os dois modelos juntos.</p>
+<h3 id="63-comparacao-entre-as-tres-arvores">6.3 Comparação entre as três árvores<a class="headerlink" href="#63-comparacao-entre-as-tres-arvores" title="Permanent link">&para;</a></h3>
+<p>Você agora tem <strong>três árvores</strong> das três rodadas do IQ-TREE:</p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Variante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arvore-ex1-sem-out.treefile</code></td>
+<td>Sem outgroup, sem partições</td>
+</tr>
+<tr>
+<td><code>arvore-ex1-com-out.treefile</code></td>
+<td>Com outgroup, sem partições</td>
+</tr>
+<tr>
+<td><code>arvore-ex1-com-out-e-part.treefile</code></td>
+<td>Com outgroup <strong>e</strong> partições</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Qual usar para a atribuição taxonômica?</p>
+<p>A árvore com outgroup e partições é a mais adequada, pois combina enraizamento correto com modelagem independente dos genes. Isso tende a produzir uma topologia mais confiável e melhor suportada, sendo a melhor base para identificar as sequências misteriosas.</p>
+</div>
+<h3 id="exercicio-61"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 6.1<a class="headerlink" href="#exercicio-61" title="Permanent link">&para;</a></h3>
+<p>O ModelFinder escolheu modelos diferentes para COI e CYTB? Compare também com o modelo único da rodada anterior.</p>
+<details class="success">
+<summary>Comandos esperados</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Modelo único (rodada da Etapa 5, com outgroup)</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best-fit model&quot;</span><span class="w"> </span>arvore-ex1-com-out.log
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Modelos por partição (rodada com partições)</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best.*model&quot;</span><span class="w"> </span>arvore-ex1-com-out-e-part.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</span></code></pre></div>
+<p>Na rodada com partições devem aparecer dois modelos — um para COI, outro para CYTB. Frequentemente são diferentes entre si, e podem também diferir do modelo único da rodada sem partições.</p>
+</details>
+<h3 id="checklist-da-etapa-6">Checklist da Etapa 6<a class="headerlink" href="#checklist-da-etapa-6" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Criei <code>partitions.nex</code> com as <strong>minhas</strong> posições (não as do exemplo)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>arvore-ex1-com-out-e-part.treefile</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conferi os modelos escolhidos para COI e CYTB</li>
+</ul>
+<hr />
+<h2 id="etapa-7-identificar-o-modelo-evolutivo-escolhido-modelfinderplus"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11 17 4-8V7H9v2h4l-4 8zm1-15a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 7 — Identificar o modelo evolutivo escolhido (ModelFinderPlus)<a class="headerlink" href="#etapa-7-identificar-o-modelo-evolutivo-escolhido-modelfinderplus" title="Permanent link">&para;</a></h2>
+<p>Em todas as rodadas usamos a flag <code>-m MFP</code> (ModelFinder Plus), que <strong>testa dezenas de modelos</strong> e escolhe automaticamente o melhor com base em critérios como BIC ou AIC. Vale agora olhar <strong>qual modelo foi de fato escolhido</strong> — tanto por curiosidade quanto pra documentar a análise.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que documentar o modelo escolhido?</p>
+<p>A reprodutibilidade de uma análise filogenética depende do conhecimento exato do modelo evolutivo utilizado. Reportar o modelo selecionado (e o critério de escolha, como BIC ou AIC) é uma prática essencial, tanto para permitir a reprodução dos resultados quanto para garantir transparência em análises científicas.</p>
+</div>
+<h3 id="71-modelo-unico-rodadas-sem-particoes">7.1 Modelo único (rodadas sem partições)<a class="headerlink" href="#71-modelo-unico-rodadas-sem-particoes" title="Permanent link">&para;</a></h3>
+<p>Quando rodamos <strong>sem</strong> <code>-p</code>, o IQ-TREE escolhe um único modelo para todo o alinhamento. Ele aparece no <code>*.log</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Para qualquer das rodadas sem partição:</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best-fit&quot;</span><span class="w"> </span>*.log
+</span></code></pre></div>
+<p>Saída esperada:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>arvore-ex1-sem-out.log:Best-fit model: GTR+F+I+G4 chosen according to BIC
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>arvore-ex1-com-out.log:Best-fit model: GTR+F+I+G4 chosen according to BIC
+</span></code></pre></div>
+<h3 id="72-modelos-por-particao">7.2 Modelos por partição<a class="headerlink" href="#72-modelos-por-particao" title="Permanent link">&para;</a></h3>
+<p>Quando rodamos com <code>-p partitions.nex</code>, o IQ-TREE escolhe <strong>um modelo por partição</strong> (ou pode até sugerir agrupar partições, dependendo do caso). O esquema final é gravado num arquivo nexus separado:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>more<span class="w"> </span>arvore-ex1-com-out-e-part.best_scheme.nex
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Esse arquivo é reutilizável</p>
+<p>O <code>.best_scheme.nex</code> é um nexus completo, pronto pra ser passado novamente ao IQ-TREE via <code>-p</code> numa próxima análise — pulando assim toda a etapa de seleção de modelo. Útil quando você quer rodar variações da análise (mais bootstraps, outras flags) sem refazer o ModelFinder do zero.</p>
+</div>
+<h3 id="73-decifrando-o-nome-do-modelo">7.3 Decifrando o nome do modelo<a class="headerlink" href="#73-decifrando-o-nome-do-modelo" title="Permanent link">&para;</a></h3>
+<p>Os nomes vêm com várias partes coladas com <code>+</code>. Os componentes mais comuns para nucleotídeos:</p>
+<table>
+<thead>
+<tr>
+<th>Sufixo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GTR</code></td>
+<td><strong>General Time Reversible</strong> — modelo de substituição mais flexível para nucleotídeos</td>
+</tr>
+<tr>
+<td><code>HKY</code></td>
+<td>Modelo mais simples (transições ≠ transversões); usado quando GTR é "exagero"</td>
+</tr>
+<tr>
+<td><code>TIM2</code>, <code>TPM2</code>, <code>TVM</code> etc.</td>
+<td>Variações intermediárias entre HKY e GTR</td>
+</tr>
+<tr>
+<td><code>+F</code></td>
+<td>Frequências de bases <strong>estimadas dos dados</strong> (em vez de assumir 0.25 cada)</td>
+</tr>
+<tr>
+<td><code>+I</code></td>
+<td><strong>Proporção de sítios invariáveis</strong> — parte do alinhamento que não muda</td>
+</tr>
+<tr>
+<td><code>+G4</code></td>
+<td>Heterogeneidade de taxa entre sítios em <strong>4 categorias gama</strong></td>
+</tr>
+<tr>
+<td><code>+R3</code></td>
+<td>Variação de taxa em 3 categorias livres (alternativa mais flexível a <code>+G</code>)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Exemplo de leitura</p>
+<p><code>GTR+F+I+G4</code> quer dizer: modelo GTR, com frequências de bases estimadas dos dados (<code>+F</code>), proporção de sítios invariáveis (<code>+I</code>) e taxa heterogênea entre sítios em 4 categorias gama (<code>+G4</code>). É um dos modelos mais ricos para dados nucleotídicos e frequentemente o escolhido quando há sinal estatístico suficiente para justificar a complexidade.</p>
+</div>
+<h3 id="exercicio-71"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 7.1<a class="headerlink" href="#exercicio-71" title="Permanent link">&para;</a></h3>
+<p>Os modelos escolhidos para COI e CYTB foram iguais ou diferentes? E o que isso revela sobre os dois genes?</p>
+<details class="success">
+<summary>Comando esperado e interpretação</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>cat<span class="w"> </span>arvore-ex1-com-out-e-part.best_scheme.nex
+</span></code></pre></div>
+<p>Você verá algo como:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>#nexus
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>begin sets;
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>  charset COI = 1-581;
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>  charset CYTB = 582-1281;
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>  charpartition mymodels =
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>    TIM2+F+G4: COI,
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>    HKY+F+I: CYTB;
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>end;
+</span></code></pre></div>
+<p>Modelos diferentes para COI e CYTB indicam que esses genes apresentam padrões evolutivos distintos no conjunto analisado, como diferenças em taxa de substituição ou composição de bases. Isso reforça a importância do uso de partições, pois cada gene pode ser descrito de forma mais adequada por seu próprio modelo evolutivo.</p>
+</details>
+<h3 id="checklist-da-etapa-7">Checklist da Etapa 7<a class="headerlink" href="#checklist-da-etapa-7" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Identifiquei o modelo único da rodada sem partições</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conferi o <code>.best_scheme.nex</code> da rodada com partições</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Entendi o que cada parte do nome do modelo significa</li>
+</ul>
+<hr />
+<h2 id="etapa-8-visualizar-a-arvore-e-identificar-as-misteriosas"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13h2v2h-2zm0-4h2v2h-2zm0 8h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m1-15a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 8 — Visualizar a árvore e identificar as misteriosas<a class="headerlink" href="#etapa-8-visualizar-a-arvore-e-identificar-as-misteriosas" title="Permanent link">&para;</a></h2>
+<p>Chegou o momento da verdade: visualizar a árvore filogenética e descobrir <strong>a que espécies pertencem</strong> as sequências misteriosas. Vamos usar o <strong>iTOL</strong> (Interactive Tree of Life), uma ferramenta web gratuita que renderiza árvores em formato Newick e permite muitas customizações sem instalar nada.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que iTOL?</p>
+<p>O iTOL é gratuito, roda diretamente no navegador e permite explorar árvores filogenéticas de forma interativa, sem necessidade de instalação. Ele suporta os principais formatos usados em filogenia e facilita tanto a visualização quanto a geração de figuras prontas para publicação.</p>
+</div>
+<h3 id="81-dar-uma-olhada-na-arvore-como-texto-newick">8.1 Dar uma olhada na árvore como texto (Newick)<a class="headerlink" href="#81-dar-uma-olhada-na-arvore-como-texto-newick" title="Permanent link">&para;</a></h3>
+<p>Antes de subir, vale espiar o arquivo:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>cat<span class="w"> </span>arvore-ex1-com-out-e-part.treefile
+</span></code></pre></div>
+<p>Você vai ver algo do tipo:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>((Hydrochoerus_hydrochaeris:0.123,(Mus_musculus:0.045,Rattus_norvegicus:0.038)98:0.087)100:0.012, ... );
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Formato Newick em três regras</p>
+<p>Cada par de parênteses representa um agrupamento (clado) de táxons relacionados. Os valores após <code>:</code> indicam o comprimento dos ramos, ou seja, a quantidade de mudança evolutiva. Já os números associados aos nós internos representam o suporte estatístico (bootstrap) daquele agrupamento.</p>
+</div>
+<h3 id="82-subir-a-arvore-no-itol">8.2 Subir a árvore no iTOL<a class="headerlink" href="#82-subir-a-arvore-no-itol" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Acesse <a href="https://itol.embl.de/">https://itol.embl.de/</a></li>
+<li>Clica em <strong>"Upload"</strong> no topo da página</li>
+<li>Faz upload do <code>arvore-ex1-com-out-e-part.treefile</code> (ou cola o conteúdo direto)</li>
+<li>Dá um nome à árvore e confirma</li>
+</ol>
+<p>Em segundos a árvore aparece renderizada de forma interativa.</p>
+<h3 id="83-customizacoes-uteis-no-itol">8.3 Customizações úteis no iTOL<a class="headerlink" href="#83-customizacoes-uteis-no-itol" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trocar o estilo (retangular, circular)</td>
+<td>Painel direito, "Mode"</td>
+</tr>
+<tr>
+<td>Mostrar valores de bootstrap</td>
+<td>"Advanced" → "Bootstrap / display values"</td>
+</tr>
+<tr>
+<td>Reposicionar o outgroup como raiz</td>
+<td>Clica no nó da capivara → "Tree structure" → "Reroot the tree here"</td>
+</tr>
+<tr>
+<td>Colorir clados/ramos</td>
+<td>Clica no nó → "Branch color"</td>
+</tr>
+<tr>
+<td>Destacar as <strong>misteriosas</strong></td>
+<td>"Datasets" → "Color labels" ou "Color ranges"</td>
+</tr>
+<tr>
+<td>Exportar (SVG/PNG/PDF)</td>
+<td>"Export" no painel direito</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Destacar as misteriosas pra leitura rápida</p>
+<p>Use a opção "Color labels" no iTOL para destacar as sequências misteriosas com uma cor contrastante (por exemplo, vermelho), mantendo as referências em cores neutras. Isso facilita identificar rapidamente em qual clado cada misteriosa se posiciona, especialmente em árvores maiores.</p>
+</div>
+<h3 id="84-interpretando-atribuicao-taxonomica">8.4 Interpretando: atribuição taxonômica<a class="headerlink" href="#84-interpretando-atribuicao-taxonomica" title="Permanent link">&para;</a></h3>
+<p>A pergunta-chave: <strong>em qual clado de referência cada misteriosa se posicionou?</strong></p>
+<p>Para cada misteriosa, observe:</p>
+<ol>
+<li><strong>A qual clado de referência ela é irmã</strong> (ou se está dentro do clado)</li>
+<li><strong>O suporte de bootstrap do nó</strong> que une a misteriosa às referências</li>
+</ol>
+<p>A atribuição é robusta quando a misteriosa cai em um clado de referência conhecido com <strong>bootstrap ≥ 95</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado com clados mal suportados</p>
+<p>Se a misteriosa cair em um nó com bootstrap baixo (&lt; 80), a atribuição é incerta. <strong>Reporte como "inconclusiva"</strong> em vez de chutar — em projetos reais, essa honestidade evita publicar identificação errada.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Quando o COI e o CYTB discordam</p>
+<p>Como você fez <strong>uma única árvore concatenada</strong>, em geral COI e CYTB já estão "votando juntos" no posicionamento da misteriosa. Mas se você quiser uma checagem extra, dá pra rodar árvores <strong>separadas</strong> por gene (sem concatenar) e ver se as duas concordam. Discordância forte costuma indicar paralogo, contaminação ou hibridização.</p>
+</div>
+<h3 id="exercicio-81"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício 8.1<a class="headerlink" href="#exercicio-81" title="Permanent link">&para;</a></h3>
+<p>Identifique cada uma das sequências misteriosas no seu dataset. Em qual clado caíram, com qual suporte, e qual é a atribuição taxonômica?</p>
+<details class="success">
+<summary>Resposta</summary>
+<p>"<strong>Misteriosa 1</strong> caiu como irmã de <em>XXXX XXXX</em> com suporte XX% — atribuição: gênero <em>XXX</em>, possivelmente <em>XXX XXXX</em> ou espécie próxima.
+<strong>Misteriosa 2</strong> caiu dentro do clado de <em>XXXXX</em>, próxima a <em>X. XXXX</em>, com suporte 97% — atribuição: gênero <em>XXXXX</em>."]</p>
+</details>
+<h3 id="checklist-da-etapa-8">Checklist da Etapa 8<a class="headerlink" href="#checklist-da-etapa-8" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Subi a árvore no iTOL e ela renderizou sem erro</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Reorientei a árvore com a capivara como outgroup (raiz)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Habilitei a exibição dos valores de bootstrap</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pintei as misteriosas para leitura rápida</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Identifiquei o clado de cada misteriosa</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Avaliei o suporte antes de fazer a atribuição</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Exportei a figura final em formato apropriado</li>
+</ul>
+<hr />
+<h2 id="voce-chegou-ao-fim-do-tutorial"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.4 6H20v10h-7l-.4-2H7v7H5V4h9zm-.4 8h2v-2h2v-2h-2V8h-2v2l-1-2V6h-2v2H9V6H7v2h2v2H7v2h2v-2h2v2h2v-2l1 2zm-3-4V8h2v2zm3 0h2v2h-2z"/></svg></span> Você chegou ao fim do tutorial 🎉<a class="headerlink" href="#voce-chegou-ao-fim-do-tutorial" title="Permanent link">&para;</a></h2>
+<p>Parabéns! Você acaba de percorrer uma <strong>pipeline completa de inferência filogenética</strong> para atribuição taxonômica:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>flowchart LR
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    A[Sequências FASTA] --&gt; B[Alinhamento&lt;br/&gt;MAFFT/MUSCLE/pal2nal]
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    B --&gt; C[Filtragem&lt;br/&gt;trimAL]
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    C --&gt; D[Concatenação&lt;br/&gt;catfasta2phyml]
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    D --&gt; E[Inferência&lt;br/&gt;IQ-TREE 3 + ModelFinder]
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    E --&gt; F[Visualização&lt;br/&gt;iTOL]
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>    F --&gt; G[Atribuição&lt;br/&gt;taxonômica]
+</span></code></pre></div>
+<p>Em projetos reais, essa mesma sequência se repete com variações de ferramenta, escala e organismo. <strong>Os princípios são os mesmos</strong> — o que muda são as flags e a interpretação contextual.</p>
+<h3 id="para-se-aprofundar">Para se aprofundar<a class="headerlink" href="#para-se-aprofundar" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Métodos bayesianos (MrBayes, BEAST)</strong> — incorporam incerteza nos parâmetros e permitem estimativas de tempo de divergência</li>
+<li><strong>Partições por códon</strong> — modelar separadamente posições 1, 2 e 3 do códon pode melhorar a inferência</li>
+<li><strong>Filogenômica</strong> — uso de centenas a milhares de genes para resolver relações profundas</li>
+<li><strong>Testes de topologia</strong> — comparar hipóteses evolutivas alternativas (ex.: AU test, SH test)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
