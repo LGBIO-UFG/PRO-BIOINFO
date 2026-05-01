@@ -45,3 +45,7 @@ concatenado.fasta
 *.ali.*
 partitions.nex
 partitions-info.txt
+
+id_ed25519*
+id_rsa*
+*.pem
