@@ -47,20 +47,41 @@ Ao final deste tutorial, você será capaz de:
 
 ## :material-database: Dados do exercício
 
-Os arquivos do exercício estão em `data/exemplos/filogenia/` no repositório do PRO-BIOINFO:
+Os arquivos do exercício estão na pasta [`data/exemplos/filogenia/`](https://github.com/LGBIO-UFG/PRO-BIOINFO/tree/main/data/exemplos/filogenia) deste repositório.
 
-- `COI.faa`, `COI.fna` — sequências de COI (proteína e nucleotídeo) das espécies de referência
-- `CYTB.faa`, `CYTB.fna` — sequências de CYTB
-- `COI-mist.fna`, `CYTB-mist.fna` — sequências "misteriosas" (a serem identificadas)
+### Opção A — Clonar o repositório inteiro (recomendado)
 
 ```bash
-# Clonar o repositório completo
-git clone https://github.com/<usuario>/PRO-BIOINFO.git
+git clone https://github.com/LGBIO-UFG/PRO-BIOINFO.git
 cd PRO-BIOINFO/data/exemplos/filogenia/
 ```
 
+### Opção B — Baixar só os arquivos do exercício
+
+```bash
+mkdir -p ex1 && cd ex1
+wget https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/COI.faa
+wget https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/COI.fna
+wget https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/CYTB.faa
+wget https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/CYTB.fna
+wget https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/COI-mist.fna
+wget https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/CYTB-mist.fna
+```
+
+### Conteúdo dos arquivos
+
+| Arquivo | Conteúdo | Download |
+| ------- | -------- | -------- |
+| `COI.faa`         | COI referências (aa)        | [:material-download:](https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/COI.faa) |
+| `COI.fna`         | COI referências (nt)        | [:material-download:](https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/COI.fna) |
+| `CYTB.faa`        | CYTB referências (aa)       | [:material-download:](https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/CYTB.faa) |
+| `CYTB.fna`        | CYTB referências (nt)       | [:material-download:](https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/CYTB.fna) |
+| `COI-mist.fna`    | COI misteriosas (nt)        | [:material-download:](https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/COI-mist.fna) |
+| `CYTB-mist.fna`   | CYTB misteriosas (nt)       | [:material-download:](https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/filogenia/CYTB-mist.fna) |
+
 !!! info "Cenário do exercício"
     Vamos imaginar que você recebeu duas sequências de origem desconhecida (uma de COI, outra de CYTB) e quer descobrir a que espécie pertencem, comparando-as com sequências de mamíferos conhecidos.
+    
 
 ---
 
