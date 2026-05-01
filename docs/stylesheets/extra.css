@@ -65,3 +65,11 @@
     height: 1.6rem;
   }
 }
+
+/* Badges de status nos cards de curso */
+.green {
+  color: #4caf50 !important;
+}
+.yellow {
+  color: #ff9800 !important;
+}
