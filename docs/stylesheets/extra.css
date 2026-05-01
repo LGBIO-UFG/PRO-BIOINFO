@@ -13,7 +13,6 @@
   --md-primary-fg-color--light:       #2a4d47;
   --md-primary-fg-color--dark:        #0d1f1c;
   --md-primary-bg-color:              #F4F4F4;
-
   --md-accent-fg-color:               #ADC74D;
   --md-accent-fg-color--transparent:  rgba(173, 199, 77, 0.1);
   --md-accent-bg-color:               #1D3531;
@@ -24,7 +23,6 @@
   --md-primary-fg-color:              #1D3531;
   --md-primary-fg-color--light:       #2a4d47;
   --md-primary-fg-color--dark:        #0d1f1c;
-
   --md-accent-fg-color:               #C5DD6D;
   --md-accent-fg-color--transparent:  rgba(197, 221, 109, 0.1);
 }
@@ -37,7 +35,7 @@
 
 .md-header__button.md-logo img,
 .md-header__button.md-logo svg {
-  height: 2.2rem;
+  height: 2.4rem;
   width: auto;
 }
 
@@ -50,10 +48,7 @@
 }
 
 /* Esconde o nome do site no header — a logo já o representa */
-.md-header__title {
-  display: none;
-}
-.md-header__button.md-logo img {
-  height: 2.4rem;
-  width: auto;
+.md-header__title,
+.md-header__title * {
+  display: none !important;
 }
