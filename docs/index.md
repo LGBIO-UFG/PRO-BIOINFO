@@ -1,27 +1,71 @@
 # PRO-BIOINFO
 
-> Programa de Formação em Bioinformática — LGBIO/UFG
+> Programa de Formação em Bioinformática — LGBio/ICB-UFG
 
-Bem-vindo(a) ao site oficial do **PRO-BIOINFO**! Aqui você encontra os tutoriais, materiais e a programação dos cursos de bioinformática oferecidos pelo Laboratório de Genética e Biodiversidade (LGBIO) da Universidade Federal de Goiás.
-
-## :material-rocket-launch: Comece por aqui
-
-- :material-book-open-variant: **[Cursos](cursos/index.md)** — tutoriais reutilizáveis (Bash, BLAST, Filogenia)
-- :material-calendar-star: **[Eventos](eventos/index.md)** — programação atual e edições anteriores
-- :material-account-group: **[Equipe](equipe.md)** — quem somos
-- :material-folder-multiple: **[Materiais](materiais/index.md)** — datasets, links e referências
+!!! quote ""
+    Formação interdisciplinar e continuada em bioinformática, integrando teoria, prática e computação aplicada à análise de dados biológicos e genômicos. Estrutura modular, abrangência nacional, ciência aberta.
 
 ## :material-information: Sobre o programa
 
-O PRO-BIOINFO é um programa de extensão dedicado ao ensino e à difusão da bioinformática para alunos de graduação, pós-graduação e profissionais das Ciências Biológicas e da Saúde da UFG e instituições parceiras. Os tutoriais publicados aqui são reutilizados em diferentes edições dos eventos do programa.
+O **Programa de Formação em Bioinformática (PRO-BIOINFO)** é uma ação de extensão universitária da **Universidade Federal de Goiás** voltada à formação interdisciplinar e continuada em bioinformática, integrando aspectos teóricos, práticos e computacionais aplicados à análise de dados biológicos e genômicos.
 
-[Saiba mais sobre o programa →](sobre.md)
+O programa tem **abrangência nacional** e **estrutura modular**, com cursos independentes e complementares voltados à capacitação de estudantes, pesquisadores, técnicos e profissionais das áreas de Ciências Biológicas, Computação, Biotecnologia e campos correlatos.
 
-## :material-newspaper: Novidades
+Com base em uma proposta **colaborativa e de ciência aberta**, o PRO-BIOINFO visa fortalecer redes de cooperação acadêmica e institucional, formar recursos humanos qualificados e promover a democratização do acesso ao conhecimento científico e tecnológico, contribuindo para a inovação e o desenvolvimento sustentável em diferentes setores da sociedade.
 
-!!! tip "Próximas inscrições"
-    EM BREVE
+## :material-handshake: Promoção e parceiros
+
+Promovido pelo **[Laboratório de Genética & Biodiversidade — LGBio/ICB-UFG](https://www.lgbioufg.com/)** em parceria com:
+
+- **[INCT-EECBio](https://www.incteecbio.com.br/)** — Instituto Nacional de Ciência e Tecnologia em Ecologia, Evolução e Conservação da Biodiversidade
+- **[CEGGen](https://www.instagram.com/ceggen.go/)** — Centro de Excelência em Genética e Genômica
+- **[PPBio Araguaia](https://www.instagram.com/ppbio.araguaia/)** — Programa de Pesquisa em Biodiversidade do Araguaia
+- **[Rede BioGenomas Neotropicais](https://www.genotropics.org/neotropical-biogenomes-network)**
+
+## :material-rocket-launch: Comece por aqui
+
+<div class="grid cards" markdown>
+
+-   :material-book-open-variant:{ .lg .middle } __Cursos__
+
+    ---
+
+    Tutoriais reutilizáveis sobre tópicos centrais de bioinformática.
+
+    [:octicons-arrow-right-24: Ver cursos](cursos/index.md)
+
+-   :material-calendar-star:{ .lg .middle } __Eventos__
+
+    ---
+
+    Programação atual e edições anteriores.
+
+    [:octicons-arrow-right-24: Ver eventos](eventos/index.md)
+
+-   :material-account-group:{ .lg .middle } __Equipe__
+
+    ---
+
+    Quem somos: coordenação, professores e colaboradores.
+
+    [:octicons-arrow-right-24: Conhecer equipe](equipe.md)
+
+-   :material-folder-multiple:{ .lg .middle } __Materiais__
+
+    ---
+
+    Datasets, leituras recomendadas e links úteis.
+
+    [:octicons-arrow-right-24: Ver materiais](materiais/index.md)
+
+</div>
+
+## :material-bell-ring-outline: Acompanhe o programa
+
+Receba notícias de novas edições, minicursos e desafios:
+
+[:fontawesome-brands-instagram: @pro_bioinfo](https://www.instagram.com/pro_bioinfo/){ .md-button }
 
 ## :material-license: Licença
 
-O conteúdo deste site é distribuído sob licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — você pode reutilizar e adaptar os tutoriais, **basta citar a fonte**. Os scripts e códigos seguem licença MIT.
+O conteúdo deste site é distribuído sob licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — você pode reutilizar e adaptar os tutoriais, **basta citar a fonte**. Os scripts e códigos seguem licença [MIT](https://opensource.org/licenses/MIT).

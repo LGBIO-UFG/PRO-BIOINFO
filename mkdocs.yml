@@ -107,3 +107,9 @@ nav:
       - eventos/index.md
       - CAFE-BIOINFO 2026: eventos/cafe-bioinfo-2026/index.md
   - Materiais: materiais/index.md
+
+  extra:
+  social:
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/pro_bioinfo/
+      name: PRO-BIOINFO no Instagram
