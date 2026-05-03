@@ -41,10 +41,6 @@ Para a próxima edição do CAFE-BIOINFO, a equipe do PRO-BIOINFO está desenvol
 
 Quer ser avisado(a) sobre a próxima edição?
 
-[PREENCHER: lista de e-mails / formulário de cadastro / redes sociais do programa, conforme você divulga.]
-
-## :material-bell-outline: Fique por dentro
-
 Acompanhe nossas redes para receber informações da próxima edição assim que abrirmos as inscrições:
 
 [:fontawesome-brands-instagram: @pro_bioinfo no Instagram](https://www.instagram.com/pro_bioinfo/){ .md-button .md-button--primary }
