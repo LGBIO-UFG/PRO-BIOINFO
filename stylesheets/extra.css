@@ -73,3 +73,105 @@
 .yellow {
   color: #ff9800 !important;
 }
+
+/* === Cards da equipe (página /equipe) ============================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2rem 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.team-card {
+  text-align: center;
+  padding: 0.25rem;
+}
+
+.team-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 0.75rem;
+  display: block;
+  border: 3px solid var(--md-primary-fg-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: var(--md-default-fg-color--lightest);
+}
+
+[data-md-color-scheme="slate"] .team-card img {
+  border-color: var(--md-accent-fg-color);
+}
+
+.team-card strong {
+  display: block;
+  font-size: 0.95em;
+  margin-bottom: 0.15rem;
+  line-height: 1.25;
+}
+
+.team-card .role {
+  display: block;
+  font-size: 0.8em;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.5rem;
+}
+
+.team-card a {
+  font-size: 0.85em;
+}
+
+/* === Pódio do Datathon ============================================ */
+.podium {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+  align-items: end;
+}
+
+.podium-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  background: var(--md-default-fg-color--lightest);
+  border-top: 6px solid var(--md-primary-fg-color);
+}
+
+.podium-card.podium-1 {
+  border-top-color: #ffc107;            /* ouro */
+  padding: 2.25rem 1rem;
+}
+
+.podium-card.podium-2 {
+  border-top-color: #b0bec5;            /* prata */
+  padding: 1.75rem 1rem;
+}
+
+.podium-card.podium-3 {
+  border-top-color: #cd7f32;            /* bronze */
+}
+
+.podium-card .place {
+  display: block;
+  font-weight: bold;
+  font-size: 1.05em;
+  margin-bottom: 0.5rem;
+}
+
+.podium-card .points {
+  display: block;
+  font-size: 0.85em;
+  color: var(--md-default-fg-color--light);
+  margin-top: 0.5rem;
+}
+
+.gold   { color: #ffc107 !important; }
+.silver { color: #b0bec5 !important; }
+.bronze { color: #cd7f32 !important; }
+
+@media screen and (max-width: 60em) {
+  .podium {
+    grid-template-columns: 1fr;
+  }
+}
