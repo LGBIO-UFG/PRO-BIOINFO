@@ -4,89 +4,89 @@ A equipe do **PRO-BIOINFO** reúne docentes, discentes e colaboradores externos 
 
 ## :material-account-star: Coordenação
 
-<div class="team-grid" markdown>
+<div class="grid cards" markdown>
 
-<div class="team-card" markdown>
-![Renata de Oliveira Dias](assets/equipe/renata-dias.jpg)
+- ![Renata de Oliveira Dias](assets/equipe/renata-dias.jpg){ .team-photo }
 
-**Renata de Oliveira Dias**
-<span class="role">Coordenadora · Docente</span>
-[:material-school: Lattes](http://lattes.cnpq.br/5189684087836977)
-</div>
+    **Renata de Oliveira Dias**
 
-<div class="team-card" markdown>
-![Mariana Pires de Campos Telles](assets/equipe/mariana-telles.jpeg)
+    Coordenadora · Docente
 
-**Mariana Pires de Campos Telles**
-<span class="role">Vice-coordenadora · Docente</span>
-[:material-school: Lattes](http://lattes.cnpq.br/4648436798023532)
-</div>
+    [:material-school: Lattes](http://lattes.cnpq.br/5189684087836977)
+
+- ![Mariana Pires de Campos Telles](assets/equipe/mariana-telles.jpeg){ .team-photo }
+
+    **Mariana Pires de Campos Telles**
+
+    Vice-coordenadora · Docente
+
+    [:material-school: Lattes](http://lattes.cnpq.br/4648436798023532)
 
 </div>
 
 ## :material-school: Docentes colaboradores
 
-<div class="team-grid" markdown>
+<div class="grid cards" markdown>
 
-<div class="team-card" markdown>
-![Thannya Nascimento Soares](assets/equipe/thannya-soares.jpg)
+- ![Thannya Nascimento Soares](assets/equipe/thannya-soares.jpg){ .team-photo }
 
-**Thannya Nascimento Soares**
-<span class="role">Docente</span>
-[:material-school: Lattes](http://lattes.cnpq.br/5590256762396056)
-</div>
+    **Thannya Nascimento Soares**
+
+    Docente
+
+    [:material-school: Lattes](http://lattes.cnpq.br/5590256762396056)
 
 </div>
 
 ## :material-account-group: Discentes
 
-<div class="team-grid" markdown>
+<div class="grid cards" markdown>
 
-<div class="team-card" markdown>
-![Héctor Antônio Assunção Romão](assets/equipe/hector-romao.jpg)
+- ![Héctor Antônio Assunção Romão](assets/equipe/hector-romao.jpg){ .team-photo }
 
-**Héctor Antônio Assunção Romão**
-<span class="role">Discente · Integrante</span>
-[:material-school: Lattes](http://lattes.cnpq.br/9152652191665275)
-</div>
+    **Héctor Antônio Assunção Romão**
 
-<div class="team-card" markdown>
-![Júllia Costa dos Reis](assets/equipe/jullia-reis.jpg)
+    Discente · Integrante
 
-**Júllia Costa dos Reis**
-<span class="role">Discente · Integrante</span>
-[:material-school: Lattes](http://lattes.cnpq.br/8164966087509436)
-</div>
+    [:material-school: Lattes](http://lattes.cnpq.br/9152652191665275)
 
-<div class="team-card" markdown>
-![Wilian Wingert Córdova](assets/equipe/wilian-cordova.jpg)
+- ![Júllia Costa dos Reis](assets/equipe/jullia-reis.jpg){ .team-photo }
 
-**Wilian Wingert Córdova**
-<span class="role">Discente · Integrante</span>
-[:material-school: Lattes](http://lattes.cnpq.br/8961347172143738)
-</div>
+    **Júllia Costa dos Reis**
+
+    Discente · Integrante
+
+    [:material-school: Lattes](http://lattes.cnpq.br/8164966087509436)
+
+- ![Wilian Wingert Córdova](assets/equipe/wilian-cordova.jpg){ .team-photo }
+
+    **Wilian Wingert Córdova**
+
+    Discente · Integrante
+
+    [:material-school: Lattes](http://lattes.cnpq.br/8961347172143738)
 
 </div>
 
 ## :material-handshake: Colaboradores externos
 
-<div class="team-grid" markdown>
+<div class="grid cards" markdown>
 
-<div class="team-card" markdown>
-![Rhewter Nunes](assets/equipe/rhewter-nunes.jpg)
+- ![Rhewter Nunes](assets/equipe/rhewter-nunes.jpg){ .team-photo }
 
-**Rhewter Nunes**
-<span class="role">Colaborador externo</span>
-[:material-school: Lattes](http://lattes.cnpq.br/6169806655018346)
-</div>
+    **Rhewter Nunes**
 
-<div class="team-card" markdown>
-![Ramilla dos Santos Braga Ferreira](assets/equipe/ramilla-ferreira.jpg)
+    Colaborador externo
 
-**Ramilla dos Santos Braga Ferreira**
-<span class="role">Colaboradora externa</span>
-[:material-school: Lattes](http://lattes.cnpq.br/6300428213623066)
-</div>
+    [:material-school: Lattes](http://lattes.cnpq.br/6169806655018346)
+
+- ![Ramilla dos Santos Braga Ferreira](assets/equipe/ramilla-ferreira.jpg){ .team-photo }
+
+    **Ramilla dos Santos Braga Ferreira**
+
+    Colaboradora externa
+
+    [:material-school: Lattes](http://lattes.cnpq.br/6300428213623066)
 
 </div>
 
