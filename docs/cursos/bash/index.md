@@ -1,7 +1,6 @@
 # Introdução ao UNIX para a Bioinformática
 
 ---
-
 !!! abstract "Resumo" Tutorial de navegação, manipulação de arquivos e construção pipelines em servidores Linux, com aplicação para a apresentação dos principais recursos e ferramentas utilizadas na bioinformática para o manejo e identificação de padrões em arquivos textuais.
 ---
 
