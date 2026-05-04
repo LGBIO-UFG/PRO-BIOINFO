@@ -587,7 +587,7 @@ Esse encadeamento (chamado de **pipeline**) é uma das ideias mais poderosas do 
 
 ```bash
 # Copie as tabelas dos docentes para o seu diretório:
-cp /media/hd15-curso/materiais/curso_bash/tabela* .
+cp /media/hd15-cursos/materiais/curso_bash/tabela* .
 
 # paste: cola as colunas lado a lado
 paste tabela1.txt tabela2.txt
