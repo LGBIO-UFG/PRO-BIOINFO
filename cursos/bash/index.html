@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#introducao-ao-unix-para-a-bioinformatica" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -560,6 +565,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash / Linux
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="index.html" class="md-nav__link md-nav__link--active">
         
@@ -577,6 +602,761 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract-resumo-tutorial-de-navegacao-manipulacao-de-arquivos-e-construcao-pipelines-em-servidores-linux-com-aplicacao-para-a-apresentacao-dos-principais-recursos-e-ferramentas-utilizadas-na-bioinformatica-para-o-manejo-e-identificacao-de-padroes-em-arquivos-textuais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        !!! abstract "Resumo" Tutorial de navegação, manipulação de arquivos e construção pipelines em servidores Linux, com aplicação para a apresentação dos principais recursos e ferramentas utilizadas na bioinformática para o manejo e identificação de padrões em arquivos textuais.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de aprendizagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-horaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga horária
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-0-por-que-unix-em-bioinformatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 0 — Por que UNIX em Bioinformática?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 0 — Por que UNIX em Bioinformática?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-e-unix-e-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é UNIX (e Linux)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidor-computador-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidor × computador local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-terminal-e-linha-de-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell, terminal e linha de comando
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-bioinformatas-usam-tanto-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que bioinformatas usam tanto UNIX?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-e-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é SSH?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-acessando-o-servidor-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 1 — Acessando o servidor via SSH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1 — Acessando o servidor via SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-abrindo-um-terminal-no-seu-computador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1) Abrindo um terminal no seu computador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-conectando-ao-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2) Conectando ao servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-trocando-a-senha-no-primeiro-acesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3) Trocando a senha no primeiro acesso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-voce-esta-dentro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4) Você está dentro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-saindo-do-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5) Saindo do servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-navegando-entre-os-diretorios-do-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 2 — Navegando entre os diretórios do servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2 — Navegando entre os diretórios do servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-onde-eu-estou-pwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1) Onde eu estou? (pwd)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-o-que-tem-aqui-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2) O que tem aqui? (ls)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-criando-uma-pasta-mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3) Criando uma pasta (mkdir)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-listando-com-mais-detalhes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4) Listando com mais detalhes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-entrando-e-saindo-de-diretorios-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5) Entrando e saindo de diretórios (cd)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-outros-comandos-basicos-uteis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6) Outros comandos básicos úteis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-3-criando-copiando-movendo-e-removendo-arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 3 — Criando, copiando, movendo e removendo arquivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 3 — Criando, copiando, movendo e removendo arquivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-criando-um-arquivo-de-texto-nano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1) Criando um arquivo de texto (nano)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-copiando-e-movendo-arquivos-cp-e-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2) Copiando e movendo arquivos (cp e mv)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-caminhos-absolutos-vs-caminhos-relativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3) Caminhos absolutos vs. caminhos relativos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-removendo-arquivos-rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4) Removendo arquivos (rm)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-4-transferindo-arquivos-entre-o-seu-computador-e-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 4 — Transferindo arquivos entre o seu computador e o servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 4 — Transferindo arquivos entre o seu computador e o servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-enviando-do-seu-computador-para-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1) Enviando do seu computador para o servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-trazendo-do-servidor-para-o-seu-computador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2) Trazendo do servidor para o seu computador
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-5-como-interagir-melhor-com-o-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 5 — Como interagir melhor com o terminal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 5 — Como interagir melhor com o terminal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-atalhos-essenciais-do-teclado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1) Atalhos essenciais do teclado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-historico-de-comandos-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2) Histórico de comandos (history)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-pedindo-ajuda-help-e-man" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3) Pedindo ajuda (--help e man)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-6-manipulando-arquivos-de-texto-no-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 6 — Manipulando arquivos de texto no servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 6 — Manipulando arquivos de texto no servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-concatenando-arquivos-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1) Concatenando arquivos (cat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-padroes-de-correspondencia-globs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2) Padrões de correspondência (globs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-olhando-o-comeco-de-um-arquivo-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3) Olhando o começo de um arquivo (head)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-olhando-o-final-de-um-arquivo-tail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4) Olhando o final de um arquivo (tail)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-contando-linhas-palavras-e-bytes-wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5) Contando linhas, palavras e bytes (wc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-encadeando-comandos-com-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6) Encadeando comandos com pipe (|)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-juntando-tabelas-paste-e-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7) Juntando tabelas (paste e join)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68-visualizando-arquivos-longos-less-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8) Visualizando arquivos longos (less, more)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-buscando-padroes-grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9) Buscando padrões (grep)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#610-extraindo-colunas-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10) Extraindo colunas (cut)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#611-processando-colunas-com-awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.11) Processando colunas com awk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-removendo-redundancias-sort-uniq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.12) Removendo redundâncias (sort + uniq)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-substituindo-padroes-sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.13) Substituindo padrões (sed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-trabalhando-com-arquivos-compactados-gzip-gunzip-tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.14) Trabalhando com arquivos compactados (gzip, gunzip, tar)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-7-espaco-em-disco-e-processos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 7 — Espaço em disco e processos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 7 — Espaço em disco e processos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-espaco-em-disco-du-e-df" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1) Espaço em disco (du e df)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-vendo-o-que-esta-rodando-ps-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2) Vendo o que está rodando (ps, top)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-comandos-longos-rodar-em-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3) Comandos longos: rodar em background
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-mantendo-sessoes-persistentes-com-tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4) Mantendo sessões persistentes com tmux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-8-erros-comuns-que-voce-vai-encontrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 8 — Erros comuns que você vai encontrar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicio-consolidador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício consolidador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cheat-sheet-comandos-essenciais-desta-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cheat sheet — comandos essenciais desta aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossario-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossário rápido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-de-autoavaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist de autoavaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voce-chegou-ao-fim-do-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Você chegou ao fim do tutorial! 🎉
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Você chegou ao fim do tutorial! 🎉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-se-aprofundar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para se aprofundar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -794,6 +1574,752 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract-resumo-tutorial-de-navegacao-manipulacao-de-arquivos-e-construcao-pipelines-em-servidores-linux-com-aplicacao-para-a-apresentacao-dos-principais-recursos-e-ferramentas-utilizadas-na-bioinformatica-para-o-manejo-e-identificacao-de-padroes-em-arquivos-textuais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        !!! abstract "Resumo" Tutorial de navegação, manipulação de arquivos e construção pipelines em servidores Linux, com aplicação para a apresentação dos principais recursos e ferramentas utilizadas na bioinformática para o manejo e identificação de padrões em arquivos textuais.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de aprendizagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-horaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga horária
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-0-por-que-unix-em-bioinformatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 0 — Por que UNIX em Bioinformática?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 0 — Por que UNIX em Bioinformática?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-e-unix-e-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é UNIX (e Linux)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidor-computador-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidor × computador local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-terminal-e-linha-de-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell, terminal e linha de comando
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-bioinformatas-usam-tanto-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que bioinformatas usam tanto UNIX?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-e-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é SSH?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-acessando-o-servidor-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 1 — Acessando o servidor via SSH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1 — Acessando o servidor via SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-abrindo-um-terminal-no-seu-computador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1) Abrindo um terminal no seu computador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-conectando-ao-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2) Conectando ao servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-trocando-a-senha-no-primeiro-acesso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3) Trocando a senha no primeiro acesso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-voce-esta-dentro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4) Você está dentro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-saindo-do-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5) Saindo do servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-navegando-entre-os-diretorios-do-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 2 — Navegando entre os diretórios do servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2 — Navegando entre os diretórios do servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-onde-eu-estou-pwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1) Onde eu estou? (pwd)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-o-que-tem-aqui-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2) O que tem aqui? (ls)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-criando-uma-pasta-mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3) Criando uma pasta (mkdir)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-listando-com-mais-detalhes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4) Listando com mais detalhes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-entrando-e-saindo-de-diretorios-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5) Entrando e saindo de diretórios (cd)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-outros-comandos-basicos-uteis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6) Outros comandos básicos úteis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-3-criando-copiando-movendo-e-removendo-arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 3 — Criando, copiando, movendo e removendo arquivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 3 — Criando, copiando, movendo e removendo arquivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-criando-um-arquivo-de-texto-nano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1) Criando um arquivo de texto (nano)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-copiando-e-movendo-arquivos-cp-e-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2) Copiando e movendo arquivos (cp e mv)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-caminhos-absolutos-vs-caminhos-relativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3) Caminhos absolutos vs. caminhos relativos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-removendo-arquivos-rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4) Removendo arquivos (rm)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-4-transferindo-arquivos-entre-o-seu-computador-e-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 4 — Transferindo arquivos entre o seu computador e o servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 4 — Transferindo arquivos entre o seu computador e o servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-enviando-do-seu-computador-para-o-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1) Enviando do seu computador para o servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-trazendo-do-servidor-para-o-seu-computador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2) Trazendo do servidor para o seu computador
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-5-como-interagir-melhor-com-o-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 5 — Como interagir melhor com o terminal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 5 — Como interagir melhor com o terminal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-atalhos-essenciais-do-teclado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1) Atalhos essenciais do teclado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-historico-de-comandos-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2) Histórico de comandos (history)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-pedindo-ajuda-help-e-man" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3) Pedindo ajuda (--help e man)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-6-manipulando-arquivos-de-texto-no-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 6 — Manipulando arquivos de texto no servidor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 6 — Manipulando arquivos de texto no servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-concatenando-arquivos-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1) Concatenando arquivos (cat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-padroes-de-correspondencia-globs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2) Padrões de correspondência (globs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-olhando-o-comeco-de-um-arquivo-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3) Olhando o começo de um arquivo (head)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-olhando-o-final-de-um-arquivo-tail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4) Olhando o final de um arquivo (tail)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-contando-linhas-palavras-e-bytes-wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5) Contando linhas, palavras e bytes (wc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-encadeando-comandos-com-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6) Encadeando comandos com pipe (|)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-juntando-tabelas-paste-e-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7) Juntando tabelas (paste e join)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68-visualizando-arquivos-longos-less-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8) Visualizando arquivos longos (less, more)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-buscando-padroes-grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9) Buscando padrões (grep)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#610-extraindo-colunas-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10) Extraindo colunas (cut)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#611-processando-colunas-com-awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.11) Processando colunas com awk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-removendo-redundancias-sort-uniq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.12) Removendo redundâncias (sort + uniq)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-substituindo-padroes-sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.13) Substituindo padrões (sed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-trabalhando-com-arquivos-compactados-gzip-gunzip-tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.14) Trabalhando com arquivos compactados (gzip, gunzip, tar)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-7-espaco-em-disco-e-processos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 7 — Espaço em disco e processos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 7 — Espaço em disco e processos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-espaco-em-disco-du-e-df" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1) Espaço em disco (du e df)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-vendo-o-que-esta-rodando-ps-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2) Vendo o que está rodando (ps, top)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-comandos-longos-rodar-em-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3) Comandos longos: rodar em background
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-mantendo-sessoes-persistentes-com-tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4) Mantendo sessões persistentes com tmux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-8-erros-comuns-que-voce-vai-encontrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 8 — Erros comuns que você vai encontrar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicio-consolidador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercício consolidador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cheat-sheet-comandos-essenciais-desta-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cheat sheet — comandos essenciais desta aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossario-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossário rápido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-de-autoavaliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist de autoavaliação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voce-chegou-ao-fim-do-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Você chegou ao fim do tutorial! 🎉
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Você chegou ao fim do tutorial! 🎉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-se-aprofundar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para se aprofundar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -813,9 +2339,1471 @@
   
 
 
-  <h1>Bash / Linux</h1>
-
-
+<h1 id="introducao-ao-unix-para-a-bioinformatica">Introdução ao UNIX para a Bioinformática<a class="headerlink" href="#introducao-ao-unix-para-a-bioinformatica" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="abstract-resumo-tutorial-de-navegacao-manipulacao-de-arquivos-e-construcao-pipelines-em-servidores-linux-com-aplicacao-para-a-apresentacao-dos-principais-recursos-e-ferramentas-utilizadas-na-bioinformatica-para-o-manejo-e-identificacao-de-padroes-em-arquivos-textuais">!!! abstract "Resumo" Tutorial de navegação, manipulação de arquivos e construção pipelines em servidores Linux, com aplicação para a apresentação dos principais recursos e ferramentas utilizadas na bioinformática para o manejo e identificação de padrões em arquivos textuais.<a class="headerlink" href="#abstract-resumo-tutorial-de-navegacao-manipulacao-de-arquivos-e-construcao-pipelines-em-servidores-linux-com-aplicacao-para-a-apresentacao-dos-principais-recursos-e-ferramentas-utilizadas-na-bioinformatica-para-o-manejo-e-identificacao-de-padroes-em-arquivos-textuais" title="Permanent link">&para;</a></h2>
+<h2 id="objetivos-de-aprendizagem"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 2v2.07A8 8 0 0 0 4.07 11H2v2h2.07A8 8 0 0 0 11 19.93V22h2v-2.07A8 8 0 0 0 19.93 13H22v-2h-2.07A8 8 0 0 0 13 4.07V2m-2 4.08V8h2V6.09c2.5.41 4.5 2.41 4.92 4.91H16v2h1.91c-.41 2.5-2.41 4.5-4.91 4.92V16h-2v1.91C8.5 17.5 6.5 15.5 6.08 13H8v-2H6.09C6.5 8.5 8.5 6.5 11 6.08M12 11a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg></span> Objetivos de aprendizagem<a class="headerlink" href="#objetivos-de-aprendizagem" title="Permanent link">&para;</a></h2>
+<p>Ao final desta aula, você será capaz de:</p>
+<ol>
+<li>Explicar, em poucas palavras, o que é UNIX, o que é um <em>shell</em> e por que essas ferramentas são tão usadas em Bioinformática.</li>
+<li>Conectar-se ao servidor do LGBIO via SSH e trocar a sua senha provisória.</li>
+<li>Navegar entre diretórios e listar arquivos no servidor (<code>pwd</code>, <code>ls</code>, <code>cd</code>, <code>mkdir</code>).</li>
+<li>Criar, copiar, mover e remover arquivos com segurança (<code>nano</code>, <code>cp</code>, <code>mv</code>, <code>rm</code>).</li>
+<li>Transferir arquivos entre o seu computador e o servidor (<code>scp</code>).</li>
+<li>Usar atalhos de teclado essenciais do terminal e o histórico de comandos.</li>
+<li>Manipular grandes arquivos de texto encadeando comandos com <em>pipes</em> (<code>cat</code>, <code>head</code>, <code>tail</code>, <code>wc</code>, <code>grep</code>, <code>cut</code>, <code>sort</code>, <code>uniq</code>, <code>sed</code>).</li>
+<li>Verificar o uso de espaço em disco e os processos em execução no servidor.</li>
+<li>Manter sessões persistentes com <code>tmux</code> para rodar análises longas sem perder o trabalho ao desconectar.</li>
+<li>Pedir ajuda ao próprio sistema (<code>--help</code>, <code>man</code>) sempre que esquecer um comando.</li>
+</ol>
+<hr />
+<h2 id="carga-horaria"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg></span> Carga horária<a class="headerlink" href="#carga-horaria" title="Permanent link">&para;</a></h2>
+<p><strong>Tempo estimado:</strong> 2h00 a 2h30 de leitura + prática.</p>
+<hr />
+<h2 id="pre-requisitos"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg></span> Pré-requisitos<a class="headerlink" href="#pre-requisitos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Um computador com acesso à internet.</li>
+<li>Seu <strong>usuário e senha provisória</strong> (enviados por e-mail).</li>
+<li>Disposição para errar e tentar de novo. Errar comandos é parte do aprendizado — o terminal não vai quebrar o computador.</li>
+</ul>
+<hr />
+<h2 id="parte-0-por-que-unix-em-bioinformatica"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm0 2h2v6h-2zm1-7a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 0 — Por que UNIX em Bioinformática?<a class="headerlink" href="#parte-0-por-que-unix-em-bioinformatica" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Só leitura</p>
+<p>Esta seção é só leitura. Se quiser pular direto para a prática, vá para a <strong>Parte 1</strong>, mas recomendamos voltar aqui depois.</p>
+</div>
+<h3 id="o-que-e-unix-e-linux">O que é UNIX (e Linux)?<a class="headerlink" href="#o-que-e-unix-e-linux" title="Permanent link">&para;</a></h3>
+<p><strong>UNIX</strong> é uma família de sistemas operacionais criada nos anos 1970 e que hoje serve de base para a maioria dos servidores do mundo, do macOS, do Android e de toda a família <strong>Linux</strong>. Quando dizemos "comandos UNIX", estamos nos referindo a um conjunto de ferramentas pequenas e especializadas que podem ser combinadas para resolver problemas grandes — uma filosofia conhecida como <em>"Unix philosophy: do one thing and do it well"</em>.</p>
+<h3 id="servidor-computador-local">Servidor × computador local<a class="headerlink" href="#servidor-computador-local" title="Permanent link">&para;</a></h3>
+<p>Em Bioinformática, raramente analisamos dados no nosso próprio notebook. Os arquivos costumam ser <strong>muito grandes</strong> (genomas inteiros, milhões de leituras de sequenciamento) e exigem <strong>muita memória, vários processadores e bastante espaço em disco</strong>. Por isso usamos <strong>servidores</strong>: computadores potentes que ficam ligados o tempo todo e que acessamos remotamente.</p>
+<p>O servidor do <strong>LGBIO</strong> é um desses computadores. Você não vai abrir o navegador nele nem clicar em ícones. Você vai se conectar pelo terminal e dar comandos por escrito.</p>
+<h3 id="shell-terminal-e-linha-de-comando">Shell, terminal e linha de comando<a class="headerlink" href="#shell-terminal-e-linha-de-comando" title="Permanent link">&para;</a></h3>
+<p>Esses três termos costumam confundir no começo:</p>
+<ul>
+<li><strong>Terminal</strong>: a <em>janela</em> preta (ou colorida) onde você digita.</li>
+<li><strong>Shell</strong>: o <em>programa</em> que interpreta o que você digitou e executa. O shell mais comum no Linux é o <strong>Bash</strong> (<em>Bourne Again SHell</em>).</li>
+<li><strong>Linha de comando</strong> (ou <em>command line</em>): a <em>linha</em> dentro do terminal onde você digita o comando (por isso aparece um cursor piscando ali).</li>
+</ul>
+<p>Quando você abre o terminal e vê algo como <code>usuario@servidor:~$</code>, o que está ali é o <strong>prompt do shell</strong>, esperando você digitar.</p>
+<h3 id="por-que-bioinformatas-usam-tanto-unix">Por que bioinformatas usam tanto UNIX?<a class="headerlink" href="#por-que-bioinformatas-usam-tanto-unix" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Automação</strong>: você consegue processar mil arquivos com um único comando.</li>
+<li><strong>Reprodutibilidade</strong>: comandos podem ser salvos em scripts e executados de novo, exatamente igual.</li>
+<li><strong>Combinação de ferramentas</strong>: cada programa faz uma coisa, e você liga eles com <em>pipes</em> (<code>|</code>).</li>
+<li><strong>Padrão da área</strong>: praticamente todas as ferramentas de bioinformática (BLAST, BWA, samtools, bcftools…) rodam em linha de comando.</li>
+</ol>
+<h3 id="o-que-e-ssh">O que é SSH?<a class="headerlink" href="#o-que-e-ssh" title="Permanent link">&para;</a></h3>
+<p><strong>SSH</strong> (<em>Secure SHell</em>) é o protocolo que permite <strong>abrir um terminal de um computador remoto a partir do seu computador</strong>, de forma segura (criptografada). Quando você executa <code>ssh usuario@servidor</code>, é como se você "entrasse" no servidor pelo terminal — tudo o que você digitar a partir dali será executado <strong>lá</strong>, não no seu computador.</p>
+<hr />
+<h2 id="parte-1-acessando-o-servidor-via-ssh"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7v2h2v8h2V7zm2-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 1 — Acessando o servidor via SSH<a class="headerlink" href="#parte-1-acessando-o-servidor-via-ssh" title="Permanent link">&para;</a></h2>
+<h3 id="11-abrindo-um-terminal-no-seu-computador">1.1) Abrindo um terminal no seu computador<a class="headerlink" href="#11-abrindo-um-terminal-no-seu-computador" title="Permanent link">&para;</a></h3>
+<p>Antes de tudo, você precisa abrir um terminal <strong>no seu computador</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Sistema operacional</th>
+<th>Como abrir o terminal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Windows 10/11</strong></td>
+<td>Abra o <strong>Prompt de Comando</strong> (cmd) ou o <strong>PowerShell</strong> ou o <strong>Windows Terminal</strong>. Qualquer um serve.</td>
+</tr>
+<tr>
+<td><strong>macOS</strong></td>
+<td>Abra o <strong>Terminal</strong> (<code>Applications &gt; Utilities &gt; Terminal</code> ou ⌘+Espaço e digite "Terminal").</td>
+</tr>
+<tr>
+<td><strong>Linux</strong></td>
+<td>Abra o <strong>Terminal</strong> do seu ambiente (atalho comum: <code>Ctrl + Alt + T</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>No Laboratório de Informática, basta abrir o <strong>Prompt de Comando</strong> do Windows.</p>
+<h3 id="12-conectando-ao-servidor">1.2) Conectando ao servidor<a class="headerlink" href="#12-conectando-ao-servidor" title="Permanent link">&para;</a></h3>
+<p>Com o terminal aberto, digite (substituindo <code>seuusuario</code> pelo usuário que você recebeu por e-mail):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>seuusuario@lg.bio.br<span class="w"> </span>-p<span class="w"> </span><span class="m">53846</span>
+</span></code></pre></div>
+<p>Na <strong>primeira conexão</strong>, o servidor vai te perguntar se você confia naquela máquina:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>The authenticity of host &#39;lg.bio.br ...&#39; can&#39;t be established.
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ED25519 key fingerprint is SHA256:...
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</span></code></pre></div>
+<p>Digite <code>yes</code> e aperte <strong>Enter</strong>. Depois, o servidor vai pedir a sua <strong>senha provisória</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Ao digitar a senha, <strong>nada aparece na tela</strong> — nem mesmo asteriscos. Isso é normal e proposital. Digite a senha completa e aperte <strong>Enter</strong>.</p>
+</div>
+<h3 id="13-trocando-a-senha-no-primeiro-acesso">1.3) Trocando a senha no primeiro acesso<a class="headerlink" href="#13-trocando-a-senha-no-primeiro-acesso" title="Permanent link">&para;</a></h3>
+<p>No seu primeiro acesso, o servidor vai pedir que você troque a senha provisória por uma nova. Escolha uma <strong>senha forte</strong> (mistura de letras maiúsculas, minúsculas, números e símbolos) e <strong>anote em local seguro</strong> — sem ela, você não consegue mais entrar.</p>
+<h3 id="14-voce-esta-dentro">1.4) Você está dentro<a class="headerlink" href="#14-voce-esta-dentro" title="Permanent link">&para;</a></h3>
+<p>Após o login, você verá o <strong>prompt de comando do servidor</strong>. É ali que você digitará os comandos. Se o prompt não estiver visível, é porque o servidor está ocupado executando algo — basta aguardar.</p>
+<h3 id="15-saindo-do-servidor">1.5) Saindo do servidor<a class="headerlink" href="#15-saindo-do-servidor" title="Permanent link">&para;</a></h3>
+<p>Para fechar a conexão e voltar ao terminal do seu computador, basta digitar:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">exit</span>
+</span></code></pre></div>
+<details class="bug">
+<summary>Troubleshooting — problemas comuns no primeiro acesso</summary>
+<ul>
+<li><strong><code>ssh: command not found</code></strong> — Você está em uma versão antiga do Windows sem cliente SSH. Atualize o Windows ou instale o <a href="https://git-scm.com/downloads">Git Bash</a>.</li>
+<li><strong><code>Connection refused</code> ou <code>Connection timed out</code></strong> — Confira se digitou o endereço do servidor corretamente (<code>lg.bio.br</code>) e se a sua conexão de internet está funcionando.</li>
+<li><strong><code>Permission denied (publickey,password)</code></strong> — A senha foi digitada errada. Lembre-se: é a senha provisória recebida por e-mail. Caracteres não aparecem ao digitar.</li>
+<li><strong>Senha não é aceita ao trocar</strong> — A senha nova precisa ser <strong>forte</strong> (≥ 8 caracteres, com letras, números e símbolos) e <strong>diferente</strong> da provisória.</li>
+<li><strong>A tela parece travada após digitar a senha</strong> — Provavelmente não está travada. Aperte <strong>Enter</strong> e veja se o login completa.</li>
+</ul>
+</details>
+<hr />
+<h2 id="parte-2-navegando-entre-os-diretorios-do-servidor"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v2h4v2h-2a2 2 0 0 0-2 2v4h6v-2h-4v-2h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 2 — Navegando entre os diretórios do servidor<a class="headerlink" href="#parte-2-navegando-entre-os-diretorios-do-servidor" title="Permanent link">&para;</a></h2>
+<h3 id="21-onde-eu-estou-pwd">2.1) Onde eu estou? (<code>pwd</code>)<a class="headerlink" href="#21-onde-eu-estou-pwd" title="Permanent link">&para;</a></h3>
+<p>Para descobrir em qual diretório você está, use <code>pwd</code> (<em>Print Working Directory</em>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Esta linha é um COMENTÁRIO.</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Em Bash, linhas iniciadas por # são ignoradas pelo computador.</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Use comentários para deixar anotações para você mesmo(a) ou para colegas.</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Para identificar o caminho até o seu diretório atual:</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">pwd</span>
+</span></code></pre></div>
+<p>O caminho retornado por <code>pwd</code> é um <strong>caminho absoluto</strong>, expresso em relação à raiz (<code>/</code>) do servidor.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Sempre que você entrar no servidor, será direcionado(a) ao seu diretório <strong>home</strong>, que é justamente esse mostrado pelo <code>pwd</code> agora.</p>
+</div>
+<h3 id="22-o-que-tem-aqui-ls">2.2) O que tem aqui? (<code>ls</code>)<a class="headerlink" href="#22-o-que-tem-aqui-ls" title="Permanent link">&para;</a></h3>
+<p>Para listar arquivos e diretórios do diretório atual, use <code>ls</code> (<em>list</em>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Lista simplificada:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ls
+</span></code></pre></div>
+<h3 id="23-criando-uma-pasta-mkdir">2.3) Criando uma pasta (<code>mkdir</code>)<a class="headerlink" href="#23-criando-uma-pasta-mkdir" title="Permanent link">&para;</a></h3>
+<p>Para criar um diretório novo, use <code>mkdir</code> (<em>Make Directory</em>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mkdir<span class="w"> </span>novodiretorio
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Importante — nomes de arquivos e diretórios</p>
+<p>Evite ao máximo espaços e caracteres especiais (<code>@</code>, <code>#</code>, <code>&amp;</code>, acentos, <code>ç</code>, etc.) em nomes de arquivos e diretórios no Linux. Para separar palavras, use:</p>
+<ul>
+<li><code>_</code> (underline) → <code>meu_arquivo.txt</code></li>
+<li><code>-</code> (traço) → <code>meu-arquivo.txt</code></li>
+<li><code>.</code> (ponto) → <code>meu.arquivo.txt</code></li>
+</ul>
+</div>
+<h3 id="24-listando-com-mais-detalhes">2.4) Listando com mais detalhes<a class="headerlink" href="#24-listando-com-mais-detalhes" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Lista simplificada:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ls
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Lista detalhada (permissões, dono, tamanho, data, arquivos ocultos):</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>ls<span class="w"> </span>-lah
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># -l : detalhes em formato de lista (permissões, dono, tamanho...)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># -a : mostra arquivos ocultos (que começam com &quot;.&quot;)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># -h : tamanhos legíveis para humanos (KB, MB, GB)</span>
+</span></code></pre></div>
+<details class="example">
+<summary>Outras opções úteis do <code>ls</code></summary>
+<table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls -l</code></td>
+<td>Lista com detalhes (permissões, tamanho, dono, etc.).</td>
+</tr>
+<tr>
+<td><code>ls -a</code></td>
+<td>Exibe arquivos ocultos (que começam com <code>.</code>).</td>
+</tr>
+<tr>
+<td><code>ls -h</code></td>
+<td>Mostra tamanhos em formato legível (KB, MB, GB).</td>
+</tr>
+<tr>
+<td><code>ls -t</code></td>
+<td>Ordena por data de modificação mais recente.</td>
+</tr>
+<tr>
+<td><code>ls -r</code></td>
+<td>Exibe os arquivos em ordem reversa.</td>
+</tr>
+<tr>
+<td><code>ls -R</code></td>
+<td>Lista recursivamente (inclui subdiretórios).</td>
+</tr>
+<tr>
+<td><code>ls -1</code></td>
+<td>Mostra um arquivo por linha.</td>
+</tr>
+<tr>
+<td><code>ls -S</code></td>
+<td>Ordena por tamanho (do maior para o menor).</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="example">
+<summary>Anatomia da saída do <code>ls -l</code></summary>
+<p>Cada linha do <code>ls -l</code> mostra informações detalhadas de um arquivo ou diretório. Por exemplo:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>-rw-r--r-- 1 root root 1528 Out 31 22:33 /etc/passwd
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Exemplo</th>
+<th>O que indica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo + permissões</td>
+<td><code>-rw-r--r--</code></td>
+<td>Tipo de objeto e permissões</td>
+</tr>
+<tr>
+<td>Nº de links</td>
+<td><code>1</code></td>
+<td>Quantos atalhos apontam para este item</td>
+</tr>
+<tr>
+<td>Dono</td>
+<td><code>root</code></td>
+<td>Usuário dono</td>
+</tr>
+<tr>
+<td>Grupo</td>
+<td><code>root</code></td>
+<td>Grupo dono</td>
+</tr>
+<tr>
+<td>Tamanho</td>
+<td><code>1528</code></td>
+<td>Tamanho em bytes (ou legível com <code>-h</code>)</td>
+</tr>
+<tr>
+<td>Data e hora</td>
+<td><code>Out 31 22:33</code></td>
+<td>Última modificação</td>
+</tr>
+<tr>
+<td>Nome</td>
+<td><code>/etc/passwd</code></td>
+<td>Nome (ou caminho) do arquivo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Os 10 caracteres iniciais (tipo + permissões):</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a> -    rw-    r--    r--
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a> |     |      |      |
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>tipo  dono  grupo  outros
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Letra</th>
+<th>Significado em arquivo</th>
+<th>Significado em diretório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code> (<em>read</em>)</td>
+<td>ler o conteúdo</td>
+<td>listar o conteúdo (<code>ls</code>)</td>
+</tr>
+<tr>
+<td><code>w</code> (<em>write</em>)</td>
+<td>modificar o conteúdo</td>
+<td>criar/apagar arquivos dentro</td>
+</tr>
+<tr>
+<td><code>x</code> (<em>execute</em>)</td>
+<td>executar o arquivo</td>
+<td>entrar (<code>cd</code>) no diretório</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>permissão ausente</td>
+<td>permissão ausente</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="25-entrando-e-saindo-de-diretorios-cd">2.5) Entrando e saindo de diretórios (<code>cd</code>)<a class="headerlink" href="#25-entrando-e-saindo-de-diretorios-cd" title="Permanent link">&para;</a></h3>
+<p>Use variações do <code>cd</code> (<em>Change Directory</em>) para se mover:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Entrar em um subdiretório:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">cd</span><span class="w"> </span>novodiretorio
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Conferir onde você está agora:</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">pwd</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Voltar ao diretório anterior (subir um nível):</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Voltar para o seu diretório home, de qualquer lugar do servidor:</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="nb">cd</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="c1"># Ou, equivalente:</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="nb">cd</span><span class="w"> </span>~
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Atalhos úteis de caminho</p>
+<ul>
+<li><code>.</code> → diretório atual (ex.: <code>cp arquivo.txt .</code> copia para a pasta atual)</li>
+<li><code>..</code> → diretório pai (um nível acima)</li>
+<li><code>~</code> → seu diretório home (ex.: <code>cd ~/Documentos</code>)</li>
+<li><code>/</code> → raiz do servidor</li>
+</ul>
+</div>
+<h3 id="26-outros-comandos-basicos-uteis">2.6) Outros comandos básicos úteis<a class="headerlink" href="#26-outros-comandos-basicos-uteis" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Quem sou eu? (mostra seu nome de usuário)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>whoami
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Que dia/horário é agora no servidor?</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>date
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Imprime um texto na tela (útil para testar e ver variáveis):</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Olá, mundo!&quot;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span><span class="w">           </span><span class="c1"># mostra o caminho do seu diretório home</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$USER</span><span class="w">           </span><span class="c1"># mostra seu usuário (mesma coisa que whoami)</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1"># Cria um arquivo vazio:</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>touch<span class="w"> </span>arquivo_vazio.txt
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1"># Limpa a tela do terminal:</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>clear
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1"># Atalho equivalente: Ctrl + L</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Variáveis de ambiente</p>
+<p>São "atalhos" do sistema que guardam informações úteis. Sempre que você ver <code>$NOME</code>, é uma variável. As mais comuns são <code>$HOME</code> (caminho do home), <code>$USER</code> (seu usuário) e <code>$PATH</code> (lista de pastas onde o sistema busca programas).</p>
+</div>
+<hr />
+<h2 id="parte-3-criando-copiando-movendo-e-removendo-arquivos"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2H9v2h4v2h-2v2h2v2H9v2h4a2 2 0 0 0 2-2M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 3 — Criando, copiando, movendo e removendo arquivos<a class="headerlink" href="#parte-3-criando-copiando-movendo-e-removendo-arquivos" title="Permanent link">&para;</a></h2>
+<h3 id="31-criando-um-arquivo-de-texto-nano">3.1) Criando um arquivo de texto (<code>nano</code>)<a class="headerlink" href="#31-criando-um-arquivo-de-texto-nano" title="Permanent link">&para;</a></h3>
+<p>Você pode criar arquivos diretamente no servidor com editores de texto. Vamos usar o <strong><code>nano</code></strong>, que é o mais simples:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Abrir/criar o arquivo:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>nano<span class="w"> </span>novoarquivo.txt
+</span></code></pre></div>
+<p>O <code>nano</code> vai abrir uma tela em branco. Digite as seguintes informações:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Olá mundo!
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Organismo de interesse: Escherichia coli
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Gene favorito: TP53
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Banco de dados que mais usa: NCBI
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Linguagem que quer aprender: Python
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>Área de pesquisa: Genômica
+</span></code></pre></div>
+<p>Para salvar e sair:</p>
+<ol>
+<li>Aperte <strong>Ctrl + X</strong> (sair)</li>
+<li>Quando perguntar se quer salvar, digite <strong>S</strong> (sim)</li>
+<li>Aperte <strong>Enter</strong> para confirmar o nome do arquivo</li>
+</ol>
+<h3 id="32-copiando-e-movendo-arquivos-cp-e-mv">3.2) Copiando e movendo arquivos (<code>cp</code> e <code>mv</code>)<a class="headerlink" href="#32-copiando-e-movendo-arquivos-cp-e-mv" title="Permanent link">&para;</a></h3>
+<p>Os comandos <code>cp</code> (<em>CoPy</em>) e <code>mv</code> (<em>MoVe</em>) seguem <strong>exatamente o mesmo padrão</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cp<span class="w"> </span>ORIGEM<span class="w"> </span>DESTINO<span class="w">    </span><span class="c1"># copia (origem continua existindo)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>mv<span class="w"> </span>ORIGEM<span class="w"> </span>DESTINO<span class="w">    </span><span class="c1"># move  (origem some)</span>
+</span></code></pre></div>
+<p><strong>Copiar (<code>cp</code>):</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>cp<span class="w"> </span>novoarquivo.txt<span class="w"> </span>novodiretorio/
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ANTES:                          DEPOIS:
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>home/                           home/
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>├── novoarquivo.txt             ├── novoarquivo.txt        ← original continua
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>└── novodiretorio/              └── novodiretorio/
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>                                    └── novoarquivo.txt    ← cópia criada
+</span></code></pre></div>
+<p><strong>Mover (<code>mv</code>):</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>mv<span class="w"> </span>novoarquivo.txt<span class="w"> </span>novodiretorio/
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ANTES:                          DEPOIS:
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>home/                           home/
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>├── novoarquivo.txt             └── novodiretorio/
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>└── novodiretorio/                  └── novoarquivo.txt    ← agora está aqui
+</span></code></pre></div>
+<p><strong>Renomear</strong> é só "mover para um nome novo":</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>mv<span class="w"> </span>novoarquivo.txt<span class="w"> </span>velhoarquivo.txt
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Como o <code>mv</code> decide entre 'mover' e 'renomear'?</p>
+<ul>
+<li>Se o <strong>destino é um diretório existente</strong> → ele <strong>move</strong> o arquivo para lá, mantendo o nome.</li>
+<li>Se o <strong>destino é um nome novo</strong> no mesmo lugar → ele <strong>renomeia</strong>.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Para o tutorial seguir</p>
+<p>Deixe seu arquivo agora chamado <code>velhoarquivo.txt</code> e dentro de <code>novodiretorio/</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>mv<span class="w"> </span>novoarquivo.txt<span class="w"> </span>velhoarquivo.txt<span class="w">        </span><span class="c1"># primeiro renomeia</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>mv<span class="w"> </span>velhoarquivo.txt<span class="w"> </span>novodiretorio/<span class="w">         </span><span class="c1"># depois move para o novodiretorio</span>
+</span></code></pre></div>
+</div>
+<h3 id="33-caminhos-absolutos-vs-caminhos-relativos">3.3) Caminhos absolutos vs. caminhos relativos<a class="headerlink" href="#33-caminhos-absolutos-vs-caminhos-relativos" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Confirme onde você está:</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nb">pwd</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># Caminho RELATIVO até o velhoarquivo.txt (a partir do diretório atual):</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>./novodiretorio/velhoarquivo.txt
+</span></code></pre></div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> <strong>Questão 1:</strong> Qual o <strong>caminho absoluto</strong> para o <code>velhoarquivo.txt</code>? Ou seja, o caminho começando da raiz <code>/</code> do servidor.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica — autocompletar com Tab</p>
+<p>Ao digitar um caminho, pressione <strong>Tab</strong> para que o sistema <strong>complete automaticamente</strong> os nomes de diretórios e arquivos. Se nada acontecer com um toque, pressione <strong>Tab duas vezes</strong> para ver todas as opções disponíveis.</p>
+</div>
+<h3 id="34-removendo-arquivos-rm">3.4) Removendo arquivos (<code>rm</code>)<a class="headerlink" href="#34-removendo-arquivos-rm" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Remover um arquivo:</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>rm<span class="w"> </span>novodiretorio/backup.txt
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">CUIDADO COM <code>rm</code></p>
+<p>O <code>rm</code> <strong>não manda para a lixeira</strong> — ele apaga <strong>definitivamente</strong>, sem volta. Antes de rodar, <strong>sempre confira o caminho</strong> que você vai apagar.</p>
+<ul>
+<li><strong>Nunca</strong> rode <code>rm -rf /</code> ou <code>rm -rf *</code> sem ter 100% de certeza do que está fazendo.</li>
+<li>Use <code>ls</code> antes para conferir o que existe naquele caminho.</li>
+<li>Em caso de dúvida, use <code>rm -i</code>, que pede confirmação para cada arquivo.</li>
+</ul>
+</div>
+<hr />
+<h2 id="parte-4-transferindo-arquivos-entre-o-seu-computador-e-o-servidor"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v4h2V7h-2v4h-2V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 4 — Transferindo arquivos entre o seu computador e o servidor<a class="headerlink" href="#parte-4-transferindo-arquivos-entre-o-seu-computador-e-o-servidor" title="Permanent link">&para;</a></h2>
+<p>Em Bioinformática, é muito comum ter um arquivo no seu computador que precisa subir para o servidor para análise — e depois trazer os resultados de volta. O comando <code>scp</code> (<em>Secure CoPy</em>) faz isso usando a mesma conexão segura do SSH.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">53846</span><span class="w"> </span>ORIGEM<span class="w"> </span>DESTINO
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Os comandos <code>scp</code> devem ser digitados no <strong>terminal do seu computador local</strong>, não dentro do servidor. Se você estiver conectado via SSH, saia primeiro com <code>exit</code>.</p>
+</div>
+<h3 id="41-enviando-do-seu-computador-para-o-servidor">4.1) Enviando do seu computador para o servidor<a class="headerlink" href="#41-enviando-do-seu-computador-para-o-servidor" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Enviar um arquivo para o seu home no servidor:</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">53846</span><span class="w"> </span>arquivo.fasta<span class="w"> </span>seuusuario@lg.bio.br:~/
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Enviar um arquivo para um subdiretório específico:</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">53846</span><span class="w"> </span>arquivo.fasta<span class="w"> </span>seuusuario@lg.bio.br:~/dados/
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># Enviar uma pasta inteira (com -r de &quot;recursivo&quot;):</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">53846</span><span class="w"> </span>-r<span class="w"> </span>minha_pasta/<span class="w"> </span>seuusuario@lg.bio.br:~/
+</span></code></pre></div>
+<h3 id="42-trazendo-do-servidor-para-o-seu-computador">4.2) Trazendo do servidor para o seu computador<a class="headerlink" href="#42-trazendo-do-servidor-para-o-seu-computador" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Trazer um arquivo do servidor para a pasta atual no seu computador:</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">53846</span><span class="w"> </span>seuusuario@lg.bio.br:~/resultado.txt<span class="w"> </span>.
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Trazer uma pasta inteira:</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>scp<span class="w"> </span>-P<span class="w"> </span><span class="m">53846</span><span class="w"> </span>-r<span class="w"> </span>seuusuario@lg.bio.br:~/resultados/<span class="w"> </span>.
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Sintaxe do endereço</p>
+<p><code>usuario@servidor:caminho</code> — Os dois pontos <code>:</code> separam o servidor do caminho dentro dele. O <code>~</code> representa seu home no servidor.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Alternativa gráfica</p>
+<p>Se preferir interface visual, programas como <a href="https://filezilla-project.org/">FileZilla</a>, <a href="https://cyberduck.io/">Cyberduck</a> ou o <a href="https://winscp.net/">WinSCP</a> (Windows) permitem arrastar e soltar arquivos entre seu computador e o servidor via SSH/SFTP.</p>
+</div>
+<hr />
+<h2 id="parte-5-como-interagir-melhor-com-o-terminal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v2H9v2h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h4V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 5 — Como interagir melhor com o terminal<a class="headerlink" href="#parte-5-como-interagir-melhor-com-o-terminal" title="Permanent link">&para;</a></h2>
+<h3 id="51-atalhos-essenciais-do-teclado">5.1) Atalhos essenciais do teclado<a class="headerlink" href="#51-atalhos-essenciais-do-teclado" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atalho</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ctrl + C</strong></td>
+<td>Interrompe o comando que está rodando agora. <strong>Salva-vidas</strong> quando algo trava ou demora demais.</td>
+</tr>
+<tr>
+<td><strong>Ctrl + L</strong></td>
+<td>Limpa a tela (equivalente a digitar <code>clear</code>).</td>
+</tr>
+<tr>
+<td><strong>Ctrl + D</strong></td>
+<td>Encerra a sessão atual (sai do shell).</td>
+</tr>
+<tr>
+<td><strong>Ctrl + A</strong></td>
+<td>Move o cursor para o <strong>início</strong> da linha.</td>
+</tr>
+<tr>
+<td><strong>Ctrl + E</strong></td>
+<td>Move o cursor para o <strong>final</strong> da linha.</td>
+</tr>
+<tr>
+<td><strong>Ctrl + U</strong></td>
+<td>Apaga tudo da linha (do cursor até o início).</td>
+</tr>
+<tr>
+<td><strong>Tab</strong></td>
+<td>Autocompleta nomes de arquivos e comandos.</td>
+</tr>
+<tr>
+<td><strong>Tab Tab</strong></td>
+<td>Mostra todas as opções, quando há ambiguidade.</td>
+</tr>
+<tr>
+<td><strong>↑ / ↓</strong></td>
+<td>Navega pelos comandos anteriores.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-historico-de-comandos-history">5.2) Histórico de comandos (<code>history</code>)<a class="headerlink" href="#52-historico-de-comandos-history" title="Permanent link">&para;</a></h3>
+<p>O Bash guarda os comandos que você já digitou. Para vê-los:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Lista os últimos comandos digitados:</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">history</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Apenas os 20 últimos:</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nb">history</span><span class="w"> </span><span class="m">20</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1"># Buscar nos comandos anteriores que contenham &quot;grep&quot;:</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nb">history</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>grep
+</span></code></pre></div>
+<p>Para <strong>executar de novo</strong> um comando do histórico:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>!!<span class="w">         </span><span class="c1"># repete o último comando</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>!42<span class="w">        </span><span class="c1"># executa o comando de número 42 do history</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>!ssh<span class="w">       </span><span class="c1"># executa o último comando que começou com &quot;ssh&quot;</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Busca reversa interativa</p>
+<p>Aperte <strong>Ctrl + R</strong> e comece a digitar parte de um comando antigo. O Bash mostra a correspondência mais recente. Aperte <strong>Ctrl + R</strong> de novo para ir para a anterior, <strong>Enter</strong> para executar ou <strong>Esc</strong> para sair.</p>
+</div>
+<h3 id="53-pedindo-ajuda-help-e-man">5.3) Pedindo ajuda (<code>--help</code> e <code>man</code>)<a class="headerlink" href="#53-pedindo-ajuda-help-e-man" title="Permanent link">&para;</a></h3>
+<p>Você <strong>não precisa decorar</strong> todos os comandos. Os próprios programas explicam como funcionam.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Ajuda rápida:</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>ls<span class="w"> </span>--help
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># Manual completo:</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>man<span class="w"> </span>ls
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="c1"># Para sair do manual e voltar ao prompt:</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>q
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Dica</p>
+<p>Alguns programas usam <code>-h</code> ou <code>-help</code> em vez de <code>--help</code>. Se um não funcionar, tente o outro. A letra <strong>q</strong> vem de <em>quit</em> — é o atalho universal para sair de várias telas no UNIX (<code>man</code>, <code>less</code>, etc.).</p>
+</div>
+<hr />
+<h2 id="parte-6-manipulando-arquivos-de-texto-no-servidor"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h4V7zm0 6h2v2h-2zm1-11a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 6 — Manipulando arquivos de texto no servidor<a class="headerlink" href="#parte-6-manipulando-arquivos-de-texto-no-servidor" title="Permanent link">&para;</a></h2>
+<p>Em Bioinformática, os dados são frequentemente armazenados em <strong>arquivos de texto</strong> (<code>.tsv</code>, <code>.csv</code>, <code>.txt</code>, <code>.fasta</code>, <code>.fastq</code>, <code>.vcf</code>, etc.). Em Bash, há vários comandos que processam <strong>arquivos enormes</strong> de forma muito rápida.</p>
+<h3 id="61-concatenando-arquivos-cat">6.1) Concatenando arquivos (<code>cat</code>)<a class="headerlink" href="#61-concatenando-arquivos-cat" title="Permanent link">&para;</a></h3>
+<p>O <code>cat</code> (<em>ConCATenate</em>) une vários arquivos de texto em um só:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Juntar todos os &quot;velhoarquivo.txt&quot; produzidos pela turma:</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>cat<span class="w"> </span>/media/hd15-funbios/users/**/**/velhoarquivo.txt<span class="w"> </span>&gt;<span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Detalhes importantes — entrada, saída e redirecionamento</p>
+<p>O terminal trabalha com <strong>três fluxos</strong> de informação:</p>
+<ul>
+<li><strong><code>stdin</code></strong> — fluxo padrão de <strong>entrada</strong></li>
+<li><strong><code>stdout</code></strong> — fluxo padrão de <strong>saída</strong> (vai para a tela; pode ser redirecionado com <code>&gt;</code>)</li>
+<li><strong><code>stderr</code></strong> — fluxo de <strong>erros</strong> (pode ser redirecionado com <code>2&gt;</code>)</li>
+</ul>
+<p><strong>Redirecionando o <code>stdout</code>:</strong></p>
+<ul>
+<li><code>&gt;</code> → <strong>sobrescreve</strong> o arquivo de destino</li>
+<li><code>&gt;&gt;</code> → <strong>acrescenta</strong> ao final do arquivo de destino</li>
+</ul>
+<p><strong>Encadeando com pipe (<code>|</code>):</strong> a saída de <code>comando1</code> vira a entrada de <code>comando2</code>.</p>
+</div>
+<h3 id="62-padroes-de-correspondencia-globs">6.2) Padrões de correspondência (<em>globs</em>)<a class="headerlink" href="#62-padroes-de-correspondencia-globs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Padrão</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Casa com...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>Qualquer sequência de caracteres (exceto <code>/</code>).</td>
+<td><code>ls *.txt</code></td>
+<td>Todos os arquivos <code>.txt</code>.</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Qualquer <strong>um</strong> caractere.</td>
+<td><code>ls arquivo?.txt</code></td>
+<td><code>arquivo1.txt</code>, <code>arquivox.txt</code>.</td>
+</tr>
+<tr>
+<td><code>[abc]</code></td>
+<td>Qualquer um dos caracteres entre colchetes.</td>
+<td><code>ls arq[123].txt</code></td>
+<td><code>arq1.txt</code>, <code>arq2.txt</code>, <code>arq3.txt</code>.</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>Qualquer caractere dentro do intervalo.</td>
+<td><code>ls arq[a-c].txt</code></td>
+<td><code>arqa.txt</code>, <code>arqb.txt</code>, <code>arqc.txt</code>.</td>
+</tr>
+<tr>
+<td><code>{a,b,c}</code></td>
+<td>Lista explícita de padrões.</td>
+<td><code>ls {arq1,arq2}.txt</code></td>
+<td><code>arq1.txt</code>, <code>arq2.txt</code>.</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>Expansão recursiva.</td>
+<td><code>ls **/*.txt</code></td>
+<td><code>.txt</code> em qualquer subdiretório.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-olhando-o-comeco-de-um-arquivo-head">6.3) Olhando o começo de um arquivo (<code>head</code>)<a class="headerlink" href="#63-olhando-o-comeco-de-um-arquivo-head" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># Primeiras 10 linhas (padrão):</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>head<span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># Apenas a primeira linha:</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="c1"># Tudo, EXCETO as últimas 10 linhas:</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>head<span class="w"> </span>-n<span class="w"> </span>-10<span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<h3 id="64-olhando-o-final-de-um-arquivo-tail">6.4) Olhando o final de um arquivo (<code>tail</code>)<a class="headerlink" href="#64-olhando-o-final-de-um-arquivo-tail" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Últimas 10 linhas:</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># Tudo a partir da 10ª linha em diante:</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>tail<span class="w"> </span>-n<span class="w"> </span>+10<span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<h3 id="65-contando-linhas-palavras-e-bytes-wc">6.5) Contando linhas, palavras e bytes (<code>wc</code>)<a class="headerlink" href="#65-contando-linhas-palavras-e-bytes-wc" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>wc<span class="w"> </span>-l<span class="w"> </span>todos-velhoarquivo.txt<span class="w">   </span><span class="c1"># linhas</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>wc<span class="w"> </span>-c<span class="w"> </span>todos-velhoarquivo.txt<span class="w">   </span><span class="c1"># caracteres (bytes)</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>wc<span class="w"> </span>-w<span class="w"> </span>todos-velhoarquivo.txt<span class="w">   </span><span class="c1"># palavras</span>
+</span></code></pre></div>
+<h3 id="66-encadeando-comandos-com-pipe">6.6) Encadeando comandos com pipe (<code>|</code>)<a class="headerlink" href="#66-encadeando-comandos-com-pipe" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># Listar o conteúdo do diretório E contar quantas linhas tem essa lista:</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</span></code></pre></div>
+<p>Esse encadeamento (chamado de <strong>pipeline</strong>) é uma das ideias mais poderosas do UNIX e está no coração da Bioinformática moderna.</p>
+<h3 id="67-juntando-tabelas-paste-e-join">6.7) Juntando tabelas (<code>paste</code> e <code>join</code>)<a class="headerlink" href="#67-juntando-tabelas-paste-e-join" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># Copie as tabelas dos docentes para o seu diretório:</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>cp<span class="w"> </span>/media/hd15-funbios/users/renata.funbios/tabela*<span class="w"> </span>.
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="c1"># paste: cola as colunas lado a lado</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>paste<span class="w"> </span>tabela1.txt<span class="w"> </span>tabela2.txt
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="c1"># join: combina pelas linhas que compartilham valor em uma coluna chave</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>join<span class="w"> </span>-1<span class="w"> </span><span class="m">1</span><span class="w"> </span>-2<span class="w"> </span><span class="m">1</span><span class="w"> </span>tabela1.txt<span class="w"> </span>tabela2.txt
+</span></code></pre></div>
+<h3 id="68-visualizando-arquivos-longos-less-more">6.8) Visualizando arquivos longos (<code>less</code>, <code>more</code>)<a class="headerlink" href="#68-visualizando-arquivos-longos-less-more" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># Mostra o arquivo todo, mas só permite rolar para frente:</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>more<span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="c1"># Mostra o arquivo com navegação para frente E para trás (recomendado):</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>less<span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Dentro do <code>less</code></p>
+<ul>
+<li><code>q</code> → sair</li>
+<li><code>/palavra</code> → buscar uma palavra</li>
+<li><code>n</code> → ir para a próxima ocorrência</li>
+<li><strong>Setas</strong> → rolar linha a linha</li>
+<li><strong>Espaço</strong> → rolar uma página</li>
+</ul>
+</div>
+<h3 id="69-buscando-padroes-grep">6.9) Buscando padrões (<code>grep</code>)<a class="headerlink" href="#69-buscando-padroes-grep" title="Permanent link">&para;</a></h3>
+<p><code>grep</code> (<em>Global Regular Expression Print</em>) é provavelmente o comando que você mais vai usar.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># Buscar todas as linhas que contêm &quot;Organismo&quot;:</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>grep<span class="w"> </span>Organismo<span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># Padrões com caracteres especiais ou espaços precisam de aspas:</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>grep<span class="w"> </span><span class="s2">&quot;Organismo de interesse: &quot;</span><span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="c1"># Quantas linhas contêm &quot;Organismo&quot;?</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>grep<span class="w"> </span>-c<span class="w"> </span>Organismo<span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="c1"># Linhas que NÃO contêm &quot;Organismo&quot;:</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>grep<span class="w"> </span>-v<span class="w"> </span>Organismo<span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Aspas simples vs. duplas em Bash</p>
+<ul>
+<li>Aspas duplas (<code>"..."</code>) permitem que o shell <strong>expanda variáveis</strong> dentro do texto.</li>
+<li>Aspas simples (<code>'...'</code>) tratam tudo como literal.</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Olá </span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># Imprime: Olá Fulano</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Olá $USER&#39;</span><span class="w">   </span><span class="c1"># Imprime: Olá $USER</span>
+</span></code></pre></div>
+</div>
+<details class="example">
+<summary>Outras opções úteis do <code>grep</code></summary>
+<table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-i</code></td>
+<td>Ignora maiúsculas/minúsculas.</td>
+<td><code>grep -i "erro" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>Linhas que <strong>não</strong> correspondem.</td>
+<td><code>grep -v "sucesso" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>Conta as ocorrências.</td>
+<td><code>grep -c "falha" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>Mostra os números de linha.</td>
+<td><code>grep -n "warning" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-o</code></td>
+<td>Mostra só o trecho que casou.</td>
+<td><code>grep -o "[0-9]\+" arquivo.txt</code></td>
+</tr>
+<tr>
+<td><code>-w</code></td>
+<td>Casa apenas palavras inteiras.</td>
+<td><code>grep -w "erro" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>Busca recursiva em diretórios.</td>
+<td><code>grep -r "sequencia" /meus/dados/</code></td>
+</tr>
+<tr>
+<td><code>-E</code></td>
+<td>Expressões regulares estendidas.</td>
+<td><code>grep -E "erro\|falha" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-A N</code></td>
+<td><code>N</code> linhas <strong>depois</strong> da correspondência.</td>
+<td><code>grep -A 3 "erro" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-B N</code></td>
+<td><code>N</code> linhas <strong>antes</strong>.</td>
+<td><code>grep -B 2 "erro" log.txt</code></td>
+</tr>
+<tr>
+<td><code>-C N</code></td>
+<td><code>N</code> linhas <strong>antes e depois</strong>.</td>
+<td><code>grep -C 2 "erro" log.txt</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="610-extraindo-colunas-cut">6.10) Extraindo colunas (<code>cut</code>)<a class="headerlink" href="#610-extraindo-colunas-cut" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># Cortar a 1ª coluna de um arquivo separado por TAB (padrão do cut):</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>cut<span class="w"> </span>-f1<span class="w"> </span>tabela1.txt
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="c1"># Cortar a 2ª coluna com outro delimitador:</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>-f2<span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<h3 id="611-processando-colunas-com-awk">6.11) Processando colunas com <code>awk</code><a class="headerlink" href="#611-processando-colunas-com-awk" title="Permanent link">&para;</a></h3>
+<p><code>awk</code> é um "primo turbinado" do <code>cut</code>: além de extrair colunas, ele permite <strong>filtrar linhas, fazer cálculos e formatar a saída</strong> em um único comando.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ação}&#39;</span><span class="w"> </span>arquivo
+</span></code></pre></div>
+<p>Dentro da <code>{ação}</code>: <code>$0</code> é a linha inteira, <code>$1</code> é a 1ª coluna, <code>$2</code> é a 2ª, e assim por diante.</p>
+<p><strong>Extração de colunas:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># Imprimir a 1ª coluna:</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span>tabela1.txt
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="c1"># Usar outro delimitador:</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>awk<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="c1"># Múltiplas colunas com texto literal:</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>awk<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span><span class="s1">&#39;{print &quot;Campo:&quot;, $1, &quot;-&gt;&quot;, $2}&#39;</span><span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<p><strong>Filtrando linhas:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># Imprimir só linhas onde a 3ª coluna é maior que 100:</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>awk<span class="w"> </span><span class="s1">&#39;$3 &gt; 100&#39;</span><span class="w"> </span>tabela.txt
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="c1"># Combinando filtro e extração:</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>awk<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span><span class="s1">&#39;$1 == &quot;Área de pesquisa&quot; {print $2}&#39;</span><span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<p><strong>Variáveis especiais e blocos <code>BEGIN</code>/<code>END</code>:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># Contar linhas:</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>awk<span class="w"> </span><span class="s1">&#39;END {print NR}&#39;</span><span class="w"> </span>arquivo.txt
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="c1"># Somar valores de uma coluna:</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>awk<span class="w"> </span><span class="s1">&#39;{soma += $1} END {print &quot;Total:&quot;, soma}&#39;</span><span class="w"> </span>numeros.txt
+</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>
+</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="c1"># Calcular a média da 2ª coluna:</span>
+</span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>awk<span class="w"> </span><span class="s1">&#39;{soma += $2} END {print &quot;Média:&quot;, soma/NR}&#39;</span><span class="w"> </span>tabela.txt
+</span></code></pre></div>
+<h3 id="612-removendo-redundancias-sort-uniq">6.12) Removendo redundâncias (<code>sort</code> + <code>uniq</code>)<a class="headerlink" href="#612-removendo-redundancias-sort-uniq" title="Permanent link">&para;</a></h3>
+<p>Vamos descobrir quantos colegas querem aprender cada linguagem de programação:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="c1"># 1. Selecionar só as linhas com &quot;Linguagem&quot;:</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>grep<span class="w"> </span>Linguagem<span class="w"> </span>todos-velhoarquivo.txt
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="c1"># 2. Cortar só o nome da linguagem (depois do &quot;:&quot;):</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>grep<span class="w"> </span>Linguagem<span class="w"> </span>todos-velhoarquivo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>-f2
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="c1"># 3. Ordenar e deduplicar:</span>
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>grep<span class="w"> </span>Linguagem<span class="w"> </span>todos-velhoarquivo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq
+</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>
+</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a><span class="c1"># 4. Contar quantos colegas escolheram cada linguagem:</span>
+</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>grep<span class="w"> </span>Linguagem<span class="w"> </span>todos-velhoarquivo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Por que <code>sort</code> antes de <code>uniq</code>?</p>
+<p>O <code>uniq</code> só compara <strong>linhas adjacentes</strong>. Se as duplicatas estiverem espalhadas, ele não as detecta. Por isso o <code>sort</code> vem antes — ele agrupa as iguais.</p>
+</div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> <strong>Questão 2:</strong> Como você salvaria o resultado desse último comando em um arquivo de texto?</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> <strong>Questão 3:</strong> Quais dos seus colegas escolheram a <strong>mesma linguagem</strong> que você?</p>
+<h3 id="613-substituindo-padroes-sed">6.13) Substituindo padrões (<code>sed</code>)<a class="headerlink" href="#613-substituindo-padroes-sed" title="Permanent link">&para;</a></h3>
+<p><code>sed</code> (<em>Stream EDitor</em>) substitui textos linha a linha:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># Trocar todos os &quot;Olá&quot; por &quot;Tchau&quot;:</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>sed<span class="w"> </span><span class="s2">&quot;s/Olá/Tchau/g&quot;</span><span class="w"> </span>todos-velhoarquivo.txt
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Trecho</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sed</code></td>
+<td>Chama o editor de fluxo.</td>
+</tr>
+<tr>
+<td><code>s/</code></td>
+<td>Início da operação de <strong>substituição</strong>.</td>
+</tr>
+<tr>
+<td><code>Olá</code></td>
+<td>Padrão a procurar.</td>
+</tr>
+<tr>
+<td><code>Tchau</code></td>
+<td>Texto que substitui.</td>
+</tr>
+<tr>
+<td><code>/g</code></td>
+<td><strong>Global</strong>: troca todas as ocorrências de cada linha.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Por padrão, o <code>sed</code> <strong>não modifica</strong> o arquivo original — ele só imprime o resultado na tela. Para gravar de volta, use <code>sed -i</code> (cuidado!) ou redirecione com <code>&gt;</code> para um novo arquivo.</p>
+</div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> <strong>Questão 4:</strong> Todos os "Olá" foram trocados por "Tchau"? Se algum não foi, o que pode ter acontecido?</p>
+<details class="example">
+<summary>Outras opções úteis do <code>sed</code></summary>
+<p><strong>Opções básicas:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-i</code></td>
+<td>Edita o arquivo diretamente (sobrescreve!).</td>
+<td><code>sed -i "s/foo/bar/g" arquivo.txt</code></td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>Suprime a saída padrão (combina com <code>p</code>).</td>
+<td><code>sed -n "s/foo/bar/p" arquivo.txt</code></td>
+</tr>
+<tr>
+<td><code>-e</code></td>
+<td>Executa múltiplos comandos em uma linha.</td>
+<td><code>sed -e "s/foo/bar/g" -e "s/teste/exemplo/g" arquivo.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comandos mais usados:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s/</code></td>
+<td>Substitui um padrão.</td>
+<td><code>sed "s/carro/bicicleta/g" arquivo.txt</code></td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Imprime linhas correspondentes (com <code>-n</code>).</td>
+<td><code>sed -n "/erro/p" log.txt</code></td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>Deleta linhas correspondentes.</td>
+<td><code>sed "/erro/d" arquivo.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Seleção de linhas específicas:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Padrão</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>3d</code></td>
+<td>Remove a 3ª linha.</td>
+<td><code>sed "3d" arquivo.txt</code></td>
+</tr>
+<tr>
+<td><code>1,5d</code></td>
+<td>Remove da 1ª à 5ª linha.</td>
+<td><code>sed "1,5d" arquivo.txt</code></td>
+</tr>
+<tr>
+<td><code>/padrão/d</code></td>
+<td>Remove linhas que casam com o padrão.</td>
+<td><code>sed "/erro/d" arquivo.txt</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="614-trabalhando-com-arquivos-compactados-gzip-gunzip-tar">6.14) Trabalhando com arquivos compactados (<code>gzip</code>, <code>gunzip</code>, <code>tar</code>)<a class="headerlink" href="#614-trabalhando-com-arquivos-compactados-gzip-gunzip-tar" title="Permanent link">&para;</a></h3>
+<p>Em Bioinformática, é raro receber dados sem compactação. As extensões mais comuns são:</p>
+<ul>
+<li><code>.gz</code> — arquivo único compactado com <strong>gzip</strong></li>
+<li><code>.tar</code> — vários arquivos empacotados (sem compactação)</li>
+<li><code>.tar.gz</code> ou <code>.tgz</code> — vários arquivos empacotados <strong>e</strong> compactados</li>
+</ul>
+<p><strong><code>gzip</code> e <code>gunzip</code>:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="c1"># Compactar (substitui o original por arquivo.fasta.gz):</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>gzip<span class="w"> </span>arquivo.fasta
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="c1"># Manter também o original:</span>
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>gzip<span class="w"> </span>-k<span class="w"> </span>arquivo.fasta
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>
+</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="c1"># Descompactar:</span>
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>gunzip<span class="w"> </span>arquivo.fasta.gz
+</span></code></pre></div>
+<p><strong>Lendo arquivos <code>.gz</code> SEM descompactar:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>zcat<span class="w"> </span>amostra.fastq.gz
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>zcat<span class="w"> </span>amostra.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>zgrep<span class="w"> </span><span class="s2">&quot;&gt;&quot;</span><span class="w"> </span>genoma.fasta.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w">   </span><span class="c1"># conta cabeçalhos do FASTA</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>zless<span class="w"> </span>arquivo.txt.gz
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Por que isso importa?</p>
+<p>Arquivos FASTQ podem ter dezenas de GB compactados (e centenas de GB descompactados). Quase todas as ferramentas da área (<code>bwa</code>, <code>samtools</code>, <code>bcftools</code>…) leem <code>.gz</code> direto.</p>
+</div>
+<p><strong><code>tar</code> — empacotar vários arquivos:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># Empacotar e compactar uma pasta inteira:</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>tar<span class="w"> </span>-czvf<span class="w"> </span>resultados.tar.gz<span class="w"> </span>resultados/
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="c1"># Descompactar e desempacotar:</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>tar<span class="w"> </span>-xzvf<span class="w"> </span>resultados.tar.gz
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="c1"># Listar o conteúdo SEM extrair:</span>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a>tar<span class="w"> </span>-tzvf<span class="w"> </span>resultados.tar.gz
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Mnemônico para o <code>tar</code></p>
+<p><strong>c</strong>riar, e<strong>x</strong>trair, lis<strong>t</strong>ar. O <code>-z</code> é "usar gzip", <code>-v</code> é "mostrar progresso", e <code>-f</code> indica o nome do arquivo (sempre por último).</p>
+</div>
+<hr />
+<h2 id="parte-7-espaco-em-disco-e-processos"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11 17 4-8V7H9v2h4l-4 8zm1-15a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 7 — Espaço em disco e processos<a class="headerlink" href="#parte-7-espaco-em-disco-e-processos" title="Permanent link">&para;</a></h2>
+<p>Como o servidor é <strong>compartilhado</strong> entre vários usuários, é parte do bom uso saber quanto espaço você está ocupando e o que está rodando.</p>
+<h3 id="71-espaco-em-disco-du-e-df">7.1) Espaço em disco (<code>du</code> e <code>df</code>)<a class="headerlink" href="#71-espaco-em-disco-du-e-df" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="c1"># Quanto este diretório está ocupando?</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>du<span class="w"> </span>-sh<span class="w"> </span>meudiretorio/
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="c1"># Tamanho de cada subdiretório (até 1 nível):</span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>du<span class="w"> </span>-h<span class="w"> </span>--max-depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>.
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="c1"># Quanto espaço livre tem no servidor?</span>
+</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a>df<span class="w"> </span>-h
+</span></code></pre></div>
+<h3 id="72-vendo-o-que-esta-rodando-ps-top">7.2) Vendo o que está rodando (<code>ps</code>, <code>top</code>)<a class="headerlink" href="#72-vendo-o-que-esta-rodando-ps-top" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="c1"># Lista os SEUS processos em execução:</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>ps<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="c1"># Lista todos os processos do sistema, atualizando em tempo real:</span>
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>top
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a><span class="c1"># Para sair do top: aperte &quot;q&quot;</span>
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a>
+</span><span id="__span-48-8"><a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a><span class="c1"># Versão mais amigável (se estiver instalada):</span>
+</span><span id="__span-48-9"><a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a>htop
+</span></code></pre></div>
+<h3 id="73-comandos-longos-rodar-em-background">7.3) Comandos longos: rodar em background<a class="headerlink" href="#73-comandos-longos-rodar-em-background" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="c1"># Rodar em background (libera o terminal):</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>meu_comando_longo<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="c1"># Rodar em background E continuar mesmo se o SSH cair:</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>nohup<span class="w"> </span>meu_comando_longo<span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Sobre comandos muito longos</p>
+<p>Se o seu SSH cair durante uma análise iniciada normalmente, o processo é interrompido. Para análises que duram horas ou dias, o ideal é usar o <code>tmux</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Etiqueta em servidor compartilhado</p>
+<ul>
+<li>Rode <code>top</code> ou <code>htop</code> para ver se o servidor está saturado antes de iniciar comandos pesados.</li>
+<li>Combine com a equipe se for usar muita CPU/memória por muito tempo.</li>
+<li>Não leia, copie ou modifique arquivos no <code>home</code> de outros usuários sem autorização.</li>
+<li>Limpe arquivos temporários quando terminar.</li>
+</ul>
+</div>
+<h3 id="74-mantendo-sessoes-persistentes-com-tmux">7.4) Mantendo sessões persistentes com <code>tmux</code><a class="headerlink" href="#74-mantendo-sessoes-persistentes-com-tmux" title="Permanent link">&para;</a></h3>
+<p><code>tmux</code> (<em>Terminal MUltipleXer</em>) cria uma <strong>sessão no servidor</strong> que continua rodando mesmo se o seu SSH cair ou se você desligar o computador. No LGBIO, o <code>tmux</code> é a ferramenta padrão para qualquer trabalho que dure mais do que alguns minutos.</p>
+<p><strong>Fluxo básico:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># 1. Criar uma sessão nova com um nome:</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>analise
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="c1"># 2. Rode o que quiser dentro do tmux:</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>meu_comando_longo
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="c1"># 3. Para &quot;soltar&quot; a sessão (sem matar o que está rodando):</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a><span class="c1">#    aperte Ctrl + B, solte as teclas, e depois aperte D (de &quot;detach&quot;).</span>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>
+</span><span id="__span-50-10"><a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a><span class="c1"># 4. Já fora do tmux: pode até desconectar do servidor com &quot;exit&quot;.</span>
+</span><span id="__span-50-11"><a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>
+</span><span id="__span-50-12"><a id="__codelineno-50-12" name="__codelineno-50-12" href="#__codelineno-50-12"></a><span class="c1"># 5. Quando voltar ao servidor, liste suas sessões:</span>
+</span><span id="__span-50-13"><a id="__codelineno-50-13" name="__codelineno-50-13" href="#__codelineno-50-13"></a>tmux<span class="w"> </span>ls
+</span><span id="__span-50-14"><a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a>
+</span><span id="__span-50-15"><a id="__codelineno-50-15" name="__codelineno-50-15" href="#__codelineno-50-15"></a><span class="c1"># 6. Reatache à sessão:</span>
+</span><span id="__span-50-16"><a id="__codelineno-50-16" name="__codelineno-50-16" href="#__codelineno-50-16"></a>tmux<span class="w"> </span>a<span class="w"> </span>-t<span class="w"> </span>analise
+</span></code></pre></div>
+<p><strong>Atalhos dentro do tmux</strong> (todos começam com <code>Ctrl + B</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Atalho (após <code>Ctrl + B</code>)</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>D</code></td>
+<td><strong>Detach</strong>: solta a sessão e volta ao terminal normal.</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>Cria uma nova <strong>janela</strong> dentro da sessão.</td>
+</tr>
+<tr>
+<td><code>N</code> / <code>P</code></td>
+<td>Vai para a próxima / anterior janela.</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Divide a janela em dois <strong>painéis verticais</strong> (lado a lado).</td>
+</tr>
+<tr>
+<td><code>"</code></td>
+<td>Divide a janela em dois <strong>painéis horizontais</strong> (em cima/embaixo).</td>
+</tr>
+<tr>
+<td><code>←</code> <code>↑</code> <code>→</code> <code>↓</code></td>
+<td>Move o foco entre painéis.</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>Fecha o painel atual (pede confirmação).</td>
+</tr>
+<tr>
+<td><code>[</code></td>
+<td>Entra em "modo de rolagem".</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Mostra todos os atalhos disponíveis.</td>
+</tr>
+</tbody>
+</table>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="c1"># Listar sessões existentes:</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>tmux<span class="w"> </span>ls
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="c1"># Reatachar à última sessão criada:</span>
+</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>tmux<span class="w"> </span>a
+</span><span id="__span-51-6"><a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a>
+</span><span id="__span-51-7"><a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a><span class="c1"># Encerrar uma sessão sem entrar nela:</span>
+</span><span id="__span-51-8"><a id="__codelineno-51-8" name="__codelineno-51-8" href="#__codelineno-51-8"></a>tmux<span class="w"> </span>kill-session<span class="w"> </span>-t<span class="w"> </span>analise
+</span><span id="__span-51-9"><a id="__codelineno-51-9" name="__codelineno-51-9" href="#__codelineno-51-9"></a>
+</span><span id="__span-51-10"><a id="__codelineno-51-10" name="__codelineno-51-10" href="#__codelineno-51-10"></a><span class="c1"># Encerrar TODAS as suas sessões (cuidado!):</span>
+</span><span id="__span-51-11"><a id="__codelineno-51-11" name="__codelineno-51-11" href="#__codelineno-51-11"></a>tmux<span class="w"> </span>kill-server
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Sempre dê <strong>nomes descritivos</strong> às sessões (<code>analise_blast</code>, <code>alinhamento_amostra3</code>) para conseguir reconhecê-las depois.</p>
+</div>
+<hr />
+<h2 id="parte-8-erros-comuns-que-voce-vai-encontrar"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13h2v2h-2zm0-4h2v2h-2zm0 8h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m1-15a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Parte 8 — Erros comuns que você vai encontrar<a class="headerlink" href="#parte-8-erros-comuns-que-voce-vai-encontrar" title="Permanent link">&para;</a></h2>
+<p>A linha de comando é exigente: um espaço a mais ou uma letra trocada já dá erro. Os erros mais frequentes:</p>
+<table>
+<thead>
+<tr>
+<th>Mensagem de erro</th>
+<th>Causa típica</th>
+<th>Como resolver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command not found</code></td>
+<td>Comando digitado errado, ou o programa não está instalado.</td>
+<td>Verifique a digitação.</td>
+</tr>
+<tr>
+<td><code>No such file or directory</code></td>
+<td>O arquivo/pasta no caminho não existe.</td>
+<td>Use <code>ls</code> para verificar o que existe e <code>pwd</code> para confirmar onde você está.</td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>Você não tem permissão para ler/escrever/executar.</td>
+<td>Veja o dono e as permissões com <code>ls -l</code>.</td>
+</tr>
+<tr>
+<td><code>Is a directory</code></td>
+<td>Você passou um diretório onde se esperava arquivo.</td>
+<td>Especifique um arquivo dentro do diretório.</td>
+</tr>
+<tr>
+<td><code>cannot remove ... : Directory not empty</code></td>
+<td>Tentou apagar diretório não vazio com <code>rm</code> simples.</td>
+<td>Use <code>rm -r diretorio/</code> (com cuidado!).</td>
+</tr>
+<tr>
+<td><code>argument list too long</code></td>
+<td>Glob casou com arquivos demais.</td>
+<td>Use <code>find ... -exec</code> ou <code>xargs</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Quando travar ou demorar demais</p>
+<p>Lembre-se sempre: <strong>Ctrl + C</strong> interrompe o que está rodando.</p>
+</div>
+<hr />
+<h2 id="exercicio-consolidador"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.06 9 .94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span> Exercício consolidador<a class="headerlink" href="#exercicio-consolidador" title="Permanent link">&para;</a></h2>
+<p>Use o arquivo <code>todos-velhoarquivo.txt</code> (gerado na Parte 6.1) para responder, encadeando comandos com pipes:</p>
+<ol>
+<li><strong>Quantos colegas escolheram cada banco de dados?</strong> Salve a contagem em um arquivo <code>bancos_freq.txt</code>.</li>
+<li><strong>Quais são as 3 áreas de pesquisa mais citadas pela turma?</strong> (Dica: ordene por frequência decrescente e pegue as 3 primeiras.)</li>
+<li><strong>Quantos colegas escolheram um organismo cujo nome começa com "E"?</strong> (Dica: o <code>grep</code> aceita o início exato no padrão.)</li>
+<li><strong>Crie uma versão "amigável" do arquivo</strong> com todos os "Olá mundo!" substituídos por "Bem-vindo(a) à Bioinformática!" e salve como <code>boas_vindas.txt</code>.</li>
+</ol>
+<p>Use os comandos <code>grep</code>, <code>cut</code>, <code>sort</code>, <code>uniq</code>, <code>head</code>, <code>wc</code>, <code>sed</code>, <em>pipes</em> <code>|</code> e redirecionamento <code>&gt;</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Não conseguiu responder algo?</p>
+<p>Sem problema. Anote a dúvida e traga para a aula síncrona.</p>
+</div>
+<hr />
+<h2 id="cheat-sheet-comandos-essenciais-desta-aula"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 4v4h6V8zm8 0v4h6V8zm-8 6v4h6v-4zm8 0v4h6v-4z"/></svg></span> Cheat sheet — comandos essenciais desta aula<a class="headerlink" href="#cheat-sheet-comandos-essenciais-desta-aula" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Conexão</strong></td>
+<td><code>ssh user@host</code></td>
+<td>Conecta a um servidor remoto</td>
+</tr>
+<tr>
+<td></td>
+<td><code>exit</code> ou <code>Ctrl + D</code></td>
+<td>Encerra a conexão</td>
+</tr>
+<tr>
+<td><strong>Transferência</strong></td>
+<td><code>scp arq user@host:~/</code></td>
+<td>Envia arquivo para o servidor</td>
+</tr>
+<tr>
+<td></td>
+<td><code>scp user@host:~/arq .</code></td>
+<td>Traz arquivo do servidor</td>
+</tr>
+<tr>
+<td></td>
+<td><code>scp -r pasta/ ...</code></td>
+<td>Mesma coisa, para pastas</td>
+</tr>
+<tr>
+<td><strong>Navegação</strong></td>
+<td><code>pwd</code></td>
+<td>Mostra o diretório atual</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ls</code>, <code>ls -lah</code></td>
+<td>Lista arquivos (simples / detalhada)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>cd diretorio</code></td>
+<td>Entra em um diretório</td>
+</tr>
+<tr>
+<td></td>
+<td><code>cd ..</code></td>
+<td>Sobe um nível</td>
+</tr>
+<tr>
+<td></td>
+<td><code>cd</code> ou <code>cd ~</code></td>
+<td>Volta para o home</td>
+</tr>
+<tr>
+<td><strong>Diretórios e arquivos</strong></td>
+<td><code>mkdir nome</code></td>
+<td>Cria diretório</td>
+</tr>
+<tr>
+<td></td>
+<td><code>nano arquivo</code></td>
+<td>Edita/cria arquivo de texto</td>
+</tr>
+<tr>
+<td></td>
+<td><code>cp origem destino</code></td>
+<td>Copia</td>
+</tr>
+<tr>
+<td></td>
+<td><code>mv origem destino</code></td>
+<td>Move ou renomeia</td>
+</tr>
+<tr>
+<td></td>
+<td><code>rm arquivo</code></td>
+<td>Apaga (sem volta!)</td>
+</tr>
+<tr>
+<td><strong>Atalhos</strong></td>
+<td><code>Ctrl + C</code></td>
+<td>Interrompe comando atual</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Tab</code></td>
+<td>Autocompleta</td>
+</tr>
+<tr>
+<td></td>
+<td><code>↑ / ↓</code></td>
+<td>Comandos anteriores</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Ctrl + R</code></td>
+<td>Busca reversa no histórico</td>
+</tr>
+<tr>
+<td><strong>Ajuda</strong></td>
+<td><code>comando --help</code></td>
+<td>Ajuda rápida</td>
+</tr>
+<tr>
+<td></td>
+<td><code>man comando</code></td>
+<td>Manual completo</td>
+</tr>
+<tr>
+<td><strong>Visualizar texto</strong></td>
+<td><code>cat arquivo</code></td>
+<td>Mostra o conteúdo todo</td>
+</tr>
+<tr>
+<td></td>
+<td><code>head</code>, <code>tail</code></td>
+<td>Início / final do arquivo</td>
+</tr>
+<tr>
+<td></td>
+<td><code>less arquivo</code></td>
+<td>Visualizador navegável</td>
+</tr>
+<tr>
+<td><strong>Processar texto</strong></td>
+<td><code>wc -l/-w/-c</code></td>
+<td>Conta linhas / palavras / caracteres</td>
+</tr>
+<tr>
+<td></td>
+<td><code>grep padrão arq</code></td>
+<td>Busca padrão</td>
+</tr>
+<tr>
+<td></td>
+<td><code>cut -d X -fN</code></td>
+<td>Extrai colunas</td>
+</tr>
+<tr>
+<td></td>
+<td><code>awk '{print $N}'</code></td>
+<td>Extrai/processa colunas com lógica</td>
+</tr>
+<tr>
+<td></td>
+<td><code>sort</code> / <code>uniq</code></td>
+<td>Ordena / deduplica</td>
+</tr>
+<tr>
+<td></td>
+<td><code>sed "s/a/b/g"</code></td>
+<td>Substitui texto</td>
+</tr>
+<tr>
+<td></td>
+<td><code>paste</code> / <code>join</code></td>
+<td>Junta tabelas</td>
+</tr>
+<tr>
+<td><strong>Compactação</strong></td>
+<td><code>gzip arq</code> / <code>gunzip arq.gz</code></td>
+<td>Compacta / descompacta</td>
+</tr>
+<tr>
+<td></td>
+<td><code>zcat arq.gz</code> / <code>zgrep</code> / <code>zless</code></td>
+<td>Lê <code>.gz</code> sem descompactar</td>
+</tr>
+<tr>
+<td></td>
+<td><code>tar -czvf saida.tar.gz pasta/</code></td>
+<td>Empacota e compacta pasta</td>
+</tr>
+<tr>
+<td></td>
+<td><code>tar -xzvf arq.tar.gz</code></td>
+<td>Extrai <code>.tar.gz</code></td>
+</tr>
+<tr>
+<td><strong>Encadeamento</strong></td>
+<td><code>\|</code></td>
+<td>Pipe</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&gt;</code> / <code>&gt;&gt;</code></td>
+<td>Redireciona saída</td>
+</tr>
+<tr>
+<td><strong>Disco e processos</strong></td>
+<td><code>du -sh dir/</code></td>
+<td>Tamanho do diretório</td>
+</tr>
+<tr>
+<td></td>
+<td><code>df -h</code></td>
+<td>Espaço livre no disco</td>
+</tr>
+<tr>
+<td></td>
+<td><code>top</code> ou <code>htop</code></td>
+<td>Monitor em tempo real</td>
+</tr>
+<tr>
+<td><strong>Sessões <code>tmux</code></strong></td>
+<td><code>tmux new -s nome</code></td>
+<td>Cria sessão com nome</td>
+</tr>
+<tr>
+<td></td>
+<td><code>tmux ls</code></td>
+<td>Lista sessões existentes</td>
+</tr>
+<tr>
+<td></td>
+<td><code>tmux a -t nome</code></td>
+<td>Reatacha à sessão</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Ctrl + B</code>, <code>D</code></td>
+<td>Solta a sessão (detach)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="glossario-rapido"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.81 2C4.83 2.09 4 3 4 4v16c0 1.05.95 2 2 2h12c1.05 0 2-.95 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H5.81M12 13h1a1 1 0 0 1 1 1v4h-1v-2h-1v2h-1v-4a1 1 0 0 1 1-1m0 1v1h1v-1zm3 1h3v1l-2 3h2v1h-3v-1l2-3h-2z"/></svg></span> Glossário rápido<a class="headerlink" href="#glossario-rapido" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Bash</strong> — o shell mais comum em Linux. Interpreta os comandos que você digita.</li>
+<li><strong>Diretório</strong> — o mesmo que "pasta".</li>
+<li><strong><code>awk</code></strong> — pequena linguagem de programação para processar texto tabular.</li>
+<li><strong>Glob</strong> — padrão para casar nomes de arquivos (ex.: <code>*.txt</code>).</li>
+<li><strong>Home</strong> — seu diretório pessoal no servidor (<code>/home/seuusuario</code>). Atalho: <code>~</code>.</li>
+<li><strong>Pipe (<code>|</code>)</strong> — encadeia comandos: a saída de um vira a entrada do próximo.</li>
+<li><strong>Processo</strong> — uma instância de um programa em execução.</li>
+<li><strong>Prompt</strong> — a parte do terminal que fica esperando você digitar (ex.: <code>usuario@servidor:~$</code>).</li>
+<li><strong>Shell</strong> — o programa que interpreta seus comandos. Ex.: Bash, Zsh.</li>
+<li><strong>SSH</strong> — protocolo para abrir um terminal remoto de forma criptografada.</li>
+<li><strong><code>scp</code></strong> — <em>Secure CoPy</em>: transferência de arquivos via SSH.</li>
+<li><strong>stdin / stdout / stderr</strong> — fluxos padrão de entrada / saída / erros.</li>
+<li><strong>Terminal</strong> — a janela onde você digita os comandos.</li>
+<li><strong><code>tmux</code></strong> — <em>Terminal MUltipleXer</em>: cria sessões persistentes no servidor.</li>
+<li><strong>Variável de ambiente</strong> — um "atalho" do sistema, identificado por <code>$NOME</code> (ex.: <code>$HOME</code>, <code>$USER</code>).</li>
+<li><strong><code>gzip</code> / <code>tar</code></strong> — utilitários de compactação.</li>
+</ul>
+<hr />
+<h2 id="checklist-de-autoavaliacao"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8c.76 0 1.5.11 2.2.31l1.57-1.57A9.8 9.8 0 0 0 12 2 10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10M7.91 10.08 6.5 11.5 11 16 21 6l-1.41-1.42L11 13.17z"/></svg></span> Checklist de autoavaliação<a class="headerlink" href="#checklist-de-autoavaliacao" title="Permanent link">&para;</a></h2>
+<p>Antes da primeira aula presencial, confira se você consegue:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conectar ao servidor via SSH a partir do seu computador.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Trocar a senha provisória por uma nova.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Identificar em qual diretório está usando <code>pwd</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Criar um diretório com <code>mkdir</code> e entrar nele com <code>cd</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Listar arquivos com <code>ls</code> e <code>ls -lah</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Criar um arquivo de texto com <code>nano</code>, salvar e sair.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Copiar, mover, renomear e remover arquivos com <code>cp</code>, <code>mv</code>, <code>rm</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Enviar um arquivo do seu computador para o servidor com <code>scp</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Interromper um comando travado com <code>Ctrl + C</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Recuperar um comando antigo com a seta para cima ou <code>Ctrl + R</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pedir ajuda com <code>--help</code> ou <code>man</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Usar pelo menos um pipe <code>|</code> encadeando dois comandos (ex.: <code>ls | wc -l</code>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verificar quanto espaço seu diretório ocupa com <code>du -sh</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Criar uma sessão <code>tmux</code>, soltar com <code>Ctrl + B</code> <code>D</code> e reatachar com <code>tmux a</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Extrair uma coluna específica de um arquivo com <code>awk</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ler um arquivo <code>.gz</code> sem descompactar (usando <code>zcat</code> ou <code>zless</code>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Compactar uma pasta inteira em <code>.tar.gz</code> e extrair de volta.</li>
+</ul>
+<hr />
+<h2 id="voce-chegou-ao-fim-do-tutorial"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.4 6H20v10h-7l-.4-2H7v7H5V4h9zm-.4 8h2v-2h2v-2h-2V8h-2v2l-1-2V6h-2v2H9V6H7v2h2v2H7v2h2v-2h2v2h2v-2l1 2zm-3-4V8h2v2zm3 0h2v2h-2z"/></svg></span> Você chegou ao fim do tutorial! 🎉<a class="headerlink" href="#voce-chegou-ao-fim-do-tutorial" title="Permanent link">&para;</a></h2>
+<p>Parabéns! Você acaba de percorrer uma introdução completa ao ambiente UNIX para Bioinformática:</p>
+<p>Em projetos reais de bioinformática, essa mesma base se repete com variações de ferramenta, escala e organismo. Os princípios são os mesmos — o que muda são as flags e a interpretação contextual dos dados.</p>
+<h3 id="para-se-aprofundar">Para se aprofundar<a class="headerlink" href="#para-se-aprofundar" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Shell scripting (Bash)</strong> — automatizar pipelines inteiras em um único arquivo <code>.sh</code>, com loops, condicionais e variáveis. O próximo passo natural depois de dominar os comandos individuais.</li>
+<li><strong>Expressões regulares (regex)</strong> — ampliar o poder do <code>grep</code> e do <code>sed</code> com padrões complexos de busca e substituição para lidar com formatos FASTA, FASTQ, VCF e outros.</li>
+<li><strong>Gerenciadores de ambientes (Conda/Mamba)</strong> — instalar e isolar ferramentas de bioinformática sem conflito de versões, de forma reprodutível em qualquer servidor.</li>
+<li><strong>Workflows de bioinformática (Snakemake, Nextflow)</strong> — organizar pipelines complexas com dependências, paralelismo e rastreabilidade, indo além dos pipes manuais.</li>
+<li><strong>Computação em cluster (SLURM, PBS)</strong> — submeter jobs para filas de servidores com múltiplos nós, controlando recursos de CPU, memória e tempo de execução para análises de larga escala.</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Encontrou algum erro ou tem sugestões?</strong> Anote e avise a docente. Esse material está em construção contínua e o feedback de vocês é o que mais ajuda a melhorá-lo.</p>
+</blockquote>
 
 
 
