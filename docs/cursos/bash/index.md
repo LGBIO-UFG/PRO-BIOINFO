@@ -515,7 +515,7 @@ O `cat` (*ConCATenate*) une vários arquivos de texto em um só:
 
 ```bash
 # Juntar todos os "velhoarquivo.txt" produzidos pela turma:
-cat /media/hd15-curso/materiais/curso_bash/velhoarquivo.txt > todos-velhoarquivo.txt
+cat /media/hd15-cursos/materiais/curso_bash/velhoarquivo.txt > todos-velhoarquivo.txt
 ```
 
 !!! info "Detalhes importantes — entrada, saída e redirecionamento"
