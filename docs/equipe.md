@@ -45,7 +45,7 @@ A equipe do **PRO-BIOINFO** reúne docentes, discentes e colaboradores externos 
     [:material-school: Lattes](http://lattes.cnpq.br/5590256762396056)
 
 
-- ![Ramilla dos Santos Braga Ferreira](assets/equipe/ramilla-ferreira.jpg){ .team-photo }
+- ![Ramilla dos Santos Braga Ferreira](assets/equipe/ramilla-braga.jpg){ .team-photo }
 
     **Ramilla dos Santos Braga Ferreira**
 
