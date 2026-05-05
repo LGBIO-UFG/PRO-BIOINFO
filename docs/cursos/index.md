@@ -26,7 +26,7 @@ Tutoriais reutilizáveis sobre tópicos centrais de bioinformática. Cada curso 
     **Carga horária:** ~4h
     **Pré-requisitos:** Nenhum
 
-    :material-progress-clock:{ .yellow } **Em construção**
+    :material-check-circle:{ .green } **Disponível**
 
     [:octicons-arrow-right-24: Acessar curso](bash/index.md)
 
