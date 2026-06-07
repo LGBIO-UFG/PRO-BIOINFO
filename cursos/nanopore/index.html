@@ -2643,6 +2643,10 @@ gerenciadores de ambiente (conda, module load), versões de software e parâmetr
 </ul>
 <hr />
 <h2 id="etapa-4-remocao-de-contaminantes-kraken2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v4h2V7h-2v4h-2V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 4 — Remoção de contaminantes (Kraken2)<a class="headerlink" href="#etapa-4-remocao-de-contaminantes-kraken2" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Esta etapa é opcional</p>
+<p>Muitos pipelines optam por realizar a remoção de contaminantes <strong>após o scaffolding</strong>, usando o BlobTools para identificar contigs contaminantes com base em cobertura + identidade taxonômica (ver Etapa 13). Faça a descontaminação aqui se quiser trabalhar com dados mais limpos desde o início, ou pule para a montagem e revise os contaminantes ao final.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Limitação do banco minikraken2</p>
 <p>Inclui apenas bactérias, vírus e humanos. Para confirmar que as reads não classificadas são de fato de levedura, seria necessário um banco que inclua fungos (ex.: <code>PlusPF</code>).</p>
