@@ -1,0 +1,35 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+528001	535286	1	7284	NC_001134.8	NC_001134.8_RagTag	99.48		True
+CONTIG	NC_001134.8_RagTag	7284	correct
+1379528	1385577	1	6040	NC_001136.10	NC_001136.10_RagTag	98.96		True
+relocation, inconsistency = 60471, scaffold gap is present
+1446155	1450900	6147	10886	NC_001136.10	NC_001136.10_RagTag	99.79		True
+CONTIG	NC_001136.10_RagTag	10886	misassembled
+547800	551922	1	4122	NC_001139.9	NC_001139.9_RagTag	99.1		True
+CONTIG	NC_001139.9_RagTag	4142	correct
+249175	253594	1	4421	NC_001147.6	NC_001147.6_RagTag	99.82		True
+CONTIG	NC_001147.6_RagTag	4421	correct
+6752	8324	1	1563	NC_001224.1	NC_001224.1_RagTag	98.92		True
+fake: scaffold gap size wrong estimation (extensive)
+13805	20973	1665	8861	NC_001224.1	NC_001224.1_RagTag	99.42		True
+relocation, inconsistency = -1898
+20974	22174	10760	11960	NC_001224.1	NC_001224.1_RagTag	100.0		True
+relocation, inconsistency = 13212, scaffold gap is present
+36441	36954	13015	13528	NC_001224.1	NC_001224.1_RagTag	99.81		True
+relocation, inconsistency = 2172
+39141	42656	13543	17061	NC_001224.1	NC_001224.1_RagTag	99.66		True
+relocation, inconsistency = 14863, scaffold gap is present
+57621	60150	17163	19695	NC_001224.1	NC_001224.1_RagTag	99.25		True
+fake: scaffold gap size wrong estimation (local)
+60321	60483	19796	19958	NC_001224.1	NC_001224.1_RagTag	100.0		True
+indel: indel (> 5bp)
+60568	62451	19959	21845	NC_001224.1	NC_001224.1_RagTag	99.84		True
+local misassembly
+62902	63394	22172	22647	NC_001224.1	NC_001224.1_RagTag	96.15		True
+CONTIG	NC_001224.1_RagTag	22647	misassembled
+85	5499	63	5482	NC_001145.3	ptg000004l	99.67		True
+CONTIG	ptg000004l	5482	correct
+186605	190074	1	3472	NC_001145.3	ptg000012l	99.74		True
+translocation
+852212	856882	8230	3637	NC_001148.4	ptg000012l	95.8		True
+CONTIG	ptg000012l	8230	misassembled

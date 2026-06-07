@@ -1,0 +1,144 @@
+##gff-version 3
+NC_001133.9_RagTag	QUAST	possible_assembly_error	126121	126216	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001133.9_RagTag	QUAST	possible_assembly_error	131579	131580	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001133.9_RagTag	QUAST	possible_assembly_error	131902	131991	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001133.9_RagTag	QUAST	possible_assembly_error	138012	138113	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 22095,scaffold gap is present
+NC_001133.9_RagTag	QUAST	possible_assembly_error	142497	148774	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001134.8_RagTag	QUAST	possible_assembly_error	25762	25993	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6348
+NC_001134.8_RagTag	QUAST	possible_assembly_error	204102	204103	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5921
+NC_001134.8_RagTag	QUAST	possible_assembly_error	235744	235745	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5922
+NC_001134.8_RagTag	QUAST	possible_assembly_error	247484	247585	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 10340,scaffold gap is present
+NC_001134.8_RagTag	QUAST	possible_assembly_error	586540	586553	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001134.8_RagTag	QUAST	possible_assembly_error	589342	589443	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001135.5_RagTag	QUAST	possible_assembly_error	261698	261708	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001135.5_RagTag	QUAST	possible_assembly_error	264591	264658	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	80549	80650	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 899527,scaffold gap is present
+NC_001136.10_RagTag	QUAST	possible_assembly_error	85475	85476	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 832874
+NC_001136.10_RagTag	QUAST	possible_assembly_error	393861	393962	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 62337,scaffold gap is present
+NC_001136.10_RagTag	QUAST	possible_assembly_error	452703	452704	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001136.10_RagTag	QUAST	possible_assembly_error	457706	457707	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 3885
+NC_001136.10_RagTag	QUAST	possible_assembly_error	481856	481957	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 17917,scaffold gap is present
+NC_001136.10_RagTag	QUAST	possible_assembly_error	553441	553442	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001136.10_RagTag	QUAST	possible_assembly_error	777181	777283	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 19454,scaffold gap is present
+NC_001136.10_RagTag	QUAST	possible_assembly_error	867350	867351	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	872705	872726	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	975814	975815	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1030126	1030127	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5392
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1043745	1043746	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1055977	1055998	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1082246	1082247	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1087678	1087679	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1218800	1218801	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1221162	1221263	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1251228	1251230	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1559567	1565679	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag	QUAST	possible_assembly_error	1567013	1569335	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag	QUAST	possible_assembly_error	31330	31331	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag	QUAST	possible_assembly_error	37256	37257	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag	QUAST	possible_assembly_error	102457	102558	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001137.3_RagTag	QUAST	possible_assembly_error	118144	118145	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag	QUAST	possible_assembly_error	118460	118461	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag	QUAST	possible_assembly_error	418109	418110	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6266
+NC_001137.3_RagTag	QUAST	possible_assembly_error	461057	461058	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag	QUAST	possible_assembly_error	461391	461502	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001138.5_RagTag	QUAST	possible_assembly_error	36822	36926	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 19350,scaffold gap is present
+NC_001138.5_RagTag	QUAST	possible_assembly_error	83146	83147	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001138.5_RagTag	QUAST	possible_assembly_error	201486	201488	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag	QUAST	possible_assembly_error	66296	66401	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 136501,scaffold gap is present
+NC_001139.9_RagTag	QUAST	possible_assembly_error	116844	116945	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 18314,scaffold gap is present
+NC_001139.9_RagTag	QUAST	possible_assembly_error	240533	241029	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag	QUAST	possible_assembly_error	241537	241672	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag	QUAST	possible_assembly_error	292487	292592	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 16086,scaffold gap is present
+NC_001139.9_RagTag	QUAST	possible_assembly_error	343695	343696	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001139.9_RagTag	QUAST	possible_assembly_error	363764	363786	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 174216
+NC_001139.9_RagTag	QUAST	possible_assembly_error	364119	364204	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 167156
+NC_001139.9_RagTag	QUAST	possible_assembly_error	365180	365181	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5965
+NC_001139.9_RagTag	QUAST	possible_assembly_error	491848	491849	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 115197
+NC_001139.9_RagTag	QUAST	possible_assembly_error	497763	497764	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -121116
+NC_001139.9_RagTag	QUAST	possible_assembly_error	502760	502761	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5356
+NC_001139.9_RagTag	QUAST	possible_assembly_error	569184	569185	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag	QUAST	possible_assembly_error	575099	575111	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag	QUAST	possible_assembly_error	607184	607185	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 11883
+NC_001139.9_RagTag	QUAST	possible_assembly_error	838541	842645	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -12555
+NC_001139.9_RagTag	QUAST	possible_assembly_error	843967	847333	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001140.6_RagTag	QUAST	possible_assembly_error	84041	87290	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6348
+NC_001140.6_RagTag	QUAST	possible_assembly_error	218516	218517	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 1110
+NC_001140.6_RagTag	QUAST	possible_assembly_error	460013	460014	.	.	.	Name=Extensive misassembly;type=inversion
+NC_001140.6_RagTag	QUAST	possible_assembly_error	460381	460643	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 11464,scaffold gap is present
+NC_001140.6_RagTag	QUAST	possible_assembly_error	513971	517594	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001140.6_RagTag	QUAST	possible_assembly_error	519415	520317	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 206514
+NC_001141.2_RagTag	QUAST	possible_assembly_error	2179	4814	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001141.2_RagTag	QUAST	possible_assembly_error	72487	72588	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 12028,scaffold gap is present
+NC_001141.2_RagTag	QUAST	possible_assembly_error	163119	163124	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5433
+NC_001141.2_RagTag	QUAST	possible_assembly_error	172057	172158	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -21256,scaffold gap is present
+NC_001141.2_RagTag	QUAST	possible_assembly_error	178949	178959	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5433
+NC_001142.9_RagTag	QUAST	possible_assembly_error	17729	18960	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag	QUAST	possible_assembly_error	191267	192243	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag	QUAST	possible_assembly_error	198156	198157	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag	QUAST	possible_assembly_error	421374	421385	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag	QUAST	possible_assembly_error	427287	427288	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag	QUAST	possible_assembly_error	473915	473916	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 11515
+NC_001142.9_RagTag	QUAST	possible_assembly_error	509499	509600	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 25481,scaffold gap is present
+NC_001142.9_RagTag	QUAST	possible_assembly_error	682074	682075	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag	QUAST	possible_assembly_error	682445	682565	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001142.9_RagTag	QUAST	possible_assembly_error	683392	683393	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag	QUAST	possible_assembly_error	687524	687525	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001143.9_RagTag	QUAST	possible_assembly_error	39164	39325	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001143.9_RagTag	QUAST	possible_assembly_error	45203	45204	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001143.9_RagTag	QUAST	possible_assembly_error	132477	132478	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001143.9_RagTag	QUAST	possible_assembly_error	138403	138404	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001143.9_RagTag	QUAST	possible_assembly_error	643817	643818	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001144.5_RagTag	QUAST	possible_assembly_error	197043	197044	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001144.5_RagTag	QUAST	possible_assembly_error	425545	425646	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 41229,scaffold gap is present
+NC_001144.5_RagTag	QUAST	possible_assembly_error	519783	519784	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001144.5_RagTag	QUAST	possible_assembly_error	550790	550891	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 16016,scaffold gap is present
+NC_001144.5_RagTag	QUAST	possible_assembly_error	555545	555546	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5925
+NC_001144.5_RagTag	QUAST	possible_assembly_error	592980	593081	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 36723,scaffold gap is present
+NC_001144.5_RagTag	QUAST	possible_assembly_error	639739	639840	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001144.5_RagTag	QUAST	possible_assembly_error	644919	644920	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001144.5_RagTag	QUAST	possible_assembly_error	792571	792572	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001144.5_RagTag	QUAST	possible_assembly_error	821669	821810	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5303
+NC_001145.3_RagTag	QUAST	possible_assembly_error	81043	81144	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 15505,scaffold gap is present
+NC_001145.3_RagTag	QUAST	possible_assembly_error	151422	151523	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 32250,scaffold gap is present
+NC_001145.3_RagTag	QUAST	possible_assembly_error	296696	296697	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5919
+NC_001145.3_RagTag	QUAST	possible_assembly_error	306446	306447	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001145.3_RagTag	QUAST	possible_assembly_error	839675	839676	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag	QUAST	possible_assembly_error	94592	94593	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag	QUAST	possible_assembly_error	100910	100923	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag	QUAST	possible_assembly_error	126197	126298	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001146.8_RagTag	QUAST	possible_assembly_error	142982	142984	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag	QUAST	possible_assembly_error	458780	458881	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 24417,scaffold gap is present
+NC_001146.8_RagTag	QUAST	possible_assembly_error	540908	540909	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5905
+NC_001146.8_RagTag	QUAST	possible_assembly_error	577124	577170	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6341
+NC_001146.8_RagTag	QUAST	possible_assembly_error	579031	579032	.	.	.	Name=Extensive misassembly;type=inversion
+NC_001146.8_RagTag	QUAST	possible_assembly_error	607341	607342	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -4236
+NC_001146.8_RagTag	QUAST	possible_assembly_error	786353	786354	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag	QUAST	possible_assembly_error	798039	800305	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag	QUAST	possible_assembly_error	805939	805940	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag	QUAST	possible_assembly_error	816588	817592	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag	QUAST	possible_assembly_error	4784	7169	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -2151
+NC_001147.6_RagTag	QUAST	possible_assembly_error	88600	88602	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001147.6_RagTag	QUAST	possible_assembly_error	188192	188193	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag	QUAST	possible_assembly_error	188532	188540	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag	QUAST	possible_assembly_error	189057	189261	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag	QUAST	possible_assembly_error	230023	230035	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag	QUAST	possible_assembly_error	235466	235595	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+NC_001147.6_RagTag	QUAST	possible_assembly_error	497724	497725	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5919
+NC_001147.6_RagTag	QUAST	possible_assembly_error	561055	561056	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag	QUAST	possible_assembly_error	566970	566971	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag	QUAST	possible_assembly_error	608838	608901	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6539
+NC_001147.6_RagTag	QUAST	possible_assembly_error	855450	855451	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001147.6_RagTag	QUAST	possible_assembly_error	935407	935408	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5363
+NC_001148.4_RagTag	QUAST	possible_assembly_error	9672	9673	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001148.4_RagTag	QUAST	possible_assembly_error	48790	49094	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 23605,scaffold gap is present
+NC_001148.4_RagTag	QUAST	possible_assembly_error	396425	396427	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6650
+NC_001148.4_RagTag	QUAST	possible_assembly_error	753249	753250	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001148.4_RagTag	QUAST	possible_assembly_error	773329	773430	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 19915,scaffold gap is present
+NC_001148.4_RagTag	QUAST	possible_assembly_error	866543	866544	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 892497
+NC_001224.1_RagTag	QUAST	possible_assembly_error	2434	2852	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 2390
+NC_001224.1_RagTag	QUAST	possible_assembly_error	8771	10087	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -10030,scaffold gap is present
+NC_001224.1_RagTag	QUAST	possible_assembly_error	10607	12209	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 4811
+NC_001224.1_RagTag	QUAST	possible_assembly_error	12814	12819	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 1010
+NC_001224.1_RagTag	QUAST	possible_assembly_error	49268	50885	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -1584
+ptg000105l	QUAST	possible_assembly_error	1042	2561	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -1486
+ptg000162l	QUAST	possible_assembly_error	687	702	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 2172

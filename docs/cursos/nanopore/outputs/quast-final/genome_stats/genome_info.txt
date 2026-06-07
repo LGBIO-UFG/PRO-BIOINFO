@@ -1,0 +1,59 @@
+reference chromosomes:
+	NC_001133.9 (total length: 230218 bp, total length without N's: 230218 bp, maximal covered length: 188389 bp)
+	NC_001134.8 (total length: 813184 bp, total length without N's: 813184 bp, maximal covered length: 783509 bp)
+	NC_001135.5 (total length: 316620 bp, total length without N's: 316620 bp, maximal covered length: 293368 bp)
+	NC_001136.10 (total length: 1531933 bp, total length without N's: 1531933 bp, maximal covered length: 1469012 bp)
+	NC_001137.3 (total length: 576874 bp, total length without N's: 576874 bp, maximal covered length: 553245 bp)
+	NC_001138.5 (total length: 270161 bp, total length without N's: 270161 bp, maximal covered length: 245721 bp)
+	NC_001139.9 (total length: 1090940 bp, total length without N's: 1090940 bp, maximal covered length: 1067090 bp)
+	NC_001140.6 (total length: 562643 bp, total length without N's: 562643 bp, maximal covered length: 528545 bp)
+	NC_001141.2 (total length: 439888 bp, total length without N's: 439888 bp, maximal covered length: 403410 bp)
+	NC_001142.9 (total length: 745751 bp, total length without N's: 745751 bp, maximal covered length: 707374 bp)
+	NC_001143.9 (total length: 666816 bp, total length without N's: 666816 bp, maximal covered length: 651762 bp)
+	NC_001144.5 (total length: 1078177 bp, total length without N's: 1078177 bp, maximal covered length: 981797 bp)
+	NC_001145.3 (total length: 924431 bp, total length without N's: 924431 bp, maximal covered length: 898182 bp)
+	NC_001146.8 (total length: 784333 bp, total length without N's: 784333 bp, maximal covered length: 754460 bp)
+	NC_001147.6 (total length: 1091291 bp, total length without N's: 1091291 bp, maximal covered length: 1026618 bp)
+	NC_001148.4 (total length: 948066 bp, total length without N's: 948066 bp, maximal covered length: 911855 bp)
+	NC_001224.1 (total length: 85779 bp, total length without N's: 85779 bp, maximal covered length: 38521 bp)
+
+total genome size: 12157105
+
+gap min size: 50
+partial gene/operon min size: 100
+
+
+
+assembly                 | genome    | duplication | gaps      | genes     | partial   | operons   | partial   |
+                         | fraction  | ratio       | number    |           | genes     |           | operons   |
+========================================================================================================================
+Scer1_Flye               | 94.208    | 1.012       | 199       | -         | -         | -         | -         |
+Scer2_Flye               | 54.333    | 1.020       | 631       | -         | -         | -         | -         |
+Scer1_hifiasm            | 88.575    | 1.019       | 284       | -         | -         | -         | -         |
+Scer2_hifiasm            | 0.487     | 0.998       | 33        | -         | -         | -         | -         |
+Scer1_nextdenovo         | 80.259    | 1.015       | 178       | -         | -         | -         | -         |
+Scer1_Flye_medaka        | 94.224    | 1.012       | 196       | -         | -         | -         | -         |
+Scer2_Flye_medaka        | 54.337    | 1.018       | 631       | -         | -         | -         | -         |
+Scer1_hifiasm_medaka     | 88.650    | 1.019       | 286       | -         | -         | -         | -         |
+Scer2_hifiasm_medaka     | 0.487     | 0.999       | 33        | -         | -         | -         | -         |
+Scer1_nextdenovo_medaka  | 80.188    | 1.016       | 178       | -         | -         | -         | -         |
+Scer1_Flye_ragtag        | 94.199    | 1.010       | 195       | -         | -         | -         | -         |
+Scer1_Flye_ragtag_broken | 94.234    | 1.010       | 200       | -         | -         | -         | -         |
+Scer2_Flye_ragtag        | 54.309    | 1.018       | 621       | -         | -         | -         | -         |
+Scer2_Flye_ragtag_broken | 54.337    | 1.018       | 631       | -         | -         | -         | -         |
+Scer1_hifiasm_ragtag     | 88.670    | 1.018       | 287       | -         | -         | -         | -         |
+Scer1_hifiasm_ragtag_bro | 88.630    | 1.019       | 285       | -         | -         | -         | -         |
+Scer2_hifiasm_ragtag     | 0.487     | 0.999       | 33        | -         | -         | -         | -         |
+Scer2_hifiasm_ragtag_bro | 0.487     | 0.999       | 33        | -         | -         | -         | -         |
+Scer1_nextdenovo_ragtag  | 80.184    | 1.016       | 176       | -         | -         | -         | -         |
+Scer1_nextdenovo_ragtag_ | 80.191    | 1.016       | 178       | -         | -         | -         | -         |
+Scer1_Flye_longstitch    | 93.894    | 1.011       | 288       | -         | -         | -         | -         |
+Scer1_Flye_longstitch_br | 93.903    | 1.011       | 291       | -         | -         | -         | -         |
+Scer2_Flye_longstitch    | 54.337    | 1.016       | 631       | -         | -         | -         | -         |
+Scer2_Flye_longstitch_br | 54.336    | 1.015       | 632       | -         | -         | -         | -         |
+Scer1_hifiasm_longstitch | 88.406    | 1.018       | 303       | -         | -         | -         | -         |
+Scer1_hifiasm_longstitch | 88.430    | 1.017       | 308       | -         | -         | -         | -         |
+Scer2_hifiasm_longstitch | 0.487     | 0.999       | 33        | -         | -         | -         | -         |
+Scer2_hifiasm_longstitch | 0.487     | 0.999       | 33        | -         | -         | -         | -         |
+Scer1_nextdenovo_longsti | 79.995    | 1.012       | 232       | -         | -         | -         | -         |
+Scer1_nextdenovo_longsti | 80.001    | 1.012       | 239       | -         | -         | -         | -         |

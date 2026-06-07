@@ -1,0 +1,115 @@
+##gff-version 3
+NC_001133.9_RagTag_2	QUAST	possible_assembly_error	133334	133336	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5930
+NC_001133.9_RagTag_2	QUAST	possible_assembly_error	166045	172320	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001134.8_RagTag_3	QUAST	possible_assembly_error	152880	152881	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5921
+NC_001134.8_RagTag_3	QUAST	possible_assembly_error	185489	185490	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5922
+NC_001134.8_RagTag_7	QUAST	possible_assembly_error	28952	28965	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001135.5_RagTag_1	QUAST	possible_assembly_error	504	853	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001135.5_RagTag_5	QUAST	possible_assembly_error	5906	5907	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001135.5_RagTag_5	QUAST	possible_assembly_error	149144	149156	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag_2	QUAST	possible_assembly_error	42219	42460	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag_3	QUAST	possible_assembly_error	687	707	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag_3	QUAST	possible_assembly_error	1543	1544	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -443169
+NC_001136.10_RagTag_3	QUAST	possible_assembly_error	1875	1876	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 441153
+NC_001136.10_RagTag_6	QUAST	possible_assembly_error	41832	41833	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001136.10_RagTag_6	QUAST	possible_assembly_error	49721	49722	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 3885
+NC_001136.10_RagTag_7	QUAST	possible_assembly_error	87835	87836	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001136.10_RagTag_7	QUAST	possible_assembly_error	308826	308831	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001136.10_RagTag_7	QUAST	possible_assembly_error	309344	309345	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001136.10_RagTag_7	QUAST	possible_assembly_error	406532	406533	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag_7	QUAST	possible_assembly_error	411887	411907	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001136.10_RagTag_7	QUAST	possible_assembly_error	514990	514991	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001136.10_RagTag_7	QUAST	possible_assembly_error	569301	569302	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5392
+NC_001136.10_RagTag_8	QUAST	possible_assembly_error	5916	5917	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 73286
+NC_001136.10_RagTag_8	QUAST	possible_assembly_error	37638	37640	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001136.10_RagTag_9	QUAST	possible_assembly_error	277760	284082	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag_5	QUAST	possible_assembly_error	318666	319012	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag_6	QUAST	possible_assembly_error	7137	7138	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6266
+NC_001137.3_RagTag_6	QUAST	possible_assembly_error	50088	50089	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag_6	QUAST	possible_assembly_error	50422	50533	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001137.3_RagTag_6	QUAST	possible_assembly_error	118787	120643	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001138.5_RagTag_2	QUAST	possible_assembly_error	13727	14959	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001138.5_RagTag_3	QUAST	possible_assembly_error	4535	5224	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001138.5_RagTag_4	QUAST	possible_assembly_error	64639	64640	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001138.5_RagTag_4	QUAST	possible_assembly_error	190310	190326	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_1	QUAST	possible_assembly_error	5161	13384	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_1	QUAST	possible_assembly_error	15746	16328	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_3	QUAST	possible_assembly_error	138416	138516	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_3	QUAST	possible_assembly_error	270010	270011	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_3	QUAST	possible_assembly_error	275441	275442	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_4	QUAST	possible_assembly_error	130984	131480	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_4	QUAST	possible_assembly_error	131988	132123	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	67336	67337	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	87402	87417	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	87757	87842	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	88818	88819	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5965
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	221308	221309	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5356
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	288341	288342	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	294267	294268	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_5	QUAST	possible_assembly_error	326340	326341	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 11883
+NC_001139.9_RagTag_6	QUAST	possible_assembly_error	191287	195391	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -12555
+NC_001139.9_RagTag_6	QUAST	possible_assembly_error	196713	200078	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001139.9_RagTag_6	QUAST	possible_assembly_error	202333	202334	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001140.6_RagTag_1	QUAST	possible_assembly_error	99476	99486	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5433
+NC_001140.6_RagTag_1	QUAST	possible_assembly_error	272392	272393	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001140.6_RagTag_1	QUAST	possible_assembly_error	352178	355425	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6350
+NC_001140.6_RagTag_1	QUAST	possible_assembly_error	472747	472748	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 1997
+NC_001140.6_RagTag_1	QUAST	possible_assembly_error	784053	787676	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001140.6_RagTag_1	QUAST	possible_assembly_error	789497	790399	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 206514
+NC_001141.2_RagTag_2	QUAST	possible_assembly_error	2279	4914	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001141.2_RagTag_3	QUAST	possible_assembly_error	5905	5906	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -44197
+NC_001142.9_RagTag_1	QUAST	possible_assembly_error	5824	5825	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag_1	QUAST	possible_assembly_error	6610	6850	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag_1	QUAST	possible_assembly_error	12470	12471	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag_2	QUAST	possible_assembly_error	183649	184191	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6097
+NC_001142.9_RagTag_2	QUAST	possible_assembly_error	405273	405284	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag_2	QUAST	possible_assembly_error	411186	411187	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001142.9_RagTag_2	QUAST	possible_assembly_error	458959	458960	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 11515
+NC_001143.9_RagTag_1	QUAST	possible_assembly_error	45673	45674	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001144.5_RagTag_1	QUAST	possible_assembly_error	5388	5389	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001144.5_RagTag_1	QUAST	possible_assembly_error	207405	207406	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001144.5_RagTag_3	QUAST	possible_assembly_error	1479	1480	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -29067
+NC_001144.5_RagTag_3	QUAST	possible_assembly_error	30714	30715	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001144.5_RagTag_3	QUAST	possible_assembly_error	82492	82493	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5925
+NC_001144.5_RagTag_5	QUAST	possible_assembly_error	515	516	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -111210
+NC_001144.5_RagTag_5	QUAST	possible_assembly_error	112027	112028	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001144.5_RagTag_5	QUAST	possible_assembly_error	141126	141267	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5303
+NC_001144.5_RagTag_6	QUAST	possible_assembly_error	9264	9265	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001145.3_RagTag_2	QUAST	possible_assembly_error	96783	96792	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001145.3_RagTag_2	QUAST	possible_assembly_error	97128	97338	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001145.3_RagTag_2	QUAST	possible_assembly_error	103601	103698	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5780
+NC_001145.3_RagTag_2	QUAST	possible_assembly_error	258491	258492	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5919
+NC_001145.3_RagTag_2	QUAST	possible_assembly_error	268241	268242	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001145.3_RagTag_3	QUAST	possible_assembly_error	95249	95250	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001145.3_RagTag_3	QUAST	possible_assembly_error	101471	101472	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001145.3_RagTag_5	QUAST	possible_assembly_error	193799	193800	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001146.8_RagTag_3	QUAST	possible_assembly_error	161300	161301	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5905
+NC_001146.8_RagTag_3	QUAST	possible_assembly_error	197507	197553	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6341
+NC_001146.8_RagTag_3	QUAST	possible_assembly_error	199414	199415	.	.	.	Name=Extensive misassembly;type=inversion
+NC_001146.8_RagTag_3	QUAST	possible_assembly_error	227722	227723	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -4236
+NC_001147.6_RagTag_1	QUAST	possible_assembly_error	5312	7376	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -1767
+NC_001147.6_RagTag_2	QUAST	possible_assembly_error	4257	4259	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+NC_001147.6_RagTag_6	QUAST	possible_assembly_error	17197	17198	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5919
+NC_001147.6_RagTag_6	QUAST	possible_assembly_error	80535	80536	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag_6	QUAST	possible_assembly_error	86449	86450	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001147.6_RagTag_6	QUAST	possible_assembly_error	125884	125947	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6539
+NC_001147.6_RagTag_7	QUAST	possible_assembly_error	246513	246514	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+NC_001147.6_RagTag_8	QUAST	possible_assembly_error	24451	24452	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5363
+NC_001147.6_RagTag_8	QUAST	possible_assembly_error	31065	31066	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001148.4_RagTag_1	QUAST	possible_assembly_error	30517	30558	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001148.4_RagTag_1	QUAST	possible_assembly_error	31126	32281	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001148.4_RagTag_1	QUAST	possible_assembly_error	32591	36005	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001148.4_RagTag_3	QUAST	possible_assembly_error	57065	57067	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6650
+NC_001148.4_RagTag_7	QUAST	possible_assembly_error	190227	190228	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001148.4_RagTag_7	QUAST	possible_assembly_error	292506	292507	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+NC_001148.4_RagTag_7	QUAST	possible_assembly_error	326330	326350	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5922
+NC_001148.4_RagTag_7	QUAST	possible_assembly_error	326615	326616	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6277
+NC_001148.4_RagTag_7	QUAST	possible_assembly_error	413766	413767	.	.	.	Name=Extensive misassembly;type=translocation
+NC_001224.1_RagTag_9	QUAST	possible_assembly_error	8456	8571	.	.	.	Name=Extensive misassembly;type=inversion
+NC_001224.1_RagTag_10	QUAST	possible_assembly_error	2254	2310	.	.	.	Name=Extensive misassembly;type=inversion
+NC_001224.1_RagTag_11	QUAST	possible_assembly_error	1454	1474	.	.	.	Name=Extensive misassembly;type=inversion
+NC_001224.1_RagTag_12	QUAST	possible_assembly_error	1861	1862	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -1887
+NC_001224.1_RagTag_12	QUAST	possible_assembly_error	5952	5953	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -4087
+contig_149_1	QUAST	possible_assembly_error	2962	2963	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -2212
+contig_57_1	QUAST	possible_assembly_error	1854	2610	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 10537
+contig_97_1	QUAST	possible_assembly_error	1429	7144	.	.	.	Name=Extensive misassembly;type=translocation

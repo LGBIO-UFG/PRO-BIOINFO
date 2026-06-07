@@ -1,0 +1,10 @@
+[M::mm_idx_gen::0.569*0.53] collected minimizers
+[M::mm_idx_gen::0.714*0.62] sorted minimizers
+[M::main::0.714*0.62] loaded/built the index for 17 target sequence(s)
+[M::mm_mapopt_update::0.730*0.63] mid_occ = 200
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 17
+[M::mm_idx_stat::0.743*0.64] distinct minimizers: 1149976 (98.19% are singletons); average occurrences: 1.058; average spacing: 9.989; total length: 12157105
+[M::worker_pipeline::4.491*0.94] mapped 126 sequences
+[M::main] Version: 2.24-r1122
+[M::main] CMD: /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/quast_corrected_input/Scer1_Flye_ragtag_broken.fasta
+[M::main] Real time: 4.530 sec; CPU: 4.228 sec; Peak RSS: 0.091 GB
