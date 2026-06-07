@@ -1,0 +1,112 @@
+##gff-version 3
+ctg000330-1__ctg000330_0-145726	QUAST	possible_assembly_error	120059	120060	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000330-1__ctg000330_0-145726	QUAST	possible_assembly_error	126345	126346	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000330-1__ctg000330_0-145726	QUAST	possible_assembly_error	136526	142255	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000440-3__ctg000440_4599-91118	QUAST	possible_assembly_error	2727	7549	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -3047
+ctg000690__ctg000690_0-81946	QUAST	possible_assembly_error	23759	23760	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 3885
+ctg000690__ctg000690_0-81946	QUAST	possible_assembly_error	31647	31648	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+ctg000470-14__ctg000470_146657-147256	QUAST	possible_assembly_error	310	311	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 530188
+ctg000380__ctg000380_0-13652	QUAST	possible_assembly_error	11210	11211	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -5647
+ctg000110-1__ctg000110_0-106031	QUAST	possible_assembly_error	2068	18999	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000110-4__ctg000110_107098-108299	QUAST	possible_assembly_error	112	113	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000110-8__ctg000110_112979-113961	QUAST	possible_assembly_error	157	158	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000000-19__ctg000000_39159-77968	QUAST	possible_assembly_error	30085	34188	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -12554
+ctg000340__ctg000340_0-158964	QUAST	possible_assembly_error	118670	118671	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5919
+ctg000340__ctg000340_0-158964	QUAST	possible_assembly_error	128420	128421	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+ctg000160-18__ctg000160_340117-340986	QUAST	possible_assembly_error	131	132	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000160-18__ctg000160_340117-340986	QUAST	possible_assembly_error	448	449	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000550-1__ctg000550_0-18014	QUAST	possible_assembly_error	17474	17609	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000150__ctg000150_0-394516	QUAST	possible_assembly_error	229839	229840	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+ctg000250__ctg000250_0-67850	QUAST	possible_assembly_error	47275	47316	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000250__ctg000250_0-67850	QUAST	possible_assembly_error	47884	49039	.	.	.	Name=Extensive misassembly;type=translocation
+ctg000250__ctg000250_0-67850	QUAST	possible_assembly_error	49349	52763	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_1	QUAST	possible_assembly_error	309903	309904	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6266
+ntLink_1	QUAST	possible_assembly_error	352852	352853	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_1	QUAST	possible_assembly_error	353186	353297	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_1	QUAST	possible_assembly_error	421553	423409	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_2	QUAST	possible_assembly_error	92066	92067	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5905
+ntLink_2	QUAST	possible_assembly_error	128275	128321	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6341
+ntLink_2	QUAST	possible_assembly_error	130183	130184	.	.	.	Name=Extensive misassembly;type=inversion
+ntLink_2	QUAST	possible_assembly_error	158494	158495	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -4236
+ntLink_2	QUAST	possible_assembly_error	333184	333666	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+ntLink_2	QUAST	possible_assembly_error	349334	351600	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_3	QUAST	possible_assembly_error	181760	181761	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 1110
+ntLink_3	QUAST	possible_assembly_error	300994	304244	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6347
+ntLink_4	QUAST	possible_assembly_error	245880	245881	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+ntLink_5	QUAST	possible_assembly_error	103372	103373	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+ntLink_5	QUAST	possible_assembly_error	137255	137262	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_6	QUAST	possible_assembly_error	26029	26031	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_6	QUAST	possible_assembly_error	31943	31944	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_6	QUAST	possible_assembly_error	252543	252554	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_6	QUAST	possible_assembly_error	258456	258457	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_7	QUAST	possible_assembly_error	3976	3977	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_10	QUAST	possible_assembly_error	3396	3469	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_10	QUAST	possible_assembly_error	3807	3808	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_10	QUAST	possible_assembly_error	9170	9265	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_10	QUAST	possible_assembly_error	142457	143932	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 13264
+ntLink_10	QUAST	possible_assembly_error	144606	145391	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 206289
+ntLink_12	QUAST	possible_assembly_error	42305	42306	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_12	QUAST	possible_assembly_error	48231	48232	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_13	QUAST	possible_assembly_error	234880	234893	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_14	QUAST	possible_assembly_error	62942	63527	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_14	QUAST	possible_assembly_error	65871	74202	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+ntLink_15	QUAST	possible_assembly_error	59060	59061	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 11883
+ntLink_15	QUAST	possible_assembly_error	91134	91146	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_15	QUAST	possible_assembly_error	97060	97061	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_15	QUAST	possible_assembly_error	164108	164109	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5356
+ntLink_15	QUAST	possible_assembly_error	169105	169106	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -121116
+ntLink_15	QUAST	possible_assembly_error	175020	175021	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 115197
+ntLink_15	QUAST	possible_assembly_error	302573	302574	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5965
+ntLink_15	QUAST	possible_assembly_error	303543	303628	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_15	QUAST	possible_assembly_error	303968	303983	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_15	QUAST	possible_assembly_error	324064	324273	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6267
+ntLink_18	QUAST	possible_assembly_error	5924	5925	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_18	QUAST	possible_assembly_error	16391	19748	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_18	QUAST	possible_assembly_error	21070	25175	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -12556
+ntLink_18	QUAST	possible_assembly_error	28786	28787	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_19	QUAST	possible_assembly_error	5121	5122	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_19	QUAST	possible_assembly_error	136147	136148	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_20	QUAST	possible_assembly_error	5415	5417	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_20	QUAST	possible_assembly_error	131170	131171	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+ntLink_21	QUAST	possible_assembly_error	4302	4384	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 523496
+ntLink_21	QUAST	possible_assembly_error	4696	4717	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 73284
+ntLink_21	QUAST	possible_assembly_error	10642	10643	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -79217
+ntLink_21	QUAST	possible_assembly_error	24258	24259	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5392
+ntLink_21	QUAST	possible_assembly_error	78576	78577	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5931
+ntLink_21	QUAST	possible_assembly_error	181666	182109	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_21	QUAST	possible_assembly_error	187471	187472	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_21	QUAST	possible_assembly_error	284700	284701	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+ntLink_22	QUAST	possible_assembly_error	12673	13953	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+ntLink_22	QUAST	possible_assembly_error	19044	19491	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+ntLink_22	QUAST	possible_assembly_error	162739	162749	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_24	QUAST	possible_assembly_error	42684	43373	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_24	QUAST	possible_assembly_error	47933	49385	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+ntLink_25	QUAST	possible_assembly_error	16915	16916	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_25	QUAST	possible_assembly_error	22829	22830	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_27	QUAST	possible_assembly_error	106445	106446	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5964
+ntLink_27	QUAST	possible_assembly_error	135543	135684	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5303
+ntLink_27	QUAST	possible_assembly_error	157952	158457	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+ntLink_28	QUAST	possible_assembly_error	175814	175824	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5433
+ntLink_29	QUAST	possible_assembly_error	59355	59356	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5919
+ntLink_29	QUAST	possible_assembly_error	161380	161443	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6539
+ntLink_31	QUAST	possible_assembly_error	15836	15837	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+ntLink_33	QUAST	possible_assembly_error	16769	23044	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_34	QUAST	possible_assembly_error	56583	56585	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 6650
+ntLink_35	QUAST	possible_assembly_error	748	1099	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_35	QUAST	possible_assembly_error	1459	1479	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_35	QUAST	possible_assembly_error	2316	2317	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -443169
+ntLink_35	QUAST	possible_assembly_error	2648	2649	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 441153
+ntLink_36	QUAST	possible_assembly_error	36533	36545	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_36	QUAST	possible_assembly_error	41977	41978	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_36	QUAST	possible_assembly_error	68228	68229	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_38	QUAST	possible_assembly_error	4566	4567	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 894764
+ntLink_39	QUAST	possible_assembly_error	8835	9839	.	.	.	Name=Extensive misassembly;type=translocation;Note=scaffold gap is present
+ntLink_41	QUAST	possible_assembly_error	29236	29237	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923
+ntLink_41	QUAST	possible_assembly_error	81048	81049	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5925
+ntLink_43	QUAST	possible_assembly_error	58657	62280	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_43	QUAST	possible_assembly_error	64101	65003	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 206514
+ntLink_43	QUAST	possible_assembly_error	75011	75294	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_45	QUAST	possible_assembly_error	27532	27533	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5921
+ntLink_46	QUAST	possible_assembly_error	13076	13141	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_46	QUAST	possible_assembly_error	18575	18576	.	.	.	Name=Extensive misassembly;type=translocation
+ntLink_47	QUAST	possible_assembly_error	77873	77875	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 5923

@@ -1,0 +1,805 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+29403	74317	10	44884	NC_001133.9	NC_001133.9_RagTag	98.9		True
+fake: scaffold gap size wrong estimation (extensive)
+77415	111502	44985	79065	NC_001133.9	NC_001133.9_RagTag	99.74		True
+fake: scaffold gap size wrong estimation (extensive)
+113294	160233	79166	126121	NC_001133.9	NC_001133.9_RagTag	99.45		True
+translocation
+205288	210647	131579	126216	NC_001141.2	NC_001133.9_RagTag	98.97		True
+translocation
+856232	856554	131902	131580	NC_001148.4	NC_001133.9_RagTag	100.0		True
+translocation
+166253	172274	131991	138012	NC_001133.9	NC_001133.9_RagTag	99.5		True
+relocation, inconsistency = 22095, scaffold gap is present
+194470	198850	138113	142497	NC_001133.9	NC_001133.9_RagTag	97.13		True
+translocation
+527275	542178	148774	164050	NC_001140.6	NC_001133.9_RagTag	97.04		True
+CONTIG	NC_001133.9_RagTag	164050	misassembled
+7494	9087	3937	5537	NC_001134.8	NC_001134.8_RagTag	98.08		True
+local misassembly
+9425	29643	5538	25762	NC_001134.8	NC_001134.8_RagTag	99.87		True
+relocation, inconsistency = 6348
+36222	37306	25993	27079	NC_001134.8	NC_001134.8_RagTag	99.26		True
+fake: scaffold gap size wrong estimation (extensive)
+43290	67380	27181	51271	NC_001134.8	NC_001134.8_RagTag	99.93		True
+fake: scaffold gap size wrong estimation (extensive)
+68628	197385	51372	180124	NC_001134.8	NC_001134.8_RagTag	99.42		True
+local misassembly
+197381	221031	180457	204102	NC_001134.8	NC_001134.8_RagTag	99.02		True
+relocation, inconsistency = 5921
+226953	254459	204103	231600	NC_001134.8	NC_001134.8_RagTag	99.36		True
+fake: scaffold gap size wrong estimation (local)
+255522	259571	231701	235744	NC_001134.8	NC_001134.8_RagTag	98.94		True
+relocation, inconsistency = 5922
+265494	277236	235745	247484	NC_001134.8	NC_001134.8_RagTag	99.64		True
+relocation, inconsistency = 10340, scaffold gap is present
+287677	352491	247585	312406	NC_001134.8	NC_001134.8_RagTag	99.52		True
+fake: scaffold gap size wrong estimation (extensive)
+353825	462997	312507	421688	NC_001134.8	NC_001134.8_RagTag	99.29		True
+fake: scaffold gap size wrong estimation (extensive)
+464558	496858	421789	454100	NC_001134.8	NC_001134.8_RagTag	99.21		True
+fake: scaffold gap size wrong estimation (extensive)
+504807	540723	454201	490138	NC_001134.8	NC_001134.8_RagTag	99.13		True
+fake: scaffold gap size wrong estimation (extensive)
+542013	559073	490241	507295	NC_001134.8	NC_001134.8_RagTag	99.03		True
+fake: scaffold gap size wrong estimation (extensive)
+561905	613003	507399	558496	NC_001134.8	NC_001134.8_RagTag	99.52		True
+fake: scaffold gap size wrong estimation (extensive)
+615796	643488	558597	586295	NC_001134.8	NC_001134.8_RagTag	99.28		True
+local misassembly
+643865	644109	586296	586540	NC_001134.8	NC_001134.8_RagTag	98.02		True
+translocation
+978909	981698	589342	586553	NC_001144.5	NC_001134.8_RagTag	99.61		True
+translocation, scaffold gap is present
+646355	779669	589443	722754	NC_001134.8	NC_001134.8_RagTag	99.6		True
+fake: scaffold gap size wrong estimation (extensive)
+781232	812678	722859	754318	NC_001134.8	NC_001134.8_RagTag	99.47		True
+CONTIG	NC_001134.8_RagTag	754331	misassembled
+7117	52346	1	45252	NC_001135.5	NC_001135.5_RagTag	99.33		True
+fake: scaffold gap size wrong estimation (extensive)
+56724	62887	45353	51516	NC_001135.5	NC_001135.5_RagTag	99.53		True
+fake: scaffold gap size wrong estimation (local)
+63191	82700	51618	71098	NC_001135.5	NC_001135.5_RagTag	99.55		True
+local misassembly
+83043	84069	71099	72125	NC_001135.5	NC_001135.5_RagTag	99.13		True
+fake: scaffold gap size wrong estimation (extensive)
+94310	124133	72585	102415	NC_001135.5	NC_001135.5_RagTag	99.45		True
+local misassembly
+124471	136922	102416	114866	NC_001135.5	NC_001135.5_RagTag	99.91		True
+fake: scaffold gap size wrong estimation (extensive)
+140003	168600	114968	143572	NC_001135.5	NC_001135.5_RagTag	99.8		True
+local misassembly
+168940	169201	143573	143834	NC_001135.5	NC_001135.5_RagTag	99.63		True
+local misassembly
+169545	200103	143835	174418	NC_001135.5	NC_001135.5_RagTag	99.78		True
+local misassembly
+200851	247791	175061	222001	NC_001135.5	NC_001135.5_RagTag	99.63		True
+fake: scaffold gap size wrong estimation (extensive)
+255969	268945	222102	235063	NC_001135.5	NC_001135.5_RagTag	99.43		True
+local misassembly
+268619	295259	235064	261698	NC_001135.5	NC_001135.5_RagTag	99.63		True
+translocation
+871819	874502	261708	264391	NC_001136.10	NC_001135.5_RagTag	99.33		True
+fake: scaffold gap size wrong estimation (extensive)
+877681	877779	264493	264591	NC_001136.10	NC_001135.5_RagTag	97.98		True
+translocation
+295227	307033	264658	276471	NC_001135.5	NC_001135.5_RagTag	99.5		True
+CONTIG	NC_001135.5_RagTag	276471	misassembled
+331	20525	2	20185	NC_001136.10	NC_001136.10_RagTag	98.85		True
+fake: scaffold gap size wrong estimation (local)
+21126	45535	20456	44862	NC_001136.10	NC_001136.10_RagTag	99.85		True
+fake: scaffold gap size wrong estimation (local)
+45885	81543	44963	80549	NC_001136.10	NC_001136.10_RagTag	98.92		True
+relocation, inconsistency = 899527, scaffold gap is present
+981183	986008	85475	80650	NC_001136.10	NC_001136.10_RagTag	99.48		True
+relocation, inconsistency = 832874
+83414	148308	85476	150299	NC_001136.10	NC_001136.10_RagTag	99.25		True
+fake: scaffold gap size wrong estimation (extensive)
+152709	225517	150402	223207	NC_001136.10	NC_001136.10_RagTag	99.28		True
+fake: scaffold gap size wrong estimation (extensive)
+227310	339153	223311	335028	NC_001136.10	NC_001136.10_RagTag	98.79		True
+fake: scaffold gap size wrong estimation (extensive)
+329717	343579	335193	349061	NC_001136.10	NC_001136.10_RagTag	99.27		True
+fake: scaffold gap size wrong estimation (local)
+344494	384484	349162	388856	NC_001136.10	NC_001136.10_RagTag	98.56		True
+local misassembly
+384528	384832	389386	389690	NC_001136.10	NC_001136.10_RagTag	99.02		True
+indel: indel (> 5bp)
+385051	389200	389726	393861	NC_001136.10	NC_001136.10_RagTag	98.05		True
+relocation, inconsistency = 62337, scaffold gap is present
+451638	461545	393962	403864	NC_001136.10	NC_001136.10_RagTag	99.21		True
+fake: scaffold gap size wrong estimation (extensive)
+464995	513688	403969	452703	NC_001136.10	NC_001136.10_RagTag	99.47		True
+relocation, inconsistency = 5964
+519653	520629	452704	453679	NC_001136.10	NC_001136.10_RagTag	99.7		True
+fake: scaffold gap size wrong estimation (extensive)
+523606	527530	453780	457706	NC_001136.10	NC_001136.10_RagTag	99.34		True
+relocation, inconsistency = 3885
+531416	555703	457707	481856	NC_001136.10	NC_001136.10_RagTag	99.09		True
+relocation, inconsistency = 17917, scaffold gap is present
+573721	603926	481957	512340	NC_001136.10	NC_001136.10_RagTag	98.63		True
+fake: scaffold gap size wrong estimation (local)
+604359	645496	512441	553441	NC_001136.10	NC_001136.10_RagTag	99.4		True
+relocation, inconsistency = 5923
+651420	748931	553442	650956	NC_001136.10	NC_001136.10_RagTag	99.58		True
+fake: scaffold gap size wrong estimation (extensive)
+747621	777683	651057	681689	NC_001136.10	NC_001136.10_RagTag	97.39		True
+fake: scaffold gap size wrong estimation (extensive)
+776035	801789	681790	707590	NC_001136.10	NC_001136.10_RagTag	99.41		True
+fake: scaffold gap size wrong estimation (local)
+802290	871795	707691	777181	NC_001136.10	NC_001136.10_RagTag	99.7		True
+relocation, inconsistency = 19454, scaffold gap is present
+891351	945954	777283	831875	NC_001136.10	NC_001136.10_RagTag	99.77		True
+local misassembly
+946301	981709	831876	867350	NC_001136.10	NC_001136.10_RagTag	99.34		True
+translocation
+478592	483952	867351	872705	NC_001142.9	NC_001136.10_RagTag	99.03		True
+translocation
+992699	1095766	872726	975814	NC_001136.10	NC_001136.10_RagTag	99.56		True
+relocation, inconsistency = 5931
+1101698	1156012	975815	1030126	NC_001136.10	NC_001136.10_RagTag	99.66		True
+relocation, inconsistency = 5392
+1161405	1174984	1030127	1043745	NC_001136.10	NC_001136.10_RagTag	98.81		True
+translocation
+472464	478364	1043746	1049650	NC_001142.9	NC_001136.10_RagTag	97.31		True
+local misassembly
+478051	483952	1050082	1055977	NC_001142.9	NC_001136.10_RagTag	97.44		True
+translocation
+274658	300919	1082246	1055998	NC_001147.6	NC_001136.10_RagTag	99.43		True
+translocation
+205219	210647	1082247	1087678	NC_001141.2	NC_001136.10_RagTag	98.97		True
+translocation
+115199	205508	1177920	1087679	NC_001139.9	NC_001136.10_RagTag	99.26		True
+local misassembly
+111531	115203	1181953	1178255	NC_001139.9	NC_001136.10_RagTag	98.11		True
+local misassembly
+74085	110797	1218800	1182103	NC_001139.9	NC_001136.10_RagTag	99.28		True
+translocation
+847979	850340	1221162	1218801	NC_001148.4	NC_001136.10_RagTag	99.28		True
+translocation, scaffold gap is present
+1176736	1206698	1221263	1251228	NC_001136.10	NC_001136.10_RagTag	99.7		True
+relocation, inconsistency = 5923
+1212623	1291006	1251230	1329619	NC_001136.10	NC_001136.10_RagTag	99.55		True
+fake: scaffold gap size wrong estimation (local)
+1291276	1352643	1329733	1391638	NC_001136.10	NC_001136.10_RagTag	98.81		True
+local misassembly
+1352981	1412260	1391639	1450907	NC_001136.10	NC_001136.10_RagTag	99.73		True
+fake: scaffold gap size wrong estimation (local)
+1412437	1430176	1451008	1468744	NC_001136.10	NC_001136.10_RagTag	99.75		True
+fake: scaffold gap size wrong estimation (extensive)
+1432670	1523611	1468845	1559567	NC_001136.10	NC_001136.10_RagTag	98.69		True
+translocation
+7271	8605	1567013	1565679	NC_001133.9	NC_001136.10_RagTag	96.48		True
+translocation
+6542	8472	1571282	1569335	NC_001148.4	NC_001136.10_RagTag	96.72		True
+CONTIG	NC_001136.10_RagTag	1571335	misassembled
+31688	63020	1	31330	NC_001137.3	NC_001137.3_RagTag	99.37		True
+translocation
+1095767	1101692	31331	37256	NC_001136.10	NC_001137.3_RagTag	98.79		True
+translocation
+63016	82713	37257	56934	NC_001137.3	NC_001137.3_RagTag	99.24		True
+fake: scaffold gap size wrong estimation (extensive)
+84776	116040	57035	88315	NC_001137.3	NC_001137.3_RagTag	99.68		True
+fake: scaffold gap size wrong estimation (extensive)
+118454	132490	88438	102457	NC_001137.3	NC_001137.3_RagTag	99.45		True
+translocation, scaffold gap is present
+427239	442820	102558	118144	NC_001146.8	NC_001137.3_RagTag	99.75		True
+translocation
+434423	434738	118145	118460	NC_001136.10	NC_001137.3_RagTag	97.79		True
+translocation
+136026	198440	118461	180757	NC_001137.3	NC_001137.3_RagTag	99.16		True
+fake: scaffold gap size wrong estimation (local)
+199009	207337	180858	189183	NC_001137.3	NC_001137.3_RagTag	99.36		True
+local misassembly
+207344	249929	189536	232165	NC_001137.3	NC_001137.3_RagTag	99.25		True
+local misassembly
+250276	261099	232166	242992	NC_001137.3	NC_001137.3_RagTag	99.47		True
+fake: scaffold gap size wrong estimation (local)
+260937	365189	243096	347339	NC_001137.3	NC_001137.3_RagTag	99.71		True
+fake: scaffold gap size wrong estimation (local)
+365782	430994	347441	412587	NC_001137.3	NC_001137.3_RagTag	99.35		True
+fake: scaffold gap size wrong estimation (extensive)
+438481	443369	413219	418109	NC_001137.3	NC_001137.3_RagTag	98.96		True
+relocation, inconsistency = 6266
+449636	449992	418110	418466	NC_001137.3	NC_001137.3_RagTag	100.0		True
+local misassembly
+449987	487833	418798	456644	NC_001137.3	NC_001137.3_RagTag	99.6		True
+local misassembly
+488171	492583	456645	461057	NC_001137.3	NC_001137.3_RagTag	99.25		True
+translocation
+817391	817724	461391	461058	NC_001139.9	NC_001137.3_RagTag	99.4		True
+translocation
+498422	560460	461502	523521	NC_001137.3	NC_001137.3_RagTag	99.26		True
+CONTIG	NC_001137.3_RagTag	523521	misassembled
+31882	32507	1	626	NC_001138.5	NC_001138.5_RagTag	98.72		True
+local misassembly
+32755	68953	628	36822	NC_001138.5	NC_001138.5_RagTag	99.38		True
+relocation, inconsistency = 19350, scaffold gap is present
+88407	105411	36926	54009	NC_001138.5	NC_001138.5_RagTag	97.78		True
+fake: scaffold gap size wrong estimation (extensive)
+109277	111255	54110	56083	NC_001138.5	NC_001138.5_RagTag	98.84		True
+local misassembly
+111251	137912	56420	83146	NC_001138.5	NC_001138.5_RagTag	99.19		True
+relocation, inconsistency = 5964
+143877	167688	83147	106957	NC_001138.5	NC_001138.5_RagTag	99.07		True
+fake: scaffold gap size wrong estimation (extensive)
+175096	204996	107061	136944	NC_001138.5	NC_001138.5_RagTag	98.91		True
+local misassembly
+205929	210354	137412	141844	NC_001138.5	NC_001138.5_RagTag	98.83		True
+fake: scaffold gap size wrong estimation (local)
+210582	270111	141945	201486	NC_001138.5	NC_001138.5_RagTag	99.54		True
+translocation
+5748	11205	206934	201488	NC_001144.5	NC_001138.5_RagTag	98.76		True
+CONTIG	NC_001138.5_RagTag	207036	misassembled
+666	52872	1	52244	NC_001139.9	NC_001139.9_RagTag	99.01		True
+fake: scaffold gap size wrong estimation (extensive)
+55255	69195	52345	66296	NC_001139.9	NC_001139.9_RagTag	99.45		True
+relocation, inconsistency = 136501, scaffold gap is present
+205801	256241	66401	116844	NC_001139.9	NC_001139.9_RagTag	99.63		True
+relocation, inconsistency = 18314, scaffold gap is present
+274656	326378	116945	168595	NC_001139.9	NC_001139.9_RagTag	99.15		True
+fake: scaffold gap size wrong estimation (local)
+326200	345913	168696	188437	NC_001139.9	NC_001139.9_RagTag	99.63		True
+fake: scaffold gap size wrong estimation (extensive)
+348090	393677	188538	234103	NC_001139.9	NC_001139.9_RagTag	99.7		True
+fake: scaffold gap size wrong estimation (extensive)
+395289	401616	234204	240533	NC_001139.9	NC_001139.9_RagTag	99.37		True
+translocation
+987221	987395	241202	241029	NC_001136.10	NC_001139.9_RagTag	97.14		True
+indel: indel (> 5bp)
+986797	987132	241537	241203	NC_001136.10	NC_001139.9_RagTag	98.51		True
+translocation
+405416	422853	241672	259101	NC_001139.9	NC_001139.9_RagTag	99.51		True
+fake: scaffold gap size wrong estimation (extensive)
+424255	446273	259202	281220	NC_001139.9	NC_001139.9_RagTag	99.46		True
+fake: scaffold gap size wrong estimation (extensive)
+454859	466028	281321	292487	NC_001139.9	NC_001139.9_RagTag	99.44		True
+relocation, inconsistency = 16086, scaffold gap is present
+482219	529510	292592	339875	NC_001139.9	NC_001139.9_RagTag	99.43		True
+fake: scaffold gap size wrong estimation (extensive)
+531680	535210	339976	343487	NC_001139.9	NC_001139.9_RagTag	98.87		True
+local misassembly
+535548	535754	343488	343695	NC_001139.9	NC_001139.9_RagTag	99.08		True
+relocation, inconsistency = 5931
+541686	561744	343696	363764	NC_001139.9	NC_001139.9_RagTag	99.33		True
+relocation, inconsistency = 174216
+735982	736315	364119	363786	NC_001139.9	NC_001139.9_RagTag	100.0		True
+relocation, inconsistency = 167156
+567761	568735	364204	365180	NC_001139.9	NC_001139.9_RagTag	97.66		True
+relocation, inconsistency = 5965
+574701	613457	365181	403942	NC_001139.9	NC_001139.9_RagTag	99.75		True
+fake: scaffold gap size wrong estimation (local)
+613121	640502	404043	431432	NC_001139.9	NC_001139.9_RagTag	99.72		True
+fake: scaffold gap size wrong estimation (extensive)
+641896	702195	431534	491848	NC_001139.9	NC_001139.9_RagTag	99.78		True
+relocation, inconsistency = 115197
+817393	823307	491849	497763	NC_001139.9	NC_001139.9_RagTag	97.89		True
+relocation, inconsistency = -121116
+702192	707189	497764	502760	NC_001139.9	NC_001139.9_RagTag	99.76		True
+relocation, inconsistency = 5356
+712546	745226	502761	535443	NC_001139.9	NC_001139.9_RagTag	99.65		True
+fake: scaffold gap size wrong estimation (local)
+745945	779522	535544	569184	NC_001139.9	NC_001139.9_RagTag	99.55		True
+translocation
+1095767	1101681	569185	575099	NC_001136.10	NC_001139.9_RagTag	99.59		True
+translocation
+779518	811440	575111	607184	NC_001139.9	NC_001139.9_RagTag	98.9		True
+relocation, inconsistency = 11883
+823324	882395	607185	666204	NC_001139.9	NC_001139.9_RagTag	99.45		True
+fake: scaffold gap size wrong estimation (extensive)
+884895	931165	666336	712612	NC_001139.9	NC_001139.9_RagTag	99.46		True
+local misassembly
+931541	984111	712613	765176	NC_001139.9	NC_001139.9_RagTag	99.44		True
+fake: scaffold gap size wrong estimation (extensive)
+988407	999736	765277	776603	NC_001139.9	NC_001139.9_RagTag	99.18		True
+fake: scaffold gap size wrong estimation (local)
+1000345	1004151	776704	780511	NC_001139.9	NC_001139.9_RagTag	99.42		True
+fake: scaffold gap size wrong estimation (extensive)
+1011444	1043533	780612	812698	NC_001139.9	NC_001139.9_RagTag	99.77		True
+fake: scaffold gap size wrong estimation (extensive)
+1050375	1076129	812799	838541	NC_001139.9	NC_001139.9_RagTag	99.51		True
+relocation, inconsistency = -12555
+1067678	1069000	842645	843967	NC_001139.9	NC_001139.9_RagTag	97.43		True
+translocation
+802638	813117	847333	857818	NC_001134.8	NC_001139.9_RagTag	95.39		True
+CONTIG	NC_001139.9_RagTag	857855	misassembled
+6281	83352	2	77123	NC_001140.6	NC_001140.6_RagTag	98.89		True
+fake: scaffold gap size wrong estimation (extensive)
+78553	85385	77224	84041	NC_001140.6	NC_001140.6_RagTag	95.9		True
+relocation, inconsistency = 6348
+94982	116424	87290	108735	NC_001140.6	NC_001140.6_RagTag	99.38		True
+local misassembly
+116762	133122	108736	125104	NC_001140.6	NC_001140.6_RagTag	99.2		True
+local misassembly
+133124	201995	125450	194367	NC_001140.6	NC_001140.6_RagTag	98.89		True
+fake: scaffold gap size wrong estimation (extensive)
+197334	213255	199059	214976	NC_001140.6	NC_001140.6_RagTag	99.64		True
+local misassembly
+212368	213255	214977	215861	NC_001140.6	NC_001140.6_RagTag	98.65		True
+local misassembly
+212368	213255	215862	216746	NC_001140.6	NC_001140.6_RagTag	98.65		True
+local misassembly
+212368	213255	216747	217631	NC_001140.6	NC_001140.6_RagTag	98.65		True
+local misassembly
+212368	213255	217632	218516	NC_001140.6	NC_001140.6_RagTag	98.65		True
+relocation, inconsistency = 1110
+214366	215253	218517	219402	NC_001140.6	NC_001140.6_RagTag	98.54		True
+local misassembly
+214366	215253	219403	220287	NC_001140.6	NC_001140.6_RagTag	98.65		True
+local misassembly
+214366	389012	220288	394981	NC_001140.6	NC_001140.6_RagTag	99.51		True
+local misassembly
+389510	391595	395487	397573	NC_001140.6	NC_001140.6_RagTag	99.04		True
+fake: scaffold gap size wrong estimation (extensive)
+398214	460550	397674	460013	NC_001140.6	NC_001140.6_RagTag	99.69		True
+inversion
+460061	460432	460381	460014	NC_001140.6	NC_001140.6_RagTag	96.35		True
+relocation, inconsistency = 11464, scaffold gap is present
+472158	525440	460643	513971	NC_001140.6	NC_001140.6_RagTag	99.34		True
+translocation
+12745	13051	517904	517594	NC_001133.9	NC_001140.6_RagTag	96.78		True
+local misassembly
+11915	12517	519165	518563	NC_001133.9	NC_001140.6_RagTag	96.68		True
+indel: indel (> 5bp)
+11692	11914	519415	519193	NC_001133.9	NC_001140.6_RagTag	95.07		True
+relocation, inconsistency = 206514
+219330	222668	520317	523657	NC_001133.9	NC_001140.6_RagTag	98.92		True
+CONTIG	NC_001140.6_RagTag	523657	misassembled
+28989	29357	1810	2179	NC_001147.6	NC_001141.2_RagTag	98.92		True
+translocation
+26039	30398	4814	9191	NC_001141.2	NC_001141.2_RagTag	96.77		True
+local misassembly
+30635	93942	9192	72487	NC_001141.2	NC_001141.2_RagTag	99.09		True
+relocation, inconsistency = 12028, scaffold gap is present
+106071	130735	72588	97240	NC_001141.2	NC_001141.2_RagTag	99.38		True
+fake: scaffold gap size wrong estimation (extensive)
+140484	169663	97341	126725	NC_001141.2	NC_001141.2_RagTag	98.49		True
+fake: scaffold gap size wrong estimation (local)
+169533	187575	126849	144928	NC_001141.2	NC_001141.2_RagTag	99.26		True
+fake: scaffold gap size wrong estimation (local)
+187431	196653	145091	154324	NC_001141.2	NC_001141.2_RagTag	98.68		True
+local misassembly
+196652	205210	154566	163119	NC_001141.2	NC_001141.2_RagTag	99.04		True
+relocation, inconsistency = 5433
+210648	219573	163124	172057	NC_001141.2	NC_001141.2_RagTag	98.93		True
+relocation, inconsistency = -21256, scaffold gap is present
+198418	205208	172158	178949	NC_001141.2	NC_001141.2_RagTag	99.18		True
+relocation, inconsistency = 5433
+210651	246214	178959	214513	NC_001141.2	NC_001141.2_RagTag	99.59		True
+local misassembly
+246553	324494	214514	292505	NC_001141.2	NC_001141.2_RagTag	99.38		True
+local misassembly
+324860	339081	292875	307108	NC_001141.2	NC_001141.2_RagTag	99.0		True
+fake: scaffold gap size wrong estimation (local)
+339952	381260	307209	348505	NC_001141.2	NC_001141.2_RagTag	99.66		True
+fake: scaffold gap size wrong estimation (extensive)
+388002	390678	348638	351296	NC_001141.2	NC_001141.2_RagTag	97.53		True
+indel: indel (> 5bp)
+390810	390973	351297	351459	NC_001141.2	NC_001141.2_RagTag	98.17		True
+indel: indel (> 5bp)
+391034	391150	351460	351575	NC_001141.2	NC_001141.2_RagTag	98.29		True
+local misassembly
+392705	392833	352573	352701	NC_001141.2	NC_001141.2_RagTag	97.67		True
+indel: indel (> 5bp)
+393076	399778	352818	359525	NC_001141.2	NC_001141.2_RagTag	98.23		True
+fake: scaffold gap size wrong estimation (extensive)
+400963	434186	359626	392927	NC_001141.2	NC_001141.2_RagTag	98.42		True
+CONTIG	NC_001141.2_RagTag	394263	misassembled
+16737	30084	4361	17729	NC_001138.5	NC_001142.9_RagTag	98.54		True
+translocation
+24352	188838	18960	183439	NC_001142.9	NC_001142.9_RagTag	99.23		True
+fake: scaffold gap size wrong estimation (local)
+189756	197485	183540	191267	NC_001142.9	NC_001142.9_RagTag	99.44		True
+translocation
+96610	102522	192243	198156	NC_001146.8	NC_001142.9_RagTag	99.97		True
+translocation
+204646	354637	198157	348213	NC_001142.9	NC_001142.9_RagTag	99.55		True
+local misassembly
+355175	396845	348754	390437	NC_001142.9	NC_001142.9_RagTag	99.17		True
+fake: scaffold gap size wrong estimation (extensive)
+394320	416786	390544	413125	NC_001142.9	NC_001142.9_RagTag	98.55		True
+local misassembly
+416782	424702	413458	421374	NC_001142.9	NC_001142.9_RagTag	99.39		True
+translocation
+535761	541675	427287	421385	NC_001139.9	NC_001142.9_RagTag	98.62		True
+translocation
+424697	469445	427288	472046	NC_001142.9	NC_001142.9_RagTag	99.43		True
+fake: scaffold gap size wrong estimation (extensive)
+470689	472457	472147	473915	NC_001142.9	NC_001142.9_RagTag	99.21		True
+relocation, inconsistency = 11515
+483973	517995	473916	507969	NC_001142.9	NC_001142.9_RagTag	99.35		True
+local misassembly
+517990	519184	508300	509499	NC_001142.9	NC_001142.9_RagTag	98.42		True
+relocation, inconsistency = 25481, scaffold gap is present
+544766	628811	509600	593615	NC_001142.9	NC_001142.9_RagTag	99.46		True
+local misassembly
+628805	637694	593892	602801	NC_001142.9	NC_001142.9_RagTag	99.43		True
+fake: scaffold gap size wrong estimation (extensive)
+642130	647599	602902	608378	NC_001142.9	NC_001142.9_RagTag	99.27		True
+fake: scaffold gap size wrong estimation (extensive)
+649299	722775	608479	682074	NC_001142.9	NC_001142.9_RagTag	99.49		True
+translocation
+976258	976626	682075	682445	NC_001144.5	NC_001142.9_RagTag	96.78		True
+translocation, scaffold gap is present
+704883	705710	682565	683392	NC_001147.6	NC_001142.9_RagTag	99.76		True
+translocation
+724380	728511	683393	687524	NC_001142.9	NC_001142.9_RagTag	98.94		True
+translocation
+7071	14013	694468	687525	NC_001138.5	NC_001142.9_RagTag	98.3		True
+CONTIG	NC_001142.9_RagTag	704224	misassembled
+674	39867	13	39164	NC_001143.9	NC_001143.9_RagTag	98.42		True
+translocation, scaffold gap is present
+184171	190049	45203	39325	NC_001145.3	NC_001143.9_RagTag	99.91		True
+translocation
+46940	63960	45204	62224	NC_001143.9	NC_001143.9_RagTag	99.79		True
+fake: scaffold gap size wrong estimation (extensive)
+68216	78037	62326	72156	NC_001143.9	NC_001143.9_RagTag	99.43		True
+fake: scaffold gap size wrong estimation (extensive)
+81066	141284	72257	132477	NC_001143.9	NC_001143.9_RagTag	99.29		True
+translocation
+372697	378622	138403	132478	NC_001145.3	NC_001143.9_RagTag	99.07		True
+translocation
+141280	162978	138404	160266	NC_001143.9	NC_001143.9_RagTag	98.66		True
+local misassembly
+162971	179265	160602	176899	NC_001143.9	NC_001143.9_RagTag	99.64		True
+fake: scaffold gap size wrong estimation (local)
+179580	182974	177001	180400	NC_001143.9	NC_001143.9_RagTag	99.06		True
+fake: scaffold gap size wrong estimation (extensive)
+184824	202638	180505	198294	NC_001143.9	NC_001143.9_RagTag	99.49		True
+local misassembly
+202984	278903	198295	274215	NC_001143.9	NC_001143.9_RagTag	99.21		True
+fake: scaffold gap size wrong estimation (extensive)
+281446	313601	274317	306601	NC_001143.9	NC_001143.9_RagTag	99.11		True
+local misassembly
+313925	314187	306603	306865	NC_001143.9	NC_001143.9_RagTag	97.4		True
+local misassembly
+314525	377925	306866	370284	NC_001143.9	NC_001143.9_RagTag	99.39		True
+fake: scaffold gap size wrong estimation (extensive)
+387170	458131	370806	441929	NC_001143.9	NC_001143.9_RagTag	99.24		True
+fake: scaffold gap size wrong estimation (local)
+459484	517455	442425	500384	NC_001143.9	NC_001143.9_RagTag	99.49		True
+local misassembly
+517793	518426	500385	501013	NC_001143.9	NC_001143.9_RagTag	97.82		True
+fake: scaffold gap size wrong estimation (local)
+519158	523109	501114	505052	NC_001143.9	NC_001143.9_RagTag	99.01		True
+fake: scaffold gap size wrong estimation (extensive)
+525618	627316	505153	606839	NC_001143.9	NC_001143.9_RagTag	99.4		True
+fake: scaffold gap size wrong estimation (local)
+628178	635404	606940	614172	NC_001143.9	NC_001143.9_RagTag	99.45		True
+fake: scaffold gap size wrong estimation (local)
+635276	665429	614273	643817	NC_001143.9	NC_001143.9_RagTag	96.92		True
+translocation
+828	4326	647317	643818	NC_001135.5	NC_001143.9_RagTag	99.49		True
+CONTIG	NC_001143.9_RagTag	647335	misassembled
+14774	48692	1	33909	NC_001144.5	NC_001144.5_RagTag	99.41		True
+fake: scaffold gap size wrong estimation (extensive)
+52088	215073	34010	197043	NC_001144.5	NC_001144.5_RagTag	99.43		True
+relocation, inconsistency = 5931
+221005	449522	197044	425545	NC_001144.5	NC_001144.5_RagTag	99.53		True
+relocation, inconsistency = 41229, scaffold gap is present
+490852	555701	425646	490493	NC_001144.5	NC_001144.5_RagTag	99.4		True
+fake: scaffold gap size wrong estimation (extensive)
+563950	593139	490595	519783	NC_001144.5	NC_001144.5_RagTag	99.79		True
+relocation, inconsistency = 5923
+599063	630051	519784	550790	NC_001144.5	NC_001144.5_RagTag	99.59		True
+relocation, inconsistency = 16016, scaffold gap is present
+646168	650818	550891	555545	NC_001144.5	NC_001144.5_RagTag	99.31		True
+relocation, inconsistency = 5925
+656744	676538	555546	575348	NC_001144.5	NC_001144.5_RagTag	99.44		True
+fake: scaffold gap size wrong estimation (extensive)
+683008	687947	575449	580401	NC_001144.5	NC_001144.5_RagTag	98.83		True
+local misassembly
+687944	700241	580742	592980	NC_001144.5	NC_001144.5_RagTag	98.77		True
+relocation, inconsistency = 36723, scaffold gap is present
+737065	783747	593081	639739	NC_001144.5	NC_001144.5_RagTag	99.36		True
+translocation, scaffold gap is present
+137913	142989	644919	639840	NC_001138.5	NC_001144.5_RagTag	99.25		True
+translocation
+783891	818474	644920	679394	NC_001144.5	NC_001144.5_RagTag	98.33		True
+local misassembly
+818490	821030	679731	682267	NC_001144.5	NC_001144.5_RagTag	97.95		True
+fake: scaffold gap size wrong estimation (extensive)
+830464	859294	682369	711211	NC_001144.5	NC_001144.5_RagTag	99.23		True
+fake: scaffold gap size wrong estimation (local)
+859891	941191	711317	792571	NC_001144.5	NC_001144.5_RagTag	99.39		True
+relocation, inconsistency = 5964
+947156	976257	792572	821669	NC_001144.5	NC_001144.5_RagTag	99.48		True
+relocation, inconsistency = 5303
+981701	982042	821810	822151	NC_001144.5	NC_001144.5_RagTag	99.42		True
+local misassembly
+982038	1024731	822484	865178	NC_001144.5	NC_001144.5_RagTag	99.04		True
+CONTIG	NC_001144.5_RagTag	865178	misassembled
+5664	86751	11	81043	NC_001145.3	NC_001145.3_RagTag	99.35		True
+relocation, inconsistency = 15505, scaffold gap is present
+102357	159933	81144	138717	NC_001145.3	NC_001145.3_RagTag	99.36		True
+fake: scaffold gap size wrong estimation (extensive)
+165568	168225	138825	141483	NC_001145.3	NC_001145.3_RagTag	99.44		True
+fake: scaffold gap size wrong estimation (local)
+168399	168507	141584	141692	NC_001145.3	NC_001145.3_RagTag	98.18		True
+indel: indel (> 5bp)
+168682	178241	141888	151422	NC_001145.3	NC_001145.3_RagTag	99.47		True
+relocation, inconsistency = 32250, scaffold gap is present
+210592	237651	151523	178584	NC_001145.3	NC_001145.3_RagTag	99.45		True
+fake: scaffold gap size wrong estimation (extensive)
+238997	357005	178685	296696	NC_001145.3	NC_001145.3_RagTag	99.56		True
+relocation, inconsistency = 5919
+362925	372690	296697	306446	NC_001145.3	NC_001145.3_RagTag	99.01		True
+relocation, inconsistency = 5931
+378622	408487	306447	336300	NC_001145.3	NC_001145.3_RagTag	99.22		True
+fake: scaffold gap size wrong estimation (extensive)
+411034	480879	336401	406252	NC_001145.3	NC_001145.3_RagTag	99.62		True
+local misassembly
+480881	504883	406591	430576	NC_001145.3	NC_001145.3_RagTag	99.37		True
+fake: scaffold gap size wrong estimation (local)
+505060	538470	430796	464197	NC_001145.3	NC_001145.3_RagTag	99.62		True
+fake: scaffold gap size wrong estimation (local)
+539200	587254	464298	512355	NC_001145.3	NC_001145.3_RagTag	99.67		True
+fake: scaffold gap size wrong estimation (extensive)
+589772	721965	513206	645987	NC_001145.3	NC_001145.3_RagTag	99.0		True
+fake: scaffold gap size wrong estimation (extensive)
+723262	768547	646088	691348	NC_001145.3	NC_001145.3_RagTag	99.73		True
+local misassembly
+768885	794507	691349	716987	NC_001145.3	NC_001145.3_RagTag	99.77		True
+fake: scaffold gap size wrong estimation (local)
+795524	808683	717088	730278	NC_001145.3	NC_001145.3_RagTag	99.54		True
+local misassembly
+808678	917891	730622	839675	NC_001145.3	NC_001145.3_RagTag	99.36		True
+translocation
+9563	25751	855913	839676	NC_001148.4	NC_001145.3_RagTag	98.87		True
+CONTIG	NC_001145.3_RagTag	862210	misassembled
+8975	96719	6827	94592	NC_001146.8	NC_001146.8_RagTag	99.36		True
+translocation
+56452	62612	100910	94593	NC_001148.4	NC_001146.8_RagTag	95.33		True
+translocation
+300915	326203	100923	126197	NC_001147.6	NC_001146.8_RagTag	99.49		True
+translocation, scaffold gap is present
+1036470	1052243	126298	142070	NC_001144.5	NC_001146.8_RagTag	99.61		True
+local misassembly
+1052239	1052827	142394	142982	NC_001144.5	NC_001146.8_RagTag	97.96		True
+translocation
+96610	129211	142984	175472	NC_001146.8	NC_001146.8_RagTag	98.68		True
+fake: scaffold gap size wrong estimation (local)
+129565	232544	175575	278511	NC_001146.8	NC_001146.8_RagTag	99.21		True
+fake: scaffold gap size wrong estimation (extensive)
+229564	331771	278618	380868	NC_001146.8	NC_001146.8_RagTag	99.65		True
+fake: scaffold gap size wrong estimation (extensive)
+333336	355233	380970	402878	NC_001146.8	NC_001146.8_RagTag	99.68		True
+fake: scaffold gap size wrong estimation (extensive)
+359685	413031	402997	456360	NC_001146.8	NC_001146.8_RagTag	99.51		True
+fake: scaffold gap size wrong estimation (extensive)
+416544	418862	456461	458780	NC_001146.8	NC_001146.8_RagTag	99.61		True
+relocation, inconsistency = 24417, scaffold gap is present
+443380	518452	458881	533930	NC_001146.8	NC_001146.8_RagTag	99.19		True
+fake: scaffold gap size wrong estimation (extensive)
+512818	519157	534577	540908	NC_001146.8	NC_001146.8_RagTag	99.51		True
+relocation, inconsistency = 5905
+525063	546737	540909	562577	NC_001146.8	NC_001146.8_RagTag	99.6		True
+local misassembly
+547083	561606	562578	577124	NC_001146.8	NC_001146.8_RagTag	98.82		True
+relocation, inconsistency = 6341
+567993	569856	577170	579031	NC_001146.8	NC_001146.8_RagTag	97.59		True
+inversion
+574071	602395	607341	579032	NC_001146.8	NC_001146.8_RagTag	98.54		True
+relocation, inconsistency = -4236
+598160	777075	607342	786353	NC_001146.8	NC_001146.8_RagTag	99.4		True
+translocation
+15008	18800	790144	786354	NC_001137.3	NC_001146.8_RagTag	98.26		True
+local misassembly
+6793	14684	798039	790145	NC_001137.3	NC_001146.8_RagTag	98.61		True
+translocation
+942432	948038	800305	805939	NC_001148.4	NC_001146.8_RagTag	98.92		True
+translocation
+592	11195	816588	805940	NC_001144.5	NC_001146.8_RagTag	96.03		True
+translocation
+556987	562485	817592	823095	NC_001140.6	NC_001146.8_RagTag	98.32		True
+CONTIG	NC_001146.8_RagTag	823095	misassembled
+29062	29669	1820	2427	NC_001147.6	NC_001147.6_RagTag	96.88		True
+indel: indel (> 5bp)
+29670	30770	2467	3570	NC_001147.6	NC_001147.6_RagTag	95.29		True
+local misassembly
+31073	31142	4614	4683	NC_001147.6	NC_001147.6_RagTag	95.71		True
+indel: indel (> 5bp)
+31143	31210	4717	4784	NC_001147.6	NC_001147.6_RagTag	98.53		True
+relocation, inconsistency = -2151
+31444	107300	7169	82965	NC_001147.6	NC_001147.6_RagTag	99.04		True
+fake: scaffold gap size wrong estimation (extensive)
+112175	117697	83066	88600	NC_001147.6	NC_001147.6_RagTag	98.9		True
+relocation, inconsistency = 5931
+123630	158589	88602	123581	NC_001147.6	NC_001147.6_RagTag	99.05		True
+fake: scaffold gap size wrong estimation (extensive)
+162218	226695	123682	188192	NC_001147.6	NC_001147.6_RagTag	99.28		True
+translocation
+197711	198054	188193	188532	NC_001134.8	NC_001147.6_RagTag	95.55		True
+translocation
+96610	96941	188871	188540	NC_001146.8	NC_001147.6_RagTag	96.08		True
+indel: indel (> 5bp)
+96451	96609	189057	188899	NC_001146.8	NC_001147.6_RagTag	98.11		True
+translocation
+228220	235520	189261	196606	NC_001147.6	NC_001147.6_RagTag	98.59		True
+fake: scaffold gap size wrong estimation (extensive)
+241340	274650	196707	230023	NC_001147.6	NC_001147.6_RagTag	99.56		True
+translocation
+205219	210647	235466	230035	NC_001141.2	NC_001147.6_RagTag	98.99		True
+translocation, scaffold gap is present
+329344	424728	235595	331107	NC_001147.6	NC_001147.6_RagTag	99.16		True
+fake: scaffold gap size wrong estimation (extensive)
+427630	449991	331208	353522	NC_001147.6	NC_001147.6_RagTag	99.46		True
+fake: scaffold gap size wrong estimation (extensive)
+448965	462778	353635	367467	NC_001147.6	NC_001147.6_RagTag	99.28		True
+local misassembly
+462774	477544	367800	382585	NC_001147.6	NC_001147.6_RagTag	99.05		True
+fake: scaffold gap size wrong estimation (extensive)
+480246	487428	382686	389867	NC_001147.6	NC_001147.6_RagTag	99.43		True
+local misassembly
+487424	594820	390209	497724	NC_001147.6	NC_001147.6_RagTag	99.31		True
+relocation, inconsistency = 5919
+600740	664058	497725	561055	NC_001147.6	NC_001147.6_RagTag	99.72		True
+translocation
+817393	823306	566970	561056	NC_001139.9	NC_001147.6_RagTag	96.05		True
+translocation
+664054	686178	566971	589092	NC_001147.6	NC_001147.6_RagTag	99.35		True
+fake: scaffold gap size wrong estimation (extensive)
+683851	703507	589193	608838	NC_001147.6	NC_001147.6_RagTag	99.51		True
+relocation, inconsistency = 6539
+710109	721238	608901	620032	NC_001147.6	NC_001147.6_RagTag	99.13		True
+fake: scaffold gap size wrong estimation (extensive)
+728647	854276	620133	745719	NC_001147.6	NC_001147.6_RagTag	99.59		True
+local misassembly
+854622	888328	745720	779448	NC_001147.6	NC_001147.6_RagTag	99.46		True
+fake: scaffold gap size wrong estimation (extensive)
+894400	970286	779549	855450	NC_001147.6	NC_001147.6_RagTag	99.52		True
+relocation, inconsistency = 5964
+976251	980254	855451	859460	NC_001147.6	NC_001147.6_RagTag	98.56		True
+local misassembly
+980592	1035132	859461	913997	NC_001147.6	NC_001147.6_RagTag	99.7		True
+fake: scaffold gap size wrong estimation (extensive)
+1037680	1059053	914101	935407	NC_001147.6	NC_001147.6_RagTag	99.0		True
+relocation, inconsistency = 5363
+1064417	1071036	935408	942025	NC_001147.6	NC_001147.6_RagTag	98.05		True
+CONTIG	NC_001147.6_RagTag	945519	misassembled
+1073328	1082980	9672	1	NC_001147.6	NC_001148.4_RagTag	98.02		True
+translocation
+17550	56768	9673	48790	NC_001148.4	NC_001148.4_RagTag	99.36		True
+relocation, inconsistency = 23605, scaffold gap is present
+80677	122904	49094	91342	NC_001148.4	NC_001148.4_RagTag	99.48		True
+fake: scaffold gap size wrong estimation (extensive)
+125817	185410	91443	150994	NC_001148.4	NC_001148.4_RagTag	99.59		True
+fake: scaffold gap size wrong estimation (extensive)
+187406	211569	151096	175265	NC_001148.4	NC_001148.4_RagTag	99.22		True
+local misassembly
+211907	376345	175266	339724	NC_001148.4	NC_001148.4_RagTag	99.65		True
+fake: scaffold gap size wrong estimation (extensive)
+379884	436480	339833	396425	NC_001148.4	NC_001148.4_RagTag	99.64		True
+relocation, inconsistency = 6650
+443132	502574	396427	455866	NC_001148.4	NC_001148.4_RagTag	99.05		True
+fake: scaffold gap size wrong estimation (local)
+503619	520874	455967	473231	NC_001148.4	NC_001148.4_RagTag	99.13		True
+fake: scaffold gap size wrong estimation (extensive)
+522915	535808	473337	486244	NC_001148.4	NC_001148.4_RagTag	99.23		True
+fake: scaffold gap size wrong estimation (local)
+536909	560305	486345	509744	NC_001148.4	NC_001148.4_RagTag	99.89		True
+local misassembly
+560299	611702	510084	561485	NC_001148.4	NC_001148.4_RagTag	99.61		True
+fake: scaffold gap size wrong estimation (local)
+612709	619581	561587	568505	NC_001148.4	NC_001148.4_RagTag	98.74		True
+local misassembly
+620075	623427	568507	571868	NC_001148.4	NC_001148.4_RagTag	99.49		True
+fake: scaffold gap size wrong estimation (extensive)
+622259	650345	571969	600061	NC_001148.4	NC_001148.4_RagTag	99.87		True
+fake: scaffold gap size wrong estimation (local)
+650583	689553	600165	639135	NC_001148.4	NC_001148.4_RagTag	99.84		True
+local misassembly
+689545	699151	639795	649522	NC_001148.4	NC_001148.4_RagTag	99.38		True
+fake: scaffold gap size wrong estimation (extensive)
+700625	769319	649623	718293	NC_001148.4	NC_001148.4_RagTag	99.66		True
+local misassembly
+769666	804645	718294	753249	NC_001148.4	NC_001148.4_RagTag	99.54		True
+relocation, inconsistency = 5923
+810569	830643	753250	773329	NC_001148.4	NC_001148.4_RagTag	99.85		True
+relocation, inconsistency = 19915, scaffold gap is present
+850659	856554	773430	779319	NC_001148.4	NC_001148.4_RagTag	98.56		True
+local misassembly
+856891	897032	779590	819734	NC_001148.4	NC_001148.4_RagTag	99.79		True
+fake: scaffold gap size wrong estimation (local)
+897367	944170	819835	866543	NC_001148.4	NC_001148.4_RagTag	99.23		True
+relocation, inconsistency = 892497
+313	4869	871125	866544	NC_001148.4	NC_001148.4_RagTag	97.6		True
+CONTIG	NC_001148.4_RagTag	871130	misassembled
+1454	1846	1	393	NC_001224.1	NC_001224.1_RagTag	97.96		True
+indel: indel (> 5bp)
+1906	2094	509	697	NC_001224.1	NC_001224.1_RagTag	98.94		True
+indel: indel (> 5bp)
+2095	2536	745	1180	NC_001224.1	NC_001224.1_RagTag	98.19		True
+indel: indel (> 5bp)
+2599	2825	1181	1402	NC_001224.1	NC_001224.1_RagTag	96.92		True
+fake: scaffold gap size wrong estimation (extensive)
+13166	13627	1969	2434	NC_001224.1	NC_001224.1_RagTag	97.64		True
+relocation, inconsistency = 2390
+16435	18840	2852	5257	NC_001224.1	NC_001224.1_RagTag	99.88		True
+local misassembly
+20447	22174	7044	8771	NC_001224.1	NC_001224.1_RagTag	99.88		True
+relocation, inconsistency = -10030, scaffold gap is present
+13460	13986	10087	10607	NC_001224.1	NC_001224.1_RagTag	98.48		True
+relocation, inconsistency = 4811
+20399	20986	12209	12814	NC_001224.1	NC_001224.1_RagTag	96.37		True
+relocation, inconsistency = 1010
+22001	28014	12819	19047	NC_001224.1	NC_001224.1_RagTag	95.78		True
+fake: scaffold gap size wrong estimation (local)
+28379	29280	19205	20107	NC_001224.1	NC_001224.1_RagTag	97.35		True
+fake: scaffold gap size wrong estimation (extensive)
+36086	40416	22191	26529	NC_001224.1	NC_001224.1_RagTag	99.35		True
+indel: indel (> 5bp)
+40417	42966	26593	29148	NC_001224.1	NC_001224.1_RagTag	99.57		True
+indel: indel (> 5bp)
+42967	43099	29189	29317	NC_001224.1	NC_001224.1_RagTag	96.99		True
+indel: indel (> 5bp)
+43139	43222	29318	29399	NC_001224.1	NC_001224.1_RagTag	97.62		True
+fake: scaffold gap size wrong estimation (local)
+43635	43978	29500	29848	NC_001224.1	NC_001224.1_RagTag	97.99		True
+indel: indel (> 5bp)
+44019	44196	29849	30026	NC_001224.1	NC_001224.1_RagTag	100.0		True
+indel: indel (> 5bp)
+44243	45053	30027	30838	NC_001224.1	NC_001224.1_RagTag	99.26		True
+indel: indel (> 5bp)
+45083	45239	30839	30997	NC_001224.1	NC_001224.1_RagTag	97.48		True
+indel: indel (> 5bp)
+45240	45444	31037	31247	NC_001224.1	NC_001224.1_RagTag	95.73		True
+indel: indel (> 5bp)
+45445	46314	31275	32161	NC_001224.1	NC_001224.1_RagTag	96.62		True
+indel: indel (> 5bp)
+46315	46460	32210	32356	NC_001224.1	NC_001224.1_RagTag	98.64		True
+indel: indel (> 5bp)
+46497	47114	32357	32973	NC_001224.1	NC_001224.1_RagTag	99.35		True
+indel: indel (> 5bp)
+47115	47513	33013	33418	NC_001224.1	NC_001224.1_RagTag	97.29		True
+indel: indel (> 5bp)
+47514	48004	33467	33950	NC_001224.1	NC_001224.1_RagTag	98.37		True
+fake: scaffold gap size wrong estimation (extensive)
+56444	62670	34051	40276	NC_001224.1	NC_001224.1_RagTag	95.89		True
+fake: scaffold gap size wrong estimation (extensive)
+64320	67360	40532	43600	NC_001224.1	NC_001224.1_RagTag	95.58		True
+fake: scaffold gap size wrong estimation (extensive)
+72833	73010	43736	43914	NC_001224.1	NC_001224.1_RagTag	97.21		True
+local misassembly
+75902	76586	46696	47383	NC_001224.1	NC_001224.1_RagTag	98.26		True
+indel: indel (> 5bp)
+76639	76816	47384	47561	NC_001224.1	NC_001224.1_RagTag	99.44		True
+fake: scaffold gap size wrong estimation (extensive)
+78494	79998	47728	49268	NC_001224.1	NC_001224.1_RagTag	96.13		True
+relocation, inconsistency = -1584
+80031	80502	50885	51348	NC_001224.1	NC_001224.1_RagTag	98.09		True
+indel: indel (> 5bp)
+80503	80773	51406	51676	NC_001224.1	NC_001224.1_RagTag	99.63		True
+indel: indel (> 5bp)
+80774	81108	51716	52047	NC_001224.1	NC_001224.1_RagTag	97.31		True
+CONTIG	NC_001224.1_RagTag	52146	misassembled
+78957	79998	1	1042	NC_001224.1	ptg000105l	99.81		True
+relocation, inconsistency = -1486
+80031	81052	2561	3542	NC_001224.1	ptg000105l	95.61		True
+CONTIG	ptg000105l	3542	misassembled
+560813	572409	11609	1	NC_001148.4	ptg000126l	97.99		True
+local misassembly
+559991	560475	12094	11610	NC_001148.4	ptg000126l	96.37		True
+CONTIG	ptg000126l	12094	correct
+401367	448356	1	47090	NC_001140.6	ptg000139l	98.51		True
+CONTIG	ptg000139l	47090	correct
+73615	74778	1	1185	NC_001224.1	ptg000148l	95.45		True
+local misassembly
+75789	76071	2183	2465	NC_001224.1	ptg000148l	95.05		True
+CONTIG	ptg000148l	2465	correct
+37663	39826	1	2166	NC_001224.1	ptg000152l	99.72		True
+CONTIG	ptg000152l	2166	correct
+36273	36954	6	687	NC_001224.1	ptg000162l	98.69		True
+relocation, inconsistency = 2172
+39141	42622	702	4184	NC_001224.1	ptg000162l	99.86		True
+CONTIG	ptg000162l	4184	misassembled
+88637	95993	7	7405	NC_001138.5	ptg000169l	98.69		True
+CONTIG	ptg000169l	7405	correct
+38072	39966	1	1893	NC_001224.1	ptg000180l	99.74		True
+CONTIG	ptg000180l	1893	correct
+75789	76566	786	1	NC_001224.1	ptg000184l	96.33		True
+CONTIG	ptg000184l	3492	correct_unaligned
+728573	730026	61	1514	NC_001142.9	ptg000185l	97.94		True
+CONTIG	ptg000185l	11288	correct_unaligned
+20967	22174	2051	842	NC_001224.1	ptg000192l	99.83		True
+CONTIG	ptg000192l	2051	correct

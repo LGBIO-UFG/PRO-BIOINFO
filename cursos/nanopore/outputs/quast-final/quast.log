@@ -1,0 +1,606 @@
+/usr/local/bin/quast.py -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -s 5.Montagem-Flye/Scer1/assembly.fasta 5.Montagem-Flye/Scer2/assembly.fasta 6.Montagem-hifiasm/Scer1_hifiasm.p_ctg.fa 6.Montagem-hifiasm/Scer2_hifiasm.p_ctg.fa 7.Montagem-NextDenovo/Scer1/01_rundir/03.ctg_graph/nd.asm.fasta 9.Polimento-Medaka/Scer1_Flye/consensus.fasta 9.Polimento-Medaka/Scer2_Flye/consensus.fasta 9.Polimento-Medaka/Scer1_hifiasm/consensus.fasta 9.Polimento-Medaka/Scer2_hifiasm/consensus.fasta 9.Polimento-Medaka/Scer1_nextdenovo/consensus.fasta 10.Scaffolding/Scer1_Flye/ragtag.scaffold.fasta 10.Scaffolding/Scer2_Flye/ragtag.scaffold.fasta 10.Scaffolding/Scer1_hifiasm/ragtag.scaffold.fasta 10.Scaffolding/Scer2_hifiasm/ragtag.scaffold.fasta 10.Scaffolding/Scer1_nextdenovo/ragtag.scaffold.fasta 10.Scaffolding-Longstitch/Scer1_Flye/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa 10.Scaffolding-Longstitch/Scer2_Flye/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa 10.Scaffolding-Longstitch/Scer1_hifiasm/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa 10.Scaffolding-Longstitch/Scer2_hifiasm/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa 10.Scaffolding-Longstitch/Scer1_nextdenovo/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa -o 8.QC_montagens/quast-final -t 24 --labels Scer1_Flye,Scer2_Flye,Scer1_hifiasm,Scer2_hifiasm,Scer1_nextdenovo,Scer1_Flye_medaka,Scer2_Flye_medaka,Scer1_hifiasm_medaka,Scer2_hifiasm_medaka,Scer1_nextdenovo_medaka,Scer1_Flye_ragtag,Scer2_Flye_ragtag,Scer1_hifiasm_ragtag,Scer2_hifiasm_ragtag,Scer1_nextdenovo_ragtag,Scer1_Flye_longstitch,Scer2_Flye_longstitch,Scer1_hifiasm_longstitch,Scer2_hifiasm_longstitch,Scer1_nextdenovo_longstitch
+
+Version: 5.3.0, fb88221c
+
+System information:
+  OS: Linux-5.15.0-139-generic-x86_64-with-glibc2.31 (linux_64)
+  Python version: 3.10.20
+  CPUs number: 144
+
+Started: 2026-06-06 15:03:16
+
+Logging to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/quast.log
+
+CWD: /media/lgbio-nas1/renatadias/curso-nanopore
+Main parameters: 
+  MODE: default, threads: 24, split scaffolds: true, min contig length: 500, min alignment length: 65, \
+  min alignment IDY: 95.0, ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+Reference:
+  /media/lgbio-nas1/renatadias/curso-nanopore/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna ==> GCF_000146045.2_R64_genomic
+
+Contigs:
+  Pre-processing...
+  1  5.Montagem-Flye/Scer1/assembly.fasta ==> Scer1_Flye
+  1    breaking scaffolds into contigs:
+  1      WARNING: nothing was broken, skipping 'Scer1_Flye broken' from further analysis
+  2  5.Montagem-Flye/Scer2/assembly.fasta ==> Scer2_Flye
+  2    breaking scaffolds into contigs:
+  2      WARNING: nothing was broken, skipping 'Scer2_Flye broken' from further analysis
+  3  6.Montagem-hifiasm/Scer1_hifiasm.p_ctg.fa ==> Scer1_hifiasm
+  3    breaking scaffolds into contigs:
+  3      WARNING: nothing was broken, skipping 'Scer1_hifiasm broken' from further analysis
+  4  6.Montagem-hifiasm/Scer2_hifiasm.p_ctg.fa ==> Scer2_hifiasm
+  4    breaking scaffolds into contigs:
+  4      WARNING: nothing was broken, skipping 'Scer2_hifiasm broken' from further analysis
+  5  7.Montagem-NextDenovo/Scer1/01_rundir/03.ctg_graph/nd.asm.fasta ==> Scer1_nextdenovo
+  5    breaking scaffolds into contigs:
+  5      WARNING: nothing was broken, skipping 'Scer1_nextdenovo broken' from further analysis
+  6  9.Polimento-Medaka/Scer1_Flye/consensus.fasta ==> Scer1_Flye_medaka
+  6    breaking scaffolds into contigs:
+  6      WARNING: nothing was broken, skipping 'Scer1_Flye_medaka broken' from further analysis
+  7  9.Polimento-Medaka/Scer2_Flye/consensus.fasta ==> Scer2_Flye_medaka
+  7    breaking scaffolds into contigs:
+  7      WARNING: nothing was broken, skipping 'Scer2_Flye_medaka broken' from further analysis
+  8  9.Polimento-Medaka/Scer1_hifiasm/consensus.fasta ==> Scer1_hifiasm_medaka
+  8    breaking scaffolds into contigs:
+  8      WARNING: nothing was broken, skipping 'Scer1_hifiasm_medaka broken' from further analysis
+  9  9.Polimento-Medaka/Scer2_hifiasm/consensus.fasta ==> Scer2_hifiasm_medaka
+  9    breaking scaffolds into contigs:
+  9      WARNING: nothing was broken, skipping 'Scer2_hifiasm_medaka broken' from further analysis
+  10 9.Polimento-Medaka/Scer1_nextdenovo/consensus.fasta ==> Scer1_nextdenovo_medaka
+  10   breaking scaffolds into contigs:
+  10     WARNING: nothing was broken, skipping 'Scer1_nextdenovo_medaka broken' from further analysis
+  11 10.Scaffolding/Scer1_Flye/ragtag.scaffold.fasta ==> Scer1_Flye_ragtag
+  11   breaking scaffolds into contigs:
+  11     35 scaffolds (Scer1_Flye_ragtag) were broken into 126 contigs (Scer1_Flye_ragtag_broken)
+  12 10.Scaffolding/Scer2_Flye/ragtag.scaffold.fasta ==> Scer2_Flye_ragtag
+  12   breaking scaffolds into contigs:
+  12     31 scaffolds (Scer2_Flye_ragtag) were broken into 690 contigs (Scer2_Flye_ragtag_broken)
+  13 10.Scaffolding/Scer1_hifiasm/ragtag.scaffold.fasta ==> Scer1_hifiasm_ragtag
+  13   breaking scaffolds into contigs:
+  13     28 scaffolds (Scer1_hifiasm_ragtag) were broken into 194 contigs (Scer1_hifiasm_ragtag_broken)
+  14 10.Scaffolding/Scer2_hifiasm/ragtag.scaffold.fasta ==> Scer2_hifiasm_ragtag
+  14   breaking scaffolds into contigs:
+  14     7 scaffolds (Scer2_hifiasm_ragtag) were broken into 12 contigs (Scer2_hifiasm_ragtag_broken)
+  15 10.Scaffolding/Scer1_nextdenovo/ragtag.scaffold.fasta ==> Scer1_nextdenovo_ragtag
+  15   breaking scaffolds into contigs:
+  15     17 scaffolds (Scer1_nextdenovo_ragtag) were broken into 78 contigs (Scer1_nextdenovo_ragtag_broken)
+  16 10.Scaffolding-Longstitch/Scer1_Flye/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa ==> Scer1_Flye_longstitch
+  16   breaking scaffolds into contigs:
+  16     254 scaffolds (Scer1_Flye_longstitch) were broken into 457 contigs (Scer1_Flye_longstitch_broken)
+  17 10.Scaffolding-Longstitch/Scer2_Flye/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa ==> Scer2_Flye_longstitch
+  17   breaking scaffolds into contigs:
+  17     607 scaffolds (Scer2_Flye_longstitch) were broken into 652 contigs (Scer2_Flye_longstitch_broken)
+  18 10.Scaffolding-Longstitch/Scer1_hifiasm/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa ==> Scer1_hifiasm_longstitch
+  18   breaking scaffolds into contigs:
+  18     177 scaffolds (Scer1_hifiasm_longstitch) were broken into 271 contigs (Scer1_hifiasm_longstitch_broken)
+  19 10.Scaffolding-Longstitch/Scer2_hifiasm/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa ==> Scer2_hifiasm_longstitch
+  19   breaking scaffolds into contigs:
+  19     11 scaffolds (Scer2_hifiasm_longstitch) were broken into 12 contigs (Scer2_hifiasm_longstitch_broken)
+  20 10.Scaffolding-Longstitch/Scer1_nextdenovo/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa ==> Scer1_nextdenovo_longstitch
+  20   breaking scaffolds into contigs:
+  20     173 scaffolds (Scer1_nextdenovo_longstitch) were broken into 271 contigs (Scer1_nextdenovo_longstitch_broken)
+
+2026-06-06 15:03:19
+Running Basic statistics processor...
+  Reference genome:
+    GCF_000146045.2_R64_genomic.fna, length = 12157105, num fragments = 17, GC % = 38.15
+  Contig files: 
+    1  Scer1_Flye
+    2  Scer2_Flye
+    3  Scer1_hifiasm
+    4  Scer2_hifiasm
+    5  Scer1_nextdenovo
+    6  Scer1_Flye_medaka
+    7  Scer2_Flye_medaka
+    8  Scer1_hifiasm_medaka
+    9  Scer2_hifiasm_medaka
+    10 Scer1_nextdenovo_medaka
+    11 Scer1_Flye_ragtag
+    12 Scer1_Flye_ragtag_broken
+    13 Scer2_Flye_ragtag
+    14 Scer2_Flye_ragtag_broken
+    15 Scer1_hifiasm_ragtag
+    16 Scer1_hifiasm_ragtag_broken
+    17 Scer2_hifiasm_ragtag
+    18 Scer2_hifiasm_ragtag_broken
+    19 Scer1_nextdenovo_ragtag
+    20 Scer1_nextdenovo_ragtag_broken
+    21 Scer1_Flye_longstitch
+    22 Scer1_Flye_longstitch_broken
+    23 Scer2_Flye_longstitch
+    24 Scer2_Flye_longstitch_broken
+    25 Scer1_hifiasm_longstitch
+    26 Scer1_hifiasm_longstitch_broken
+    27 Scer2_hifiasm_longstitch
+    28 Scer2_hifiasm_longstitch_broken
+    29 Scer1_nextdenovo_longstitch
+    30 Scer1_nextdenovo_longstitch_broken
+  Calculating N50 and L50...
+    1  Scer1_Flye, N50 = 298282, L50 = 15, auN = 296133.4, Total length = 11794776, GC % = 38.18, # N's per 100 kbp =  0.00
+    2  Scer2_Flye, N50 = 13152, L50 = 165, auN = 15612.1, Total length = 6822332, GC % = 38.19, # N's per 100 kbp =  0.00
+    3  Scer1_hifiasm, N50 = 98807, L50 = 37, auN = 121367.4, Total length = 11117491, GC % = 38.11, # N's per 100 kbp =  0.00
+    4  Scer2_hifiasm, N50 = 6030, L50 = 4, auN = 6493.0, Total length = 62574, GC % = 31.96, # N's per 100 kbp =  0.00
+    5  Scer1_nextdenovo, N50 = 161372, L50 = 21, auN = 189267.0, Total length = 10025508, GC % = 38.29, # N's per 100 kbp =  0.00
+    6  Scer1_Flye_medaka, N50 = 298371, L50 = 15, auN = 296229.9, Total length = 11800966, GC % = 38.17, # N's per 100 kbp =  0.00
+    7  Scer2_Flye_medaka, N50 = 13134, L50 = 165, auN = 15579.0, Total length = 6806779, GC % = 38.04, # N's per 100 kbp =  0.00
+    8  Scer1_hifiasm_medaka, N50 = 98848, L50 = 37, auN = 121416.4, Total length = 11124426, GC % = 38.11, # N's per 100 kbp =  0.00
+    9  Scer2_hifiasm_medaka, N50 = 6046, L50 = 4, auN = 6494.9, Total length = 62592, GC % = 31.97, # N's per 100 kbp =  0.00
+    10 Scer1_nextdenovo_medaka, N50 = 161413, L50 = 21, auN = 189246.6, Total length = 10027176, GC % = 38.29, # N's per 100 kbp =  0.00
+    11 Scer1_Flye_ragtag, N50 = 909227, L50 = 6, auN = 906992.8, Total length = 11810066, GC % = 38.17, # N's per 100 kbp =  77.05
+    12 Scer1_Flye_ragtag_broken, N50 = 298371, L50 = 15, auN = 296229.9, Total length = 11800966, GC % = 38.17, # N's per 100 kbp =  0.00
+    13 Scer2_Flye_ragtag, N50 = 507394, L50 = 6, auN = 532482.5, Total length = 6872679, GC % = 38.04, # N's per 100 kbp =  958.87
+    14 Scer2_Flye_ragtag_broken, N50 = 13134, L50 = 165, auN = 15579.0, Total length = 6806779, GC % = 38.04, # N's per 100 kbp =  0.00
+    15 Scer1_hifiasm_ragtag, N50 = 857855, L50 = 6, auN = 840727.7, Total length = 11141026, GC % = 38.11, # N's per 100 kbp =  149.00
+    16 Scer1_hifiasm_ragtag_broken, N50 = 98848, L50 = 37, auN = 121416.4, Total length = 11124426, GC % = 38.11, # N's per 100 kbp =  0.00
+    17 Scer2_hifiasm_ragtag, N50 = 10886, L50 = 2, auN = 12980.0, Total length = 63092, GC % = 31.97, # N's per 100 kbp =  792.49
+    18 Scer2_hifiasm_ragtag_broken, N50 = 6046, L50 = 4, auN = 6494.9, Total length = 62592, GC % = 31.97, # N's per 100 kbp =  0.00
+    19 Scer1_nextdenovo_ragtag, N50 = 698871, L50 = 6, auN = 788156.4, Total length = 10033276, GC % = 38.29, # N's per 100 kbp =  60.80
+    20 Scer1_nextdenovo_ragtag_broken, N50 = 161413, L50 = 21, auN = 189246.6, Total length = 10027176, GC % = 38.29, # N's per 100 kbp =  0.00
+    21 Scer1_Flye_longstitch, N50 = 221440, L50 = 19, auN = 226515.3, Total length = 11839730, GC % = 38.18, # N's per 100 kbp =  828.60
+    22 Scer1_Flye_longstitch_broken, N50 = 77485, L50 = 43, auN = 106387.3, Total length = 11741626, GC % = 38.18, # N's per 100 kbp =  0.00
+    23 Scer2_Flye_longstitch, N50 = 15667, L50 = 140, auN = 18087.3, Total length = 6804958, GC % = 38.04, # N's per 100 kbp =  245.86
+    24 Scer2_Flye_longstitch_broken, N50 = 14211, L50 = 154, auN = 16684.2, Total length = 6788227, GC % = 38.04, # N's per 100 kbp =  0.00
+    25 Scer1_hifiasm_longstitch, N50 = 159403, L50 = 22, auN = 189577.7, Total length = 11172644, GC % = 38.11, # N's per 100 kbp =  869.59
+    26 Scer1_hifiasm_longstitch_broken, N50 = 84818, L50 = 40, auN = 107205.7, Total length = 11075488, GC % = 38.11, # N's per 100 kbp =  0.00
+    27 Scer2_hifiasm_longstitch, N50 = 6046, L50 = 4, auN = 6738.7, Total length = 62784, GC % = 31.97, # N's per 100 kbp =  305.81
+    28 Scer2_hifiasm_longstitch_broken, N50 = 6046, L50 = 4, auN = 6494.9, Total length = 62592, GC % = 31.97, # N's per 100 kbp =  0.00
+    29 Scer1_nextdenovo_longstitch, N50 = 177266, L50 = 19, auN = 204848.4, Total length = 10045195, GC % = 38.29, # N's per 100 kbp =  722.35
+    30 Scer1_nextdenovo_longstitch_broken, N50 = 98730, L50 = 32, auN = 122677.2, Total length = 9972634, GC % = 38.29, # N's per 100 kbp =  0.00
+Done.
+
+2026-06-06 15:03:29
+Running Contig analyzer...
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  3  Scer1_hifiasm
+  1  Scer1_Flye
+  2  Scer2_Flye
+  14 Scer2_Flye_ragtag_broken
+  17 Scer2_hifiasm_ragtag
+  4  Scer2_hifiasm
+  15 Scer1_hifiasm_ragtag
+  6  Scer1_Flye_medaka
+  8  Scer1_hifiasm_medaka
+  5  Scer1_nextdenovo
+  7  Scer2_Flye_medaka
+  16 Scer1_hifiasm_ragtag_broken
+  21 Scer1_Flye_longstitch
+  12 Scer1_Flye_ragtag_broken
+  9  Scer2_hifiasm_medaka
+  10 Scer1_nextdenovo_medaka
+  19 Scer1_nextdenovo_ragtag
+  20 Scer1_nextdenovo_ragtag_broken
+  18 Scer2_hifiasm_ragtag_broken
+  11 Scer1_Flye_ragtag
+  22 Scer1_Flye_longstitch_broken
+  13 Scer2_Flye_ragtag
+  23 Scer2_Flye_longstitch
+  24 Scer2_Flye_longstitch_broken
+  3  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm.stdout and contigs_report_Scer1_hifiasm.stderr...
+  1  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye.stdout and contigs_report_Scer1_Flye.stderr...
+  2  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye.stdout and contigs_report_Scer2_Flye.stderr...
+  14 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_ragtag_broken.stdout and contigs_report_Scer2_Flye_ragtag_broken.stderr...
+  17 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_ragtag.stdout and contigs_report_Scer2_hifiasm_ragtag.stderr...
+  4  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm.stdout and contigs_report_Scer2_hifiasm.stderr...
+  15 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_ragtag.stdout and contigs_report_Scer1_hifiasm_ragtag.stderr...
+  6  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_medaka.stdout and contigs_report_Scer1_Flye_medaka.stderr...
+  3  Aligning contigs to the reference
+  8  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_medaka.stdout and contigs_report_Scer1_hifiasm_medaka.stderr...
+  5  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo.stdout and contigs_report_Scer1_nextdenovo.stderr...
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  7  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_medaka.stdout and contigs_report_Scer2_Flye_medaka.stderr...
+  1  Aligning contigs to the reference
+  16 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_ragtag_broken.stdout and contigs_report_Scer1_hifiasm_ragtag_broken.stderr...
+  21 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_longstitch.stdout and contigs_report_Scer1_Flye_longstitch.stderr...
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  12 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_ragtag_broken.stdout and contigs_report_Scer1_Flye_ragtag_broken.stderr...
+  2  Aligning contigs to the reference
+  9  Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_medaka.stdout and contigs_report_Scer2_hifiasm_medaka.stderr...
+  10 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_medaka.stdout and contigs_report_Scer1_nextdenovo_medaka.stderr...
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  19 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_ragtag.stdout and contigs_report_Scer1_nextdenovo_ragtag.stderr...
+  20 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_ragtag_broken.stdout and contigs_report_Scer1_nextdenovo_ragtag_broken.stderr...
+  14 Aligning contigs to the reference
+  18 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_ragtag_broken.stdout and contigs_report_Scer2_hifiasm_ragtag_broken.stderr...
+  11 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_ragtag.stdout and contigs_report_Scer1_Flye_ragtag.stderr...
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  22 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_longstitch_broken.stdout and contigs_report_Scer1_Flye_longstitch_broken.stderr...
+  17 Aligning contigs to the reference
+  13 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_ragtag.stdout and contigs_report_Scer2_Flye_ragtag.stderr...
+  23 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_longstitch.stdout and contigs_report_Scer2_Flye_longstitch.stderr...
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  24 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_longstitch_broken.stdout and contigs_report_Scer2_Flye_longstitch_broken.stderr...
+  4  Aligning contigs to the reference
+  15 Aligning contigs to the reference
+  6  Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  8  Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  5  Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  3  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_hifiasm.fa > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_hifiasm.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm.stderr
+  16 Aligning contigs to the reference
+  7  Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  1  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_Flye.fasta > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye.stderr
+  21 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  9  Aligning contigs to the reference
+  12 Aligning contigs to the reference
+  10 Aligning contigs to the reference
+  19 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  2  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_Flye.fasta > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_Flye.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye.stderr
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  20 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  11 Aligning contigs to the reference
+  18 Aligning contigs to the reference
+  22 Aligning contigs to the reference
+  14 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_Flye_ragtag_broken.fasta \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_Flye_ragtag_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_ragtag_broken.stderr
+  13 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  17 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_hifiasm_ragtag.fasta > \
+     8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_hifiasm_ragtag.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_ragtag.stderr
+  4  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_hifiasm.fa > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_hifiasm.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm.stderr
+  24 Aligning contigs to the reference
+  23 Aligning contigs to the reference
+  15 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_hifiasm_ragtag.fasta > \
+     8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_hifiasm_ragtag.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_ragtag.stderr
+  6  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_Flye_medaka.fasta > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye_medaka.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_medaka.stderr
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  8  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_hifiasm_medaka.fasta > \
+     8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_hifiasm_medaka.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_medaka.stderr
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  5  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_nextdenovo.fasta > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_nextdenovo.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo.stderr
+  16 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_hifiasm_ragtag_broken.fasta \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_hifiasm_ragtag_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_ragtag_broken.stderr
+  7  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_Flye_medaka.fasta > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_Flye_medaka.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_medaka.stderr
+  21 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_Flye_longstitch.fa > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye_longstitch.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_longstitch.stderr
+  9  /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_hifiasm_medaka.fasta > \
+     8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_hifiasm_medaka.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_medaka.stderr
+  12 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_Flye_ragtag_broken.fasta \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye_ragtag_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_ragtag_broken.stderr
+  10 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_nextdenovo_medaka.fasta \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_nextdenovo_medaka.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_medaka.stderr
+  19 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_nextdenovo_ragtag.fasta \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_nextdenovo_ragtag.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_ragtag.stderr
+  20 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_nextdenovo_ragtag_broken.fasta \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_nextdenovo_ragtag_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_ragtag_broken.stderr
+  11 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_Flye_ragtag.fasta > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye_ragtag.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_ragtag.stderr
+  18 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_hifiasm_ragtag_broken.fasta \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_hifiasm_ragtag_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_ragtag_broken.stderr
+  22 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_Flye_longstitch_broken.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye_longstitch_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_Flye_longstitch_broken.stderr
+  13 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_Flye_ragtag.fasta > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_Flye_ragtag.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_ragtag.stderr
+  24 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_Flye_longstitch_broken.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_Flye_longstitch_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_longstitch_broken.stderr
+  23 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_Flye_longstitch.fa > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_Flye_longstitch.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_Flye_longstitch.stderr
+  9  Analysis is finished.
+
+  25 Scer1_hifiasm_longstitch
+  25 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_longstitch.stdout and contigs_report_Scer1_hifiasm_longstitch.stderr...
+  25 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  25 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_hifiasm_longstitch.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_hifiasm_longstitch.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_longstitch.stderr
+  17 Analysis is finished.
+
+  26 Scer1_hifiasm_longstitch_broken
+  4  Analysis is finished.
+
+  27 Scer2_hifiasm_longstitch
+  26 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_longstitch_broken.stdout and contigs_report_Scer1_hifiasm_longstitch_broken.stderr...
+  26 Aligning contigs to the reference
+  27 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_longstitch.stdout and contigs_report_Scer2_hifiasm_longstitch.stderr...
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  27 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  26 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_hifiasm_longstitch_broken.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_hifiasm_longstitch_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_hifiasm_longstitch_broken.stderr
+  27 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_hifiasm_longstitch.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_hifiasm_longstitch.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_longstitch.stderr
+  18 Analysis is finished.
+
+  28 Scer2_hifiasm_longstitch_broken
+  28 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_longstitch_broken.stdout and contigs_report_Scer2_hifiasm_longstitch_broken.stderr...
+  28 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  28 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer2_hifiasm_longstitch_broken.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer2_hifiasm_longstitch_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer2_hifiasm_longstitch_broken.stderr
+  27 Analysis is finished.
+
+  29 Scer1_nextdenovo_longstitch
+  29 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_longstitch.stdout and contigs_report_Scer1_nextdenovo_longstitch.stderr...
+  28 Analysis is finished.
+
+  30 Scer1_nextdenovo_longstitch_broken
+  29 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  30 Logging to files /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_longstitch_broken.stdout and contigs_report_Scer1_nextdenovo_longstitch_broken.stderr...
+  29 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_nextdenovo_longstitch.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_nextdenovo_longstitch.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_longstitch.stderr
+  30 Aligning contigs to the reference
+WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+  30 /usr/local/bin/minimap2 -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s \
+     65 -z 200 --mask-level 0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 8.QC_montagens/quast-final/quast_corrected_input/GCF_000146045.2_R64_genomic.fna \
+     8.QC_montagens/quast-final/quast_corrected_input/Scer1_nextdenovo_longstitch_broken.fa \
+     > 8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_nextdenovo_longstitch_broken.coords_tmp \
+     2>> 8.QC_montagens/quast-final/contigs_reports/contigs_report_Scer1_nextdenovo_longstitch_broken.stderr
+  7  Analysis is finished.
+
+  24 Analysis is finished.
+
+  14 Analysis is finished.
+
+  2  Analysis is finished.
+
+  23 Analysis is finished.
+
+  13 Analysis is finished.
+
+  5  Analysis is finished.
+
+  10 Analysis is finished.
+
+  6  Analysis is finished.
+
+  20 Analysis is finished.
+
+  22 Analysis is finished.
+
+  19 Analysis is finished.
+
+  12 Analysis is finished.
+
+  26 Analysis is finished.
+
+  21 Analysis is finished.
+
+  8  Analysis is finished.
+
+  16 Analysis is finished.
+
+  3  Analysis is finished.
+
+  1  Analysis is finished.
+
+  15 Analysis is finished.
+
+  25 Analysis is finished.
+
+  11 Analysis is finished.
+
+  30 Analysis is finished.
+
+  29 Analysis is finished.
+
+  Creating total report...
+    saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2026-06-06 15:03:39
+Running NA-NGA calculation...
+  1  Scer1_Flye, Largest alignment = 389896, NA50 = 132440, NGA50 = 130963, LA50 = 28, LGA50 = 30
+  2  Scer2_Flye, Largest alignment = 50907, NA50 = 12678, NGA50 = 4751, LA50 = 172, LGA50 = 505
+  3  Scer1_hifiasm, Largest alignment = 228406, NA50 = 65108, NGA50 = 62002, LA50 = 51, LGA50 = 59
+  4  Scer2_hifiasm, Largest alignment = 7282, NA50 = 4588, LA50 = 6
+  5  Scer1_nextdenovo, Largest alignment = 229771, NA50 = 114427, NGA50 = 85621, LA50 = 32, LGA50 = 43
+  6  Scer1_Flye_medaka, Largest alignment = 390009, NA50 = 132490, NGA50 = 131014, LA50 = 28, LGA50 = 30
+  7  Scer2_Flye_medaka, Largest alignment = 50827, NA50 = 12666, NGA50 = 4710, LA50 = 172, LGA50 = 508
+  8  Scer1_hifiasm_medaka, Largest alignment = 228502, NA50 = 65147, NGA50 = 62020, LA50 = 51, LGA50 = 59
+  9  Scer2_hifiasm_medaka, Largest alignment = 7284, NA50 = 4594, LA50 = 6
+  10 Scer1_nextdenovo_medaka, Largest alignment = 229839, NA50 = 114452, NGA50 = 85653, LA50 = 32, LGA50 = 43
+  11 Scer1_Flye_ragtag, Largest alignment = 510099, NA50 = 202011, NGA50 = 195498, LA50 = 19, LGA50 = 20
+  12 Scer1_Flye_ragtag_broken, Largest alignment = 390009, NA50 = 132490, NGA50 = 131014, LA50 = 28, LGA50 = 30
+  13 Scer2_Flye_ragtag, Largest alignment = 200136, NA50 = 53749, NGA50 = 14210, LA50 = 37, LGA50 = 127
+  14 Scer2_Flye_ragtag_broken, Largest alignment = 50827, NA50 = 12666, NGA50 = 4710, LA50 = 172, LGA50 = 508
+  15 Scer1_hifiasm_ragtag, Largest alignment = 531079, NA50 = 196937, NGA50 = 172208, LA50 = 19, LGA50 = 22
+  16 Scer1_hifiasm_ragtag_broken, Largest alignment = 228502, NA50 = 65147, NGA50 = 62020, LA50 = 51, LGA50 = 59
+  17 Scer2_hifiasm_ragtag, Largest alignment = 8760, NA50 = 5059, LA50 = 5
+  18 Scer2_hifiasm_ragtag_broken, Largest alignment = 7284, NA50 = 4594, LA50 = 6
+  19 Scer1_nextdenovo_ragtag, Largest alignment = 514197, NA50 = 152383, NGA50 = 127604, LA50 = 20, LGA50 = 27
+  20 Scer1_nextdenovo_ragtag_broken, Largest alignment = 229839, NA50 = 114452, NGA50 = 85653, LA50 = 32, LGA50 = 43
+  21 Scer1_Flye_longstitch, Largest alignment = 346127, NA50 = 131053, NGA50 = 130769, LA50 = 30, LGA50 = 31
+  22 Scer1_Flye_longstitch_broken, Largest alignment = 230378, NA50 = 67033, NGA50 = 63338, LA50 = 55, LGA50 = 58
+  23 Scer2_Flye_longstitch, Largest alignment = 57648, NA50 = 14307, NGA50 = 5085, LA50 = 150, LGA50 = 454
+  24 Scer2_Flye_longstitch_broken, Largest alignment = 53324, NA50 = 13332, NGA50 = 4815, LA50 = 162, LGA50 = 484
+  25 Scer1_hifiasm_longstitch, Largest alignment = 308025, NA50 = 101886, NGA50 = 90808, LA50 = 34, LGA50 = 39
+  26 Scer1_hifiasm_longstitch_broken, Largest alignment = 228502, NA50 = 64822, NGA50 = 59542, LA50 = 53, LGA50 = 62
+  27 Scer2_hifiasm_longstitch, Largest alignment = 7284, NA50 = 4740, LA50 = 6
+  28 Scer2_hifiasm_longstitch_broken, Largest alignment = 7284, NA50 = 4594, LA50 = 6
+  29 Scer1_nextdenovo_longstitch, Largest alignment = 304195, NA50 = 123960, NGA50 = 101793, LA50 = 28, LGA50 = 38
+  30 Scer1_nextdenovo_longstitch_broken, Largest alignment = 229839, NA50 = 73813, NGA50 = 60710, LA50 = 44, LGA50 = 60
+Done.
+
+2026-06-06 15:03:41
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  1  Scer1_Flye
+  2  Scer2_Flye
+  3  Scer1_hifiasm
+  4  Scer2_hifiasm
+  5  Scer1_nextdenovo
+  6  Scer1_Flye_medaka
+  7  Scer2_Flye_medaka
+  8  Scer1_hifiasm_medaka
+  9  Scer2_hifiasm_medaka
+  13 Scer2_Flye_ragtag
+  14 Scer2_Flye_ragtag_broken
+  10 Scer1_nextdenovo_medaka
+  11 Scer1_Flye_ragtag
+  12 Scer1_Flye_ragtag_broken
+  18 Scer2_hifiasm_ragtag_broken
+  15 Scer1_hifiasm_ragtag
+  16 Scer1_hifiasm_ragtag_broken
+  17 Scer2_hifiasm_ragtag
+  21 Scer1_Flye_longstitch
+  19 Scer1_nextdenovo_ragtag
+  20 Scer1_nextdenovo_ragtag_broken
+  23 Scer2_Flye_longstitch
+  22 Scer1_Flye_longstitch_broken
+  24 Scer2_Flye_longstitch_broken
+  4  Analysis is finished.
+  25 Scer1_hifiasm_longstitch
+  9  Analysis is finished.
+  26 Scer1_hifiasm_longstitch_broken
+  17 Analysis is finished.
+  27 Scer2_hifiasm_longstitch
+  7  Analysis is finished.
+  24 Analysis is finished.
+  18 Analysis is finished.
+  28 Scer2_hifiasm_longstitch_broken
+  29 Scer1_nextdenovo_longstitch
+  23 Analysis is finished.
+  19 Analysis is finished.
+  30 Scer1_nextdenovo_longstitch_broken
+  5  Analysis is finished.
+  16 Analysis is finished.
+  22 Analysis is finished.
+  6  Analysis is finished.
+  20 Analysis is finished.
+  10 Analysis is finished.
+  1  Analysis is finished.
+  15 Analysis is finished.
+  2  Analysis is finished.
+  12 Analysis is finished.
+  3  Analysis is finished.
+  21 Analysis is finished.
+  13 Analysis is finished.
+  14 Analysis is finished.
+  8  Analysis is finished.
+  27 Analysis is finished.
+  11 Analysis is finished.
+  28 Analysis is finished.
+  25 Analysis is finished.
+  26 Analysis is finished.
+  30 Analysis is finished.
+  29 Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2026-06-06 15:03:46
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2026-06-06 15:03:56
+RESULTS:
+  Text versions of total report are saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/report.html
+  Icarus (contig browser) is saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/icarus.html
+  Log is saved to /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/quast.log
+
+Finished: 2026-06-06 15:03:57
+Elapsed time: 0:00:40.819425
+NOTICEs: 3; WARNINGs: 2; non-fatal ERRORs: 0
+
+Thank you for using QUAST!

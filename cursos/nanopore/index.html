@@ -1339,6 +1339,56 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#131-estatisticas-basicas-quast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Estatísticas básicas (QUAST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-qualidade-das-bases-e-completude-por-k-mers-merqury" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Qualidade das bases e completude por k-mers (Merqury)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-completude-de-genes-conservados-busco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Completude de genes conservados (BUSCO)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-14-checagem-de-contaminantes-blobtools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 14 — Checagem de contaminantes (BlobTools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 14 — Checagem de contaminantes (BlobTools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#checklist-da-etapa-13" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2192,6 +2242,56 @@
   </a>
   
     <nav class="md-nav" aria-label="Etapa 13 — QC após scaffolding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-estatisticas-basicas-quast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Estatísticas básicas (QUAST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-qualidade-das-bases-e-completude-por-k-mers-merqury" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Qualidade das bases e completude por k-mers (Merqury)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-completude-de-genes-conservados-busco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Completude de genes conservados (BUSCO)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-14-checagem-de-contaminantes-blobtools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 14 — Checagem de contaminantes (BlobTools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 14 — Checagem de contaminantes (BlobTools)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3283,31 +3383,429 @@ gerenciadores de ambiente (conda, module load), versões de software e parâmetr
 </ul>
 <hr />
 <h2 id="etapa-13-qc-apos-scaffolding"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.4 6H20v10h-7l-.4-2H7v7H5V4h9zm-.4 8h2v-2h2v-2h-2V8h-2v2l-1-2V6h-2v2H9V6H7v2h2v2H7v2h2v-2h2v2h2v-2l1 2zm-3-4V8h2v2zm3 0h2v2h-2z"/></svg></span> Etapa 13 — QC após scaffolding<a class="headerlink" href="#etapa-13-qc-apos-scaffolding" title="Permanent link">&para;</a></h2>
-<p>Repetimos a tríade QUAST + Merqury + BUSCO para a versão final, scaffoldada.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># QUAST — incluindo todas as versões (montagem, polida, scaffolded)</span>
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>quast.py<span class="w"> </span>-r<span class="w"> </span>ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer1_Flye/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer1_hifiasm/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer1_nextdenovo/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">  </span><span class="m">10</span>.Scaffolding-Longstitch/Scer1_Flye/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="w">  </span><span class="m">10</span>.Scaffolding-Longstitch/Scer1_hifiasm/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/quast-scaffold<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="w">  </span>--labels<span class="w"> </span><span class="s2">&quot;Scer1_Flye_ragtag,Scer1_Hifiasm_ragtag,Scer1_NextDenovo_ragtag,Scer1_Flye_longstitch,Scer1_Hifiasm_longstitch&quot;</span>
+<h3 id="131-estatisticas-basicas-quast">13.1 Estatísticas básicas (QUAST)<a class="headerlink" href="#131-estatisticas-basicas-quast" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>quast.py<span class="w"> </span>-r<span class="w"> </span>ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna<span class="w"> </span>-s<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">  </span><span class="m">5</span>.Montagem-Flye/Scer1/assembly.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span><span class="m">5</span>.Montagem-Flye/Scer2/assembly.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">  </span><span class="m">6</span>.Montagem-hifiasm/Scer1_hifiasm.p_ctg.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">  </span><span class="m">6</span>.Montagem-hifiasm/Scer2_hifiasm.p_ctg.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">  </span><span class="m">7</span>.Montagem-NextDenovo/Scer1/01_rundir/03.ctg_graph/nd.asm.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="w">  </span><span class="m">9</span>.Polimento-Medaka/Scer1_Flye/consensus.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="w">  </span><span class="m">9</span>.Polimento-Medaka/Scer2_Flye/consensus.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="w">  </span><span class="m">9</span>.Polimento-Medaka/Scer1_hifiasm/consensus.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="w">  </span><span class="m">9</span>.Polimento-Medaka/Scer2_hifiasm/consensus.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="w">  </span><span class="m">9</span>.Polimento-Medaka/Scer1_nextdenovo/consensus.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer1_Flye/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer2_Flye/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer1_hifiasm/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer2_hifiasm/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer1_nextdenovo/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a><span class="w">  </span><span class="m">10</span>.Scaffolding-Longstitch/Scer1_Flye/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a><span class="w">  </span><span class="m">10</span>.Scaffolding-Longstitch/Scer2_Flye/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a><span class="w">  </span><span class="m">10</span>.Scaffolding-Longstitch/Scer1_hifiasm/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a><span class="w">  </span><span class="m">10</span>.Scaffolding-Longstitch/Scer2_hifiasm/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="w">  </span><span class="m">10</span>.Scaffolding-Longstitch/Scer1_nextdenovo/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-22"><a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a><span class="w">  </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/quast-final<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-33-23"><a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a><span class="w">  </span>--labels<span class="w"> </span><span class="s2">&quot;Scer1_Flye,Scer2_Flye,Scer1_hifiasm,Scer2_hifiasm,Scer1_nextdenovo,\</span>
+</span><span id="__span-33-24"><a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a><span class="s2">Scer1_Flye_medaka,Scer2_Flye_medaka,Scer1_hifiasm_medaka,Scer2_hifiasm_medaka,Scer1_nextdenovo_medaka,\</span>
+</span><span id="__span-33-25"><a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a><span class="s2">Scer1_Flye_ragtag,Scer2_Flye_ragtag,Scer1_hifiasm_ragtag,Scer2_hifiasm_ragtag,Scer1_nextdenovo_ragtag,\</span>
+</span><span id="__span-33-26"><a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a><span class="s2">Scer1_Flye_longstitch,Scer2_Flye_longstitch,Scer1_hifiasm_longstitch,Scer2_hifiasm_longstitch,Scer1_nextdenovo_longstitch&quot;</span>
 </span></code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">O que esperar</p>
-<ul>
-<li><strong>N50 sobe muito</strong> no scaffolding com referência (RagTag conecta contigs em cromossomos)</li>
-<li><strong>Número de contigs/scaffolds cai drasticamente</strong></li>
-<li><strong>QV</strong> se mantém igual ou ligeiramente menor (gaps introduzem N's)</li>
-<li><strong>BUSCO</strong> se mantém similar (genes não desaparecem por scaffolding)</li>
-</ul>
+<p class="admonition-title">Relatórios pré-computados</p>
+<p><a href="outputs/quast-final/report.html" target="_blank"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m1 18h2v-6H7zm4 0h2v-8h-2zm4 0h2v-4h-2z"/></svg></span> QUAST report.html</a> ·
+<a href="outputs/quast-final/icarus.html" target="_blank"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m1 18h2v-6H7zm4 0h2v-8h-2zm4 0h2v-4h-2z"/></svg></span> QUAST icarus.html</a></p>
+</div>
+<hr />
+<h3 id="132-qualidade-das-bases-e-completude-por-k-mers-merqury">13.2 Qualidade das bases e completude por k-mers (Merqury)<a class="headerlink" href="#132-qualidade-das-bases-e-completude-por-k-mers-merqury" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nb">cd</span><span class="w"> </span><span class="m">8</span>.QC_montagens/merqury
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="c1"># Scaffolding com referência (RagTag)</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="k">for</span><span class="w"> </span>sample<span class="w"> </span><span class="k">in</span><span class="w"> </span>Scer1_Flye<span class="w"> </span>Scer2_Flye<span class="w"> </span>Scer1_hifiasm<span class="w"> </span>Scer2_hifiasm<span class="w"> </span>Scer1_nextdenovo<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">  </span><span class="nv">scer</span><span class="o">=</span><span class="si">${</span><span class="nv">sample</span><span class="p">%%_*</span><span class="si">}</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">  </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_ragtag<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_ragtag
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">  </span>merqury.sh<span class="w"> </span>../../../4.QC_dadosfiltrados/<span class="si">${</span><span class="nv">scer</span><span class="si">}</span>_clean_trim.meryl<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="w">             </span>../../../10.Scaffolding/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="w">             </span><span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_ragtag
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="w">  </span><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="k">done</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="c1"># Scaffolding sem referência (LongStitch)</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="k">for</span><span class="w"> </span>sample<span class="w"> </span><span class="k">in</span><span class="w"> </span>Scer1_Flye<span class="w"> </span>Scer2_Flye<span class="w"> </span>Scer1_hifiasm<span class="w"> </span>Scer2_hifiasm<span class="w"> </span>Scer1_nextdenovo<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="w">  </span><span class="nv">scer</span><span class="o">=</span><span class="si">${</span><span class="nv">sample</span><span class="p">%%_*</span><span class="si">}</span>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="w">  </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_longstitch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_longstitch
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="w">  </span>merqury.sh<span class="w"> </span>../../../4.QC_dadosfiltrados/<span class="si">${</span><span class="nv">scer</span><span class="si">}</span>_clean_trim.meryl<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="w">             </span>../../../10.Scaffolding-Longstitch/<span class="si">${</span><span class="nv">sample</span><span class="si">}</span>/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="w">             </span><span class="si">${</span><span class="nv">sample</span><span class="si">}</span>_longstitch
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="w">  </span><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="k">done</span>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="nb">cd</span><span class="w"> </span>../..
+</span></code></pre></div>
+<p><strong>Juntar os resultados em uma tabela:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">cd</span><span class="w"> </span><span class="m">8</span>.QC_montagens/merqury
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;Sample\tQV\tError_rate\tCompleteness&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>merqury_summary_final.tsv
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="k">for</span><span class="w"> </span>prefix<span class="w"> </span><span class="k">in</span><span class="w"> </span>Scer1_Flye<span class="w"> </span>Scer2_Flye<span class="w"> </span>Scer1_hifiasm<span class="w"> </span>Scer2_hifiasm<span class="w"> </span>Scer1_nextdenovo<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">              </span>Scer1_Flye_medaka<span class="w"> </span>Scer2_Flye_medaka<span class="w"> </span>Scer1_hifiasm_medaka<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">              </span>Scer2_hifiasm_medaka<span class="w"> </span>Scer1_nextdenovo_medaka<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">              </span>Scer1_Flye_ragtag<span class="w"> </span>Scer2_Flye_ragtag<span class="w"> </span>Scer1_hifiasm_ragtag<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">              </span>Scer2_hifiasm_ragtag<span class="w"> </span>Scer1_nextdenovo_ragtag<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">              </span>Scer1_Flye_longstitch<span class="w"> </span>Scer2_Flye_longstitch<span class="w"> </span>Scer1_hifiasm_longstitch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="w">              </span>Scer2_hifiasm_longstitch<span class="w"> </span>Scer1_nextdenovo_longstitch<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="w">  </span><span class="nv">qv</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span><span class="s1">&#39;END{print $4}&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.qv<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="w">  </span><span class="nv">err</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span><span class="s1">&#39;END{print $5}&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.qv<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="w">  </span><span class="nv">comp</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span><span class="s1">&#39;END{print $5}&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.completeness.stats<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$prefix</span><span class="s2">\t</span><span class="nv">$qv</span><span class="s2">\t</span><span class="nv">$err</span><span class="s2">\t</span><span class="nv">$comp</span><span class="s2">&quot;</span>
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="k">done</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>merqury_summary_final.tsv
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="nb">cd</span><span class="w"> </span>../..
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Resultados Merqury — todas as versões</p>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>QV</th>
+<th>Error rate</th>
+<th>Completeness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scer1_Flye</td>
+<td>39.80</td>
+<td>1.05 × 10⁻⁴</td>
+<td>97.97%</td>
+</tr>
+<tr>
+<td>Scer2_Flye</td>
+<td>24.03</td>
+<td>3.96 × 10⁻³</td>
+<td>81.53%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm</td>
+<td>43.64</td>
+<td>4.33 × 10⁻⁵</td>
+<td>94.09%</td>
+</tr>
+<tr>
+<td>Scer2_hifiasm</td>
+<td>34.48</td>
+<td>3.57 × 10⁻⁴</td>
+<td>84.65%</td>
+</tr>
+<tr>
+<td>Scer1_nextdenovo</td>
+<td>39.75</td>
+<td>1.06 × 10⁻⁴</td>
+<td>84.45%</td>
+</tr>
+<tr>
+<td>Scer1_Flye_medaka</td>
+<td>38.94</td>
+<td>1.28 × 10⁻⁴</td>
+<td>97.94%</td>
+</tr>
+<tr>
+<td>Scer2_Flye_medaka</td>
+<td>24.33</td>
+<td>3.69 × 10⁻³</td>
+<td>82.17%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm_medaka</td>
+<td>39.95</td>
+<td>1.01 × 10⁻⁴</td>
+<td>94.33%</td>
+</tr>
+<tr>
+<td>Scer2_hifiasm_medaka</td>
+<td>32.63</td>
+<td>5.46 × 10⁻⁴</td>
+<td>85.22%</td>
+</tr>
+<tr>
+<td>Scer1_nextdenovo_medaka</td>
+<td>38.29</td>
+<td>1.48 × 10⁻⁴</td>
+<td>84.49%</td>
+</tr>
+<tr>
+<td>Scer1_Flye_ragtag</td>
+<td>38.94</td>
+<td>1.28 × 10⁻⁴</td>
+<td>97.94%</td>
+</tr>
+<tr>
+<td>Scer2_Flye_ragtag</td>
+<td>24.33</td>
+<td>3.69 × 10⁻³</td>
+<td>82.17%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm_ragtag</td>
+<td>39.95</td>
+<td>1.01 × 10⁻⁴</td>
+<td>94.33%</td>
+</tr>
+<tr>
+<td>Scer2_hifiasm_ragtag</td>
+<td>32.63</td>
+<td>5.46 × 10⁻⁴</td>
+<td>85.22%</td>
+</tr>
+<tr>
+<td>Scer1_nextdenovo_ragtag</td>
+<td>38.29</td>
+<td>1.48 × 10⁻⁴</td>
+<td>84.49%</td>
+</tr>
+<tr>
+<td>Scer1_Flye_longstitch</td>
+<td>39.36</td>
+<td>1.16 × 10⁻⁴</td>
+<td>97.87%</td>
+</tr>
+<tr>
+<td>Scer2_Flye_longstitch</td>
+<td>24.35</td>
+<td>3.67 × 10⁻³</td>
+<td>82.17%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm_longstitch</td>
+<td><strong>40.07</strong></td>
+<td>9.84 × 10⁻⁵</td>
+<td>94.16%</td>
+</tr>
+<tr>
+<td>Scer2_hifiasm_longstitch</td>
+<td>32.63</td>
+<td>5.46 × 10⁻⁴</td>
+<td>85.22%</td>
+</tr>
+<tr>
+<td>Scer1_nextdenovo_longstitch</td>
+<td>38.59</td>
+<td>1.38 × 10⁻⁴</td>
+<td>84.46%</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/docs/cursos/nanopore/outputs/merqury/merqury_summary_final.tsv"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg></span> merqury_summary_final.tsv no GitHub</a></p>
+</div>
+<hr />
+<h3 id="133-completude-de-genes-conservados-busco">13.3 Completude de genes conservados (BUSCO)<a class="headerlink" href="#133-completude-de-genes-conservados-busco" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># RagTag</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="k">for</span><span class="w"> </span>prefix<span class="w"> </span><span class="k">in</span><span class="w"> </span>Scer1_Flye<span class="w"> </span>Scer2_Flye<span class="w"> </span>Scer1_hifiasm<span class="w"> </span>Scer2_hifiasm<span class="w"> </span>Scer1_nextdenovo<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">  </span>busco<span class="w"> </span>-i<span class="w"> </span><span class="m">10</span>.Scaffolding/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">        </span>-l<span class="w"> </span>saccharomycetaceae_odb12<span class="w"> </span>-m<span class="w"> </span>genome<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">        </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_ragtag<span class="w"> </span>-c<span class="w"> </span><span class="m">24</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="k">done</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="c1"># LongStitch</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="k">for</span><span class="w"> </span>prefix<span class="w"> </span><span class="k">in</span><span class="w"> </span>Scer1_Flye<span class="w"> </span>Scer2_Flye<span class="w"> </span>Scer1_hifiasm<span class="w"> </span>Scer2_hifiasm<span class="w"> </span>Scer1_nextdenovo<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="w">  </span>busco<span class="w"> </span>-i<span class="w"> </span><span class="m">10</span>.Scaffolding-Longstitch/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/consensus.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="w">        </span>-l<span class="w"> </span>saccharomycetaceae_odb12<span class="w"> </span>-m<span class="w"> </span>genome<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="w">        </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_longstitch<span class="w"> </span>-c<span class="w"> </span><span class="m">24</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="k">done</span>
+</span></code></pre></div>
+<p><strong>Gerar gráficos comparativos:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">for</span><span class="w"> </span>prefix<span class="w"> </span><span class="k">in</span><span class="w"> </span>Scer1_Flye<span class="w"> </span>Scer2_Flye<span class="w"> </span>Scer1_hifiasm<span class="w"> </span>Scer2_hifiasm<span class="w"> </span>Scer1_nextdenovo<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">  </span>cp<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_ragtag/short_summary*.txt<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/summaries/
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="w">  </span>cp<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_longstitch/short_summary*.txt<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/summaries/
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">done</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>conda<span class="w"> </span>activate<span class="w"> </span>busco
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>python<span class="w"> </span>/home/lgbio/busco/scripts/generate_plot.py<span class="w"> </span>-wd<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/summaries/
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Resultados BUSCO — todas as versões</p>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Complete</th>
+<th>Single</th>
+<th>Duplicated</th>
+<th>Fragmented</th>
+<th>Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scer_referencia</strong></td>
+<td><strong>99.9%</strong></td>
+<td>99.8%</td>
+<td>0.0%</td>
+<td>0.0%</td>
+<td>0.1%</td>
+</tr>
+<tr>
+<td>Scer1_Flye</td>
+<td>98.8%</td>
+<td>98.8%</td>
+<td>0.1%</td>
+<td>0.3%</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>Scer1_Flye_medaka</td>
+<td>98.8%</td>
+<td>98.8%</td>
+<td>0.1%</td>
+<td>0.3%</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td><strong>Scer1_Flye_ragtag</strong></td>
+<td><strong>99.1%</strong></td>
+<td>99.0%</td>
+<td>0.1%</td>
+<td>0.2%</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>Scer1_Flye_longstitch</td>
+<td>97.4%</td>
+<td>97.4%</td>
+<td>0.0%</td>
+<td>1.0%</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm</td>
+<td>92.9%</td>
+<td>92.2%</td>
+<td>0.7%</td>
+<td>0.7%</td>
+<td>6.4%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm_medaka</td>
+<td>92.9%</td>
+<td>92.3%</td>
+<td>0.7%</td>
+<td>0.7%</td>
+<td>6.4%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm_ragtag</td>
+<td>92.9%</td>
+<td>92.3%</td>
+<td>0.6%</td>
+<td>0.6%</td>
+<td>6.5%</td>
+</tr>
+<tr>
+<td>Scer1_hifiasm_longstitch</td>
+<td>92.2%</td>
+<td>91.7%</td>
+<td>0.5%</td>
+<td>0.9%</td>
+<td>6.9%</td>
+</tr>
+<tr>
+<td>Scer1_nextdenovo</td>
+<td>84.6%</td>
+<td>84.3%</td>
+<td>0.3%</td>
+<td>0.3%</td>
+<td>15.1%</td>
+</tr>
+<tr>
+<td>Scer1_nextdenovo_ragtag</td>
+<td>84.7%</td>
+<td>84.4%</td>
+<td>0.3%</td>
+<td>0.3%</td>
+<td>15.0%</td>
+</tr>
+<tr>
+<td>Scer1_nextdenovo_longstitch</td>
+<td>83.6%</td>
+<td>83.3%</td>
+<td>0.3%</td>
+<td>0.9%</td>
+<td>15.5%</td>
+</tr>
+<tr>
+<td>Scer2_Flye</td>
+<td>55.0%</td>
+<td>54.9%</td>
+<td>0.1%</td>
+<td>3.4%</td>
+<td>41.6%</td>
+</tr>
+<tr>
+<td>Scer2_Flye_ragtag</td>
+<td>55.6%</td>
+<td>55.5%</td>
+<td>0.1%</td>
+<td>3.0%</td>
+<td>41.4%</td>
+</tr>
+<tr>
+<td>Scer2_hifiasm</td>
+<td>0.2%</td>
+<td>0.2%</td>
+<td>0.0%</td>
+<td>0.0%</td>
+<td>99.8%</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Gráfico comparativo BUSCO" src="outputs/busco/busco_figure.png" /></p>
+</div>
+<hr />
+<h2 id="etapa-14-checagem-de-contaminantes-blobtools"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m5.86 10.31C16.23 21.22 14.28 22.45 12 23c-2.56-.61-4.7-2.07-6.42-4.37C3.86 16.34 3 13.8 3 11V5l9-4 9 4v6c0 2.39-.64 4.61-1.92 6.67l-2.91-2.91c.52-.79.83-1.76.83-2.76a5 5 0 0 0-5-5 5 5 0 0 0-5 5 5 5 0 0 0 5 5c1 0 1.97-.31 2.76-.83z"/></svg></span> Etapa 14 — Checagem de contaminantes (BlobTools)<a class="headerlink" href="#etapa-14-checagem-de-contaminantes-blobtools" title="Permanent link">&para;</a></h2>
+<p>O <strong>BlobTools</strong> combina cobertura de reads, identidade taxonômica (BLAST) e tamanho dos contigs para identificar contaminantes remanescentes na montagem final.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="c1"># 1. Mapear reads na montagem final</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>minimap2<span class="w"> </span>-ax<span class="w"> </span>map-ont<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">  </span><span class="m">10</span>.Scaffolding/Scer1_hifiasm/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">  </span><span class="m">3</span>.Descontaminacao/Scer1_clean.fastq.gz<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span>-o<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag.bam
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>samtools<span class="w"> </span>index<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag.bam
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="c1"># 2. BLAST contra nt</span>
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>blastn<span class="w"> </span>-query<span class="w"> </span><span class="m">10</span>.Scaffolding/Scer1_hifiasm/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a><span class="w">  </span>-db<span class="w"> </span>/media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a><span class="w">  </span>-outfmt<span class="w"> </span><span class="s2">&quot;6 qseqid staxids bitscore std&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-14"><a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a><span class="w">  </span>-max_target_seqs<span class="w"> </span><span class="m">10</span><span class="w"> </span>-max_hsps<span class="w"> </span><span class="m">1</span><span class="w"> </span>-evalue<span class="w"> </span>1e-25<span class="w"> </span>-num_threads<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-15"><a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a><span class="w">  </span>-out<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag.blastn.out
+</span><span id="__span-38-16"><a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a>
+</span><span id="__span-38-17"><a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a><span class="c1"># 3. Criar BlobDB</span>
+</span><span id="__span-38-18"><a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a>conda<span class="w"> </span>activate<span class="w"> </span>blobtools
+</span><span id="__span-38-19"><a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a>blobtools<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-20"><a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a><span class="w">  </span>-i<span class="w"> </span><span class="m">10</span>.Scaffolding/Scer1_hifiasm/ragtag.scaffold.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-21"><a id="__codelineno-38-21" name="__codelineno-38-21" href="#__codelineno-38-21"></a><span class="w">  </span>-b<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag.bam<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-22"><a id="__codelineno-38-22" name="__codelineno-38-22" href="#__codelineno-38-22"></a><span class="w">  </span>-t<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag.blastn.out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-23"><a id="__codelineno-38-23" name="__codelineno-38-23" href="#__codelineno-38-23"></a><span class="w">  </span>-o<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag
+</span><span id="__span-38-24"><a id="__codelineno-38-24" name="__codelineno-38-24" href="#__codelineno-38-24"></a>
+</span><span id="__span-38-25"><a id="__codelineno-38-25" name="__codelineno-38-25" href="#__codelineno-38-25"></a><span class="c1"># 4. Gerar tabela e plots</span>
+</span><span id="__span-38-26"><a id="__codelineno-38-26" name="__codelineno-38-26" href="#__codelineno-38-26"></a>blobtools<span class="w"> </span>view<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-27"><a id="__codelineno-38-27" name="__codelineno-38-27" href="#__codelineno-38-27"></a><span class="w">  </span>-i<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag.blobDB.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-28"><a id="__codelineno-38-28" name="__codelineno-38-28" href="#__codelineno-38-28"></a><span class="w">  </span>-r<span class="w"> </span>all<span class="w"> </span>--out<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag
+</span><span id="__span-38-29"><a id="__codelineno-38-29" name="__codelineno-38-29" href="#__codelineno-38-29"></a>
+</span><span id="__span-38-30"><a id="__codelineno-38-30" name="__codelineno-38-30" href="#__codelineno-38-30"></a>blobtools<span class="w"> </span>plot<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-31"><a id="__codelineno-38-31" name="__codelineno-38-31" href="#__codelineno-38-31"></a><span class="w">  </span>-i<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag.blobDB.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-32"><a id="__codelineno-38-32" name="__codelineno-38-32" href="#__codelineno-38-32"></a><span class="w">  </span>-r<span class="w"> </span>genus<span class="w"> </span>--out<span class="w"> </span><span class="m">11</span>.Blobtools/Scer1_hifiasm_ragtag/Scer1_hifiasm_ragtag
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Resultado</p>
+<p>100% dos contigs foram classificados como <em>Saccharomyces</em> (97,24% das reads mapeadas). Nenhuma contaminação residual detectada na montagem final.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Plots pré-computados</p>
+<p><img alt="BlobTools plot — cobertura por táxon" src="outputs/blobtools/Scer1_hifiasm_ragtag.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png" /></p>
+<p><img alt="BlobTools plot — cobertura de reads" src="outputs/blobtools/Scer1_hifiasm_ragtag.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png" /></p>
 </div>
 <h3 id="checklist-da-etapa-13">Checklist da Etapa 13<a class="headerlink" href="#checklist-da-etapa-13" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> QUAST comparativo de todas as fases (montagem → polida → scaffoldada)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> BUSCO confirma que a completude foi preservada</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Escolhi a versão final do meu genoma</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> BlobDB criado com FASTA + BAM + BLAST</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Plot confirma predominância de <em>Saccharomyces</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nenhum contig contaminante identificado na montagem final</li>
 </ul>
 <hr />
 <h2 id="resumo-final-qual-versao-escolher"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.4 6H20v10h-7l-.4-2H7v7H5V4h9zm-.4 8h2v-2h2v-2h-2V8h-2v2l-1-2V6h-2v2H9V6H7v2h2v2H7v2h2v-2h2v2h2v-2l1 2zm-3-4V8h2v2zm3 0h2v2h-2z"/></svg></span> Resumo final — qual versão escolher?<a class="headerlink" href="#resumo-final-qual-versao-escolher" title="Permanent link">&para;</a></h2>

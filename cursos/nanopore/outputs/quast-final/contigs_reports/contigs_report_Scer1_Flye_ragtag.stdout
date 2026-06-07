@@ -1,0 +1,1605 @@
+Aligning contigs to reference...
+	Aligning contigs to the reference
+Filtering alignments...
+Parsing coords...
+Loading reference...
+	Loaded [NC_001133.9]
+	Loaded [NC_001134.8]
+	Loaded [NC_001135.5]
+	Loaded [NC_001136.10]
+	Loaded [NC_001137.3]
+	Loaded [NC_001138.5]
+	Loaded [NC_001139.9]
+	Loaded [NC_001140.6]
+	Loaded [NC_001141.2]
+	Loaded [NC_001142.9]
+	Loaded [NC_001143.9]
+	Loaded [NC_001144.5]
+	Loaded [NC_001145.3]
+	Loaded [NC_001146.8]
+	Loaded [NC_001147.6]
+	Loaded [NC_001148.4]
+	Loaded [NC_001224.1]
+	Total Regions: 17
+	Total Region Length: 12157105
+Analyzing contigs...
+CONTIG: NC_001133.9_RagTag (200550bp)
+Best alignment score: 132151.7 (LEN: 133204, IDY: 99.21), Total number of alignments: 5
+			Looking for the best set of alignments (out of 5 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 206568 222449 | 184350 200550 | 15882 16201 | 96.23 | NC_001133.9 NC_001133.9_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 190022.3, number of alignments: 4, unaligned bases: 6511
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 194039 out of 200450 non-N bases (96.80%))
+			Real Alignment 1: 1203 13208 | 1 11992 | 12006 11992 | 95.88 | NC_001133.9 NC_001133.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 13550, scaffold gap is present) between these two alignments
+			Real Alignment 2: 26995 160233 | 12229 145432 | 133239 133204 | 99.21 | NC_001133.9 NC_001133.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5930) between these two alignments
+			Real Alignment 3: 166165 198850 | 145434 178143 | 32686 32710 | 96.12 | NC_001133.9 NC_001133.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 4: 527275 543051 | 184418 200550 | 15777 16133 | 97.21 | NC_001140.6 NC_001133.9_RagTag
+		Unaligned bases: 6511
+
+CONTIG: NC_001134.8_RagTag (613539bp)
+Best alignment score: 135165.6 (LEN: 135763, IDY: 99.56), Total number of alignments: 60
+			Looking for the best set of alignments (out of 60 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 726637 726946 | 185652 185343 | 310 310 | 99.68 | NC_001146.8 NC_001134.8_RagTag
+		Skipping redundant alignment 645525 645836 | 185652 185343 | 312 310 | 98.4 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 656409 656720 | 185343 185652 | 312 310 | 98.4 | NC_001144.5 NC_001134.8_RagTag
+		Skipping redundant alignment 987173 987484 | 185652 185343 | 312 310 | 98.4 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 168623 168934 | 185652 185343 | 312 310 | 98.4 | NC_001135.5 NC_001134.8_RagTag
+		Skipping redundant alignment 878326 878637 | 185652 185343 | 312 310 | 98.4 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 970287 970611 | 185344 185668 | 325 325 | 100.0 | NC_001147.6 NC_001134.8_RagTag
+		Skipping redundant alignment 871820 872146 | 185343 185669 | 327 327 | 99.69 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 975913 976241 | 185343 185671 | 329 329 | 100.0 | NC_001147.6 NC_001134.8_RagTag
+		Skipping redundant alignment 135611 135939 | 185672 185344 | 329 329 | 100.0 | NC_001137.3 NC_001134.8_RagTag
+		Skipping redundant alignment 941192 941520 | 185344 185672 | 329 329 | 98.48 | NC_001144.5 NC_001134.8_RagTag
+		Skipping redundant alignment 574372 574700 | 185672 185344 | 329 329 | 97.87 | NC_001139.9 NC_001134.8_RagTag
+		Skipping redundant alignment 84811 85139 | 185344 185672 | 329 329 | 97.87 | NC_001135.5 NC_001134.8_RagTag
+		Skipping redundant alignment 568744 569073 | 185672 185343 | 330 330 | 99.7 | NC_001139.9 NC_001134.8_RagTag
+		Skipping redundant alignment 946818 947147 | 185343 185672 | 330 330 | 98.48 | NC_001144.5 NC_001134.8_RagTag
+		Skipping redundant alignment 90437 90766 | 185343 185672 | 330 330 | 98.48 | NC_001135.5 NC_001134.8_RagTag
+		Skipping redundant alignment 768548 768879 | 185344 185675 | 332 332 | 100.0 | NC_001145.3 NC_001134.8_RagTag
+		Skipping redundant alignment 1352644 1352975 | 185344 185675 | 332 332 | 100.0 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 9093 9424 | 185344 185675 | 332 332 | 99.7 | NC_001134.8 NC_001134.8_RagTag
+		Skipping redundant alignment 981369 981700 | 185675 185344 | 332 332 | 99.7 | NC_001144.5 NC_001134.8_RagTag
+		Skipping redundant alignment 981171 981502 | 185344 185675 | 332 332 | 99.4 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 811447 811778 | 185344 185675 | 332 332 | 98.5 | NC_001139.9 NC_001134.8_RagTag
+		Skipping redundant alignment 435946 436277 | 185675 185344 | 332 332 | 97.61 | NC_001137.3 NC_001134.8_RagTag
+		Skipping redundant alignment 877447 877779 | 185343 185675 | 333 333 | 99.7 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 986797 987129 | 185343 185675 | 333 333 | 99.4 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 137912 138244 | 185343 185675 | 333 333 | 98.5 | NC_001138.5 NC_001134.8_RagTag
+		Skipping redundant alignment 143539 143871 | 185343 185675 | 333 333 | 98.5 | NC_001138.5 NC_001134.8_RagTag
+		Skipping redundant alignment 449321 449631 | 185366 185676 | 311 311 | 99.68 | NC_001137.3 NC_001134.8_RagTag
+		Skipping redundant alignment 487834 488166 | 185344 185676 | 333 333 | 99.7 | NC_001137.3 NC_001134.8_RagTag
+		Skipping redundant alignment 976257 976590 | 185676 185343 | 334 334 | 99.4 | NC_001144.5 NC_001134.8_RagTag
+		Skipping redundant alignment 538103 538436 | 185344 185677 | 334 334 | 98.5 | NC_001142.9 NC_001134.8_RagTag
+		Skipping redundant alignment 62388 62722 | 185343 185677 | 335 335 | 99.1 | NC_001148.4 NC_001134.8_RagTag
+		Skipping redundant alignment 981173 985326 | 439399 443553 | 4154 4155 | 99.23 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 137915 142068 | 439399 443553 | 4154 4155 | 99.16 | NC_001138.5 NC_001134.8_RagTag
+		Skipping redundant alignment 811449 815602 | 439399 443553 | 4154 4155 | 99.16 | NC_001139.9 NC_001134.8_RagTag
+		Skipping redundant alignment 84813 88966 | 439399 443553 | 4154 4155 | 99.11 | NC_001135.5 NC_001134.8_RagTag
+		Skipping redundant alignment 977545 981698 | 443553 439399 | 4154 4155 | 99.06 | NC_001144.5 NC_001134.8_RagTag
+		Skipping redundant alignment 871823 875976 | 439399 443553 | 4154 4155 | 99.06 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 515492 519645 | 443553 439399 | 4154 4155 | 98.89 | NC_001136.10 NC_001134.8_RagTag
+		Skipping redundant alignment 29646 33799 | 439399 443553 | 4154 4155 | 98.89 | NC_001134.8 NC_001134.8_RagTag
+		Skipping redundant alignment 570544 574698 | 443553 439399 | 4155 4155 | 98.85 | NC_001139.9 NC_001134.8_RagTag
+		Skipping redundant alignment 970289 974442 | 439399 443553 | 4154 4155 | 98.77 | NC_001147.6 NC_001134.8_RagTag
+		Skipping redundant alignment 563836 567990 | 443553 439399 | 4155 4155 | 98.75 | NC_001146.8 NC_001134.8_RagTag
+		Skipping redundant alignment 705868 710022 | 443553 439399 | 4155 4155 | 98.7 | NC_001147.6 NC_001134.8_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 598563.3, number of alignments: 16, unaligned bases: 10106
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 603433 out of 612539 non-N bases (98.51%))
+			Excluding internal overlap of size 5 between Alignment 1 and 2: 7494 9092 | 5387 6987 | 1599 1601 --> 7494 9087 | 5387 6982 | 1594 1596
+			Real Alignment 1: 7494 9087 | 5387 6982 | 1594 1596 | 98.75 | NC_001134.8 NC_001134.8_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 2: 9425 29593 | 6983 27151 | 20169 20169 | 99.91 | NC_001134.8 NC_001134.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 9381 (extensive)
+			Real Alignment 3: 39087 68162 | 27264 56342 | 29076 29079 | 99.9 | NC_001134.8 NC_001134.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 206 (local)
+			Real Alignment 4: 68469 197385 | 56443 185343 | 128917 128901 | 99.43 | NC_001134.8 NC_001134.8_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Excluding internal overlap of size 5 between Alignment 5 and 6: 197381 221036 | 185676 209327 | 23656 23652 --> 197381 221031 | 185676 209322 | 23651 23647
+			Real Alignment 5: 197381 221031 | 185676 209322 | 23651 23647 | 99.03 | NC_001134.8 NC_001134.8_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5921) between these two alignments
+			Excluding internal overlap of size 7 between Alignment 6 and 7: 265494 276637 | 241925 253063 | 11144 11139 --> 265501 276637 | 241932 253063 | 11137 11132
+			Real Alignment 6: 226953 259578 | 209323 241931 | 32626 32609 | 99.3 | NC_001134.8 NC_001134.8_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5922) between these two alignments
+			Real Alignment 7: 265501 276637 | 241932 253063 | 11137 11132 | 99.62 | NC_001134.8 NC_001134.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2991 (extensive)
+			Real Alignment 8: 279730 301228 | 253165 274675 | 21499 21511 | 99.64 | NC_001134.8 NC_001134.8_RagTag
+			  Extensive misassembly (relocation, inconsistency = 177708, scaffold gap is present) between these two alignments
+			Real Alignment 9: 479046 543927 | 274785 339651 | 64882 64867 | 99.0 | NC_001134.8 NC_001134.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -939 (local)
+			Real Alignment 10: 543093 613686 | 339756 410333 | 70594 70578 | 99.4 | NC_001134.8 NC_001134.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1013 (extensive)
+			Excluding internal overlap of size 7 between Alignment 11 and 12: 643858 644109 | 439135 439386 | 252 252 --> 643865 644109 | 439142 439386 | 245 245
+			Real Alignment 11: 614810 643488 | 410444 439141 | 28679 28698 | 99.23 | NC_001134.8 NC_001134.8_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 376
+			Real Alignment 12: 643865 644109 | 439142 439386 | 245 245 | 98.02 | NC_001134.8 NC_001134.8_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 13: 941194 945347 | 439399 443553 | 4154 4155 | 99.33 | NC_001144.5 NC_001134.8_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Real Alignment 14: 644209 779998 | 443654 579416 | 135790 135763 | 99.56 | NC_001134.8 NC_001134.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 363 (local)
+			Real Alignment 15: 780471 801660 | 579526 600717 | 21190 21192 | 99.68 | NC_001134.8 NC_001134.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -3541 (extensive)
+			Real Alignment 16: 801651 810838 | 604249 613539 | 9188 9291 | 98.62 | NC_001134.8 NC_001134.8_RagTag
+		Unaligned bases: 10106
+
+CONTIG: NC_001135.5_RagTag (306698bp)
+Best alignment score: 82595.2 (LEN: 83734, IDY: 98.64), Total number of alignments: 32
+			Looking for the best set of alignments (out of 32 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 221048 226952 | 145372 151278 | 5905 5907 | 98.05 | NC_001134.8 NC_001135.5_RagTag
+		Skipping redundant alignment 357003 362907 | 151280 145372 | 5905 5909 | 98.05 | NC_001145.3 NC_001135.5_RagTag
+		Skipping redundant alignment 735984 736316 | 168139 168471 | 333 333 | 98.8 | NC_001139.9 NC_001135.5_RagTag
+		Skipping redundant alignment 434631 434969 | 168477 168139 | 339 339 | 99.41 | NC_001137.3 NC_001135.5_RagTag
+		Skipping redundant alignment 668098 668436 | 168139 168477 | 339 339 | 98.82 | NC_001136.10 NC_001135.5_RagTag
+		Skipping redundant alignment 249927 250362 | 168480 168044 | 436 437 | 97.49 | NC_001137.3 NC_001135.5_RagTag
+		Skipping redundant alignment 976784 981700 | 299443 294527 | 4917 4917 | 99.29 | NC_001144.5 NC_001135.5_RagTag
+		Skipping redundant alignment 981171 986301 | 294527 299657 | 5131 5131 | 99.16 | NC_001136.10 NC_001135.5_RagTag
+		Skipping redundant alignment 941192 946338 | 294527 299673 | 5147 5147 | 99.2 | NC_001144.5 NC_001135.5_RagTag
+		Skipping redundant alignment 84811 89957 | 294527 299673 | 5147 5147 | 99.16 | NC_001135.5 NC_001135.5_RagTag
+		Skipping redundant alignment 970287 975433 | 294527 299673 | 5147 5147 | 99.05 | NC_001147.6 NC_001135.5_RagTag
+		Skipping redundant alignment 704877 710024 | 299673 294527 | 5148 5147 | 99.05 | NC_001147.6 NC_001135.5_RagTag
+		Skipping redundant alignment 29644 34790 | 294527 299673 | 5147 5147 | 99.01 | NC_001134.8 NC_001135.5_RagTag
+		Skipping redundant alignment 569553 574700 | 299673 294527 | 5148 5147 | 98.99 | NC_001139.9 NC_001135.5_RagTag
+		Skipping redundant alignment 562845 567992 | 299673 294527 | 5148 5147 | 98.87 | NC_001146.8 NC_001135.5_RagTag
+		Skipping redundant alignment 514501 519647 | 299673 294527 | 5147 5147 | 98.82 | NC_001136.10 NC_001135.5_RagTag
+		Skipping redundant alignment 871819 876967 | 294525 299673 | 5149 5149 | 99.2 | NC_001136.10 NC_001135.5_RagTag
+		Skipping redundant alignment 137846 143059 | 294455 299673 | 5214 5219 | 99.06 | NC_001138.5 NC_001135.5_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 300904.1, number of alignments: 14, unaligned bases: 2072
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 304626 out of 306198 non-N bases (99.49%))
+			Real Alignment 1: 58261 58767 | 504 1 | 507 504 | 97.83 | NC_001224.1 NC_001135.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 602 84294 | 853 84586 | 83693 83734 | 98.64 | NC_001135.5 NC_001135.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 58
+			Real Alignment 3: 84811 88055 | 85045 88315 | 3245 3271 | 95.39 | NC_001135.5 NC_001135.5_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 6154 (extensive)
+			Excluding internal overlap of size 5 between Alignment 4 and 5: 124466 137064 | 118243 130841 | 12599 12599 --> 124471 137064 | 118248 130841 | 12594 12594
+			Real Alignment 4: 94310 124133 | 88416 118247 | 29824 29832 | 99.45 | NC_001135.5 NC_001135.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 5: 124471 137064 | 118248 130841 | 12594 12594 | 99.83 | NC_001135.5 NC_001135.5_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 23 (local)
+			Excluding internal overlap of size 295 between Alignment 6 and 7: 96608 102512 | 151280 145372 | 5905 5909 --> 96608 102217 | 151280 145667 | 5610 5614
+			Real Alignment 6: 137501 151825 | 131255 145666 | 14325 14412 | 99.63 | NC_001135.5 NC_001135.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 3 between Alignment 7 and 8: 96608 102217 | 151280 145667 | 5610 5614 --> 96611 102217 | 151277 145667 | 5607 5611
+			Real Alignment 7: 96611 102217 | 151277 145667 | 5607 5611 | 99.44 | NC_001146.8 NC_001135.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 8 and 9: 168934 169206 | 168343 168615 | 273 273 --> 168940 169206 | 168349 168615 | 267 267
+			Real Alignment 8: 151531 168600 | 151278 168348 | 17070 17071 | 99.81 | NC_001135.5 NC_001135.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 339
+			Excluding internal overlap of size 5 between Alignment 9 and 10: 168940 169206 | 168349 168615 | 267 267 --> 168940 169201 | 168349 168610 | 262 262
+			Real Alignment 9: 168940 169201 | 168349 168610 | 262 262 | 99.63 | NC_001135.5 NC_001135.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 343
+			Real Alignment 10: 169545 200103 | 168611 199194 | 30559 30584 | 99.78 | NC_001135.5 NC_001135.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 105
+			Excluding internal overlap of size 239 between Alignment 11 and 12: 268619 295259 | 267883 294515 | 26641 26633 --> 268858 295259 | 268122 294515 | 26402 26394
+			Real Alignment 11: 200851 269184 | 199837 268121 | 68334 68285 | 99.51 | NC_001135.5 NC_001135.5_RagTag
+			  Overlap between these two alignments (local misassembly). Inconsistency = -327
+			Real Alignment 12: 268858 295259 | 268122 294515 | 26402 26394 | 99.63 | NC_001135.5 NC_001135.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 13: 811447 816593 | 294527 299673 | 5147 5147 | 99.26 | NC_001139.9 NC_001135.5_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Real Alignment 14: 295612 302529 | 299774 306698 | 6918 6925 | 99.45 | NC_001135.5 NC_001135.5_RagTag
+		Unaligned bases: 2072
+
+CONTIG: NC_001136.10_RagTag (1484364bp)
+Best alignment score: 359950.3 (LEN: 362780, IDY: 99.22), Total number of alignments: 81
+			Looking for the best set of alignments (out of 81 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 728512 745543 | 17048 26 | 17032 17023 | 99.42 | NC_001142.9 NC_001136.10_RagTag
+		Skipping redundant alignment 135614 135939 | 20886 21211 | 326 326 | 100.0 | NC_001137.3 NC_001136.10_RagTag
+		Skipping redundant alignment 478275 483952 | 439121 433450 | 5678 5672 | 99.12 | NC_001142.9 NC_001136.10_RagTag
+		Skipping redundant alignment 196458 202221 | 439216 433464 | 5764 5753 | 96.69 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 443412 449194 | 433445 439216 | 5783 5772 | 96.75 | NC_001137.3 NC_001136.10_RagTag
+		Skipping redundant alignment 492696 498410 | 433624 439332 | 5715 5709 | 97.55 | NC_001137.3 NC_001136.10_RagTag
+		Skipping redundant alignment 535771 541665 | 439332 433450 | 5895 5883 | 98.86 | NC_001139.9 NC_001136.10_RagTag
+		Skipping redundant alignment 117714 123608 | 439332 433450 | 5895 5883 | 97.15 | NC_001147.6 NC_001136.10_RagTag
+		Skipping redundant alignment 96630 102512 | 433450 439332 | 5883 5883 | 97.01 | NC_001146.8 NC_001136.10_RagTag
+		Skipping redundant alignment 372697 378611 | 433430 439332 | 5915 5903 | 98.38 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 817393 823295 | 433430 439332 | 5903 5903 | 97.87 | NC_001139.9 NC_001136.10_RagTag
+		Skipping redundant alignment 259589 265494 | 439332 433430 | 5906 5903 | 97.68 | NC_001134.8 NC_001136.10_RagTag
+		Skipping redundant alignment 215080 220994 | 433430 439332 | 5915 5903 | 97.55 | NC_001144.5 NC_001136.10_RagTag
+		Skipping redundant alignment 844423 850340 | 439332 433430 | 5918 5903 | 97.32 | NC_001148.4 NC_001136.10_RagTag
+		Skipping redundant alignment 184181 190084 | 439332 433429 | 5904 5904 | 97.75 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 1095778 1101693 | 439332 433429 | 5916 5904 | 97.36 | NC_001136.10 NC_001136.10_RagTag
+		Skipping redundant alignment 668096 668436 | 633356 633016 | 341 341 | 100.0 | NC_001136.10 NC_001136.10_RagTag
+		Skipping redundant alignment 600401 600714 | 854530 854217 | 314 314 | 97.46 | NC_001147.6 NC_001136.10_RagTag
+		Skipping redundant alignment 492696 498422 | 957150 951430 | 5727 5721 | 97.59 | NC_001137.3 NC_001136.10_RagTag
+		Skipping redundant alignment 535759 541665 | 951430 957324 | 5907 5895 | 98.75 | NC_001139.9 NC_001136.10_RagTag
+		Skipping redundant alignment 117702 123608 | 951430 957324 | 5907 5895 | 97.17 | NC_001147.6 NC_001136.10_RagTag
+		Skipping redundant alignment 96630 102524 | 957324 951430 | 5895 5895 | 96.83 | NC_001146.8 NC_001136.10_RagTag
+		Skipping redundant alignment 443412 449194 | 957329 951558 | 5783 5772 | 96.63 | NC_001137.3 NC_001136.10_RagTag
+		Skipping redundant alignment 1095767 1101686 | 951431 957338 | 5920 5908 | 97.42 | NC_001136.10 NC_001136.10_RagTag
+		Skipping redundant alignment 594821 600734 | 951431 957344 | 5914 5914 | 98.77 | NC_001147.6 NC_001136.10_RagTag
+		Skipping redundant alignment 184170 190083 | 951431 957344 | 5914 5914 | 97.84 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 372697 378623 | 957344 951430 | 5927 5915 | 98.41 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 259578 265495 | 951431 957345 | 5918 5915 | 97.75 | NC_001134.8 NC_001136.10_RagTag
+		Skipping redundant alignment 817391 823306 | 957346 951431 | 5916 5916 | 97.94 | NC_001139.9 NC_001136.10_RagTag
+		Skipping redundant alignment 215077 221005 | 957347 951431 | 5929 5917 | 97.59 | NC_001144.5 NC_001136.10_RagTag
+		Skipping redundant alignment 844412 850343 | 951431 957347 | 5932 5917 | 97.36 | NC_001148.4 NC_001136.10_RagTag
+		Skipping redundant alignment 492696 498410 | 1134176 1128461 | 5715 5716 | 97.48 | NC_001137.3 NC_001136.10_RagTag
+		Skipping redundant alignment 196446 202221 | 1128566 1134342 | 5776 5777 | 97.8 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 160258 166048 | 1134356 1128566 | 5791 5791 | 97.84 | NC_001133.9 NC_001136.10_RagTag
+		Skipping redundant alignment 56566 62355 | 1128566 1134356 | 5790 5791 | 97.71 | NC_001148.4 NC_001136.10_RagTag
+		Skipping redundant alignment 475994 481783 | 1134356 1128566 | 5790 5791 | 97.69 | NC_001144.5 NC_001136.10_RagTag
+		Skipping redundant alignment 478165 483952 | 1128566 1134356 | 5788 5791 | 97.0 | NC_001142.9 NC_001136.10_RagTag
+		Skipping redundant alignment 804665 810448 | 1134356 1128566 | 5784 5791 | 96.79 | NC_001148.4 NC_001136.10_RagTag
+		Skipping redundant alignment 117714 123608 | 1128461 1134356 | 5895 5896 | 98.39 | NC_001147.6 NC_001136.10_RagTag
+		Skipping redundant alignment 850649 856543 | 1134356 1128461 | 5895 5896 | 98.29 | NC_001148.4 NC_001136.10_RagTag
+		Skipping redundant alignment 472474 478364 | 1128461 1134356 | 5891 5896 | 97.22 | NC_001142.9 NC_001136.10_RagTag
+		Skipping redundant alignment 535771 541665 | 1128461 1134356 | 5895 5896 | 97.17 | NC_001139.9 NC_001136.10_RagTag
+		Skipping redundant alignment 443412 449206 | 1134361 1128566 | 5795 5796 | 97.81 | NC_001137.3 NC_001136.10_RagTag
+		Skipping redundant alignment 645511 651305 | 1134367 1128566 | 5795 5802 | 97.5 | NC_001136.10 NC_001136.10_RagTag
+		Skipping redundant alignment 561852 567646 | 1134367 1128566 | 5795 5802 | 97.23 | NC_001139.9 NC_001136.10_RagTag
+		Skipping redundant alignment 844423 850331 | 1128461 1134367 | 5909 5907 | 99.39 | NC_001148.4 NC_001136.10_RagTag
+		Skipping redundant alignment 184181 190074 | 1128461 1134367 | 5894 5907 | 99.17 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 372706 378611 | 1134367 1128461 | 5906 5907 | 98.44 | NC_001145.3 NC_001136.10_RagTag
+		Skipping redundant alignment 215089 220994 | 1134367 1128461 | 5906 5907 | 97.62 | NC_001144.5 NC_001136.10_RagTag
+		Skipping redundant alignment 594832 600725 | 1128461 1134367 | 5894 5907 | 97.53 | NC_001147.6 NC_001136.10_RagTag
+		Skipping redundant alignment 817402 823295 | 1134367 1128461 | 5894 5907 | 96.87 | NC_001139.9 NC_001136.10_RagTag
+		Skipping redundant alignment 543619 549626 | 1134367 1128461 | 6008 5907 | 96.23 | NC_001140.6 NC_001136.10_RagTag
+		Skipping redundant alignment 878303 884106 | 1134376 1128566 | 5804 5811 | 97.14 | NC_001136.10 NC_001136.10_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 1459522.2, number of alignments: 28, unaligned bases: 8832
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 1475532 out of 1483564 non-N bases (99.46%))
+			Real Alignment 1: 231 21130 | 1 20879 | 20900 20879 | 98.82 | NC_001136.10 NC_001136.10_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Real Alignment 2: 21126 384484 | 21212 383991 | 363359 362780 | 99.22 | NC_001136.10 NC_001136.10_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -486
+			Real Alignment 3: 384528 391078 | 384521 390870 | 6551 6350 | 95.79 | NC_001136.10 NC_001136.10_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 987 (local)
+			Real Alignment 4: 392166 434422 | 390971 433189 | 42257 42219 | 99.26 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 5: 594832 600734 | 439332 433430 | 5903 5903 | 98.7 | NC_001147.6 NC_001136.10_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Real Alignment 6: 519316 519648 | 439784 440117 | 333 334 | 98.5 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 82988) between these two alignments
+			Excluding internal overlap of size 2 between Alignment 7 and 8: 651095 651419 | 441298 440974 | 325 325 --> 651095 651417 | 441298 440976 | 323 323
+			Real Alignment 7: 435466 436306 | 440975 440139 | 841 837 | 97.86 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = -215952) between these two alignments
+			Real Alignment 8: 651095 651417 | 441298 440976 | 323 323 | 99.38 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 213936) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 9 and 10: 436326 437149 | 441308 442131 | 824 824 --> 436326 437143 | 441308 442125 | 818 818
+			Real Alignment 9: 436326 437143 | 441308 442125 | 818 818 | 98.79 | NC_001136.10 NC_001136.10_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 375
+			Real Alignment 10: 437519 448982 | 442126 453610 | 11464 11485 | 98.98 | NC_001136.10 NC_001136.10_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 3717 (extensive)
+			Real Alignment 11: 452812 461662 | 453723 462566 | 8851 8844 | 99.16 | NC_001136.10 NC_001136.10_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1483 (extensive)
+			Excluding internal overlap of size 8 between Alignment 12 and 13: 519645 534605 | 513231 528202 | 14961 14972 --> 519653 534605 | 513239 528202 | 14953 14964
+			Real Alignment 12: 463272 513688 | 462693 513238 | 50417 50546 | 99.49 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5964) between these two alignments
+			Excluding internal overlap of size 7075 between Alignment 13 and 14: 519653 534605 | 513239 528202 | 14953 14964 --> 519653 527530 | 513239 521127 | 7878 7889
+			Real Alignment 13: 519653 527530 | 513239 521127 | 7878 7889 | 99.35 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 3885) between these two alignments
+			Real Alignment 14: 531416 555397 | 521128 544972 | 23982 23845 | 99.09 | NC_001136.10 NC_001136.10_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1909 (extensive)
+			Excluding internal overlap of size 5 between Alignment 15 and 16: 557772 645501 | 545438 633277 | 87730 87840 --> 557772 645496 | 545438 633272 | 87725 87835
+			Real Alignment 15: 557772 645496 | 545438 633272 | 87725 87835 | 99.21 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5923) between these two alignments
+			Real Alignment 16: 651420 871815 | 633273 854263 | 220396 220991 | 99.31 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5964) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 17 and 18: 877784 878302 | 854268 854786 | 519 519 --> 877784 878297 | 854268 854781 | 514 514
+			Real Alignment 17: 877784 878297 | 854268 854781 | 514 514 | 99.42 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5923) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 18 and 19: 946296 981709 | 916492 951969 | 35414 35478 --> 946301 981709 | 916497 951969 | 35409 35473
+			Real Alignment 18: 884221 945954 | 854782 916496 | 61734 61715 | 99.79 | NC_001136.10 NC_001136.10_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 346
+			Excluding internal overlap of size 317 between Alignment 19 and 20: 478275 483952 | 951653 957324 | 5678 5672 --> 478592 483952 | 951970 957324 | 5361 5355
+			Real Alignment 19: 946301 981709 | 916497 951969 | 35409 35473 | 99.34 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 20: 478592 483952 | 951970 957324 | 5361 5355 | 99.0 | NC_001142.9 NC_001136.10_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 21 and 22: 1101692 1156012 | 1060422 1114738 | 54321 54317 --> 1101698 1156012 | 1060428 1114738 | 54315 54311
+			Real Alignment 21: 992699 1095766 | 957344 1060427 | 103068 103084 | 99.56 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5931) between these two alignments
+			Excluding internal overlap of size 1877 between Alignment 22 and 23: 1159528 1174984 | 1112862 1128358 | 15457 15497 --> 1161405 1174984 | 1114739 1128358 | 13580 13620
+			Real Alignment 22: 1101698 1156012 | 1060428 1114738 | 54315 54311 | 99.65 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5392) between these two alignments
+			Real Alignment 23: 1161405 1174984 | 1114739 1128358 | 13580 13620 | 98.81 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = -79309, scaffold gap is present) between these two alignments
+			Real Alignment 24: 1095778 1101692 | 1128461 1134376 | 5915 5916 | 99.44 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 73286) between these two alignments
+			Real Alignment 25: 1174979 1206698 | 1134377 1166098 | 31720 31722 | 99.03 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5923) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 26 and 27: 1212623 1352643 | 1166100 1306666 | 140021 140567 --> 1212623 1352638 | 1166100 1306661 | 140016 140562
+			Real Alignment 26: 1212623 1352638 | 1166100 1306661 | 140016 140562 | 99.29 | NC_001136.10 NC_001136.10_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 27: 1352976 1523611 | 1306662 1477074 | 170636 170413 | 99.17 | NC_001136.10 NC_001136.10_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 28: 7427 8395 | 1484364 1483396 | 969 969 | 99.59 | NC_001133.9 NC_001136.10_RagTag
+		Unaligned bases: 8832
+
+CONTIG: NC_001137.3_RagTag (579049bp)
+Best alignment score: 180351.1 (LEN: 181130, IDY: 99.57), Total number of alignments: 36
+			Looking for the best set of alignments (out of 36 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1085244 1087785 | 573610 576138 | 2542 2529 | 95.24 | NC_001147.6 NC_001137.3_RagTag
+		Skipping redundant alignment 1072279 1074820 | 573610 576138 | 2542 2529 | 95.24 | NC_001144.5 NC_001137.3_RagTag
+		Skipping redundant alignment 1526092 1528633 | 573610 576138 | 2542 2529 | 95.24 | NC_001136.10 NC_001137.3_RagTag
+		Skipping redundant alignment 434540 434972 | 214002 213572 | 433 431 | 96.33 | NC_001137.3 NC_001137.3_RagTag
+		Skipping redundant alignment 135616 135939 | 460786 460463 | 324 324 | 99.69 | NC_001137.3 NC_001137.3_RagTag
+		Skipping redundant alignment 981369 981700 | 460794 460463 | 332 332 | 99.4 | NC_001144.5 NC_001137.3_RagTag
+		Skipping redundant alignment 768547 768879 | 460462 460794 | 333 333 | 99.4 | NC_001145.3 NC_001137.3_RagTag
+		Skipping redundant alignment 487832 488165 | 460461 460794 | 334 334 | 99.4 | NC_001137.3 NC_001137.3_RagTag
+		Skipping redundant alignment 9093 9425 | 460463 460795 | 333 333 | 99.7 | NC_001134.8 NC_001137.3_RagTag
+		Skipping redundant alignment 102212 102524 | 503367 503055 | 313 313 | 99.68 | NC_001146.8 NC_001137.3_RagTag
+		Skipping redundant alignment 856232 856554 | 503372 503056 | 323 317 | 96.9 | NC_001148.4 NC_001137.3_RagTag
+		Skipping redundant alignment 189752 190083 | 503056 503387 | 332 332 | 99.7 | NC_001145.3 NC_001137.3_RagTag
+		Skipping redundant alignment 543610 543941 | 503387 503056 | 332 332 | 99.7 | NC_001140.6 NC_001137.3_RagTag
+		Skipping redundant alignment 822975 823306 | 503387 503056 | 332 332 | 99.4 | NC_001139.9 NC_001137.3_RagTag
+		Skipping redundant alignment 549306 549637 | 503387 503056 | 332 332 | 99.4 | NC_001140.6 NC_001137.3_RagTag
+		Skipping redundant alignment 594821 595152 | 503056 503387 | 332 332 | 99.4 | NC_001147.6 NC_001137.3_RagTag
+		Skipping redundant alignment 600403 600734 | 503056 503387 | 332 332 | 99.4 | NC_001147.6 NC_001137.3_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 555446.9, number of alignments: 19, unaligned bases: 17351
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 561698 out of 578549 non-N bases (97.09%))
+			Excluding internal overlap of size 7 between Alignment 1 and 2: 6793 14684 | 2694 10587 | 7892 7894 --> 6793 14677 | 2694 10580 | 7885 7887
+			Real Alignment 1: 6793 14677 | 2694 10580 | 7885 7887 | 98.62 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 323
+			Real Alignment 2: 15001 23534 | 10581 19114 | 8534 8534 | 98.06 | NC_001137.3 NC_001137.3_RagTag
+			  Extensive misassembly (relocation, inconsistency = -13651, scaffold gap is present) between these two alignments
+			Real Alignment 3: 15001 82483 | 24232 91795 | 67483 67564 | 98.91 | NC_001137.3 NC_001137.3_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2189 (extensive)
+			Real Alignment 4: 84776 116100 | 91899 123217 | 31325 31319 | 99.78 | NC_001137.3 NC_001137.3_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 754 (local)
+			Real Alignment 5: 117039 135608 | 123402 141972 | 18570 18571 | 99.41 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 15
+			Real Alignment 6: 136026 207337 | 142375 213564 | 71312 71190 | 99.18 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -346
+			Excluding internal overlap of size 6 between Alignment 7 and 8: 207344 249929 | 213917 256543 | 42586 42627 --> 207344 249923 | 213917 256537 | 42580 42621
+			Real Alignment 7: 207344 249923 | 213917 256537 | 42580 42621 | 99.27 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 346
+			Real Alignment 8: 250270 431490 | 256538 437667 | 181221 181130 | 99.57 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 53
+			Real Alignment 9: 431806 434630 | 437930 440753 | 2825 2824 | 99.43 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 346
+			Real Alignment 10: 434983 435378 | 440760 441151 | 396 392 | 96.97 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Real Alignment 11: 435374 435946 | 441484 442048 | 573 565 | 96.51 | NC_001137.3 NC_001137.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 12: 473483 483952 | 452867 442394 | 10470 10474 | 97.35 | NC_001142.9 NC_001137.3_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 13 and 14: 449631 449992 | 460100 460462 | 362 363 --> 449636 449992 | 460105 460462 | 357 358
+			Real Alignment 13: 438481 443369 | 455216 460104 | 4889 4889 | 98.88 | NC_001137.3 NC_001137.3_RagTag
+			  Extensive misassembly (relocation, inconsistency = 6266) between these two alignments
+			Real Alignment 14: 449636 449992 | 460105 460462 | 357 358 | 99.72 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Excluding internal overlap of size 5 between Alignment 15 and 16: 488166 492583 | 498638 503055 | 4418 4418 --> 488171 492583 | 498643 503055 | 4413 4413
+			Real Alignment 15: 449987 487833 | 460794 498642 | 37847 37849 | 99.6 | NC_001137.3 NC_001137.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 16: 488171 492583 | 498643 503055 | 4413 4413 | 99.25 | NC_001137.3 NC_001137.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 17: 817391 817724 | 503389 503056 | 334 334 | 99.4 | NC_001139.9 NC_001137.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 18: 498422 566695 | 503500 571754 | 68274 68255 | 98.89 | NC_001137.3 NC_001137.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 19: 1084980 1087516 | 573610 576138 | 2537 2529 | 95.32 | NC_001139.9 NC_001137.3_RagTag
+		Unaligned bases: 17351
+
+CONTIG: NC_001138.5_RagTag (288552bp)
+Best alignment score: 63766.5 (LEN: 64145, IDY: 99.41), Total number of alignments: 40
+			Looking for the best set of alignments (out of 40 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 539580 543610 | 49255 45224 | 4031 4032 | 99.53 | NC_001140.6 NC_001138.5_RagTag
+		Skipping redundant alignment 201919 202200 | 130720 130439 | 282 282 | 98.23 | NC_001145.3 NC_001138.5_RagTag
+		Skipping redundant alignment 443417 443733 | 130405 130720 | 317 316 | 97.16 | NC_001137.3 NC_001138.5_RagTag
+		Skipping redundant alignment 196332 196658 | 130720 130395 | 327 326 | 96.94 | NC_001145.3 NC_001138.5_RagTag
+		Skipping redundant alignment 475981 476310 | 130392 130720 | 330 329 | 96.97 | NC_001144.5 NC_001138.5_RagTag
+		Skipping redundant alignment 62039 62368 | 130720 130392 | 330 329 | 96.97 | NC_001148.4 NC_001138.5_RagTag
+		Skipping redundant alignment 165833 166162 | 130392 130720 | 330 329 | 96.97 | NC_001133.9 NC_001138.5_RagTag
+		Skipping redundant alignment 56452 56781 | 130720 130392 | 330 329 | 96.97 | NC_001148.4 NC_001138.5_RagTag
+		Skipping redundant alignment 160245 160574 | 130392 130720 | 330 329 | 96.97 | NC_001133.9 NC_001138.5_RagTag
+		Skipping redundant alignment 82700 83029 | 130720 130392 | 330 329 | 96.97 | NC_001135.5 NC_001138.5_RagTag
+		Skipping redundant alignment 448991 449321 | 130392 130721 | 331 330 | 96.98 | NC_001137.3 NC_001138.5_RagTag
+		Skipping redundant alignment 481568 481898 | 130392 130721 | 331 330 | 96.98 | NC_001144.5 NC_001138.5_RagTag
+		Skipping redundant alignment 735991 736316 | 218523 218848 | 326 326 | 99.08 | NC_001139.9 NC_001138.5_RagTag
+		Skipping redundant alignment 374008 374333 | 218523 218849 | 326 327 | 98.47 | NC_001144.5 NC_001138.5_RagTag
+		Skipping redundant alignment 726276 726570 | 218556 218850 | 295 295 | 99.32 | NC_001146.8 NC_001138.5_RagTag
+		Skipping redundant alignment 856555 856881 | 218524 218850 | 327 327 | 99.08 | NC_001148.4 NC_001138.5_RagTag
+		Skipping redundant alignment 945959 946286 | 218850 218523 | 328 328 | 98.78 | NC_001136.10 NC_001138.5_RagTag
+		Skipping redundant alignment 146335 146662 | 218850 218523 | 328 328 | 98.78 | NC_001140.6 NC_001138.5_RagTag
+		Skipping redundant alignment 434635 434962 | 218850 218523 | 328 328 | 98.48 | NC_001137.3 NC_001138.5_RagTag
+		Skipping redundant alignment 546747 547073 | 218523 218850 | 327 328 | 98.48 | NC_001146.8 NC_001138.5_RagTag
+		Skipping redundant alignment 5462 5841 | 283506 283126 | 380 381 | 99.48 | NC_001134.8 NC_001138.5_RagTag
+		Skipping redundant alignment 2336 5461 | 286647 283534 | 3126 3114 | 99.17 | NC_001134.8 NC_001138.5_RagTag
+		Skipping redundant alignment 2143 2227 | 286732 286648 | 85 85 | 100.0 | NC_001134.8 NC_001138.5_RagTag
+		Skipping redundant alignment 1 1592 | 288512 286928 | 1592 1585 | 98.12 | NC_001134.8 NC_001138.5_RagTag
+		Skipping redundant alignment 5833 11205 | 288520 283112 | 5373 5409 | 99.02 | NC_001144.5 NC_001138.5_RagTag
+		Skipping redundant alignment 126 4952 | 288552 283565 | 4827 4988 | 95.42 | NC_001140.6 NC_001138.5_RagTag
+		Skipping redundant alignment 942808 948020 | 283417 288552 | 5213 5136 | 97.28 | NC_001148.4 NC_001138.5_RagTag
+		Skipping redundant alignment 556991 562366 | 283126 288552 | 5376 5427 | 98.09 | NC_001140.6 NC_001138.5_RagTag
+		Skipping redundant alignment 164 5670 | 288552 283112 | 5507 5441 | 97.86 | NC_001144.5 NC_001138.5_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 266774.2, number of alignments: 11, unaligned bases: 17304
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 271248 out of 288252 non-N bases (94.10%))
+			Real Alignment 1: 16737 27635 | 13902 24795 | 10899 10894 | 96.01 | NC_001138.5 NC_001138.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = -11357, scaffold gap is present) between these two alignments
+			Real Alignment 2: 16737 30084 | 25254 38622 | 13348 13369 | 98.54 | NC_001138.5 NC_001138.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 3: 24352 29121 | 39854 44620 | 4770 4767 | 96.54 | NC_001142.9 NC_001138.5_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Real Alignment 4: 218978 223515 | 49255 44727 | 4538 4529 | 98.97 | NC_001133.9 NC_001138.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 5: 30089 32507 | 49944 52361 | 2419 2418 | 98.64 | NC_001138.5 NC_001138.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 246
+			Real Alignment 6: 32755 73098 | 52363 92700 | 40344 40338 | 99.35 | NC_001138.5 NC_001138.5_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 516 (local)
+			Real Alignment 7: 73716 111255 | 92802 130384 | 37540 37583 | 98.67 | NC_001138.5 NC_001138.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -341
+			Excluding internal overlap of size 5 between Alignment 8 and 9: 111251 137912 | 130721 157444 | 26662 26724 --> 111251 137907 | 130721 157439 | 26657 26719
+			Real Alignment 8: 111251 137907 | 130721 157439 | 26657 26719 | 99.2 | NC_001138.5 NC_001138.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5964) between these two alignments
+			Real Alignment 9: 143872 204996 | 157440 218498 | 61125 61059 | 99.0 | NC_001138.5 NC_001138.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 465
+			Real Alignment 10: 205929 270111 | 218966 283110 | 64183 64145 | 99.41 | NC_001138.5 NC_001138.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 11: 142 5532 | 288552 283126 | 5391 5427 | 99.06 | NC_001145.3 NC_001138.5_RagTag
+		Unaligned bases: 17304
+
+CONTIG: NC_001139.9_RagTag (1221661bp)
+Best alignment score: 143809.6 (LEN: 144634, IDY: 99.43), Total number of alignments: 94
+			Looking for the best set of alignments (out of 94 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 4 1534 | 60 1585 | 1531 1526 | 97.58 | NC_001134.8 NC_001139.9_RagTag
+		Skipping redundant alignment 148 1837 | 1 1691 | 1690 1691 | 97.04 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 1530349 1531925 | 1694 124 | 1577 1571 | 97.46 | NC_001136.10 NC_001139.9_RagTag
+		Skipping redundant alignment 4 1639 | 60 1694 | 1636 1635 | 97.25 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 1076536 1078174 | 1694 60 | 1639 1635 | 97.13 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 575166 576860 | 1694 1 | 1695 1694 | 97.05 | NC_001137.3 NC_001139.9_RagTag
+		Skipping redundant alignment 1089232 1090926 | 1694 1 | 1695 1694 | 97.05 | NC_001139.9 NC_001139.9_RagTag
+		Skipping redundant alignment 1089501 1091198 | 1694 1 | 1698 1694 | 96.94 | NC_001147.6 NC_001139.9_RagTag
+		Skipping redundant alignment 1069873 1071570 | 1694 1 | 1698 1694 | 96.94 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 36 1730 | 1 1694 | 1695 1694 | 96.93 | NC_001146.8 NC_001139.9_RagTag
+		Skipping redundant alignment 126 1823 | 1 1694 | 1698 1694 | 96.76 | NC_001145.3 NC_001139.9_RagTag
+		Skipping redundant alignment 946334 948036 | 1701 1 | 1703 1701 | 97.48 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 1731 1919 | 1767 1954 | 189 188 | 96.83 | NC_001146.8 NC_001139.9_RagTag
+		Skipping redundant alignment 1640 1828 | 1767 1954 | 189 188 | 96.83 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 1824 2012 | 1767 1954 | 189 188 | 96.83 | NC_001145.3 NC_001139.9_RagTag
+		Skipping redundant alignment 574976 575165 | 1955 1767 | 190 189 | 96.84 | NC_001137.3 NC_001139.9_RagTag
+		Skipping redundant alignment 1089042 1089231 | 1955 1767 | 190 189 | 96.84 | NC_001139.9 NC_001139.9_RagTag
+		Skipping redundant alignment 1089311 1089500 | 1955 1767 | 190 189 | 96.32 | NC_001147.6 NC_001139.9_RagTag
+		Skipping redundant alignment 1069683 1069872 | 1955 1767 | 190 189 | 96.32 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 1076346 1076535 | 1955 1767 | 190 189 | 96.32 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 1530159 1530348 | 1955 1767 | 190 189 | 96.32 | NC_001136.10 NC_001139.9_RagTag
+		Skipping redundant alignment 2079 3711 | 2165 3797 | 1633 1633 | 99.39 | NC_001145.3 NC_001139.9_RagTag
+		Skipping redundant alignment 944346 945978 | 3797 2165 | 1633 1633 | 99.33 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 2203 3835 | 2165 3797 | 1633 1633 | 99.27 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 2319 4036 | 2094 3797 | 1718 1704 | 97.96 | NC_001134.8 NC_001139.9_RagTag
+		Skipping redundant alignment 572784 574910 | 4277 2165 | 2127 2113 | 98.78 | NC_001137.3 NC_001139.9_RagTag
+		Skipping redundant alignment 1086850 1088976 | 4277 2165 | 2127 2113 | 98.78 | NC_001139.9 NC_001139.9_RagTag
+		Skipping redundant alignment 1986 4112 | 2165 4277 | 2127 2113 | 98.78 | NC_001146.8 NC_001139.9_RagTag
+		Skipping redundant alignment 1895 4021 | 2165 4277 | 2127 2113 | 98.78 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 1087119 1089245 | 4277 2165 | 2127 2113 | 98.68 | NC_001147.6 NC_001139.9_RagTag
+		Skipping redundant alignment 1074154 1076280 | 4277 2165 | 2127 2113 | 98.68 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 1527967 1530093 | 4277 2165 | 2127 2113 | 98.68 | NC_001136.10 NC_001139.9_RagTag
+		Skipping redundant alignment 1067491 1069617 | 4277 2165 | 2127 2113 | 98.64 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 133 4483 | 1 4277 | 4351 4277 | 96.78 | NC_001142.9 NC_001139.9_RagTag
+		Skipping redundant alignment 150 4500 | 1 4277 | 4351 4277 | 96.74 | NC_001141.2 NC_001139.9_RagTag
+		Skipping redundant alignment 793584 793685 | 13306 13205 | 102 102 | 96.08 | NC_001134.8 NC_001139.9_RagTag
+		Skipping redundant alignment 566727 566951 | 15776 16000 | 225 225 | 95.56 | NC_001137.3 NC_001139.9_RagTag
+		Skipping redundant alignment 8468 9833 | 16003 17377 | 1366 1375 | 95.2 | NC_001141.2 NC_001139.9_RagTag
+		Skipping redundant alignment 362753 362919 | 258602 258436 | 167 167 | 98.2 | NC_001145.3 NC_001139.9_RagTag
+		Skipping redundant alignment 541098 541427 | 262187 262515 | 330 329 | 99.09 | NC_001142.9 NC_001139.9_RagTag
+		Skipping redundant alignment 707195 712546 | 358186 352755 | 5352 5432 | 97.44 | NC_001139.9 NC_001139.9_RagTag
+		Skipping redundant alignment 987564 992528 | 910724 905757 | 4965 4968 | 97.99 | NC_001136.10 NC_001139.9_RagTag
+		Skipping redundant alignment 492696 498421 | 911367 905642 | 5726 5726 | 97.59 | NC_001137.3 NC_001139.9_RagTag
+		Skipping redundant alignment 196446 202221 | 905757 911533 | 5776 5777 | 97.79 | NC_001145.3 NC_001139.9_RagTag
+		Skipping redundant alignment 160258 166048 | 911547 905757 | 5791 5791 | 97.97 | NC_001133.9 NC_001139.9_RagTag
+		Skipping redundant alignment 56566 62355 | 905757 911547 | 5790 5791 | 97.83 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 475994 481783 | 911547 905757 | 5790 5791 | 97.81 | NC_001144.5 NC_001139.9_RagTag
+		Skipping redundant alignment 478165 483952 | 905757 911547 | 5788 5791 | 96.98 | NC_001142.9 NC_001139.9_RagTag
+		Skipping redundant alignment 804665 810448 | 911547 905757 | 5784 5791 | 96.91 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 850649 856554 | 911547 905642 | 5906 5906 | 98.36 | NC_001148.4 NC_001139.9_RagTag
+		Skipping redundant alignment 117703 123608 | 905642 911547 | 5906 5906 | 98.36 | NC_001147.6 NC_001139.9_RagTag
+		Skipping redundant alignment 472463 478364 | 905642 911547 | 5902 5906 | 97.33 | NC_001142.9 NC_001139.9_RagTag
+		Skipping redundant alignment 535760 541665 | 905642 911547 | 5906 5906 | 97.31 | NC_001139.9 NC_001139.9_RagTag
+		Skipping redundant alignment 443412 449206 | 911552 905757 | 5795 5796 | 97.79 | NC_001137.3 NC_001139.9_RagTag
+		Skipping redundant alignment 878314 884106 | 911556 905757 | 5793 5800 | 97.24 | NC_001136.10 NC_001139.9_RagTag
+		Skipping redundant alignment 1095766 1101681 | 905641 911556 | 5916 5916 | 99.63 | NC_001136.10 NC_001139.9_RagTag
+		Skipping redundant alignment 645502 651305 | 911567 905757 | 5804 5811 | 97.64 | NC_001136.10 NC_001139.9_RagTag
+		Skipping redundant alignment 561843 567646 | 911567 905757 | 5804 5811 | 97.37 | NC_001139.9 NC_001139.9_RagTag
+		Skipping redundant alignment 184170 190083 | 905642 911567 | 5914 5926 | 99.22 | NC_001145.3 NC_001139.9_RagTag
+		Skipping redundant alignment 372697 378622 | 911567 905642 | 5926 5926 | 98.43 | NC_001145.3 NC_001139.9_RagTag
+		Skipping redundant alignment 594820 600734 | 905641 911567 | 5915 5927 | 97.66 | NC_001147.6 NC_001139.9_RagTag
+		Skipping redundant alignment 543610 549638 | 911567 905641 | 6029 5927 | 96.33 | NC_001140.6 NC_001139.9_RagTag
+		Skipping redundant alignment 817391 823307 | 911569 905641 | 5917 5929 | 97.03 | NC_001139.9 NC_001139.9_RagTag
+		Skipping redundant alignment 215076 221005 | 911571 905642 | 5930 5930 | 97.61 | NC_001144.5 NC_001139.9_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 1189521.9, number of alignments: 30, unaligned bases: 19058
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 1202603 out of 1221161 non-N bases (98.48%))
+			Real Alignment 1: 1 4195 | 73 4277 | 4195 4205 | 95.58 | NC_001137.3 NC_001139.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 362
+			Real Alignment 2: 4587 5447 | 4307 5161 | 861 855 | 96.43 | NC_001137.3 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 3: 554000 556361 | 15746 13384 | 2362 2363 | 98.31 | NC_001140.6 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 4: 6290 69195 | 16328 79129 | 62906 62802 | 98.7 | NC_001139.9 NC_001139.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1383 (extensive)
+			Real Alignment 5: 70682 74089 | 79233 82641 | 3408 3409 | 99.56 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Excluding internal overlap of size 8 between Alignment 6 and 7: 517785 524210 | 89169 82746 | 6426 6424 --> 517793 524210 | 89161 82746 | 6418 6416
+			Real Alignment 6: 517793 524210 | 89161 82746 | 6418 6416 | 98.82 | NC_001143.9 NC_001139.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 7: 458472 517455 | 148139 89162 | 58984 58978 | 99.48 | NC_001143.9 NC_001139.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 15
+			Real Alignment 8: 385589 458131 | 221161 148465 | 72543 72697 | 99.19 | NC_001143.9 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 9: 73717 110797 | 221261 258335 | 37081 37075 | 99.26 | NC_001139.9 NC_001139.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 584
+			Real Alignment 10: 111531 115203 | 258485 262183 | 3673 3699 | 98.13 | NC_001139.9 NC_001139.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Excluding internal overlap of size 1 between Alignment 11 and 12: 205220 210648 | 358186 352755 | 5429 5432 --> 205220 210647 | 358186 352756 | 5428 5431
+			Real Alignment 11: 115199 205508 | 262516 352755 | 90310 90240 | 99.27 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 12: 205220 210647 | 358186 352756 | 5428 5431 | 98.95 | NC_001141.2 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 13: 205504 270011 | 358187 422700 | 64508 64514 | 99.68 | NC_001139.9 NC_001139.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 428 (local)
+			Real Alignment 14: 270544 401616 | 422805 553788 | 131073 130984 | 99.45 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 2661) between these two alignments
+			Real Alignment 15: 405416 467704 | 554927 617200 | 62289 62274 | 99.46 | NC_001139.9 NC_001139.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 335 (local)
+			Excluding internal overlap of size 5 between Alignment 16 and 17: 535543 535759 | 684424 684641 | 217 218 --> 535548 535759 | 684429 684641 | 212 213
+			Real Alignment 16: 468140 535210 | 617301 684428 | 67071 67128 | 99.33 | NC_001139.9 NC_001139.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Excluding internal overlap of size 5 between Alignment 17 and 18: 535548 535759 | 684429 684641 | 212 213 --> 535548 535754 | 684429 684636 | 207 208
+			Real Alignment 17: 535548 535754 | 684429 684636 | 207 208 | 99.08 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5931) between these two alignments
+			Real Alignment 18: 541686 561744 | 684637 704702 | 20059 20066 | 99.33 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 174216) between these two alignments
+			Real Alignment 19: 735982 736315 | 705057 704724 | 334 334 | 100.0 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 167156) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 20 and 21: 567761 568741 | 705142 706124 | 981 983 --> 567761 568735 | 705142 706118 | 975 977
+			Real Alignment 20: 567761 568735 | 705142 706118 | 975 977 | 97.66 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5965) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 21 and 22: 712546 779522 | 838603 905641 | 66977 67039 --> 712552 779522 | 838609 905641 | 66971 67033
+			Real Alignment 21: 574701 707195 | 706119 838608 | 132495 132490 | 99.78 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5356) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 22 and 23: 844407 850345 | 905637 911572 | 5939 5936 --> 844412 850345 | 905642 911572 | 5934 5931
+			Real Alignment 22: 712552 779522 | 838609 905641 | 66971 67033 | 99.6 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 23 and 24: 844412 850345 | 905642 911572 | 5934 5931 --> 844412 850340 | 905642 911567 | 5929 5926
+			Real Alignment 23: 844412 850340 | 905642 911567 | 5929 5926 | 99.55 | NC_001148.4 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 24 and 25: 779518 811446 | 911568 943646 | 31929 32079 --> 779518 811440 | 911568 943640 | 31923 32073
+			Real Alignment 24: 779518 811440 | 911568 943640 | 31923 32073 | 98.9 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 11883) between these two alignments
+			Real Alignment 25: 823324 884003 | 943641 1004273 | 60680 60633 | 99.37 | NC_001139.9 NC_001139.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 393 (local)
+			Excluding internal overlap of size 5 between Alignment 26 and 27: 884517 931170 | 1004394 1051049 | 46654 46656 --> 884517 931165 | 1004394 1051044 | 46649 46651
+			Real Alignment 26: 884517 931165 | 1004394 1051044 | 46649 46651 | 99.48 | NC_001139.9 NC_001139.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 375
+			Real Alignment 27: 931541 1076129 | 1051045 1195678 | 144589 144634 | 99.43 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = -12555) between these two alignments
+			Real Alignment 28: 1067678 1069000 | 1199782 1201104 | 1323 1323 | 97.43 | NC_001139.9 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 8210 between Alignment 29 and 30: 802638 813080 | 1204469 1214934 | 10443 10466 --> 802638 804879 | 1204469 1206724 | 2242 2256
+			Real Alignment 29: 802638 804879 | 1204469 1206724 | 2242 2256 | 95.71 | NC_001134.8 NC_001139.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 30: 1076129 1090913 | 1206725 1221653 | 14785 14929 | 95.83 | NC_001139.9 NC_001139.9_RagTag
+		Unaligned bases: 19058
+
+CONTIG: NC_001140.6_RagTag (798803bp)
+Best alignment score: 173947.0 (LEN: 174786, IDY: 99.52), Total number of alignments: 27
+			Looking for the best set of alignments (out of 27 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 735977 736316 | 393233 393571 | 340 339 | 99.12 | NC_001139.9 NC_001140.6_RagTag
+		Skipping redundant alignment 945955 946295 | 393577 393238 | 341 340 | 98.83 | NC_001136.10 NC_001140.6_RagTag
+		Skipping redundant alignment 146331 146671 | 393577 393238 | 341 340 | 98.24 | NC_001140.6 NC_001140.6_RagTag
+		Skipping redundant alignment 668096 668436 | 393238 393577 | 341 340 | 97.95 | NC_001136.10 NC_001140.6_RagTag
+		Skipping redundant alignment 434631 434972 | 393577 393237 | 342 341 | 99.12 | NC_001137.3 NC_001140.6_RagTag
+		Skipping redundant alignment 249930 250271 | 393577 393237 | 342 341 | 98.25 | NC_001137.3 NC_001140.6_RagTag
+		Skipping redundant alignment 182522 182959 | 393141 393577 | 438 437 | 96.58 | NC_001133.9 NC_001140.6_RagTag
+		Skipping redundant alignment 319421 319763 | 393579 393237 | 343 343 | 98.83 | NC_001139.9 NC_001140.6_RagTag
+		Skipping redundant alignment 24757 25003 | 788858 788612 | 247 247 | 95.14 | NC_001133.9 NC_001140.6_RagTag
+		Skipping redundant alignment 24347 24735 | 789247 788859 | 389 389 | 97.94 | NC_001133.9 NC_001140.6_RagTag
+		Skipping redundant alignment 23979 24346 | 789642 789275 | 368 368 | 97.01 | NC_001133.9 NC_001140.6_RagTag
+		Skipping redundant alignment 207007 208037 | 788612 789642 | 1031 1031 | 96.8 | NC_001133.9 NC_001140.6_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 780522.1, number of alignments: 15, unaligned bases: 10570
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 788233 out of 798803 non-N bases (98.68%))
+			Real Alignment 1: 105839 196653 | 2 90880 | 90815 90879 | 98.75 | NC_001141.2 NC_001140.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -46
+			Real Alignment 2: 197495 205208 | 91768 99476 | 7714 7709 | 99.18 | NC_001141.2 NC_001140.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5433) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 3 and 4: 210651 246219 | 99486 135043 | 35569 35558 --> 210651 246214 | 99486 135038 | 35564 35553
+			Real Alignment 3: 210651 246214 | 99486 135038 | 35564 35553 | 99.59 | NC_001141.2 NC_001140.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 338
+			Real Alignment 4: 246553 324494 | 135039 213024 | 77942 77986 | 99.38 | NC_001141.2 NC_001140.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -4
+			Excluding internal overlap of size 2 between Alignment 5 and 6: 324860 383942 | 213394 272394 | 59083 59001 --> 324860 383940 | 213394 272392 | 59081 58999
+			Real Alignment 5: 324860 383940 | 213394 272392 | 59081 58999 | 99.32 | NC_001141.2 NC_001140.6_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 6: 5655 85385 | 272393 352178 | 79731 79786 | 98.81 | NC_001140.6 NC_001140.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 6350) between these two alignments
+			Excluding internal overlap of size 10 between Alignment 7 and 8: 116752 133122 | 376859 393237 | 16371 16379 --> 116762 133122 | 376869 393237 | 16361 16369
+			Real Alignment 7: 94982 116424 | 355425 376868 | 21443 21444 | 99.38 | NC_001140.6 NC_001140.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 8: 116762 133122 | 376869 393237 | 16361 16369 | 99.2 | NC_001140.6 NC_001140.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -344
+			Excluding internal overlap of size 1987 between Alignment 9 and 10: 133124 214253 | 393583 474734 | 81130 81152 --> 133124 212265 | 393583 472747 | 79142 79165
+			Real Alignment 9: 133124 212265 | 393583 472747 | 79142 79165 | 99.25 | NC_001140.6 NC_001140.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 1997) between these two alignments
+			Real Alignment 10: 214263 389012 | 472748 647533 | 174750 174786 | 99.52 | NC_001140.6 NC_001140.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -8
+			Real Alignment 11: 389510 525440 | 648039 784053 | 135931 136015 | 99.47 | NC_001140.6 NC_001140.6_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 12: 12745 13051 | 787986 787676 | 307 311 | 96.78 | NC_001133.9 NC_001140.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -431
+			Real Alignment 13: 11915 12517 | 789247 788645 | 603 603 | 96.68 | NC_001133.9 NC_001140.6_RagTag
+			  Indel (> 5bp) between these two alignments: insertion of length 27; 0 mismatches (number of Ns: 0)
+			Real Alignment 14: 11692 11914 | 789497 789275 | 223 223 | 95.07 | NC_001133.9 NC_001140.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 206514) between these two alignments
+			Real Alignment 15: 219330 227728 | 790399 798803 | 8399 8405 | 97.42 | NC_001133.9 NC_001140.6_RagTag
+		Unaligned bases: 10570
+
+CONTIG: NC_001141.2_RagTag (137008bp)
+Best alignment score: 73651.1 (LEN: 74305, IDY: 99.12), Total number of alignments: 10
+			Looking for the best set of alignments (out of 10 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 942520 942646 | 4136 4012 | 127 125 | 95.28 | NC_001148.4 NC_001141.2_RagTag
+		Skipping redundant alignment 28989 29357 | 5813 6181 | 369 369 | 98.92 | NC_001147.6 NC_001141.2_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 126282.0, number of alignments: 8, unaligned bases: 7509
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 129499 out of 136808 non-N bases (94.66%))
+			Real Alignment 1: 21177 24969 | 1 3796 | 3793 3796 | 96.63 | NC_001141.2 NC_001141.2_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -3950 (extensive)
+			Excluding internal overlap of size 8 between Alignment 2 and 3: 26039 30406 | 8816 13201 | 4368 4386 --> 26039 30398 | 8816 13193 | 4360 4378
+			Real Alignment 2: 26039 30398 | 8816 13193 | 4360 4378 | 96.81 | NC_001141.2 NC_001141.2_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 236
+			Real Alignment 3: 30635 104956 | 13194 87498 | 74322 74305 | 99.12 | NC_001141.2 NC_001141.2_RagTag
+			  Extensive misassembly (relocation, inconsistency = 285819, scaffold gap is present) between these two alignments
+			Real Alignment 4: 392117 392245 | 88969 88840 | 129 130 | 95.38 | NC_001141.2 NC_001141.2_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -195
+			Real Alignment 5: 390900 391162 | 90381 90119 | 263 263 | 98.48 | NC_001141.2 NC_001141.2_RagTag
+			  Indel (> 5bp) between these two alignments: deletion of length 132; 0 mismatches (number of Ns: 0)
+			Real Alignment 6: 387696 390767 | 93416 90382 | 3072 3035 | 97.04 | NC_001141.2 NC_001141.2_RagTag
+			  Indel (> 5bp) between these two alignments: deletion of length 42; 0 mismatches (number of Ns: 0)
+			Excluding internal overlap of size 3 between Alignment 7 and 8: 387563 387653 | 93506 93417 | 91 90 --> 387566 387653 | 93503 93417 | 88 87
+			Real Alignment 7: 387566 387653 | 93503 93417 | 88 87 | 96.7 | NC_001141.2 NC_001141.2_RagTag
+			  Extensive misassembly (relocation, inconsistency = -44197) between these two alignments
+			Real Alignment 8: 387372 431762 | 93504 137008 | 44391 43505 | 96.19 | NC_001141.2 NC_001141.2_RagTag
+		Unaligned bases: 7509
+
+CONTIG: NC_001142.9_RagTag (722923bp)
+Best alignment score: 171800.9 (LEN: 173134, IDY: 99.23), Total number of alignments: 82
+			Looking for the best set of alignments (out of 82 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1088966 1089075 | 1167 1057 | 110 111 | 99.1 | NC_001139.9 NC_001142.9_RagTag
+		Skipping redundant alignment 574900 575009 | 1167 1057 | 110 111 | 99.1 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 1089235 1089344 | 1167 1057 | 110 111 | 99.1 | NC_001147.6 NC_001142.9_RagTag
+		Skipping redundant alignment 1530083 1530192 | 1167 1057 | 110 111 | 99.1 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 1069607 1069716 | 1167 1057 | 110 111 | 99.1 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 1076270 1076379 | 1167 1057 | 110 111 | 99.1 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 1884 1996 | 1054 1167 | 113 114 | 99.12 | NC_001146.8 NC_001142.9_RagTag
+		Skipping redundant alignment 1793 1905 | 1054 1167 | 113 114 | 99.12 | NC_001148.4 NC_001142.9_RagTag
+		Skipping redundant alignment 1720 4585 | 919 3784 | 2866 2866 | 96.48 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 1067097 1069606 | 3788 1266 | 2510 2523 | 96.99 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 1065533 1067096 | 5467 3848 | 1564 1620 | 95.62 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 6137 6328 | 5494 5684 | 192 191 | 96.35 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 1100 6948 | 1 5824 | 5849 5824 | 96.55 | NC_001141.2 NC_001142.9_RagTag
+		Skipping redundant alignment 1071670 1076269 | 5857 1266 | 4600 4592 | 97.52 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 1084620 1089234 | 5871 1266 | 4615 4606 | 97.46 | NC_001147.6 NC_001142.9_RagTag
+		Skipping redundant alignment 1084346 1088965 | 5871 1266 | 4620 4606 | 97.42 | NC_001139.9 NC_001142.9_RagTag
+		Skipping redundant alignment 1997 6616 | 1266 5871 | 4620 4606 | 97.42 | NC_001146.8 NC_001142.9_RagTag
+		Skipping redundant alignment 1906 6524 | 1266 5872 | 4619 4607 | 97.45 | NC_001148.4 NC_001142.9_RagTag
+		Skipping redundant alignment 1065155 1065532 | 5873 5494 | 378 380 | 96.84 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 1525441 1530082 | 5899 1266 | 4642 4634 | 97.31 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 182723 182934 | 208805 209019 | 212 215 | 95.35 | NC_001133.9 NC_001142.9_RagTag
+		Skipping redundant alignment 249955 250173 | 209019 208799 | 219 221 | 95.93 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 354853 355174 | 360170 359849 | 322 322 | 97.52 | NC_001142.9 NC_001142.9_RagTag
+		Skipping redundant alignment 970287 970610 | 422103 422426 | 324 324 | 100.0 | NC_001147.6 NC_001142.9_RagTag
+		Skipping redundant alignment 135616 135939 | 422426 422103 | 324 324 | 100.0 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 975914 976237 | 422103 422426 | 324 324 | 100.0 | NC_001147.6 NC_001142.9_RagTag
+		Skipping redundant alignment 871821 872144 | 422103 422426 | 324 324 | 99.69 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 568749 569072 | 422426 422103 | 324 324 | 99.69 | NC_001139.9 NC_001142.9_RagTag
+		Skipping redundant alignment 768548 768879 | 422103 422434 | 332 332 | 99.7 | NC_001145.3 NC_001142.9_RagTag
+		Skipping redundant alignment 877448 877779 | 422103 422434 | 332 332 | 99.4 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 981369 981700 | 422434 422103 | 332 332 | 99.4 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 1352643 1352975 | 422102 422434 | 333 333 | 99.7 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 9091 9424 | 422101 422434 | 334 334 | 99.4 | NC_001134.8 NC_001142.9_RagTag
+		Skipping redundant alignment 976257 976589 | 422435 422103 | 333 333 | 99.4 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 487834 488166 | 422103 422435 | 333 333 | 99.4 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 651048 656723 | 436042 430371 | 5676 5672 | 96.55 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 561863 567536 | 430371 436042 | 5674 5672 | 96.27 | NC_001139.9 NC_001142.9_RagTag
+		Skipping redundant alignment 645522 651195 | 430371 436042 | 5674 5672 | 96.25 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 478275 483962 | 436042 430361 | 5688 5682 | 98.79 | NC_001142.9 NC_001142.9_RagTag
+		Skipping redundant alignment 1206928 1212611 | 436042 430361 | 5684 5682 | 96.4 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 196458 202221 | 436137 430385 | 5764 5753 | 96.55 | NC_001145.3 NC_001142.9_RagTag
+		Skipping redundant alignment 443397 449194 | 430351 436137 | 5798 5787 | 96.5 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 475974 481771 | 430351 436137 | 5798 5787 | 96.47 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 56578 62376 | 436137 430350 | 5799 5788 | 96.49 | NC_001148.4 NC_001142.9_RagTag
+		Skipping redundant alignment 160237 166036 | 430350 436137 | 5800 5788 | 96.16 | NC_001133.9 NC_001142.9_RagTag
+		Skipping redundant alignment 492696 498421 | 430545 436264 | 5726 5720 | 97.66 | NC_001137.3 NC_001142.9_RagTag
+		Skipping redundant alignment 372717 378622 | 430371 436264 | 5906 5894 | 98.51 | NC_001145.3 NC_001142.9_RagTag
+		Skipping redundant alignment 184170 190063 | 436264 430371 | 5894 5894 | 98.17 | NC_001145.3 NC_001142.9_RagTag
+		Skipping redundant alignment 215100 221005 | 430371 436264 | 5906 5894 | 97.68 | NC_001144.5 NC_001142.9_RagTag
+		Skipping redundant alignment 472463 478374 | 436264 430361 | 5912 5904 | 95.8 | NC_001142.9 NC_001142.9_RagTag
+		Skipping redundant alignment 117703 123628 | 436264 430351 | 5926 5914 | 97.1 | NC_001147.6 NC_001142.9_RagTag
+		Skipping redundant alignment 850629 856554 | 430351 436264 | 5926 5914 | 96.85 | NC_001148.4 NC_001142.9_RagTag
+		Skipping redundant alignment 96610 102523 | 430351 436264 | 5914 5914 | 96.47 | NC_001146.8 NC_001142.9_RagTag
+		Skipping redundant alignment 594820 600714 | 436265 430371 | 5895 5895 | 98.64 | NC_001147.6 NC_001142.9_RagTag
+		Skipping redundant alignment 817413 823307 | 430371 436265 | 5895 5895 | 98.02 | NC_001139.9 NC_001142.9_RagTag
+		Skipping redundant alignment 1095766 1101672 | 436265 430371 | 5907 5895 | 97.89 | NC_001136.10 NC_001142.9_RagTag
+		Skipping redundant alignment 543630 549638 | 430371 436265 | 6009 5895 | 95.21 | NC_001140.6 NC_001142.9_RagTag
+		Skipping redundant alignment 844410 850320 | 436266 430371 | 5911 5896 | 97.8 | NC_001148.4 NC_001142.9_RagTag
+		Skipping redundant alignment 259576 265474 | 436266 430371 | 5899 5896 | 97.63 | NC_001134.8 NC_001142.9_RagTag
+		Skipping redundant alignment 709874 710024 | 518236 518086 | 151 151 | 97.35 | NC_001147.6 NC_001142.9_RagTag
+		Skipping redundant alignment 519316 519648 | 529098 528765 | 333 334 | 98.8 | NC_001136.10 NC_001142.9_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 699233.6, number of alignments: 21, unaligned bases: 15340
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 707583 out of 722323 non-N bases (97.96%))
+			Excluding internal overlap of size 4559 between Alignment 1 and 2: 569605 574899 | 6610 1266 | 5295 5345 --> 569605 570377 | 6610 5825 | 773 786
+			Real Alignment 1: 1083 6931 | 1 5824 | 5849 5824 | 96.59 | NC_001142.9 NC_001142.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 569605 570377 | 6610 5825 | 773 786 | 96.48 | NC_001137.3 NC_001142.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 1025 between Alignment 3 and 4: 687 7308 | 6850 13495 | 6622 6646 --> 687 6285 | 6850 12470 | 5599 5621
+			Real Alignment 3: 687 6285 | 6850 12470 | 5599 5621 | 96.34 | NC_001139.9 NC_001142.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 2 between Alignment 4 and 5: 19094 24893 | 19294 24975 | 5800 5682 --> 19096 24893 | 19296 24975 | 5798 5680
+			Real Alignment 4: 11545 18349 | 12471 19295 | 6805 6825 | 96.31 | NC_001147.6 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 746
+			Real Alignment 5: 19096 24893 | 19296 24975 | 5798 5680 | 95.35 | NC_001147.6 NC_001142.9_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Real Alignment 6: 24352 197495 | 35593 208726 | 173144 173134 | 99.23 | NC_001142.9 NC_001142.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 6097) between these two alignments
+			Real Alignment 7: 204134 354637 | 209268 359842 | 150504 150575 | 99.51 | NC_001142.9 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 1
+			Real Alignment 8: 355175 416786 | 360379 422102 | 61612 61724 | 98.99 | NC_001142.9 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Real Alignment 9: 416782 424702 | 422435 430350 | 7921 7916 | 99.38 | NC_001142.9 NC_001142.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 1 between Alignment 10 and 11: 535760 541675 | 436264 430361 | 5916 5904 --> 535761 541675 | 436263 430361 | 5915 5903
+			Real Alignment 10: 535761 541675 | 436263 430361 | 5915 5903 | 98.62 | NC_001139.9 NC_001142.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 11 and 12: 483973 517995 | 484032 518085 | 34023 34054 --> 483978 517995 | 484037 518085 | 34018 34049
+			Real Alignment 11: 424697 472462 | 436264 484036 | 47766 47773 | 99.3 | NC_001142.9 NC_001142.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 11515) between these two alignments
+			Real Alignment 12: 483978 517995 | 484037 518085 | 34018 34049 | 99.35 | NC_001142.9 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -336
+			Real Alignment 13: 517990 519183 | 518416 519609 | 1194 1194 | 98.5 | NC_001142.9 NC_001142.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2412 (extensive)
+			Real Alignment 14: 521699 526373 | 519713 524405 | 4675 4693 | 98.51 | NC_001142.9 NC_001142.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 940 (local)
+			Real Alignment 15: 527414 531663 | 524506 528766 | 4250 4261 | 99.48 | NC_001142.9 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -338
+			Excluding internal overlap of size 5 between Alignment 16 and 17: 538435 541094 | 535543 538177 | 2660 2635 --> 538440 541094 | 535548 538177 | 2655 2630
+			Real Alignment 16: 531658 538102 | 529099 535547 | 6445 6449 | 99.33 | NC_001142.9 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 17: 538440 541094 | 535548 538177 | 2655 2630 | 97.71 | NC_001142.9 NC_001142.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 221 (local)
+			Real Alignment 18: 541493 628811 | 538355 625548 | 87319 87194 | 99.35 | NC_001142.9 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -283
+			Real Alignment 19: 628805 641353 | 625825 638394 | 12549 12570 | 98.87 | NC_001142.9 NC_001142.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1543 (extensive)
+			Real Alignment 20: 642998 722775 | 638496 718493 | 79778 79998 | 99.48 | NC_001142.9 NC_001142.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -42
+			Real Alignment 21: 724380 727164 | 720140 722923 | 2785 2784 | 99.71 | NC_001142.9 NC_001142.9_RagTag
+		Unaligned bases: 15340
+
+CONTIG: NC_001143.9_RagTag (518177bp)
+Best alignment score: 130953.8 (LEN: 132330, IDY: 98.96), Total number of alignments: 46
+			Looking for the best set of alignments (out of 46 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 561843 567536 | 45674 51365 | 5694 5692 | 97.79 | NC_001139.9 NC_001143.9_RagTag
+		Skipping redundant alignment 645500 651195 | 45672 51365 | 5696 5694 | 97.47 | NC_001136.10 NC_001143.9_RagTag
+		Skipping redundant alignment 196458 202221 | 51460 45708 | 5764 5753 | 97.92 | NC_001145.3 NC_001143.9_RagTag
+		Skipping redundant alignment 56578 62355 | 51460 45694 | 5778 5767 | 97.77 | NC_001148.4 NC_001143.9_RagTag
+		Skipping redundant alignment 475994 481771 | 45694 51460 | 5778 5767 | 97.75 | NC_001144.5 NC_001143.9_RagTag
+		Skipping redundant alignment 160258 166036 | 45694 51460 | 5779 5767 | 97.46 | NC_001133.9 NC_001143.9_RagTag
+		Skipping redundant alignment 443412 449194 | 45689 51460 | 5783 5772 | 97.91 | NC_001137.3 NC_001143.9_RagTag
+		Skipping redundant alignment 117707 123608 | 51583 45694 | 5902 5890 | 98.42 | NC_001147.6 NC_001143.9_RagTag
+		Skipping redundant alignment 850649 856550 | 45694 51583 | 5902 5890 | 98.27 | NC_001148.4 NC_001143.9_RagTag
+		Skipping redundant alignment 472467 478364 | 51583 45694 | 5898 5890 | 97.29 | NC_001142.9 NC_001143.9_RagTag
+		Skipping redundant alignment 1095771 1101682 | 51583 45684 | 5912 5900 | 99.49 | NC_001136.10 NC_001143.9_RagTag
+		Skipping redundant alignment 844416 850340 | 51583 45674 | 5925 5910 | 99.41 | NC_001148.4 NC_001143.9_RagTag
+		Skipping redundant alignment 372697 378618 | 45674 51583 | 5922 5910 | 98.36 | NC_001145.3 NC_001143.9_RagTag
+		Skipping redundant alignment 594825 600734 | 51583 45674 | 5910 5910 | 98.09 | NC_001147.6 NC_001143.9_RagTag
+		Skipping redundant alignment 215080 221001 | 45674 51583 | 5922 5910 | 97.5 | NC_001144.5 NC_001143.9_RagTag
+		Skipping redundant alignment 817393 823302 | 45674 51583 | 5910 5910 | 97.46 | NC_001139.9 NC_001143.9_RagTag
+		Skipping redundant alignment 543610 549633 | 45674 51583 | 6024 5910 | 96.85 | NC_001140.6 NC_001143.9_RagTag
+		Skipping redundant alignment 850649 850966 | 165237 164920 | 318 318 | 100.0 | NC_001148.4 NC_001143.9_RagTag
+		Skipping redundant alignment 123291 123608 | 164920 165237 | 318 318 | 100.0 | NC_001147.6 NC_001143.9_RagTag
+		Skipping redundant alignment 541348 541665 | 164920 165237 | 318 318 | 99.69 | NC_001139.9 NC_001143.9_RagTag
+		Skipping redundant alignment 472463 472780 | 164920 165237 | 318 318 | 99.69 | NC_001142.9 NC_001143.9_RagTag
+		Skipping redundant alignment 483635 483952 | 164920 165237 | 318 318 | 99.69 | NC_001142.9 NC_001143.9_RagTag
+		Skipping redundant alignment 535760 536077 | 164920 165237 | 318 318 | 99.69 | NC_001139.9 NC_001143.9_RagTag
+		Skipping redundant alignment 856232 856554 | 165242 164920 | 323 323 | 100.0 | NC_001148.4 NC_001143.9_RagTag
+		Skipping redundant alignment 117703 118031 | 164920 165248 | 329 329 | 100.0 | NC_001147.6 NC_001143.9_RagTag
+		Skipping redundant alignment 169206 169535 | 164919 165248 | 330 330 | 100.0 | NC_001135.5 NC_001143.9_RagTag
+		Skipping redundant alignment 215080 215417 | 165257 164920 | 338 338 | 100.0 | NC_001144.5 NC_001143.9_RagTag
+		Skipping redundant alignment 850003 850340 | 164920 165257 | 338 338 | 100.0 | NC_001148.4 NC_001143.9_RagTag
+		Skipping redundant alignment 372697 373034 | 165257 164920 | 338 338 | 100.0 | NC_001145.3 NC_001143.9_RagTag
+		Skipping redundant alignment 378285 378622 | 165257 164920 | 338 338 | 100.0 | NC_001145.3 NC_001143.9_RagTag
+		Skipping redundant alignment 220668 221005 | 165257 164920 | 338 338 | 99.7 | NC_001144.5 NC_001143.9_RagTag
+		Skipping redundant alignment 498084 498421 | 165257 164920 | 338 338 | 99.7 | NC_001137.3 NC_001143.9_RagTag
+		Skipping redundant alignment 1095766 1096104 | 164919 165257 | 339 339 | 100.0 | NC_001136.10 NC_001143.9_RagTag
+		Skipping redundant alignment 844409 844749 | 164917 165257 | 341 341 | 100.0 | NC_001148.4 NC_001143.9_RagTag
+		Skipping redundant alignment 1101355 1101693 | 164920 165258 | 339 339 | 99.71 | NC_001136.10 NC_001143.9_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 511295.5, number of alignments: 11, unaligned bases: 1525
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 516652 out of 517677 non-N bases (99.80%))
+			Excluding internal overlap of size 2 between Alignment 1 and 2: 184174 190085 | 51583 45672 | 5912 5912 --> 184174 190083 | 51583 45674 | 5910 5910
+			Real Alignment 1: 1213 46945 | 1 45673 | 45733 45673 | 98.75 | NC_001143.9 NC_001143.9_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 184174 190083 | 51583 45674 | 5910 5910 | 99.9 | NC_001145.3 NC_001143.9_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Real Alignment 3: 46940 63994 | 51687 68737 | 17055 17051 | 99.76 | NC_001143.9 NC_001143.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2986 (extensive)
+			Real Alignment 4: 67156 162978 | 68913 164919 | 95823 96007 | 99.15 | NC_001143.9 NC_001143.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -343
+			Real Alignment 5: 162971 185152 | 165255 187501 | 22182 22247 | 99.25 | NC_001143.9 NC_001143.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -546 (local)
+			Excluding internal overlap of size 5 between Alignment 6 and 7: 184707 202643 | 187602 205514 | 17937 17913 --> 184707 202638 | 187602 205509 | 17932 17908
+			Real Alignment 6: 184707 202638 | 187602 205509 | 17932 17908 | 99.47 | NC_001143.9 NC_001143.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 345
+			Real Alignment 7: 202984 313601 | 205510 316258 | 110618 110749 | 99.19 | NC_001143.9 NC_001143.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 322
+			Excluding internal overlap of size 6 between Alignment 8 and 9: 313925 314193 | 316260 316528 | 269 269 --> 313925 314187 | 316260 316522 | 263 263
+			Real Alignment 8: 313925 314187 | 316260 316522 | 263 263 | 97.4 | NC_001143.9 NC_001143.9_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 9: 314525 380204 | 316523 382214 | 65680 65692 | 99.31 | NC_001143.9 NC_001143.9_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2459 (extensive)
+			Real Alignment 10: 382764 385579 | 382315 385136 | 2816 2822 | 97.95 | NC_001143.9 NC_001143.9_RagTag
+			  Extensive misassembly (relocation, inconsistency = 139301, scaffold gap is present) between these two alignments
+			Real Alignment 11: 525592 658574 | 385848 518177 | 132983 132330 | 98.96 | NC_001143.9 NC_001143.9_RagTag
+		Unaligned bases: 1525
+
+CONTIG: NC_001144.5_RagTag (996650bp)
+Best alignment score: 229318.3 (LEN: 230378, IDY: 99.54), Total number of alignments: 77
+			Looking for the best set of alignments (out of 77 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 434631 434971 | 623631 623292 | 341 340 | 99.12 | NC_001137.3 NC_001144.5_RagTag
+		Skipping redundant alignment 319423 319762 | 623631 623292 | 340 340 | 98.82 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 668096 668436 | 623292 623631 | 341 340 | 97.95 | NC_001136.10 NC_001144.5_RagTag
+		Skipping redundant alignment 434423 434740 | 669012 669329 | 318 318 | 99.37 | NC_001136.10 NC_001144.5_RagTag
+		Skipping redundant alignment 594821 595132 | 719073 719385 | 312 313 | 99.36 | NC_001147.6 NC_001144.5_RagTag
+		Skipping redundant alignment 600403 600714 | 719073 719385 | 312 313 | 99.36 | NC_001147.6 NC_001144.5_RagTag
+		Skipping redundant alignment 817413 817724 | 719385 719073 | 312 313 | 99.36 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 822995 823306 | 719385 719073 | 312 313 | 99.36 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 543630 543941 | 719385 719073 | 312 313 | 99.04 | NC_001140.6 NC_001144.5_RagTag
+		Skipping redundant alignment 265163 265474 | 719073 719385 | 312 313 | 99.04 | NC_001134.8 NC_001144.5_RagTag
+		Skipping redundant alignment 221037 221361 | 719073 719396 | 325 324 | 99.08 | NC_001134.8 NC_001144.5_RagTag
+		Skipping redundant alignment 535211 535538 | 719073 719401 | 328 329 | 99.7 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 362587 362918 | 719405 719073 | 332 333 | 99.7 | NC_001145.3 NC_001144.5_RagTag
+		Skipping redundant alignment 226621 226952 | 719073 719405 | 332 333 | 99.7 | NC_001134.8 NC_001144.5_RagTag
+		Skipping redundant alignment 102192 102524 | 719405 719072 | 333 334 | 98.8 | NC_001146.8 NC_001144.5_RagTag
+		Skipping redundant alignment 357004 357336 | 719406 719073 | 333 334 | 99.7 | NC_001145.3 NC_001144.5_RagTag
+		Skipping redundant alignment 96609 96941 | 719406 719073 | 333 334 | 98.8 | NC_001146.8 NC_001144.5_RagTag
+		Skipping redundant alignment 517452 517786 | 719406 719071 | 335 336 | 99.7 | NC_001143.9 NC_001144.5_RagTag
+		Skipping redundant alignment 458138 458471 | 719407 719073 | 334 335 | 97.61 | NC_001143.9 NC_001144.5_RagTag
+		Skipping redundant alignment 168623 168933 | 754194 753886 | 311 309 | 97.75 | NC_001135.5 NC_001144.5_RagTag
+		Skipping redundant alignment 970287 970611 | 753886 754210 | 325 325 | 99.38 | NC_001147.6 NC_001144.5_RagTag
+		Skipping redundant alignment 871821 872146 | 753886 754211 | 326 326 | 99.39 | NC_001136.10 NC_001144.5_RagTag
+		Skipping redundant alignment 975914 976241 | 753886 754213 | 328 328 | 99.39 | NC_001147.6 NC_001144.5_RagTag
+		Skipping redundant alignment 135611 135939 | 754214 753886 | 329 329 | 99.39 | NC_001137.3 NC_001144.5_RagTag
+		Skipping redundant alignment 568744 569072 | 754214 753886 | 329 329 | 99.09 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 768548 768879 | 753886 754217 | 332 332 | 99.4 | NC_001145.3 NC_001144.5_RagTag
+		Skipping redundant alignment 877448 877779 | 753886 754217 | 332 332 | 99.4 | NC_001136.10 NC_001144.5_RagTag
+		Skipping redundant alignment 981369 981700 | 754217 753886 | 332 332 | 99.4 | NC_001144.5 NC_001144.5_RagTag
+		Skipping redundant alignment 9092 9424 | 753885 754217 | 333 333 | 99.4 | NC_001134.8 NC_001144.5_RagTag
+		Skipping redundant alignment 1352643 1352975 | 753885 754217 | 333 333 | 99.4 | NC_001136.10 NC_001144.5_RagTag
+		Skipping redundant alignment 449321 449631 | 753908 754218 | 311 311 | 99.36 | NC_001137.3 NC_001144.5_RagTag
+		Skipping redundant alignment 487834 488166 | 753886 754218 | 333 333 | 99.7 | NC_001137.3 NC_001144.5_RagTag
+		Skipping redundant alignment 976257 976589 | 754218 753886 | 333 333 | 98.8 | NC_001144.5 NC_001144.5_RagTag
+		Skipping redundant alignment 538101 538436 | 753884 754219 | 336 336 | 97.92 | NC_001142.9 NC_001144.5_RagTag
+		Skipping redundant alignment 829976 830273 | 765737 765445 | 298 293 | 95.0 | NC_001144.5 NC_001144.5_RagTag
+		Skipping redundant alignment 96630 96941 | 907136 906825 | 312 312 | 100.0 | NC_001146.8 NC_001144.5_RagTag
+		Skipping redundant alignment 226621 226932 | 906825 907136 | 312 312 | 99.36 | NC_001134.8 NC_001144.5_RagTag
+		Skipping redundant alignment 535211 535522 | 906825 907136 | 312 312 | 99.36 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 362607 362918 | 907136 906825 | 312 312 | 99.36 | NC_001145.3 NC_001144.5_RagTag
+		Skipping redundant alignment 931688 931999 | 906825 907136 | 312 312 | 99.36 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 357025 357336 | 907136 906825 | 312 312 | 99.36 | NC_001145.3 NC_001144.5_RagTag
+		Skipping redundant alignment 401959 402270 | 906825 907136 | 312 312 | 98.72 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 458160 458471 | 907136 906825 | 312 312 | 97.76 | NC_001143.9 NC_001144.5_RagTag
+		Skipping redundant alignment 102212 102524 | 907136 906824 | 313 313 | 100.0 | NC_001146.8 NC_001144.5_RagTag
+		Skipping redundant alignment 517473 517787 | 907136 906822 | 315 315 | 99.37 | NC_001143.9 NC_001144.5_RagTag
+		Skipping redundant alignment 560477 560792 | 906821 907136 | 316 316 | 99.37 | NC_001148.4 NC_001144.5_RagTag
+		Skipping redundant alignment 189752 190083 | 906825 907156 | 332 332 | 100.0 | NC_001145.3 NC_001144.5_RagTag
+		Skipping redundant alignment 543610 543941 | 907156 906825 | 332 332 | 100.0 | NC_001140.6 NC_001144.5_RagTag
+		Skipping redundant alignment 600403 600734 | 906825 907156 | 332 332 | 99.7 | NC_001147.6 NC_001144.5_RagTag
+		Skipping redundant alignment 817393 817724 | 907156 906825 | 332 332 | 99.7 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 265163 265494 | 906825 907156 | 332 332 | 99.4 | NC_001134.8 NC_001144.5_RagTag
+		Skipping redundant alignment 184170 184502 | 906825 907157 | 333 333 | 99.7 | NC_001145.3 NC_001144.5_RagTag
+		Skipping redundant alignment 594821 595153 | 906825 907157 | 333 333 | 99.7 | NC_001147.6 NC_001144.5_RagTag
+		Skipping redundant alignment 822974 823306 | 907157 906825 | 333 333 | 99.7 | NC_001139.9 NC_001144.5_RagTag
+		Skipping redundant alignment 549305 549637 | 907157 906825 | 333 333 | 99.7 | NC_001140.6 NC_001144.5_RagTag
+		Skipping redundant alignment 259578 259910 | 906825 907157 | 333 333 | 99.4 | NC_001134.8 NC_001144.5_RagTag
+		Skipping redundant alignment 517470 517785 | 977678 977372 | 316 307 | 95.57 | NC_001143.9 NC_001144.5_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 982561.2, number of alignments: 20, unaligned bases: 4659
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 991991 out of 996150 non-N bases (99.58%))
+			Excluding internal overlap of size 845 between Alignment 1 and 2: 902 7132 | 1 6233 | 6231 6233 --> 902 6289 | 1 5388 | 5388 5388
+			Real Alignment 1: 902 6289 | 1 5388 | 5388 5388 | 99.13 | NC_001139.9 NC_001144.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 2 and 3: 13083 215079 | 5389 207411 | 201997 202023 --> 13083 215073 | 5389 207405 | 201991 202017
+			Real Alignment 2: 13083 215073 | 5389 207405 | 201991 202017 | 99.39 | NC_001144.5 NC_001144.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5931) between these two alignments
+			Real Alignment 3: 221005 451416 | 207406 437783 | 230412 230378 | 99.54 | NC_001144.5 NC_001144.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = 39179, scaffold gap is present) between these two alignments
+			Real Alignment 4: 490696 562279 | 437884 509485 | 71584 71602 | 99.37 | NC_001144.5 NC_001144.5_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 44 (local)
+			Excluding internal overlap of size 5 between Alignment 5 and 6: 563903 593144 | 511065 540304 | 29242 29240 --> 563903 593139 | 511065 540299 | 29237 29235
+			Real Alignment 5: 563903 593139 | 511065 540299 | 29237 29235 | 99.79 | NC_001144.5 NC_001144.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5923) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 6 and 7: 656744 687947 | 592073 623291 | 31204 31219 --> 656749 687947 | 592078 623291 | 31199 31214
+			Real Alignment 6: 599063 650823 | 540300 592077 | 51761 51778 | 99.53 | NC_001144.5 NC_001144.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5925) between these two alignments
+			Real Alignment 7: 656749 687947 | 592078 623291 | 31199 31214 | 99.32 | NC_001144.5 NC_001144.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -344
+			Real Alignment 8: 687944 700787 | 623632 636415 | 12844 12784 | 98.8 | NC_001144.5 NC_001144.5_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 606 (local)
+			Excluding internal overlap of size 5 between Alignment 9 and 10: 732001 734372 | 666641 669012 | 2372 2372 --> 732006 734372 | 666646 669012 | 2367 2367
+			Real Alignment 9: 701494 731667 | 636516 666645 | 30174 30130 | 98.97 | NC_001144.5 NC_001144.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 338
+			Real Alignment 10: 732006 734372 | 666646 669012 | 2367 2367 | 99.49 | NC_001144.5 NC_001144.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -322
+			Real Alignment 11: 734367 784212 | 669329 719072 | 49846 49744 | 99.2 | NC_001144.5 NC_001144.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -660
+			Real Alignment 12: 783922 818474 | 719442 753882 | 34553 34441 | 98.34 | NC_001144.5 NC_001144.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -320
+			Real Alignment 13: 818490 829418 | 754218 765115 | 10929 10898 | 98.62 | NC_001144.5 NC_001144.5_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -397 (local)
+			Excluding internal overlap of size 5 between Alignment 14 and 15: 947151 976257 | 877239 906342 | 29107 29104 --> 947156 976257 | 877244 906342 | 29102 29099
+			Real Alignment 14: 829638 941191 | 765732 877243 | 111554 111512 | 99.36 | NC_001144.5 NC_001144.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5964) between these two alignments
+			Real Alignment 15: 947156 976257 | 877244 906342 | 29102 29099 | 99.47 | NC_001144.5 NC_001144.5_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5303) between these two alignments
+			Real Alignment 16: 981701 982042 | 906483 906824 | 342 342 | 99.42 | NC_001144.5 NC_001144.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Real Alignment 17: 982038 1052243 | 907157 977372 | 70206 70216 | 99.39 | NC_001144.5 NC_001144.5_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -328
+			Real Alignment 18: 1052239 1061080 | 977696 986522 | 8842 8827 | 96.09 | NC_001144.5 NC_001144.5_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -8361 (extensive)
+			Excluding internal overlap of size 2769 between Alignment 19 and 20: 303930 307462 | 993118 996650 | 3533 3533 --> 306699 307462 | 995887 996650 | 764 764
+			Real Alignment 19: 1052829 1062091 | 986632 995886 | 9263 9255 | 98.07 | NC_001144.5 NC_001144.5_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 20: 306699 307462 | 995887 996650 | 764 764 | 99.49 | NC_001135.5 NC_001144.5_RagTag
+		Unaligned bases: 4659
+
+CONTIG: NC_001145.3_RagTag (909227bp)
+Best alignment score: 154081.9 (LEN: 154794, IDY: 99.54), Total number of alignments: 56
+			Looking for the best set of alignments (out of 56 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 735986 736316 | 176113 176443 | 331 331 | 99.7 | NC_001139.9 NC_001145.3_RagTag
+		Skipping redundant alignment 374003 374333 | 176113 176444 | 331 332 | 99.1 | NC_001144.5 NC_001145.3_RagTag
+		Skipping redundant alignment 856555 856885 | 176119 176449 | 331 331 | 99.09 | NC_001148.4 NC_001145.3_RagTag
+		Skipping redundant alignment 146331 146667 | 176449 176113 | 337 337 | 99.41 | NC_001140.6 NC_001145.3_RagTag
+		Skipping redundant alignment 546742 547077 | 176113 176449 | 336 337 | 98.52 | NC_001146.8 NC_001145.3_RagTag
+		Skipping redundant alignment 726238 726574 | 176113 176449 | 337 337 | 97.92 | NC_001146.8 NC_001145.3_RagTag
+		Skipping redundant alignment 197629 198054 | 176023 176449 | 426 427 | 96.96 | NC_001134.8 NC_001145.3_RagTag
+		Skipping redundant alignment 434630 434967 | 176450 176113 | 338 338 | 99.11 | NC_001137.3 NC_001145.3_RagTag
+		Skipping redundant alignment 668100 668438 | 176113 176451 | 339 339 | 97.94 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 513258 513585 | 449992 450319 | 328 328 | 97.56 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 535211 535538 | 450324 449997 | 328 328 | 96.95 | NC_001139.9 NC_001145.3_RagTag
+		Skipping redundant alignment 124134 124465 | 449993 450324 | 332 332 | 99.1 | NC_001135.5 NC_001145.3_RagTag
+		Skipping redundant alignment 802905 803235 | 450324 449993 | 331 332 | 98.8 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 226621 226952 | 450324 449993 | 332 332 | 96.99 | NC_001134.8 NC_001145.3_RagTag
+		Skipping redundant alignment 362587 362918 | 449993 450324 | 332 332 | 96.99 | NC_001145.3 NC_001145.3_RagTag
+		Skipping redundant alignment 458139 458471 | 449992 450324 | 333 333 | 97.6 | NC_001143.9 NC_001145.3_RagTag
+		Skipping redundant alignment 980259 980592 | 449992 450325 | 334 334 | 98.8 | NC_001147.6 NC_001145.3_RagTag
+		Skipping redundant alignment 517452 517787 | 449992 450327 | 336 336 | 97.02 | NC_001143.9 NC_001145.3_RagTag
+		Skipping redundant alignment 85539 91761 | 480363 474141 | 6223 6223 | 99.28 | NC_001140.6 NC_001145.3_RagTag
+		Skipping redundant alignment 436890 443112 | 474141 480363 | 6223 6223 | 99.23 | NC_001148.4 NC_001145.3_RagTag
+		Skipping redundant alignment 590200 590433 | 564111 564345 | 234 235 | 98.3 | NC_001145.3 NC_001145.3_RagTag
+		Skipping redundant alignment 168620 168933 | 784679 785002 | 314 324 | 96.3 | NC_001135.5 NC_001145.3_RagTag
+		Skipping redundant alignment 567447 567760 | 784679 785002 | 314 324 | 95.99 | NC_001139.9 NC_001145.3_RagTag
+		Skipping redundant alignment 593145 593458 | 785002 784679 | 314 324 | 95.68 | NC_001144.5 NC_001145.3_RagTag
+		Skipping redundant alignment 1212288 1212601 | 785002 784679 | 314 324 | 95.68 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 478051 478364 | 785002 784679 | 314 324 | 95.68 | NC_001142.9 NC_001145.3_RagTag
+		Skipping redundant alignment 598729 599042 | 785002 784679 | 314 324 | 95.68 | NC_001144.5 NC_001145.3_RagTag
+		Skipping redundant alignment 804665 804978 | 784679 785002 | 314 324 | 95.68 | NC_001148.4 NC_001145.3_RagTag
+		Skipping redundant alignment 1206704 1207017 | 785002 784679 | 314 324 | 95.68 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 524729 525042 | 785002 784679 | 314 324 | 95.68 | NC_001146.8 NC_001145.3_RagTag
+		Skipping redundant alignment 645511 645835 | 784668 785002 | 325 335 | 96.42 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 651095 651419 | 784668 785002 | 325 335 | 96.42 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 987159 987483 | 784668 785002 | 325 335 | 96.42 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 561852 562176 | 784668 785002 | 325 335 | 96.12 | NC_001139.9 NC_001145.3_RagTag
+		Skipping redundant alignment 878303 878636 | 784659 785002 | 334 344 | 96.22 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 656410 656743 | 785002 784659 | 334 344 | 96.22 | NC_001144.5 NC_001145.3_RagTag
+		Skipping redundant alignment 650824 651159 | 785002 784657 | 336 346 | 95.66 | NC_001144.5 NC_001145.3_RagTag
+		Skipping redundant alignment 992329 992643 | 784679 785003 | 315 325 | 96.0 | NC_001136.10 NC_001145.3_RagTag
+		Skipping redundant alignment 810249 810563 | 784679 785003 | 315 325 | 95.69 | NC_001148.4 NC_001145.3_RagTag
+		Skipping redundant alignment 519162 519476 | 785003 784679 | 315 325 | 95.69 | NC_001146.8 NC_001145.3_RagTag
+		Skipping redundant alignment 883896 884222 | 784668 785004 | 327 337 | 96.44 | NC_001136.10 NC_001145.3_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 898901.4, number of alignments: 15, unaligned bases: 2112
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 907115 out of 908827 non-N bases (99.81%))
+			Real Alignment 1: 8454 87761 | 1 79218 | 79308 79218 | 99.33 | NC_001145.3 NC_001145.3_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -657 (local)
+			Real Alignment 2: 87214 183979 | 79328 176104 | 96766 96777 | 99.3 | NC_001145.3 NC_001145.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 3: 945955 946291 | 176449 176113 | 337 337 | 99.41 | NC_001136.10 NC_001145.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 4: 190088 196331 | 176659 182922 | 6244 6264 | 98.8 | NC_001145.3 NC_001145.3_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5780) between these two alignments
+			Excluding internal overlap of size 7 between Alignment 5 and 6: 362918 372699 | 337806 347571 | 9782 9766 --> 362925 372699 | 337813 347571 | 9775 9759
+			Real Alignment 5: 202208 357005 | 183019 337812 | 154798 154794 | 99.54 | NC_001145.3 NC_001145.3_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5919) between these two alignments
+			Excluding internal overlap of size 9 between Alignment 6 and 7: 362925 372699 | 337813 347571 | 9775 9759 --> 362925 372690 | 337813 347562 | 9766 9750
+			Real Alignment 6: 362925 372690 | 337813 347562 | 9766 9750 | 99.01 | NC_001145.3 NC_001145.3_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5931) between these two alignments
+			Real Alignment 7: 378622 480879 | 347563 449987 | 102258 102425 | 99.42 | NC_001145.3 NC_001145.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Real Alignment 8: 480881 504714 | 450326 474140 | 23834 23815 | 99.36 | NC_001145.3 NC_001145.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 1 between Alignment 9 and 10: 197545 203768 | 480363 474141 | 6224 6223 --> 197546 203768 | 480362 474141 | 6223 6222
+			Real Alignment 9: 197546 203768 | 480362 474141 | 6223 6222 | 99.9 | NC_001142.9 NC_001145.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 10: 504709 588357 | 480363 563988 | 83649 83626 | 99.55 | NC_001145.3 NC_001145.3_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 588 (local)
+			Real Alignment 11: 589848 724495 | 564891 700155 | 134648 135265 | 98.99 | NC_001145.3 NC_001145.3_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -640 (local)
+			Excluding internal overlap of size 5 between Alignment 12 and 13: 768880 808683 | 744813 784659 | 39804 39847 --> 768885 808683 | 744818 784659 | 39799 39842
+			Real Alignment 12: 723963 768547 | 700263 744817 | 44585 44555 | 99.74 | NC_001145.3 NC_001145.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 13: 768885 808683 | 744818 784659 | 39799 39842 | 99.66 | NC_001145.3 NC_001145.3_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -349
+			Excluding internal overlap of size 398 between Alignment 14 and 15: 10863 26148 | 909227 893662 | 15286 15566 --> 10863 25751 | 909227 894060 | 14889 15168
+			Real Alignment 14: 808678 917891 | 785003 894059 | 109214 109057 | 99.36 | NC_001145.3 NC_001145.3_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 15: 10863 25751 | 909227 894060 | 14889 15168 | 97.54 | NC_001148.4 NC_001145.3_RagTag
+		Unaligned bases: 2112
+
+CONTIG: NC_001146.8_RagTag (777885bp)
+Best alignment score: 234004.5 (LEN: 235749, IDY: 99.26), Total number of alignments: 14
+			Looking for the best set of alignments (out of 14 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 778920 779094 | 97670 97496 | 175 175 | 98.86 | NC_001139.9 NC_001146.8_RagTag
+		Skipping redundant alignment 313603 313918 | 444145 444460 | 316 316 | 96.52 | NC_001143.9 NC_001146.8_RagTag
+		Skipping redundant alignment 434423 434739 | 444144 444460 | 317 317 | 97.48 | NC_001136.10 NC_001146.8_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 759728.8, number of alignments: 11, unaligned bases: 10847
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 767038 out of 777585 non-N bases (98.64%))
+			Real Alignment 1: 8975 96719 | 9760 97585 | 87745 87826 | 99.27 | NC_001146.8 NC_001146.8_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -506
+			Real Alignment 2: 96630 332488 | 98002 333750 | 235859 235749 | 99.26 | NC_001146.8 NC_001146.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 888 (local)
+			Real Alignment 3: 333478 359031 | 333852 359394 | 25554 25543 | 99.71 | NC_001146.8 NC_001146.8_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -949 (local)
+			Real Alignment 4: 358193 442820 | 359505 444143 | 84628 84639 | 99.45 | NC_001146.8 NC_001146.8_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -322
+			Excluding internal overlap of size 5 between Alignment 5 and 6: 525063 546737 | 520797 542464 | 21675 21668 --> 525068 546737 | 520802 542464 | 21670 21663
+			Real Alignment 5: 442815 519162 | 444460 520801 | 76348 76342 | 99.52 | NC_001146.8 NC_001146.8_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5905) between these two alignments
+			Excluding internal overlap of size 8 between Alignment 6 and 7: 547075 561606 | 542457 557008 | 14532 14552 --> 547083 561606 | 542465 557008 | 14524 14544
+			Real Alignment 6: 525068 546737 | 520802 542464 | 21670 21663 | 99.59 | NC_001146.8 NC_001146.8_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 345
+			Real Alignment 7: 547083 561606 | 542465 557008 | 14524 14544 | 98.84 | NC_001146.8 NC_001146.8_RagTag
+			  Extensive misassembly (relocation, inconsistency = 6341) between these two alignments
+			Excluding internal overlap of size 4229 between Alignment 8 and 9: 567993 574070 | 557054 563144 | 6078 6091 --> 567993 569856 | 557054 558915 | 1864 1862
+			Real Alignment 8: 567993 569856 | 557054 558915 | 1864 1862 | 97.59 | NC_001146.8 NC_001146.8_RagTag
+			  Extensive misassembly (inversion) between these two alignments
+			Excluding internal overlap of size 4270 between Alignment 9 and 10: 569835 602395 | 591493 558916 | 32561 32578 --> 574071 602395 | 587223 558916 | 28325 28308
+			Real Alignment 9: 574071 602395 | 587223 558916 | 28325 28308 | 98.55 | NC_001146.8 NC_001146.8_RagTag
+			  Extensive misassembly (relocation, inconsistency = -4236) between these two alignments
+			Real Alignment 10: 598160 766873 | 587224 755976 | 168714 168753 | 99.26 | NC_001146.8 NC_001146.8_RagTag
+			  Extensive misassembly (relocation, inconsistency = -16452, scaffold gap is present) between these two alignments
+			Real Alignment 11: 750522 772318 | 756077 777885 | 21797 21809 | 98.99 | NC_001146.8 NC_001146.8_RagTag
+		Unaligned bases: 10847
+
+CONTIG: NC_001147.6_RagTag (1018616bp)
+Best alignment score: 223726.8 (LEN: 225372, IDY: 99.27), Total number of alignments: 58
+			Looking for the best set of alignments (out of 58 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 96610 96941 | 192080 191749 | 332 332 | 96.08 | NC_001146.8 NC_001147.6_RagTag
+		Skipping redundant alignment 817389 817724 | 192084 191749 | 336 336 | 96.13 | NC_001139.9 NC_001147.6_RagTag
+		Skipping redundant alignment 96451 96609 | 192266 192108 | 159 159 | 98.11 | NC_001146.8 NC_001147.6_RagTag
+		Skipping redundant alignment 877448 877651 | 192470 192267 | 204 204 | 99.02 | NC_001136.10 NC_001147.6_RagTag
+		Skipping redundant alignment 9093 9410 | 426136 426453 | 318 318 | 99.37 | NC_001134.8 NC_001147.6_RagTag
+		Skipping redundant alignment 1352644 1352961 | 426136 426453 | 318 318 | 99.06 | NC_001136.10 NC_001147.6_RagTag
+		Skipping redundant alignment 871821 872138 | 426136 426453 | 318 318 | 99.06 | NC_001136.10 NC_001147.6_RagTag
+		Skipping redundant alignment 981383 981700 | 426453 426136 | 318 318 | 99.06 | NC_001144.5 NC_001147.6_RagTag
+		Skipping redundant alignment 970287 970604 | 426136 426453 | 318 318 | 99.06 | NC_001147.6 NC_001147.6_RagTag
+		Skipping redundant alignment 877448 877765 | 426136 426453 | 318 318 | 99.06 | NC_001136.10 NC_001147.6_RagTag
+		Skipping redundant alignment 135622 135939 | 426453 426136 | 318 318 | 99.06 | NC_001137.3 NC_001147.6_RagTag
+		Skipping redundant alignment 975914 976231 | 426136 426453 | 318 318 | 99.06 | NC_001147.6 NC_001147.6_RagTag
+		Skipping redundant alignment 976272 976589 | 426453 426136 | 318 318 | 98.74 | NC_001144.5 NC_001147.6_RagTag
+		Skipping redundant alignment 768547 768865 | 426135 426453 | 319 319 | 99.06 | NC_001145.3 NC_001147.6_RagTag
+		Skipping redundant alignment 487831 488151 | 426133 426453 | 321 321 | 99.07 | NC_001137.3 NC_001147.6_RagTag
+		Skipping redundant alignment 856555 856885 | 451488 451158 | 331 331 | 99.09 | NC_001148.4 NC_001147.6_RagTag
+		Skipping redundant alignment 945955 946295 | 451158 451498 | 341 341 | 99.41 | NC_001136.10 NC_001147.6_RagTag
+		Skipping redundant alignment 146331 146671 | 451158 451498 | 341 341 | 98.83 | NC_001140.6 NC_001147.6_RagTag
+		Skipping redundant alignment 668096 668437 | 451498 451157 | 342 342 | 97.95 | NC_001136.10 NC_001147.6_RagTag
+		Skipping redundant alignment 735981 736316 | 451499 451164 | 336 336 | 99.7 | NC_001139.9 NC_001147.6_RagTag
+		Skipping redundant alignment 249930 250271 | 451158 451499 | 342 342 | 98.25 | NC_001137.3 NC_001147.6_RagTag
+		Skipping redundant alignment 434628 434972 | 451155 451499 | 345 345 | 99.13 | NC_001137.3 NC_001147.6_RagTag
+		Skipping redundant alignment 726230 726574 | 451502 451158 | 345 345 | 98.55 | NC_001146.8 NC_001147.6_RagTag
+		Skipping redundant alignment 492696 498421 | 624440 618721 | 5726 5720 | 95.41 | NC_001137.3 NC_001147.6_RagTag
+		Skipping redundant alignment 478291 483952 | 618959 624614 | 5662 5656 | 95.64 | NC_001142.9 NC_001147.6_RagTag
+		Skipping redundant alignment 535760 541665 | 618721 624614 | 5906 5894 | 95.52 | NC_001139.9 NC_001147.6_RagTag
+		Skipping redundant alignment 96630 102523 | 624614 618721 | 5894 5894 | 95.43 | NC_001146.8 NC_001147.6_RagTag
+		Skipping redundant alignment 357025 362918 | 624614 618721 | 5894 5894 | 95.11 | NC_001145.3 NC_001147.6_RagTag
+		Skipping redundant alignment 221035 226932 | 618719 624614 | 5898 5896 | 95.03 | NC_001134.8 NC_001147.6_RagTag
+		Skipping redundant alignment 215080 221005 | 624634 618721 | 5926 5914 | 95.41 | NC_001144.5 NC_001147.6_RagTag
+		Skipping redundant alignment 372697 378622 | 624634 618721 | 5926 5914 | 95.06 | NC_001145.3 NC_001147.6_RagTag
+		Skipping redundant alignment 594820 600734 | 618720 624634 | 5915 5915 | 95.56 | NC_001147.6 NC_001147.6_RagTag
+		Skipping redundant alignment 259576 265494 | 618719 624634 | 5919 5916 | 95.83 | NC_001134.8 NC_001147.6_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 1000029.8, number of alignments: 25, unaligned bases: 8622
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 1009994 out of 1017916 non-N bases (99.22%))
+			Real Alignment 1: 29062 29669 | 2027 2634 | 608 608 | 96.88 | NC_001147.6 NC_001147.6_RagTag
+			  Indel (> 5bp) between these two alignments: insertion of length 39; 0 mismatches (number of Ns: 0)
+			Real Alignment 2: 29670 30770 | 2674 3777 | 1101 1104 | 95.29 | NC_001147.6 NC_001147.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -741
+			Real Alignment 3: 31073 31142 | 4821 4890 | 70 70 | 95.71 | NC_001147.6 NC_001147.6_RagTag
+			  Indel (> 5bp) between these two alignments: insertion of length 33; 0 mismatches (number of Ns: 0)
+			Real Alignment 4: 31143 31210 | 4924 4991 | 68 68 | 98.53 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = -2151) between these two alignments
+			Real Alignment 5: 31444 110764 | 7376 86647 | 79321 79272 | 99.05 | NC_001147.6 NC_001147.6_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2587 (extensive)
+			Real Alignment 6: 113452 117697 | 86748 91004 | 4246 4257 | 98.66 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5931) between these two alignments
+			Real Alignment 7: 123630 159115 | 91006 126517 | 35486 35512 | 99.01 | NC_001147.6 NC_001147.6_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2736 (extensive)
+			Real Alignment 8: 161956 226695 | 126622 191390 | 64740 64769 | 99.28 | NC_001147.6 NC_001147.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 445
+			Real Alignment 9: 228220 236375 | 192470 200663 | 8156 8194 | 98.67 | NC_001147.6 NC_001147.6_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1127 (extensive)
+			Real Alignment 10: 237603 462778 | 200764 426135 | 225176 225372 | 99.27 | NC_001147.6 NC_001147.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -337
+			Real Alignment 11: 462774 487428 | 426468 451157 | 24655 24690 | 99.09 | NC_001147.6 NC_001147.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -346
+			Real Alignment 12: 487424 535068 | 451499 499134 | 47645 47636 | 99.06 | NC_001147.6 NC_001147.6_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1100 (extensive)
+			Real Alignment 13: 536269 575103 | 499235 538085 | 38835 38851 | 99.54 | NC_001147.6 NC_001147.6_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2421 (extensive)
+			Excluding internal overlap of size 6 between Alignment 14 and 15: 577625 594820 | 538186 555388 | 17196 17203 --> 577625 594814 | 538186 555382 | 17190 17197
+			Real Alignment 14: 577625 594814 | 538186 555382 | 17190 17197 | 99.4 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5919) between these two alignments
+			Excluding internal overlap of size 1 between Alignment 15 and 16: 817393 823307 | 624634 618720 | 5915 5915 --> 817393 823306 | 624634 618721 | 5914 5914
+			Real Alignment 15: 600734 664058 | 555383 618720 | 63325 63338 | 99.72 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 16: 817393 823306 | 624634 618721 | 5914 5914 | 96.08 | NC_001139.9 NC_001147.6_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 17: 664054 703507 | 624635 664069 | 39454 39435 | 99.46 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 6539) between these two alignments
+			Real Alignment 18: 710109 721640 | 664132 675662 | 11532 11531 | 99.14 | NC_001147.6 NC_001147.6_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 1684 (extensive)
+			Excluding internal overlap of size 6 between Alignment 19 and 20: 854616 970286 | 806562 922275 | 115671 115714 --> 854622 970286 | 806568 922275 | 115665 115708
+			Real Alignment 19: 723425 854276 | 675763 806567 | 130852 130805 | 99.59 | NC_001147.6 NC_001147.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 345
+			Excluding internal overlap of size 5 between Alignment 20 and 21: 976246 980259 | 922271 926290 | 4014 4020 --> 976251 980259 | 922276 926290 | 4009 4015
+			Real Alignment 20: 854622 970286 | 806568 922275 | 115665 115708 | 99.5 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5964) between these two alignments
+			Excluding internal overlap of size 5 between Alignment 21 and 22: 976251 980259 | 922276 926290 | 4009 4015 --> 976251 980254 | 922276 926285 | 4004 4010
+			Real Alignment 21: 976251 980254 | 922276 926285 | 4004 4010 | 98.56 | NC_001147.6 NC_001147.6_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 22: 980592 1037068 | 926286 982761 | 56477 56476 | 99.67 | NC_001147.6 NC_001147.6_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -2613 (extensive)
+			Excluding internal overlap of size 3 between Alignment 23 and 24: 1064414 1071036 | 1007310 1013926 | 6623 6617 --> 1064417 1071036 | 1007313 1013926 | 6620 6614
+			Real Alignment 23: 1034570 1059053 | 982876 1007312 | 24484 24437 | 97.9 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5363) between these two alignments
+			Excluding internal overlap of size 1409 between Alignment 24 and 25: 6195 11725 | 1018052 1012518 | 5531 5535 --> 6195 10314 | 1018052 1013927 | 4120 4126
+			Real Alignment 24: 1064417 1071036 | 1007313 1013926 | 6620 6614 | 98.13 | NC_001147.6 NC_001147.6_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 25: 6195 10314 | 1018052 1013927 | 4120 4126 | 96.57 | NC_001139.9 NC_001147.6_RagTag
+		Unaligned bases: 8622
+
+CONTIG: NC_001148.4_RagTag (1082749bp)
+Best alignment score: 188667.1 (LEN: 190227, IDY: 99.18), Total number of alignments: 54
+			Looking for the best set of alignments (out of 54 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 817074 817391 | 31126 30808 | 318 319 | 98.43 | NC_001139.9 NC_001148.4_RagTag
+		Skipping redundant alignment 822995 823306 | 32591 32281 | 312 311 | 95.19 | NC_001139.9 NC_001148.4_RagTag
+		Skipping redundant alignment 817413 817724 | 32591 32281 | 312 311 | 95.19 | NC_001139.9 NC_001148.4_RagTag
+		Skipping redundant alignment 594821 595132 | 32281 32591 | 312 311 | 95.19 | NC_001147.6 NC_001148.4_RagTag
+		Skipping redundant alignment 856555 856885 | 524355 524025 | 331 331 | 98.79 | NC_001148.4 NC_001148.4_RagTag
+		Skipping redundant alignment 856217 856554 | 524878 524547 | 338 332 | 96.15 | NC_001148.4 NC_001148.4_RagTag
+		Skipping redundant alignment 736037 736316 | 653280 653001 | 280 280 | 99.64 | NC_001139.9 NC_001148.4_RagTag
+		Skipping redundant alignment 374054 374333 | 653280 653000 | 280 281 | 98.93 | NC_001144.5 NC_001148.4_RagTag
+		Skipping redundant alignment 856600 856885 | 653280 652995 | 286 286 | 99.65 | NC_001148.4 NC_001148.4_RagTag
+		Skipping redundant alignment 726289 726574 | 653280 652995 | 286 286 | 99.3 | NC_001146.8 NC_001148.4_RagTag
+		Skipping redundant alignment 146331 146616 | 652995 653280 | 286 286 | 99.3 | NC_001140.6 NC_001148.4_RagTag
+		Skipping redundant alignment 546793 547077 | 653280 652995 | 285 286 | 99.3 | NC_001146.8 NC_001148.4_RagTag
+		Skipping redundant alignment 434432 434741 | 653588 653279 | 310 310 | 98.39 | NC_001136.10 NC_001148.4_RagTag
+		Skipping redundant alignment 6137 6226 | 1076634 1076545 | 90 90 | 97.78 | NC_001137.3 NC_001148.4_RagTag
+		Skipping redundant alignment 1065443 1065532 | 1076545 1076634 | 90 90 | 96.67 | NC_001144.5 NC_001148.4_RagTag
+		Skipping redundant alignment 1065533 1067096 | 1076662 1078282 | 1564 1621 | 95.31 | NC_001144.5 NC_001148.4_RagTag
+		Skipping redundant alignment 2274 6711 | 1080982 1076545 | 4438 4438 | 98.81 | NC_001141.2 NC_001148.4_RagTag
+		Skipping redundant alignment 2257 6694 | 1080982 1076545 | 4438 4438 | 98.76 | NC_001142.9 NC_001148.4_RagTag
+		Skipping redundant alignment 1067097 1069783 | 1078343 1081037 | 2687 2695 | 97.81 | NC_001144.5 NC_001148.4_RagTag
+		Skipping redundant alignment 2167 2238 | 1081054 1080983 | 72 72 | 100.0 | NC_001141.2 NC_001148.4_RagTag
+		Skipping redundant alignment 2150 2221 | 1081054 1080983 | 72 72 | 100.0 | NC_001142.9 NC_001148.4_RagTag
+		Skipping redundant alignment 1879 4587 | 1081054 1078345 | 2709 2710 | 98.12 | NC_001137.3 NC_001148.4_RagTag
+		Skipping redundant alignment 1525762 1531933 | 1076545 1082639 | 6172 6095 | 97.25 | NC_001136.10 NC_001148.4_RagTag
+		Skipping redundant alignment 1 1528 | 1082680 1081154 | 1528 1527 | 98.89 | NC_001137.3 NC_001148.4_RagTag
+		Skipping redundant alignment 1 6231 | 1082696 1076545 | 6231 6152 | 97.66 | NC_001148.4 NC_001148.4_RagTag
+		Skipping redundant alignment 1071949 1078177 | 1076545 1082696 | 6229 6152 | 97.28 | NC_001144.5 NC_001148.4_RagTag
+		Skipping redundant alignment 159 1708 | 1082743 1081190 | 1550 1554 | 97.23 | NC_001141.2 NC_001148.4_RagTag
+		Skipping redundant alignment 142 1691 | 1082743 1081190 | 1550 1554 | 97.23 | NC_001142.9 NC_001148.4_RagTag
+		Skipping redundant alignment 1069856 1071567 | 1081038 1082749 | 1712 1712 | 99.53 | NC_001144.5 NC_001148.4_RagTag
+		Skipping redundant alignment 1084640 1090923 | 1076545 1082749 | 6284 6205 | 97.68 | NC_001139.9 NC_001148.4_RagTag
+		Skipping redundant alignment 1084914 1091195 | 1076545 1082749 | 6282 6205 | 97.3 | NC_001147.6 NC_001148.4_RagTag
+		Skipping redundant alignment 570615 576857 | 1076545 1082749 | 6243 6205 | 97.06 | NC_001137.3 NC_001148.4_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 1067099.9, number of alignments: 22, unaligned bases: 6866
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 1075883 out of 1082149 non-N bases (99.42%))
+			Real Alignment 1: 26148 56768 | 1 30517 | 30621 30517 | 99.43 | NC_001148.4 NC_001148.4_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 877810 878044 | 30791 30558 | 235 234 | 96.6 | NC_001136.10 NC_001148.4_RagTag
+			  Indel (> 5bp) between these two alignments: deletion of length 29; 0 mismatches (number of Ns: 0)
+			Real Alignment 3: 877448 877780 | 31126 30792 | 333 335 | 95.82 | NC_001136.10 NC_001148.4_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 4: 600403 600714 | 32281 32591 | 312 311 | 95.19 | NC_001147.6 NC_001148.4_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 5: 63996 79406 | 36005 51383 | 15411 15379 | 99.16 | NC_001148.4 NC_001148.4_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 254 (local)
+			Excluding internal overlap of size 7 between Alignment 6 and 7: 80037 211576 | 51760 183278 | 131540 131519 --> 80037 211569 | 51760 183271 | 131533 131512
+			Real Alignment 6: 80037 211569 | 51760 183271 | 131533 131512 | 99.49 | NC_001148.4 NC_001148.4_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 337
+			Real Alignment 7: 211907 379281 | 183272 350676 | 167375 167405 | 99.64 | NC_001148.4 NC_001148.4_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 30 (local)
+			Real Alignment 8: 379416 436480 | 350781 407844 | 57065 57064 | 99.64 | NC_001148.4 NC_001148.4_RagTag
+			  Extensive misassembly (relocation, inconsistency = 6650) between these two alignments
+			Real Alignment 9: 443132 520944 | 407846 485641 | 77813 77796 | 99.25 | NC_001148.4 NC_001148.4_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 830 (local)
+			Real Alignment 10: 522232 535980 | 486099 499863 | 13749 13765 | 99.22 | NC_001148.4 NC_001148.4_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 145 (local)
+			Real Alignment 11: 536226 560305 | 499964 524025 | 24080 24062 | 99.65 | NC_001148.4 NC_001148.4_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -346
+			Real Alignment 12: 560299 619581 | 524365 583670 | 59283 59306 | 99.57 | NC_001148.4 NC_001148.4_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 489
+			Real Alignment 13: 620075 650317 | 583675 613921 | 30243 30247 | 99.89 | NC_001148.4 NC_001148.4_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 165 (local)
+			Real Alignment 14: 650583 689553 | 614022 652994 | 38971 38973 | 99.86 | NC_001148.4 NC_001148.4_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = -668
+			Real Alignment 15: 689545 699937 | 653654 664041 | 10393 10388 | 99.59 | NC_001148.4 NC_001148.4_RagTag
+			  Extensive misassembly (translocation, scaffold gap is present) between these two alignments
+			Excluding internal overlap of size 1378 between Alignment 16 and 17: 700594 769319 | 852991 921689 | 68726 68699 --> 701972 769319 | 854369 921689 | 67348 67321
+			Real Alignment 16: 288811 479048 | 664142 854368 | 190238 190227 | 99.18 | NC_001134.8 NC_001148.4_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Excluding internal overlap of size 6 between Alignment 17 and 18: 769660 804645 | 921684 956647 | 34986 34964 --> 769666 804645 | 921690 956647 | 34980 34958
+			Real Alignment 17: 701972 769319 | 854369 921689 | 67348 67321 | 99.66 | NC_001148.4 NC_001148.4_RagTag
+			  Gap between these two alignments (local misassembly). Inconsistency = 346
+			Excluding internal overlap of size 6 between Alignment 18 and 19: 810563 844406 | 956642 990471 | 33844 33830 --> 810569 844406 | 956648 990471 | 33838 33824
+			Real Alignment 18: 769666 804645 | 921690 956647 | 34980 34958 | 99.54 | NC_001148.4 NC_001148.4_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5923) between these two alignments
+			Real Alignment 19: 810569 844406 | 956648 990471 | 33838 33824 | 99.7 | NC_001148.4 NC_001148.4_RagTag
+			  Extensive misassembly (relocation, inconsistency = 5922) between these two alignments
+			Real Alignment 20: 850348 850613 | 990491 990756 | 266 266 | 98.5 | NC_001148.4 NC_001148.4_RagTag
+			  Extensive misassembly (relocation, inconsistency = 6277) between these two alignments
+			Excluding internal overlap of size 1363 between Alignment 21 and 22: 39 6322 | 1082749 1076545 | 6284 6205 --> 39 4960 | 1082749 1077908 | 4922 4842
+			Real Alignment 21: 856891 944170 | 990757 1077907 | 87280 87151 | 99.45 | NC_001148.4 NC_001148.4_RagTag
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 22: 39 4960 | 1082749 1077908 | 4922 4842 | 97.71 | NC_001146.8 NC_001148.4_RagTag
+		Unaligned bases: 6866
+
+CONTIG: NC_001224.1_RagTag (51939bp)
+Best alignment score: 8144.0 (LEN: 8456, IDY: 96.31), Total number of alignments: 25
+			Looking for the best set of alignments (out of 25 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 80031 80231 | 51739 51939 | 201 201 | 99.5 | NC_001224.1 NC_001224.1_RagTag
+		Skipping redundant alignment 58084 58329 | 32383 32138 | 246 246 | 99.59 | NC_001224.1 NC_001224.1_RagTag
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 34233.5, number of alignments: 23, unaligned bases: 15098
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 36841 out of 50339 non-N bases (73.19%))
+			Real Alignment 1: 14654 18840 | 1 4187 | 4187 4187 | 99.93 | NC_001224.1 NC_001224.1_RagTag
+			  Indel (> 5bp) between these two alignments: insertion of length 35; 0 mismatches (number of Ns: 0)
+			Real Alignment 2: 18841 18987 | 4223 4369 | 147 147 | 98.64 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -345 (local)
+			Real Alignment 3: 20447 20984 | 6174 6711 | 538 538 | 99.63 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -453 (local)
+			Real Alignment 4: 20632 22075 | 6812 8255 | 1444 1444 | 99.93 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -1457 (extensive)
+			Real Alignment 5: 20719 22174 | 8356 9811 | 1456 1456 | 99.93 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -1044 (extensive)
+			Real Alignment 6: 22001 24892 | 10682 13595 | 2892 2914 | 97.71 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -271 (local)
+			Real Alignment 7: 24722 28069 | 13696 17077 | 3348 3382 | 95.36 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = -199 (local)
+			Real Alignment 8: 28821 29280 | 18028 18487 | 460 460 | 95.25 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 5312 (extensive)
+			Real Alignment 9: 36720 45213 | 20615 29070 | 8494 8456 | 96.31 | NC_001224.1 NC_001224.1_RagTag
+			  Extensive misassembly (inversion) between these two alignments
+			Real Alignment 10: 44528 45056 | 29718 29185 | 529 534 | 97.75 | NC_001224.1 NC_001224.1_RagTag
+			  Extensive misassembly (relocation, inconsistency = 11079, scaffold gap is present) between these two alignments
+			Real Alignment 11: 56700 56832 | 30283 30415 | 133 133 | 96.99 | NC_001224.1 NC_001224.1_RagTag
+			  Indel (> 5bp) between these two alignments: deletion of length 35; 0 mismatches (number of Ns: 0)
+			Real Alignment 12: 56868 57605 | 30416 31143 | 738 728 | 96.75 | NC_001224.1 NC_001224.1_RagTag
+			  Indel (> 5bp) between these two alignments: insertion of length 45; 0 mismatches (number of Ns: 0)
+			Real Alignment 13: 57606 57829 | 31189 31412 | 224 224 | 99.11 | NC_001224.1 NC_001224.1_RagTag
+			  Indel (> 5bp) between these two alignments: insertion of length 32; 37 mismatches (number of Ns: 0)
+			Real Alignment 14: 57867 58458 | 31482 32082 | 592 601 | 98.34 | NC_001224.1 NC_001224.1_RagTag
+			  Extensive misassembly (relocation, inconsistency = -1259, scaffold gap is present) between these two alignments
+			Real Alignment 15: 57613 57829 | 32496 32712 | 217 217 | 99.08 | NC_001224.1 NC_001224.1_RagTag
+			  Indel (> 5bp) between these two alignments: insertion of length 32; 37 mismatches (number of Ns: 0)
+			Real Alignment 16: 57867 59025 | 32782 33949 | 1159 1168 | 99.14 | NC_001224.1 NC_001224.1_RagTag
+			  Extensive misassembly (inversion) between these two alignments
+			Real Alignment 17: 58107 58808 | 34669 33969 | 702 701 | 99.15 | NC_001224.1 NC_001224.1_RagTag
+			  Extensive misassembly (relocation, inconsistency = 1675, scaffold gap is present) between these two alignments
+			Excluding internal overlap of size 24 between Alignment 18 and 19: 60592 62477 | 34778 36657 | 1886 1880 --> 60592 62452 | 34778 36633 | 1861 1856
+			Real Alignment 18: 60592 62452 | 34778 36633 | 1861 1856 | 99.15 | NC_001224.1 NC_001224.1_RagTag
+			  Extensive misassembly (relocation, inconsistency = -1887) between these two alignments
+			Excluding internal overlap of size 12 between Alignment 19 and 20: 58379 58908 | 40713 41240 | 530 528 --> 58392 58908 | 40725 41240 | 517 516
+			Real Alignment 19: 58375 62478 | 40724 36634 | 4104 4091 | 99.59 | NC_001224.1 NC_001224.1_RagTag
+			  Extensive misassembly (relocation, inconsistency = -4087) between these two alignments
+			Real Alignment 20: 58392 58908 | 40725 41240 | 517 516 | 99.43 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 6070 (extensive)
+			Real Alignment 21: 65091 67359 | 41353 43672 | 2269 2320 | 95.06 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 2963 (extensive)
+			Real Alignment 22: 75902 76070 | 49252 49420 | 169 169 | 97.04 | NC_001224.1 NC_001224.1_RagTag
+			  Scaffold gap between these two alignments, gap lengths difference (reference vs assembly) = 3226 (extensive)
+			Real Alignment 23: 79400 79998 | 49524 50122 | 599 599 | 100.0 | NC_001224.1 NC_001224.1_RagTag
+		Unaligned bases: 15098
+
+CONTIG: contig_1 (4076bp)
+Best alignment score: 2397.4 (LEN: 2522, IDY: 95.06), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 6099 8410 | 5 2319 | 2312 2315 | 95.39 | NC_001134.8 contig_1
+			The best set is below. Score: 2397.4, number of alignments: 1, unaligned bases: 1554
+		This contig is partially unaligned. (Aligned 2522 out of 4076 non-N bases (61.87%))
+		Alignment: 781272 783783 | 2522 1 | 2512 2522 | 95.06 | NC_001146.8 contig_1
+		Unaligned bases: 2523 to 4076 (1554)
+
+CONTIG: contig_115 (2654bp)
+Best alignment score: 873.1 (LEN: 885, IDY: 98.65), Total number of alignments: 6
+			Looking for the best set of alignments (out of 6 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 212368 213255 | 6 890 | 888 885 | 98.65 | NC_001140.6 contig_115
+		Skipping redundant alignment 212368 213255 | 891 1775 | 888 885 | 98.65 | NC_001140.6 contig_115
+		Skipping redundant alignment 212368 213249 | 1776 2654 | 882 879 | 98.64 | NC_001140.6 contig_115
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 2565.2, number of alignments: 3, unaligned bases: 5
+		This contig is misassembled.
+			Real Alignment 1: 214366 215253 | 6 890 | 888 885 | 98.65 | NC_001140.6 contig_115
+			  Overlap between these two alignments (local misassembly). Inconsistency = -888
+			Real Alignment 2: 214366 215253 | 891 1775 | 888 885 | 98.65 | NC_001140.6 contig_115
+			  Overlap between these two alignments (local misassembly). Inconsistency = -888
+			Real Alignment 3: 214366 215247 | 1776 2654 | 882 879 | 98.64 | NC_001140.6 contig_115
+
+CONTIG: contig_131 (4596bp)
+Best alignment score: 1894.1 (LEN: 1963, IDY: 96.49), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 1082673 1084615 | 2470 4432 | 1943 1963 | 96.49 | NC_001147.6 contig_131
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 1894.1, number of alignments: 1, unaligned bases: 2633
+		This contig is partially unaligned. (Aligned 1963 out of 4596 non-N bases (42.71%))
+		Alignment: 6530 8472 | 4432 2470 | 1943 1963 | 96.49 | NC_001148.4 contig_131
+		Unaligned bases: 1 to 2469 (2469)
+		Unaligned bases: 4433 to 4596 (164)
+
+CONTIG: contig_149 (5171bp)
+Best alignment score: 2959.0 (LEN: 2962, IDY: 99.90), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			The best set is below. Score: 4906.0, number of alignments: 2, unaligned bases: 0
+		This contig is misassembled.
+			Excluding internal overlap of size 12 between Alignment 1 and 2: 37455 39677 | 2951 5171 | 2223 2221 --> 37467 39677 | 2963 5171 | 2211 2209
+			Real Alignment 1: 36717 39678 | 2962 1 | 2962 2962 | 99.9 | NC_001224.1 contig_149
+			  Extensive misassembly (relocation, inconsistency = -2212) between these two alignments
+			Real Alignment 2: 37467 39677 | 2963 5171 | 2211 2209 | 99.73 | NC_001224.1 contig_149
+
+CONTIG: contig_151 (3573bp)
+Best alignment score: 301.2 (LEN: 314, IDY: 95.91), Total number of alignments: 2
+			Looking for the best set of alignments (out of 2 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 23284 23550 | 271 7 | 267 265 | 97.0 | NC_001141.2 contig_151
+			The best set is below. Score: 301.2, number of alignments: 1, unaligned bases: 3259
+		This contig is partially unaligned. (Aligned 314 out of 3573 non-N bases (8.79%))
+		Alignment: 28989 29302 | 320 7 | 314 314 | 95.91 | NC_001147.6 contig_151
+		Unaligned bases: 1 to 6 (6)
+		Unaligned bases: 321 to 3573 (3253)
+
+CONTIG: contig_152 (17043bp)
+Best alignment score: 102.0 (LEN: 107, IDY: 95.37), Total number of alignments: 4
+			Looking for the best set of alignments (out of 4 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 7892 7998 | 107 1 | 107 107 | 95.37 | NC_001145.3 contig_152
+		Skipping redundant alignment 7074 7180 | 107 1 | 107 107 | 95.37 | NC_001138.5 contig_152
+		Skipping redundant alignment 8978 9084 | 107 1 | 107 107 | 95.33 | NC_001146.8 contig_152
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 102.0, number of alignments: 1, unaligned bases: 16936
+		This contig is partially unaligned. (Aligned 107 out of 17043 non-N bases (0.63%))
+		Alignment: 810725 810831 | 1 107 | 107 107 | 95.37 | NC_001134.8 contig_152
+		Unaligned bases: 108 to 17043 (16936)
+
+CONTIG: contig_31 (527bp)
+		This contig is unaligned. (527 bp)
+		Unaligned bases: 527 (number of Ns: 0)
+
+CONTIG: contig_35 (2004bp)
+Best alignment score: 215.0 (LEN: 226, IDY: 95.13), Total number of alignments: 1
+			Looking for the best set of alignments (out of 1 total alignments)
+			The best set is below. Score: 215.0, number of alignments: 1, unaligned bases: 1778
+		This contig is partially unaligned. (Aligned 226 out of 2004 non-N bases (11.28%))
+		Alignment: 74976 75201 | 1883 1658 | 226 226 | 95.13 | NC_001224.1 contig_35
+		Unaligned bases: 1 to 1657 (1657)
+		Unaligned bases: 1884 to 2004 (121)
+
+CONTIG: contig_41 (2649bp)
+		This contig is unaligned. (2649 bp)
+		Unaligned bases: 2649 (number of Ns: 0)
+
+CONTIG: contig_42 (4873bp)
+Best alignment score: 4807.2 (LEN: 4873, IDY: 98.65), Total number of alignments: 3
+		Skipping these alignments as insignificant (option --ambiguity-score is set to "0.99"):
+			Skipping alignment 16599 21232 | 4873 224 | 4634 4650 | 98.52 | NC_001141.2 contig_42
+			Skipping alignment 22436 26988 | 4777 224 | 4553 4554 | 97.35 | NC_001147.6 contig_42
+		One align captures most of this contig: 16582 21434 | 4873 1 | 4853 4873 | 98.65 | NC_001142.9 contig_42
+
+CONTIG: contig_46 (5690bp)
+Best alignment score: 5612.0 (LEN: 5690, IDY: 98.63), Total number of alignments: 2
+		This contig has 2 significant alignments. [An ambiguously mapped contig]
+		Using only first of these alignment (option --ambiguity-usage is set to "one"):
+			Alignment: 13248 18927 | 5690 1 | 5680 5690 | 98.63 | NC_001142.9 contig_46
+			Skipping alignment 13265 18945 | 5690 1 | 5681 5690 | 98.6 | NC_001141.2 contig_46
+
+CONTIG: contig_52 (5308bp)
+		This contig is unaligned. (5308 bp)
+		Unaligned bases: 5308 (number of Ns: 0)
+
+CONTIG: contig_57 (6694bp)
+Best alignment score: 3990.6 (LEN: 4085, IDY: 97.69), Total number of alignments: 4
+			Looking for the best set of alignments (out of 4 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 539932 543610 | 2610 6292 | 3679 3683 | 98.81 | NC_001140.6 contig_57
+			The best set is below. Score: 5404.7, number of alignments: 3, unaligned bases: 884
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 5810 out of 6694 non-N bases (86.79%))
+			Real Alignment 1: 206331 207705 | 76 1468 | 1375 1393 | 95.84 | NC_001133.9 contig_57
+			  Indel (> 5bp) between these two alignments: insertion of length 54; 0 mismatches (number of Ns: 0)
+			Real Alignment 2: 207706 208037 | 1523 1854 | 332 332 | 99.1 | NC_001133.9 contig_57
+			  Extensive misassembly (relocation, inconsistency = 10537) between these two alignments
+			Real Alignment 3: 219330 223418 | 2610 6694 | 4089 4085 | 97.69 | NC_001133.9 contig_57
+		Unaligned bases: 884
+
+CONTIG: contig_80 (5863bp)
+Best alignment score: 4823.2 (LEN: 4869, IDY: 99.06), Total number of alignments: 10
+			Looking for the best set of alignments (out of 10 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 5462 5845 | 1378 995 | 384 384 | 99.74 | NC_001134.8 contig_80
+		Skipping redundant alignment 2336 5461 | 4518 1406 | 3126 3113 | 98.91 | NC_001134.8 contig_80
+		Skipping redundant alignment 2072 2227 | 4673 4519 | 156 155 | 98.08 | NC_001134.8 contig_80
+		Skipping redundant alignment 1 4683 | 5724 995 | 4683 4730 | 95.61 | NC_001138.5 contig_80
+		Skipping redundant alignment 455 1641 | 5863 4674 | 1187 1190 | 98.91 | NC_001134.8 contig_80
+		Skipping redundant alignment 942808 947529 | 1289 5863 | 4722 4575 | 96.0 | NC_001148.4 contig_80
+		Skipping redundant alignment 6295 11195 | 5863 995 | 4901 4869 | 99.0 | NC_001144.5 contig_80
+		Skipping redundant alignment 556987 561872 | 995 5863 | 4886 4869 | 97.82 | NC_001140.6 contig_80
+		Skipping redundant alignment 652 5660 | 5863 995 | 5009 4869 | 96.85 | NC_001144.5 contig_80
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 4823.2, number of alignments: 1, unaligned bases: 994
+		This contig is partially unaligned. (Aligned 4869 out of 5863 non-N bases (83.05%))
+		Alignment: 636 5536 | 5863 995 | 4901 4869 | 99.06 | NC_001145.3 contig_80
+		Unaligned bases: 1 to 994 (994)
+
+CONTIG: contig_83 (10773bp)
+Best alignment score: 4572.8 (LEN: 4582, IDY: 99.80), Total number of alignments: 23
+			Looking for the best set of alignments (out of 23 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 146 1679 | 3 1536 | 1534 1534 | 99.15 | NC_001142.9 contig_83
+		Skipping redundant alignment 163 1696 | 3 1536 | 1534 1534 | 99.15 | NC_001141.2 contig_83
+		Skipping redundant alignment 1 1572 | 62 1628 | 1572 1567 | 98.03 | NC_001137.3 contig_83
+		Skipping redundant alignment 49 1765 | 3 1717 | 1717 1715 | 97.26 | NC_001146.8 contig_83
+		Skipping redundant alignment 1089453 1091185 | 1730 3 | 1733 1728 | 97.23 | NC_001147.6 contig_83
+		Skipping redundant alignment 1609 1803 | 1629 1823 | 195 195 | 95.9 | NC_001137.3 contig_83
+		Skipping redundant alignment 1680 1942 | 1573 1836 | 263 264 | 96.59 | NC_001142.9 contig_83
+		Skipping redundant alignment 1697 1959 | 1573 1836 | 263 264 | 96.59 | NC_001141.2 contig_83
+		Skipping redundant alignment 2091 2171 | 1877 1957 | 81 81 | 98.77 | NC_001142.9 contig_83
+		Skipping redundant alignment 2108 2188 | 1877 1957 | 81 81 | 98.77 | NC_001141.2 contig_83
+		Skipping redundant alignment 1766 1934 | 1790 1959 | 169 170 | 95.29 | NC_001146.8 contig_83
+		Skipping redundant alignment 1978 4585 | 1891 4499 | 2608 2609 | 98.08 | NC_001137.3 contig_83
+		Skipping redundant alignment 4586 6136 | 4560 6184 | 1551 1625 | 95.02 | NC_001137.3 contig_83
+		Skipping redundant alignment 6137 6338 | 6212 6414 | 202 203 | 97.04 | NC_001137.3 contig_83
+		Skipping redundant alignment 2352 6931 | 1958 6539 | 4580 4582 | 99.8 | NC_001142.9 contig_83
+		Skipping redundant alignment 2369 6948 | 1958 6539 | 4580 4582 | 99.76 | NC_001141.2 contig_83
+		Skipping redundant alignment 1084612 1089243 | 6598 1965 | 4632 4634 | 98.36 | NC_001147.6 contig_83
+		Skipping redundant alignment 1983 6626 | 1960 6599 | 4644 4640 | 98.32 | NC_001146.8 contig_83
+		Skipping redundant alignment 1080291 1083734 | 10773 7337 | 3444 3437 | 98.0 | NC_001147.6 contig_83
+			The best set is below. Score: 9717.4, number of alignments: 4, unaligned bases: 856
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 9917 out of 10773 non-N bases (92.05%))
+			Real Alignment 1: 4 1674 | 49 1717 | 1671 1669 | 97.49 | NC_001148.4 contig_83
+			  Indel (> 5bp) between these two alignments: insertion of length 72; 0 mismatches (number of Ns: 0)
+			Real Alignment 2: 1675 1843 | 1790 1959 | 169 170 | 95.29 | NC_001148.4 contig_83
+			  Indel (> 5bp) between these two alignments: deletion of length 48; 0 mismatches (number of Ns: 0)
+			Real Alignment 3: 1892 6533 | 1960 6598 | 4642 4639 | 98.3 | NC_001148.4 contig_83
+			  Gap between these two alignments (local misassembly). Inconsistency = 139
+			Real Alignment 4: 7409 10855 | 7335 10773 | 3447 3439 | 97.94 | NC_001148.4 contig_83
+		Unaligned bases: 856
+
+CONTIG: contig_87 (2232bp)
+		This contig is unaligned. (2232 bp)
+		Unaligned bases: 2232 (number of Ns: 0)
+
+CONTIG: contig_89 (4934bp)
+		This contig is unaligned. (4934 bp)
+		Unaligned bases: 4934 (number of Ns: 0)
+
+CONTIG: contig_97 (13016bp)
+Best alignment score: 5653.5 (LEN: 5861, IDY: 96.46), Total number of alignments: 4
+			Looking for the best set of alignments (out of 4 total alignments)
+			Skipping redundant alignments after choosing the best set of alignments
+		Skipping redundant alignment 919973 921395 | 8 1429 | 1423 1422 | 98.95 | NC_001145.3 contig_97
+		Skipping redundant alignment 9563 10989 | 1429 4 | 1427 1426 | 99.65 | NC_001148.4 contig_97
+		This contig has several significant sets of alignments. [An ambiguously mapped contig]
+		Using only the very best set (option --ambiguity-usage is set to "one").
+			The best set is below. Score: 6823.5, number of alignments: 2, unaligned bases: 5729
+		This contig is misassembled.
+		This contig is partially unaligned. (Aligned 7287 out of 13016 non-N bases (55.98%))
+			Real Alignment 1: 1080157 1081583 | 4 1429 | 1427 1426 | 99.65 | NC_001147.6 contig_97
+			  Extensive misassembly (translocation) between these two alignments
+			Real Alignment 2: 7454 13327 | 13004 7144 | 5874 5861 | 96.46 | NC_001146.8 contig_97
+		Unaligned bases: 5729
+
+Analyzing coverage...
+Writing SNPs into /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye_ragtag.used_snps
+
+Analysis is finished!
+Founded SNPs were written into /media/lgbio-nas1/renatadias/curso-nanopore/8.QC_montagens/quast-final/contigs_reports/minimap_output/Scer1_Flye_ragtag.used_snps
+
+Results:
+	Local Misassemblies: 81
+	Misassemblies: 131
+		Relocations: 69
+		Translocations: 59
+		Inversions: 3
+	Scaffold gap extensive misassemblies: 29
+	Scaffold gap local misassemblies: 30
+	Misassembled Contigs: 20
+	Misassembled Contig Bases: 11733271
+	Misassemblies Inter-Contig Overlap ("Extra" Aligned Bases): 0
+Unaligned Contigs: 5 + 26 part
+Half Unaligned Contigs with Misassemblies: 0
+Unaligned Bases in Fully and Partially Unaligned Contigs: 206355
+
+Ambiguously Mapped Contigs: 23
+Total Bases in Ambiguously Mapped Contigs: 11757252
+"Extra" Aligned Bases in Ambiguously Mapped Contigs: 0
+Note that --allow-ambiguity option was set to "one" and only first alignment per each of these contigs was used (there is no "extra" aligned bases).
+
+	Covered Bases in Reference: 11451914
+	Raw Aligned Bases in Assembly: 11568437
+	Total Aligned Bases in Assembly (with "Extras"): 11568437
+
+	SNPs: 56369
+	Insertions: 16244
+	Deletions: 15568
+

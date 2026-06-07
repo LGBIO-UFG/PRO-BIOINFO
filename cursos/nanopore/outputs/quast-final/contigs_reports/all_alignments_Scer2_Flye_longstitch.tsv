@@ -1,0 +1,1444 @@
+S1	E1	S2	E2	Reference	Contig	IDY	Ambiguous	Best_group
+903267	906235	1	2968	NC_001148.4	contig_517__contig_517_0-2968	98.79		True
+CONTIG	contig_517__contig_517_0-2968	2968	correct
+787987	797225	9242	9	NC_001147.6	contig_155__contig_155_0-9333	98.6		True
+CONTIG	contig_155__contig_155_0-9333	9333	correct
+517793	518214	422	2	NC_001143.9	contig_202__contig_202_0-16202	96.28		True
+local misassembly
+501652	517455	16202	423	NC_001143.9	contig_202__contig_202_0-16202	98.76		True
+CONTIG	contig_202__contig_202_0-16202	16202	correct
+633772	640232	2	6446	NC_001144.5	contig_445__contig_445_0-6448	98.32		True
+CONTIG	contig_445__contig_445_0-6448	6448	correct
+581310	606467	1	25152	NC_001148.4	contig_418__contig_418_0-25152	97.61		True
+CONTIG	contig_418__contig_418_0-25152	25152	correct
+345053	356520	11482	2	NC_001143.9	contig_184__contig_184_0-11482	99.12		True
+CONTIG	contig_184__contig_184_0-11482	11482	correct
+1367372	1370860	1	3499	NC_001136.10	contig_325__contig_325_0-3508	98.41		True
+CONTIG	contig_325__contig_325_0-3508	3508	correct
+768885	769697	814	2	NC_001145.3	contig_143__contig_143_0-6827	96.14		True
+local misassembly
+762526	768547	6827	815	NC_001145.3	contig_143__contig_143_0-6827	99.09		True
+CONTIG	contig_143__contig_143_0-6827	6827	correct
+302406	308232	3	5827	NC_001141.2	contig_553__contig_553_0-5827	98.87		True
+CONTIG	contig_553__contig_553_0-5827	5827	correct
+483936	490933	1	7015	NC_001140.6	contig_496__contig_496_0-7015	98.51		True
+CONTIG	contig_496__contig_496_0-7015	7015	correct
+634394	641953	7558	5	NC_001147.6	contig_171__contig_171_0-7558	99.23		True
+CONTIG	contig_171__contig_171_0-7558	7558	correct
+298506	327387	28876	1	NC_001140.6	contig_422__contig_422_0-28878	98.55		True
+CONTIG	contig_422__contig_422_0-28878	28878	correct
+450787	459329	8537	6	NC_001136.10	contig_414__contig_414_0-8537	98.39		True
+CONTIG	contig_414__contig_414_0-8537	8537	correct
+CONTIG	contig_10__contig_10_0-2710	2710	unaligned
+114652	123574	2	8919	NC_001139.9	contig_525__contig_525_0-8920	98.73		True
+CONTIG	contig_525__contig_525_0-8920	8920	correct
+442250	449473	7213	1	NC_001147.6	contig_562__contig_562_0-7219	98.88		True
+CONTIG	contig_562__contig_562_0-7219	7219	correct
+66186	82395	16189	1	NC_001144.5	contig_461__contig_461_0-16191	98.73		True
+CONTIG	contig_461__contig_461_0-16191	16191	correct
+650403	662989	12628	4	NC_001143.9	contig_206__contig_206_0-12628	98.23		True
+CONTIG	contig_206__contig_206_0-12628	12628	correct
+301236	313623	12397	1	NC_001134.8	contig_11__contig_11_0-12397	98.91		True
+CONTIG	contig_11__contig_11_0-12397	12397	correct
+271914	277625	5733	8	NC_001145.3	contig_470__contig_470_0-5733	98.55		True
+CONTIG	contig_470__contig_470_0-5733	5733	correct
+191516	198155	1	6677	NC_001135.5	contig_189__contig_189_0-6685	96.97		True
+CONTIG	contig_189__contig_189_0-6685	6685	correct
+495157	506819	11662	11	NC_001139.9	contig_370__contig_370_0-11662	97.5		True
+CONTIG	contig_370__contig_370_0-11662	11662	correct
+556148	561761	1	5594	NC_001139.9	contig_601__contig_601_0-6391	98.31		True
+relocation, inconsistency = 145433
+707195	707533	5934	5595	NC_001139.9	contig_601__contig_601_0-6391	98.24		True
+relocation, inconsistency = 138982
+567761	568129	6018	6385	NC_001139.9	contig_601__contig_601_0-6391	95.7		True
+CONTIG	contig_601__contig_601_0-6391	6391	misassembled
+107768	119786	12042	4	NC_001141.2	contig_167__contig_167_0-12045	98.5		True
+CONTIG	contig_167__contig_167_0-12045	12045	correct
+462329	466789	4463	1	NC_001137.3	contig_337__contig_337_0-4846	96.96		True
+translocation
+213794	214174	4846	4464	NC_001134.8	contig_337__contig_337_0-4846	97.43		True
+CONTIG	contig_337__contig_337_0-4846	4846	misassembled
+346012	350436	4441	8	NC_001146.8	contig_680__contig_680_0-4441	97.35		True
+CONTIG	contig_680__contig_680_0-4441	4441	correct
+874307	880918	6601	7	NC_001144.5	contig_524__contig_524_0-6601	98.3		True
+CONTIG	contig_524__contig_524_0-6601	6601	correct
+464030	479337	15324	10	NC_001148.4	contig_54__contig_54_0-15324	97.99		True
+CONTIG	contig_54__contig_54_0-15324	15324	correct
+173484	178810	296	5617	NC_001139.9	contig_574__contig_574_0-5619	98.78		True
+CONTIG	contig_574__contig_574_0-5619	5619	correct
+774408	784349	9943	6	NC_001145.3	contig_499__contig_499_0-9943	99.6		True
+CONTIG	contig_499__contig_499_0-9943	9943	correct
+289431	318855	1	29423	NC_001148.4	contig_299__contig_299_0-29423	99.04		True
+CONTIG	contig_299__contig_299_0-29423	29423	correct
+486625	489083	1	2459	NC_001145.3	contig_324__contig_324_0-2463	99.51		True
+CONTIG	contig_324__contig_324_0-2463	2463	correct
+765246	774339	9086	2	NC_001139.9	contig_66__contig_66_0-9086	99.0		True
+CONTIG	contig_66__contig_66_0-9086	9086	correct
+242977	254886	11901	1	NC_001136.10	contig_279__contig_279_0-11901	98.93		True
+CONTIG	contig_279__contig_279_0-11901	11901	correct
+150515	166016	1	15481	NC_001148.4	contig_410__contig_410_0-15505	97.95		True
+CONTIG	contig_410__contig_410_0-15505	15505	correct
+443132	443773	647	1	NC_001148.4	contig_563__contig_563_0-2743	97.38		True
+relocation, inconsistency = 6650
+434389	436480	2743	649	NC_001148.4	contig_563__contig_563_0-2743	98.0		True
+CONTIG	contig_563__contig_563_0-2743	2743	misassembled
+163032	168056	5044	24	NC_001136.10	contig_377__contig_377_0-5047	98.97		True
+CONTIG	contig_377__contig_377_0-5047	5047	correct
+937717	942981	5274	1	NC_001147.6	contig_138__contig_138_0-5274	99.39		True
+CONTIG	contig_138__contig_138_0-5274	5274	correct
+212301	215196	3375	481	NC_001142.9	contig_596__contig_596_0-3375	99.48		True
+CONTIG	contig_596__contig_596_0-3375	3375	correct
+373562	375030	1468	4	NC_001148.4	contig_60__contig_60_0-2205	98.98		True
+relocation, inconsistency = -437001
+810229	810562	1802	1469	NC_001148.4	contig_60__contig_60_0-2205	98.8		True
+relocation, inconsistency = 436662
+373172	373566	2196	1803	NC_001148.4	contig_60__contig_60_0-2205	98.99		True
+CONTIG	contig_60__contig_60_0-2205	2205	misassembled
+298442	308355	9908	2	NC_001136.10	contig_570__contig_570_0-9911	98.23		True
+CONTIG	contig_570__contig_570_0-9911	9911	correct
+41614	49490	7885	2	NC_001142.9	contig_591__contig_591_0-7885	97.66		True
+CONTIG	contig_591__contig_591_0-7885	7885	correct
+663664	666435	2762	1	NC_001144.5	contig_689__contig_689_0-2762	98.67		True
+CONTIG	contig_689__contig_689_0-2762	2762	correct
+195240	204591	9360	2	NC_001135.5	contig_641__contig_641_0-9360	98.06		True
+CONTIG	contig_641__contig_641_0-9360	9360	correct
+461403	464700	3	3318	NC_001140.6	contig_469__contig_469_0-3318	98.46		True
+CONTIG	contig_469__contig_469_0-3318	3318	correct
+1291773	1305553	1	13775	NC_001136.10	contig_236__contig_236_0-15748	98.79		True
+local misassembly
+1305547	1307188	14106	15748	NC_001136.10	contig_236__contig_236_0-15748	98.67		True
+CONTIG	contig_236__contig_236_0-15748	15748	correct
+245542	249926	4	4406	NC_001137.3	contig_50__contig_50_0-4504	97.76		True
+CONTIG	contig_50__contig_50_0-4504	4504	correct
+164480	167645	1	3174	NC_001147.6	contig_374__contig_374_0-3174	98.55		True
+CONTIG	contig_374__contig_374_0-3174	3174	correct
+635328	637965	2646	9	NC_001145.3	contig_706__contig_706_0-2646	99.02		True
+CONTIG	contig_706__contig_706_0-2646	2646	correct
+176401	187536	11108	2	NC_001135.5	contig_226__contig_226_0-11108	98.64		True
+CONTIG	contig_226__contig_226_0-11108	11108	correct
+132260	158204	25924	3	NC_001145.3	contig_207__contig_207_0-25927	99.08		True
+CONTIG	contig_207__contig_207_0-25927	25927	correct
+640553	645692	5434	302	NC_001144.5	contig_566__contig_566_0-5434	98.87		True
+CONTIG	contig_566__contig_566_0-5434	5434	correct
+157139	159906	2776	3	NC_001136.10	contig_181__contig_181_0-2776	97.88		True
+CONTIG	contig_181__contig_181_0-2776	2776	correct
+782714	801688	19005	2	NC_001139.9	contig_255__contig_255_0-19005	98.89		True
+CONTIG	contig_255__contig_255_0-19005	19005	correct
+494634	506651	2	12031	NC_001147.6	contig_320__contig_320_0-12031	98.41		True
+CONTIG	contig_320__contig_320_0-12031	12031	correct
+437621	445608	1	7971	NC_001145.3	contig_273__contig_273_0-7971	98.59		True
+CONTIG	contig_273__contig_273_0-7971	7971	correct
+419432	424184	1	4750	NC_001147.6	contig_539__contig_539_0-4750	99.18		True
+CONTIG	contig_539__contig_539_0-4750	4750	correct
+143255	154333	11072	1	NC_001137.3	contig_515__contig_515_0-11074	99.04		True
+CONTIG	contig_515__contig_515_0-11074	11074	correct
+1435445	1470947	35494	7	NC_001136.10	contig_78__contig_78_0-35497	98.92		True
+CONTIG	contig_78__contig_78_0-35497	35497	correct
+1075335	1082482	7	7112	NC_001136.10	contig_419__contig_419_0-7112	97.87		True
+CONTIG	contig_419__contig_419_0-7112	7112	correct
+594828	594960	155	20	NC_001147.6	contig_106__contig_106_0-1379	96.35		True
+relocation, inconsistency = 471199
+123296	123628	493	156	NC_001147.6	contig_106__contig_106_0-1379	95.27		True
+translocation
+299702	300587	1379	499	NC_001141.2	contig_106__contig_106_0-1379	98.53		True
+CONTIG	contig_106__contig_106_0-1379	1379	misassembled
+206316	221923	1	15623	NC_001143.9	contig_394__contig_394_0-15627	98.45		True
+CONTIG	contig_394__contig_394_0-15627	15627	correct
+1035007	1068497	33516	9	NC_001136.10	contig_221__contig_221_0-33516	99.01		True
+CONTIG	contig_221__contig_221_0-33516	33516	correct
+238629	246892	1	8249	NC_001144.5	contig_546__contig_546_0-8254	98.43		True
+CONTIG	contig_546__contig_546_0-8254	8254	correct
+956684	963659	6928	2	NC_001136.10	contig_164__contig_164_0-6928	97.19		True
+CONTIG	contig_164__contig_164_0-6928	6928	correct
+1262983	1281849	1	18877	NC_001136.10	contig_145__contig_145_0-18877	98.65		True
+CONTIG	contig_145__contig_145_0-18877	18877	correct
+186552	233282	1	46686	NC_001146.8	contig_163__contig_163_0-46686	99.14		True
+CONTIG	contig_163__contig_163_0-46686	46686	correct
+238563	245771	7	7205	NC_001135.5	contig_347__contig_347_0-7205	96.87		True
+CONTIG	contig_347__contig_347_0-7205	7205	correct
+190096	195311	5251	1	NC_001145.3	contig_656__contig_656_0-5251	96.93		True
+CONTIG	contig_656__contig_656_0-5251	5251	correct
+1003393	1013023	9633	4	NC_001147.6	contig_614__contig_614_0-9637	98.06		True
+CONTIG	contig_614__contig_614_0-9637	9637	correct
+434040	436355	8	2328	NC_001145.3	contig_623__contig_623_0-2328	98.54		True
+CONTIG	contig_623__contig_623_0-2328	2328	correct
+45212	55858	10655	1	NC_001148.4	contig_72__contig_72_0-10655	98.18		True
+CONTIG	contig_72__contig_72_0-10655	10655	correct
+90815	96401	5581	1	NC_001134.8	contig_637__contig_637_0-9653	99.62		True
+local misassembly
+86675	90216	9653	6129	NC_001134.8	contig_637__contig_637_0-9653	96.36		True
+CONTIG	contig_637__contig_637_0-9653	9653	correct
+207301	218985	11665	2	NC_001136.10	contig_412__contig_412_0-11669	98.06		True
+CONTIG	contig_412__contig_412_0-11669	11669	correct
+622992	632237	9229	3	NC_001139.9	contig_465__contig_465_0-9229	98.52		True
+CONTIG	contig_465__contig_465_0-9229	9229	correct
+355175	357859	5442	2759	NC_001142.9	contig_398__contig_398_0-27522	98.41		True
+local misassembly
+333066	354637	27521	5974	NC_001142.9	contig_398__contig_398_0-27522	97.25		True
+CONTIG	contig_398__contig_398_0-27522	27522	correct
+160918	163289	2382	1	NC_001145.3	contig_508__contig_508_0-2387	95.69		True
+CONTIG	contig_508__contig_508_0-2387	2387	correct
+747830	770059	2	22228	NC_001147.6	contig_333__contig_333_0-24658	99.23		True
+CONTIG	contig_333__contig_333_0-24658	24658	correct
+648688	656488	1	7785	NC_001142.9	contig_531__contig_531_0-7785	97.64		True
+CONTIG	contig_531__contig_531_0-7785	7785	correct
+573820	576322	4	2505	NC_001142.9	contig_381__contig_381_0-2510	98.96		True
+CONTIG	contig_381__contig_381_0-2510	2510	correct
+148080	155196	1	7109	NC_001146.8	contig_267__contig_267_0-7110	98.74		True
+CONTIG	contig_267__contig_267_0-7110	7110	correct
+180678	186791	4	6105	NC_001140.6	contig_231__contig_231_0-6105	98.6		True
+CONTIG	contig_231__contig_231_0-6105	6105	correct
+196472	204937	1	8493	NC_001148.4	contig_135__contig_135_0-8493	98.32		True
+CONTIG	contig_135__contig_135_0-8493	8493	correct
+334177	344111	9959	2	NC_001146.8	contig_510__contig_510_0-9963	98.1		True
+CONTIG	contig_510__contig_510_0-9963	9963	correct
+578490	585555	2	7077	NC_001142.9	contig_35__contig_35_0-7077	98.56		True
+CONTIG	contig_35__contig_35_0-7077	7077	correct
+849229	866944	17694	1	NC_001145.3	contig_233__contig_233_0-17697	99.17		True
+CONTIG	contig_233__contig_233_0-17697	17697	correct
+721907	728751	6836	5	NC_001144.5	contig_187__contig_187_0-6837	98.43		True
+CONTIG	contig_187__contig_187_0-6837	6837	correct
+541686	544045	2360	1	NC_001139.9	contig_520__contig_520_0-4527	99.28		True
+relocation, inconsistency = 5931
+535548	535754	2568	2361	NC_001139.9	contig_520__contig_520_0-4527	98.17		True
+local misassembly
+533254	535210	4527	2569	NC_001139.9	contig_520__contig_520_0-4527	98.72		True
+CONTIG	contig_520__contig_520_0-4527	4527	misassembled
+224073	226788	2709	6	NC_001143.9	contig_655__contig_655_0-2709	98.53		True
+CONTIG	contig_655__contig_655_0-2709	2709	correct
+1352978	1366287	13128	7	NC_001136.10	contig_248__contig_248_0-31966	97.12		True
+local misassembly
+1334127	1352643	31964	13463	NC_001136.10	contig_248__contig_248_0-31966	98.91		True
+CONTIG	contig_248__contig_248_0-31966	31966	correct
+900026	912820	12784	1	NC_001139.9	contig_722__contig_722_0-12784	99.03		True
+CONTIG	contig_722__contig_722_0-12784	12784	correct
+200902	225435	1	24550	NC_001147.6	contig_46__contig_46_0-24550	98.66		True
+CONTIG	contig_46__contig_46_0-24550	24550	correct
+586077	589945	1	3873	NC_001144.5	contig_229__contig_229_0-3873	98.31		True
+CONTIG	contig_229__contig_229_0-3873	3873	correct
+69701	76461	6735	5	NC_001134.8	contig_224__contig_224_0-6735	98.47		True
+CONTIG	contig_224__contig_224_0-6735	6735	correct
+367331	389078	5	21789	NC_001137.3	contig_709__contig_709_0-21791	97.57		True
+CONTIG	contig_709__contig_709_0-21791	21791	correct
+249408	252132	2730	3	NC_001141.2	contig_688__contig_688_0-2730	98.54		True
+CONTIG	contig_688__contig_688_0-2730	2730	correct
+442512	443291	11	778	NC_001137.3	contig_382__contig_382_0-9204	95.3		True
+relocation, inconsistency = -8661
+434631	434972	779	1121	NC_001137.3	contig_382__contig_382_0-9204	98.54		True
+relocation, inconsistency = 14582
+449631	457616	1198	9204	NC_001137.3	contig_382__contig_382_0-9204	99.07		True
+CONTIG	contig_382__contig_382_0-9204	9204	misassembled
+319365	331221	11850	1	NC_001142.9	contig_214__contig_214_0-11850	98.85		True
+CONTIG	contig_214__contig_214_0-11850	11850	correct
+624109	628420	1	4304	NC_001147.6	contig_597__contig_597_0-4304	98.64		True
+CONTIG	contig_597__contig_597_0-4304	4304	correct
+239237	245885	6669	32	NC_001141.2	contig_416__contig_416_0-6669	97.31		True
+CONTIG	contig_416__contig_416_0-6669	6669	correct
+669438	683411	13957	1	NC_001144.5	contig_141__contig_141_0-13957	98.84		True
+CONTIG	contig_141__contig_141_0-13957	13957	correct
+462550	473960	2	11416	NC_001146.8	contig_619__contig_619_0-11416	99.22		True
+CONTIG	contig_619__contig_619_0-11416	11416	correct
+615408	639961	1	24528	NC_001136.10	contig_250__contig_250_0-24528	98.88		True
+CONTIG	contig_250__contig_250_0-24528	24528	correct
+356617	362800	6173	2	NC_001141.2	contig_527__contig_527_0-6173	99.14		True
+CONTIG	contig_527__contig_527_0-6173	6173	correct
+278485	287543	1	8982	NC_001139.9	contig_116__contig_116_0-8982	97.79		True
+CONTIG	contig_116__contig_116_0-8982	8982	correct
+279931	283547	1	3604	NC_001134.8	contig_52__contig_52_0-3614	99.14		True
+CONTIG	contig_52__contig_52_0-3614	3614	correct
+175803	183892	12	8111	NC_001146.8	contig_303__contig_303_0-8111	99.19		True
+CONTIG	contig_303__contig_303_0-8111	8111	correct
+723674	739832	16118	5	NC_001145.3	contig_220__contig_220_0-16118	98.35		True
+CONTIG	contig_220__contig_220_0-16118	16118	correct
+565891	572442	1	6549	NC_001144.5	contig_506__contig_506_0-6549	98.42		True
+CONTIG	contig_506__contig_506_0-6549	6549	correct
+94205	96645	2444	2	NC_001135.5	contig_18__contig_18_0-2444	98.57		True
+CONTIG	contig_18__contig_18_0-2444	2444	correct
+530615	533674	3062	5	NC_001144.5	contig_4__contig_4_0-3062	99.02		True
+CONTIG	contig_4__contig_4_0-3062	3062	correct
+678440	685723	5	7278	NC_001142.9	contig_631__contig_631_0-7278	98.22		True
+CONTIG	contig_631__contig_631_0-7278	7278	correct
+628805	631662	2858	1	NC_001142.9	contig_393__contig_393_0-7966	99.2		True
+local misassembly
+623987	628811	7962	3135	NC_001142.9	contig_393__contig_393_0-7966	98.08		True
+CONTIG	contig_393__contig_393_0-7966	7966	correct
+946137	954842	1	8706	NC_001139.9	contig_474__contig_474_0-8706	99.16		True
+CONTIG	contig_474__contig_474_0-8706	8706	correct
+391037	396524	5484	1	NC_001142.9	contig_433__contig_433_0-5484	97.57		True
+CONTIG	contig_433__contig_433_0-5484	5484	correct
+130034	137976	7883	2	NC_001148.4	contig_564__contig_564_0-7884	97.48		True
+CONTIG	contig_564__contig_564_0-7884	7884	correct
+227947	237910	11470	1490	NC_001135.5	contig_17__contig_17_0-11470	98.34		True
+CONTIG	contig_17__contig_17_0-11470	11470	correct
+79657	82750	3120	12	NC_001140.6	contig_1__contig_1_0-3120	97.16		True
+CONTIG	contig_1__contig_1_0-3120	3120	correct
+233657	237707	3	4046	NC_001142.9	contig_407__contig_407_0-4046	98.5		True
+CONTIG	contig_407__contig_407_0-4046	4046	correct
+240358	245076	4710	1	NC_001145.3	contig_683__contig_683_0-4710	98.35		True
+CONTIG	contig_683__contig_683_0-4710	4710	correct
+443132	454626	39	11519	NC_001148.4	contig_332__contig_332_0-11519	99.01		True
+CONTIG	contig_332__contig_332_0-11519	11519	correct
+681617	697789	16154	1	NC_001134.8	contig_309__contig_309_0-16154	98.88		True
+CONTIG	contig_309__contig_309_0-16154	16154	correct
+716189	731651	15462	3	NC_001134.8	contig_533__contig_533_0-15462	97.98		True
+CONTIG	contig_533__contig_533_0-15462	15462	correct
+514465	519357	4893	1	NC_001136.10	contig_708__contig_708_0-4893	99.12		True
+CONTIG	contig_708__contig_708_0-4893	4893	correct
+403530	414316	10807	3	NC_001141.2	contig_610__contig_610_0-10807	97.18		True
+CONTIG	contig_610__contig_610_0-10807	10807	correct
+636979	639555	2585	1	NC_001145.3	contig_204__contig_204_0-2585	98.73		True
+CONTIG	contig_204__contig_204_0-2585	2585	correct
+317803	324385	1	6573	NC_001144.5	contig_166__contig_166_0-6573	98.44		True
+CONTIG	contig_166__contig_166_0-6573	6573	correct
+1201968	1206704	2	4737	NC_001136.10	contig_188__contig_188_0-6367	98.45		True
+relocation, inconsistency = 5923
+1212628	1214259	4738	6367	NC_001136.10	contig_188__contig_188_0-6367	99.63		True
+CONTIG	contig_188__contig_188_0-6367	6367	misassembled
+673863	674543	679	2	NC_001146.8	contig_88__contig_88_0-11832	96.94		True
+relocation, inconsistency = -4839
+667567	676469	11832	2912	NC_001146.8	contig_88__contig_88_0-11832	97.57		True
+CONTIG	contig_88__contig_88_0-11832	11832	misassembled
+584996	610141	25135	2	NC_001134.8	contig_432__contig_432_0-25135	98.64		True
+CONTIG	contig_432__contig_432_0-25135	25135	correct
+543489	551537	8051	1	NC_001148.4	contig_70__contig_70_0-8051	99.34		True
+CONTIG	contig_70__contig_70_0-8051	8051	correct
+184452	187579	2	3101	NC_001139.9	contig_185__contig_185_0-3101	97.89		True
+CONTIG	contig_185__contig_185_0-3101	3101	correct
+457798	464788	5	6991	NC_001147.6	contig_137__contig_137_0-6992	97.87		True
+CONTIG	contig_137__contig_137_0-6992	6992	correct
+218060	220661	2607	6	NC_001142.9	contig_657__contig_657_0-2607	97.51		True
+CONTIG	contig_657__contig_657_0-2607	2607	correct
+250258	258690	8439	1	NC_001145.3	contig_193__contig_193_0-8441	98.98		True
+CONTIG	contig_193__contig_193_0-8441	8441	correct
+367846	370220	2	2375	NC_001145.3	contig_633__contig_633_0-2375	98.78		True
+CONTIG	contig_633__contig_633_0-2375	2375	correct
+177135	185843	2	8722	NC_001147.6	contig_280__contig_280_0-8727	98.43		True
+CONTIG	contig_280__contig_280_0-8727	8727	correct
+506089	515034	8961	2	NC_001139.9	contig_359__contig_359_0-8961	99.13		True
+CONTIG	contig_359__contig_359_0-8961	8961	correct
+418915	421254	2402	44	NC_001144.5	contig_703__contig_703_0-2464	97.85		True
+CONTIG	contig_703__contig_703_0-2464	2464	correct
+150233	157081	3	6849	NC_001140.6	contig_366__contig_366_0-6849	98.06		True
+CONTIG	contig_366__contig_366_0-6849	6849	correct
+602220	613511	64	11359	NC_001139.9	contig_435__contig_435_0-11359	98.65		True
+CONTIG	contig_435__contig_435_0-11359	11359	correct
+62940	70488	7553	2	NC_001147.6	contig_328__contig_328_0-7553	98.78		True
+CONTIG	contig_328__contig_328_0-7553	7553	correct
+555010	560726	1	5696	NC_001145.3	contig_28__contig_28_0-5709	99.07		True
+CONTIG	contig_28__contig_28_0-5709	5709	correct
+706134	718052	1	11909	NC_001148.4	contig_256__contig_256_0-15002	98.98		True
+relocation, inconsistency = -4077
+715525	717075	15000	13459	NC_001148.4	contig_256__contig_256_0-15002	96.15		True
+CONTIG	contig_256__contig_256_0-15002	15002	misassembled
+435374	435946	905	341	NC_001137.3	contig_105__contig_105_0-11495	96.51		True
+local misassembly
+434983	435378	1630	1238	NC_001137.3	contig_105__contig_105_0-11495	96.73		True
+local misassembly
+424766	434630	11495	1637	NC_001137.3	contig_105__contig_105_0-11495	97.69		True
+CONTIG	contig_105__contig_105_0-11495	11495	correct
+103068	117874	14832	2	NC_001136.10	contig_216__contig_216_0-14847	97.25		True
+CONTIG	contig_216__contig_216_0-14847	14847	correct
+949921	960822	7	10922	NC_001144.5	contig_704__contig_704_0-10922	97.88		True
+CONTIG	contig_704__contig_704_0-10922	10922	correct
+550728	554557	3841	1	NC_001146.8	contig_300__contig_300_0-3841	96.88		True
+CONTIG	contig_300__contig_300_0-3841	3841	correct
+120747	122965	1	2223	NC_001133.9	contig_73__contig_73_0-2223	98.39		True
+CONTIG	contig_73__contig_73_0-2223	2223	correct
+907661	916701	9077	18	NC_001147.6	contig_252__contig_252_0-9081	98.83		True
+CONTIG	contig_252__contig_252_0-9081	9081	correct
+430310	442249	4	11930	NC_001143.9	contig_365__contig_365_0-11935	99.18		True
+CONTIG	contig_365__contig_365_0-11935	11935	correct
+110926	114178	5	3261	NC_001135.5	contig_451__contig_451_0-3261	99.08		True
+CONTIG	contig_451__contig_451_0-3261	3261	correct
+214807	219781	4973	2	NC_001145.3	contig_472__contig_472_0-4973	99.72		True
+CONTIG	contig_472__contig_472_0-4973	4973	correct
+36222	37391	1154	2	NC_001134.8	contig_534__contig_534_0-9290	95.34		True
+relocation, inconsistency = 6354
+21714	29643	9290	1379	NC_001134.8	contig_534__contig_534_0-9290	98.82		True
+CONTIG	contig_534__contig_534_0-9290	9290	misassembled
+828087	844974	16925	6	NC_001145.3	contig_342__contig_342_0-16925	98.72		True
+CONTIG	contig_342__contig_342_0-16925	16925	correct
+811198	824632	13464	1	NC_001147.6	contig_480__contig_480_0-13464	98.04		True
+CONTIG	contig_480__contig_480_0-13464	13464	correct
+422488	440643	2	18168	NC_001134.8	contig_335__contig_335_0-18168	97.68		True
+CONTIG	contig_335__contig_335_0-18168	18168	correct
+925736	942889	2	17110	NC_001148.4	contig_22__contig_22_0-17121	98.87		True
+CONTIG	contig_22__contig_22_0-17121	17121	correct
+188620	195127	6506	1	NC_001140.6	contig_552__contig_552_0-6506	99.06		True
+CONTIG	contig_552__contig_552_0-6506	6506	correct
+679241	712545	3	33382	NC_001139.9	contig_65__contig_65_0-35512	98.92		True
+relocation, inconsistency = 61788
+774334	776454	33383	35506	NC_001139.9	contig_65__contig_65_0-35512	99.01		True
+CONTIG	contig_65__contig_65_0-35512	35512	misassembled
+379546	400010	20491	2	NC_001139.9	contig_541__contig_541_0-20491	97.57		True
+CONTIG	contig_541__contig_541_0-20491	20491	correct
+992706	1011653	18972	19	NC_001136.10	contig_598__contig_598_0-19448	98.74		True
+relocation, inconsistency = 557848
+434461	434741	19089	19369	NC_001136.10	contig_598__contig_598_0-19448	97.86		True
+CONTIG	contig_598__contig_598_0-19448	19448	misassembled
+261760	269405	1	7631	NC_001145.3	contig_682__contig_682_0-7633	98.51		True
+CONTIG	contig_682__contig_682_0-7633	7633	correct
+456736	460247	3509	4	NC_001142.9	contig_400__contig_400_0-3509	98.75		True
+CONTIG	contig_400__contig_400_0-3509	3509	correct
+38054	40875	2	2817	NC_001141.2	contig_556__contig_556_0-2817	98.02		True
+CONTIG	contig_556__contig_556_0-2817	2817	correct
+147494	149992	2498	1	NC_001139.9	contig_85__contig_85_0-2534	98.41		True
+CONTIG	contig_85__contig_85_0-2534	2534	correct
+64491	73346	8873	3	NC_001137.3	contig_434__contig_434_0-8873	98.61		True
+CONTIG	contig_434__contig_434_0-8873	8873	correct
+415922	423687	7721	2	NC_001137.3	contig_660__contig_660_0-7721	97.11		True
+CONTIG	contig_660__contig_660_0-7721	7721	correct
+922524	942210	1	19690	NC_001136.10	contig_714__contig_714_0-19690	99.18		True
+CONTIG	contig_714__contig_714_0-19690	19690	correct
+870518	877136	5	6600	NC_001139.9	contig_646__contig_646_0-6600	96.05		True
+CONTIG	contig_646__contig_646_0-6600	6600	correct
+359701	365784	6082	1	NC_001146.8	contig_222__contig_222_0-6082	97.91		True
+CONTIG	contig_222__contig_222_0-6082	6082	correct
+51734	58673	6945	1	NC_001145.3	contig_197__contig_197_0-6945	98.15		True
+CONTIG	contig_197__contig_197_0-6945	6945	correct
+471188	475621	1605	6037	NC_001134.8	contig_701__contig_701_0-6037	99.3		True
+CONTIG	contig_701__contig_701_0-6037	6037	correct
+402800	410123	7334	1	NC_001144.5	contig_450__contig_450_0-7334	98.48		True
+CONTIG	contig_450__contig_450_0-7334	7334	correct
+744482	748685	1	4194	NC_001147.6	contig_282__contig_282_0-4194	98.67		True
+CONTIG	contig_282__contig_282_0-4194	4194	correct
+644730	649623	4919	1	NC_001144.5	contig_638__contig_638_0-4919	97.49		True
+CONTIG	contig_638__contig_638_0-4919	4919	correct
+80859	83310	11	2452	NC_001136.10	contig_84__contig_84_0-2494	97.32		True
+CONTIG	contig_84__contig_84_0-2494	2494	correct
+13182	19420	3	6244	NC_001146.8	contig_108__contig_108_0-6244	98.67		True
+CONTIG	contig_108__contig_108_0-6244	6244	correct
+518070	521918	2453	6296	NC_001145.3	contig_367__contig_367_0-6302	99.22		True
+CONTIG	contig_367__contig_367_0-6302	6302	correct
+601167	619617	18430	1	NC_001147.6	contig_578__contig_578_0-18460	98.61		True
+CONTIG	contig_578__contig_578_0-18460	18460	correct
+702424	704761	1	2327	NC_001144.5	contig_182__contig_182_0-2329	98.42		True
+CONTIG	contig_182__contig_182_0-2329	2329	correct
+721036	726262	5225	1	NC_001148.4	contig_628__contig_628_0-5225	98.17		True
+CONTIG	contig_628__contig_628_0-5225	5225	correct
+1101695	1128520	26824	1	NC_001136.10	contig_311__contig_311_0-28461	98.22		True
+relocation, inconsistency = 5929
+1094126	1095765	28461	26825	NC_001136.10	contig_311__contig_311_0-28461	99.51		True
+CONTIG	contig_311__contig_311_0-28461	28461	misassembled
+294973	299701	4720	1	NC_001141.2	contig_287__contig_287_0-4724	98.38		True
+CONTIG	contig_287__contig_287_0-4724	4724	correct
+681726	693355	11634	8	NC_001145.3	contig_368__contig_368_0-11634	99.18		True
+CONTIG	contig_368__contig_368_0-11634	11634	correct
+47133	58478	170	11496	NC_001143.9	contig_107__contig_107_0-11496	98.72		True
+CONTIG	contig_107__contig_107_0-11496	11496	correct
+497554	503770	5	6231	NC_001145.3	contig_421__contig_421_0-6267	98.54		True
+CONTIG	contig_421__contig_421_0-6267	6267	correct
+88244	90790	2558	7	NC_001141.2	contig_144__contig_144_0-2558	99.1		True
+CONTIG	contig_144__contig_144_0-2558	2558	correct
+1042902	1049210	6301	9	NC_001147.6	contig_271__contig_271_0-6308	98.89		True
+CONTIG	contig_271__contig_271_0-6308	6308	correct
+1028443	1035166	1	6718	NC_001139.9	contig_208__contig_208_0-6718	98.84		True
+CONTIG	contig_208__contig_208_0-6718	6718	correct
+758213	763775	5565	3	NC_001136.10	contig_460__contig_460_0-5565	99.69		True
+CONTIG	contig_460__contig_460_0-5565	5565	correct
+313840	321366	7516	1	NC_001146.8	contig_296__contig_296_0-7516	98.15		True
+CONTIG	contig_296__contig_296_0-7516	7516	correct
+481041	488077	7059	6	NC_001134.8	contig_240__contig_240_0-7059	98.49		True
+CONTIG	contig_240__contig_240_0-7059	7059	correct
+517260	519786	10	2527	NC_001148.4	contig_438__contig_438_0-2527	98.66		True
+CONTIG	contig_438__contig_438_0-2527	2527	correct
+615994	619113	3119	2	NC_001148.4	contig_634__contig_634_0-3119	99.14		True
+CONTIG	contig_634__contig_634_0-3119	3119	correct
+1014091	1026282	6	12171	NC_001139.9	contig_500__contig_500_0-12171	99.41		True
+CONTIG	contig_500__contig_500_0-12171	12171	correct
+216252	219418	3163	3	NC_001140.6	contig_217__contig_217_0-12811	99.13		True
+relocation, inconsistency = 1998
+204596	214253	12811	3164	NC_001140.6	contig_217__contig_217_0-12811	99.27		True
+CONTIG	contig_217__contig_217_0-12811	12811	misassembled
+20902	30187	9233	2	NC_001143.9	contig_48__contig_48_0-9237	96.73		True
+CONTIG	contig_48__contig_48_0-9237	9237	correct
+151787	158434	6656	5	NC_001133.9	contig_719__contig_719_0-6656	97.96		True
+CONTIG	contig_719__contig_719_0-6656	6656	correct
+260561	266758	1	6201	NC_001141.2	contig_180__contig_180_0-6201	99.15		True
+CONTIG	contig_180__contig_180_0-6201	6201	correct
+257253	259853	2618	19	NC_001135.5	contig_33__contig_33_0-2619	97.22		True
+CONTIG	contig_33__contig_33_0-2619	2619	correct
+642419	646545	4121	1	NC_001142.9	contig_213__contig_213_0-4121	98.48		True
+CONTIG	contig_213__contig_213_0-4121	4121	correct
+871821	872149	518	179	NC_001136.10	contig_101__contig_101_0-7354	95.88		True
+translocation
+538440	540924	2977	519	NC_001142.9	contig_101__contig_101_0-7354	97.15		True
+local misassembly
+533751	538102	7354	2978	NC_001142.9	contig_101__contig_101_0-7354	98.27		True
+CONTIG	contig_101__contig_101_0-7354	7354	misassembled
+353720	358762	5038	1	NC_001134.8	contig_545__contig_545_0-5038	99.03		True
+CONTIG	contig_545__contig_545_0-5038	5038	correct
+94913	103841	2	8931	NC_001139.9	contig_486__contig_486_0-8940	98.79		True
+CONTIG	contig_486__contig_486_0-8940	8940	correct
+626234	631914	2	5675	NC_001144.5	contig_595__contig_595_0-5681	98.32		True
+CONTIG	contig_595__contig_595_0-5681	5681	correct
+268057	280335	12285	1	NC_001143.9	contig_711__contig_711_0-12285	98.77		True
+CONTIG	contig_711__contig_711_0-12285	12285	correct
+124259	127661	3	3407	NC_001136.10	contig_49__contig_49_0-3407	99.33		True
+CONTIG	contig_49__contig_49_0-3407	3407	correct
+645387	648228	1	2834	NC_001148.4	contig_283__contig_283_0-2841	99.19		True
+CONTIG	contig_283__contig_283_0-2841	2841	correct
+660318	673002	12667	2	NC_001145.3	contig_378__contig_378_0-12696	98.8		True
+CONTIG	contig_378__contig_378_0-12696	12696	correct
+919223	925732	4	6522	NC_001148.4	contig_21__contig_21_0-6524	97.5		True
+CONTIG	contig_21__contig_21_0-6524	6524	correct
+107589	128739	1	21163	NC_001145.3	contig_127__contig_127_0-21163	98.54		True
+CONTIG	contig_127__contig_127_0-21163	21163	correct
+88557	109980	1	21386	NC_001147.6	contig_195__contig_195_0-21386	98.83		True
+CONTIG	contig_195__contig_195_0-21386	21386	correct
+194839	199622	4830	12	NC_001137.3	contig_667__contig_667_0-4834	96.67		True
+CONTIG	contig_667__contig_667_0-4834	4834	correct
+550094	573154	23066	2	NC_001142.9	contig_529__contig_529_0-23067	99.09		True
+CONTIG	contig_529__contig_529_0-23067	23067	correct
+272168	282805	26	10667	NC_001144.5	contig_554__contig_554_0-10667	98.37		True
+CONTIG	contig_554__contig_554_0-10667	10667	correct
+551742	555004	3260	1	NC_001137.3	contig_516__contig_516_0-3260	97.5		True
+CONTIG	contig_516__contig_516_0-3260	3260	correct
+33929	42547	8608	1	NC_001147.6	contig_310__contig_310_0-8650	97.59		True
+CONTIG	contig_310__contig_310_0-8650	8650	correct
+665101	668092	5	3008	NC_001139.9	contig_630__contig_630_0-3008	98.77		True
+CONTIG	contig_630__contig_630_0-3008	3008	correct
+225691	232124	6396	1	NC_001148.4	contig_648__contig_648_0-14935	96.18		True
+relocation, inconsistency = -8473
+225618	234163	6397	14935	NC_001148.4	contig_648__contig_648_0-14935	99.16		True
+CONTIG	contig_648__contig_648_0-14935	14935	misassembled
+1086442	1087351	910	1	NC_001139.9	contig_40__contig_40_0-910	99.23		True
+CONTIG	contig_40__contig_40_0-910	910	correct
+204303	209728	5423	5	NC_001148.4	contig_697__contig_697_0-5423	99.04		True
+CONTIG	contig_697__contig_697_0-5423	5423	correct
+561212	598445	5	37181	NC_001136.10	contig_557__contig_557_0-37181	98.87		True
+CONTIG	contig_557__contig_557_0-37181	37181	correct
+858117	868697	4	10545	NC_001139.9	contig_413__contig_413_0-10545	96.14		True
+CONTIG	contig_413__contig_413_0-10545	10545	correct
+210645	239896	29239	1	NC_001137.3	contig_490__contig_490_0-29239	98.77		True
+CONTIG	contig_490__contig_490_0-29239	29239	correct
+329923	332727	2805	2	NC_001139.9	contig_344__contig_344_0-2805	99.36		True
+CONTIG	contig_344__contig_344_0-2805	2805	correct
+896403	912971	2	16575	NC_001144.5	contig_241__contig_241_0-16575	99.04		True
+CONTIG	contig_241__contig_241_0-16575	16575	correct
+658105	664990	6865	8	NC_001148.4	contig_153__contig_153_0-6866	97.58		True
+CONTIG	contig_153__contig_153_0-6866	6866	correct
+424445	454117	1	29706	NC_001142.9	contig_576__contig_576_0-29706	98.49		True
+CONTIG	contig_576__contig_576_0-29706	29706	correct
+865699	871983	7831	1548	NC_001139.9	contig_172__contig_172_0-7831	98.86		True
+CONTIG	contig_172__contig_172_0-7831	7831	correct
+513867	523024	8	9152	NC_001144.5	contig_408__contig_408_0-9152	98.47		True
+CONTIG	contig_408__contig_408_0-9152	9152	correct
+525547	530217	4678	4	NC_001144.5	contig_405__contig_405_0-4678	99.08		True
+CONTIG	contig_405__contig_405_0-4678	4678	correct
+262689	265116	3235	811	NC_001137.3	contig_384__contig_384_0-3236	98.4		True
+CONTIG	contig_384__contig_384_0-3236	3236	correct
+1009794	1020705	10917	7	NC_001144.5	contig_388__contig_388_0-10917	98.21		True
+CONTIG	contig_388__contig_388_0-10917	10917	correct
+378192	380953	3	2764	NC_001136.10	contig_6__contig_6_0-2764	99.86		True
+CONTIG	contig_6__contig_6_0-2764	2764	correct
+844314	852162	3	7856	NC_001139.9	contig_245__contig_245_0-7856	98.58		True
+CONTIG	contig_245__contig_245_0-7856	7856	correct
+239870	243154	3275	1	NC_001143.9	contig_192__contig_192_0-3275	98.57		True
+CONTIG	contig_192__contig_192_0-3275	3275	correct
+69701	75577	5860	1	NC_001140.6	contig_124__contig_124_0-5860	98.54		True
+CONTIG	contig_124__contig_124_0-5860	5860	correct
+472343	480726	2	8373	NC_001143.9	contig_373__contig_373_0-8380	98.68		True
+CONTIG	contig_373__contig_373_0-8380	8380	correct
+198719	208568	9802	6	NC_001138.5	contig_397__contig_397_0-9806	96.56		True
+CONTIG	contig_397__contig_397_0-9806	9806	correct
+371163	377138	2	5968	NC_001146.8	contig_428__contig_428_0-5968	99.05		True
+CONTIG	contig_428__contig_428_0-5968	5968	correct
+540812	545835	6	5027	NC_001146.8	contig_306__contig_306_0-5027	99.24		True
+CONTIG	contig_306__contig_306_0-5027	5027	correct
+437599	442428	4817	2	NC_001139.9	contig_522__contig_522_0-4817	98.7		True
+CONTIG	contig_522__contig_522_0-4817	4817	correct
+237082	278306	1	41155	NC_001140.6	contig_115__contig_115_0-41167	98.42		True
+CONTIG	contig_115__contig_115_0-41167	41167	correct
+415099	419505	4414	1	NC_001139.9	contig_587__contig_587_0-4416	97.99		True
+CONTIG	contig_587__contig_587_0-4416	4416	correct
+1251400	1261160	2	9762	NC_001136.10	contig_302__contig_302_0-9764	99.27		True
+CONTIG	contig_302__contig_302_0-9764	9764	correct
+55050	65759	10709	1	NC_001144.5	contig_573__contig_573_0-10709	99.03		True
+CONTIG	contig_573__contig_573_0-10709	10709	correct
+522498	527573	5091	7	NC_001148.4	contig_129__contig_129_0-5092	98.71		True
+CONTIG	contig_129__contig_129_0-5092	5092	correct
+316450	320413	3969	3	NC_001147.6	contig_584__contig_584_0-3973	99.37		True
+CONTIG	contig_584__contig_584_0-3973	3973	correct
+405416	411493	1	6078	NC_001137.3	contig_536__contig_536_0-6099	98.75		True
+CONTIG	contig_536__contig_536_0-6099	6099	correct
+918212	925599	1	7374	NC_001139.9	contig_695__contig_695_0-7374	97.56		True
+CONTIG	contig_695__contig_695_0-7374	7374	correct
+915528	920743	1	5220	NC_001136.10	contig_346__contig_346_0-5220	99.64		True
+CONTIG	contig_346__contig_346_0-5220	5220	correct
+242334	247545	6310	1110	NC_001142.9	contig_505__contig_505_0-6310	98.22		True
+CONTIG	contig_505__contig_505_0-6310	6310	correct
+420983	422768	1786	2	NC_001145.3	contig_635__contig_635_0-10103	99.61		True
+local misassembly
+412881	420983	10103	2007	NC_001145.3	contig_635__contig_635_0-10103	99.16		True
+CONTIG	contig_635__contig_635_0-10103	10103	correct
+468041	475490	7441	7	NC_001145.3	contig_149__contig_149_0-7441	98.21		True
+CONTIG	contig_149__contig_149_0-7441	7441	correct
+368473	379487	11015	3	NC_001143.9	contig_315__contig_315_0-11015	98.81		True
+CONTIG	contig_315__contig_315_0-11015	11015	correct
+991300	996698	2	5408	NC_001139.9	contig_665__contig_665_0-5412	98.14		True
+CONTIG	contig_665__contig_665_0-5412	5412	correct
+85541	88205	2667	1	NC_001140.6	contig_636__contig_636_0-3435	98.77		True
+translocation
+735981	736189	2885	2677	NC_001139.9	contig_636__contig_636_0-3435	99.04		True
+CONTIG	contig_636__contig_636_0-3435	3435	misassembled
+1176012	1187430	1	11429	NC_001136.10	contig_467__contig_467_0-11468	99.15		True
+CONTIG	contig_467__contig_467_0-11468	11468	correct
+189545	194591	2	5041	NC_001142.9	contig_666__contig_666_0-5041	99.23		True
+CONTIG	contig_666__contig_666_0-5041	5041	correct
+1390313	1397581	2	7279	NC_001136.10	contig_511__contig_511_0-7279	98.92		True
+CONTIG	contig_511__contig_511_0-7279	7279	correct
+538616	549631	11026	12	NC_001144.5	contig_411__contig_411_0-11026	99.36		True
+CONTIG	contig_411__contig_411_0-11026	11026	correct
+599323	601045	2	1729	NC_001136.10	contig_463__contig_463_0-3360	98.61		True
+indel: indel (> 5bp)
+601046	601416	1752	2122	NC_001136.10	contig_463__contig_463_0-3360	97.84		True
+indel: indel (> 5bp)
+601417	602499	2275	3360	NC_001136.10	contig_463__contig_463_0-3360	99.26		True
+CONTIG	contig_463__contig_463_0-3360	3360	correct
+361650	382040	1	20352	NC_001139.9	contig_140__contig_140_0-20352	98.33		True
+CONTIG	contig_140__contig_140_0-20352	20352	correct
+56566	81224	24669	1	NC_001146.8	contig_111__contig_111_0-24669	98.58		True
+CONTIG	contig_111__contig_111_0-24669	24669	correct
+429880	440941	1	11074	NC_001144.5	contig_258__contig_258_0-11081	98.04		True
+CONTIG	contig_258__contig_258_0-11081	11081	correct
+207721	211817	4106	4	NC_001137.3	contig_41__contig_41_0-4106	97.62		True
+CONTIG	contig_41__contig_41_0-4106	4106	correct
+151444	164137	34	12720	NC_001135.5	contig_109__contig_109_0-12720	99.37		True
+CONTIG	contig_109__contig_109_0-12720	12720	correct
+10314	25317	5686	20543	NC_001141.2	contig_710__contig_710_0-23894	95.25		True
+translocation
+31215	34095	21001	23894	NC_001147.6	contig_710__contig_710_0-23894	95.27		True
+CONTIG	contig_710__contig_710_0-23894	23894	misassembled
+128979	135648	6676	2	NC_001135.5	contig_246__contig_246_0-6676	98.91		True
+CONTIG	contig_246__contig_246_0-6676	6676	correct
+104768	109739	4977	1	NC_001134.8	contig_42__contig_42_0-4977	98.62		True
+CONTIG	contig_42__contig_42_0-4977	4977	correct
+206555	215073	1	8530	NC_001144.5	contig_663__contig_663_0-18664	99.3		True
+relocation, inconsistency = 5931
+221005	231134	8531	18664	NC_001144.5	contig_663__contig_663_0-18664	99.28		True
+CONTIG	contig_663__contig_663_0-18664	18664	misassembled
+657893	678690	1	20790	NC_001136.10	contig_611__contig_611_0-20790	97.9		True
+CONTIG	contig_611__contig_611_0-20790	20790	correct
+160356	163593	6	3249	NC_001141.2	contig_569__contig_569_0-3249	99.08		True
+CONTIG	contig_569__contig_569_0-3249	3249	correct
+706309	716447	10075	1	NC_001144.5	contig_86__contig_86_0-10078	97.47		True
+CONTIG	contig_86__contig_86_0-10078	10078	correct
+819448	826181	6754	16	NC_001148.4	contig_643__contig_643_0-22232	98.39		True
+local misassembly
+810563	819452	16008	7075	NC_001148.4	contig_643__contig_643_0-22232	98.27		True
+relocation, inconsistency = 5923
+798404	804639	22232	16009	NC_001148.4	contig_643__contig_643_0-22232	98.53		True
+CONTIG	contig_643__contig_643_0-22232	22232	misassembled
+855567	858998	3	3431	NC_001139.9	contig_64__contig_64_0-3431	97.39		True
+CONTIG	contig_64__contig_64_0-3431	3431	correct
+186098	194284	8153	1	NC_001138.5	contig_653__contig_653_0-8156	97.5		True
+CONTIG	contig_653__contig_653_0-8156	8156	correct
+584298	607290	22944	6	NC_001143.9	contig_715__contig_715_0-22944	98.24		True
+CONTIG	contig_715__contig_715_0-22944	22944	correct
+846269	848776	2507	5	NC_001145.3	contig_542__contig_542_0-2507	97.15		True
+CONTIG	contig_542__contig_542_0-2507	2507	correct
+350480	362353	11879	1	NC_001148.4	contig_179__contig_179_0-11879	98.36		True
+CONTIG	contig_179__contig_179_0-11879	11879	correct
+731064	743006	19	11965	NC_001139.9	contig_103__contig_103_0-11965	98.73		True
+CONTIG	contig_103__contig_103_0-11965	11965	correct
+250777	253613	1	2836	NC_001137.3	contig_624__contig_624_0-2836	99.08		True
+CONTIG	contig_624__contig_624_0-2836	2836	correct
+44292	47395	1	3101	NC_001135.5	contig_607__contig_607_0-3101	98.97		True
+CONTIG	contig_607__contig_607_0-3101	3101	correct
+676213	680439	4225	5	NC_001145.3	contig_693__contig_693_0-4231	98.99		True
+CONTIG	contig_693__contig_693_0-4231	4231	correct
+309881	316666	7	6795	NC_001139.9	contig_152__contig_152_0-6795	99.31		True
+CONTIG	contig_152__contig_152_0-6795	6795	correct
+1232133	1243229	1	11078	NC_001136.10	contig_430__contig_430_0-29183	98.82		True
+translocation
+575098	593232	11079	29183	NC_001147.6	contig_430__contig_430_0-29183	98.3		True
+CONTIG	contig_430__contig_430_0-29183	29183	misassembled
+680021	685027	76	5073	NC_001148.4	contig_225__contig_225_0-5073	98.63		True
+CONTIG	contig_225__contig_225_0-5073	5073	correct
+285265	293328	8062	1	NC_001136.10	contig_518__contig_518_0-8062	98.59		True
+CONTIG	contig_518__contig_518_0-8062	8062	correct
+392443	395273	6	2825	NC_001137.3	contig_468__contig_468_0-2825	97.99		True
+CONTIG	contig_468__contig_468_0-2825	2825	correct
+796856	806629	1	9783	NC_001147.6	contig_594__contig_594_0-9783	98.75		True
+CONTIG	contig_594__contig_594_0-9783	9783	correct
+808675	811440	1	2768	NC_001139.9	contig_340__contig_340_0-6748	99.21		True
+relocation, inconsistency = 11883
+823324	827321	2769	6748	NC_001139.9	contig_340__contig_340_0-6748	98.26		True
+CONTIG	contig_340__contig_340_0-6748	6748	misassembled
+396585	403603	599	7614	NC_001137.3	contig_125__contig_125_0-7616	99.12		True
+CONTIG	contig_125__contig_125_0-7616	7616	correct
+191676	194692	3021	1	NC_001139.9	contig_173__contig_173_0-3021	99.21		True
+CONTIG	contig_173__contig_173_0-3021	3021	correct
+437519	441845	4330	2	NC_001136.10	contig_580__contig_580_0-4400	97.4		True
+CONTIG	contig_580__contig_580_0-4400	4400	correct
+498741	504188	5461	2	NC_001134.8	contig_200__contig_200_0-5461	97.69		True
+CONTIG	contig_200__contig_200_0-5461	5461	correct
+99800	107915	1	8111	NC_001133.9	contig_43__contig_43_0-8111	97.59		True
+CONTIG	contig_43__contig_43_0-8111	8111	correct
+126599	129932	2	3332	NC_001139.9	contig_210__contig_210_0-3332	98.56		True
+CONTIG	contig_210__contig_210_0-3332	3332	correct
+1069526	1073530	2	4006	NC_001136.10	contig_629__contig_629_0-4016	99.1		True
+CONTIG	contig_629__contig_629_0-4016	4016	correct
+46074	50751	1	4687	NC_001139.9	contig_67__contig_67_0-4687	98.45		True
+CONTIG	contig_67__contig_67_0-4687	4687	correct
+477966	483611	8	5646	NC_001145.3	contig_588__contig_588_0-5670	97.85		True
+CONTIG	contig_588__contig_588_0-5670	5670	correct
+851669	866857	15204	2	NC_001136.10	contig_669__contig_669_0-15204	98.65		True
+CONTIG	contig_669__contig_669_0-15204	15204	correct
+1281900	1284599	2	2692	NC_001136.10	contig_514__contig_514_0-2695	98.6		True
+CONTIG	contig_514__contig_514_0-2695	2695	correct
+342340	351706	3	9373	NC_001144.5	contig_290__contig_290_0-9373	98.66		True
+CONTIG	contig_290__contig_290_0-9373	9373	correct
+116857	125543	8695	9	NC_001138.5	contig_165__contig_165_0-8695	98.99		True
+CONTIG	contig_165__contig_165_0-8695	8695	correct
+425442	431131	5684	2	NC_001145.3	contig_139__contig_139_0-5684	99.53		True
+CONTIG	contig_139__contig_139_0-5684	5684	correct
+354670	373998	3	19344	NC_001144.5	contig_443__contig_443_0-25214	98.99		True
+local misassembly
+374344	380232	19345	25214	NC_001144.5	contig_443__contig_443_0-25214	96.49		True
+CONTIG	contig_443__contig_443_0-25214	25214	correct
+493078	497020	2	3947	NC_001140.6	contig_9__contig_9_0-3947	98.36		True
+CONTIG	contig_9__contig_9_0-3947	3947	correct
+137325	146139	8767	1	NC_001134.8	contig_673__contig_673_0-8767	97.06		True
+CONTIG	contig_673__contig_673_0-8767	8767	correct
+549508	580046	30530	2	NC_001143.9	contig_272__contig_272_0-30530	98.5		True
+CONTIG	contig_272__contig_272_0-30530	30530	correct
+588047	604848	20364	3544	NC_001142.9	contig_401__contig_401_0-20368	97.35		True
+CONTIG	contig_401__contig_401_0-20368	20368	correct
+823797	826744	2947	5	NC_001144.5	contig_198__contig_198_0-2948	98.41		True
+CONTIG	contig_198__contig_198_0-2948	2948	correct
+561807	568349	2	6550	NC_001148.4	contig_659__contig_659_0-6550	98.23		True
+CONTIG	contig_659__contig_659_0-6550	6550	correct
+304959	315121	3	10148	NC_001144.5	contig_431__contig_431_0-26146	95.24		True
+relocation, inconsistency = -10100
+299007	315058	26146	10149	NC_001144.5	contig_431__contig_431_0-26146	97.87		True
+CONTIG	contig_431__contig_431_0-26146	26146	misassembled
+514775	522333	7861	302	NC_001139.9	contig_343__contig_343_0-7861	99.74		True
+CONTIG	contig_343__contig_343_0-7861	7861	correct
+774088	789514	1	15418	NC_001147.6	contig_721__contig_721_0-15427	99.23		True
+CONTIG	contig_721__contig_721_0-15427	15427	correct
+48444	65700	1	17253	NC_001134.8	contig_288__contig_288_0-17253	99.58		True
+CONTIG	contig_288__contig_288_0-17253	17253	correct
+1375677	1387581	2	11901	NC_001136.10	contig_355__contig_355_0-11901	99.3		True
+CONTIG	contig_355__contig_355_0-11901	11901	correct
+682777	688100	1458	6776	NC_001144.5	contig_7__contig_7_0-7028	98.0		True
+relocation, inconsistency = -31691
+656410	656661	6777	7028	NC_001144.5	contig_7__contig_7_0-7028	99.6		True
+CONTIG	contig_7__contig_7_0-7028	7028	misassembled
+607584	610029	2	2436	NC_001144.5	contig_586__contig_586_0-2436	97.63		True
+CONTIG	contig_586__contig_586_0-2436	2436	correct
+57857	66684	2	8829	NC_001135.5	contig_589__contig_589_0-8829	98.55		True
+CONTIG	contig_589__contig_589_0-8829	8829	correct
+523172	537399	14207	6	NC_001145.3	contig_298__contig_298_0-14207	98.84		True
+CONTIG	contig_298__contig_298_0-14207	14207	correct
+134575	139226	2	4642	NC_001141.2	contig_675__contig_675_0-4642	96.55		True
+CONTIG	contig_675__contig_675_0-4642	4642	correct
+213211	216405	1	3188	NC_001139.9	contig_76__contig_76_0-3188	98.56		True
+CONTIG	contig_76__contig_76_0-3188	3188	correct
+824961	834791	2	9831	NC_001136.10	contig_551__contig_551_0-9836	99.65		True
+CONTIG	contig_551__contig_551_0-9836	9836	correct
+102	21390	9	21272	NC_001143.9	contig_244__contig_244_0-21275	96.14		True
+CONTIG	contig_244__contig_244_0-21275	21275	correct
+571318	582798	1	11480	NC_001144.5	contig_475__contig_475_0-11494	97.3		True
+CONTIG	contig_475__contig_475_0-11494	11494	correct
+332006	338259	6282	12	NC_001134.8	contig_278__contig_278_0-6282	98.11		True
+CONTIG	contig_278__contig_278_0-6282	6282	correct
+87042	99757	12715	5	NC_001136.10	contig_312__contig_312_0-12717	98.82		True
+CONTIG	contig_312__contig_312_0-12717	12717	correct
+78910	83852	4954	5	NC_001143.9	contig_427__contig_427_0-4959	97.65		True
+CONTIG	contig_427__contig_427_0-4959	4959	correct
+650662	659760	372	9431	NC_001148.4	contig_262__contig_262_0-9434	98.33		True
+CONTIG	contig_262__contig_262_0-9434	9434	correct
+108908	110797	1	1889	NC_001139.9	contig_357__contig_357_0-2952	99.21		True
+local misassembly
+111531	112445	2039	2952	NC_001139.9	contig_357__contig_357_0-2952	96.62		True
+CONTIG	contig_357__contig_357_0-2952	2952	correct
+479629	484967	5455	125	NC_001147.6	contig_211__contig_211_0-5455	97.82		True
+CONTIG	contig_211__contig_211_0-5455	5455	correct
+97164	99880	2724	1	NC_001148.4	contig_71__contig_71_0-2724	96.98		True
+CONTIG	contig_71__contig_71_0-2724	2724	correct
+394346	401414	2	7093	NC_001144.5	contig_440__contig_440_0-7093	97.66		True
+CONTIG	contig_440__contig_440_0-7093	7093	correct
+687415	689553	1	2148	NC_001148.4	contig_528__contig_528_0-4690	98.42		True
+local misassembly
+689559	691424	2826	4690	NC_001148.4	contig_528__contig_528_0-4690	99.52		True
+CONTIG	contig_528__contig_528_0-4690	4690	correct
+26655	33226	2	6575	NC_001140.6	contig_457__contig_457_0-6575	98.5		True
+CONTIG	contig_457__contig_457_0-6575	6575	correct
+359294	361620	4	2328	NC_001134.8	contig_692__contig_692_0-2328	99.27		True
+CONTIG	contig_692__contig_692_0-2328	2328	correct
+711072	714144	3073	2	NC_001136.10	contig_483__contig_483_0-3074	97.96		True
+CONTIG	contig_483__contig_483_0-3074	3074	correct
+907565	911432	453	4312	NC_001136.10	contig_275__contig_275_0-4312	99.15		True
+CONTIG	contig_275__contig_275_0-4312	4312	correct
+684983	696250	11257	3	NC_001147.6	contig_439__contig_439_0-11258	98.73		True
+CONTIG	contig_439__contig_439_0-11258	11258	correct
+747374	750244	2870	2	NC_001148.4	contig_56__contig_56_0-2875	98.06		True
+CONTIG	contig_56__contig_56_0-2875	2875	correct
+12266	13926	14	1668	NC_001144.5	contig_509__contig_509_0-11266	95.2		True
+relocation, inconsistency = 1038534
+1053102	1062091	11266	2310	NC_001144.5	contig_509__contig_509_0-11266	96.2		True
+CONTIG	contig_509__contig_509_0-11266	11266	misassembled
+856192	859137	2945	2	NC_001144.5	contig_544__contig_544_0-2945	99.25		True
+CONTIG	contig_544__contig_544_0-2945	2945	correct
+266581	270515	3956	7	NC_001134.8	contig_77__contig_77_0-3956	96.98		True
+CONTIG	contig_77__contig_77_0-3956	3956	correct
+94502	99416	4942	14	NC_001138.5	contig_308__contig_308_0-4942	97.16		True
+CONTIG	contig_308__contig_308_0-4942	4942	correct
+388520	391179	1	2656	NC_001137.3	contig_640__contig_640_0-2656	98.24		True
+CONTIG	contig_640__contig_640_0-2656	2656	correct
+513092	519162	5	6061	NC_001146.8	contig_87__contig_87_0-19209	96.83		True
+relocation, inconsistency = 5904
+525067	538223	6062	19203	NC_001146.8	contig_87__contig_87_0-19209	98.77		True
+CONTIG	contig_87__contig_87_0-19209	19209	misassembled
+951729	956038	2	4306	NC_001136.10	contig_681__contig_681_0-4306	98.29		True
+CONTIG	contig_681__contig_681_0-4306	4306	correct
+480365	482603	9	2245	NC_001143.9	contig_519__contig_519_0-2245	99.6		True
+CONTIG	contig_519__contig_519_0-2245	2245	correct
+757246	761346	2	4101	NC_001145.3	contig_550__contig_550_0-4101	99.08		True
+CONTIG	contig_550__contig_550_0-4101	4101	correct
+618248	626590	8314	1	NC_001143.9	contig_59__contig_59_0-8320	97.58		True
+CONTIG	contig_59__contig_59_0-8320	8320	correct
+647538	653828	1	6276	NC_001134.8	contig_305__contig_305_0-6276	98.49		True
+CONTIG	contig_305__contig_305_0-6276	6276	correct
+530403	538877	8396	2	NC_001148.4	contig_269__contig_269_0-8396	97.56		True
+CONTIG	contig_269__contig_269_0-8396	8396	correct
+116173	132252	16085	21	NC_001144.5	contig_642__contig_642_0-16085	98.08		True
+CONTIG	contig_642__contig_642_0-16085	16085	correct
+285979	298210	40	12258	NC_001144.5	contig_277__contig_277_0-12264	98.42		True
+CONTIG	contig_277__contig_277_0-12264	12264	correct
+103502	110207	1	6689	NC_001146.8	contig_707__contig_707_0-6689	98.08		True
+CONTIG	contig_707__contig_707_0-6689	6689	correct
+1212622	1233052	906	21298	NC_001136.10	contig_147__contig_147_0-21300	98.12		True
+CONTIG	contig_147__contig_147_0-21300	21300	correct
+487401	490393	1	2993	NC_001139.9	contig_69__contig_69_0-2993	98.57		True
+CONTIG	contig_69__contig_69_0-2993	2993	correct
+CONTIG	contig_154__contig_154_0-604	604	unaligned
+499270	518376	5	19090	NC_001137.3	contig_488__contig_488_0-19090	98.16		True
+CONTIG	contig_488__contig_488_0-19090	19090	correct
+140125	153718	1	13549	NC_001147.6	contig_161__contig_161_0-13549	97.5		True
+CONTIG	contig_161__contig_161_0-13549	13549	correct
+349121	354596	5473	1	NC_001139.9	contig_567__contig_567_0-5473	99.45		True
+CONTIG	contig_567__contig_567_0-5473	5473	correct
+490461	499511	9055	1	NC_001143.9	contig_178__contig_178_0-9055	99.12		True
+CONTIG	contig_178__contig_178_0-9055	9055	correct
+560993	583977	13	22934	NC_001134.8	contig_726__contig_726_0-22934	97.43		True
+CONTIG	contig_726__contig_726_0-22934	22934	correct
+938210	945058	6863	6	NC_001139.9	contig_313__contig_313_0-6863	98.19		True
+CONTIG	contig_313__contig_313_0-6863	6863	correct
+349449	352655	2	3206	NC_001146.8	contig_82__contig_82_0-3208	95.95		True
+CONTIG	contig_82__contig_82_0-3208	3208	correct
+365900	370594	1	4704	NC_001148.4	contig_446__contig_446_0-4704	97.97		True
+CONTIG	contig_446__contig_446_0-4704	4704	correct
+147292	166666	19397	4	NC_001134.8	contig_232__contig_232_0-19397	98.45		True
+CONTIG	contig_232__contig_232_0-19397	19397	correct
+38957	47138	8198	17	NC_001143.9	contig_104__contig_104_0-8198	96.56		True
+CONTIG	contig_104__contig_104_0-8198	8198	correct
+118080	135496	4	17410	NC_001137.3	contig_353__contig_353_0-17410	97.75		True
+CONTIG	contig_353__contig_353_0-17410	17410	correct
+381615	385267	3649	2	NC_001148.4	contig_705__contig_705_0-3658	98.34		True
+CONTIG	contig_705__contig_705_0-3658	3658	correct
+93346	97716	1	4376	NC_001133.9	contig_477__contig_477_0-4376	99.25		True
+CONTIG	contig_477__contig_477_0-4376	4376	correct
+786800	797343	10536	1	NC_001148.4	contig_429__contig_429_0-10536	98.24		True
+CONTIG	contig_429__contig_429_0-10536	10536	correct
+824084	840975	16822	1	NC_001139.9	contig_444__contig_444_0-16828	97.67		True
+CONTIG	contig_444__contig_444_0-16828	16828	correct
+896658	901521	4	4863	NC_001136.10	contig_455__contig_455_0-4863	99.55		True
+CONTIG	contig_455__contig_455_0-4863	4863	correct
+CONTIG	contig_301__contig_301_0-4761	4761	unaligned
+11178	30049	12	18913	NC_001148.4	contig_133__contig_133_0-18913	96.91		True
+CONTIG	contig_133__contig_133_0-18913	18913	correct
+665152	670878	5715	18	NC_001147.6	contig_403__contig_403_0-11988	95.55		True
+local misassembly
+658543	664812	11988	5717	NC_001147.6	contig_403__contig_403_0-11988	98.98		True
+CONTIG	contig_403__contig_403_0-11988	11988	correct
+827660	832419	1	4768	NC_001147.6	contig_265__contig_265_0-4769	99.08		True
+CONTIG	contig_265__contig_265_0-4769	4769	correct
+400264	412549	249	12493	NC_001142.9	contig_212__contig_212_0-12493	98.74		True
+CONTIG	contig_212__contig_212_0-12493	12493	correct
+679388	685350	3	5964	NC_001136.10	contig_442__contig_442_0-5964	99.25		True
+CONTIG	contig_442__contig_442_0-5964	5964	correct
+147002	156399	1	9395	NC_001138.5	contig_156__contig_156_0-9395	98.64		True
+CONTIG	contig_156__contig_156_0-9395	9395	correct
+273777	280475	2	6729	NC_001147.6	contig_55__contig_55_0-6766	96.4		True
+CONTIG	contig_55__contig_55_0-6766	6766	correct
+378622	384796	6176	10	NC_001145.3	contig_565__contig_565_0-7963	98.19		True
+relocation, inconsistency = 5931
+370901	372690	7963	6177	NC_001145.3	contig_565__contig_565_0-7963	97.84		True
+CONTIG	contig_565__contig_565_0-7963	7963	misassembled
+550201	554969	4767	2	NC_001136.10	contig_485__contig_485_0-4770	99.54		True
+CONTIG	contig_485__contig_485_0-4770	4770	correct
+526858	532257	5406	11	NC_001143.9	contig_572__contig_572_0-5406	98.8		True
+CONTIG	contig_572__contig_572_0-5406	5406	correct
+35791	41789	2	5997	NC_001148.4	contig_334__contig_334_0-5997	99.23		True
+CONTIG	contig_334__contig_334_0-5997	5997	correct
+791883	807686	15834	2	NC_001134.8	contig_583__contig_583_0-16595	98.51		True
+CONTIG	contig_583__contig_583_0-16595	16595	correct
+841870	848526	1	6664	NC_001136.10	contig_603__contig_603_0-6664	98.67		True
+CONTIG	contig_603__contig_603_0-6664	6664	correct
+282214	293519	399	11716	NC_001143.9	contig_454__contig_454_0-11734	98.61		True
+CONTIG	contig_454__contig_454_0-11734	11734	correct
+1159528	1166136	6629	4	NC_001136.10	contig_281__contig_281_0-9252	97.21		True
+relocation, inconsistency = 5392
+1151517	1154135	9252	6630	NC_001136.10	contig_281__contig_281_0-9252	97.98		True
+CONTIG	contig_281__contig_281_0-9252	9252	misassembled
+13880	18101	3	4231	NC_001139.9	contig_261__contig_261_0-4231	98.63		True
+CONTIG	contig_261__contig_261_0-4231	4231	correct
+86510	90497	4347	366	NC_001137.3	contig_561__contig_561_0-4347	98.03		True
+CONTIG	contig_561__contig_561_0-4347	4347	correct
+320692	324398	22	3719	NC_001141.2	contig_29__contig_29_0-5561	99.22		True
+CONTIG	contig_29__contig_29_0-5561	5561	correct
+139043	144720	1	5675	NC_001142.9	contig_441__contig_441_0-5675	98.37		True
+CONTIG	contig_441__contig_441_0-5675	5675	correct
+119626	132351	1	12721	NC_001134.8	contig_68__contig_68_0-12721	99.04		True
+CONTIG	contig_68__contig_68_0-12721	12721	correct
+976803	982042	5249	1	NC_001139.9	contig_243__contig_243_0-5249	98.63		True
+CONTIG	contig_243__contig_243_0-5249	5249	correct
+30805	37135	1	6358	NC_001141.2	contig_58__contig_58_0-6358	96.29		True
+CONTIG	contig_58__contig_58_0-6358	6358	correct
+415996	431281	15318	35	NC_001146.8	contig_51__contig_51_0-15318	97.37		True
+CONTIG	contig_51__contig_51_0-15318	15318	correct
+57415	69806	12470	14	NC_001136.10	contig_177__contig_177_0-12470	97.7		True
+CONTIG	contig_177__contig_177_0-12470	12470	correct
+1397592	1404242	1	6650	NC_001136.10	contig_369__contig_369_0-6650	99.43		True
+CONTIG	contig_369__contig_369_0-6650	6650	correct
+484064	486399	4	2340	NC_001146.8	contig_447__contig_447_0-2341	99.49		True
+CONTIG	contig_447__contig_447_0-2341	2341	correct
+636450	639954	1	3481	NC_001142.9	contig_652__contig_652_0-3481	97.3		True
+CONTIG	contig_652__contig_652_0-3481	3481	correct
+396573	408072	11948	465	NC_001134.8	contig_276__contig_276_0-16351	98.98		True
+relocation, inconsistency = -4277
+396467	400849	11949	16348	NC_001134.8	contig_276__contig_276_0-16351	97.05		True
+CONTIG	contig_276__contig_276_0-16351	16351	misassembled
+334099	347086	2	13021	NC_001139.9	contig_504__contig_504_0-13021	97.53		True
+CONTIG	contig_504__contig_504_0-13021	13021	correct
+775531	784234	8700	1	NC_001148.4	contig_130__contig_130_0-8700	98.75		True
+CONTIG	contig_130__contig_130_0-8700	8700	correct
+65157	79100	2	13946	NC_001148.4	contig_5__contig_5_0-13946	98.54		True
+CONTIG	contig_5__contig_5_0-13946	13946	correct
+32661	42458	5	9773	NC_001136.10	contig_491__contig_491_0-9773	98.72		True
+CONTIG	contig_491__contig_491_0-9773	9773	correct
+29488	36980	7510	4	NC_001143.9	contig_79__contig_79_0-7510	98.08		True
+CONTIG	contig_79__contig_79_0-7510	7510	correct
+361281	373180	2	11859	NC_001136.10	contig_679__contig_679_0-11859	96.95		True
+CONTIG	contig_679__contig_679_0-11859	11859	correct
+117801	118040	13	252	NC_001147.6	contig_100__contig_100_0-714	100.0		True
+translocation
+1174979	1175309	253	582	NC_001136.10	contig_100__contig_100_0-714	97.89		True
+local misassembly
+1175648	1175728	584	664	NC_001136.10	contig_100__contig_100_0-714	100.0		True
+CONTIG	contig_100__contig_100_0-714	714	misassembled
+272362	314458	49	42190	NC_001146.8	contig_664__contig_664_0-42190	99.01		True
+CONTIG	contig_664__contig_664_0-42190	42190	correct
+160553	165894	5344	2	NC_001138.5	contig_672__contig_672_0-5344	98.77		True
+CONTIG	contig_672__contig_672_0-5344	5344	correct
+130576	148873	1	18240	NC_001146.8	contig_473__contig_473_0-18245	96.95		True
+CONTIG	contig_473__contig_473_0-18245	18245	correct
+162971	163737	768	1	NC_001143.9	contig_585__contig_585_0-5006	99.48		True
+local misassembly
+159068	162978	5006	1104	NC_001143.9	contig_585__contig_585_0-5006	98.02		True
+CONTIG	contig_585__contig_585_0-5006	5006	correct
+174436	181736	7295	4	NC_001148.4	contig_199__contig_199_0-7295	99.47		True
+CONTIG	contig_199__contig_199_0-7295	7295	correct
+688374	695257	264	7139	NC_001144.5	contig_645__contig_645_0-7141	98.29		True
+CONTIG	contig_645__contig_645_0-7141	7141	correct
+24737	36708	11970	5	NC_001145.3	contig_718__contig_718_0-11970	98.22		True
+CONTIG	contig_718__contig_718_0-11970	11970	correct
+468097	479028	1	10906	NC_001147.6	contig_579__contig_579_0-10907	98.75		True
+CONTIG	contig_579__contig_579_0-10907	10907	correct
+841727	846957	5249	1	NC_001144.5	contig_235__contig_235_0-5249	99.11		True
+CONTIG	contig_235__contig_235_0-5249	5249	correct
+728780	747926	2	19132	NC_001148.4	contig_162__contig_162_0-19134	99.45		True
+CONTIG	contig_162__contig_162_0-19134	19134	correct
+205431	209697	4271	1	NC_001139.9	contig_47__contig_47_0-4532	96.54		True
+translocation
+878383	878625	4524	4281	NC_001136.10	contig_47__contig_47_0-4532	95.49		True
+CONTIG	contig_47__contig_47_0-4532	4532	misassembled
+383958	386153	2222	2	NC_001136.10	contig_696__contig_696_0-5274	97.71		True
+local misassembly
+380923	383482	5274	2713	NC_001136.10	contig_696__contig_696_0-5274	99.22		True
+CONTIG	contig_696__contig_696_0-5274	5274	correct
+831039	835873	4837	4	NC_001144.5	contig_420__contig_420_0-4837	98.33		True
+CONTIG	contig_420__contig_420_0-4837	4837	correct
+169737	177158	2	7431	NC_001143.9	contig_338__contig_338_0-7431	98.44		True
+CONTIG	contig_338__contig_338_0-7431	7431	correct
+404436	409147	1	4720	NC_001148.4	contig_612__contig_612_0-4739	98.6		True
+CONTIG	contig_612__contig_612_0-4739	4739	correct
+202989	204837	1860	2	NC_001143.9	contig_190__contig_190_0-17432	98.07		True
+local misassembly
+187092	202643	17432	1861	NC_001143.9	contig_190__contig_190_0-17432	98.64		True
+CONTIG	contig_190__contig_190_0-17432	17432	correct
+784317	786943	2631	1	NC_001144.5	contig_609__contig_609_0-2631	98.9		True
+CONTIG	contig_609__contig_609_0-2631	2631	correct
+693741	699680	5	5939	NC_001148.4	contig_537__contig_537_0-7006	99.01		True
+CONTIG	contig_537__contig_537_0-7006	7006	correct
+1247760	1250110	2354	4	NC_001136.10	contig_507__contig_507_0-2354	99.24		True
+CONTIG	contig_507__contig_507_0-2354	2354	correct
+158830	172172	13335	4	NC_001146.8	contig_668__contig_668_0-13335	99.44		True
+CONTIG	contig_668__contig_668_0-13335	13335	correct
+593767	616212	5	22414	NC_001146.8	contig_113__contig_113_0-22430	98.49		True
+CONTIG	contig_113__contig_113_0-22430	22430	correct
+1413504	1429089	15601	1	NC_001136.10	contig_31__contig_31_0-15603	98.6		True
+CONTIG	contig_31__contig_31_0-15603	15603	correct
+342412	347208	35	4825	NC_001141.2	contig_687__contig_687_0-4825	99.02		True
+CONTIG	contig_687__contig_687_0-4825	4825	correct
+716485	744420	27945	13	NC_001136.10	contig_621__contig_621_0-27945	98.83		True
+CONTIG	contig_621__contig_621_0-27945	27945	correct
+1126314	1140039	13688	1	NC_001136.10	contig_654__contig_654_0-13713	98.29		True
+CONTIG	contig_654__contig_654_0-13713	13713	correct
+412016	434422	3	22392	NC_001136.10	contig_723__contig_723_0-22717	98.91		True
+local misassembly
+434900	435089	22393	22583	NC_001136.10	contig_723__contig_723_0-22717	96.46		True
+CONTIG	contig_723__contig_723_0-22717	22717	correct
+215507	220273	3	4766	NC_001133.9	contig_616__contig_616_0-4766	99.43		True
+CONTIG	contig_616__contig_616_0-4766	4766	correct
+1168835	1174984	6165	11	NC_001136.10	contig_110__contig_110_0-6165	98.64		True
+CONTIG	contig_110__contig_110_0-6165	6165	correct
+21058	23143	288	2372	NC_001135.5	contig_577__contig_577_0-2372	98.33		True
+CONTIG	contig_577__contig_577_0-2372	2372	correct
+51391	66567	1	15178	NC_001133.9	contig_479__contig_479_0-15178	98.05		True
+CONTIG	contig_479__contig_479_0-15178	15178	correct
+21179	21481	301	3	NC_001136.10	contig_321__contig_321_0-8028	98.03		True
+relocation, inconsistency = -7670
+21126	28722	428	8028	NC_001136.10	contig_321__contig_321_0-8028	98.2		True
+CONTIG	contig_321__contig_321_0-8028	8028	misassembled
+133124	148946	15839	1	NC_001140.6	contig_74__contig_74_0-23193	98.73		True
+local misassembly
+126094	133122	23192	16171	NC_001140.6	contig_74__contig_74_0-23193	98.59		True
+CONTIG	contig_74__contig_74_0-23193	23193	correct
+332798	341284	8459	1	NC_001143.9	contig_293__contig_293_0-8460	99.07		True
+CONTIG	contig_293__contig_293_0-8460	8460	correct
+1018960	1033248	14308	2	NC_001147.6	contig_371__contig_371_0-14308	98.83		True
+CONTIG	contig_371__contig_371_0-14308	14308	correct
+250761	260111	1	9399	NC_001142.9	contig_503__contig_503_0-9439	95.91		True
+CONTIG	contig_503__contig_503_0-9439	9439	correct
+1484511	1504822	1	20198	NC_001136.10	contig_274__contig_274_0-20202	95.93		True
+CONTIG	contig_274__contig_274_0-20202	20202	correct
+398186	448996	50833	7	NC_001140.6	contig_183__contig_183_0-50833	98.81		True
+CONTIG	contig_183__contig_183_0-50833	50833	correct
+103297	108118	1	4834	NC_001135.5	contig_658__contig_658_0-4834	98.99		True
+CONTIG	contig_658__contig_658_0-4834	4834	correct
+448572	463140	4	14581	NC_001146.8	contig_600__contig_600_0-14581	99.3		True
+CONTIG	contig_600__contig_600_0-14581	14581	correct
+443043	456943	13853	1	NC_001143.9	contig_215__contig_215_0-13853	98.45		True
+CONTIG	contig_215__contig_215_0-13853	13853	correct
+779447	797633	18192	1	NC_001136.10	contig_304__contig_304_0-18192	98.71		True
+CONTIG	contig_304__contig_304_0-18192	18192	correct
+220960	234081	1	13116	NC_001145.3	contig_386__contig_386_0-13116	98.96		True
+CONTIG	contig_386__contig_386_0-13116	13116	correct
+48815	62283	13514	9	NC_001138.5	contig_63__contig_63_0-13514	97.35		True
+CONTIG	contig_63__contig_63_0-13514	13514	correct
+319097	331769	12673	1	NC_001134.8	contig_341__contig_341_0-12673	99.22		True
+CONTIG	contig_341__contig_341_0-12673	12673	correct
+679877	693936	14037	1	NC_001146.8	contig_409__contig_409_0-14037	98.95		True
+CONTIG	contig_409__contig_409_0-14037	14037	correct
+737942	754160	16211	1	NC_001145.3	contig_538__contig_538_0-16211	99.1		True
+CONTIG	contig_538__contig_538_0-16211	16211	correct
+545299	553478	2	8186	NC_001139.9	contig_168__contig_168_0-8186	99.27		True
+CONTIG	contig_168__contig_168_0-8186	8186	correct
+396951	414077	17122	3	NC_001139.9	contig_372__contig_372_0-17122	99.02		True
+CONTIG	contig_372__contig_372_0-17122	17122	correct
+139707	151448	11752	19	NC_001135.5	contig_712__contig_712_0-11752	99.3		True
+CONTIG	contig_712__contig_712_0-11752	11752	correct
+345387	347653	4	2270	NC_001136.10	contig_592__contig_592_0-2270	99.08		True
+CONTIG	contig_592__contig_592_0-2270	2270	correct
+347025	351840	1	4815	NC_001136.10	contig_560__contig_560_0-4815	98.49		True
+CONTIG	contig_560__contig_560_0-4815	4815	correct
+275476	279943	4477	1	NC_001141.2	contig_360__contig_360_0-4477	98.09		True
+CONTIG	contig_360__contig_360_0-4477	4477	correct
+481546	492709	51	11241	NC_001148.4	contig_266__contig_266_0-11241	97.67		True
+CONTIG	contig_266__contig_266_0-11241	11241	correct
+814433	820434	6100	71	NC_001145.3	contig_249__contig_249_0-6100	97.57		True
+CONTIG	contig_249__contig_249_0-6100	6100	correct
+759833	774215	14359	1	NC_001134.8	contig_389__contig_389_0-14359	98.35		True
+CONTIG	contig_389__contig_389_0-14359	14359	correct
+890394	896701	6304	2	NC_001147.6	contig_291__contig_291_0-6304	98.25		True
+CONTIG	contig_291__contig_291_0-6304	6304	correct
+715573	729766	14211	2	NC_001139.9	contig_481__contig_481_0-14211	98.36		True
+CONTIG	contig_481__contig_481_0-14211	14211	correct
+244602	261089	16461	1	NC_001143.9	contig_716__contig_716_0-16461	98.4		True
+CONTIG	contig_716__contig_716_0-16461	16461	correct
+114049	120168	2	6119	NC_001146.8	contig_399__contig_399_0-6119	98.47		True
+CONTIG	contig_399__contig_399_0-6119	6119	correct
+307637	326173	7	18579	NC_001136.10	contig_361__contig_361_0-18595	98.73		True
+CONTIG	contig_361__contig_361_0-18595	18595	correct
+451357	469672	18339	3	NC_001145.3	contig_242__contig_242_0-18351	98.11		True
+CONTIG	contig_242__contig_242_0-18351	18351	correct
+469066	471858	2784	1	NC_001136.10	contig_14__contig_14_0-2847	98.39		True
+CONTIG	contig_14__contig_14_0-2847	2847	correct
+485915	500601	4	14698	NC_001136.10	contig_404__contig_404_0-14698	99.07		True
+CONTIG	contig_404__contig_404_0-14698	14698	correct
+754282	756653	3	2373	NC_001136.10	contig_501__contig_501_0-2373	99.33		True
+CONTIG	contig_501__contig_501_0-2373	2373	correct
+246220	246499	287	8	NC_001141.2	contig_8__contig_8_0-6962	99.64		True
+translocation
+777586	784278	6962	288	NC_001144.5	contig_8__contig_8_0-6962	99.08		True
+CONTIG	contig_8__contig_8_0-6962	6962	misassembled
+457857	462893	5	5066	NC_001137.3	contig_30__contig_30_0-5066	97.76		True
+CONTIG	contig_30__contig_30_0-5066	5066	correct
+15008	21082	6075	2	NC_001137.3	contig_582__contig_582_0-13206	97.35		True
+local misassembly
+7539	14684	13206	6076	NC_001137.3	contig_582__contig_582_0-13206	98.63		True
+CONTIG	contig_582__contig_582_0-13206	13206	correct
+128257	141896	13642	7	NC_001133.9	contig_385__contig_385_0-13642	97.01		True
+CONTIG	contig_385__contig_385_0-13642	13642	correct
+64148	67953	18	3831	NC_001139.9	contig_307__contig_307_0-3831	98.04		True
+CONTIG	contig_307__contig_307_0-3831	3831	correct
+180583	183941	3365	6	NC_001142.9	contig_548__contig_548_0-3365	98.52		True
+CONTIG	contig_548__contig_548_0-3365	3365	correct
+278354	283136	1	4775	NC_001140.6	contig_625__contig_625_0-4775	98.94		True
+CONTIG	contig_625__contig_625_0-4775	4775	correct
+787800	804116	16187	3	NC_001144.5	contig_158__contig_158_0-16245	97.99		True
+CONTIG	contig_158__contig_158_0-16245	16245	correct
+277990	280407	2428	1	NC_001145.3	contig_57__contig_57_0-2428	96.51		True
+CONTIG	contig_57__contig_57_0-2428	2428	correct
+99350	114975	15667	14	NC_001148.4	contig_387__contig_387_0-15667	97.57		True
+CONTIG	contig_387__contig_387_0-15667	15667	correct
+854624	862597	7997	1	NC_001147.6	contig_89__contig_89_0-10964	97.63		True
+local misassembly
+851323	854276	10964	8001	NC_001147.6	contig_89__contig_89_0-10964	97.49		True
+CONTIG	contig_89__contig_89_0-10964	10964	correct
+702886	706557	3680	1	NC_001134.8	contig_650__contig_650_0-3699	97.89		True
+CONTIG	contig_650__contig_650_0-3699	3699	correct
+143539	145920	1	2380	NC_001139.9	contig_676__contig_676_0-2389	96.91		True
+CONTIG	contig_676__contig_676_0-2389	2389	correct
+964901	974213	9326	7	NC_001136.10	contig_263__contig_263_0-9326	98.76		True
+CONTIG	contig_263__contig_263_0-9326	9326	correct
+149144	161976	10	12823	NC_001139.9	contig_606__contig_606_0-12828	98.6		True
+CONTIG	contig_606__contig_606_0-12828	12828	correct
+1187874	1201396	13514	1	NC_001136.10	contig_239__contig_239_0-13514	99.31		True
+CONTIG	contig_239__contig_239_0-13514	13514	correct
+524415	528950	2	4537	NC_001139.9	contig_670__contig_670_0-4537	98.86		True
+CONTIG	contig_670__contig_670_0-4537	4537	correct
+734642	740854	6220	2	NC_001147.6	contig_476__contig_476_0-6220	99.23		True
+CONTIG	contig_476__contig_476_0-6220	6220	correct
+703880	706210	1	2338	NC_001136.10	contig_644__contig_644_0-2338	99.32		True
+CONTIG	contig_644__contig_644_0-2338	2338	correct
+610250	614740	4480	5	NC_001143.9	contig_685__contig_685_0-4480	98.31		True
+CONTIG	contig_685__contig_685_0-4480	4480	correct
+838960	845116	3	6174	NC_001147.6	contig_415__contig_415_0-6174	98.42		True
+CONTIG	contig_415__contig_415_0-6174	6174	correct
+697248	700495	1	3241	NC_001136.10	contig_406__contig_406_0-3241	99.54		True
+CONTIG	contig_406__contig_406_0-3241	3241	correct
+660916	679236	18303	7	NC_001142.9	contig_358__contig_358_0-18303	99.2		True
+CONTIG	contig_358__contig_358_0-18303	18303	correct
+573623	581266	32	7653	NC_001146.8	contig_639__contig_639_0-7653	97.8		True
+CONTIG	contig_639__contig_639_0-7653	7653	correct
+174640	196664	22028	1	NC_001136.10	contig_615__contig_615_0-22049	98.16		True
+CONTIG	contig_615__contig_615_0-22049	22049	correct
+393099	404383	11293	2	NC_001145.3	contig_170__contig_170_0-11295	98.82		True
+CONTIG	contig_170__contig_170_0-11295	11295	correct
+362086	386285	1	24205	NC_001142.9	contig_678__contig_678_0-24206	98.68		True
+CONTIG	contig_678__contig_678_0-24206	24206	correct
+739296	748582	9276	3	NC_001144.5	contig_702__contig_702_0-9276	97.4		True
+CONTIG	contig_702__contig_702_0-9276	9276	correct
+991891	996540	87	4737	NC_001147.6	contig_134__contig_134_0-4737	98.54		True
+CONTIG	contig_134__contig_134_0-4737	4737	correct
+58087	59074	982	24	NC_001224.1	contig_523__contig_523_0-2144	95.27		True
+relocation, inconsistency = -1003
+57938	59069	1003	2144	NC_001224.1	contig_523__contig_523_0-2144	99.04		True
+CONTIG	contig_523__contig_523_0-2144	2144	misassembled
+222518	235947	2	13446	NC_001140.6	contig_471__contig_471_0-13452	98.43		True
+CONTIG	contig_471__contig_471_0-13452	13452	correct
+593053	602489	9440	26	NC_001145.3	contig_605__contig_605_0-9440	98.6		True
+CONTIG	contig_605__contig_605_0-9440	9440	correct
+605666	625559	20222	12	NC_001145.3	contig_417__contig_417_0-20222	96.44		True
+CONTIG	contig_417__contig_417_0-20222	20222	correct
+656818	659149	11	2350	NC_001145.3	contig_314__contig_314_0-2350	98.0		True
+CONTIG	contig_314__contig_314_0-2350	2350	correct
+912550	936163	23671	1	NC_001147.6	contig_227__contig_227_0-23671	97.95		True
+CONTIG	contig_227__contig_227_0-23671	23671	correct
+92034	95340	2	3309	NC_001141.2	contig_590__contig_590_0-3314	99.3		True
+CONTIG	contig_590__contig_590_0-3314	3314	correct
+413772	424649	1	10853	NC_001143.9	contig_150__contig_150_0-10853	99.0		True
+CONTIG	contig_150__contig_150_0-10853	10853	correct
+286107	297069	3	10946	NC_001140.6	contig_662__contig_662_0-10946	98.42		True
+CONTIG	contig_662__contig_662_0-10946	10946	correct
+377543	398901	1	21348	NC_001146.8	contig_330__contig_330_0-21348	98.75		True
+CONTIG	contig_330__contig_330_0-21348	21348	correct
+334607	342736	8082	1	NC_001136.10	contig_478__contig_478_0-8126	97.99		True
+CONTIG	contig_478__contig_478_0-8126	8126	correct
+930404	931165	27	792	NC_001139.9	contig_289__contig_289_0-7836	98.58		True
+local misassembly
+931541	936525	793	5772	NC_001139.9	contig_289__contig_289_0-7836	99.42		True
+CONTIG	contig_289__contig_289_0-7836	7836	correct
+282514	299697	17154	6	NC_001141.2	contig_286__contig_286_0-17154	97.35		True
+CONTIG	contig_286__contig_286_0-17154	17154	correct
+30226	41678	11446	1	NC_001139.9	contig_352__contig_352_0-11446	97.45		True
+CONTIG	contig_352__contig_352_0-11446	11446	correct
+197024	205257	8231	12	NC_001141.2	contig_102__contig_102_0-13134	98.65		True
+local misassembly
+191750	196647	13134	8232	NC_001141.2	contig_102__contig_102_0-13134	98.32		True
+CONTIG	contig_102__contig_102_0-13134	13134	correct
+203913	208396	4479	2	NC_001136.10	contig_61__contig_61_0-4479	99.35		True
+CONTIG	contig_61__contig_61_0-4479	4479	correct
+616116	624173	8067	1	NC_001144.5	contig_336__contig_336_0-8081	97.45		True
+CONTIG	contig_336__contig_336_0-8081	8081	correct
+488037	495446	7411	4	NC_001147.6	contig_351__contig_351_0-7411	98.44		True
+CONTIG	contig_351__contig_351_0-7411	7411	correct
+75902	76343	1953	2401	NC_001224.1	contig_484__contig_484_0-2402	96.66		True
+CONTIG	contig_484__contig_484_0-2402	2402	correct_unaligned
+83336	88737	5414	2	NC_001133.9	contig_376__contig_376_0-5440	97.83		True
+CONTIG	contig_376__contig_376_0-5440	5440	correct
+761207	768669	1	7467	NC_001148.4	contig_558__contig_558_0-7467	99.51		True
+CONTIG	contig_558__contig_558_0-7467	7467	correct
+201955	204210	2259	1	NC_001139.9	contig_456__contig_456_0-2259	98.32		True
+CONTIG	contig_456__contig_456_0-2259	2259	correct
+171335	178841	7542	2	NC_001141.2	contig_218__contig_218_0-7542	98.4		True
+CONTIG	contig_218__contig_218_0-7542	7542	correct
+750019	770982	21057	1	NC_001146.8	contig_331__contig_331_0-21057	97.23		True
+CONTIG	contig_331__contig_331_0-21057	21057	correct
+434631	434972	361	12	NC_001137.3	contig_319__contig_319_0-7672	95.43		True
+translocation
+504879	512205	362	7672	NC_001145.3	contig_319__contig_319_0-7672	98.1		True
+CONTIG	contig_319__contig_319_0-7672	7672	misassembled
+387729	394520	4	6794	NC_001134.8	contig_700__contig_700_0-6794	98.02		True
+CONTIG	contig_700__contig_700_0-6794	6794	correct
+412391	415465	3077	1	NC_001137.3	contig_559__contig_559_0-3095	98.77		True
+CONTIG	contig_559__contig_559_0-3095	3095	correct
+1309650	1331312	21657	1	NC_001136.10	contig_268__contig_268_0-21663	98.3		True
+CONTIG	contig_268__contig_268_0-21663	21663	correct
+347033	353739	66	6755	NC_001141.2	contig_112__contig_112_0-6755	97.01		True
+CONTIG	contig_112__contig_112_0-6755	6755	correct
+217742	266032	48290	1	NC_001139.9	ntLink_0	99.32		True
+CONTIG	ntLink_0	48290	correct
+305627	308366	1	2724	NC_001147.6	ntLink_1	96.56		True
+fake: scaffold gap size wrong estimation (local)
+308963	313371	3344	7747	NC_001147.6	ntLink_1	98.44		True
+inversion
+313022	313367	8102	7754	NC_001147.6	ntLink_1	96.3		True
+CONTIG	ntLink_1	8102	misassembled
+818490	821422	2936	2	NC_001144.5	ntLink_2	97.11		True
+local misassembly
+807188	818474	14536	3271	NC_001144.5	ntLink_2	97.54		True
+CONTIG	ntLink_2	14536	correct
+746941	763067	1	16112	NC_001139.9	ntLink_3	99.02		True
+translocation, scaffold gap is present
+834743	843855	16137	25251	NC_001148.4	ntLink_3	98.55		True
+CONTIG	ntLink_3	25251	misassembled
+136106	193752	57655	8	NC_001144.5	ntLink_4	99.2		True
+CONTIG	ntLink_4	57655	correct
+654900	679036	1	24119	NC_001134.8	ntLink_5	98.51		True
+CONTIG	ntLink_5	24119	correct
+362925	366145	3208	2	NC_001145.3	ntLink_6	98.92		True
+relocation, inconsistency = 5919
+327826	357005	32367	3209	NC_001145.3	ntLink_6	99.16		True
+CONTIG	ntLink_6	32367	misassembled
+210396	240191	29804	33	NC_001141.2	ntLink_7	99.03		True
+translocation
+1095767	1101676	29810	35718	NC_001136.10	ntLink_7	99.73		True
+translocation, scaffold gap is present
+325994	335021	36204	45236	NC_001141.2	ntLink_7	96.49		True
+CONTIG	ntLink_7	45243	misassembled
+805641	807670	2021	1	NC_001136.10	ntLink_8	97.69		True
+fake: scaffold gap size wrong estimation (local)
+800325	804449	7348	3242	NC_001136.10	ntLink_8	99.06		True
+CONTIG	ntLink_8	7348	correct
+286082	321310	35210	1	NC_001145.3	ntLink_9	99.22		True
+CONTIG	ntLink_9	35210	correct
+75865	82432	6580	3	NC_001145.3	ntLink_10	98.16		True
+CONTIG	ntLink_10	6584	correct
+412076	419480	351	7744	NC_001147.6	ntLink_11	98.85		True
+CONTIG	ntLink_11	7744	correct
+193046	199047	63	6059	NC_001138.5	ntLink_12	95.66		True
+CONTIG	ntLink_12	6059	correct
+160248	167154	2	6905	NC_001137.3	ntLink_13	99.46		True
+fake: scaffold gap size wrong estimation (local)
+167642	181832	7416	21580	NC_001137.3	ntLink_13	98.88		True
+CONTIG	ntLink_13	21581	correct
+290437	306483	1	16021	NC_001139.9	ntLink_14	98.6		True
+CONTIG	ntLink_14	16029	correct
+211443	223668	1	12236	NC_001138.5	ntLink_15	98.23		True
+translocation, scaffold gap is present
+311315	316518	17462	12263	NC_001141.2	ntLink_15	98.6		True
+CONTIG	ntLink_15	17463	misassembled
+952671	970281	6	17629	NC_001147.6	ntLink_16	97.82		True
+relocation, inconsistency = 5938
+976260	980254	17670	21672	NC_001147.6	ntLink_16	98.31		True
+local misassembly
+980592	987072	21673	28135	NC_001147.6	ntLink_16	98.57		True
+CONTIG	ntLink_16	28135	misassembled
+387379	407358	5	20009	NC_001143.9	ntLink_17	98.77		True
+CONTIG	ntLink_17	20009	correct
+606727	611818	6	5093	NC_001142.9	ntLink_18	97.77		True
+fake: scaffold gap size wrong estimation (local)
+612172	617902	5472	11188	NC_001142.9	ntLink_18	98.99		True
+local misassembly
+617904	620660	11536	14269	NC_001142.9	ntLink_18	96.9		True
+CONTIG	ntLink_18	14269	correct
+385686	398288	1	12600	NC_001148.4	ntLink_19	99.41		True
+fake: scaffold gap size wrong estimation (local)
+399222	404306	13545	18631	NC_001148.4	ntLink_19	97.68		True
+CONTIG	ntLink_19	18631	correct
+541499	563452	21972	1	NC_001147.6	ntLink_20	98.94		True
+CONTIG	ntLink_20	22000	correct
+503893	513680	1	9789	NC_001136.10	ntLink_21	98.5		True
+relocation, inconsistency = 5964
+519645	531411	9790	21598	NC_001136.10	ntLink_21	98.9		True
+CONTIG	ntLink_21	21618	misassembled
+886519	891599	6	5081	NC_001139.9	ntLink_22	99.0		True
+fake: scaffold gap size wrong estimation (local)
+892088	896303	5593	9809	NC_001139.9	ntLink_22	98.77		True
+CONTIG	ntLink_22	9809	correct
+641227	658771	17625	177	NC_001145.3	ntLink_23	97.5		True
+CONTIG	ntLink_23	17666	correct
+412433	424295	11868	1	NC_001148.4	ntLink_24	98.94		True
+CONTIG	ntLink_24	11868	correct
+364430	372622	20	8202	NC_001134.8	ntLink_25	97.96		True
+fake: scaffold gap size wrong estimation (local)
+373349	383432	8939	19019	NC_001134.8	ntLink_25	98.53		True
+CONTIG	ntLink_25	19019	correct
+173808	180677	6931	1	NC_001133.9	ntLink_26	97.12		True
+CONTIG	ntLink_26	6935	correct
+449388	470720	5	21337	NC_001134.8	ntLink_27	97.71		True
+CONTIG	ntLink_27	21337	correct
+88841	95429	12	6595	NC_001145.3	ntLink_28	98.82		True
+fake: scaffold gap size wrong estimation (local)
+95891	99764	7086	10970	NC_001145.3	ntLink_28	98.08		True
+CONTIG	ntLink_28	10970	correct
+46466	48655	128	2314	NC_001136.10	ntLink_29	99.04		True
+fake: scaffold gap size wrong estimation (local)
+48805	52703	2495	6392	NC_001136.10	ntLink_29	98.24		True
+CONTIG	ntLink_29	6395	correct
+626756	631013	4266	12	NC_001134.8	ntLink_30	99.09		True
+fake: scaffold gap size wrong estimation (local)
+619170	626039	11882	4999	NC_001134.8	ntLink_30	97.54		True
+CONTIG	ntLink_30	11882	correct
+336389	364953	2	28581	NC_001137.3	ntLink_31	99.22		True
+CONTIG	ntLink_31	28582	correct
+575914	597498	21631	3	NC_001139.9	ntLink_32	99.09		True
+CONTIG	ntLink_32	21633	correct
+392198	411701	19523	1	NC_001147.6	ntLink_33	97.8		True
+fake: scaffold gap size wrong estimation (local)
+388220	391671	23515	20075	NC_001147.6	ntLink_33	97.95		True
+CONTIG	ntLink_33	23521	correct
+808912	815468	6591	5	NC_001145.3	ntLink_34	98.69		True
+local misassembly
+799885	808536	15234	6592	NC_001145.3	ntLink_34	99.62		True
+CONTIG	ntLink_34	15234	correct
+497549	518409	4	20900	NC_001142.9	ntLink_35	98.71		True
+CONTIG	ntLink_35	20900	correct
+668175	670723	2	2551	NC_001139.9	ntLink_36	99.3		True
+fake: scaffold gap size wrong estimation (local)
+671273	674231	3137	6101	NC_001139.9	ntLink_36	98.76		True
+CONTIG	ntLink_36	6112	correct
+176501	188586	1	12120	NC_001134.8	ntLink_37	98.66		True
+CONTIG	ntLink_37	12120	correct
+309298	322089	14926	2170	NC_001143.9	ntLink_38	98.39		True
+CONTIG	ntLink_38	14926	correct
+128994	139668	10687	1	NC_001147.6	ntLink_39	98.91		True
+fake: scaffold gap size wrong estimation (local)
+123629	128756	16056	10941	NC_001147.6	ntLink_39	98.29		True
+relocation, inconsistency = 5931
+113916	117697	19835	16057	NC_001147.6	ntLink_39	97.35		True
+CONTIG	ntLink_39	19835	misassembled
+844944	847387	1	2436	NC_001147.6	ntLink_40	98.29		True
+fake: scaffold gap size wrong estimation (local)
+847915	850462	2989	5532	NC_001147.6	ntLink_40	99.25		True
+CONTIG	ntLink_40	5532	correct
+710109	720841	10728	7	NC_001147.6	ntLink_41	97.79		True
+relocation, inconsistency = 6539
+702880	703507	11418	10791	NC_001147.6	ntLink_41	98.57		True
+CONTIG	ntLink_41	11428	misassembled
+141149	156764	15810	2	NC_001141.2	ntLink_42	96.68		True
+CONTIG	ntLink_42	15810	correct
+867841	882152	1	14337	NC_001145.3	ntLink_43	98.66		True
+fake: scaffold gap size wrong estimation (local)
+882745	899820	14948	32016	NC_001145.3	ntLink_43	99.47		True
+CONTIG	ntLink_43	32023	correct
+610808	644281	2	33436	NC_001146.8	ntLink_44	97.56		True
+CONTIG	ntLink_44	33437	correct
+239214	279304	40064	1	NC_001148.4	ntLink_45	99.23		True
+CONTIG	ntLink_45	40064	correct
+71725	97701	7	26066	NC_001142.9	ntLink_46	97.13		True
+CONTIG	ntLink_46	26066	correct
+472426	484790	5	12333	NC_001137.3	ntLink_47	98.39		True
+CONTIG	ntLink_47	12333	correct
+1077017	1083736	23	6736	NC_001147.6	ntLink_48	97.84		True
+translocation, scaffold gap is present
+1067993	1073684	6803	12457	NC_001144.5	ntLink_48	98.95		True
+CONTIG	ntLink_48	12463	misassembled
+125843	156880	31162	1	NC_001143.9	ntLink_49	97.83		True
+CONTIG	ntLink_49	31166	correct
+154458	166388	1	11918	NC_001142.9	ntLink_50	98.95		True
+fake: scaffold gap size wrong estimation (local)
+167539	174585	13097	20129	NC_001142.9	ntLink_50	98.43		True
+CONTIG	ntLink_50	20138	correct
+692915	701305	1	8413	NC_001146.8	ntLink_51	98.79		True
+fake: scaffold gap size wrong estimation (local)
+701875	717676	9006	24873	NC_001146.8	ntLink_51	97.8		True
+CONTIG	ntLink_51	24876	correct
+65248	70001	17	4768	NC_001141.2	ntLink_52	98.34		True
+fake: scaffold gap size wrong estimation (local)
+70940	88576	5722	23360	NC_001141.2	ntLink_52	98.44		True
+CONTIG	ntLink_52	23363	correct
+322091	325510	3411	1	NC_001143.9	ntLink_53	99.18		True
+CONTIG	ntLink_53	15866	correct_unaligned
+315879	335122	19241	1	NC_001137.3	ntLink_54	98.97		True
+CONTIG	ntLink_54	19241	correct
+355301	386987	7	31867	NC_001147.6	ntLink_55	98.56		True
+CONTIG	ntLink_55	31869	correct
+334294	349831	15536	1	NC_001148.4	ntLink_56	99.41		True
+fake: scaffold gap size wrong estimation (local)
+319021	333998	30836	15860	NC_001148.4	ntLink_56	98.49		True
+CONTIG	ntLink_56	30843	correct
+245836	254069	8215	1	NC_001134.8	ntLink_57	98.92		True
+fake: scaffold gap size wrong estimation (local)
+226953	244263	27098	9795	NC_001134.8	ntLink_57	99.01		True
+relocation, inconsistency = 5921
+206137	221031	41982	27099	NC_001134.8	ntLink_57	98.4		True
+CONTIG	ntLink_57	41993	misassembled
+243916	267819	23944	19	NC_001147.6	ntLink_58	99.08		True
+CONTIG	ntLink_58	23944	correct
+391319	410568	19227	4	NC_001136.10	ntLink_59	98.93		True
+CONTIG	ntLink_59	19229	correct
+83934	98151	14208	1	NC_001148.4	ntLink_60	97.92		True
+CONTIG	ntLink_60	14210	correct
+245184	256646	6	11463	NC_001146.8	ntLink_61	99.22		True
+fake: scaffold gap size wrong estimation (local)
+257353	266753	12198	21592	NC_001146.8	ntLink_61	98.56		True
+CONTIG	ntLink_61	21592	correct
+699817	721713	6	21975	NC_001145.3	ntLink_62	98.01		True
+CONTIG	ntLink_62	21975	correct
+278415	298587	20160	2	NC_001147.6	ntLink_63	98.02		True
+CONTIG	ntLink_63	20164	correct
+327864	360122	1	32269	NC_001140.6	ntLink_64	98.88		True
+fake: scaffold gap size wrong estimation (local)
+360731	363174	32909	35353	NC_001140.6	ntLink_64	98.82		True
+CONTIG	ntLink_64	35353	correct
+96955	120882	23976	16	NC_001140.6	ntLink_65	97.94		True
+CONTIG	ntLink_65	23978	correct
+654423	664249	9852	8	NC_001139.9	ntLink_66	99.17		True
+fake: scaffold gap size wrong estimation (local)
+634821	653523	29428	10754	NC_001139.9	ntLink_66	98.75		True
+CONTIG	ntLink_66	29428	correct
+301505	308419	6939	30	NC_001137.3	ntLink_67	97.6		True
+local misassembly
+268213	301754	40453	6944	NC_001137.3	ntLink_67	98.94		True
+CONTIG	ntLink_67	40453	correct
+62902	63393	475	1	NC_001224.1	ntLink_68	96.14		True
+local misassembly
+60568	62451	2688	802	NC_001224.1	ntLink_68	99.84		True
+indel: indel (> 5bp)
+58471	60483	4692	2689	NC_001224.1	ntLink_68	99.3		True
+CONTIG	ntLink_68	4692	correct
+39216	40423	1212	36	NC_001224.1	ntLink_69	96.29		True
+relocation, inconsistency = 2077
+36504	36954	1397	1847	NC_001224.1	ntLink_69	99.78		True
+relocation, inconsistency = 2172
+39141	42287	1862	5011	NC_001224.1	ntLink_69	99.4		True
+relocation, inconsistency = -2572
+39724	42333	7626	5020	NC_001224.1	ntLink_69	96.37		True
+relocation, inconsistency = 18034, scaffold gap is present
+14206	20973	15138	8343	NC_001224.1	ntLink_69	99.43		True
+CONTIG	ntLink_69	15141	misassembled
+284576	301235	4	16645	NC_001134.8	ntLink_70	98.58		True
+translocation
+472922	484845	16646	28608	NC_001136.10	ntLink_70	97.43		True
+CONTIG	ntLink_70	28610	misassembled
+266519	311279	1	44937	NC_001142.9	ntLink_71	97.93		True
+CONTIG	ntLink_71	44937	correct
+509900	540694	1	30871	NC_001134.8	ntLink_72	98.63		True
+CONTIG	ntLink_72	30875	correct
