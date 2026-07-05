@@ -1,4 +1,3 @@
-cat > docs/eventos/index.md << 'MDEOF'
 # Eventos
 
 Os eventos do **PRO-BIOINFO** são as ocasiões em que oferecemos cursos integrados, palestras temáticas e desafios colaborativos em formato presencial e intensivo. Cada edição reúne professores, monitores e participantes em torno de uma semana de bioinformática prática.
