@@ -1,0 +1,1498 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Programa de Formação em Bioinformática — LGBIO/UFG">
+      
+      
+      
+        <link rel="canonical" href="https://lgbio-ufg.github.io/PRO-BIOINFO/cursos/hic_scaffolding/index.html">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Scaffolding usando Hi-C - PRO-BIOINFO</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scaffolding-usando-hi-c" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../index.html" title="PRO-BIOINFO" class="md-header__button md-logo" aria-label="PRO-BIOINFO" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PRO-BIOINFO
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scaffolding usando Hi-C
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LGBIO-UFG/PRO-BIOINFO
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sobre.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Sobre
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../equipe.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Equipe
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cursos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../eventos/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Eventos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../materiais/index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Materiais
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="PRO-BIOINFO" class="md-nav__button md-logo" aria-label="PRO-BIOINFO" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    PRO-BIOINFO
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LGBIO-UFG/PRO-BIOINFO
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sobre.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../equipe.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Equipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash / Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blast/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLAST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filogenia/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filogenia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../eventos/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eventos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Eventos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eventos/cafe-bioinfo-2026/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAFE-BIOINFO 2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../materiais/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Materiais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de aprendizagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-horaria-estimada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga horária estimada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dados-do-exercicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dados do exercício
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-1-obtencao-dos-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 1 — Obtenção dos dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-alinhamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 2 — Alinhamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 — Alinhamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-3-crie-um-index-para-o-genoma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 3 — Crie um index para o genoma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 3 — Crie um index para o genoma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-4-scaffolding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 4 — Scaffolding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 4 — Scaffolding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-5-qualidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 5 — Qualidade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 5 — Qualidade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-6-gerando-o-mapa-de-contato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 6 — Gerando o mapa de contato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 6 — Gerando o mapa de contato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-7-plotando-e-editando-o-mapa-de-calor-de-contatos-hi-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 7 — Plotando e editando o mapa de calor de contatos Hi-C
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 7 — Plotando e editando o mapa de calor de contatos Hi-C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-instalando-juicebox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Instalando Juicebox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-carregando-dados-no-juicebox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Carregando dados no Juicebox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-editando-o-mapa-de-contato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Editando o mapa de contato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Editando o mapa de contato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#movendo-scaffolds-e-contigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movendo scaffolds e contigs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invertendo-scaffolds-e-contigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invertendo scaffolds e contigs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cortando-scaffolds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cortando scaffolds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#juntando-scaffolds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Juntando scaffolds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-exportando-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Exportando dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-8-convertendo-para-fasta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 8 — Convertendo para FASTA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 8 — Convertendo para FASTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convertendo-para-fasta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convertendo para FASTA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-9-qualidade-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 9 — Qualidade final
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 9 — Qualidade final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parabens-voce-finalizou-esta-etapa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parabéns! Você finalizou esta etapa!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Licença
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reportar-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reportar problemas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="scaffolding-usando-hi-c">Scaffolding usando Hi-C<a class="headerlink" href="#scaffolding-usando-hi-c" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Resumo</p>
+<p>Tutorial prático de scaffolding de genomas a partir de dados de Hi-C. Neste tutorial, cobrimos todo o pipeline: alinhamento, scaffolding, construção do mapa de contato, edição do mapa de contato, exportação e avaliação.</p>
+</div>
+<p><strong>Autor:</strong> Dr. Leonardo C. J. Corvalan
+<strong>Instituição:</strong> Laboratório de Genética &amp; Biodiversidade (LGBio) — ICB/UFG
+<strong>Contato:</strong> <a href="mailto:lcjcorvalan@gmail.com">lcjocorvalan@gmail.com</a>
+<strong>Última atualização:</strong> Julho de 2026</p>
+<h2 id="objetivos-de-aprendizagem"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 2v2.07A8 8 0 0 0 4.07 11H2v2h2.07A8 8 0 0 0 11 19.93V22h2v-2.07A8 8 0 0 0 19.93 13H22v-2h-2.07A8 8 0 0 0 13 4.07V2m-2 4.08V8h2V6.09c2.5.41 4.5 2.41 4.92 4.91H16v2h1.91c-.41 2.5-2.41 4.5-4.91 4.92V16h-2v1.91C8.5 17.5 6.5 15.5 6.08 13H8v-2H6.09C6.5 8.5 8.5 6.5 11 6.08M12 11a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg></span> Objetivos de aprendizagem<a class="headerlink" href="#objetivos-de-aprendizagem" title="Permanent link">&para;</a></h2>
+<p>Ao final deste curso, você será capaz de:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Realizar scaffolding de um genoma</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Avaliar qualidade do scaffolding</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Criar mapas de contato e editá-los </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Exportar o resultado em formato FASTA</li>
+</ul>
+<h2 id="carga-horaria-estimada"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg></span> Carga horária estimada<a class="headerlink" href="#carga-horaria-estimada" title="Permanent link">&para;</a></h2>
+<p><strong>~3 horas</strong></p>
+<h2 id="pre-requisitos"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg></span> Pré-requisitos<a class="headerlink" href="#pre-requisitos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detalhes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Curso anterior</td>
+<td><a href="../bash/index.html">Bash / Linux para bioinformática</a></td>
+</tr>
+<tr>
+<td>Biologia molecular</td>
+<td>Conceitos de sequenciamento, genoma, contig, scaffold</td>
+</tr>
+<tr>
+<td>Softwares</td>
+<td>SRA Toolkit, bwa, samtools, PicardCommandLine, QUAST, yahs, juicer_tools, Juicebox</td>
+</tr>
+<tr>
+<td>Recurso</td>
+<td>Servidor Linux com ≥ 32 GB de RAM, ≥ 16 threads e ≥ 50 GB de armazenamento.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Programas instalados no computador pessoal</p>
+<p>Para a etapa de visualização dos dados, será necessário instalar localmente o programa Juicebox. Mais instruções estão descritas na Etapa 7.. </p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Compatibilidade com outros servidores</p>
+<p>Este pipeline foi desenvolvido e testado no servidor de Bioinformática do LGBio (ICB/UFG).
+Ao reproduzi-lo em outro ambiente, podem ser necessários ajustes em caminhos de instalação,
+gerenciadores de ambiente (conda, module load), versões de software e parâmetros de memória/threads.</p>
+</div>
+<h2 id="dados-do-exercicio"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg></span> Dados do exercício<a class="headerlink" href="#dados-do-exercicio" title="Permanent link">&para;</a></h2>
+<p>Os dados utilizados neste tutorial são provenientes de uma amostra de <strong><em>Saccharomyces cerevisiae</em></strong>, sequenciada utilizando a enzima de restrição DpnII por meio do protocolo Hi-C. 
+Os dados são referentes ao projeto: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE227687.</p>
+<div class="admonition quote">
+<p class="admonition-title">Referência</p>
+<p>Fouziya S, Krietenstein N, Mir US, Mieczkowski J, Khan MA, Baba A, Dar MA, Altaf M, Wani AH. Genome wide nucleosome landscape shapes 3D chromatin organization. Sci Adv. 2024 Jun 7;10(23):eadn2955. doi: 10.1126/sciadv.adn2955</p>
+</div>
+<hr />
+<h2 id="etapa-1-obtencao-dos-dados"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7v2h2v8h2V7zm2-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 1 — Obtenção dos dados<a class="headerlink" href="#etapa-1-obtencao-dos-dados" title="Permanent link">&para;</a></h2>
+<p>Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via <strong>SRA Toolkit</strong> (controlado e robusto) e via <strong>wget</strong> direto do ENA (mais simples).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Obtendo dados</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span>mkdir<span class="w"> </span><span class="m">0</span>.DadosBrutos
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>ln<span class="w"> </span>-s<span class="w"> </span>/media/lgbio-nas1/lcorvalan/Hic_cafe/hic_scaffolding/0.DadosBrutos/sacCer3_hic20_1.fastq<span class="w"> </span><span class="m">0</span>.DadosBrutos
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>ln<span class="w"> </span>-s<span class="w"> </span>/media/lgbio-nas1/lcorvalan/Hic_cafe/hic_scaffolding/0.DadosBrutos/sacCer3_hic20_2.fastq<span class="w"> </span><span class="m">0</span>.DadosBrutos
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>cp<span class="w"> </span>/media/lgbio-nas1/lcorvalan/Hic_cafe/hic_scaffolding/sacCer3_draft.fasta<span class="w"> </span><span class="m">0</span>.DadosBrutos
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>cp<span class="w"> </span>/media/lgbio-nas1/lcorvalan/Hic_cafe/hic_scaffolding/sacCer3_ref.fasta<span class="w"> </span><span class="m">0</span>.DadosBrutos
+</span></code></pre></div>
+<h2 id="etapa-2-alinhamento"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v2h4v2h-2a2 2 0 0 0-2 2v4h6v-2h-4v-2h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 2 — Alinhamento<a class="headerlink" href="#etapa-2-alinhamento" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span>mkdir<span class="w"> </span><span class="m">1</span>.Alinhamento/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>cp<span class="w"> </span>/media/lgbio-nas1/lcorvalan/Hic-data/Mfa/Ragtag/arima_map.sh<span class="w"> </span>.
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>bash<span class="w"> </span>arima_map.sh<span class="w"> </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta<span class="w"> </span><span class="m">0</span>.DadosBrutos/SRR23913693_1.fastq<span class="w">  </span><span class="m">0</span>.DadosBrutos/SRR23913693_2.fastq<span class="w">  </span>sacCer3_draft_alin
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>mv<span class="w"> </span>sacCer3_draft_alin*<span class="w"> </span><span class="m">1</span>.Alinhamento/
+</span></code></pre></div>
+<h3 id="checklist-da-etapa-2">Checklist da Etapa 2<a class="headerlink" href="#checklist-da-etapa-2" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Examine <code>sacCer3_draft_alin.Hic.bam</code> e <code>sacCer3_draft_alin.Hic.bam.stats</code></li>
+</ul>
+<hr />
+<h2 id="etapa-3-crie-um-index-para-o-genoma"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2H9v2h4v2h-2v2h2v2H9v2h4a2 2 0 0 0 2-2M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 3 — Crie um index para o genoma<a class="headerlink" href="#etapa-3-crie-um-index-para-o-genoma" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta
+</span></code></pre></div>
+<h3 id="checklist-da-etapa-3">Checklist da Etapa 3<a class="headerlink" href="#checklist-da-etapa-3" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>0.DadosBrutos/sacCer3_draft.fastafbai</code></li>
+</ul>
+<hr />
+<h2 id="etapa-4-scaffolding"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v4h2V7h-2v4h-2V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 4 — Scaffolding<a class="headerlink" href="#etapa-4-scaffolding" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span>mkdir<span class="w"> </span><span class="m">2</span>.Scaffolding
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>/media/lgbio-nas1/lcorvalan/programas/YaHS/yahs/yahs<span class="w"> </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta<span class="w"> </span><span class="m">1</span>.Alinhamento/sacCer3_draft_alin.Hic.bam<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>--telo-motif<span class="w"> </span>TGGG<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>-e<span class="w"> </span>GATC<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span>-o<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out
+</span></code></pre></div>
+<h3 id="checklist-da-etapa-4">Checklist da Etapa 4<a class="headerlink" href="#checklist-da-etapa-4" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>2.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.fa</code></li>
+</ul>
+<hr />
+<h2 id="etapa-5-qualidade"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v2H9v2h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h4V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 5 — Qualidade<a class="headerlink" href="#etapa-5-qualidade" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span>mkdir<span class="w"> </span><span class="m">3</span>.Qualidade/
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>quast.py<span class="w"> </span>-r<span class="w"> </span><span class="m">0</span>.DadosBrutos/sacCer3_ref.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span>-o<span class="w"> </span><span class="m">3</span>.Qualidade/quast<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span>--labels<span class="w"> </span><span class="s2">&quot;sacCer3_draft,sacCer3_yahs&quot;</span>
+</span></code></pre></div>
+<h3 id="checklist-da-etapa-5">Checklist da Etapa 5<a class="headerlink" href="#checklist-da-etapa-5" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Compare as estatísticas geradas pelo Quast.</li>
+</ul>
+<hr />
+<h2 id="etapa-6-gerando-o-mapa-de-contato"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2V9h4V7zm0 6h2v2h-2zm1-11a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 6 — Gerando o mapa de contato<a class="headerlink" href="#etapa-6-gerando-o-mapa-de-contato" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.fa
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>/media/lgbio-nas1/lcorvalan/programas/YaHS/yahs/juicer<span class="w"> </span>pre<span class="w"> </span>-a<span class="w"> </span>-o<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out.bin<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.agp<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta.fai<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.JB.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Em seguida, execute:</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="o">(</span>java<span class="w"> </span>-jar<span class="w"> </span>-Xmx200G<span class="w"> </span>/home/lgbio/programas/juicer/scripts/juicer_tools.1.9.9_jcuda.0.8.jar<span class="w"> </span>pre<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.txt<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic.part<span class="w"> </span>&lt;<span class="o">(</span>cat<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.JB.log<span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>PRE_C_SIZE<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2&quot; &quot;$3}&#39;</span><span class="o">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">(</span>mv<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic.part<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic<span class="o">)</span>
+</span></code></pre></div>
+<details class="note">
+<summary>Na primeira parte do script, você deve informar o arquivo de índice (.fai)</summary>
+</details>
+<h3 id="checklist-da-etapa-6">Checklist da Etapa 6<a class="headerlink" href="#checklist-da-etapa-6" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho <code>sacCer3_draf.JB.assembly</code> e  <code>sacCer3_draf.JB.hic</code> </li>
+</ul>
+<hr />
+<h2 id="etapa-7-plotando-e-editando-o-mapa-de-calor-de-contatos-hi-c"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11 17 4-8V7H9v2h4l-4 8zm1-15a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 7 — Plotando e editando o mapa de calor de contatos Hi-C<a class="headerlink" href="#etapa-7-plotando-e-editando-o-mapa-de-calor-de-contatos-hi-c" title="Permanent link">&para;</a></h2>
+<div class="admonition observação">
+<p class="admonition-title">Não esquecer de transferir os arquivos para o computador local</p>
+</div>
+<h3 id="71-instalando-juicebox">7.1 Instalando Juicebox<a class="headerlink" href="#71-instalando-juicebox" title="Permanent link">&para;</a></h3>
+<p>1) Acesse o site https://github.com/aidenlab/Juicebox/wiki/Download
+2) Selecione o seu sistema operacional
+3) Após baixar o arquivo, prossiga com a instalação</p>
+<div class="admonition warning">
+<p class="admonition-title">Erro Java</p>
+<p>Este programa demanda que o Java esteja instalado em seu computador.</p>
+</div>
+<h3 id="72-carregando-dados-no-juicebox">7.2 Carregando dados no Juicebox<a class="headerlink" href="#72-carregando-dados-no-juicebox" title="Permanent link">&para;</a></h3>
+<p>1) Abra o programa
+2) Carregue os dados seguindo os passoso
+   <img alt="Juicebox_carregando_dados" src="figuras/Juicebox_carregando_dados.png" />
+3) Carregue as informações de contigs e scaffolds
+   <img alt="Juicebox_carregando_assembly" src="figuras/Juicebox_carregando_assembly.png" /></p>
+<h3 id="73-editando-o-mapa-de-contato">7.3 Editando o mapa de contato<a class="headerlink" href="#73-editando-o-mapa-de-contato" title="Permanent link">&para;</a></h3>
+<h4 id="movendo-scaffolds-e-contigs">Movendo scaffolds e contigs<a class="headerlink" href="#movendo-scaffolds-e-contigs" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Mantenha a tecla <strong>Shift</strong> pressionada e clique no scaffold que deseja mover.<blockquote>
+<p>Note que ele ficará selecionado com linhas pretas.</p>
+</blockquote>
+</li>
+<li>Mova o cursor até o local onde deseja realocar o scaffold. Quando o cursor estiver no formato de uma seta, clique.</li>
+</ol>
+<h4 id="invertendo-scaffolds-e-contigs">Invertendo scaffolds e contigs<a class="headerlink" href="#invertendo-scaffolds-e-contigs" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Mantenha a tecla <strong>Shift</strong> pressionada e clique no scaffold que deseja inverter.<blockquote>
+<p>Note que ele ficará selecionado com linhas pretas.</p>
+</blockquote>
+</li>
+<li>Dentro da área do scaffold/contig, mova o cursor até o vértice superior direito. Quando o cursor assumir o formato de uma seta circular, clique.</li>
+</ol>
+<h4 id="cortando-scaffolds">Cortando scaffolds<a class="headerlink" href="#cortando-scaffolds" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Mantenha a tecla <strong>Shift</strong> pressionada e clique no scaffold que deseja cortar.<blockquote>
+<p>Note que ele ficará selecionado com linhas pretas.</p>
+</blockquote>
+</li>
+<li>Sobre a diagonal principal, mova o cursor até o ponto onde deseja realizar o corte. Quando o cursor assumir o formato de uma tesoura, clique.</li>
+</ol>
+<h4 id="juntando-scaffolds">Juntando scaffolds<a class="headerlink" href="#juntando-scaffolds" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Os scaffolds que deseja unir devem estar posicionados um ao lado do outro.</li>
+<li>Mova o cursor até a extremidade onde os dois scaffolds se encontram. Quando o cursor mudar de formato, clique.</li>
+</ol>
+<h3 id="74-exportando-dados">7.4 Exportando dados<a class="headerlink" href="#74-exportando-dados" title="Permanent link">&para;</a></h3>
+<p>1) Exportar matriz
+2) Exportar assembly
+3) Exportar figura
+ <img alt="Juicebox_exportando_dados" src="figuras/Juicebox_exportando_dados.png" />   </p>
+<h2 id="etapa-8-convertendo-para-fasta"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13h2v2h-2zm0-4h2v2h-2zm0 8h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m1-15a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 8 — Convertendo para FASTA<a class="headerlink" href="#etapa-8-convertendo-para-fasta" title="Permanent link">&para;</a></h2>
+<p>Transfira o arquivo .assembly para o servidor.</p>
+<h3 id="convertendo-para-fasta">Convertendo para FASTA<a class="headerlink" href="#convertendo-para-fasta" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>/media/lgbio-nas1/lcorvalan/programas/YaHS/yahs/juicer<span class="w"> </span>post<span class="w"> </span>-o<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.out<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.review.assembly<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.liftover.agp<span class="w"> </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta
+</span></code></pre></div>
+<p>??? note "O arquivo final é:</p>
+<p>2.Scaffolding/sacCer3_draf.JB.out.FINAL.fa"</p>
+<h2 id="etapa-9-qualidade-final"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m1 15a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2H9v2zm0-6h-2V9h2z"/></svg></span> Etapa 9 — Qualidade final<a class="headerlink" href="#etapa-9-qualidade-final" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">    </span>mkdir<span class="w"> </span><span class="m">3</span>.Qualidade/
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>quast.py<span class="w"> </span>-r<span class="w"> </span><span class="m">0</span>.DadosBrutos/sacCer3_ref.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.out.FINAL.fa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span>-o<span class="w"> </span><span class="m">3</span>.Qualidade/quast<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span>--labels<span class="w"> </span><span class="s2">&quot;sacCer3_draft,sacCer3_yahs,sacCer3_JB&quot;</span>
+</span></code></pre></div>
+<h4 id="parabens-voce-finalizou-esta-etapa">Parabéns! Você finalizou esta etapa!<a class="headerlink" href="#parabens-voce-finalizou-esta-etapa" title="Permanent link">&para;</a></h4>
+<p>Que a Força esteja com você! 🚀</p>
+<hr />
+<h2 id="licenca"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 10a3.04 3.04 0 0 1 3-3 3.04 3.04 0 0 1 3 3 3.04 3.04 0 0 1-3 3 3.04 3.04 0 0 1-3-3m3 9 4 1v-3.08A7.54 7.54 0 0 1 12 18a7.54 7.54 0 0 1-4-1.08V20m4-16a5.78 5.78 0 0 0-4.24 1.74A5.78 5.78 0 0 0 6 10a5.78 5.78 0 0 0 1.76 4.23A5.78 5.78 0 0 0 12 16a5.78 5.78 0 0 0 4.24-1.77A5.78 5.78 0 0 0 18 10a5.78 5.78 0 0 0-1.76-4.26A5.78 5.78 0 0 0 12 4m8 6a8 8 0 0 1-.57 2.8A7.8 7.8 0 0 1 18 15.28V23l-6-2-6 2v-7.72A7.9 7.9 0 0 1 4 10a7.68 7.68 0 0 1 2.33-5.64A7.73 7.73 0 0 1 12 2a7.73 7.73 0 0 1 5.67 2.36A7.68 7.68 0 0 1 20 10"/></svg></span> Licença<a class="headerlink" href="#licenca" title="Permanent link">&para;</a></h2>
+<p>Este tutorial é distribuído sob <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Reutilize com atribuição.</p>
+<h2 id="reportar-problemas"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12h-4v-2h4m0 6h-4v-2h4m6-6h-2.81a6 6 0 0 0-1.82-1.96L17 4.41 15.59 3l-2.17 2.17a6 6 0 0 0-2.83 0L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20z"/></svg></span> Reportar problemas<a class="headerlink" href="#reportar-problemas" title="Permanent link">&para;</a></h2>
+<p>Encontrou erro, comando obsoleto, ou tem sugestão? Abra uma <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO/issues">issue no GitHub</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.instagram.com/pro_bioinfo/" target="_blank" rel="noopener" title="PRO-BIOINFO no Instagram" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
