@@ -1,7 +1,0 @@
-##gff-version 3
-NC_001136.10_RagTag	QUAST	possible_assembly_error	6040	6147	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 60471,scaffold gap is present
-NC_001224.1_RagTag	QUAST	possible_assembly_error	8861	10760	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -1898
-NC_001224.1_RagTag	QUAST	possible_assembly_error	11960	13015	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 13212,scaffold gap is present
-NC_001224.1_RagTag	QUAST	possible_assembly_error	13528	13543	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 2172
-NC_001224.1_RagTag	QUAST	possible_assembly_error	17061	17163	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 14863,scaffold gap is present
-ptg000012l	QUAST	possible_assembly_error	3472	3637	.	.	.	Name=Extensive misassembly;type=translocation

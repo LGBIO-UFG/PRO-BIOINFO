@@ -1,0 +1,30 @@
+# BUSCO version is: 6.0.0 
+# The lineage dataset is: saccharomycetaceae_odb12 (Creation date: 2026-05-22, number of genomes: 34, number of BUSCOs: 3282)
+# Summarized benchmarking in BUSCO notation for file /media/lgbio-nas1/renatadias/curso-nanopore/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
+# BUSCO was run in mode: euk_genome_min
+# Gene predictor used: miniprot
+
+	***** Results: *****
+
+	C:99.6%[S:97.9%,D:1.7%],F:0.0%,M:0.4%,n:3282,E:1.6%	   
+	3269	Complete BUSCOs (C)	(of which 51 contain internal stop codons)		   
+	3212	Complete and single-copy BUSCOs (S)	   
+	57	Complete and duplicated BUSCOs (D)	   
+	1	Fragmented BUSCOs (F)			   
+	12	Missing BUSCOs (M)			   
+	3282	Total BUSCO groups searched		   
+
+Assembly Statistics:
+	86	Number of scaffolds
+	86	Number of contigs
+	13061062	Total length
+	0.000%	Percent gaps
+	709 kbp	Scaffold N50
+	709 kbp	Contigs N50
+
+
+Dependencies and versions:
+	hmmsearch: 3.3
+	bbtools: 39.03
+	miniprot_index: 0.18-r281
+	miniprot_align: 0.18-r281
