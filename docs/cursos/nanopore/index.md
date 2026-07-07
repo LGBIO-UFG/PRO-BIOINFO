@@ -62,13 +62,13 @@ Não conseguiu rodar localmente, ou quer conferir se seus resultados batem com o
 
     NanoPlot (bruto e filtrado), estatísticas Kraken2, GenomeScope2
 
-    [:octicons-arrow-right-24: Ver outputs/qc/](outputs/qc/)
+    [:octicons-arrow-right-24: Ir para a Etapa 2](#etapa-2-controle-de-qualidade-dos-dados-brutos-nanoplot)
 
 -   :material-chart-box: **Avaliação das montagens**
 
     QUAST, Merqury e BUSCO — antes e depois do polimento
 
-    [:octicons-arrow-right-24: Ver outputs/quast, merqury, busco](outputs/)
+    [:octicons-arrow-right-24: Ir para a Etapa 9](#etapa-9-avaliacao-da-qualidade-das-montagens)
 
 -   :material-dna: **Montagens (FASTA)**
 
@@ -80,8 +80,7 @@ Não conseguiu rodar localmente, ou quer conferir se seus resultados batem com o
 
     Checagem de contaminação nas montagens finais
 
-    [:octicons-arrow-right-24: Ver outputs/blobtools/](outputs/blobtools/)
-
+    [:octicons-arrow-right-24: Ir para a Etapa 14](#etapa-14-checagem-de-contaminantes-na-montagem-blobtools)
 </div>
 
 ---
