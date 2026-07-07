@@ -1,4 +1,0 @@
-##gff-version 3
-NC_001224.1_RagTag_2	QUAST	possible_assembly_error	7198	9097	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -1898
-NC_001224.1_RagTag_3	QUAST	possible_assembly_error	514	529	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 2172
-ptg000012l_1	QUAST	possible_assembly_error	3472	3637	.	.	.	Name=Extensive misassembly;type=translocation

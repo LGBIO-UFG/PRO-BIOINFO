@@ -1,4 +1,0 @@
-##gff-version 3
-ptg000012l__ptg000012l_0-8230_1	QUAST	possible_assembly_error	3472	3637	.	.	.	Name=Extensive misassembly;type=translocation
-ptg000010l__ptg000010l_0-4048_1	QUAST	possible_assembly_error	514	529	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is 2172
-ptg000009l__ptg000009l_0-11251_1	QUAST	possible_assembly_error	2155	4054	.	.	.	Name=Extensive misassembly;type=relocation;Note=inconsistency is -1898

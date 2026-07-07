@@ -47,7 +47,7 @@ Utilizamos duas amostras de *Saccharomyces cerevisiae* sequenciadas com PromethI
 | **Scer2** | [ERR13375657](https://www.ebi.ac.uk/ena/browser/view/ERR13375657) | SM.9.1.AL1 | ~108 Mb | 1.865 bp |
 
 !!! warning "Atenção à cobertura"
-    Scer2 tem cobertura muito baixa para montagem de qualidade. Essa amostra foi usada aqui apenas para fins didáticos e comparação entre montadores. Ao longo do tutorial ela serve de contraste: mesma metodologia, dados insuficientes.
+    Scer2 tem cobertura muito baixa para montagem de qualidade — usada aqui apenas para fins didáticos e comparação entre montadores. Ao longo do tutorial ela serve de contraste: mesma metodologia, dados insuficientes.
 
 !!! quote "Referência"
     Loegler V. et al. *From genotype to phenotype with 1,086 near telomere-to-telomere yeast genomes*. **Nature** (2025). DOI: [10.1038/s41586-025-08616-z](https://doi.org/10.1038/s41586-025-08616-z)
@@ -66,7 +66,7 @@ Não conseguiu rodar localmente, ou quer conferir se seus resultados batem com o
 
 -   :material-chart-box: **Avaliação das montagens**
 
-    QUAST, Merqury e BUSCO: antes e depois do polimento
+    QUAST, Merqury e BUSCO — antes e depois do polimento
 
     [:octicons-arrow-right-24: Ver outputs/quast, merqury, busco](outputs/)
 
@@ -1204,7 +1204,7 @@ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip 
 ## :material-numeric-4-circle: Etapa 4 — Remoção de contaminantes com Kraken2 :material-flask-outline: *(opcional)*
 
 !!! note "Nota"
-    Na prática, muitos pipelines realizam a remoção de contaminantes após a montagem usando o **Blobtools**, que permite visualizar e filtrar contigs contaminantes com base em cobertura, composição GC e classificação taxonômica. Ambas as abordagens são válidas e complementares e este tutorial mostra as duas (Kraken2 na Etapa 4, Blobtools na Etapa 14).
+    Na prática, muitos pipelines realizam a remoção de contaminantes após a montagem usando o **Blobtools**, que permite visualizar e filtrar contigs contaminantes com base em cobertura, composição GC e classificação taxonômica. Ambas as abordagens são válidas e complementares — este tutorial mostra as duas (Kraken2 na Etapa 4, Blobtools na Etapa 14).
 
 O Kraken2 classifica as reads contra um banco de dados de referência. As reads **não classificadas** são mantidas como dados limpos. No caso de *S. cerevisiae*, isso é o comportamento esperado, pois fungos não estão no banco minikraken2.
 
@@ -1787,15 +1787,15 @@ conda deactivate
 
 === "Scer1"
 
-    ![GenomeScope2 — Scer1](outputs/genomescope/Scer1_linear_plot.png)
+    ![GenomeScope2 — Scer1](outputs/genomescope/Scer1_Oxford_Nanopore_linear_plot.png)
 
-    [:material-download: Baixar imagem em alta resolução](outputs/genomescope/Scer1_linear_plot.png){ target=_blank }
+    [:material-download: Baixar imagem em alta resolução](outputs/genomescope/Scer1_Oxford_Nanopore_linear_plot.png){ target=_blank }
 
 === "Scer2"
 
-    ![GenomeScope2 — Scer2](outputs/genomescope/Scer2_linear_plot.png)
+    ![GenomeScope2 — Scer2](outputs/genomescope/Scer2_Oxford_Nanopore_linear_plot.png)
 
-    [:material-download: Baixar imagem em alta resolução](outputs/genomescope/Scer2_linear_plot.png){ target=_blank }
+    [:material-download: Baixar imagem em alta resolução](outputs/genomescope/Scer2_Oxford_Nanopore_linear_plot.png){ target=_blank }
 
 
 **Interpretando os resultados:**
@@ -2117,10 +2117,9 @@ quast.py -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -s
 
 Abra os arquivos report.html e icarus.html no seu navegador de internet.
 
-!!! tip "Relatórios pré-computados"
+!!! tip "Relatório pré-computado"
     [:material-file-chart: QUAST report.html](outputs/quast/report.html){ target=_blank } ·
-    [:material-file-chart: QUAST icarus.html (navegador de contigs)](outputs/quast/icarus.html){ target=_blank } ·
-    [:material-file-document: QUAST report.tsv](outputs/quast/report.tsv)
+    [:material-file-chart: QUAST icarus.html (navegador de contigs)](outputs/quast/icarus.html){ target=_blank }
 
 ### 9.2 Qualidade das bases e completude por k-mers (Merqury)
 
@@ -2572,7 +2571,8 @@ python /home/lgbio/busco/scripts/generate_plot.py -wd 8.QC_montagens/BUSCO/summa
     [:material-file-document: Scer1_Flye](outputs/busco/short_summary.specific.saccharomycetaceae_odb12.Scer1_q10_l500_Flye.txt) ·
     [:material-file-document: Scer1_Hifiasm](outputs/busco/short_summary.specific.saccharomycetaceae_odb12.Scer1_q10_l500_hifiasm.txt) ·
     [:material-file-document: Scer1_NextDenovo](outputs/busco/short_summary.specific.saccharomycetaceae_odb12.Scer1_q10_l500_nextdenovo.txt) ·
-    [:material-file-document: Referência](outputs/busco/short_summary.specific.saccharomycetaceae_odb12.Scer_referencia.txt)
+    [:material-file-document: Scer2_Flye](outputs/busco/short_summary.specific.saccharomycetaceae_odb12.Scer2_q10_l500_Flye.txt) ·
+    [:material-file-document: Scer2_Hifiasm](outputs/busco/short_summary.specific.saccharomycetaceae_odb12.Scer2_q10_l500_hifiasm.txt)
 
 !!! tip "Dica"
     Um Complete alto sozinho não garante uma boa montagem. Vale sempre olhar também o Duplicated. Duplicated alto (como encontramos no Hifiasm, 1,7% vs 0,2% do Flye) costuma indicar heterozigosidade retida (haplótipos não colapsados), não necessariamente erro de montagem.
@@ -3191,10 +3191,9 @@ Abra os arquivos report.html e icarus.html no seu navegador de internet.
 
     ```
 
-!!! tip "Relatórios pré-computados"
+!!! tip "Relatório pré-computado"
     [:material-file-chart: QUAST report.html (pós-polimento)](outputs/quast-medaka/report.html){ target=_blank } ·
-    [:material-file-chart: QUAST icarus.html](outputs/quast-medaka/icarus.html){ target=_blank } ·
-    [:material-file-document: QUAST report.tsv](outputs/quast-medaka/report.tsv)
+    [:material-file-chart: QUAST icarus.html](outputs/quast-medaka/icarus.html){ target=_blank }
 
 ### 11.2 Qualidade das bases e completude por k-mers (Merqury)
 
