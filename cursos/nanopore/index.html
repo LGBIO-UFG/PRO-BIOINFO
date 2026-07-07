@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://lgbio-ufg.github.io/PRO-BIOINFO/cursos/nanopore/index.html">
       
       
+        <link rel="prev" href="../filogenia/index.html">
+      
+      
+        <link rel="next" href="../hic_scaffolding/index.html">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Montagem de genomas com dados Nanopore - PRO-BIOINFO</title>
+        <title>Nanopore - PRO-BIOINFO</title>
       
     
     
@@ -111,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Montagem de genomas com dados Nanopore
+              Nanopore
             
           </span>
         </div>
@@ -278,10 +282,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../index.html" class="md-tabs__link">
           
   
@@ -472,6 +478,8 @@
       
   
   
+    
+  
   
   
     
@@ -487,20 +495,27 @@
       
         
       
+        
+      
+        
+      
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -522,13 +537,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,6 +627,842 @@
     
   
     Filogenia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nanopore
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nanopore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de aprendizagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-horaria-estimada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga horária estimada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dados-do-exercicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dados do exercício
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acesso-aos-resultados-pre-computados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acesso aos resultados pré-computados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-1-obtencao-dos-dados-publicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 1 — Obtenção dos dados públicos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-controle-de-qualidade-dos-dados-brutos-nanoplot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 2 — Controle de qualidade dos dados brutos (NanoPlot)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-3-filtragem-dos-dados-brutos-de-sequenciamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 3 — Filtragem dos dados brutos de sequenciamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 3 — Filtragem dos dados brutos de sequenciamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-remocao-de-adaptadores-porechop_abi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Remoção de adaptadores (Porechop_ABI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-filtro-por-qualidade-e-tamanho-chopper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Filtro por qualidade e tamanho (Chopper)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-4-remocao-de-contaminantes-com-kraken2-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 4 — Remoção de contaminantes com Kraken2 (opcional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 4 — Remoção de contaminantes com Kraken2 (opcional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resultados-analise-dos-contaminantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultados — Análise dos contaminantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-5-controle-de-qualidade-dos-dados-filtrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 5 — Controle de qualidade dos dados filtrados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 5 — Controle de qualidade dos dados filtrados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-comparar-as-estatisticas-antes-e-apos-a-filtragem-para-avaliar-o-impacto-do-processamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 - Comparar as estatísticas antes e após a filtragem para avaliar o impacto do processamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-checar-a-qualidade-dos-dados-filtrados-pela-distribuicao-de-k-mers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Checar a qualidade dos dados filtrados pela distribuição de k-mers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contagem-de-k-mers-k31-com-meryl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contagem de k-mers (k=31) com Meryl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rodar-o-genomescope2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rodar o GenomeScope2:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-6-montagem-com-flye" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 6 — Montagem com Flye
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 6 — Montagem com Flye">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comando
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-7-montagem-com-hifiasm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 7 — Montagem com Hifiasm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 7 — Montagem com Hifiasm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converter-o-gfa-para-fasta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converter o GFA para FASTA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 7
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-8-montagem-com-nextdenovo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 8 — Montagem com NextDenovo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 8 — Montagem com NextDenovo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 8
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-9-avaliacao-da-qualidade-das-montagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 9 — Avaliação da qualidade das montagens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 9 — Avaliação da qualidade das montagens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-estatisticas-basicas-quast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Estatísticas básicas (QUAST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-qualidade-das-bases-e-completude-por-k-mers-merqury" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Qualidade das bases e completude por k-mers (Merqury)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-completude-de-genes-conservados-busco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Completude de genes conservados (BUSCO)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 9
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-10-polimento-com-medaka-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 10 — Polimento com Medaka (opcional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 10 — Polimento com Medaka (opcional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 10
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-11-avaliacao-da-qualidade-apos-o-polimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 11 — Avaliação da qualidade após o polimento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 11 — Avaliação da qualidade após o polimento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-estatisticas-basicas-quast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Estatísticas básicas (QUAST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-qualidade-das-bases-e-completude-por-k-mers-merqury" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Qualidade das bases e completude por k-mers (Merqury)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 11
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-12-scaffolding-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 12 — Scaffolding (opcional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 12 — Scaffolding (opcional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-scaffolding-com-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 - Scaffolding com referência
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.1 - Scaffolding com referência">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-scaffolding-sem-a-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Scaffolding sem a referência:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-comparar-os-resultados-dos-scaffoldings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Comparar os resultados dos scaffoldings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-verificar-o-que-houve-para-que-aumentasse-tanto-o-numero-de-scaffolds-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Verificar o que houve para que aumentasse tanto o número de scaffolds (OPCIONAL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 12
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-13-escolha-da-montagem-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 13 — Escolha da montagem final
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 13 — Escolha da montagem final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-comparar-as-estatisticas-das-montagens-sem-scaffolding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Comparar as estatísticas das montagens sem scaffolding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-resumo-de-qc-das-montagens-merqury-busco-quast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Resumo de QC das montagens (Merqury + BUSCO + QUAST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pontos-de-discussao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos de discussão
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 13
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-14-checagem-de-contaminantes-na-montagem-blobtools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 14 — Checagem de contaminantes na montagem (BlobTools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 14 — Checagem de contaminantes na montagem (BlobTools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-rodar-o-blobtools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Rodar o BlobTools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-interpretar-o-blob-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Interpretar o blob plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 14
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-final-qual-versao-escolher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo final — qual versão escolher?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Licença
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reportar-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reportar problemas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hic_scaffolding/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scaffolding Hi-C
   
 
     
@@ -5920,6 +6771,44 @@ Tue Jul  7 09:59:21 2026 --- INFO: Goodbye
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../filogenia/index.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Filogenia">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Filogenia
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../hic_scaffolding/index.html" class="md-footer__link md-footer__link--next" aria-label="Próximo: Scaffolding Hi-C">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Scaffolding Hi-C
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

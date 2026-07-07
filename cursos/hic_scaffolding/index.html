@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://lgbio-ufg.github.io/PRO-BIOINFO/cursos/hic_scaffolding/index.html">
       
       
+        <link rel="prev" href="../nanopore/index.html">
+      
+      
+        <link rel="next" href="../../eventos/index.html">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Scaffolding usando Hi-C - PRO-BIOINFO</title>
+        <title>Scaffolding Hi-C - PRO-BIOINFO</title>
       
     
     
@@ -111,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Scaffolding usando Hi-C
+              Scaffolding Hi-C
             
           </span>
         </div>
@@ -278,10 +282,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../index.html" class="md-tabs__link">
           
   
@@ -472,6 +478,8 @@
       
   
   
+    
+  
   
   
     
@@ -487,20 +495,27 @@
       
         
       
+        
+      
+        
+      
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -522,13 +537,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -620,6 +635,493 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nanopore/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nanopore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scaffolding Hi-C
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scaffolding Hi-C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de aprendizagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-horaria-estimada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga horária estimada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dados-do-exercicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dados do exercício
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-1-obtencao-dos-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 1 — Obtenção dos dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-alinhamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 2 — Alinhamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 — Alinhamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-3-crie-um-index-para-o-genoma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 3 — Crie um index para o genoma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 3 — Crie um index para o genoma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-4-scaffolding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 4 — Scaffolding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 4 — Scaffolding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-5-qualidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 5 — Qualidade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 5 — Qualidade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-6-gerando-o-mapa-de-contato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 6 — Gerando o mapa de contato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 6 — Gerando o mapa de contato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-da-etapa-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist da Etapa 6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-7-plotando-e-editando-o-mapa-de-calor-de-contatos-hi-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 7 — Plotando e editando o mapa de calor de contatos Hi-C
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 7 — Plotando e editando o mapa de calor de contatos Hi-C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-instalando-juicebox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Instalando Juicebox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-carregando-dados-no-juicebox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Carregando dados no Juicebox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-editando-o-mapa-de-contato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Editando o mapa de contato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Editando o mapa de contato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#movendo-scaffolds-e-contigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movendo scaffolds e contigs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invertendo-scaffolds-e-contigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invertendo scaffolds e contigs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cortando-scaffolds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cortando scaffolds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#juntando-scaffolds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Juntando scaffolds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-exportando-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Exportando dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-8-convertendo-para-fasta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 8 — Convertendo para FASTA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 8 — Convertendo para FASTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convertendo-para-fasta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convertendo para FASTA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-9-qualidade-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 9 — Qualidade final
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 9 — Qualidade final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parabens-voce-finalizou-esta-etapa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parabéns! Você finalizou esta etapa!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Licença
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reportar-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reportar problemas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1448,6 +1950,44 @@ Os dados são referentes ao projeto: https://www.ncbi.nlm.nih.gov/geo/query/acc.
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../nanopore/index.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Nanopore">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Nanopore
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../eventos/index.html" class="md-footer__link md-footer__link--next" aria-label="Próximo: Eventos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Eventos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
