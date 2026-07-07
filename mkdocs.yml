@@ -103,6 +103,8 @@ nav:
       - Bash / Linux: cursos/bash/index.md
       - BLAST: cursos/blast/index.md
       - Filogenia: cursos/filogenia/index.md
+      - Nanopore: cursos/nanopore/index.md
+      - Scaffolding Hi-C: cursos/hic_scaffolding/index.md
   - Eventos:
       - eventos/index.md
       - CAFE-BIOINFO 2026: eventos/cafe-bioinfo-2026/index.md
