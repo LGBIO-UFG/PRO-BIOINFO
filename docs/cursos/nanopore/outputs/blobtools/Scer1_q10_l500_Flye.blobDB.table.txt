@@ -1,0 +1,89 @@
+## 1.1.1
+## assembly	: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
+## coverage	 bam0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
+## taxonomy	 tax0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
+## nodesDB	: None
+## taxrule	: bestsum
+## min_score	: 0.0
+## min_diff	: 0.0
+## tax_collision_random	: False
+##
+# name	length	GC	N	bam0	superkingdom.t.6	superkingdom.s.7	superkingdom.c.8	phylum.t.9	phylum.s.10	phylum.c.11	order.t.12	order.s.13	order.c.14	family.t.15	family.s.16	family.c.17	genus.t.18	genus.s.19	genus.c.20	species.t.21	species.s.22	species.c.23
+contig_100	2650	0.1845	0	597.0476	undef	48940.0	0	Ascomycota	48940.0	0	Saccharomycetales	48940.0	0	Saccharomycetaceae	48940.0	0	Saccharomyces	48940.0	0	Saccharomyces cerevisiae	48940.0	0
+contig_101	1583	0.1819	0	42.4437	undef	28784.0	0	Ascomycota	28784.0	0	Saccharomycetales	28784.0	0	Saccharomycetaceae	28784.0	0	Saccharomyces	28784.0	0	Saccharomyces cerevisiae	28784.0	0
+contig_102	3609	0.1804	0	342.3103	undef	65384.0	0	Ascomycota	65384.0	0	Saccharomycetales	65384.0	0	Saccharomycetaceae	65384.0	0	Saccharomyces	65384.0	0	Saccharomyces cerevisiae	65384.0	0
+contig_103	2967	0.154	0	45.2904	undef	46607.0	0	Ascomycota	46607.0	0	Saccharomycetales	46607.0	0	Saccharomycetaceae	46607.0	0	Saccharomyces	46607.0	0	Saccharomyces cerevisiae	28034.0	1
+contig_104	8554	0.1711	0	660.8004	undef	81792.0	0	Ascomycota	81792.0	0	Saccharomycetales	81792.0	0	Saccharomycetaceae	81792.0	0	Saccharomyces	81792.0	0	Saccharomyces cerevisiae	81792.0	0
+contig_105	5780	0.1676	0	165.3647	undef	49906.0	0	Ascomycota	49906.0	0	Saccharomycetales	49906.0	0	Saccharomycetaceae	49906.0	0	Saccharomyces	49906.0	0	Saccharomyces cerevisiae	49906.0	0
+contig_108	577	0.1542	0	101.4191	undef	10610.0	0	Ascomycota	10610.0	0	Saccharomycetales	10610.0	0	Saccharomycetaceae	10610.0	0	Saccharomyces	10610.0	0	Saccharomyces cerevisiae	10610.0	0
+contig_109	1099	0.1647	0	110.439	undef	17075.0	0	Ascomycota	17075.0	0	Saccharomycetales	17075.0	0	Saccharomycetaceae	17075.0	0	Saccharomyces	17075.0	0	Saccharomyces cerevisiae	17075.0	0
+contig_110	493	0.14	0	0.0	no-hit	0.0	0	no-hit	0.0	0	no-hit	0.0	0	no-hit	0.0	0	no-hit	0.0	0	no-hit	0.0	0
+contig_111	704	0.1946	0	67.7301	undef	12806.0	0	Ascomycota	12806.0	0	Saccharomycetales	12806.0	0	Saccharomycetaceae	12806.0	0	Saccharomyces	12806.0	0	Saccharomyces cerevisiae	12806.0	0
+contig_112	8215	0.1463	0	786.7415	undef	63899.0	0	Ascomycota	63899.0	0	Saccharomycetales	63899.0	0	Saccharomycetaceae	63899.0	0	Saccharomyces	63899.0	0	Saccharomyces cerevisiae	63899.0	0
+contig_113	762	0.0682	0	45.509	undef	13717.0	0	Ascomycota	13717.0	0	Saccharomycetales	13717.0	0	Saccharomycetaceae	13717.0	0	Saccharomyces	13717.0	0	Saccharomyces cerevisiae	13717.0	0
+contig_114	876	0.161	0	74.2248	undef	15085.0	0	Ascomycota	15085.0	0	Saccharomycetales	15085.0	0	Saccharomycetaceae	15085.0	0	Saccharomyces	15085.0	0	Saccharomyces cerevisiae x Saccharomyces uvarum	8910.0	1
+contig_116	18412	0.3896	0	8.8286	undef	268222.0	0	Ascomycota	268222.0	0	Saccharomycetales	268222.0	0	Saccharomycetaceae	268222.0	0	Saccharomyces	268222.0	0	Saccharomyces cerevisiae	268222.0	0
+contig_117	9615	0.3936	0	18.484	undef	117660.0	0	Ascomycota	117660.0	0	Saccharomycetales	117660.0	0	Saccharomycetaceae	117660.0	0	Saccharomyces	117660.0	0	Saccharomyces cerevisiae	117660.0	0
+contig_118	423900	0.3903	0	28.0392	undef	2129200.0	0	Ascomycota	2129200.0	0	Saccharomycetales	2129200.0	0	Saccharomycetaceae	2129200.0	0	Saccharomyces	2129200.0	0	Saccharomyces cerevisiae	2129200.0	0
+contig_119	13655	0.3553	0	25.5544	undef	189518.0	0	Ascomycota	189518.0	0	Saccharomycetales	189518.0	0	Saccharomycetaceae	189518.0	0	Saccharomyces	189518.0	0	Saccharomyces cerevisiae	189518.0	0
+contig_120	19336	0.4061	0	14.6837	undef	242708.0	0	Ascomycota	242708.0	0	Saccharomycetales	242708.0	0	Saccharomycetaceae	242708.0	0	Saccharomyces	242708.0	0	Saccharomyces cerevisiae	242708.0	0
+contig_121	64311	0.3932	0	25.1749	undef	537357.0	0	Ascomycota	537357.0	0	Saccharomycetales	537357.0	0	Saccharomycetaceae	537357.0	0	Saccharomyces	537357.0	0	Saccharomyces cerevisiae	537357.0	0
+contig_124	6888	0.3814	0	7.8665	undef	120879.0	0	Ascomycota	120879.0	0	Saccharomycetales	120879.0	0	Saccharomycetaceae	120879.0	0	Saccharomyces	120879.0	0	Saccharomyces cerevisiae	120879.0	0
+contig_125	929	0.1819	0	111.9844	undef	16763.0	0	Ascomycota	16763.0	0	Saccharomycetales	16763.0	0	Saccharomycetaceae	16763.0	0	Saccharomyces	16763.0	0	Saccharomyces cerevisiae	16763.0	0
+contig_126	909	0.2057	0	54.8398	undef	16156.0	0	Ascomycota	16156.0	0	Saccharomycetales	16156.0	0	Saccharomycetaceae	16156.0	0	Saccharomyces	16156.0	0	Saccharomyces cerevisiae	16156.0	0
+contig_127	848	0.1274	0	81.7873	undef	14904.0	0	Ascomycota	14904.0	0	Saccharomycetales	14904.0	0	Saccharomycetaceae	14904.0	0	Saccharomyces	14904.0	0	Saccharomyces cerevisiae	14904.0	0
+contig_128	3950	0.3939	0	175.0353	undef	72272.0	0	Ascomycota	72272.0	0	Saccharomycetales	72272.0	0	Saccharomycetaceae	72272.0	0	Saccharomyces	72272.0	0	Saccharomyces cerevisiae	72272.0	0
+contig_129	2347	0.3826	0	142.2131	undef	43120.0	0	undef	34488.0	1	undef	34488.0	1	undef	34488.0	1	undef	34488.0	1	Saccharomyces cerevisiae	8632.0	8
+contig_130	484	0.1054	0	4.478	undef	8560.0	0	Ascomycota	8560.0	0	Saccharomycetales	8560.0	0	Saccharomycetaceae	8560.0	0	Saccharomyces	8560.0	0	Saccharomyces cerevisiae	8560.0	0
+contig_132	2654	0.3335	0	57.9815	undef	17930.0	0	Ascomycota	17930.0	0	Saccharomycetales	17930.0	0	Saccharomycetaceae	17930.0	0	Saccharomyces	17930.0	0	Saccharomyces cerevisiae	16295.0	1
+contig_133	6629	0.331	0	14.0589	undef	114900.0	0	Ascomycota	114900.0	0	Saccharomycetales	114900.0	0	Saccharomycetaceae	114900.0	0	Saccharomyces	114900.0	0	Saccharomyces cerevisiae	114900.0	0
+contig_140	130704	0.3979	0	29.9475	undef	2366800.0	0	Ascomycota	2366800.0	0	Saccharomycetales	2366800.0	0	Saccharomycetaceae	2366800.0	0	Saccharomyces	2366800.0	0	Saccharomyces cerevisiae	2366800.0	0
+contig_141	11908	0.1821	0	780.2731	undef	50245.0	0	Ascomycota	50245.0	0	Saccharomycetales	50245.0	0	Saccharomycetaceae	50245.0	0	Saccharomyces	50245.0	0	Saccharomyces cerevisiae	50245.0	0
+contig_142	3712	0.1932	0	519.6537	undef	28095.0	0	Ascomycota	28095.0	0	Saccharomycetales	28095.0	0	Saccharomycetaceae	28095.0	0	Saccharomyces	28095.0	0	Saccharomyces cerevisiae	28095.0	0
+contig_143	7410	0.1722	0	723.3323	undef	62750.0	0	Ascomycota	62750.0	0	Saccharomycetales	62750.0	0	Saccharomycetaceae	62750.0	0	Saccharomyces	62750.0	0	Saccharomyces cerevisiae	62750.0	0
+contig_16	25163	0.429	0	41.43	undef	106232.0	0	Ascomycota	106232.0	0	Saccharomycetales	106232.0	0	Saccharomycetaceae	106232.0	0	Saccharomyces	106232.0	0	Saccharomyces cerevisiae	106232.0	0
+contig_18	811676	0.3845	0	27.9333	undef	4510500.0	0	Ascomycota	4510500.0	0	Saccharomycetales	4510500.0	0	Saccharomycetaceae	4510500.0	0	Saccharomyces	4510500.0	0	Saccharomyces cerevisiae	4510500.0	0
+contig_19	26253	0.4063	0	38.554	undef	126877.0	0	Ascomycota	126877.0	0	Saccharomycetales	126877.0	0	Saccharomycetaceae	126877.0	0	Saccharomyces	126877.0	0	Saccharomyces cerevisiae	100727.0	1
+contig_20	912814	0.381	0	26.9444	undef	6609100.0	0	Ascomycota	6609100.0	0	Saccharomycetales	6609100.0	0	Saccharomycetaceae	6609100.0	0	Saccharomyces	6609100.0	0	Saccharomyces cerevisiae	6609100.0	0
+contig_24	257679	0.3903	0	28.5641	undef	1711200.0	0	Ascomycota	1711200.0	0	Saccharomycetales	1711200.0	0	Saccharomycetaceae	1711200.0	0	Saccharomyces	1711200.0	0	Saccharomyces cerevisiae	1711200.0	0
+contig_26	131520	0.3895	0	27.57	undef	1453200.0	0	Ascomycota	1453200.0	0	Saccharomycetales	1453200.0	0	Saccharomycetaceae	1453200.0	0	Saccharomyces	1453200.0	0	Saccharomyces cerevisiae	1453200.0	0
+contig_28	773726	0.3865	0	27.7207	undef	6578700.0	0	Ascomycota	6578700.0	0	Saccharomycetales	6578700.0	0	Saccharomycetaceae	6578700.0	0	Saccharomyces	6578700.0	0	Saccharomyces cerevisiae	6578700.0	0
+contig_29	440389	0.384	0	27.5701	undef	3370600.0	0	Ascomycota	3370600.0	0	Saccharomycetales	3370600.0	0	Saccharomycetaceae	3370600.0	0	Saccharomyces	3370600.0	0	Saccharomyces cerevisiae	3370600.0	0
+contig_30	541827	0.3873	0	27.4847	undef	3359600.0	0	Ascomycota	3359600.0	0	Saccharomycetales	3359600.0	0	Saccharomycetaceae	3359600.0	0	Saccharomyces	3359600.0	0	Saccharomyces cerevisiae	3359600.0	0
+contig_33	3062	0.3772	0	4.9548	undef	45372.0	0	Ascomycota	45372.0	0	Saccharomycetales	45372.0	0	Saccharomycetaceae	45372.0	0	Saccharomyces	45372.0	0	Saccharomyces cerevisiae	45372.0	0
+contig_35	12108	0.3902	0	18.6163	undef	211118.0	0	Ascomycota	211118.0	0	Saccharomycetales	211118.0	0	Saccharomycetaceae	211118.0	0	Saccharomyces	211118.0	0	Saccharomyces cerevisiae	211118.0	0
+contig_36	392213	0.3805	0	27.7957	undef	3627500.0	0	Ascomycota	3627500.0	0	Saccharomycetales	3627500.0	0	Saccharomycetaceae	3627500.0	0	Saccharomyces	3627500.0	0	Saccharomyces cerevisiae	3627500.0	0
+contig_39	16933	0.3982	0	35.839	undef	303184.0	0	Ascomycota	303184.0	0	Saccharomycetales	303184.0	0	Saccharomycetaceae	303184.0	0	Saccharomyces	303184.0	0	Saccharomyces cerevisiae	303184.0	0
+contig_40	1533529	0.3805	0	28.118	undef	4865600.0	0	Ascomycota	4865600.0	0	Saccharomycetales	4865600.0	0	Saccharomycetaceae	4865600.0	0	Saccharomyces	4865600.0	0	Saccharomyces cerevisiae	4865600.0	0
+contig_42	907011	0.3822	0	28.3785	undef	5720600.0	0	Ascomycota	5720600.0	0	Saccharomycetales	5720600.0	0	Saccharomycetaceae	5720600.0	0	Saccharomyces	5720600.0	0	Saccharomyces cerevisiae	5720600.0	0
+contig_47	460687	0.3858	0	109.4251	undef	5876400.0	0	Ascomycota	5876400.0	0	Saccharomycetales	5876400.0	0	Saccharomycetaceae	5876400.0	0	Saccharomyces	5876400.0	0	Saccharomyces cerevisiae	5876400.0	0
+contig_48	564641	0.3814	0	28.0516	undef	3423700.0	0	Ascomycota	3423700.0	0	Saccharomycetales	3423700.0	0	Saccharomycetaceae	3423700.0	0	Saccharomyces	3423700.0	0	Saccharomyces cerevisiae	3423700.0	0
+contig_49	393326	0.3794	0	27.2046	undef	3844500.0	0	Ascomycota	3844500.0	0	Saccharomycetales	3844500.0	0	Saccharomycetaceae	3844500.0	0	Saccharomyces	3844500.0	0	Saccharomyces cerevisiae	3844500.0	0
+contig_50	303007	0.3859	0	29.6843	undef	1791900.0	0	Ascomycota	1791900.0	0	Saccharomycetales	1791900.0	0	Saccharomycetaceae	1791900.0	0	Saccharomyces	1791900.0	0	Saccharomyces cerevisiae	1791900.0	0
+contig_51	57133	0.3857	0	17.033	undef	302097.0	0	Ascomycota	302097.0	0	Saccharomycetales	302097.0	0	Saccharomycetaceae	302097.0	0	Saccharomyces	302097.0	0	Saccharomyces cerevisiae	302097.0	0
+contig_52	18411	0.378	0	38.6125	undef	249722.0	0	Ascomycota	249722.0	0	Saccharomycetales	249722.0	0	Saccharomycetaceae	249722.0	0	Saccharomyces	249722.0	0	Saccharomyces cerevisiae	249722.0	0
+contig_53	650376	0.3814	0	28.436	undef	5275400.0	0	Ascomycota	5275400.0	0	Saccharomycetales	5275400.0	0	Saccharomycetaceae	5275400.0	0	Saccharomyces	5275400.0	0	Saccharomyces cerevisiae	5275400.0	0
+contig_58	509	0.3576	0	0.0	undef	9410.0	0	Ascomycota	9410.0	0	Saccharomycetales	9410.0	0	Saccharomycetaceae	9410.0	0	Saccharomyces	9410.0	0	Saccharomyces cerevisiae	9410.0	0
+contig_59	509	0.3399	0	0.0	undef	8536.0	0	Ascomycota	8536.0	0	Saccharomycetales	8536.0	0	Saccharomycetaceae	8536.0	0	Saccharomyces	8536.0	0	Saccharomyces cerevisiae	8536.0	0
+contig_61	751036	0.3851	0	27.2105	undef	3477000.0	0	Ascomycota	3477000.0	0	Saccharomycetales	3477000.0	0	Saccharomycetaceae	3477000.0	0	Saccharomyces	3477000.0	0	Saccharomyces cerevisiae	3477000.0	0
+contig_62	641115	0.384	0	27.3526	undef	5611400.0	0	Ascomycota	5611400.0	0	Saccharomycetales	5611400.0	0	Saccharomycetaceae	5611400.0	0	Saccharomyces	5611400.0	0	Saccharomyces cerevisiae	5611400.0	0
+contig_64	684380	0.3815	0	27.8276	undef	3740000.0	0	Ascomycota	3740000.0	0	Saccharomycetales	3740000.0	0	Saccharomycetaceae	3740000.0	0	Saccharomyces	3740000.0	0	Saccharomyces cerevisiae	3740000.0	0
+contig_66	5426	0.4071	0	39.5446	undef	99664.0	0	Ascomycota	99664.0	0	Saccharomycetales	99664.0	0	Saccharomycetaceae	99664.0	0	Saccharomyces	99664.0	0	Saccharomyces cerevisiae	99664.0	0
+contig_7	8506	0.3895	0	8.6633	undef	147922.0	0	Ascomycota	147922.0	0	Saccharomycetales	147922.0	0	Saccharomycetaceae	147922.0	0	Saccharomyces	147922.0	0	Saccharomyces cerevisiae	104535.0	1
+contig_71	5200	0.374	0	29.5929	undef	63321.0	0	Ascomycota	63321.0	0	Saccharomycetales	63321.0	0	Saccharomycetaceae	63321.0	0	Saccharomyces	63321.0	0	Saccharomyces cerevisiae	63321.0	0
+contig_76	10857	0.388	0	22.558	undef	119761.0	0	Ascomycota	119761.0	0	Saccharomycetales	119761.0	0	Saccharomycetaceae	119761.0	0	Saccharomyces	119761.0	0	Saccharomyces cerevisiae	119761.0	0
+contig_77	1644	0.3771	0	7.9101	undef	28590.0	0	Ascomycota	28590.0	0	Saccharomycetales	28590.0	0	Saccharomycetaceae	28590.0	0	Saccharomyces	28590.0	0	Saccharomyces cerevisiae	28590.0	0
+contig_79	1184	0.174	0	45.7636	undef	20582.0	0	Ascomycota	20582.0	0	Saccharomycetales	20582.0	0	Saccharomycetaceae	20582.0	0	Saccharomyces	20582.0	0	Saccharomyces cerevisiae	20582.0	0
+contig_80	2616	0.1927	0	867.4429	undef	37914.0	0	Ascomycota	37914.0	0	Saccharomycetales	37914.0	0	Saccharomycetaceae	37914.0	0	Saccharomyces	37914.0	0	Saccharomyces cerevisiae	37914.0	0
+contig_81	53235	0.1531	0	688.3372	undef	123953.0	0	Ascomycota	123953.0	0	Saccharomycetales	123953.0	0	Saccharomycetaceae	123953.0	0	Saccharomyces	123953.0	0	Saccharomyces cerevisiae	123953.0	0
+contig_82	23494	0.1773	0	876.6692	undef	92905.0	0	Ascomycota	92905.0	0	Saccharomycetales	92905.0	0	Saccharomycetaceae	92905.0	0	Saccharomyces	92905.0	0	Saccharomyces cerevisiae	92905.0	0
+contig_83	996	0.1687	0	110.9795	undef	13112.0	0	Ascomycota	13112.0	0	Saccharomycetales	13112.0	0	Saccharomycetaceae	13112.0	0	Saccharomyces	13112.0	0	Saccharomyces cerevisiae	13112.0	0
+contig_84	1199	0.1576	0	18.0764	undef	16523.0	0	Ascomycota	16523.0	0	Saccharomycetales	16523.0	0	Saccharomycetaceae	16523.0	0	Saccharomyces	16523.0	0	Saccharomyces cerevisiae	16523.0	0
+contig_85	1190	0.205	0	80.1379	undef	15387.0	0	Ascomycota	15387.0	0	Saccharomycetales	15387.0	0	Saccharomycetaceae	15387.0	0	Saccharomyces	15387.0	0	Saccharomyces cerevisiae	15387.0	0
+contig_87	5138	0.13	0	145.9533	undef	52546.0	0	Ascomycota	52546.0	0	Saccharomycetales	52546.0	0	Saccharomycetaceae	52546.0	0	Saccharomyces	52546.0	0	Saccharomyces cerevisiae	52546.0	0
+contig_88	2361	0.1817	0	874.8405	undef	41731.0	0	Ascomycota	41731.0	0	Saccharomycetales	41731.0	0	Saccharomycetaceae	41731.0	0	Saccharomyces	41731.0	0	Saccharomyces cerevisiae x Saccharomyces uvarum	28868.0	1
+contig_89	5604	0.1281	0	306.6952	undef	63769.0	0	Ascomycota	63769.0	0	Saccharomycetales	63769.0	0	Saccharomycetaceae	63769.0	0	Saccharomyces	63769.0	0	Saccharomyces cerevisiae	63769.0	0
+contig_94	1900	0.1332	0	18.2515	undef	30385.0	0	Ascomycota	30385.0	0	Saccharomycetales	30385.0	0	Saccharomycetaceae	30385.0	0	Saccharomyces	30385.0	0	Saccharomyces cerevisiae	30385.0	0
+contig_97	26372	0.1559	0	233.65	undef	115871.0	0	Ascomycota	115871.0	0	Saccharomycetales	115871.0	0	Saccharomycetaceae	115871.0	0	Saccharomyces	115871.0	0	Saccharomyces cerevisiae	115871.0	0
+contig_98	9492	0.1853	0	374.4709	undef	122652.0	0	Ascomycota	122652.0	0	Saccharomycetales	122652.0	0	Saccharomycetaceae	122652.0	0	Saccharomyces	122652.0	0	Saccharomyces cerevisiae	122652.0	0
+contig_99	25533	0.1843	0	700.8941	undef	159393.0	0	Ascomycota	159393.0	0	Saccharomycetales	159393.0	0	Saccharomycetaceae	159393.0	0	Saccharomyces	159393.0	0	Saccharomyces cerevisiae	159393.0	0
