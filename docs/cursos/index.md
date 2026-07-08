@@ -60,7 +60,7 @@ Tutoriais reutilizáveis sobre tópicos centrais de bioinformática. Cada curso 
 
     ---
 
-    Scaffolding de montagens contig-level em cromossomos usando dados de captura de conformação da cromatina (Hi-C), com [ferramentas usadas].
+    Scaffolding de montagens contig-level em cromossomos usando dados de captura de conformação da cromatina (Hi-C), com YaHS e Juicebox.
 
     **Carga horária:** ~3h
     **Pré-requisitos:** Montagem de genomas com Nanopore (ou outra montagem contig-level prévia)
