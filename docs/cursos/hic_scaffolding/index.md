@@ -230,7 +230,7 @@ Transfira o arquivo .assembly para o servidor.
 
 ```
 
-??? note O arquivo final é:
+??? note "O arquivo final é:"
 
     2.Scaffolding/sacCer3_draf.JB.out.FINAL.fa"
 
