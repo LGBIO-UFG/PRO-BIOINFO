@@ -157,6 +157,7 @@ mv 0.DadosBrutos/ERR13375657.fastq.gz 0.DadosBrutos/Scer2.fastq.gz
 ??? note "Ver saída do comando"
 
     ```bash
+    #### Scer1
     $ wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/046/ERR13367646/ERR13367646.fastq.gz
     --2026-07-07 23:37:28--  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/046/ERR13367646/ERR13367646.fastq.gz
            => '0.DadosBrutos/ERR13367646.fastq.gz'
@@ -174,7 +175,9 @@ mv 0.DadosBrutos/ERR13375657.fastq.gz 0.DadosBrutos/Scer2.fastq.gz
 
     2026-07-08 00:08:45 (496 KB/s) - '0.DadosBrutos/ERR13367646.fastq.gz' saved [952022096]
 
-    grupo_1@lgbio-ProLiant-DL580-Gen10:~$ wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
+    #### Scer2
+
+    $ wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
     --2026-07-08 00:08:45--  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
            => '0.DadosBrutos/ERR13375657.fastq.gz'
     Resolving ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)... 193.62.193.165
@@ -1317,7 +1320,7 @@ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip 
 ## :material-numeric-4-circle: Etapa 4 — Remoção de contaminantes com Kraken2 :material-flask-outline: *(opcional)*
 
 !!! note "Nota"
-    Na prática, muitos pipelines realizam a remoção de contaminantes após a montagem usando o **Blobtools**, que permite visualizar e filtrar contigs contaminantes com base em cobertura, composição GC e classificação taxonômica. Ambas as abordagens são válidas e complementares — este tutorial mostra as duas (Kraken2 na Etapa 4, Blobtools na Etapa 14).
+    Na prática, grande parte dos pipelines atuais realizam a remoção de contaminantes somente após a montagem usando o **Blobtools**, que permite visualizar e filtrar contigs contaminantes com base em cobertura, composição GC e classificação taxonômica. Ambas as abordagens são válidas e complementares e este tutorial mostra as duas (Kraken2 na Etapa 4, Blobtools na Etapa 14).
 
 O Kraken2 classifica as reads contra um banco de dados de referência. As reads **não classificadas** são mantidas como dados limpos. No caso de *S. cerevisiae*, isso é o comportamento esperado, pois fungos não estão no banco minikraken2.
 
@@ -1852,7 +1855,7 @@ meryl k=31 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer2_q10_l500.fas
     ```
 
 
-** Gerar histograma (para uso posterior no GenomeScope):**
+### Gerar histograma (para uso posterior no GenomeScope2):
 
 ```bash
 meryl histogram 4.QC_dadosfiltrados/Scer1_q10_l500.meryl | sed 's/\t/ /g' > 4.QC_dadosfiltrados/Scer1_q10_l500.hist
@@ -1914,7 +1917,7 @@ conda deactivate
 
 
 **Interpretando os resultados:**
-*Scer1:* genoma estimado ~17,2 Mb, heterozigosidade ~0,46%, cobertura ~12,7x, com bom ajuste do modelo (model fit 0,761). Tamanho acima do esperado para *S. cerevisiae* (~12 Mb), possivelmente refletindo contaminação dos reads, conteúdo repetitivo/duplicado capturado pelos k-mers.
+*Scer1:* genoma estimado ~17,2 Mb, heterozigosidade ~0,46%, cobertura ~12,7x, com bom ajuste do modelo (model fit 0,761). Tamanho acima do esperado para *S. cerevisiae* (~12 Mb), possivelmente refletindo contaminação dos reads ou conteúdo repetitivo/duplicado capturado pelos k-mers.
 *Scer2:* resultado de baixíssima confiança (genoma estimado de apenas ~93 kb, model fit 8,28), muito distante do tamanho real de *S. cerevisiae*, indicando dados insuficientes ou distribuição de k-mers enviesada demais para uma estimativa confiável.
 
 ## :material-numeric-6-circle: Etapa 6 — Montagem com Flye
@@ -2005,8 +2008,8 @@ conda deactivate
     	Mean coverage:	58
 
     [2026-07-07 22:35:20] INFO: Final assembly: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
-    (flye_env) grupo_1@lgbio-ProLiant-DL580-Gen10:~$ 
-    (flye_env) grupo_1@lgbio-ProLiant-DL580-Gen10:~$ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz  -o 5.Montagem-Flye/Scer2_q10_l500 -t 24
+    
+    $ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz  -o 5.Montagem-Flye/Scer2_q10_l500 -t 24
     [2026-07-07 22:35:20] INFO: Starting Flye 2.9.6-b1802
     [2026-07-07 22:35:20] INFO: >>>STAGE: configure
     [2026-07-07 22:35:20] INFO: Configuring run
@@ -2075,7 +2078,7 @@ conda deactivate
     [2026-07-07 22:36:52] INFO: Final assembly: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
 
 
-    ````
+    ```
 
 !!! tip "FASTAs disponíveis no repositório"
     [:material-dna: Scer1_Flye_assembly.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_assembly.fasta) ·
@@ -2148,7 +2151,7 @@ read_type = ont
 genome_size = 12m
 ```
 
-*** Comando para rodar: ***
+**Comando para rodar:**
 ```bash
 nextDenovo 7.Montagem-NextDenovo/Scer1_q10_l500/run.cfg
 ```
@@ -2443,7 +2446,8 @@ nextDenovo 7.Montagem-NextDenovo/Scer1_q10_l500/run.cfg
     ```
 
 
-** Configuração: **
+**Configuração:**
+
 ```bash
 mkdir 7.Montagem-NextDenovo/Scer2_q10_l500
 realpath 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz > 7.Montagem-NextDenovo/Scer2_q10_l500/input.fofn
@@ -2452,10 +2456,12 @@ nano 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg
 ```
 Edite o arquivo run.cfg alterando os seguintes parâmetros
 
+```
 read_type = ont
 genome_size = 12m
+```
 
-*** Comando para rodar: ***
+**Comando para rodar:**
 ```bash
 nextDenovo 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg
 ```
@@ -2555,7 +2561,7 @@ Utilizamos três ferramentas complementares:
 | BUSCO | Completude de genes conservados |
 
 
-* Fazer download do genoma de referência: *
+**Fazer download do genoma de referência:**
   
 ```bash
 datasets download genome accession GCF_000146045.2 --include genome --filename Scer_reference.zip
@@ -2716,12 +2722,13 @@ quast.py -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -s
     Thank you for using QUAST!
 
 
-    ````
+    ```
 
 ### Imprimir os resultados de estatística do quast na tela
+
 ```bash
 cat 8.QC_montagens/quast_q10_l500/report.tsv 
-````
+```
 
 ??? note "Ver saída do comando"
 
@@ -2898,7 +2905,8 @@ cd ../../..
 
 
 
-** Juntar os resultados do Merqury em um arquivo: **
+**Juntar os resultados do Merqury em um arquivo:**
+
 ```bash
 cd 8.QC_montagens/merqury
 
@@ -2930,7 +2938,8 @@ cd ../..
     ```
 
 !!! tip "Resultado pré-computado"
-    [:material-file-document: merqury_summary.tsv](outputs/merqury/merqury_summary.tsv)
+    [:material-file-document: merqury_summary.tsv](outputs/merqury/merqury_summary.tsv) ·
+    [:material-file-chart: QUAST icarus.html (navegador de contigs)](outputs/quast/icarus.html){ target=_blank }
 
 ### 9.3 Completude de genes conservados (BUSCO)
 
@@ -3160,9 +3169,7 @@ medaka tools list_models
     Available: r103_fast_g507, r103_fast_snp_g507, r103_fast_variant_g507, r103_hac_g507, r103_hac_snp_g507, r103_hac_variant_g507, r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r103_sup_g507, r103_sup_snp_g507, r103_sup_variant_g507, r1041_e82_400bps_fast_g615, r1041_e82_400bps_fast_variant_g615, r1041_e82_400bps_hac_g615, r1041_e82_400bps_hac_variant_g615, r1041_e82_400bps_sup_g615, r1041_e82_400bps_sup_variant_g615, r104_e81_fast_g5015, r104_e81_fast_variant_g5015, r104_e81_hac_g5015, r104_e81_hac_variant_g5015, r104_e81_sup_g5015, r104_e81_sup_g610, r104_e81_sup_variant_g610, r10_min_high_g303, r10_min_high_g340, r941_e81_fast_g514, r941_e81_fast_variant_g514, r941_e81_hac_g514, r941_e81_hac_variant_g514, r941_e81_sup_g514, r941_e81_sup_variant_g514, r941_min_fast_g303, r941_min_fast_g507, r941_min_fast_snp_g507, r941_min_fast_variant_g507, r941_min_hac_g507, r941_min_hac_snp_g507, r941_min_hac_variant_g507, r941_min_high_g303, r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360, r941_min_sup_g507, r941_min_sup_snp_g507, r941_min_sup_variant_g507, r941_prom_fast_g303, r941_prom_fast_g507, r941_prom_fast_snp_g507, r941_prom_fast_variant_g507, r941_prom_hac_g507, r941_prom_hac_snp_g507, r941_prom_hac_variant_g507, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g360, r941_prom_high_g4011, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360, r941_prom_sup_g507, r941_prom_sup_snp_g507, r941_prom_sup_variant_g507, r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360, r941_sup_plant_g610, r941_sup_plant_variant_g610
     Default consensus:  r941_min_hac_g507
     Default variant:  r941_min_hac_variant_g507
-
-
-    ````
+    ```
 
 Para o nosso caso, o modelo mais aproximado será: -m r941_prom_hac_g507
 
@@ -4768,7 +4775,8 @@ for sample in Scer2_q10_l500_Flye_medaka Scer2_q10_l500_hifiasm_medaka; do
 done
 ```
 
-** Juntar os resultados do Merqury em um arquivo: **
+**Juntar os resultados do Merqury em um arquivo:**
+
 ```bash
 cd 8.QC_montagens/merqury
 
@@ -4806,18 +4814,17 @@ cd ../..
     Scer2_q10_l500_Flye_medaka	24.6501	0.00342757	95.8207
     Scer2_q10_l500_hifiasm	37.4762	0.000178805	79.6565
     Scer2_q10_l500_hifiasm_medaka	34.1083	0.0003883	79.5304
-
-
     ```
 
 !!! tip "Resultado pré-computado"
-    [:material-file-document: merqury_summary.tsv (pós-polimento)](outputs/merqury/merqury_summary_medaka.tsv)
+    [:material-file-document: merqury_summary.tsv (pós-polimento)](outputs/merqury/merqury_summary_medaka.tsv) ·
+    [:material-file-chart: QUAST icarus.html (pós-polimento)](outputs/quast-medaka/icarus.html){ target=_blank }
 
 ### Checklist da Etapa 11
 
 - [ ] QUAST mostra o impacto do polimento na contiguidade
 - [ ] Merqury mostra QV antes/depois (positivo ou negativo) para cada montagem
-- [ ] **Decidi se vou seguir com a versão polida ou a não-polida** para cada amostra
+- [ ] Decidi se vou seguir com a versão polida ou a não-polida para cada amostra
 
 **A partir daqui, vamos seguir sem o polimento, uma vez que na vasta maioria dos casos, ele diminuiu a qualidade das montagens.**
 
@@ -4842,6 +4849,7 @@ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic
 
 ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
 ```
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -4934,11 +4942,11 @@ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic
     Tue Jul  7 22:57:59 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
     Tue Jul  7 22:57:59 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
     Tue Jul  7 22:57:59 2026 --- INFO: Goodbye
-
     ```
 
 
 **Analisar os resultados**
+
 ```bash
 for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
   echo "=== $prefix ==="
@@ -5689,7 +5697,6 @@ done
     ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-
     ```
 
 !!! info "Como o LongStitch funciona"
@@ -5764,7 +5771,6 @@ blastn -query ${CONTIG}.fa \
 grep -w "${CONTIG}" ~/10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
 
 cd ../..
-
 ```
 
 ??? note "Ver saída do comando"
@@ -5826,8 +5832,7 @@ cd ../..
 
     $ # 4) o que o RagTag decidiu fazer com esse mesmo contig?
     $ grep -w "${CONTIG}" ~/10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
-    NC_001147.6_RagTag	1	18412	1	W	contig_116	1	18412	+
-    
+    NC_001147.6_RagTag	1	18412	1	W	contig_116	1	18412	+  
     ```
 
 ### Checklist da Etapa 12
