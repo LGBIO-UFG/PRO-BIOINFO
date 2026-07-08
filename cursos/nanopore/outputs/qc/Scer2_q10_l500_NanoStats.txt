@@ -1,12 +1,12 @@
 General summary:         
-Mean read length:               2,399.8
+Mean read length:               2,399.7
 Mean read quality:                 13.3
 Median read length:             1,585.0
 Median read quality:               13.7
 Number of reads:               33,007.0
 Read length N50:                3,484.0
 STDEV read length:              2,413.2
-Total bases:               79,209,559.0
+Total bases:               79,206,644.0
 Number, percentage and megabases of reads above quality cutoffs
 >Q10:	33007 (100.0%) 79.2Mb
 >Q15:	10502 (31.8%) 25.9Mb

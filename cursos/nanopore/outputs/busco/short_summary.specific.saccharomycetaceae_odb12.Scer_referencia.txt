@@ -1,6 +1,6 @@
 # BUSCO version is: 6.0.0 
 # The lineage dataset is: saccharomycetaceae_odb12 (Creation date: 2026-05-22, number of genomes: 34, number of BUSCOs: 3282)
-# Summarized benchmarking in BUSCO notation for file /media/lgbio-nas1/renatadias/curso-nanopore/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna
+# Summarized benchmarking in BUSCO notation for file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna
 # BUSCO was run in mode: euk_genome_min
 # Gene predictor used: miniprot
 
