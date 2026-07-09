@@ -3,10 +3,10 @@
 !!! abstract "Resumo"
     Tutorial prático de scaffolding de genomas a partir de dados de Hi-C. Neste tutorial, cobrimos todo o pipeline: alinhamento, scaffolding, construção do mapa de contato, edição do mapa de contato, exportação e avaliação.
 
-**Autor:** Dr. Leonardo C. J. Corvalan
-**Instituição:** Laboratório de Genética & Biodiversidade (LGBio) — ICB/UFG
-**Contato:** [lcjocorvalan@gmail.com](mailto:lcjcorvalan@gmail.com)
-**Última atualização:** Julho de 2026
+   **Autor:** Dr. Leonardo C. J. Corvalan
+   **Instituição:** Laboratório de Genética & Biodiversidade (LGBio) — ICB/UFG
+   **Contato:** [lcjocorvalan@gmail.com](mailto:lcjcorvalan@gmail.com)
+   **Última atualização:** Julho de 2026
 
 ## :material-target: Objetivos de aprendizagem
 
@@ -31,7 +31,7 @@ Ao final deste curso, você será capaz de:
 | Recurso             | Servidor Linux com ≥ 32 GB de RAM, ≥ 16 threads e ≥ 50 GB de armazenamento.                 |
 
 !!! warning "Programas instalados no computador pessoal"
-    Para a etapa de visualização dos dados, será necessário instalar localmente o programa Juicebox. Mais instruções estão descritas na Etapa 7.. 
+    Para a etapa de visualização dos dados, será necessário instalar localmente o programa Juicebox. Mais instruções estão descritas na Etapa 7. 
 
 !!! warning "Compatibilidade com outros servidores"
     Este pipeline foi desenvolvido e testado no servidor de Bioinformática do LGBio (ICB/UFG).
