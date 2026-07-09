@@ -141,6 +141,7 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
 
 - [ ] Compare as estatísticas geradas pelo Quast.
 
+
 !!! tip "Resultados pré-computados"
     [:material-file-document: sacCer3_yahs_quast](report1.html)
     
@@ -231,6 +232,7 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
 !!! tip "Resultados pré-computados"
     [:material-file-document: sacCer3_draf.JB.review.assembly](sacCer3_draf.JB.review.assembly)
     
+
 ## :material-numeric-8-circle: Etapa 8 — Convertendo para FASTA
 
 Transfira o arquivo .assembly para o servidor.
@@ -260,9 +262,10 @@ Transfira o arquivo .assembly para o servidor.
       --labels "sacCer3_draft,sacCer3_yahs,sacCer3_JB"
   
 ```
+
 !!! tip "Resultados pré-computados"
     [:material-file-document: sacCer3_JB_quast](report2.html)
-    
+
 
 #### Parabéns! Você finalizou esta etapa!
 Que a Força esteja com você! 🚀
