@@ -74,7 +74,7 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
 
     cp /media/lgbio-nas1/lcorvalan/Hic-data/Mfa/Ragtag/arima_map.sh .
 
-    bash arima_map.sh 0.DadosBrutos/sacCer3_draft.fasta 0.DadosBrutos/SRR23913693_1.fastq  0.DadosBrutos/SRR23913693_2.fastq  sacCer3_draft_alin
+    bash arima_map.sh 0.DadosBrutos/sacCer3_draft.fasta 0.DadosBrutos/sacCer3_hic20_1.fastq  0.DadosBrutos/sacCer3_hic20_2.fastq  sacCer3_draft_alin
 
     mv sacCer3_draft_alin* 1.Alinhamento/
 
