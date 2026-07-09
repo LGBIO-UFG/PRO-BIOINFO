@@ -84,6 +84,8 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
 
 - [ ] Examine `sacCer3_draft_alin.Hic.bam` e `sacCer3_draft_alin.Hic.bam.stats`
 
+!!! tip "Resultados pré-computados"
+    [:material-file-document: sacCer3_draft_alin.Hic.bam.stats](sacCer3_draft_alin.Hic.bam.stats)
 ---
 
 ## :material-numeric-3-circle: Etapa 3 — Crie um index para o genoma
