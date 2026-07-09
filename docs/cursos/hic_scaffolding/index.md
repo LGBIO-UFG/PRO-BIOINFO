@@ -120,7 +120,8 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
 ### Checklist da Etapa 4
 
 - [ ] Tenho `2.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.fa`
-
+      
+   
 ---
 
 ## :material-numeric-5-circle: Etapa 5 — Qualidade
@@ -135,11 +136,14 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
       --labels "sacCer3_draft,sacCer3_yahs"
   
 ```
-
+ 
 ### Checklist da Etapa 5
 
 - [ ] Compare as estatísticas geradas pelo Quast.
 
+!!! tip "Resultados pré-computados"
+    [:material-file-document: sacCer3_yahs_quast](report1.html)
+    
 ---
 
 ## :material-numeric-6-circle: Etapa 6 — Gerando o mapa de contato
@@ -159,6 +163,10 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
 ```
 
 ??? note "Na primeira parte do script, você deve informar o arquivo de índice (.fai)"
+
+!!! tip "Resultados pré-computados"
+    [:material-file-chart: sacCer3_draf.JB.assembly)](sacCer3_draf.JB.assembly){ target=_blank } ·
+    [:material-file-chart: sacCer3_draf.JB.hic](sacCer3_draf.JB.hic){ target=_blank }
 
 ### Checklist da Etapa 6
 
@@ -220,6 +228,9 @@ Os dados estão disponíveis no ENA e no SRA. Mostramos duas opções: via **SRA
  ![Juicebox_exportando_dados](figuras/Juicebox_exportando_dados.png)   
 
 
+!!! tip "Resultados pré-computados"
+    [:material-file-document: sacCer3_draf.JB.review.assembly](sacCer3_draf.JB.review.assembly)
+    
 ## :material-numeric-8-circle: Etapa 8 — Convertendo para FASTA
 
 Transfira o arquivo .assembly para o servidor.
@@ -249,6 +260,9 @@ Transfira o arquivo .assembly para o servidor.
       --labels "sacCer3_draft,sacCer3_yahs,sacCer3_JB"
   
 ```
+!!! tip "Resultados pré-computados"
+    [:material-file-document: sacCer3_JB_quast](report2.html)
+    
 
 #### Parabéns! Você finalizou esta etapa!
 Que a Força esteja com você! 🚀
