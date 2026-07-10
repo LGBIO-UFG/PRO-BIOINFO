@@ -241,6 +241,8 @@ Transfira o arquivo .assembly para o servidor.
 
 ```bash
 
+wget https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/refs/heads/main/docs/cursos/hic_scaffolding/sacCer3_draf.JB.review.assembly
+
 /media/lgbio-nas1/lcorvalan/programas/YaHS/yahs/juicer post -o 2.Scaffolding/sacCer3_draf.JB.out 2.Scaffolding/sacCer3_draf.JB.review.assembly 2.Scaffolding/sacCer3_draf.JB.liftover.agp 0.DadosBrutos/sacCer3_draft.fasta
 
 ```
