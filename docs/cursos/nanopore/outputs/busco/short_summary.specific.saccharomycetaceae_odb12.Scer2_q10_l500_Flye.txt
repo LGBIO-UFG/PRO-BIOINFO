@@ -1,23 +1,23 @@
 # BUSCO version is: 6.0.0 
 # The lineage dataset is: saccharomycetaceae_odb12 (Creation date: 2026-05-22, number of genomes: 34, number of BUSCOs: 3282)
-# Summarized benchmarking in BUSCO notation for file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
+# Summarized benchmarking in BUSCO notation for file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
 # BUSCO was run in mode: euk_genome_min
 # Gene predictor used: miniprot
 
 	***** Results: *****
 
-	C:66.7%[S:66.4%,D:0.3%],F:3.1%,M:30.2%,n:3282,E:1.4%	   
+	C:66.7%[S:66.6%,D:0.1%],F:3.0%,M:30.2%,n:3282,E:1.4%	   
 	2190	Complete BUSCOs (C)	(of which 30 contain internal stop codons)		   
-	2179	Complete and single-copy BUSCOs (S)	   
-	11	Complete and duplicated BUSCOs (D)	   
-	101	Fragmented BUSCOs (F)			   
-	991	Missing BUSCOs (M)			   
+	2186	Complete and single-copy BUSCOs (S)	   
+	4	Complete and duplicated BUSCOs (D)	   
+	100	Fragmented BUSCOs (F)			   
+	992	Missing BUSCOs (M)			   
 	3282	Total BUSCO groups searched		   
 
 Assembly Statistics:
-	740	Number of scaffolds
-	740	Number of contigs
-	8352850	Total length
+	715	Number of scaffolds
+	715	Number of contigs
+	8359888	Total length
 	0.000%	Percent gaps
 	16 kbp	Scaffold N50
 	16 kbp	Contigs N50

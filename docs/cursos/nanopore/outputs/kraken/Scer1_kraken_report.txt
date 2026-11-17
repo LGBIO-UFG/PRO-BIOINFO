@@ -1,46 +1,46 @@
- 65.97	152028	152028	U	0	unclassified
- 34.03	78405	95	R	1	root
+ 65.98	152032	152032	U	0	unclassified
+ 34.02	78405	95	R	1	root
  32.89	75788	644	R1	131567	  cellular organisms
- 23.54	54238	0	D	2759	    Eukaryota
- 23.54	54238	0	D1	33154	      Opisthokonta
- 23.54	54238	0	K	33208	        Metazoa
- 23.54	54238	0	K1	6072	          Eumetazoa
- 23.54	54238	0	K2	33213	            Bilateria
- 23.54	54238	0	K3	33511	              Deuterostomia
- 23.54	54238	0	P	7711	                Chordata
- 23.54	54238	0	P1	89593	                  Craniata
- 23.54	54238	0	P2	7742	                    Vertebrata
- 23.54	54238	0	P3	7776	                      Gnathostomata
- 23.54	54238	0	P4	117570	                        Teleostomi
- 23.54	54238	0	P5	117571	                          Euteleostomi
- 23.54	54238	0	P6	8287	                            Sarcopterygii
- 23.54	54238	0	P7	1338369	                              Dipnotetrapodomorpha
- 23.54	54238	0	P8	32523	                                Tetrapoda
- 23.54	54238	0	P9	32524	                                  Amniota
- 23.54	54238	0	C	40674	                                    Mammalia
- 23.54	54238	0	C1	32525	                                      Theria
- 23.54	54238	0	C2	9347	                                        Eutheria
- 23.54	54238	0	C3	1437010	                                          Boreoeutheria
- 23.54	54238	0	C4	314146	                                            Euarchontoglires
- 23.54	54238	0	O	9443	                                              Primates
- 23.54	54238	0	O1	376913	                                                Haplorrhini
- 23.54	54238	0	O2	314293	                                                  Simiiformes
- 23.54	54238	0	O3	9526	                                                    Catarrhini
- 23.54	54238	0	O4	314295	                                                      Hominoidea
- 23.54	54238	0	F	9604	                                                        Hominidae
- 23.54	54238	0	F1	207598	                                                          Homininae
- 23.54	54238	0	G	9605	                                                            Homo
- 23.54	54238	54238	S	9606	                                                              Homo sapiens
-  9.05	20858	166	D	2	    Bacteria
-  8.33	19200	28	D1	1783272	      Terrabacteria group
-  8.14	18761	9	P	1239	        Firmicutes
-  8.08	18623	2	C	91061	          Bacilli
-  7.95	18310	0	O	1385	            Bacillales
-  7.90	18205	2	F	186817	              Bacillaceae
-  7.86	18114	2	G	1386	                Bacillus
-  7.84	18061	33	G1	86661	                  Bacillus cereus group
-  7.65	17630	320	S	1396	                    Bacillus cereus
-  6.28	14470	14470	S1	526973	                      Bacillus cereus m1293
+ 23.54	54235	0	D	2759	    Eukaryota
+ 23.54	54235	0	D1	33154	      Opisthokonta
+ 23.54	54235	0	K	33208	        Metazoa
+ 23.54	54235	0	K1	6072	          Eumetazoa
+ 23.54	54235	0	K2	33213	            Bilateria
+ 23.54	54235	0	K3	33511	              Deuterostomia
+ 23.54	54235	0	P	7711	                Chordata
+ 23.54	54235	0	P1	89593	                  Craniata
+ 23.54	54235	0	P2	7742	                    Vertebrata
+ 23.54	54235	0	P3	7776	                      Gnathostomata
+ 23.54	54235	0	P4	117570	                        Teleostomi
+ 23.54	54235	0	P5	117571	                          Euteleostomi
+ 23.54	54235	0	P6	8287	                            Sarcopterygii
+ 23.54	54235	0	P7	1338369	                              Dipnotetrapodomorpha
+ 23.54	54235	0	P8	32523	                                Tetrapoda
+ 23.54	54235	0	P9	32524	                                  Amniota
+ 23.54	54235	0	C	40674	                                    Mammalia
+ 23.54	54235	0	C1	32525	                                      Theria
+ 23.54	54235	0	C2	9347	                                        Eutheria
+ 23.54	54235	0	C3	1437010	                                          Boreoeutheria
+ 23.54	54235	0	C4	314146	                                            Euarchontoglires
+ 23.54	54235	0	O	9443	                                              Primates
+ 23.54	54235	0	O1	376913	                                                Haplorrhini
+ 23.54	54235	0	O2	314293	                                                  Simiiformes
+ 23.54	54235	0	O3	9526	                                                    Catarrhini
+ 23.54	54235	0	O4	314295	                                                      Hominoidea
+ 23.54	54235	0	F	9604	                                                        Hominidae
+ 23.54	54235	0	F1	207598	                                                          Homininae
+ 23.54	54235	0	G	9605	                                                            Homo
+ 23.54	54235	54235	S	9606	                                                              Homo sapiens
+  9.05	20861	166	D	2	    Bacteria
+  8.33	19202	28	D1	1783272	      Terrabacteria group
+  8.14	18764	9	P	1239	        Firmicutes
+  8.08	18626	2	C	91061	          Bacilli
+  7.95	18313	0	O	1385	            Bacillales
+  7.90	18208	2	F	186817	              Bacillaceae
+  7.86	18117	2	G	1386	                Bacillus
+  7.84	18064	33	G1	86661	                  Bacillus cereus group
+  7.65	17633	321	S	1396	                    Bacillus cereus
+  6.28	14472	14472	S1	526973	                      Bacillus cereus m1293
   1.23	2839	2839	S1	526969	                      Bacillus cereus m1550
   0.00	1	1	S1	288681	                      Bacillus cereus E33L
   0.17	394	394	S	1405	                    Bacillus mycoides
@@ -338,12 +338,12 @@
   0.00	1	0	S	971	                  Selenomonas ruminantium
   0.00	1	0	S1	114197	                    Selenomonas ruminantium subsp. lactilytica
   0.00	1	1	S2	927704	                      Selenomonas ruminantium subsp. lactilytica TAM6421
-  0.11	257	0	P	201174	        Actinobacteria
-  0.11	254	0	C	1760	          Actinobacteria
-  0.06	141	0	O	85006	            Micrococcales
-  0.06	132	0	F	85017	              Promicromonosporaceae
-  0.06	132	0	G	157920	                Cellulosimicrobium
-  0.06	131	131	S	1980001	                  Cellulosimicrobium sp. TH-20
+  0.11	256	0	P	201174	        Actinobacteria
+  0.11	253	0	C	1760	          Actinobacteria
+  0.06	140	0	O	85006	            Micrococcales
+  0.06	131	0	F	85017	              Promicromonosporaceae
+  0.06	131	0	G	157920	                Cellulosimicrobium
+  0.06	130	130	S	1980001	                  Cellulosimicrobium sp. TH-20
   0.00	1	1	S	1710	                  Cellulosimicrobium cellulans
   0.00	3	0	F	1268	              Micrococcaceae
   0.00	3	0	G	1742993	                Pseudarthrobacter
@@ -649,7 +649,7 @@
   0.00	1	0	G	262406	          Thermobaculum
   0.00	1	0	S	166501	            Thermobaculum terrenum
   0.00	1	1	S1	525904	              Thermobaculum terrenum ATCC BAA-798
-  0.43	994	21	P	1224	      Proteobacteria
+  0.43	995	21	P	1224	      Proteobacteria
   0.27	628	38	C	1236	        Gammaproteobacteria
   0.09	208	0	O	72274	          Pseudomonadales
   0.06	146	1	F	135621	            Pseudomonadaceae
@@ -975,7 +975,7 @@
   0.00	1	0	F	742031	            Salinisphaeraceae
   0.00	1	0	G	180541	              Salinisphaera
   0.00	1	1	S	2183911	                Salinisphaera sp. LB1
-  0.07	157	2	C	28211	        Alphaproteobacteria
+  0.07	158	2	C	28211	        Alphaproteobacteria
   0.04	84	0	O	356	          Rhizobiales
   0.01	30	0	F	772	            Bartonellaceae
   0.01	30	1	G	773	              Bartonella
@@ -1129,6 +1129,9 @@
   0.00	1	1	S	41276	                Brevundimonas vesicularis
   0.00	1	0	F1	81440	              unclassified Caulobacteraceae
   0.00	1	1	S	1759059	                Caulobacteraceae bacterium OTSz_A_272
+  0.00	1	0	C1	82117	          unclassified Alphaproteobacteria
+  0.00	1	0	G	1632780	            Phreatobacter
+  0.00	1	1	S	1868589	              Phreatobacter cathodiphilus
   0.05	123	1	C	28216	        Betaproteobacteria
   0.04	90	0	O	80840	          Burkholderiales
   0.02	51	0	F	506	            Alcaligenaceae
