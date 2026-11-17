@@ -1,4 +1,4 @@
- 67.53	22289	22289	U	0	unclassified
+ 67.53	22288	22288	U	0	unclassified
  32.47	10718	6	R	1	root
  31.85	10512	48	R1	131567	  cellular organisms
  24.63	8130	0	D	2759	    Eukaryota

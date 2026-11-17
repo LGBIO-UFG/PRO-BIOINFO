@@ -1,26 +1,26 @@
 # BUSCO version is: 6.0.0 
 # The lineage dataset is: saccharomycetaceae_odb12 (Creation date: 2026-05-22, number of genomes: 34, number of BUSCOs: 3282)
-# Summarized benchmarking in BUSCO notation for file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
+# Summarized benchmarking in BUSCO notation for file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
 # BUSCO was run in mode: euk_genome_min
 # Gene predictor used: miniprot
 
 	***** Results: *****
 
-	C:99.6%[S:97.9%,D:1.7%],F:0.0%,M:0.4%,n:3282,E:1.6%	   
-	3269	Complete BUSCOs (C)	(of which 51 contain internal stop codons)		   
-	3212	Complete and single-copy BUSCOs (S)	   
-	57	Complete and duplicated BUSCOs (D)	   
+	C:99.7%[S:98.0%,D:1.7%],F:0.0%,M:0.3%,n:3282,E:1.6%	   
+	3271	Complete BUSCOs (C)	(of which 51 contain internal stop codons)		   
+	3216	Complete and single-copy BUSCOs (S)	   
+	55	Complete and duplicated BUSCOs (D)	   
 	1	Fragmented BUSCOs (F)			   
-	12	Missing BUSCOs (M)			   
+	10	Missing BUSCOs (M)			   
 	3282	Total BUSCO groups searched		   
 
 Assembly Statistics:
-	83	Number of scaffolds
-	83	Number of contigs
-	12949620	Total length
+	87	Number of scaffolds
+	87	Number of contigs
+	12980404	Total length
 	0.000%	Percent gaps
-	757 kbp	Scaffold N50
-	757 kbp	Contigs N50
+	709 kbp	Scaffold N50
+	709 kbp	Contigs N50
 
 
 Dependencies and versions:

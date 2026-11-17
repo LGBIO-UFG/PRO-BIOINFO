@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1818,7 +1818,7 @@ Os dados são referentes ao projeto: https://www.ncbi.nlm.nih.gov/geo/query/acc.
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.fa<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span>-o<span class="w"> </span><span class="m">3</span>.Qualidade/quast<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span>--labels<span class="w"> </span><span class="s2">&quot;sacCer3_draft,sacCer3_yahs&quot;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span>--labels<span class="w"> </span><span class="s2">"sacCer3_draft,sacCer3_yahs"</span>
 </span></code></pre></div>
 <h3 id="checklist-da-etapa-5">Checklist da Etapa 5<a class="headerlink" href="#checklist-da-etapa-5" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
@@ -1838,7 +1838,7 @@ Os dados são referentes ao projeto: https://www.ncbi.nlm.nih.gov/geo/query/acc.
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="m">0</span>.DadosBrutos/sacCer3_draft.fasta.fai<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.JB.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Em seguida, execute:</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="o">(</span>java<span class="w"> </span>-jar<span class="w"> </span>-Xmx200G<span class="w"> </span>/home/lgbio/programas/juicer/scripts/juicer_tools.1.9.9_jcuda.0.8.jar<span class="w"> </span>pre<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.txt<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic.part<span class="w"> </span>&lt;<span class="o">(</span>cat<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.JB.log<span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>PRE_C_SIZE<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2&quot; &quot;$3}&#39;</span><span class="o">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">(</span>mv<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic.part<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic<span class="o">)</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="o">(</span>java<span class="w"> </span>-jar<span class="w"> </span>-Xmx200G<span class="w"> </span>/home/lgbio/programas/juicer/scripts/juicer_tools.1.9.9_jcuda.0.8.jar<span class="w"> </span>pre<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.txt<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic.part<span class="w"> </span>&lt;<span class="o">(</span>cat<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.JB.log<span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>PRE_C_SIZE<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $2" "$3}'</span><span class="o">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">(</span>mv<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic.part<span class="w"> </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.hic<span class="o">)</span>
 </span></code></pre></div>
 <details class="note">
 <summary>Na primeira parte do script, você deve informar o arquivo de índice (.fai)</summary>
@@ -1929,7 +1929,7 @@ Os dados são referentes ao projeto: https://www.ncbi.nlm.nih.gov/geo/query/acc.
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span><span class="m">2</span>.Scaffolding/sacCer3_draft_alin.Hic.yahs.out_scaffolds_final.fa<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="m">2</span>.Scaffolding/sacCer3_draf.JB.out.FINAL.fa<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span>-o<span class="w"> </span><span class="m">3</span>.Qualidade/quast<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span>--labels<span class="w"> </span><span class="s2">&quot;sacCer3_draft,sacCer3_yahs,sacCer3_JB&quot;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span>--labels<span class="w"> </span><span class="s2">"sacCer3_draft,sacCer3_yahs,sacCer3_JB"</span>
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Resultados pré-computados</p>
@@ -2052,10 +2052,10 @@ Os dados são referentes ao projeto: https://www.ncbi.nlm.nih.gov/geo/query/acc.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2688,8 +2688,8 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 <p>Quantas sequências há em cada arquivo combinado (referências + misteriosas)? Use <code>grep</code> para contar.</p>
 <details class="success">
 <summary>Resposta</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>COI-mist.fna
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>CYTB-mist.fna
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">"^&gt;"</span><span class="w"> </span>COI-mist.fna
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">"^&gt;"</span><span class="w"> </span>CYTB-mist.fna
 </span></code></pre></div>
 <p>Cada <code>^&gt;</code> corresponde ao cabeçalho de uma sequência FASTA.</p>
 </details>
@@ -2766,8 +2766,8 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 <details class="success">
 <summary>Comando esperado</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Imprime o tamanho da primeira sequência = número de colunas do alinhamento</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>COI-mist.ali.fna
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>COI-mist.trim.ali.fna
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(seq){print length(seq); exit} seq=""; next} {seq=seq $0}'</span><span class="w"> </span>COI-mist.ali.fna
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(seq){print length(seq); exit} seq=""; next} {seq=seq $0}'</span><span class="w"> </span>COI-mist.trim.ali.fna
 </span></code></pre></div>
 <p>Como todas as sequências de um alinhamento têm o mesmo comprimento (incluindo gaps), basta medir uma. O segundo número deve ser <strong>menor</strong> — quanto, depende do quão "sujo" estava o alinhamento original.</p>
 </details>
@@ -2814,10 +2814,10 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 </div>
 <h3 id="42-verificacao-rapida">4.2 Verificação rápida<a class="headerlink" href="#42-verificacao-rapida" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Quantas sequências há no concatenado?</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>concatenado.fasta
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">"^&gt;"</span><span class="w"> </span>concatenado.fasta
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Quantas colunas tem o super-alinhamento?</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>concatenado.fasta
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(seq){print length(seq); exit} seq=""; next} {seq=seq $0}'</span><span class="w"> </span>concatenado.fasta
 </span></code></pre></div>
 <ul>
 <li>O número de <strong>sequências</strong> deve bater com o de qualquer um dos genes individuais (cada táxon vira uma linha do super-alinhamento).</li>
@@ -2832,14 +2832,14 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 <details class="success">
 <summary>Comandos esperados</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Sequências em cada arquivo</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;COI:          </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;^&gt;&#39;</span><span class="w"> </span>COI-mist.trim.ali.fna<span class="k">)</span><span class="s2">&quot;</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CYTB:         </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;^&gt;&#39;</span><span class="w"> </span>CYTB-mist.trim.ali.fna<span class="k">)</span><span class="s2">&quot;</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Concatenado:  </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;^&gt;&#39;</span><span class="w"> </span>concatenado.fasta<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"COI:          </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">'^&gt;'</span><span class="w"> </span>COI-mist.trim.ali.fna<span class="k">)</span><span class="s2">"</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"CYTB:         </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">'^&gt;'</span><span class="w"> </span>CYTB-mist.trim.ali.fna<span class="k">)</span><span class="s2">"</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Concatenado:  </span><span class="k">$(</span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s1">'^&gt;'</span><span class="w"> </span>concatenado.fasta<span class="k">)</span><span class="s2">"</span>
 </span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
 </span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># Colunas em cada arquivo</span>
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print &quot;COI:         &quot; length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>COI-mist.trim.ali.fna
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print &quot;CYTB:        &quot; length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>CYTB-mist.trim.ali.fna
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>awk<span class="w"> </span><span class="s1">&#39;/^&gt;/{if(seq){print &quot;Concat:      &quot; length(seq); exit} seq=&quot;&quot;; next} {seq=seq $0}&#39;</span><span class="w"> </span>concatenado.fasta
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(seq){print "COI:         " length(seq); exit} seq=""; next} {seq=seq $0}'</span><span class="w"> </span>COI-mist.trim.ali.fna
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(seq){print "CYTB:        " length(seq); exit} seq=""; next} {seq=seq $0}'</span><span class="w"> </span>CYTB-mist.trim.ali.fna
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(seq){print "Concat:      " length(seq); exit} seq=""; next} {seq=seq $0}'</span><span class="w"> </span>concatenado.fasta
 </span></code></pre></div>
 <p>Esperado: as três contagens de sequência são iguais, e as colunas do concatenado = COI + CYTB.</p>
 </details>
@@ -2983,7 +2983,7 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 <p>Qual foi o modelo evolutivo escolhido automaticamente pelo ModelFinderPlus?</p>
 <details class="success">
 <summary>Comando esperado</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best-fit&quot;</span><span class="w"> </span>arvore-ex1-com-out.log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"best-fit"</span><span class="w"> </span>arvore-ex1-com-out.log
 </span></code></pre></div>
 <p>A saída mostra algo do tipo <code>Best-fit model: GTR+F+I+G4 chosen according to BIC</code>. Esse modelo é o que o IQ-TREE usou em toda a inferência. Vamos voltar nele na Etapa 7.</p>
 </details>
@@ -3026,7 +3026,7 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 <div class="admonition tip">
 <p class="admonition-title">Atalho: criar o arquivo direto pelo terminal</p>
 <p>Em vez de abrir editor, dá pra gerar o arquivo com um here-document:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>partitions.nex<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>partitions.nex<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="s">#nexus</span>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="s">begin sets;</span>
 </span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="s">  charset COI  = 1-581;</span>
@@ -3082,10 +3082,10 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 <details class="success">
 <summary>Comandos esperados</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Modelo único (rodada da Etapa 5, com outgroup)</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best-fit model&quot;</span><span class="w"> </span>arvore-ex1-com-out.log
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"best-fit model"</span><span class="w"> </span>arvore-ex1-com-out.log
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
 </span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1"># Modelos por partição (rodada com partições)</span>
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best.*model&quot;</span><span class="w"> </span>arvore-ex1-com-out-e-part.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"best.*model"</span><span class="w"> </span>arvore-ex1-com-out-e-part.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 </span></code></pre></div>
 <p>Na rodada com partições devem aparecer dois modelos — um para COI, outro para CYTB. Frequentemente são diferentes entre si, e podem também diferir do modelo único da rodada sem partições.</p>
 </details>
@@ -3105,7 +3105,7 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
 <h3 id="71-modelo-unico-rodadas-sem-particoes">7.1 Modelo único (rodadas sem partições)<a class="headerlink" href="#71-modelo-unico-rodadas-sem-particoes" title="Permanent link">&para;</a></h3>
 <p>Quando rodamos <strong>sem</strong> <code>-p</code>, o IQ-TREE escolhe um único modelo para todo o alinhamento. Ele aparece no <code>*.log</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Para qualquer das rodadas sem partição:</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;best-fit&quot;</span><span class="w"> </span>*.log
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"best-fit"</span><span class="w"> </span>*.log
 </span></code></pre></div>
 <p>Saída esperada:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>arvore-ex1-sem-out.log:Best-fit model: GTR+F+I+G4 chosen according to BIC
@@ -3414,10 +3414,10 @@ Cobrimos alinhamento, filtragem, concatenação, escolha de modelo evolutivo e v
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.footer", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
