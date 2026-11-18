@@ -1,6 +1,0 @@
-Dataset Illumina simulado - gerado em 2026-11-03
-Verdade: Scer1_Flye_medaka_consensus.fasta
-Cobertura: 10x | SNPs: 3000 | indels (tamanho padrão do simuG, power-law): 500 | seed: 42
-ART: HS25, 2x150, fragmento 400 +/- 50
-          Q Version 2.5.8 (June 6, 2016)       
-Erros inseridos: 3000 SNPs, 500 indels

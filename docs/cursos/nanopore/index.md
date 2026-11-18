@@ -174,7 +174,7 @@ mv 0.DadosBrutos/ERR13375657.fastq.gz 0.DadosBrutos/Scer2.fastq.gz
 
     2026-07-08 00:08:45 (496 KB/s) - '0.DadosBrutos/ERR13367646.fastq.gz' saved [952022096]
 
-    grupo_1@lgbio-ProLiant-DL580-Gen10:~$ wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
+    $ wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
     --2026-07-08 00:08:45--  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
            => '0.DadosBrutos/ERR13375657.fastq.gz'
     Resolving ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)... 193.62.193.165
@@ -189,8 +189,7 @@ mv 0.DadosBrutos/ERR13375657.fastq.gz 0.DadosBrutos/Scer2.fastq.gz
     ERR13375657.fastq.gz             100%[=========================================================>]  96.99M   605KB/s    in 4m 2s   
 
     2026-07-08 00:12:49 (410 KB/s) - '0.DadosBrutos/ERR13375657.fastq.gz' saved [101703198]
-
-
+    ```
 
 **Verificar integridade após o download:**
 ```bash
@@ -205,7 +204,7 @@ gzip -t 0.DadosBrutos/Scer2.fastq.gz && echo "OK" || echo "CORROMPIDO"
     OK
     $ gzip -t 0.DadosBrutos/Scer2.fastq.gz && echo "OK" || echo "CORROMPIDO"
     OK
-
+    ```
 
 ## :material-numeric-2-circle: Etapa 2 — Controle de qualidade dos dados brutos (NanoPlot)
 
@@ -285,6 +284,7 @@ more 1.QC_dadosbrutos/Scer2_NanoStats.txt
     3:	70398 (13.3)
     4:	63207 (10.1)
     5:	46792 (5.1)
+    ```
 
 
 **O que observar:**
@@ -336,928 +336,928 @@ conda deactivate
     ```bash
     $ porechop_abi -abi -i 0.DadosBrutos/Scer1.fastq.gz -o 2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz --format fastq.gz -t 20 
 
-Ab Initio Phase
-Starting with a 10 run batch.
-Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
-Command line:
- /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer1.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count -nt 20 -mr 10
-Kmer size:             16
-Sampled sequences:     40000
-Sampling length        100
-LC filter threshold:   1
-Adjusted LC threshold: 1
-Nb thread:             20
-Number of kept kmer:   500
-Number of runs:        10
-Verbosity level:       1
+    Ab Initio Phase
+    Starting with a 10 run batch.
+    Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
+    Command line:
+     /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer1.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count -nt 20 -mr 10
+    Kmer size:             16
+    Sampled sequences:     40000
+    Sampling length        100
+    LC filter threshold:   1
+    Adjusted LC threshold: 1
+    Nb thread:             20
+    Number of kept kmer:   500
+    Number of runs:        10
+    Verbosity level:       1
 
-A total of 10 runs will be performed.
-[334.902 ms]    Parsing FASTA file
-[15850.1 ms]    Number of sequences found: 349324.
-Starting run number 1
-[15850.1 ms]    Working on sequence start.
-[24126.9 ms]    Working on sequence end.
-Starting run number 2
-[31561 ms]      Working on sequence start.
-[38662.3 ms]    Working on sequence end.
-Starting run number 3
-[46021.6 ms]    Working on sequence start.
-[52991.7 ms]    Working on sequence end.
-Starting run number 4
-[60436.5 ms]    Working on sequence start.
-[67517.8 ms]    Working on sequence end.
-Starting run number 5
-[74812.3 ms]    Working on sequence start.
-[81866.6 ms]    Working on sequence end.
-Starting run number 6
-[89248.9 ms]    Working on sequence start.
-[96560.6 ms]    Working on sequence end.
-Starting run number 7
-[103856 ms]     Working on sequence start.
-[110917 ms]     Working on sequence end.
-Starting run number 8
-[118201 ms]     Working on sequence start.
-[125110 ms]     Working on sequence end.
-Starting run number 9
-[132367 ms]     Working on sequence start.
-[139400 ms]     Working on sequence end.
-Starting run number 10
-[146739 ms]     Working on sequence start.
-[153769 ms]     Working on sequence end.
-Assembling run 1
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.44%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.97%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 2
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.34%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.92%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 3
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.4375%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8925%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 4
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.255%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.22%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 5
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.4175%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.905%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 6
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3675%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.195%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 7
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.16%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1475%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 8
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2675%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1375%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 9
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.38%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2975%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 10
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2325%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.98%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The adapters currently found are not all identical.
-/!\      A consensus will be made.
-/!\      Launching 20 additional runs to build a consensus.
-Following with a 20 run batch.
-Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
-Command line:
- /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer1.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count_sup -nt 20 -mr 20
-Kmer size:             16
-Sampled sequences:     40000
-Sampling length        100
-LC filter threshold:   1
-Adjusted LC threshold: 1
-Nb thread:             20
-Number of kept kmer:   500
-Number of runs:        20
-Verbosity level:       1
+    A total of 10 runs will be performed.
+    [334.902 ms]    Parsing FASTA file
+    [15850.1 ms]    Number of sequences found: 349324.
+    Starting run number 1
+    [15850.1 ms]    Working on sequence start.
+    [24126.9 ms]    Working on sequence end.
+    Starting run number 2
+    [31561 ms]      Working on sequence start.
+    [38662.3 ms]    Working on sequence end.
+    Starting run number 3
+    [46021.6 ms]    Working on sequence start.
+    [52991.7 ms]    Working on sequence end.
+    Starting run number 4
+    [60436.5 ms]    Working on sequence start.
+    [67517.8 ms]    Working on sequence end.
+    Starting run number 5
+    [74812.3 ms]    Working on sequence start.
+    [81866.6 ms]    Working on sequence end.
+    Starting run number 6
+    [89248.9 ms]    Working on sequence start.
+    [96560.6 ms]    Working on sequence end.
+    Starting run number 7
+    [103856 ms]     Working on sequence start.
+    [110917 ms]     Working on sequence end.
+    Starting run number 8
+    [118201 ms]     Working on sequence start.
+    [125110 ms]     Working on sequence end.
+    Starting run number 9
+    [132367 ms]     Working on sequence start.
+    [139400 ms]     Working on sequence end.
+    Starting run number 10
+    [146739 ms]     Working on sequence start.
+    [153769 ms]     Working on sequence end.
+    Assembling run 1
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.44%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.97%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 2
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.34%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.92%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 3
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.4375%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8925%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 4
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.255%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.22%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 5
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.4175%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.905%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 6
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3675%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.195%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 7
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.16%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1475%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 8
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2675%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1375%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 9
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.38%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2975%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 10
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2325%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.98%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The adapters currently found are not all identical.
+    /!\      A consensus will be made.
+    /!\      Launching 20 additional runs to build a consensus.
+    Following with a 20 run batch.
+    Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
+    Command line:
+     /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer1.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count_sup -nt 20 -mr 20
+    Kmer size:             16
+    Sampled sequences:     40000
+    Sampling length        100
+    LC filter threshold:   1
+    Adjusted LC threshold: 1
+    Nb thread:             20
+    Number of kept kmer:   500
+    Number of runs:        20
+    Verbosity level:       1
 
-A total of 20 runs will be performed.
-[7.52815 ms]    Parsing FASTA file
-[14972.6 ms]    Number of sequences found: 349324.
-Starting run number 1
-[14972.6 ms]    Working on sequence start.
-[22484.7 ms]    Working on sequence end.
-Starting run number 2
-[29753.4 ms]    Working on sequence start.
-[36811.2 ms]    Working on sequence end.
-Starting run number 3
-[44282.5 ms]    Working on sequence start.
-[51378.9 ms]    Working on sequence end.
-Starting run number 4
-[58830.3 ms]    Working on sequence start.
-[65962.1 ms]    Working on sequence end.
-Starting run number 5
-[73336.6 ms]    Working on sequence start.
-[80394.9 ms]    Working on sequence end.
-Starting run number 6
-[87717.1 ms]    Working on sequence start.
-[94794.8 ms]    Working on sequence end.
-Starting run number 7
-[102105 ms]     Working on sequence start.
-[109157 ms]     Working on sequence end.
-Starting run number 8
-[116478 ms]     Working on sequence start.
-[123489 ms]     Working on sequence end.
-Starting run number 9
-[130826 ms]     Working on sequence start.
-[137876 ms]     Working on sequence end.
-Starting run number 10
-[145500 ms]     Working on sequence start.
-[152690 ms]     Working on sequence end.
-Starting run number 11
-[160067 ms]     Working on sequence start.
-[167122 ms]     Working on sequence end.
-Starting run number 12
-[174407 ms]     Working on sequence start.
-[181454 ms]     Working on sequence end.
-Starting run number 13
-[188798 ms]     Working on sequence start.
-[195850 ms]     Working on sequence end.
-Starting run number 14
-[203221 ms]     Working on sequence start.
-[210342 ms]     Working on sequence end.
-Starting run number 15
-[217665 ms]     Working on sequence start.
-[226463 ms]     Working on sequence end.
-Starting run number 16
-[233622 ms]     Working on sequence start.
-[240599 ms]     Working on sequence end.
-Starting run number 17
-[247919 ms]     Working on sequence start.
-[255075 ms]     Working on sequence end.
-Starting run number 18
-[262392 ms]     Working on sequence start.
-[269454 ms]     Working on sequence end.
-Starting run number 19
-[276830 ms]     Working on sequence start.
-[283960 ms]     Working on sequence end.
-Starting run number 20
-[291297 ms]     Working on sequence start.
-[298321 ms]     Working on sequence end.
-Assembling run 1
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.32%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.345%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 2
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.375%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.275%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 3
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3025%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.0825%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 4
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2525%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.0175%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 5
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.465%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1925%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 6
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.315%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8625%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 7
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.1875%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.065%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 8
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3275%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.34%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 9
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.445%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1175%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 10
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2625%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2575%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 11
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3425%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2375%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 12
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.1975%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1375%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 13
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.48%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.16%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 14
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.17%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.9675%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 15
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.1775%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.3525%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 16
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.495%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.11%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 17
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.4325%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1325%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 18
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2025%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 19
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.0975%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 20
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.43%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.275%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Consensus step done
-/!\      Frequency warning triggered by 30/30 runs for start adapters
-/!\      Frequency warning triggered by 30/30 runs for end adapters
+    A total of 20 runs will be performed.
+    [7.52815 ms]    Parsing FASTA file
+    [14972.6 ms]    Number of sequences found: 349324.
+    Starting run number 1
+    [14972.6 ms]    Working on sequence start.
+    [22484.7 ms]    Working on sequence end.
+    Starting run number 2
+    [29753.4 ms]    Working on sequence start.
+    [36811.2 ms]    Working on sequence end.
+    Starting run number 3
+    [44282.5 ms]    Working on sequence start.
+    [51378.9 ms]    Working on sequence end.
+    Starting run number 4
+    [58830.3 ms]    Working on sequence start.
+    [65962.1 ms]    Working on sequence end.
+    Starting run number 5
+    [73336.6 ms]    Working on sequence start.
+    [80394.9 ms]    Working on sequence end.
+    Starting run number 6
+    [87717.1 ms]    Working on sequence start.
+    [94794.8 ms]    Working on sequence end.
+    Starting run number 7
+    [102105 ms]     Working on sequence start.
+    [109157 ms]     Working on sequence end.
+    Starting run number 8
+    [116478 ms]     Working on sequence start.
+    [123489 ms]     Working on sequence end.
+    Starting run number 9
+    [130826 ms]     Working on sequence start.
+    [137876 ms]     Working on sequence end.
+    Starting run number 10
+    [145500 ms]     Working on sequence start.
+    [152690 ms]     Working on sequence end.
+    Starting run number 11
+    [160067 ms]     Working on sequence start.
+    [167122 ms]     Working on sequence end.
+    Starting run number 12
+    [174407 ms]     Working on sequence start.
+    [181454 ms]     Working on sequence end.
+    Starting run number 13
+    [188798 ms]     Working on sequence start.
+    [195850 ms]     Working on sequence end.
+    Starting run number 14
+    [203221 ms]     Working on sequence start.
+    [210342 ms]     Working on sequence end.
+    Starting run number 15
+    [217665 ms]     Working on sequence start.
+    [226463 ms]     Working on sequence end.
+    Starting run number 16
+    [233622 ms]     Working on sequence start.
+    [240599 ms]     Working on sequence end.
+    Starting run number 17
+    [247919 ms]     Working on sequence start.
+    [255075 ms]     Working on sequence end.
+    Starting run number 18
+    [262392 ms]     Working on sequence start.
+    [269454 ms]     Working on sequence end.
+    Starting run number 19
+    [276830 ms]     Working on sequence start.
+    [283960 ms]     Working on sequence end.
+    Starting run number 20
+    [291297 ms]     Working on sequence start.
+    [298321 ms]     Working on sequence end.
+    Assembling run 1
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.32%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.345%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 2
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.375%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.275%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 3
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3025%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.0825%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 4
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2525%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.0175%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 5
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.465%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1925%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 6
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.315%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8625%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 7
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.1875%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.065%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 8
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3275%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.34%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 9
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.445%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1175%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 10
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2625%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2575%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 11
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3425%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2375%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 12
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.1975%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1375%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 13
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.48%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.16%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 14
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.17%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.9675%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 15
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.1775%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.3525%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 16
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.495%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.11%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 17
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.4325%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.1325%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 18
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.2025%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 19
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.0975%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 20
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.43%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.275%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Consensus step done
+    /!\      Frequency warning triggered by 30/30 runs for start adapters
+    /!\      Frequency warning triggered by 30/30 runs for end adapters
 
-Rebuild adapters:
+    Rebuild adapters:
 
-Start
-Consensus_1_start_(100.0%)
-GTACTTCGTTCAGTTACGTATTGCTAAGGTTAACCTGGGAGCATCAGGTAGTAACAGCAGCACC
+    Start
+    Consensus_1_start_(100.0%)
+    GTACTTCGTTCAGTTACGTATTGCTAAGGTTAACCTGGGAGCATCAGGTAGTAACAGCAGCACC
 
-End
-Consensus_1_end_(100.0%)
-AGGTGCTGCTGTTACTACCTGATGCTCCCAGGTTAACCTTAGCAATACGTAACTTAA
+    End
+    Consensus_1_end_(100.0%)
+    AGGTGCTGCTGTTACTACCTGATGCTCCCAGGTTAACCTTAGCAATACGTAACTTAA
 
-Building consensus adapter objects
-The inference of adapters sequence is done.
+    Building consensus adapter objects
+    The inference of adapters sequence is done.
 
-Loading reads
-0.DadosBrutos/Scer1.fastq.gz
-349,324 reads loaded
-
-
-Looking for known adapter sets
-10,000 / 10,000 (100.0%)
-                                        Best
-                                        read       Best
-                                        start      read end
-  Set                                   %ID        %ID
-  SQK-NSK007                                96.6       81.8
-  Rapid                                     68.5        0.0
-  RBK004_upstream                           76.9        0.0
-  SQK-MAP006                                78.6       82.6
-  SQK-MAP006 short                          74.1       75.9
-  PCR adapters 1                            78.3       83.3
-  PCR adapters 2                            81.8       82.6
-  PCR adapters 3                            79.2       78.3
-  1D^2 part 1                               75.0       73.3
-  1D^2 part 2                               85.3       80.6
-  cDNA SSP                                  73.7       70.5
-  Barcode 1 (reverse)                       84.0       80.0
-  Barcode 2 (reverse)                       79.2       83.3
-  Barcode 3 (reverse)                       76.9       75.0
-  Barcode 4 (reverse)                       77.8       76.9
-  Barcode 5 (reverse)                       80.0       77.8
-  Barcode 6 (reverse)                       76.9       76.9
-  Barcode 7 (reverse)                       80.0       76.9
-  Barcode 8 (reverse)                       80.0       76.9
-  Barcode 9 (reverse)                       79.2       76.9
-  Barcode 10 (reverse)                      80.0       81.5
-  Barcode 11 (reverse)                      76.9       80.0
-  Barcode 12 (reverse)                      80.0       79.2
-  Barcode 1 (forward)                       77.8       80.0
-  Barcode 2 (forward)                       79.2       80.0
-  Barcode 3 (forward)                       76.0       77.8
-  Barcode 4 (forward)                       79.2       76.0
-  Barcode 5 (forward)                       80.8       79.2
-  Barcode 6 (forward)                       76.0       80.0
-  Barcode 7 (forward)                       80.8       79.2
-  Barcode 8 (forward)                       79.2       80.0
-  Barcode 9 (forward)                       77.8       77.8
-  Barcode 10 (forward)                      80.0       76.9
-  Barcode 11 (forward)                      77.8       80.8
-  Barcode 12 (forward)                      79.2       80.8
-  Barcode 13 (forward)                      79.2       76.9
-  Barcode 14 (forward)                      77.8       80.0
-  Barcode 15 (forward)                      76.0       84.6
-  Barcode 16 (forward)                      79.2       79.2
-  Barcode 17 (forward)                      80.0       79.2
-  Barcode 18 (forward)                      77.8       80.0
-  Barcode 19 (forward)                      79.2       80.0
-  Barcode 20 (forward)                      76.0       80.8
-  Barcode 21 (forward)                      80.0       76.9
-  Barcode 22 (forward)                      76.9       80.0
-  Barcode 23 (forward)                      77.8       77.8
-  Barcode 24 (forward)                      76.0       92.3
-  Barcode 25 (forward)                      77.8       79.2
-  Barcode 26 (forward)                      80.0       80.0
-  Barcode 27 (forward)                      76.0       83.3
-  Barcode 28 (forward)                      76.0       79.2
-  Barcode 29 (forward)                      76.9       76.0
-  Barcode 30 (forward)                      76.9       76.9
-  Barcode 31 (forward)                      79.2       76.9
-  Barcode 32 (forward)                      76.9       80.0
-  Barcode 33 (forward)                      76.0       79.2
-  Barcode 34 (forward)                      80.0       79.2
-  Barcode 35 (forward)                      80.8       76.0
-  Barcode 36 (forward)                      80.0       79.2
-  Barcode 37 (forward)                      79.2       79.2
-  Barcode 38 (forward)                      81.5       79.2
-  Barcode 39 (forward)                      76.9       76.9
-  Barcode 40 (forward)                      79.2       76.0
-  Barcode 41 (forward)                      76.0       79.2
-  Barcode 42 (forward)                      76.9       76.9
-  Barcode 43 (forward)                      77.8       76.9
-  Barcode 44 (forward)                      76.0       75.0
-  Barcode 45 (forward)                      77.8       76.9
-  Barcode 46 (forward)                      80.0       76.0
-  Barcode 47 (forward)                      76.0       79.2
-  Barcode 48 (forward)                      79.2       83.3
-  Barcode 49 (forward)                      80.8       76.9
-  Barcode 50 (forward)                      77.8       76.9
-  Barcode 51 (forward)                      76.9       79.2
-  Barcode 52 (forward)                      84.0       80.0
-  Barcode 53 (forward)                      76.9       76.0
-  Barcode 54 (forward)                      78.6       80.0
-  Barcode 55 (forward)                      76.0       79.2
-  Barcode 56 (forward)                      76.9       80.0
-  Barcode 57 (forward)                      76.0       77.8
-  Barcode 58 (forward)                      80.0       76.9
-  Barcode 59 (forward)                      79.2       88.0
-  Barcode 60 (forward)                      79.2       79.2
-  Barcode 61 (forward)                      76.9       76.9
-  Barcode 62 (forward)                      75.0       76.0
-  Barcode 63 (forward)                      76.0       83.3
-  Barcode 64 (forward)                      80.0       76.0
-  Barcode 65 (forward)                      80.0       79.2
-  Barcode 66 (forward)                      76.9       76.0
-  Barcode 67 (forward)                      76.0       76.0
-  Barcode 68 (forward)                      77.8       76.0
-  Barcode 69 (forward)                      80.0       79.2
-  Barcode 70 (forward)                      76.0       76.0
-  Barcode 71 (forward)                     100.0      100.0
-  Barcode 72 (forward)                      79.2       79.2
-  Barcode 73 (forward)                      76.9       80.0
-  Barcode 74 (forward)                      80.0       80.0
-  Barcode 75 (forward)                      76.9       78.6
-  Barcode 76 (forward)                      76.9       77.8
-  Barcode 77 (forward)                      75.0       80.0
-  Barcode 78 (forward)                      80.0       77.8
-  Barcode 79 (forward)                      76.9       79.2
-  Barcode 80 (forward)                      80.8       76.9
-  Barcode 81 (forward)                      78.6       79.2
-  Barcode 82 (forward)                      77.8       79.2
-  Barcode 83 (forward)                      76.0       76.9
-  Barcode 84 (forward)                      79.2       76.9
-  Barcode 85 (forward)                      76.0       79.2
-  Barcode 86 (forward)                      76.9       76.0
-  Barcode 87 (forward)                      75.0       77.8
-  Barcode 88 (forward)                      80.0       80.8
-  Barcode 89 (forward)                      80.8       77.8
-  Barcode 90 (forward)                      76.0       75.0
-  Barcode 91 (forward)                      75.0       76.9
-  Barcode 92 (forward)                      80.0       79.2
-  Barcode 93 (forward)                      80.0       80.0
-  Barcode 94 (forward)                      76.9       75.0
-  Barcode 95 (forward)                      80.0       79.2
-  Barcode 96 (forward)                      76.9       79.2
-  Consensus_1_start_(100.0%)_adapter        87.7        0.0
-  Consensus_1_end_(100.0%)_adapter           0.0       84.5
+    Loading reads
+    0.DadosBrutos/Scer1.fastq.gz
+    349,324 reads loaded
 
 
-Trimming adapters from read ends
-     SQK-NSK007_Y_Top: AATGTACTTCGTTCAGTTACGTATTGCT
-  SQK-NSK007_Y_Bottom: GCAATACGTAACTGAACGAAGT
-                 BC24: GCATAGTTCTGCATGATGGGTTAG
-             BC24_rev: CTAACCCATCATGCAGAACTATGC
-                 BC71: CCTGGGAGCATCAGGTAGTAACAG
-             BC71_rev: CTGTTACTACCTGATGCTCCCAGG
+    Looking for known adapter sets
+    10,000 / 10,000 (100.0%)
+                                            Best
+                                            read       Best
+                                            start      read end
+      Set                                   %ID        %ID
+      SQK-NSK007                                96.6       81.8
+      Rapid                                     68.5        0.0
+      RBK004_upstream                           76.9        0.0
+      SQK-MAP006                                78.6       82.6
+      SQK-MAP006 short                          74.1       75.9
+      PCR adapters 1                            78.3       83.3
+      PCR adapters 2                            81.8       82.6
+      PCR adapters 3                            79.2       78.3
+      1D^2 part 1                               75.0       73.3
+      1D^2 part 2                               85.3       80.6
+      cDNA SSP                                  73.7       70.5
+      Barcode 1 (reverse)                       84.0       80.0
+      Barcode 2 (reverse)                       79.2       83.3
+      Barcode 3 (reverse)                       76.9       75.0
+      Barcode 4 (reverse)                       77.8       76.9
+      Barcode 5 (reverse)                       80.0       77.8
+      Barcode 6 (reverse)                       76.9       76.9
+      Barcode 7 (reverse)                       80.0       76.9
+      Barcode 8 (reverse)                       80.0       76.9
+      Barcode 9 (reverse)                       79.2       76.9
+      Barcode 10 (reverse)                      80.0       81.5
+      Barcode 11 (reverse)                      76.9       80.0
+      Barcode 12 (reverse)                      80.0       79.2
+      Barcode 1 (forward)                       77.8       80.0
+      Barcode 2 (forward)                       79.2       80.0
+      Barcode 3 (forward)                       76.0       77.8
+      Barcode 4 (forward)                       79.2       76.0
+      Barcode 5 (forward)                       80.8       79.2
+      Barcode 6 (forward)                       76.0       80.0
+      Barcode 7 (forward)                       80.8       79.2
+      Barcode 8 (forward)                       79.2       80.0
+      Barcode 9 (forward)                       77.8       77.8
+      Barcode 10 (forward)                      80.0       76.9
+      Barcode 11 (forward)                      77.8       80.8
+      Barcode 12 (forward)                      79.2       80.8
+      Barcode 13 (forward)                      79.2       76.9
+      Barcode 14 (forward)                      77.8       80.0
+      Barcode 15 (forward)                      76.0       84.6
+      Barcode 16 (forward)                      79.2       79.2
+      Barcode 17 (forward)                      80.0       79.2
+      Barcode 18 (forward)                      77.8       80.0
+      Barcode 19 (forward)                      79.2       80.0
+      Barcode 20 (forward)                      76.0       80.8
+      Barcode 21 (forward)                      80.0       76.9
+      Barcode 22 (forward)                      76.9       80.0
+      Barcode 23 (forward)                      77.8       77.8
+      Barcode 24 (forward)                      76.0       92.3
+      Barcode 25 (forward)                      77.8       79.2
+      Barcode 26 (forward)                      80.0       80.0
+      Barcode 27 (forward)                      76.0       83.3
+      Barcode 28 (forward)                      76.0       79.2
+      Barcode 29 (forward)                      76.9       76.0
+      Barcode 30 (forward)                      76.9       76.9
+      Barcode 31 (forward)                      79.2       76.9
+      Barcode 32 (forward)                      76.9       80.0
+      Barcode 33 (forward)                      76.0       79.2
+      Barcode 34 (forward)                      80.0       79.2
+      Barcode 35 (forward)                      80.8       76.0
+      Barcode 36 (forward)                      80.0       79.2
+      Barcode 37 (forward)                      79.2       79.2
+      Barcode 38 (forward)                      81.5       79.2
+      Barcode 39 (forward)                      76.9       76.9
+      Barcode 40 (forward)                      79.2       76.0
+      Barcode 41 (forward)                      76.0       79.2
+      Barcode 42 (forward)                      76.9       76.9
+      Barcode 43 (forward)                      77.8       76.9
+      Barcode 44 (forward)                      76.0       75.0
+      Barcode 45 (forward)                      77.8       76.9
+      Barcode 46 (forward)                      80.0       76.0
+      Barcode 47 (forward)                      76.0       79.2
+      Barcode 48 (forward)                      79.2       83.3
+      Barcode 49 (forward)                      80.8       76.9
+      Barcode 50 (forward)                      77.8       76.9
+      Barcode 51 (forward)                      76.9       79.2
+      Barcode 52 (forward)                      84.0       80.0
+      Barcode 53 (forward)                      76.9       76.0
+      Barcode 54 (forward)                      78.6       80.0
+      Barcode 55 (forward)                      76.0       79.2
+      Barcode 56 (forward)                      76.9       80.0
+      Barcode 57 (forward)                      76.0       77.8
+      Barcode 58 (forward)                      80.0       76.9
+      Barcode 59 (forward)                      79.2       88.0
+      Barcode 60 (forward)                      79.2       79.2
+      Barcode 61 (forward)                      76.9       76.9
+      Barcode 62 (forward)                      75.0       76.0
+      Barcode 63 (forward)                      76.0       83.3
+      Barcode 64 (forward)                      80.0       76.0
+      Barcode 65 (forward)                      80.0       79.2
+      Barcode 66 (forward)                      76.9       76.0
+      Barcode 67 (forward)                      76.0       76.0
+      Barcode 68 (forward)                      77.8       76.0
+      Barcode 69 (forward)                      80.0       79.2
+      Barcode 70 (forward)                      76.0       76.0
+      Barcode 71 (forward)                     100.0      100.0
+      Barcode 72 (forward)                      79.2       79.2
+      Barcode 73 (forward)                      76.9       80.0
+      Barcode 74 (forward)                      80.0       80.0
+      Barcode 75 (forward)                      76.9       78.6
+      Barcode 76 (forward)                      76.9       77.8
+      Barcode 77 (forward)                      75.0       80.0
+      Barcode 78 (forward)                      80.0       77.8
+      Barcode 79 (forward)                      76.9       79.2
+      Barcode 80 (forward)                      80.8       76.9
+      Barcode 81 (forward)                      78.6       79.2
+      Barcode 82 (forward)                      77.8       79.2
+      Barcode 83 (forward)                      76.0       76.9
+      Barcode 84 (forward)                      79.2       76.9
+      Barcode 85 (forward)                      76.0       79.2
+      Barcode 86 (forward)                      76.9       76.0
+      Barcode 87 (forward)                      75.0       77.8
+      Barcode 88 (forward)                      80.0       80.8
+      Barcode 89 (forward)                      80.8       77.8
+      Barcode 90 (forward)                      76.0       75.0
+      Barcode 91 (forward)                      75.0       76.9
+      Barcode 92 (forward)                      80.0       79.2
+      Barcode 93 (forward)                      80.0       80.0
+      Barcode 94 (forward)                      76.9       75.0
+      Barcode 95 (forward)                      80.0       79.2
+      Barcode 96 (forward)                      76.9       79.2
+      Consensus_1_start_(100.0%)_adapter        87.7        0.0
+      Consensus_1_end_(100.0%)_adapter           0.0       84.5
 
-349,324 / 349,324 (100.0%)
 
- 39,752 / 349,324 reads had adapters trimmed from their start (496,208 bp removed)
- 55,520 / 349,324 reads had adapters trimmed from their end (860,293 bp removed)
+    Trimming adapters from read ends
+         SQK-NSK007_Y_Top: AATGTACTTCGTTCAGTTACGTATTGCT
+      SQK-NSK007_Y_Bottom: GCAATACGTAACTGAACGAAGT
+                     BC24: GCATAGTTCTGCATGATGGGTTAG
+                 BC24_rev: CTAACCCATCATGCAGAACTATGC
+                     BC71: CCTGGGAGCATCAGGTAGTAACAG
+                 BC71_rev: CTGTTACTACCTGATGCTCCCAGG
+
+    349,324 / 349,324 (100.0%)
+
+     39,752 / 349,324 reads had adapters trimmed from their start (496,208 bp removed)
+     55,520 / 349,324 reads had adapters trimmed from their end (860,293 bp removed)
 
 
-Splitting reads containing middle adapters
-349,324 / 349,324 (100.0%)
+    Splitting reads containing middle adapters
+    349,324 / 349,324 (100.0%)
 
-738 / 349,324 reads were split based on middle adapters
+    738 / 349,324 reads were split based on middle adapters
 
 
-Saving trimmed reads to file
+    Saving trimmed reads to file
 
-Saved result to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz
+    Saved result to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz
     
     ### Scer2
     $ porechop_abi -abi -i 0.DadosBrutos/Scer2.fastq.gz -o 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz --format fastq.gz -t 20 
 
-Ab Initio Phase
-Starting with a 10 run batch.
-Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
-Command line:
- /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer2.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count -nt 20 -mr 10
-Kmer size:             16
-Sampled sequences:     40000
-Sampling length        100
-LC filter threshold:   1
-Adjusted LC threshold: 1
-Nb thread:             20
-Number of kept kmer:   500
-Number of runs:        10
-Verbosity level:       1
+    Ab Initio Phase
+    Starting with a 10 run batch.
+    Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
+    Command line:
+     /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer2.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count -nt 20 -mr 10
+    Kmer size:             16
+    Sampled sequences:     40000
+    Sampling length        100
+    LC filter threshold:   1
+    Adjusted LC threshold: 1
+    Nb thread:             20
+    Number of kept kmer:   500
+    Number of runs:        10
+    Verbosity level:       1
 
-A total of 10 runs will be performed.
-[7.71936 ms]    Parsing FASTA file
-[1520.96 ms]    Number of sequences found: 57918.
-Starting run number 1
-[1520.99 ms]    Working on sequence start.
-[9232.48 ms]    Working on sequence end.
-Starting run number 2
-[17182.3 ms]    Working on sequence start.
-[24738.5 ms]    Working on sequence end.
-Starting run number 3
-[32535.2 ms]    Working on sequence start.
-[40042 ms]      Working on sequence end.
-Starting run number 4
-[48701.5 ms]    Working on sequence start.
-[56081 ms]      Working on sequence end.
-Starting run number 5
-[63797.5 ms]    Working on sequence start.
-[71214.8 ms]    Working on sequence end.
-Starting run number 6
-[78974.7 ms]    Working on sequence start.
-[86438 ms]      Working on sequence end.
-Starting run number 7
-[94219 ms]      Working on sequence start.
-[101574 ms]     Working on sequence end.
-Starting run number 8
-[109250 ms]     Working on sequence start.
-[116702 ms]     Working on sequence end.
-Starting run number 9
-[124452 ms]     Working on sequence start.
-[131900 ms]     Working on sequence end.
-Starting run number 10
-[139661 ms]     Working on sequence start.
-[147132 ms]     Working on sequence end.
-Assembling run 1
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.245%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.95%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 2
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.12%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.765%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 3
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.6875%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 4
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.175%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.66%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 5
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.695%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 6
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2925%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.6425%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 7
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.715%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 8
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.24%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 9
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.17%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.96%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 10
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2125%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.69%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The adapters currently found are not all identical.
-/!\      A consensus will be made.
-/!\      Launching 20 additional runs to build a consensus.
-Following with a 20 run batch.
-Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
-Command line:
- /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer2.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count_sup -nt 20 -mr 20
-Kmer size:             16
-Sampled sequences:     40000
-Sampling length        100
-LC filter threshold:   1
-Adjusted LC threshold: 1
-Nb thread:             20
-Number of kept kmer:   500
-Number of runs:        20
-Verbosity level:       1
+    A total of 10 runs will be performed.
+    [7.71936 ms]    Parsing FASTA file
+    [1520.96 ms]    Number of sequences found: 57918.
+    Starting run number 1
+    [1520.99 ms]    Working on sequence start.
+    [9232.48 ms]    Working on sequence end.
+    Starting run number 2
+    [17182.3 ms]    Working on sequence start.
+    [24738.5 ms]    Working on sequence end.
+    Starting run number 3
+    [32535.2 ms]    Working on sequence start.
+    [40042 ms]      Working on sequence end.
+    Starting run number 4
+    [48701.5 ms]    Working on sequence start.
+    [56081 ms]      Working on sequence end.
+    Starting run number 5
+    [63797.5 ms]    Working on sequence start.
+    [71214.8 ms]    Working on sequence end.
+    Starting run number 6
+    [78974.7 ms]    Working on sequence start.
+    [86438 ms]      Working on sequence end.
+    Starting run number 7
+    [94219 ms]      Working on sequence start.
+    [101574 ms]     Working on sequence end.
+    Starting run number 8
+    [109250 ms]     Working on sequence start.
+    [116702 ms]     Working on sequence end.
+    Starting run number 9
+    [124452 ms]     Working on sequence start.
+    [131900 ms]     Working on sequence end.
+    Starting run number 10
+    [139661 ms]     Working on sequence start.
+    [147132 ms]     Working on sequence end.
+    Assembling run 1
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.245%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.95%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 2
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.12%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.765%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 3
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.6875%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 4
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.175%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.66%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 5
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.695%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 6
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2925%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.6425%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 7
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.715%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 8
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.24%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 9
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.17%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.96%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 10
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2125%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.69%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The adapters currently found are not all identical.
+    /!\      A consensus will be made.
+    /!\      Launching 20 additional runs to build a consensus.
+    Following with a 20 run batch.
+    Using config file:/home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config
+    Command line:
+     /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/approx_counter 0.DadosBrutos/Scer2.fastq.gz -v 1 --config /home/lgbio/programas/porechop_abi/Porechop_ABI/porechop_abi/ab_initio.config -o ./tmp/temp_approx_kmer_count_sup -nt 20 -mr 20
+    Kmer size:             16
+    Sampled sequences:     40000
+    Sampling length        100
+    LC filter threshold:   1
+    Adjusted LC threshold: 1
+    Nb thread:             20
+    Number of kept kmer:   500
+    Number of runs:        20
+    Verbosity level:       1
 
-A total of 20 runs will be performed.
-[7.66331 ms]    Parsing FASTA file
-[1519.48 ms]    Number of sequences found: 57918.
-Starting run number 1
-[1519.51 ms]    Working on sequence start.
-[8777.44 ms]    Working on sequence end.
-Starting run number 2
-[16421 ms]      Working on sequence start.
-[23651.6 ms]    Working on sequence end.
-Starting run number 3
-[31685.6 ms]    Working on sequence start.
-[38871.8 ms]    Working on sequence end.
-Starting run number 4
-[46463.4 ms]    Working on sequence start.
-[53639.9 ms]    Working on sequence end.
-Starting run number 5
-[61086.2 ms]    Working on sequence start.
-[68404 ms]      Working on sequence end.
-Starting run number 6
-[76268.9 ms]    Working on sequence start.
-[83443.6 ms]    Working on sequence end.
-Starting run number 7
-[90929.5 ms]    Working on sequence start.
-[98148.5 ms]    Working on sequence end.
-Starting run number 8
-[105599 ms]     Working on sequence start.
-[112795 ms]     Working on sequence end.
-Starting run number 9
-[120292 ms]     Working on sequence start.
-[127487 ms]     Working on sequence end.
-Starting run number 10
-[134950 ms]     Working on sequence start.
-[142160 ms]     Working on sequence end.
-Starting run number 11
-[149656 ms]     Working on sequence start.
-[156898 ms]     Working on sequence end.
-Starting run number 12
-[164422 ms]     Working on sequence start.
-[171627 ms]     Working on sequence end.
-Starting run number 13
-[179178 ms]     Working on sequence start.
-[186370 ms]     Working on sequence end.
-Starting run number 14
-[193881 ms]     Working on sequence start.
-[201082 ms]     Working on sequence end.
-Starting run number 15
-[208542 ms]     Working on sequence start.
-[215711 ms]     Working on sequence end.
-Starting run number 16
-[223182 ms]     Working on sequence start.
-[230440 ms]     Working on sequence end.
-Starting run number 17
-[237992 ms]     Working on sequence start.
-[245220 ms]     Working on sequence end.
-Starting run number 18
-[252706 ms]     Working on sequence start.
-[259924 ms]     Working on sequence end.
-Starting run number 19
-[267485 ms]     Working on sequence start.
-[274748 ms]     Working on sequence end.
-Starting run number 20
-[282293 ms]     Working on sequence start.
-[289483 ms]     Working on sequence end.
-Assembling run 1
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3375%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.73%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 2
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.39%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7975%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 3
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8425%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 4
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2075%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7425%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 5
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.205%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.5625%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 6
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2975%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.735%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 7
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.16%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.6975%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 8
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2925%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.88%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 9
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.0775%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.76%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 10
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.235%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.735%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 11
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2675%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7025%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 12
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.0825%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 13
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2625%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.015%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 14
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2775%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.825%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 15
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7875%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 16
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.245%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 17
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2375%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.99%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 18
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2775%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.89%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 19
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2125%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.655%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Assembling run 20
-/!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-/!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8%)
-/!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
-Consensus step done
-/!\      Frequency warning triggered by 30/30 runs for start adapters
-/!\      Frequency warning triggered by 30/30 runs for end adapters
+    A total of 20 runs will be performed.
+    [7.66331 ms]    Parsing FASTA file
+    [1519.48 ms]    Number of sequences found: 57918.
+    Starting run number 1
+    [1519.51 ms]    Working on sequence start.
+    [8777.44 ms]    Working on sequence end.
+    Starting run number 2
+    [16421 ms]      Working on sequence start.
+    [23651.6 ms]    Working on sequence end.
+    Starting run number 3
+    [31685.6 ms]    Working on sequence start.
+    [38871.8 ms]    Working on sequence end.
+    Starting run number 4
+    [46463.4 ms]    Working on sequence start.
+    [53639.9 ms]    Working on sequence end.
+    Starting run number 5
+    [61086.2 ms]    Working on sequence start.
+    [68404 ms]      Working on sequence end.
+    Starting run number 6
+    [76268.9 ms]    Working on sequence start.
+    [83443.6 ms]    Working on sequence end.
+    Starting run number 7
+    [90929.5 ms]    Working on sequence start.
+    [98148.5 ms]    Working on sequence end.
+    Starting run number 8
+    [105599 ms]     Working on sequence start.
+    [112795 ms]     Working on sequence end.
+    Starting run number 9
+    [120292 ms]     Working on sequence start.
+    [127487 ms]     Working on sequence end.
+    Starting run number 10
+    [134950 ms]     Working on sequence start.
+    [142160 ms]     Working on sequence end.
+    Starting run number 11
+    [149656 ms]     Working on sequence start.
+    [156898 ms]     Working on sequence end.
+    Starting run number 12
+    [164422 ms]     Working on sequence start.
+    [171627 ms]     Working on sequence end.
+    Starting run number 13
+    [179178 ms]     Working on sequence start.
+    [186370 ms]     Working on sequence end.
+    Starting run number 14
+    [193881 ms]     Working on sequence start.
+    [201082 ms]     Working on sequence end.
+    Starting run number 15
+    [208542 ms]     Working on sequence start.
+    [215711 ms]     Working on sequence end.
+    Starting run number 16
+    [223182 ms]     Working on sequence start.
+    [230440 ms]     Working on sequence end.
+    Starting run number 17
+    [237992 ms]     Working on sequence start.
+    [245220 ms]     Working on sequence end.
+    Starting run number 18
+    [252706 ms]     Working on sequence start.
+    [259924 ms]     Working on sequence end.
+    Starting run number 19
+    [267485 ms]     Working on sequence start.
+    [274748 ms]     Working on sequence end.
+    Starting run number 20
+    [282293 ms]     Working on sequence start.
+    [289483 ms]     Working on sequence end.
+    Assembling run 1
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.3375%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.73%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 2
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.39%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7975%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 3
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8425%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 4
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2075%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7425%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 5
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.205%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.5625%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 6
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2975%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.735%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 7
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.16%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.6975%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 8
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2925%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.88%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 9
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.0775%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.76%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 10
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.235%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.735%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 11
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2675%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7025%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 12
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.0825%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 13
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2625%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (5.015%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 14
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2775%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.825%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 15
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7875%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 16
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.245%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.7%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 17
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2375%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.99%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 18
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2775%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.89%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 19
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.2125%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.655%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Assembling run 20
+    /!\      The most frequent kmer has been found in less than 10% of the reads starts after approximate count (2.295%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    /!\      The most frequent kmer has been found in less than 10% of the reads ends after approximate count (4.8%)
+    /!\      It could mean this file is already trimmed or the sample do not contains detectable adapters.
+    Consensus step done
+    /!\      Frequency warning triggered by 30/30 runs for start adapters
+    /!\      Frequency warning triggered by 30/30 runs for end adapters
 
-Rebuild adapters:
+    Rebuild adapters:
 
-Start
-Consensus_1_start_(100.0%)
-GTACTTCGTTCAGTTACGTATTGCTAAGGTTAATACAGTCCGAGCCT
+    Start
+    Consensus_1_start_(100.0%)
+    GTACTTCGTTCAGTTACGTATTGCTAAGGTTAATACAGTCCGAGCCT
 
-End
-Consensus_1_end_(100.0%)
-AGGTGCTGAATCACATGAACTCGGACTGTATTAACCTTAGCAATACGTAACTTA
+    End
+    Consensus_1_end_(100.0%)
+    AGGTGCTGAATCACATGAACTCGGACTGTATTAACCTTAGCAATACGTAACTTA
 
-Building consensus adapter objects
-The inference of adapters sequence is done.
+    Building consensus adapter objects
+    The inference of adapters sequence is done.
 
-Loading reads
-0.DadosBrutos/Scer2.fastq.gz
-57,918 reads loaded
-
-
-Looking for known adapter sets
-10,000 / 10,000 (100.0%)
-                                        Best
-                                        read       Best
-                                        start      read end
-  Set                                   %ID        %ID
-  SQK-NSK007                                96.4       81.8
-  Rapid                                     67.3        0.0
-  RBK004_upstream                           75.0        0.0
-  SQK-MAP006                                78.6       82.6
-  SQK-MAP006 short                          76.9       75.0
-  PCR adapters 1                            78.3       83.3
-  PCR adapters 2                            90.9       82.6
-  PCR adapters 3                            78.3       80.0
-  1D^2 part 1                               75.9       74.1
-  1D^2 part 2                               88.6       78.1
-  cDNA SSP                                  69.8       69.0
-  Barcode 1 (reverse)                       84.0       76.9
-  Barcode 2 (reverse)                       77.8       80.0
-  Barcode 3 (reverse)                       78.6       76.0
-  Barcode 4 (reverse)                       79.2       78.6
-  Barcode 5 (reverse)                       76.9       80.0
-  Barcode 6 (reverse)                       77.8       79.2
-  Barcode 7 (reverse)                       79.2       76.0
-  Barcode 8 (reverse)                       76.0       79.2
-  Barcode 9 (reverse)                       79.2       79.2
-  Barcode 10 (reverse)                      76.9       79.2
-  Barcode 11 (reverse)                      76.9       76.9
-  Barcode 12 (reverse)                      83.3       95.8
-  Barcode 1 (forward)                       80.0       80.0
-  Barcode 2 (forward)                       80.0       80.8
-  Barcode 3 (forward)                       80.0       76.9
-  Barcode 4 (forward)                       80.8       76.9
-  Barcode 5 (forward)                       80.0       77.8
-  Barcode 6 (forward)                       79.2       80.8
-  Barcode 7 (forward)                       76.9       80.8
-  Barcode 8 (forward)                       76.0       79.2
-  Barcode 9 (forward)                       80.0       76.0
-  Barcode 10 (forward)                      80.0       76.9
-  Barcode 11 (forward)                      80.0       80.8
-  Barcode 12 (forward)                      76.9       83.3
-  Barcode 13 (forward)                      80.0       87.5
-  Barcode 14 (forward)                      76.9       76.9
-  Barcode 15 (forward)                      79.2       76.0
-  Barcode 16 (forward)                      80.0       76.9
-  Barcode 17 (forward)                      80.8       76.0
-  Barcode 18 (forward)                      76.0       79.2
-  Barcode 19 (forward)                      80.0       77.8
-  Barcode 20 (forward)                      76.9       77.8
-  Barcode 21 (forward)                      80.0       76.0
-  Barcode 22 (forward)                      76.9       80.0
-  Barcode 23 (forward)                      79.2       80.0
-  Barcode 24 (forward)                      80.0       80.0
-  Barcode 25 (forward)                      76.9       77.8
-  Barcode 26 (forward)                      79.2       80.8
-  Barcode 27 (forward)                      83.3       79.2
-  Barcode 28 (forward)                      79.2       79.2
-  Barcode 29 (forward)                      76.0       76.9
-  Barcode 30 (forward)                      92.0       79.2
-  Barcode 31 (forward)                      80.0       80.0
-  Barcode 32 (forward)                      80.8       76.9
-  Barcode 33 (forward)                      77.8       77.8
-  Barcode 34 (forward)                      77.8       76.9
-  Barcode 35 (forward)                      80.8       81.5
-  Barcode 36 (forward)                      80.8       76.9
-  Barcode 37 (forward)                      79.2       80.0
-  Barcode 38 (forward)                      84.6       80.0
-  Barcode 39 (forward)                      79.2       76.0
-  Barcode 40 (forward)                      78.6       80.0
-  Barcode 41 (forward)                      79.2       79.2
-  Barcode 42 (forward)                      76.0       76.9
-  Barcode 43 (forward)                      77.8       79.2
-  Barcode 44 (forward)                      79.2       79.2
-  Barcode 45 (forward)                      80.0       76.9
-  Barcode 46 (forward)                      80.0       76.0
-  Barcode 47 (forward)                      79.2       79.2
-  Barcode 48 (forward)                      92.0       81.5
-  Barcode 49 (forward)                      80.0       80.0
-  Barcode 50 (forward)                      80.8       77.8
-  Barcode 51 (forward)                      80.8       77.8
-  Barcode 52 (forward)                      80.8       80.0
-  Barcode 53 (forward)                      80.0       77.8
-  Barcode 54 (forward)                      79.2       80.8
-  Barcode 55 (forward)                      78.6       76.9
-  Barcode 56 (forward)                      79.2       80.0
-  Barcode 57 (forward)                      76.9       76.9
-  Barcode 58 (forward)                      87.5       76.9
-  Barcode 59 (forward)                      83.3       80.0
-  Barcode 60 (forward)                      76.9       77.8
-  Barcode 61 (forward)                      91.7       80.8
-  Barcode 62 (forward)                      80.0       76.0
-  Barcode 63 (forward)                      80.0       79.2
-  Barcode 64 (forward)                      80.8       78.6
-  Barcode 65 (forward)                      76.9       76.0
-  Barcode 66 (forward)                      76.9       76.9
-  Barcode 67 (forward)                      79.2       80.0
-  Barcode 68 (forward)                      79.2       76.9
-  Barcode 69 (forward)                     100.0      100.0
-  Barcode 70 (forward)                      76.0       79.2
-  Barcode 71 (forward)                      79.2       79.2
-  Barcode 72 (forward)                      79.2       76.9
-  Barcode 73 (forward)                      77.8       76.9
-  Barcode 74 (forward)                      79.2       80.0
-  Barcode 75 (forward)                      76.9       78.6
-  Barcode 76 (forward)                      76.0       76.9
-  Barcode 77 (forward)                      80.0       79.2
-  Barcode 78 (forward)                      79.2       79.2
-  Barcode 79 (forward)                      76.9       77.8
-  Barcode 80 (forward)                      80.8       80.8
-  Barcode 81 (forward)                      80.0       76.0
-  Barcode 82 (forward)                      79.2       80.8
-  Barcode 83 (forward)                      80.8       76.9
-  Barcode 84 (forward)                      80.0       79.2
-  Barcode 85 (forward)                      79.2       77.8
-  Barcode 86 (forward)                      77.8       79.2
-  Barcode 87 (forward)                      80.0       80.0
-  Barcode 88 (forward)                      80.0       80.0
-  Barcode 89 (forward)                      80.0       79.2
-  Barcode 90 (forward)                      76.0       75.0
-  Barcode 91 (forward)                      76.0       76.0
-  Barcode 92 (forward)                      77.8       76.9
-  Barcode 93 (forward)                      79.2       76.9
-  Barcode 94 (forward)                      76.0       76.0
-  Barcode 95 (forward)                      80.8       76.9
-  Barcode 96 (forward)                      76.9       80.0
-  Consensus_1_start_(100.0%)_adapter        91.7        0.0
-  Consensus_1_end_(100.0%)_adapter           0.0       90.9
+    Loading reads
+    0.DadosBrutos/Scer2.fastq.gz
+    57,918 reads loaded
 
 
-Trimming adapters from read ends
-            SQK-NSK007_Y_Top: AATGTACTTCGTTCAGTTACGTATTGCT
-         SQK-NSK007_Y_Bottom: GCAATACGTAACTGAACGAAGT
-                 PCR_2_start: TTTCTGTTGGTGCTGATATTGC
-                   PCR_2_end: GCAATATCAGCACCAACAGAAA
-                    BC12_rev: TCCGATTCTGCTTCTTTCTACCTG
-                        BC12: CAGGTAGAAAGAAGCAGAATCGGA
-                        BC30: TCAGTGAGGATCTACTTCGACCCA
-                    BC30_rev: TGGGTCGAAGTAGATCCTCACTGA
-                        BC48: CATCTGGAACGTGGTACACCTGTA
-                    BC48_rev: TACAGGTGTACCACGTTCCAGATG
-                        BC61: AGAGGGTACTATGTGCCTCAGCAC
-                    BC61_rev: GTGCTGAGGCACATAGTACCCTCT
-                        BC69: TACAGTCCGAGCCTCATGTGATCT
-                    BC69_rev: AGATCACATGAGGCTCGGACTGTA
-  Consensus_1_start_(100.0%): GTACTTCGTTCAGTTACGTATTGCTAAGGTTAATACAGTCCGAGCCT
+    Looking for known adapter sets
+    10,000 / 10,000 (100.0%)
+                                            Best
+                                            read       Best
+                                            start      read end
+      Set                                   %ID        %ID
+      SQK-NSK007                                96.4       81.8
+      Rapid                                     67.3        0.0
+      RBK004_upstream                           75.0        0.0
+      SQK-MAP006                                78.6       82.6
+      SQK-MAP006 short                          76.9       75.0
+      PCR adapters 1                            78.3       83.3
+      PCR adapters 2                            90.9       82.6
+      PCR adapters 3                            78.3       80.0
+      1D^2 part 1                               75.9       74.1
+      1D^2 part 2                               88.6       78.1
+      cDNA SSP                                  69.8       69.0
+      Barcode 1 (reverse)                       84.0       76.9
+      Barcode 2 (reverse)                       77.8       80.0
+      Barcode 3 (reverse)                       78.6       76.0
+      Barcode 4 (reverse)                       79.2       78.6
+      Barcode 5 (reverse)                       76.9       80.0
+      Barcode 6 (reverse)                       77.8       79.2
+      Barcode 7 (reverse)                       79.2       76.0
+      Barcode 8 (reverse)                       76.0       79.2
+      Barcode 9 (reverse)                       79.2       79.2
+      Barcode 10 (reverse)                      76.9       79.2
+      Barcode 11 (reverse)                      76.9       76.9
+      Barcode 12 (reverse)                      83.3       95.8
+      Barcode 1 (forward)                       80.0       80.0
+      Barcode 2 (forward)                       80.0       80.8
+      Barcode 3 (forward)                       80.0       76.9
+      Barcode 4 (forward)                       80.8       76.9
+      Barcode 5 (forward)                       80.0       77.8
+      Barcode 6 (forward)                       79.2       80.8
+      Barcode 7 (forward)                       76.9       80.8
+      Barcode 8 (forward)                       76.0       79.2
+      Barcode 9 (forward)                       80.0       76.0
+      Barcode 10 (forward)                      80.0       76.9
+      Barcode 11 (forward)                      80.0       80.8
+      Barcode 12 (forward)                      76.9       83.3
+      Barcode 13 (forward)                      80.0       87.5
+      Barcode 14 (forward)                      76.9       76.9
+      Barcode 15 (forward)                      79.2       76.0
+      Barcode 16 (forward)                      80.0       76.9
+      Barcode 17 (forward)                      80.8       76.0
+      Barcode 18 (forward)                      76.0       79.2
+      Barcode 19 (forward)                      80.0       77.8
+      Barcode 20 (forward)                      76.9       77.8
+      Barcode 21 (forward)                      80.0       76.0
+      Barcode 22 (forward)                      76.9       80.0
+      Barcode 23 (forward)                      79.2       80.0
+      Barcode 24 (forward)                      80.0       80.0
+      Barcode 25 (forward)                      76.9       77.8
+      Barcode 26 (forward)                      79.2       80.8
+      Barcode 27 (forward)                      83.3       79.2
+      Barcode 28 (forward)                      79.2       79.2
+      Barcode 29 (forward)                      76.0       76.9
+      Barcode 30 (forward)                      92.0       79.2
+      Barcode 31 (forward)                      80.0       80.0
+      Barcode 32 (forward)                      80.8       76.9
+      Barcode 33 (forward)                      77.8       77.8
+      Barcode 34 (forward)                      77.8       76.9
+      Barcode 35 (forward)                      80.8       81.5
+      Barcode 36 (forward)                      80.8       76.9
+      Barcode 37 (forward)                      79.2       80.0
+      Barcode 38 (forward)                      84.6       80.0
+      Barcode 39 (forward)                      79.2       76.0
+      Barcode 40 (forward)                      78.6       80.0
+      Barcode 41 (forward)                      79.2       79.2
+      Barcode 42 (forward)                      76.0       76.9
+      Barcode 43 (forward)                      77.8       79.2
+      Barcode 44 (forward)                      79.2       79.2
+      Barcode 45 (forward)                      80.0       76.9
+      Barcode 46 (forward)                      80.0       76.0
+      Barcode 47 (forward)                      79.2       79.2
+      Barcode 48 (forward)                      92.0       81.5
+      Barcode 49 (forward)                      80.0       80.0
+      Barcode 50 (forward)                      80.8       77.8
+      Barcode 51 (forward)                      80.8       77.8
+      Barcode 52 (forward)                      80.8       80.0
+      Barcode 53 (forward)                      80.0       77.8
+      Barcode 54 (forward)                      79.2       80.8
+      Barcode 55 (forward)                      78.6       76.9
+      Barcode 56 (forward)                      79.2       80.0
+      Barcode 57 (forward)                      76.9       76.9
+      Barcode 58 (forward)                      87.5       76.9
+      Barcode 59 (forward)                      83.3       80.0
+      Barcode 60 (forward)                      76.9       77.8
+      Barcode 61 (forward)                      91.7       80.8
+      Barcode 62 (forward)                      80.0       76.0
+      Barcode 63 (forward)                      80.0       79.2
+      Barcode 64 (forward)                      80.8       78.6
+      Barcode 65 (forward)                      76.9       76.0
+      Barcode 66 (forward)                      76.9       76.9
+      Barcode 67 (forward)                      79.2       80.0
+      Barcode 68 (forward)                      79.2       76.9
+      Barcode 69 (forward)                     100.0      100.0
+      Barcode 70 (forward)                      76.0       79.2
+      Barcode 71 (forward)                      79.2       79.2
+      Barcode 72 (forward)                      79.2       76.9
+      Barcode 73 (forward)                      77.8       76.9
+      Barcode 74 (forward)                      79.2       80.0
+      Barcode 75 (forward)                      76.9       78.6
+      Barcode 76 (forward)                      76.0       76.9
+      Barcode 77 (forward)                      80.0       79.2
+      Barcode 78 (forward)                      79.2       79.2
+      Barcode 79 (forward)                      76.9       77.8
+      Barcode 80 (forward)                      80.8       80.8
+      Barcode 81 (forward)                      80.0       76.0
+      Barcode 82 (forward)                      79.2       80.8
+      Barcode 83 (forward)                      80.8       76.9
+      Barcode 84 (forward)                      80.0       79.2
+      Barcode 85 (forward)                      79.2       77.8
+      Barcode 86 (forward)                      77.8       79.2
+      Barcode 87 (forward)                      80.0       80.0
+      Barcode 88 (forward)                      80.0       80.0
+      Barcode 89 (forward)                      80.0       79.2
+      Barcode 90 (forward)                      76.0       75.0
+      Barcode 91 (forward)                      76.0       76.0
+      Barcode 92 (forward)                      77.8       76.9
+      Barcode 93 (forward)                      79.2       76.9
+      Barcode 94 (forward)                      76.0       76.0
+      Barcode 95 (forward)                      80.8       76.9
+      Barcode 96 (forward)                      76.9       80.0
+      Consensus_1_start_(100.0%)_adapter        91.7        0.0
+      Consensus_1_end_(100.0%)_adapter           0.0       90.9
 
-    Consensus_1_end_(100.0%): AGGTGCTGAATCACATGAACTCGGACTGTATTAACCTTAGCAATACGTAACTTA
 
-                  NB12_start: AATGTACTTCGTTCAGTTACGTATTGCTAAGGTTAATCCGATTCTGCTTCTTTCTACCTGCAGCACCT
-                    NB12_end: AGGTGCTGCAGGTAGAAAGAAGCAGAATCGGATTAACCTTAGCAATACGTAACTGAACGAAGT
+    Trimming adapters from read ends
+                SQK-NSK007_Y_Top: AATGTACTTCGTTCAGTTACGTATTGCT
+             SQK-NSK007_Y_Bottom: GCAATACGTAACTGAACGAAGT
+                     PCR_2_start: TTTCTGTTGGTGCTGATATTGC
+                       PCR_2_end: GCAATATCAGCACCAACAGAAA
+                        BC12_rev: TCCGATTCTGCTTCTTTCTACCTG
+                            BC12: CAGGTAGAAAGAAGCAGAATCGGA
+                            BC30: TCAGTGAGGATCTACTTCGACCCA
+                        BC30_rev: TGGGTCGAAGTAGATCCTCACTGA
+                            BC48: CATCTGGAACGTGGTACACCTGTA
+                        BC48_rev: TACAGGTGTACCACGTTCCAGATG
+                            BC61: AGAGGGTACTATGTGCCTCAGCAC
+                        BC61_rev: GTGCTGAGGCACATAGTACCCTCT
+                            BC69: TACAGTCCGAGCCTCATGTGATCT
+                        BC69_rev: AGATCACATGAGGCTCGGACTGTA
+      Consensus_1_start_(100.0%): GTACTTCGTTCAGTTACGTATTGCTAAGGTTAATACAGTCCGAGCCT
 
-57,918 / 57,918 (100.0%)
+        Consensus_1_end_(100.0%): AGGTGCTGAATCACATGAACTCGGACTGTATTAACCTTAGCAATACGTAACTTA
 
-12,715 / 57,918 reads had adapters trimmed from their start (174,084 bp removed)
-13,566 / 57,918 reads had adapters trimmed from their end (220,542 bp removed)
+                      NB12_start: AATGTACTTCGTTCAGTTACGTATTGCTAAGGTTAATCCGATTCTGCTTCTTTCTACCTGCAGCACCT
+                        NB12_end: AGGTGCTGCAGGTAGAAAGAAGCAGAATCGGATTAACCTTAGCAATACGTAACTGAACGAAGT
+
+    57,918 / 57,918 (100.0%)
+
+    12,715 / 57,918 reads had adapters trimmed from their start (174,084 bp removed)
+    13,566 / 57,918 reads had adapters trimmed from their end (220,542 bp removed)
 
 
-Splitting reads containing middle adapters
-57,918 / 57,918 (100.0%)
+    Splitting reads containing middle adapters
+    57,918 / 57,918 (100.0%)
 
-43 / 57,918 reads were split based on middle adapters
+    43 / 57,918 reads were split based on middle adapters
 
 
-Saving trimmed reads to file
+    Saving trimmed reads to file
 
-Saved result to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz
+    Saved result to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz
 
     ```
 
@@ -1628,123 +1628,123 @@ cat 4.QC_dadosfiltrados/Scer2_q10_l500_NanoStats.txt
     ```bash
     ### Scer1 - Bruto
     $ cat 1.QC_dadosbrutos/Scer1_NanoStats.txt
-General summary:         
-Mean read length:                 2,909.1
-Mean read quality:                   11.6
-Median read length:               1,599.0
-Median read quality:                 12.8
-Number of reads:                349,324.0
-Read length N50:                  5,592.0
-STDEV read length:                3,578.7
-Total bases:              1,016,222,921.0
-Number, percentage and megabases of reads above quality cutoffs
->Q10:	274368 (78.5%) 840.0Mb
->Q15:	84994 (24.3%) 262.8Mb
->Q20:	2246 (0.6%) 2.5Mb
->Q25:	34 (0.0%) 0.0Mb
->Q30:	4 (0.0%) 0.0Mb
-Top 5 highest mean basecall quality scores and their read lengths
-1:	31.2 (217)
-2:	30.9 (265)
-3:	30.4 (102)
-4:	30.1 (264)
-5:	29.4 (213)
-Top 5 longest reads and their mean basecall quality score
-1:	88753 (7.6)
-2:	82457 (11.0)
-3:	79554 (4.3)
-4:	71052 (12.0)
-5:	49948 (13.8)
+    General summary:         
+    Mean read length:                 2,909.1
+    Mean read quality:                   11.6
+    Median read length:               1,599.0
+    Median read quality:                 12.8
+    Number of reads:                349,324.0
+    Read length N50:                  5,592.0
+    STDEV read length:                3,578.7
+    Total bases:              1,016,222,921.0
+    Number, percentage and megabases of reads above quality cutoffs
+    >Q10:	274368 (78.5%) 840.0Mb
+    >Q15:	84994 (24.3%) 262.8Mb
+    >Q20:	2246 (0.6%) 2.5Mb
+    >Q25:	34 (0.0%) 0.0Mb
+    >Q30:	4 (0.0%) 0.0Mb
+    Top 5 highest mean basecall quality scores and their read lengths
+    1:	31.2 (217)
+    2:	30.9 (265)
+    3:	30.4 (102)
+    4:	30.1 (264)
+    5:	29.4 (213)
+    Top 5 longest reads and their mean basecall quality score
+    1:	88753 (7.6)
+    2:	82457 (11.0)
+    3:	79554 (4.3)
+    4:	71052 (12.0)
+    5:	49948 (13.8)
 
     ### Scer1 - Filtrado
     $ cat 4.QC_dadosfiltrados/Scer1_q10_l500_NanoStats.txt
-General summary:         
-Mean read length:                3,580.0
-Mean read quality:                  13.3
-Median read length:              2,280.0
-Median read quality:                13.8
-Number of reads:               230,437.0
-Read length N50:                 5,790.0
-STDEV read length:               3,739.4
-Total bases:               824,955,177.0
-Number, percentage and megabases of reads above quality cutoffs
->Q10:	230437 (100.0%) 825.0Mb
->Q15:	72837 (31.6%) 259.6Mb
->Q20:	1329 (0.6%) 2.3Mb
->Q25:	5 (0.0%) 0.0Mb
->Q30:	0 (0.0%) 0.0Mb
-Top 5 highest mean basecall quality scores and their read lengths
-1:	26.5 (567)
-2:	26.1 (657)
-3:	25.6 (7242)
-4:	25.4 (926)
-5:	25.0 (660)
-Top 5 longest reads and their mean basecall quality score
-1:	82457 (11.0)
-2:	71052 (12.0)
-3:	49939 (13.8)
-4:	49916 (14.5)
-5:	48511 (12.0)
+    General summary:         
+    Mean read length:                3,580.0
+    Mean read quality:                  13.3
+    Median read length:              2,280.0
+    Median read quality:                13.8
+    Number of reads:               230,437.0
+    Read length N50:                 5,790.0
+    STDEV read length:               3,739.4
+    Total bases:               824,955,177.0
+    Number, percentage and megabases of reads above quality cutoffs
+    >Q10:	230437 (100.0%) 825.0Mb
+    >Q15:	72837 (31.6%) 259.6Mb
+    >Q20:	1329 (0.6%) 2.3Mb
+    >Q25:	5 (0.0%) 0.0Mb
+    >Q30:	0 (0.0%) 0.0Mb
+    Top 5 highest mean basecall quality scores and their read lengths
+    1:	26.5 (567)
+    2:	26.1 (657)
+    3:	25.6 (7242)
+    4:	25.4 (926)
+    5:	25.0 (660)
+    Top 5 longest reads and their mean basecall quality score
+    1:	82457 (11.0)
+    2:	71052 (12.0)
+    3:	49939 (13.8)
+    4:	49916 (14.5)
+    5:	48511 (12.0)
 
     ### Scer2 - Bruto
     $ cat 1.QC_dadosbrutos/Scer2_NanoStats.txt
-General summary:         
-Mean read length:                1,865.7
-Mean read quality:                  10.9
-Median read length:              1,127.0
-Median read quality:                12.2
-Number of reads:                57,918.0
-Read length N50:                 3,145.0
-STDEV read length:               2,252.9
-Total bases:               108,057,273.0
-Number, percentage and megabases of reads above quality cutoffs
->Q10:	41441 (71.6%) 82.1Mb
->Q15:	12940 (22.3%) 26.6Mb
->Q20:	561 (1.0%) 0.8Mb
->Q25:	16 (0.0%) 0.0Mb
->Q30:	0 (0.0%) 0.0Mb
-Top 5 highest mean basecall quality scores and their read lengths
-1:	28.5 (139)
-2:	28.0 (142)
-3:	27.9 (552)
-4:	26.9 (310)
-5:	26.7 (387)
-Top 5 longest reads and their mean basecall quality score
-1:	88333 (7.8)
-2:	71372 (13.3)
-3:	70398 (13.3)
-4:	63207 (10.1)
-5:	46792 (5.1)
+    General summary:         
+    Mean read length:                1,865.7
+    Mean read quality:                  10.9
+    Median read length:              1,127.0
+    Median read quality:                12.2
+    Number of reads:                57,918.0
+    Read length N50:                 3,145.0
+    STDEV read length:               2,252.9
+    Total bases:               108,057,273.0
+    Number, percentage and megabases of reads above quality cutoffs
+    >Q10:	41441 (71.6%) 82.1Mb
+    >Q15:	12940 (22.3%) 26.6Mb
+    >Q20:	561 (1.0%) 0.8Mb
+    >Q25:	16 (0.0%) 0.0Mb
+    >Q30:	0 (0.0%) 0.0Mb
+    Top 5 highest mean basecall quality scores and their read lengths
+    1:	28.5 (139)
+    2:	28.0 (142)
+    3:	27.9 (552)
+    4:	26.9 (310)
+    5:	26.7 (387)
+    Top 5 longest reads and their mean basecall quality score
+    1:	88333 (7.8)
+    2:	71372 (13.3)
+    3:	70398 (13.3)
+    4:	63207 (10.1)
+    5:	46792 (5.1)
 
     ### Scer2 - Filtrado
     $ cat 4.QC_dadosfiltrados/Scer2_q10_l500_NanoStats.txt
-General summary:         
-Mean read length:               2,399.8
-Mean read quality:                 13.3
-Median read length:             1,585.0
-Median read quality:               13.7
-Number of reads:               33,006.0
-Read length N50:                3,484.0
-STDEV read length:              2,413.2
-Total bases:               79,206,228.0
-Number, percentage and megabases of reads above quality cutoffs
->Q10:	33006 (100.0%) 79.2Mb
->Q15:	10503 (31.8%) 25.9Mb
->Q20:	392 (1.2%) 0.7Mb
->Q25:	1 (0.0%) 0.0Mb
->Q30:	0 (0.0%) 0.0Mb
-Top 5 highest mean basecall quality scores and their read lengths
-1:	27.9 (552)
-2:	25.0 (580)
-3:	24.7 (749)
-4:	24.0 (656)
-5:	24.0 (1233)
-Top 5 longest reads and their mean basecall quality score
-1:	71372 (13.3)
-2:	70392 (13.3)
-3:	63200 (10.1)
-4:	31363 (16.0)
-5:	30179 (12.8)
+    General summary:         
+    Mean read length:               2,399.8
+    Mean read quality:                 13.3
+    Median read length:             1,585.0
+    Median read quality:               13.7
+    Number of reads:               33,006.0
+    Read length N50:                3,484.0
+    STDEV read length:              2,413.2
+    Total bases:               79,206,228.0
+    Number, percentage and megabases of reads above quality cutoffs
+    >Q10:	33006 (100.0%) 79.2Mb
+    >Q15:	10503 (31.8%) 25.9Mb
+    >Q20:	392 (1.2%) 0.7Mb
+    >Q25:	1 (0.0%) 0.0Mb
+    >Q30:	0 (0.0%) 0.0Mb
+    Top 5 highest mean basecall quality scores and their read lengths
+    1:	27.9 (552)
+    2:	25.0 (580)
+    3:	24.7 (749)
+    4:	24.0 (656)
+    5:	24.0 (1233)
+    Top 5 longest reads and their mean basecall quality score
+    1:	71372 (13.3)
+    2:	70392 (13.3)
+    3:	63200 (10.1)
+    4:	31363 (16.0)
+    5:	30179 (12.8)
 
     ```
 
@@ -1778,176 +1778,176 @@ meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer2_q10_l500.fas
     ```bash 
     $ meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz output 4.QC_dadosfiltrados/Scer1_q10_l500.meryl
 
-Found 1 command tree.
+    Found 1 command tree.
 
-Counting 2230 (estimated) million canonical 21-mers from 1 input file:
-    sequence-file: 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-
-
-SIMPLE MODE
------------
-
-  21-mers
-    -> 4398046511104 entries for counts up to 65535.
-    -> 64 Tbits memory used
-
-  2339132415 input bases
-    -> expected max count of 9356529, needing 9 extra bits.
-    -> 36 Tbits memory used
-
-  12 TB memory needed
+    Counting 2230 (estimated) million canonical 21-mers from 1 input file:
+        sequence-file: 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
 
 
-COMPLEX MODE
-------------
+    SIMPLE MODE
+    -----------
 
-prefix     # of   struct   kmers/    segs/      min     data    total
-  bits   prefix   memory   prefix   prefix   memory   memory   memory
-------  -------  -------  -------  -------  -------  -------  -------
-     1     2  P    11 MB   557 MM   714 kS  8192  B  5717 MB  5729 MB
-     2     4  P    10 MB   278 MM   348 kS    16 kB  5578 MB  5589 MB
-     3     8  P    10 MB   139 MM   169 kS    32 kB  5438 MB  5449 MB
-     4    16  P    10 MB    69 MM    82 kS    64 kB  5300 MB  5310 MB
-     5    32  P    10 MB    34 MM    40 kS   128 kB  5162 MB  5172 MB
-     6    64  P    10 MB    17 MM    19 kS   256 kB  5020 MB  5030 MB
-     7   128  P     9 MB  8923 kM  9763  S   512 kB  4881 MB  4891 MB
-     8   256  P    10 MB  4461 kM  4745  S  1024 kB  4745 MB  4755 MB
-     9   512  P    10 MB  2230 kM  2303  S  2048 kB  4606 MB  4616 MB
-    10  1024  P    11 MB  1115 kM  1116  S  4096 kB  4464 MB  4475 MB
-    11  2048  P    14 MB   557 kM   541  S  8192 kB  4328 MB  4342 MB
-    12  4096  P    20 MB   278 kM   262  S    16 MB  4192 MB  4212 MB
-    13  8192  P    33 MB   139 kM   127  S    32 MB  4064 MB  4097 MB
-    14    16 kP    58 MB    69 kM    62  S    64 MB  3968 MB  4026 MB
-    15    32 kP   108 MB    34 kM    30  S   128 MB  3840 MB  3948 MB  Best Value!
-    16    64 kP   209 MB    17 kM    15  S   256 MB  3840 MB  4049 MB
-    17   128 kP   411 MB  8924  M     7  S   512 MB  3584 MB  3995 MB
-    18   256 kP   816 MB  4462  M     4  S  1024 MB  4096 MB  4912 MB
-    19   512 kP  1624 MB  2231  M     2  S  2048 MB  4096 MB  5720 MB
-    20  1024 kP  3240 MB  1116  M     1  S  4096 MB  4096 MB  7336 MB
-    21  2048 kP  6480 MB   558  M     1  S  8192 MB  8192 MB    14 GB
-    22  4096 kP    12 GB   279  M     1  S    16 GB    16 GB    28 GB
-    23  8192 kP    25 GB   140  M     1  S    32 GB    32 GB    57 GB
-    24    16 MP    50 GB    70  M     1  S    64 GB    64 GB   114 GB
-    25    32 MP   101 GB    35  M     1  S   128 GB   128 GB   229 GB
+      21-mers
+        -> 4398046511104 entries for counts up to 65535.
+        -> 64 Tbits memory used
+
+      2339132415 input bases
+        -> expected max count of 9356529, needing 9 extra bits.
+        -> 36 Tbits memory used
+
+      12 TB memory needed
 
 
-FINAL CONFIGURATION
--------------------
+    COMPLEX MODE
+    ------------
 
-Estimated to require 7667 MB memory out of 24 GB allowed.
-Estimated to require 2 batches.
-
-Configured complex mode for 7.488 GB memory per batch, and up to 2 batches.
-
-Start counting with THREADED method.
-Used 0.585 GB / 23.844 GB to store      2079826 kmers; need 0.032 GB to sort       107783 kmers
-Used 0.699 GB / 23.844 GB to store     50002774 kmers; need 0.048 GB to sort       160637 kmers
-Used 0.807 GB / 23.844 GB to store     85447237 kmers; need 0.072 GB to sort       241761 kmers
-Used 0.912 GB / 23.844 GB to store    118809251 kmers; need 0.098 GB to sort       330174 kmers
-Used 1.017 GB / 23.844 GB to store    152169925 kmers; need 0.123 GB to sort       413898 kmers
-Used 1.123 GB / 23.844 GB to store    185525747 kmers; need 0.148 GB to sort       495923 kmers
-Used 1.229 GB / 23.844 GB to store    218887656 kmers; need 0.171 GB to sort       572849 kmers
-Used 1.335 GB / 23.844 GB to store    252250389 kmers; need 0.195 GB to sort       655612 kmers
-Used 1.441 GB / 23.844 GB to store    285611941 kmers; need 0.223 GB to sort       747184 kmers
-Used 1.548 GB / 23.844 GB to store    318962563 kmers; need 0.245 GB to sort       821244 kmers
-Used 1.654 GB / 23.844 GB to store    352309262 kmers; need 0.273 GB to sort       917681 kmers
-Used 1.767 GB / 23.844 GB to store    387753450 kmers; need 0.291 GB to sort       976578 kmers
-Used 1.867 GB / 23.844 GB to store    419032341 kmers; need 0.319 GB to sort      1070500 kmers
-Used 1.974 GB / 23.844 GB to store    452393201 kmers; need 0.343 GB to sort      1149531 kmers
-Used 2.079 GB / 23.844 GB to store    485747179 kmers; need 0.368 GB to sort      1236351 kmers
-Used 2.186 GB / 23.844 GB to store    519097939 kmers; need 0.391 GB to sort      1313438 kmers
-Used 2.292 GB / 23.844 GB to store    552459034 kmers; need 0.414 GB to sort      1390341 kmers
-Used 2.399 GB / 23.844 GB to store    585817835 kmers; need 0.435 GB to sort      1460054 kmers
-Used 2.499 GB / 23.844 GB to store    617090772 kmers; need 0.462 GB to sort      1549692 kmers
-Used 2.611 GB / 23.844 GB to store    652537551 kmers; need 0.485 GB to sort      1626862 kmers
-Used 2.719 GB / 23.844 GB to store    685900447 kmers; need 0.507 GB to sort      1701769 kmers
-Used 2.825 GB / 23.844 GB to store    719258965 kmers; need 0.528 GB to sort      1772109 kmers
-Used 2.925 GB / 23.844 GB to store    750532392 kmers; need 0.555 GB to sort      1863928 kmers
-Used 3.032 GB / 23.844 GB to store    783888643 kmers; need 0.577 GB to sort      1936530 kmers
-Used 3.145 GB / 23.844 GB to store    819327431 kmers; need 0.590 GB to sort      1978681 kmers
-
-Input complete.  Writing results to '4.QC_dadosfiltrados/Scer1_q10_l500.meryl', using 20 threads.
-finishIteration()--
-
-Finished counting.
-
-Cleaning up.
-
-Bye.
-
-$ meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz output 4.QC_dadosfiltrados/Scer2_q10_l500.meryl
-
-Found 1 command tree.
-
-Counting 215 (estimated) million canonical 21-mers from 1 input file:
-    sequence-file: 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
+    prefix     # of   struct   kmers/    segs/      min     data    total
+      bits   prefix   memory   prefix   prefix   memory   memory   memory
+    ------  -------  -------  -------  -------  -------  -------  -------
+         1     2  P    11 MB   557 MM   714 kS  8192  B  5717 MB  5729 MB
+         2     4  P    10 MB   278 MM   348 kS    16 kB  5578 MB  5589 MB
+         3     8  P    10 MB   139 MM   169 kS    32 kB  5438 MB  5449 MB
+         4    16  P    10 MB    69 MM    82 kS    64 kB  5300 MB  5310 MB
+         5    32  P    10 MB    34 MM    40 kS   128 kB  5162 MB  5172 MB
+         6    64  P    10 MB    17 MM    19 kS   256 kB  5020 MB  5030 MB
+         7   128  P     9 MB  8923 kM  9763  S   512 kB  4881 MB  4891 MB
+         8   256  P    10 MB  4461 kM  4745  S  1024 kB  4745 MB  4755 MB
+         9   512  P    10 MB  2230 kM  2303  S  2048 kB  4606 MB  4616 MB
+        10  1024  P    11 MB  1115 kM  1116  S  4096 kB  4464 MB  4475 MB
+        11  2048  P    14 MB   557 kM   541  S  8192 kB  4328 MB  4342 MB
+        12  4096  P    20 MB   278 kM   262  S    16 MB  4192 MB  4212 MB
+        13  8192  P    33 MB   139 kM   127  S    32 MB  4064 MB  4097 MB
+        14    16 kP    58 MB    69 kM    62  S    64 MB  3968 MB  4026 MB
+        15    32 kP   108 MB    34 kM    30  S   128 MB  3840 MB  3948 MB  Best Value!
+        16    64 kP   209 MB    17 kM    15  S   256 MB  3840 MB  4049 MB
+        17   128 kP   411 MB  8924  M     7  S   512 MB  3584 MB  3995 MB
+        18   256 kP   816 MB  4462  M     4  S  1024 MB  4096 MB  4912 MB
+        19   512 kP  1624 MB  2231  M     2  S  2048 MB  4096 MB  5720 MB
+        20  1024 kP  3240 MB  1116  M     1  S  4096 MB  4096 MB  7336 MB
+        21  2048 kP  6480 MB   558  M     1  S  8192 MB  8192 MB    14 GB
+        22  4096 kP    12 GB   279  M     1  S    16 GB    16 GB    28 GB
+        23  8192 kP    25 GB   140  M     1  S    32 GB    32 GB    57 GB
+        24    16 MP    50 GB    70  M     1  S    64 GB    64 GB   114 GB
+        25    32 MP   101 GB    35  M     1  S   128 GB   128 GB   229 GB
 
 
-SIMPLE MODE
------------
+    FINAL CONFIGURATION
+    -------------------
 
-  21-mers
-    -> 4398046511104 entries for counts up to 65535.
-    -> 64 Tbits memory used
+    Estimated to require 7667 MB memory out of 24 GB allowed.
+    Estimated to require 2 batches.
 
-  226163685 input bases
-    -> expected max count of 904654, needing 5 extra bits.
-    -> 20 Tbits memory used
+    Configured complex mode for 7.488 GB memory per batch, and up to 2 batches.
 
-  10 TB memory needed
+    Start counting with THREADED method.
+    Used 0.585 GB / 23.844 GB to store      2079826 kmers; need 0.032 GB to sort       107783 kmers
+    Used 0.699 GB / 23.844 GB to store     50002774 kmers; need 0.048 GB to sort       160637 kmers
+    Used 0.807 GB / 23.844 GB to store     85447237 kmers; need 0.072 GB to sort       241761 kmers
+    Used 0.912 GB / 23.844 GB to store    118809251 kmers; need 0.098 GB to sort       330174 kmers
+    Used 1.017 GB / 23.844 GB to store    152169925 kmers; need 0.123 GB to sort       413898 kmers
+    Used 1.123 GB / 23.844 GB to store    185525747 kmers; need 0.148 GB to sort       495923 kmers
+    Used 1.229 GB / 23.844 GB to store    218887656 kmers; need 0.171 GB to sort       572849 kmers
+    Used 1.335 GB / 23.844 GB to store    252250389 kmers; need 0.195 GB to sort       655612 kmers
+    Used 1.441 GB / 23.844 GB to store    285611941 kmers; need 0.223 GB to sort       747184 kmers
+    Used 1.548 GB / 23.844 GB to store    318962563 kmers; need 0.245 GB to sort       821244 kmers
+    Used 1.654 GB / 23.844 GB to store    352309262 kmers; need 0.273 GB to sort       917681 kmers
+    Used 1.767 GB / 23.844 GB to store    387753450 kmers; need 0.291 GB to sort       976578 kmers
+    Used 1.867 GB / 23.844 GB to store    419032341 kmers; need 0.319 GB to sort      1070500 kmers
+    Used 1.974 GB / 23.844 GB to store    452393201 kmers; need 0.343 GB to sort      1149531 kmers
+    Used 2.079 GB / 23.844 GB to store    485747179 kmers; need 0.368 GB to sort      1236351 kmers
+    Used 2.186 GB / 23.844 GB to store    519097939 kmers; need 0.391 GB to sort      1313438 kmers
+    Used 2.292 GB / 23.844 GB to store    552459034 kmers; need 0.414 GB to sort      1390341 kmers
+    Used 2.399 GB / 23.844 GB to store    585817835 kmers; need 0.435 GB to sort      1460054 kmers
+    Used 2.499 GB / 23.844 GB to store    617090772 kmers; need 0.462 GB to sort      1549692 kmers
+    Used 2.611 GB / 23.844 GB to store    652537551 kmers; need 0.485 GB to sort      1626862 kmers
+    Used 2.719 GB / 23.844 GB to store    685900447 kmers; need 0.507 GB to sort      1701769 kmers
+    Used 2.825 GB / 23.844 GB to store    719258965 kmers; need 0.528 GB to sort      1772109 kmers
+    Used 2.925 GB / 23.844 GB to store    750532392 kmers; need 0.555 GB to sort      1863928 kmers
+    Used 3.032 GB / 23.844 GB to store    783888643 kmers; need 0.577 GB to sort      1936530 kmers
+    Used 3.145 GB / 23.844 GB to store    819327431 kmers; need 0.590 GB to sort      1978681 kmers
+
+    Input complete.  Writing results to '4.QC_dadosfiltrados/Scer1_q10_l500.meryl', using 20 threads.
+    finishIteration()--
+
+    Finished counting.
+
+    Cleaning up.
+
+    Bye.
+
+    $ meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz output 4.QC_dadosfiltrados/Scer2_q10_l500.meryl
+
+    Found 1 command tree.
+
+    Counting 215 (estimated) million canonical 21-mers from 1 input file:
+        sequence-file: 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
 
 
-COMPLEX MODE
-------------
+    SIMPLE MODE
+    -----------
 
-prefix     # of   struct   kmers/    segs/      min     data    total
-  bits   prefix   memory   prefix   prefix   memory   memory   memory
-------  -------  -------  -------  -------  -------  -------  -------
-     1     2  P  1112 kB    53 MM    69 kS  8192  B   552 MB   553 MB
-     2     4  P  1091 kB    26 MM    33 kS    16 kB   539 MB   540 MB
-     3     8  P  1077 kB    13 MM    16 kS    32 kB   525 MB   526 MB
-     4    16  P  1075 kB  6901 kM  8200  S    64 kB   512 MB   513 MB
-     5    32  P  1099 kB  3450 kM  3994  S   128 kB   499 MB   500 MB
-     6    64  P  1173 kB  1725 kM  1942  S   256 kB   485 MB   486 MB
-     7   128  P  1348 kB   862 kM   944  S   512 kB   472 MB   473 MB
-     8   256  P  1726 kB   431 kM   459  S  1024 kB   459 MB   460 MB
-     9   512  P  2508 kB   215 kM   223  S  2048 kB   446 MB   448 MB
-    10  1024  P  4096 kB   107 kM   108  S  4096 kB   432 MB   436 MB  Best Value!
-    11  2048  P  7312 kB    53 kM    53  S  8192 kB   424 MB   431 MB
-    12  4096  P    13 MB    26 kM    26  S    16 MB   416 MB   429 MB
-    13  8192  P    26 MB    13 kM    13  S    32 MB   416 MB   442 MB
-    14    16 kP    51 MB  6902  M     6  S    64 MB   384 MB   435 MB
-    15    32 kP   101 MB  3451  M     3  S   128 MB   384 MB   485 MB
-    16    64 kP   203 MB  1726  M     2  S   256 MB   512 MB   715 MB
-    17   128 kP   405 MB   863  M     1  S   512 MB   512 MB   917 MB
-    18   256 kP   810 MB   432  M     1  S  1024 MB  1024 MB  1834 MB
-    19   512 kP  1620 MB   216  M     1  S  2048 MB  2048 MB  3668 MB
-    20  1024 kP  3240 MB   108  M     1  S  4096 MB  4096 MB  7336 MB
-    21  2048 kP  6480 MB    54  M     1  S  8192 MB  8192 MB    14 GB
+      21-mers
+        -> 4398046511104 entries for counts up to 65535.
+        -> 64 Tbits memory used
+
+      226163685 input bases
+        -> expected max count of 904654, needing 5 extra bits.
+        -> 20 Tbits memory used
+
+      10 TB memory needed
 
 
-FINAL CONFIGURATION
--------------------
+    COMPLEX MODE
+    ------------
 
-Estimated to require 868 MB memory out of 24 GB allowed.
-Estimated to require 2 batches.
+    prefix     # of   struct   kmers/    segs/      min     data    total
+      bits   prefix   memory   prefix   prefix   memory   memory   memory
+    ------  -------  -------  -------  -------  -------  -------  -------
+         1     2  P  1112 kB    53 MM    69 kS  8192  B   552 MB   553 MB
+         2     4  P  1091 kB    26 MM    33 kS    16 kB   539 MB   540 MB
+         3     8  P  1077 kB    13 MM    16 kS    32 kB   525 MB   526 MB
+         4    16  P  1075 kB  6901 kM  8200  S    64 kB   512 MB   513 MB
+         5    32  P  1099 kB  3450 kM  3994  S   128 kB   499 MB   500 MB
+         6    64  P  1173 kB  1725 kM  1942  S   256 kB   485 MB   486 MB
+         7   128  P  1348 kB   862 kM   944  S   512 kB   472 MB   473 MB
+         8   256  P  1726 kB   431 kM   459  S  1024 kB   459 MB   460 MB
+         9   512  P  2508 kB   215 kM   223  S  2048 kB   446 MB   448 MB
+        10  1024  P  4096 kB   107 kM   108  S  4096 kB   432 MB   436 MB  Best Value!
+        11  2048  P  7312 kB    53 kM    53  S  8192 kB   424 MB   431 MB
+        12  4096  P    13 MB    26 kM    26  S    16 MB   416 MB   429 MB
+        13  8192  P    26 MB    13 kM    13  S    32 MB   416 MB   442 MB
+        14    16 kP    51 MB  6902  M     6  S    64 MB   384 MB   435 MB
+        15    32 kP   101 MB  3451  M     3  S   128 MB   384 MB   485 MB
+        16    64 kP   203 MB  1726  M     2  S   256 MB   512 MB   715 MB
+        17   128 kP   405 MB   863  M     1  S   512 MB   512 MB   917 MB
+        18   256 kP   810 MB   432  M     1  S  1024 MB  1024 MB  1834 MB
+        19   512 kP  1620 MB   216  M     1  S  2048 MB  2048 MB  3668 MB
+        20  1024 kP  3240 MB   108  M     1  S  4096 MB  4096 MB  7336 MB
+        21  2048 kP  6480 MB    54  M     1  S  8192 MB  8192 MB    14 GB
 
-Configured complex mode for 0.848 GB memory per batch, and up to 2 batches.
 
-Start counting with THREADED method.
-Used 0.270 GB / 23.844 GB to store      2074041 kmers; need 0.123 GB to sort       413833 kmers
-Used 0.332 GB / 23.844 GB to store     18701309 kmers; need 0.200 GB to sort       671083 kmers
-Used 0.411 GB / 23.844 GB to store     39491103 kmers; need 0.326 GB to sort      1093307 kmers
-Used 0.474 GB / 23.844 GB to store     56121601 kmers; need 0.393 GB to sort      1318021 kmers
+    FINAL CONFIGURATION
+    -------------------
 
-Input complete.  Writing results to '4.QC_dadosfiltrados/Scer2_q10_l500.meryl', using 20 threads.
-finishIteration()--
+    Estimated to require 868 MB memory out of 24 GB allowed.
+    Estimated to require 2 batches.
 
-Finished counting.
+    Configured complex mode for 0.848 GB memory per batch, and up to 2 batches.
 
-Cleaning up.
+    Start counting with THREADED method.
+    Used 0.270 GB / 23.844 GB to store      2074041 kmers; need 0.123 GB to sort       413833 kmers
+    Used 0.332 GB / 23.844 GB to store     18701309 kmers; need 0.200 GB to sort       671083 kmers
+    Used 0.411 GB / 23.844 GB to store     39491103 kmers; need 0.326 GB to sort      1093307 kmers
+    Used 0.474 GB / 23.844 GB to store     56121601 kmers; need 0.393 GB to sort      1318021 kmers
 
-Bye.
+    Input complete.  Writing results to '4.QC_dadosfiltrados/Scer2_q10_l500.meryl', using 20 threads.
+    finishIteration()--
+
+    Finished counting.
+
+    Cleaning up.
+
+    Bye.
 
 
     ```
@@ -1965,11 +1965,11 @@ meryl histogram 4.QC_dadosfiltrados/Scer2_q10_l500.meryl | sed 's/\t/ /g' > 4.QC
     ```bash
     $ meryl histogram 4.QC_dadosfiltrados/Scer1_q10_l500.meryl | sed 's/\t/ /g' > 4.QC_dadosfiltrados/Scer1_q10_l500.hist
 
-Found 1 command tree.
-####
-$ meryl histogram 4.QC_dadosfiltrados/Scer2_q10_l500.meryl | sed 's/\t/ /g' > 4.QC_dadosfiltrados/Scer2_q10_l500.hist
+    Found 1 command tree.
+    ####
+    $ meryl histogram 4.QC_dadosfiltrados/Scer2_q10_l500.meryl | sed 's/\t/ /g' > 4.QC_dadosfiltrados/Scer2_q10_l500.hist
 
-Found 1 command tree.
+    Found 1 command tree.
 
     ```
 
@@ -1986,16 +1986,16 @@ conda deactivate
 
     ```bash
     $ genomescope2 -i 4.QC_dadosfiltrados/Scer1_q10_l500.hist -o 4.QC_dadosfiltrados/Scer1_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer1_Oxford_Nanopore"
-GenomeScope analyzing 4.QC_dadosfiltrados/Scer1_q10_l500.hist p=2 k=21 outdir=4.QC_dadosfiltrados/Scer1_q10_l500_genomescope
-aa:99.7% ab:0.307%
-Model converged het:0.00307 kcov:15.5 err:0.0204 model fit:0.684 len:17179584
+    GenomeScope analyzing 4.QC_dadosfiltrados/Scer1_q10_l500.hist p=2 k=21 outdir=4.QC_dadosfiltrados/Scer1_q10_l500_genomescope
+    aa:99.7% ab:0.307%
+    Model converged het:0.00307 kcov:15.5 err:0.0204 model fit:0.684 len:17179584
 
-####
-$ genomescope2 -i 4.QC_dadosfiltrados/Scer2_q10_l500.hist -o 4.QC_dadosfiltrados/Scer2_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer2_Oxford_Nanopore"
-GenomeScope analyzing 4.QC_dadosfiltrados/Scer2_q10_l500.hist p=2 k=21 outdir=4.QC_dadosfiltrados/Scer2_q10_l500_genomescope
-Fontconfig warning: using without calling FcInit()
-aa:99.5% ab:0.501%
-Model converged het:0.00501 kcov:93.1 err:0.0677 model fit:9.33 len:96874
+    ####
+    $ genomescope2 -i 4.QC_dadosfiltrados/Scer2_q10_l500.hist -o 4.QC_dadosfiltrados/Scer2_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer2_Oxford_Nanopore"
+    GenomeScope analyzing 4.QC_dadosfiltrados/Scer2_q10_l500.hist p=2 k=21 outdir=4.QC_dadosfiltrados/Scer2_q10_l500_genomescope
+    Fontconfig warning: using without calling FcInit()
+    aa:99.5% ab:0.501%
+    Model converged het:0.00501 kcov:93.1 err:0.0677 model fit:9.33 len:96874
     
     ```
 
@@ -2042,141 +2042,141 @@ conda deactivate
 ??? note "Ver saída do comando"
 
     ```bash
-$ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz  -o 5.Montagem-Flye/Scer1_q10_l500 -t 24
-[2026-11-16 20:45:21] INFO: Starting Flye 2.9.6-b1802
-[2026-11-16 20:45:21] INFO: >>>STAGE: configure
-[2026-11-16 20:45:21] INFO: Configuring run
-[2026-11-16 20:45:37] INFO: Total read length: 824955177
-[2026-11-16 20:45:37] INFO: Input genome size: 12000000
-[2026-11-16 20:45:37] INFO: Estimated coverage: 68
-[2026-11-16 20:45:37] INFO: Reads N50/N90: 5790 / 1593
-[2026-11-16 20:45:37] INFO: Minimum overlap set to 2000
-[2026-11-16 20:45:37] INFO: >>>STAGE: assembly
-[2026-11-16 20:45:37] INFO: Assembling disjointigs
-[2026-11-16 20:45:37] INFO: Reading sequences
-[2026-11-16 20:45:48] INFO: Building minimizer index
-[2026-11-16 20:45:48] INFO: Pre-calculating index storage
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:45:55] INFO: Filling index
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:46:05] INFO: Extending reads
-[2026-11-16 20:47:12] INFO: Overlap-based coverage: 38
-[2026-11-16 20:47:12] INFO: Median overlap divergence: 0.0778406
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:48:34] INFO: Assembled 75 disjointigs
-[2026-11-16 20:48:35] INFO: Generating sequence
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:48:38] INFO: Filtering contained disjointigs
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:48:39] INFO: Contained seqs: 28
-[2026-11-16 20:48:41] INFO: >>>STAGE: consensus
-[2026-11-16 20:48:41] INFO: Running Minimap2
-[2026-11-16 20:50:40] INFO: Computing consensus
-[2026-11-16 20:51:28] INFO: Alignment error rate: 0.093479
-[2026-11-16 20:51:28] INFO: >>>STAGE: repeat
-[2026-11-16 20:51:28] INFO: Building and resolving repeat graph
-[2026-11-16 20:51:28] INFO: Parsing disjointigs
-[2026-11-16 20:51:28] INFO: Building repeat graph
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:51:34] INFO: Median overlap divergence: 0.0601956
-[2026-11-16 20:51:34] INFO: Parsing reads
-[2026-11-16 20:51:45] INFO: Aligning reads to the graph
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:52:23] INFO: Aligned read sequence: 657881709 / 707879832 (0.929369)
-[2026-11-16 20:52:23] INFO: Median overlap divergence: 0.0394759
-[2026-11-16 20:52:23] INFO: Mean edge coverage: 54
-[2026-11-16 20:52:23] INFO: Simplifying the graph
-[2026-11-16 20:52:25] INFO: >>>STAGE: contigger
-[2026-11-16 20:52:25] INFO: Generating contigs
-[2026-11-16 20:52:25] INFO: Reading sequences
-[2026-11-16 20:52:37] INFO: Generated 98 contigs
-[2026-11-16 20:52:37] INFO: Added 2 scaffold connections
-[2026-11-16 20:52:38] INFO: >>>STAGE: polishing
-[2026-11-16 20:52:38] INFO: Polishing genome (1/1)
-[2026-11-16 20:52:38] INFO: Running minimap2
-[2026-11-16 20:53:49] INFO: Separating alignment into bubbles
-[2026-11-16 20:54:50] INFO: Alignment error rate: 0.072587
-[2026-11-16 20:54:50] INFO: Correcting bubbles
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:57:40] INFO: >>>STAGE: finalize
-[2026-11-16 20:57:40] INFO: Assembly statistics:
+    $ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz  -o 5.Montagem-Flye/Scer1_q10_l500 -t 24
+    [2026-11-16 20:45:21] INFO: Starting Flye 2.9.6-b1802
+    [2026-11-16 20:45:21] INFO: >>>STAGE: configure
+    [2026-11-16 20:45:21] INFO: Configuring run
+    [2026-11-16 20:45:37] INFO: Total read length: 824955177
+    [2026-11-16 20:45:37] INFO: Input genome size: 12000000
+    [2026-11-16 20:45:37] INFO: Estimated coverage: 68
+    [2026-11-16 20:45:37] INFO: Reads N50/N90: 5790 / 1593
+    [2026-11-16 20:45:37] INFO: Minimum overlap set to 2000
+    [2026-11-16 20:45:37] INFO: >>>STAGE: assembly
+    [2026-11-16 20:45:37] INFO: Assembling disjointigs
+    [2026-11-16 20:45:37] INFO: Reading sequences
+    [2026-11-16 20:45:48] INFO: Building minimizer index
+    [2026-11-16 20:45:48] INFO: Pre-calculating index storage
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:45:55] INFO: Filling index
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:46:05] INFO: Extending reads
+    [2026-11-16 20:47:12] INFO: Overlap-based coverage: 38
+    [2026-11-16 20:47:12] INFO: Median overlap divergence: 0.0778406
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:48:34] INFO: Assembled 75 disjointigs
+    [2026-11-16 20:48:35] INFO: Generating sequence
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:48:38] INFO: Filtering contained disjointigs
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:48:39] INFO: Contained seqs: 28
+    [2026-11-16 20:48:41] INFO: >>>STAGE: consensus
+    [2026-11-16 20:48:41] INFO: Running Minimap2
+    [2026-11-16 20:50:40] INFO: Computing consensus
+    [2026-11-16 20:51:28] INFO: Alignment error rate: 0.093479
+    [2026-11-16 20:51:28] INFO: >>>STAGE: repeat
+    [2026-11-16 20:51:28] INFO: Building and resolving repeat graph
+    [2026-11-16 20:51:28] INFO: Parsing disjointigs
+    [2026-11-16 20:51:28] INFO: Building repeat graph
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:51:34] INFO: Median overlap divergence: 0.0601956
+    [2026-11-16 20:51:34] INFO: Parsing reads
+    [2026-11-16 20:51:45] INFO: Aligning reads to the graph
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:52:23] INFO: Aligned read sequence: 657881709 / 707879832 (0.929369)
+    [2026-11-16 20:52:23] INFO: Median overlap divergence: 0.0394759
+    [2026-11-16 20:52:23] INFO: Mean edge coverage: 54
+    [2026-11-16 20:52:23] INFO: Simplifying the graph
+    [2026-11-16 20:52:25] INFO: >>>STAGE: contigger
+    [2026-11-16 20:52:25] INFO: Generating contigs
+    [2026-11-16 20:52:25] INFO: Reading sequences
+    [2026-11-16 20:52:37] INFO: Generated 98 contigs
+    [2026-11-16 20:52:37] INFO: Added 2 scaffold connections
+    [2026-11-16 20:52:38] INFO: >>>STAGE: polishing
+    [2026-11-16 20:52:38] INFO: Polishing genome (1/1)
+    [2026-11-16 20:52:38] INFO: Running minimap2
+    [2026-11-16 20:53:49] INFO: Separating alignment into bubbles
+    [2026-11-16 20:54:50] INFO: Alignment error rate: 0.072587
+    [2026-11-16 20:54:50] INFO: Correcting bubbles
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:57:40] INFO: >>>STAGE: finalize
+    [2026-11-16 20:57:40] INFO: Assembly statistics:
 
-        Total length:   12301315
-        Fragments:      79
-        Fragments N50:  751043
-        Largest frg:    1526486
-        Scaffolds:      2
-        Mean coverage:  58
+            Total length:   12301315
+            Fragments:      79
+            Fragments N50:  751043
+            Largest frg:    1526486
+            Scaffolds:      2
+            Mean coverage:  58
 
-[2026-11-16 20:57:40] INFO: Final assembly: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
+    [2026-11-16 20:57:40] INFO: Final assembly: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
 
-$ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz  -o 5.Montagem-Flye/Scer2_q10_l500 -t 24
-[2026-11-16 20:57:40] INFO: Starting Flye 2.9.6-b1802
-[2026-11-16 20:57:40] INFO: >>>STAGE: configure
-[2026-11-16 20:57:40] INFO: Configuring run
-[2026-11-16 20:57:41] INFO: Total read length: 79206228
-[2026-11-16 20:57:41] INFO: Input genome size: 12000000
-[2026-11-16 20:57:41] INFO: Estimated coverage: 6
-[2026-11-16 20:57:41] INFO: Reads N50/N90: 3484 / 1062
-[2026-11-16 20:57:41] INFO: Minimum overlap set to 1000
-[2026-11-16 20:57:41] INFO: >>>STAGE: assembly
-[2026-11-16 20:57:41] INFO: Assembling disjointigs
-[2026-11-16 20:57:41] INFO: Reading sequences
-[2026-11-16 20:57:42] INFO: Building minimizer index
-[2026-11-16 20:57:42] INFO: Pre-calculating index storage
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:57:43] INFO: Filling index
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:57:45] INFO: Extending reads
-[2026-11-16 20:57:57] INFO: Overlap-based coverage: 4
-[2026-11-16 20:57:57] INFO: Median overlap divergence: 0.0729167
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:58:01] INFO: Assembled 1070 disjointigs
-[2026-11-16 20:58:01] INFO: Generating sequence
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:58:02] INFO: Filtering contained disjointigs
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:58:02] INFO: Contained seqs: 57
-[2026-11-16 20:58:02] INFO: >>>STAGE: consensus
-[2026-11-16 20:58:02] INFO: Running Minimap2
-[2026-11-16 20:58:10] INFO: Computing consensus
-[2026-11-16 20:58:19] INFO: Alignment error rate: 0.086339
-[2026-11-16 20:58:19] INFO: >>>STAGE: repeat
-[2026-11-16 20:58:19] INFO: Building and resolving repeat graph
-[2026-11-16 20:58:19] INFO: Parsing disjointigs
-[2026-11-16 20:58:19] INFO: Building repeat graph
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:58:21] INFO: Median overlap divergence: 0.0702313
-[2026-11-16 20:58:21] INFO: Parsing reads
-[2026-11-16 20:58:22] INFO: Aligning reads to the graph
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:58:24] INFO: Aligned read sequence: 60590940 / 72330336 (0.837698)
-[2026-11-16 20:58:24] INFO: Median overlap divergence: 0.0379287
-[2026-11-16 20:58:24] INFO: Mean edge coverage: 5
-[2026-11-16 20:58:24] INFO: Simplifying the graph
-[2026-11-16 20:58:25] INFO: >>>STAGE: contigger
-[2026-11-16 20:58:25] INFO: Generating contigs
-[2026-11-16 20:58:25] INFO: Reading sequences
-[2026-11-16 20:58:26] INFO: Generated 747 contigs
-[2026-11-16 20:58:26] INFO: Added 0 scaffold connections
-[2026-11-16 20:58:26] INFO: >>>STAGE: polishing
-[2026-11-16 20:58:26] INFO: Polishing genome (1/1)
-[2026-11-16 20:58:26] INFO: Running minimap2
-[2026-11-16 20:58:31] INFO: Separating alignment into bubbles
-[2026-11-16 20:58:45] INFO: Alignment error rate: 0.062868
-[2026-11-16 20:58:45] INFO: Correcting bubbles
-0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
-[2026-11-16 20:59:04] INFO: >>>STAGE: finalize
-[2026-11-16 20:59:04] INFO: Assembly statistics:
+    $ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz  -o 5.Montagem-Flye/Scer2_q10_l500 -t 24
+    [2026-11-16 20:57:40] INFO: Starting Flye 2.9.6-b1802
+    [2026-11-16 20:57:40] INFO: >>>STAGE: configure
+    [2026-11-16 20:57:40] INFO: Configuring run
+    [2026-11-16 20:57:41] INFO: Total read length: 79206228
+    [2026-11-16 20:57:41] INFO: Input genome size: 12000000
+    [2026-11-16 20:57:41] INFO: Estimated coverage: 6
+    [2026-11-16 20:57:41] INFO: Reads N50/N90: 3484 / 1062
+    [2026-11-16 20:57:41] INFO: Minimum overlap set to 1000
+    [2026-11-16 20:57:41] INFO: >>>STAGE: assembly
+    [2026-11-16 20:57:41] INFO: Assembling disjointigs
+    [2026-11-16 20:57:41] INFO: Reading sequences
+    [2026-11-16 20:57:42] INFO: Building minimizer index
+    [2026-11-16 20:57:42] INFO: Pre-calculating index storage
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:57:43] INFO: Filling index
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:57:45] INFO: Extending reads
+    [2026-11-16 20:57:57] INFO: Overlap-based coverage: 4
+    [2026-11-16 20:57:57] INFO: Median overlap divergence: 0.0729167
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:58:01] INFO: Assembled 1070 disjointigs
+    [2026-11-16 20:58:01] INFO: Generating sequence
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:58:02] INFO: Filtering contained disjointigs
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:58:02] INFO: Contained seqs: 57
+    [2026-11-16 20:58:02] INFO: >>>STAGE: consensus
+    [2026-11-16 20:58:02] INFO: Running Minimap2
+    [2026-11-16 20:58:10] INFO: Computing consensus
+    [2026-11-16 20:58:19] INFO: Alignment error rate: 0.086339
+    [2026-11-16 20:58:19] INFO: >>>STAGE: repeat
+    [2026-11-16 20:58:19] INFO: Building and resolving repeat graph
+    [2026-11-16 20:58:19] INFO: Parsing disjointigs
+    [2026-11-16 20:58:19] INFO: Building repeat graph
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:58:21] INFO: Median overlap divergence: 0.0702313
+    [2026-11-16 20:58:21] INFO: Parsing reads
+    [2026-11-16 20:58:22] INFO: Aligning reads to the graph
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:58:24] INFO: Aligned read sequence: 60590940 / 72330336 (0.837698)
+    [2026-11-16 20:58:24] INFO: Median overlap divergence: 0.0379287
+    [2026-11-16 20:58:24] INFO: Mean edge coverage: 5
+    [2026-11-16 20:58:24] INFO: Simplifying the graph
+    [2026-11-16 20:58:25] INFO: >>>STAGE: contigger
+    [2026-11-16 20:58:25] INFO: Generating contigs
+    [2026-11-16 20:58:25] INFO: Reading sequences
+    [2026-11-16 20:58:26] INFO: Generated 747 contigs
+    [2026-11-16 20:58:26] INFO: Added 0 scaffold connections
+    [2026-11-16 20:58:26] INFO: >>>STAGE: polishing
+    [2026-11-16 20:58:26] INFO: Polishing genome (1/1)
+    [2026-11-16 20:58:26] INFO: Running minimap2
+    [2026-11-16 20:58:31] INFO: Separating alignment into bubbles
+    [2026-11-16 20:58:45] INFO: Alignment error rate: 0.062868
+    [2026-11-16 20:58:45] INFO: Correcting bubbles
+    0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+    [2026-11-16 20:59:04] INFO: >>>STAGE: finalize
+    [2026-11-16 20:59:04] INFO: Assembly statistics:
 
-        Total length:   8359888
-        Fragments:      715
-        Fragments N50:  16118
-        Largest frg:    78752
-        Scaffolds:      0
-        Mean coverage:  8
+            Total length:   8359888
+            Fragments:      715
+            Fragments N50:  16118
+            Largest frg:    78752
+            Scaffolds:      0
+            Mean coverage:  8
 
-[2026-11-16 20:59:04] INFO: Final assembly: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
+    [2026-11-16 20:59:04] INFO: Final assembly: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
 
 
     ```
@@ -2260,288 +2260,288 @@ nextDenovo 7.Montagem-NextDenovo/Scer1_q10_l500/run.cfg
 
     ```bash
     $ nextDenovo 7.Montagem-NextDenovo/Scer1_q10_l500/run.cfg
-[2423043 INFO] 2026-11-16 20:46:53 NextDenovo start...
-[2423043 INFO] 2026-11-16 20:46:53 version:2.5.2 logfile:pid2423043.log.info
-[2423043 WARNING] 2026-11-16 20:46:53 Re-write workdir
-[2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir
-[2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align
-[2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align
-[2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph
-[2423043 INFO] 2026-11-16 20:46:58 Total jobs: 1
-[2423043 INFO] 2026-11-16 20:46:58 Submitted jobID:[2423049] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/01.db_stat.sh.work/db_stat1/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:07 db_stat done
-[2423043 INFO] 2026-11-16 20:47:07 updated options:
-rerun:                        3
-task:                         all
-deltmp:                       1
-rewrite:                      1
-read_type:                    ont
-job_type:                     local
-input_type:                   raw
-read_cutoff:                  1k
-seed_depth:                   25.0
-pa_correction:                3
-seed_cutfiles:                3
-genome_size:                  12m
-parallel_jobs:                20
-seed_cutoff:                  7803
-blocksize:                    28263802
-job_prefix:                   nextDenovo
-ctg_cns_options:              -p 15
-nextgraph_options:            -a 1
-sort_options:                 -m 20g -t 15 -k 40
-minimap2_options_map:         -x map-ont
-minimap2_options_raw:         -t 8 -x ava-ont
-correction_options:           -p 15 -max_lq_length 10000 -r ont -min_len_seed 3901
-minimap2_options_cns:         -t 8 -x ava-ont -k 17 -w 17 --minlen 780 --maxhan1 3901
-workdir:                      /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir
-input_fofn:                   /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/input.fofn
-raw_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align
-cns_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align
-ctg_graphdir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph
-[2423043 INFO] 2026-11-16 20:47:07 summary of input data:
-file: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/input.reads.stat
-[Read length stat]
-Types            Count (#) Length (bp)
-N10                   3858   15868
-N20                   9732   11734
-N30                  17362    9253
-N40                  26905    7470
-N50                  38677    6060
-N60                  53234    4879
-N70                  71506    3834
-N80                  95244    2877
-N90                 128373    1956
+    [2423043 INFO] 2026-11-16 20:46:53 NextDenovo start...
+    [2423043 INFO] 2026-11-16 20:46:53 version:2.5.2 logfile:pid2423043.log.info
+    [2423043 WARNING] 2026-11-16 20:46:53 Re-write workdir
+    [2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir
+    [2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align
+    [2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align
+    [2423043 INFO] 2026-11-16 20:46:53 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph
+    [2423043 INFO] 2026-11-16 20:46:58 Total jobs: 1
+    [2423043 INFO] 2026-11-16 20:46:58 Submitted jobID:[2423049] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/01.db_stat.sh.work/db_stat1/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:07 db_stat done
+    [2423043 INFO] 2026-11-16 20:47:07 updated options:
+    rerun:                        3
+    task:                         all
+    deltmp:                       1
+    rewrite:                      1
+    read_type:                    ont
+    job_type:                     local
+    input_type:                   raw
+    read_cutoff:                  1k
+    seed_depth:                   25.0
+    pa_correction:                3
+    seed_cutfiles:                3
+    genome_size:                  12m
+    parallel_jobs:                20
+    seed_cutoff:                  7803
+    blocksize:                    28263802
+    job_prefix:                   nextDenovo
+    ctg_cns_options:              -p 15
+    nextgraph_options:            -a 1
+    sort_options:                 -m 20g -t 15 -k 40
+    minimap2_options_map:         -x map-ont
+    minimap2_options_raw:         -t 8 -x ava-ont
+    correction_options:           -p 15 -max_lq_length 10000 -r ont -min_len_seed 3901
+    minimap2_options_cns:         -t 8 -x ava-ont -k 17 -w 17 --minlen 780 --maxhan1 3901
+    workdir:                      /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir
+    input_fofn:                   /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/input.fofn
+    raw_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align
+    cns_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align
+    ctg_graphdir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph
+    [2423043 INFO] 2026-11-16 20:47:07 summary of input data:
+    file: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/input.reads.stat
+    [Read length stat]
+    Types            Count (#) Length (bp)
+    N10                   3858   15868
+    N20                   9732   11734
+    N30                  17362    9253
+    N40                  26905    7470
+    N50                  38677    6060
+    N60                  53234    4879
+    N70                  71506    3834
+    N80                  95244    2877
+    N90                 128373    1956
 
-Types               Count (#)           Bases (bp)  Depth (X)
-Raw                    230437            824955177      68.75
-Filtered                46851             34206736       2.85
-Clean                  183586            790748441      65.90
+    Types               Count (#)           Bases (bp)  Depth (X)
+    Raw                    230437            824955177      68.75
+    Filtered                46851             34206736       2.85
+    Clean                  183586            790748441      65.90
 
-*Suggested seed_cutoff (genome size: 12.00Mb, expected seed depth: 45, real seed depth: 25.00): 7803 bp
-*NOTE: The read/seed length is too short, and the assembly result is unexpected and please check the assembly quality carefully. Of course, it's better to sequencing more longer reads and try again.
-[2423043 INFO] 2026-11-16 20:47:12 Total jobs: 1
-[2423043 INFO] 2026-11-16 20:47:12 Submitted jobID:[2423165] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/02.db_split.sh.work/db_split1/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:22 db_split done
-[2423043 INFO] 2026-11-16 20:47:22 Total jobs: 60
-[2423043 INFO] 2026-11-16 20:47:22 Submitted jobID:[2423205] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align01/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:23 Submitted jobID:[2423211] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align02/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:23 Submitted jobID:[2423220] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align03/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:24 Submitted jobID:[2423229] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align04/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:24 Submitted jobID:[2423243] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align05/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:25 Submitted jobID:[2423261] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align06/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:25 Submitted jobID:[2423270] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align07/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:26 Submitted jobID:[2423280] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align08/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:26 Submitted jobID:[2423302] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align09/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:27 Submitted jobID:[2423314] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align10/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:27 Submitted jobID:[2423348] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align11/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:28 Submitted jobID:[2423360] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align12/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:28 Submitted jobID:[2423376] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align13/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:29 Submitted jobID:[2423385] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align14/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:29 Submitted jobID:[2423402] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align15/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:30 Submitted jobID:[2423428] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align16/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:30 Submitted jobID:[2423467] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align17/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:31 Submitted jobID:[2423497] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align18/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:31 Submitted jobID:[2423534] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align19/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:32 Submitted jobID:[2423570] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align20/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:51 Submitted jobID:[2423836] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align21/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:51 Submitted jobID:[2423844] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align22/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:52 Submitted jobID:[2423850] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align23/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:53 Submitted jobID:[2423861] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align24/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:56 Submitted jobID:[2423881] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align25/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:59 Submitted jobID:[2424048] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align26/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:47:59 Submitted jobID:[2424075] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align27/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:00 Submitted jobID:[2424112] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align28/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:00 Submitted jobID:[2424147] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align29/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:01 Submitted jobID:[2424174] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align30/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:02 Submitted jobID:[2424236] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align31/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:02 Submitted jobID:[2424381] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align32/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:03 Submitted jobID:[2424485] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align33/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:04 Submitted jobID:[2424600] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align34/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:06 Submitted jobID:[2425138] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align35/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:07 Submitted jobID:[2425359] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align36/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:08 Submitted jobID:[2425455] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align37/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:09 Submitted jobID:[2425660] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align38/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:25 Submitted jobID:[2426537] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align39/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:28 Submitted jobID:[2426548] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align40/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:30 Submitted jobID:[2426556] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align41/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:30 Submitted jobID:[2426565] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align42/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:32 Submitted jobID:[2426588] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align43/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:36 Submitted jobID:[2426929] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align44/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:36 Submitted jobID:[2426935] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align45/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:37 Submitted jobID:[2427283] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align46/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:38 Submitted jobID:[2427463] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align47/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:38 Submitted jobID:[2427513] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align48/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:39 Submitted jobID:[2427520] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align49/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:39 Submitted jobID:[2427537] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align50/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:40 Submitted jobID:[2427862] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align51/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:41 Submitted jobID:[2427886] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align52/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:41 Submitted jobID:[2427900] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align53/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:42 Submitted jobID:[2427943] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align54/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:43 Submitted jobID:[2427985] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align55/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:46 Submitted jobID:[2428093] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align56/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:48:59 Submitted jobID:[2428246] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align57/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:49:05 Submitted jobID:[2428261] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align58/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:49:05 Submitted jobID:[2428267] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align59/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:49:08 Submitted jobID:[2428290] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align60/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:49:57 raw_align done
-[2423043 INFO] 2026-11-16 20:50:02 Total jobs: 3
-[2423043 INFO] 2026-11-16 20:50:02 Submitted jobID:[2428443] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/04.sort_align.sh.work/sort_align1/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:03 Submitted jobID:[2428455] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/04.sort_align.sh.work/sort_align2/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:03 Submitted jobID:[2428462] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/04.sort_align.sh.work/sort_align3/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:16 sort_align done
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align01/input.seed.001.2bit.0.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align02/input.seed.001.2bit.1.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align03/input.seed.001.2bit.2.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align04/input.seed.001.2bit.3.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align05/input.seed.001.2bit.4.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align06/input.seed.001.2bit.5.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align07/input.seed.001.2bit.6.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align08/input.seed.001.2bit.7.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align09/input.seed.001.2bit.8.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align10/input.seed.001.2bit.9.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align11/input.seed.001.2bit.10.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align12/input.seed.001.2bit.11.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align13/input.seed.001.2bit.12.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align14/input.seed.001.2bit.13.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align15/input.seed.001.2bit.14.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align16/input.seed.001.2bit.15.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align17/input.seed.001.2bit.16.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align18/input.seed.001.2bit.17.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align19/input.seed.001.2bit.18.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align20/input.seed.001.2bit.19.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align21/input.seed.001.2bit.20.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align20/input.seed.003.2bit.19.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align22/input.seed.003.2bit.21.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align23/input.seed.003.2bit.22.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align24/input.seed.003.2bit.23.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align25/input.seed.003.2bit.24.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align26/input.seed.003.2bit.25.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align27/input.seed.003.2bit.26.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align28/input.seed.003.2bit.27.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align29/input.seed.003.2bit.28.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align30/input.seed.003.2bit.29.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align31/input.seed.003.2bit.30.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align32/input.seed.003.2bit.31.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align33/input.seed.003.2bit.32.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align34/input.seed.003.2bit.33.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align35/input.seed.003.2bit.34.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align36/input.seed.003.2bit.35.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align37/input.seed.003.2bit.36.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align38/input.seed.003.2bit.37.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align39/input.seed.003.2bit.38.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align40/input.seed.003.2bit.39.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align41/input.seed.003.2bit.40.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align21/input.seed.002.2bit.20.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align41/input.seed.002.2bit.40.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align42/input.seed.002.2bit.41.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align43/input.seed.002.2bit.42.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align44/input.seed.002.2bit.43.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align45/input.seed.002.2bit.44.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align46/input.seed.002.2bit.45.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align47/input.seed.002.2bit.46.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align48/input.seed.002.2bit.47.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align49/input.seed.002.2bit.48.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align50/input.seed.002.2bit.49.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align51/input.seed.002.2bit.50.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align52/input.seed.002.2bit.51.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align53/input.seed.002.2bit.52.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align54/input.seed.002.2bit.53.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align55/input.seed.002.2bit.54.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align56/input.seed.002.2bit.55.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align57/input.seed.002.2bit.56.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align58/input.seed.002.2bit.57.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align59/input.seed.002.2bit.58.ovl
-[2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align60/input.seed.002.2bit.59.ovl
-[2423043 INFO] 2026-11-16 20:50:21 Total jobs: 3
-[2423043 INFO] 2026-11-16 20:50:21 Submitted jobID:[2428608] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns1/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:21 Submitted jobID:[2428614] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns2/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:22 Submitted jobID:[2428632] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns3/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:44 seed_cns done
-[2423043 INFO] 2026-11-16 20:50:44 seed_cns finished, and final corrected reads file:
-[2423043 INFO] 2026-11-16 20:50:44  /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns*/cns.fasta
-[2423043 INFO] 2026-11-16 20:50:44 Total jobs: 6
-[2423043 INFO] 2026-11-16 20:50:44 Submitted jobID:[2429603] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align1/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:45 Submitted jobID:[2429756] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align2/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:45 Submitted jobID:[2429886] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align3/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:46 Submitted jobID:[2430056] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align4/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:46 Submitted jobID:[2430199] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align5/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:47 Submitted jobID:[2430317] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align6/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:50:55 cns_align done
-[2423043 INFO] 2026-11-16 20:51:00 Total jobs: 1
-[2423043 INFO] 2026-11-16 20:51:00 Submitted jobID:[2431305] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/01.ctg_graph.sh.work/ctg_graph1/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:01 ctg_graph done
-[2423043 INFO] 2026-11-16 20:51:01 Total jobs: 21
-[2423043 INFO] 2026-11-16 20:51:01 Submitted jobID:[2431320] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align01/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:01 Submitted jobID:[2431347] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align02/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:02 Submitted jobID:[2431388] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align03/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:07 Submitted jobID:[2431571] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align04/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:08 Submitted jobID:[2431682] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align05/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:08 Submitted jobID:[2431724] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align06/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:09 Submitted jobID:[2431867] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align07/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:10 Submitted jobID:[2431928] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align08/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:10 Submitted jobID:[2432001] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align09/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:12 Submitted jobID:[2432143] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align10/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:12 Submitted jobID:[2432195] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align11/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:13 Submitted jobID:[2432261] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align12/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:14 Submitted jobID:[2432433] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align13/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:14 Submitted jobID:[2432475] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align14/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:15 Submitted jobID:[2432548] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align15/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:16 Submitted jobID:[2432703] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align16/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:17 Submitted jobID:[2432745] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align17/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:17 Submitted jobID:[2432820] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align18/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:18 Submitted jobID:[2432925] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align19/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:18 Submitted jobID:[2432986] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align20/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:19 Submitted jobID:[2433074] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align21/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:21 ctg_align done
-[2423043 INFO] 2026-11-16 20:51:26 Total jobs: 3
-[2423043 INFO] 2026-11-16 20:51:26 Submitted jobID:[2433246] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/03.ctg_cns.sh.work/ctg_cns1/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:27 Submitted jobID:[2433270] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/03.ctg_cns.sh.work/ctg_cns2/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:27 Submitted jobID:[2433295] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/03.ctg_cns.sh.work/ctg_cns3/nextDenovo.sh] in the local_cycle.
-[2423043 INFO] 2026-11-16 20:51:33 ctg_cns done
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align01/input.seed.001.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align02/input.seed.003.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align03/input.seed.002.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align04/input.part.006.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align05/input.part.015.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align06/input.part.010.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align07/input.part.009.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align08/input.part.014.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align09/input.part.005.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align10/input.part.008.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align11/input.part.002.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align12/input.part.004.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align13/input.part.012.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align14/input.part.016.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align15/input.part.011.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align16/input.part.013.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align17/input.part.001.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align18/input.part.018.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align19/input.part.017.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align20/input.part.007.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align21/input.part.003.2bit.sort.bam
-[2423043 INFO] 2026-11-16 20:51:33 nextDenovo finished
-[2423043 INFO] 2026-11-16 20:51:33 final assembly file:
-[2423043 INFO] 2026-11-16 20:51:33  /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta 
-[2423043 INFO] 2026-11-16 20:51:33 final stat file:
-[2423043 INFO] 2026-11-16 20:51:33  /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta.stat 
-[2423043 INFO] 2026-11-16 20:51:33 asm stat:
-[2423043 INFO] 2026-11-16 20:51:33 
-Type           Length (bp)            Count (#)
-N10              1417670                   1
-N20              1034621                   2
-N30               914158                   4
-N40               892283                   5
-N50               766859                   7
-N60               728438                   8
-N70               547530                  10
-N80               395080                  13
-N90               257183                  17
+    *Suggested seed_cutoff (genome size: 12.00Mb, expected seed depth: 45, real seed depth: 25.00): 7803 bp
+    *NOTE: The read/seed length is too short, and the assembly result is unexpected and please check the assembly quality carefully. Of course, it's better to sequencing more longer reads and try again.
+    [2423043 INFO] 2026-11-16 20:47:12 Total jobs: 1
+    [2423043 INFO] 2026-11-16 20:47:12 Submitted jobID:[2423165] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/02.db_split.sh.work/db_split1/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:22 db_split done
+    [2423043 INFO] 2026-11-16 20:47:22 Total jobs: 60
+    [2423043 INFO] 2026-11-16 20:47:22 Submitted jobID:[2423205] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align01/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:23 Submitted jobID:[2423211] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align02/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:23 Submitted jobID:[2423220] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align03/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:24 Submitted jobID:[2423229] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align04/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:24 Submitted jobID:[2423243] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align05/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:25 Submitted jobID:[2423261] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align06/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:25 Submitted jobID:[2423270] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align07/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:26 Submitted jobID:[2423280] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align08/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:26 Submitted jobID:[2423302] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align09/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:27 Submitted jobID:[2423314] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align10/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:27 Submitted jobID:[2423348] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align11/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:28 Submitted jobID:[2423360] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align12/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:28 Submitted jobID:[2423376] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align13/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:29 Submitted jobID:[2423385] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align14/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:29 Submitted jobID:[2423402] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align15/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:30 Submitted jobID:[2423428] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align16/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:30 Submitted jobID:[2423467] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align17/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:31 Submitted jobID:[2423497] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align18/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:31 Submitted jobID:[2423534] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align19/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:32 Submitted jobID:[2423570] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align20/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:51 Submitted jobID:[2423836] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align21/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:51 Submitted jobID:[2423844] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align22/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:52 Submitted jobID:[2423850] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align23/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:53 Submitted jobID:[2423861] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align24/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:56 Submitted jobID:[2423881] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align25/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:59 Submitted jobID:[2424048] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align26/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:47:59 Submitted jobID:[2424075] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align27/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:00 Submitted jobID:[2424112] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align28/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:00 Submitted jobID:[2424147] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align29/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:01 Submitted jobID:[2424174] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align30/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:02 Submitted jobID:[2424236] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align31/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:02 Submitted jobID:[2424381] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align32/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:03 Submitted jobID:[2424485] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align33/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:04 Submitted jobID:[2424600] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align34/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:06 Submitted jobID:[2425138] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align35/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:07 Submitted jobID:[2425359] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align36/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:08 Submitted jobID:[2425455] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align37/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:09 Submitted jobID:[2425660] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align38/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:25 Submitted jobID:[2426537] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align39/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:28 Submitted jobID:[2426548] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align40/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:30 Submitted jobID:[2426556] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align41/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:30 Submitted jobID:[2426565] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align42/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:32 Submitted jobID:[2426588] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align43/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:36 Submitted jobID:[2426929] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align44/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:36 Submitted jobID:[2426935] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align45/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:37 Submitted jobID:[2427283] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align46/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:38 Submitted jobID:[2427463] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align47/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:38 Submitted jobID:[2427513] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align48/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:39 Submitted jobID:[2427520] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align49/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:39 Submitted jobID:[2427537] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align50/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:40 Submitted jobID:[2427862] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align51/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:41 Submitted jobID:[2427886] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align52/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:41 Submitted jobID:[2427900] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align53/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:42 Submitted jobID:[2427943] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align54/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:43 Submitted jobID:[2427985] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align55/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:46 Submitted jobID:[2428093] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align56/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:48:59 Submitted jobID:[2428246] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align57/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:49:05 Submitted jobID:[2428261] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align58/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:49:05 Submitted jobID:[2428267] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align59/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:49:08 Submitted jobID:[2428290] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align60/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:49:57 raw_align done
+    [2423043 INFO] 2026-11-16 20:50:02 Total jobs: 3
+    [2423043 INFO] 2026-11-16 20:50:02 Submitted jobID:[2428443] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/04.sort_align.sh.work/sort_align1/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:03 Submitted jobID:[2428455] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/04.sort_align.sh.work/sort_align2/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:03 Submitted jobID:[2428462] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/04.sort_align.sh.work/sort_align3/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:16 sort_align done
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align01/input.seed.001.2bit.0.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align02/input.seed.001.2bit.1.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align03/input.seed.001.2bit.2.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align04/input.seed.001.2bit.3.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align05/input.seed.001.2bit.4.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align06/input.seed.001.2bit.5.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align07/input.seed.001.2bit.6.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align08/input.seed.001.2bit.7.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align09/input.seed.001.2bit.8.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align10/input.seed.001.2bit.9.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align11/input.seed.001.2bit.10.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align12/input.seed.001.2bit.11.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align13/input.seed.001.2bit.12.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align14/input.seed.001.2bit.13.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align15/input.seed.001.2bit.14.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align16/input.seed.001.2bit.15.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align17/input.seed.001.2bit.16.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align18/input.seed.001.2bit.17.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align19/input.seed.001.2bit.18.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align20/input.seed.001.2bit.19.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align21/input.seed.001.2bit.20.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align20/input.seed.003.2bit.19.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align22/input.seed.003.2bit.21.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align23/input.seed.003.2bit.22.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align24/input.seed.003.2bit.23.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align25/input.seed.003.2bit.24.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align26/input.seed.003.2bit.25.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align27/input.seed.003.2bit.26.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align28/input.seed.003.2bit.27.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align29/input.seed.003.2bit.28.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align30/input.seed.003.2bit.29.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align31/input.seed.003.2bit.30.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align32/input.seed.003.2bit.31.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align33/input.seed.003.2bit.32.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align34/input.seed.003.2bit.33.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align35/input.seed.003.2bit.34.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align36/input.seed.003.2bit.35.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align37/input.seed.003.2bit.36.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align38/input.seed.003.2bit.37.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align39/input.seed.003.2bit.38.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align40/input.seed.003.2bit.39.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align41/input.seed.003.2bit.40.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align21/input.seed.002.2bit.20.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align41/input.seed.002.2bit.40.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align42/input.seed.002.2bit.41.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align43/input.seed.002.2bit.42.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align44/input.seed.002.2bit.43.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align45/input.seed.002.2bit.44.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align46/input.seed.002.2bit.45.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align47/input.seed.002.2bit.46.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align48/input.seed.002.2bit.47.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align49/input.seed.002.2bit.48.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align50/input.seed.002.2bit.49.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align51/input.seed.002.2bit.50.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align52/input.seed.002.2bit.51.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align53/input.seed.002.2bit.52.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align54/input.seed.002.2bit.53.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align55/input.seed.002.2bit.54.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align56/input.seed.002.2bit.55.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align57/input.seed.002.2bit.56.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align58/input.seed.002.2bit.57.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align59/input.seed.002.2bit.58.ovl
+    [2423043 INFO] 2026-11-16 20:50:16 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/01.raw_align/03.raw_align.sh.work/raw_align60/input.seed.002.2bit.59.ovl
+    [2423043 INFO] 2026-11-16 20:50:21 Total jobs: 3
+    [2423043 INFO] 2026-11-16 20:50:21 Submitted jobID:[2428608] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns1/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:21 Submitted jobID:[2428614] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns2/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:22 Submitted jobID:[2428632] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns3/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:44 seed_cns done
+    [2423043 INFO] 2026-11-16 20:50:44 seed_cns finished, and final corrected reads file:
+    [2423043 INFO] 2026-11-16 20:50:44  /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/01.seed_cns.sh.work/seed_cns*/cns.fasta
+    [2423043 INFO] 2026-11-16 20:50:44 Total jobs: 6
+    [2423043 INFO] 2026-11-16 20:50:44 Submitted jobID:[2429603] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align1/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:45 Submitted jobID:[2429756] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align2/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:45 Submitted jobID:[2429886] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align3/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:46 Submitted jobID:[2430056] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align4/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:46 Submitted jobID:[2430199] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align5/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:47 Submitted jobID:[2430317] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/02.cns_align/02.cns_align.sh.work/cns_align6/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:50:55 cns_align done
+    [2423043 INFO] 2026-11-16 20:51:00 Total jobs: 1
+    [2423043 INFO] 2026-11-16 20:51:00 Submitted jobID:[2431305] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/01.ctg_graph.sh.work/ctg_graph1/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:01 ctg_graph done
+    [2423043 INFO] 2026-11-16 20:51:01 Total jobs: 21
+    [2423043 INFO] 2026-11-16 20:51:01 Submitted jobID:[2431320] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align01/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:01 Submitted jobID:[2431347] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align02/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:02 Submitted jobID:[2431388] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align03/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:07 Submitted jobID:[2431571] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align04/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:08 Submitted jobID:[2431682] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align05/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:08 Submitted jobID:[2431724] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align06/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:09 Submitted jobID:[2431867] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align07/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:10 Submitted jobID:[2431928] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align08/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:10 Submitted jobID:[2432001] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align09/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:12 Submitted jobID:[2432143] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align10/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:12 Submitted jobID:[2432195] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align11/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:13 Submitted jobID:[2432261] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align12/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:14 Submitted jobID:[2432433] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align13/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:14 Submitted jobID:[2432475] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align14/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:15 Submitted jobID:[2432548] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align15/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:16 Submitted jobID:[2432703] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align16/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:17 Submitted jobID:[2432745] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align17/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:17 Submitted jobID:[2432820] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align18/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:18 Submitted jobID:[2432925] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align19/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:18 Submitted jobID:[2432986] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align20/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:19 Submitted jobID:[2433074] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align21/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:21 ctg_align done
+    [2423043 INFO] 2026-11-16 20:51:26 Total jobs: 3
+    [2423043 INFO] 2026-11-16 20:51:26 Submitted jobID:[2433246] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/03.ctg_cns.sh.work/ctg_cns1/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:27 Submitted jobID:[2433270] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/03.ctg_cns.sh.work/ctg_cns2/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:27 Submitted jobID:[2433295] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/03.ctg_cns.sh.work/ctg_cns3/nextDenovo.sh] in the local_cycle.
+    [2423043 INFO] 2026-11-16 20:51:33 ctg_cns done
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align01/input.seed.001.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align02/input.seed.003.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align03/input.seed.002.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align04/input.part.006.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align05/input.part.015.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align06/input.part.010.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align07/input.part.009.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align08/input.part.014.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align09/input.part.005.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align10/input.part.008.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align11/input.part.002.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align12/input.part.004.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align13/input.part.012.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align14/input.part.016.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align15/input.part.011.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align16/input.part.013.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align17/input.part.001.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align18/input.part.018.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align19/input.part.017.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align20/input.part.007.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 remove temporary result: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/02.ctg_align.sh.work/ctg_align21/input.part.003.2bit.sort.bam
+    [2423043 INFO] 2026-11-16 20:51:33 nextDenovo finished
+    [2423043 INFO] 2026-11-16 20:51:33 final assembly file:
+    [2423043 INFO] 2026-11-16 20:51:33  /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta 
+    [2423043 INFO] 2026-11-16 20:51:33 final stat file:
+    [2423043 INFO] 2026-11-16 20:51:33  /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta.stat 
+    [2423043 INFO] 2026-11-16 20:51:33 asm stat:
+    [2423043 INFO] 2026-11-16 20:51:33 
+    Type           Length (bp)            Count (#)
+    N10              1417670                   1
+    N20              1034621                   2
+    N30               914158                   4
+    N40               892283                   5
+    N50               766859                   7
+    N60               728438                   8
+    N70               547530                  10
+    N80               395080                  13
+    N90               257183                  17
 
-Min.               12342                   -
-Max.             1417670                   -
-Ave.              418058                   -
-Total           12123689                  29
+    Min.               12342                   -
+    Max.             1417670                   -
+    Ave.              418058                   -
+    Total           12123689                  29
 
 
     ```
@@ -2571,68 +2571,68 @@ nextDenovo 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg
 
     ```bash
     $ nextDenovo 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg
-[2447828 INFO] 2026-11-16 21:01:24 NextDenovo start...
-[2447828 INFO] 2026-11-16 21:01:24 version:2.5.2 logfile:pid2447828.log.info
-[2447828 WARNING] 2026-11-16 21:01:24 Re-write workdir
-[2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir
-[2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align
-[2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/02.cns_align
-[2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/03.ctg_graph
-[2447828 INFO] 2026-11-16 21:01:29 Total jobs: 1
-[2447828 INFO] 2026-11-16 21:01:29 Submitted jobID:[2447834] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align/01.db_stat.sh.work/db_stat1/nextDenovo.sh] in the local_cycle.
-[2447828 INFO] 2026-11-16 21:01:30 db_stat done
-[2447828 INFO] 2026-11-16 21:01:30 updated options:
-rerun:                        3
-task:                         all
-deltmp:                       1
-rewrite:                      1
-read_type:                    ont
-job_type:                     local
-input_type:                   raw
-read_cutoff:                  1k
-seed_depth:                   6.03
-pa_correction:                3
-seed_cutfiles:                3
-genome_size:                  12m
-parallel_jobs:                20
-seed_cutoff:                  1001
-blocksize:                    10000000
-job_prefix:                   nextDenovo
-ctg_cns_options:              -p 15
-nextgraph_options:            -a 1
-sort_options:                 -m 20g -t 15 -k 4
-minimap2_options_map:         -x map-ont
-minimap2_options_raw:         -t 8 -x ava-ont
-correction_options:           -p 15 -max_lq_length 10000 -r ont -min_len_seed 500
-minimap2_options_cns:         -t 8 -x ava-ont -k 17 -w 17 --minlen 100 --maxhan1 500
-workdir:                      /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir
-input_fofn:                   /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/input.fofn
-raw_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align
-cns_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/02.cns_align
-ctg_graphdir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/03.ctg_graph
-[2447828 INFO] 2026-11-16 21:01:30 summary of input data:
-file: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align/input.reads.stat 
-[Read length stat]
-Types            Count (#) Length (bp)
-N10                    531   10337
-N20                   1367    7520
-N30                   2455    5961
-N40                   3811    4773
-N50                   5496    3864
-N60                   7586    3110
-N70                  10184    2494
-N80                  13455    1960
-N90                  17729    1463
+    [2447828 INFO] 2026-11-16 21:01:24 NextDenovo start...
+    [2447828 INFO] 2026-11-16 21:01:24 version:2.5.2 logfile:pid2447828.log.info
+    [2447828 WARNING] 2026-11-16 21:01:24 Re-write workdir
+    [2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir
+    [2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align
+    [2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/02.cns_align
+    [2447828 INFO] 2026-11-16 21:01:24 mkdir: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/03.ctg_graph
+    [2447828 INFO] 2026-11-16 21:01:29 Total jobs: 1
+    [2447828 INFO] 2026-11-16 21:01:29 Submitted jobID:[2447834] jobCmd:[/media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align/01.db_stat.sh.work/db_stat1/nextDenovo.sh] in the local_cycle.
+    [2447828 INFO] 2026-11-16 21:01:30 db_stat done
+    [2447828 INFO] 2026-11-16 21:01:30 updated options:
+    rerun:                        3
+    task:                         all
+    deltmp:                       1
+    rewrite:                      1
+    read_type:                    ont
+    job_type:                     local
+    input_type:                   raw
+    read_cutoff:                  1k
+    seed_depth:                   6.03
+    pa_correction:                3
+    seed_cutfiles:                3
+    genome_size:                  12m
+    parallel_jobs:                20
+    seed_cutoff:                  1001
+    blocksize:                    10000000
+    job_prefix:                   nextDenovo
+    ctg_cns_options:              -p 15
+    nextgraph_options:            -a 1
+    sort_options:                 -m 20g -t 15 -k 4
+    minimap2_options_map:         -x map-ont
+    minimap2_options_raw:         -t 8 -x ava-ont
+    correction_options:           -p 15 -max_lq_length 10000 -r ont -min_len_seed 500
+    minimap2_options_cns:         -t 8 -x ava-ont -k 17 -w 17 --minlen 100 --maxhan1 500
+    workdir:                      /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir
+    input_fofn:                   /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/input.fofn
+    raw_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align
+    cns_aligndir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/02.cns_align
+    ctg_graphdir:                 /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/03.ctg_graph
+    [2447828 INFO] 2026-11-16 21:01:30 summary of input data:
+    file: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer2_q10_l500/01_rundir/01.raw_align/input.reads.stat 
+    [Read length stat]
+    Types            Count (#) Length (bp)
+    N10                    531   10337
+    N20                   1367    7520
+    N30                   2455    5961
+    N40                   3811    4773
+    N50                   5496    3864
+    N60                   7586    3110
+    N70                  10184    2494
+    N80                  13455    1960
+    N90                  17729    1463
 
-Types               Count (#)           Bases (bp)  Depth (X)
-Raw                     33006             79206228       6.60
-Filtered                 9315              6860892       0.57
-Clean                   23691             72345336       6.03
+    Types               Count (#)           Bases (bp)  Depth (X)
+    Raw                     33006             79206228       6.60
+    Filtered                 9315              6860892       0.57
+    Clean                   23691             72345336       6.03
 
-*Suggested seed_cutoff (genome size: 12.00Mb, expected seed depth: 45, real seed depth: 6.03): 1001 bp
-*NOTE: The read/seed length is too short, and the assembly result is unexpected and please check the assembly quality carefully. Of course, it's better to sequencing more longer reads and try again.
-[2447828 ERROR] 2026-11-16 21:01:30 the input data is insufficient for an assembly.
-ERROR conda.cli.main_run:execute(142): `conda run /home/lgbio/programas/NextDenovo/nextDenovo 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg` failed. (See above for error)
+    *Suggested seed_cutoff (genome size: 12.00Mb, expected seed depth: 45, real seed depth: 6.03): 1001 bp
+    *NOTE: The read/seed length is too short, and the assembly result is unexpected and please check the assembly quality carefully. Of course, it's better to sequencing more longer reads and try again.
+    [2447828 ERROR] 2026-11-16 21:01:30 the input data is insufficient for an assembly.
+    ERROR conda.cli.main_run:execute(142): `conda run /home/lgbio/programas/NextDenovo/nextDenovo 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg` failed. (See above for error)
 
     ```
 
@@ -2846,61 +2846,61 @@ cat 8.QC_montagens/quast_q10_l500/report.tsv
 
     ```bash
     $ cat 8.QC_montagens/quast_q10_l500/report.tsv 
-Assembly	Scer1_Flye	Scer1_Flye_broken	Scer1_Hifiasm	Scer1_NextDenovo	Scer2_Flye	Scer2_Hifiasm
-# contigs (>= 0 bp)	79	81	87	29	715	14
-# contigs (>= 1000 bp)	70	72	87	29	705	14
-# contigs (>= 5000 bp)	51	53	43	29	524	8
-# contigs (>= 10000 bp)	41	43	38	29	327	4
-# contigs (>= 25000 bp)	26	27	31	25	64	1
-# contigs (>= 50000 bp)	23	24	25	22	7	1
-Total length (>= 0 bp)	12301315	12301115	12980404	12123689	8359888	189042
-Total length (>= 1000 bp)	12294955	12294755	12980404	12123689	8353022	189042
-Total length (>= 5000 bp)	12252549	12252349	12864037	12123689	7745098	165487
-Total length (>= 10000 bp)	12180974	12180774	12825604	12123689	6306489	136504
-Total length (>= 25000 bp)	11953482	11939740	12704491	12057480	2237848	102299
-Total length (>= 50000 bp)	11866354	11852612	12491884	11949322	418598	102299
-# contigs	79	81	87	29	714	14
-Largest contig	1526486	1526486	1078125	1417670	78752	102299
-Total length	12301315	12301115	12980404	12123689	8359493	189042
-Reference length	12157105	12157105	12157105	12157105	12157105	12157105
-GC (%)	37.98	37.98	37.68	38.39	38.10	26.39
-Reference GC (%)	38.15	38.15	38.15	38.15	38.15	38.15
-N50	751043	681036	709754	766859	16118	102299
-NG50	754184	681036	722953	766859	10683	-
-N90	257647	257647	228503	257183	6041	4737
-NG90	314926	314926	315275	257183	-	-
-auN	760329.1	715300.6	663675.9	750855.2	19945.6	59051.2
-auNG	769348.3	723773.9	708621.1	748791.4	13715.0	918.2
-L50	7	7	8	7	163	1
-LG50	6	7	7	7	305	-
-L90	17	18	19	17	484	9
-LG90	16	17	17	17	-	-
-# misassemblies	155	153	197	167	69	7
-# misassembled contigs	37	38	31	28	57	2
-Misassembled contigs length	12051755	12038013	12663919	12111347	1008974	112971
-# local misassemblies	113	113	164	100	53	12
-# scaffold gap ext. mis.	0	0	0	0	0	0
-# scaffold gap loc. mis.	0	0	0	0	0	0
-# unaligned mis. contigs	0	1	6	0	1	0
-# unaligned contigs	5 + 38 part	5 + 39 part	1 + 40 part	0 + 21 part	7 + 56 part	1 + 2 part
-Unaligned length	249141	248778	294366	158032	146129	33588
-Genome fraction (%)	95.690	95.688	96.009	95.472	65.928	1.178
-Duplication ratio	1.033	1.033	1.084	1.028	1.022	1.083
-# N's per 100 kbp	1.63	0.00	0.00	0.00	0.00	0.00
-# mismatches per 100 kbp	503.38	503.38	496.83	490.14	746.31	705.74
-# indels per 100 kbp	83.49	83.47	94.61	83.61	550.26	439.31
-Largest alignment	663281	663281	522170	522275	69649	52811
-Total aligned length	12021604	12021492	12651190	11937235	8188554	155015
-NA50	221923	221923	184740	195195	15391	7331
-NGA50	221923	221923	186270	195195	9628	-
-NA90	32628	32588	17418	37670	4777	-
-NGA90	39422	39422	39995	36235	-	-
-auNA	245597.7	244945.6	204126.5	211321.9	18028.1	19375.4
-auNGA	248511.0	247847.2	217950.3	210741.0	12396.5	301.3
-LA50	18	18	22	21	177	5
-LGA50	18	18	20	21	332	-
-LA90	64	65	97	68	538	-
-LGA90	61	61	67	69	-	-
+    Assembly	Scer1_Flye	Scer1_Flye_broken	Scer1_Hifiasm	Scer1_NextDenovo	Scer2_Flye	Scer2_Hifiasm
+    # contigs (>= 0 bp)	79	81	87	29	715	14
+    # contigs (>= 1000 bp)	70	72	87	29	705	14
+    # contigs (>= 5000 bp)	51	53	43	29	524	8
+    # contigs (>= 10000 bp)	41	43	38	29	327	4
+    # contigs (>= 25000 bp)	26	27	31	25	64	1
+    # contigs (>= 50000 bp)	23	24	25	22	7	1
+    Total length (>= 0 bp)	12301315	12301115	12980404	12123689	8359888	189042
+    Total length (>= 1000 bp)	12294955	12294755	12980404	12123689	8353022	189042
+    Total length (>= 5000 bp)	12252549	12252349	12864037	12123689	7745098	165487
+    Total length (>= 10000 bp)	12180974	12180774	12825604	12123689	6306489	136504
+    Total length (>= 25000 bp)	11953482	11939740	12704491	12057480	2237848	102299
+    Total length (>= 50000 bp)	11866354	11852612	12491884	11949322	418598	102299
+    # contigs	79	81	87	29	714	14
+    Largest contig	1526486	1526486	1078125	1417670	78752	102299
+    Total length	12301315	12301115	12980404	12123689	8359493	189042
+    Reference length	12157105	12157105	12157105	12157105	12157105	12157105
+    GC (%)	37.98	37.98	37.68	38.39	38.10	26.39
+    Reference GC (%)	38.15	38.15	38.15	38.15	38.15	38.15
+    N50	751043	681036	709754	766859	16118	102299
+    NG50	754184	681036	722953	766859	10683	-
+    N90	257647	257647	228503	257183	6041	4737
+    NG90	314926	314926	315275	257183	-	-
+    auN	760329.1	715300.6	663675.9	750855.2	19945.6	59051.2
+    auNG	769348.3	723773.9	708621.1	748791.4	13715.0	918.2
+    L50	7	7	8	7	163	1
+    LG50	6	7	7	7	305	-
+    L90	17	18	19	17	484	9
+    LG90	16	17	17	17	-	-
+    # misassemblies	155	153	197	167	69	7
+    # misassembled contigs	37	38	31	28	57	2
+    Misassembled contigs length	12051755	12038013	12663919	12111347	1008974	112971
+    # local misassemblies	113	113	164	100	53	12
+    # scaffold gap ext. mis.	0	0	0	0	0	0
+    # scaffold gap loc. mis.	0	0	0	0	0	0
+    # unaligned mis. contigs	0	1	6	0	1	0
+    # unaligned contigs	5 + 38 part	5 + 39 part	1 + 40 part	0 + 21 part	7 + 56 part	1 + 2 part
+    Unaligned length	249141	248778	294366	158032	146129	33588
+    Genome fraction (%)	95.690	95.688	96.009	95.472	65.928	1.178
+    Duplication ratio	1.033	1.033	1.084	1.028	1.022	1.083
+    # N's per 100 kbp	1.63	0.00	0.00	0.00	0.00	0.00
+    # mismatches per 100 kbp	503.38	503.38	496.83	490.14	746.31	705.74
+    # indels per 100 kbp	83.49	83.47	94.61	83.61	550.26	439.31
+    Largest alignment	663281	663281	522170	522275	69649	52811
+    Total aligned length	12021604	12021492	12651190	11937235	8188554	155015
+    NA50	221923	221923	184740	195195	15391	7331
+    NGA50	221923	221923	186270	195195	9628	-
+    NA90	32628	32588	17418	37670	4777	-
+    NGA90	39422	39422	39995	36235	-	-
+    auNA	245597.7	244945.6	204126.5	211321.9	18028.1	19375.4
+    auNGA	248511.0	247847.2	217950.3	210741.0	12396.5	301.3
+    LA50	18	18	22	21	177	5
+    LGA50	18	18	20	21	332	-
+    LA90	64	65	97	68	538	-
+    LGA90	61	61	67	69	-	-
 
     ```
 
@@ -3489,9 +3489,9 @@ python /home/lgbio/busco/scripts/generate_plot.py -wd 8.QC_montagens/BUSCO/summa
 
 ---
 
-## :material-numeric-10-circle: Etapa 10 — Polimento com Medaka :material-flask-outline: *(opcional)*
+## :material-numeric-10-circle: Etapa 10 — Polimento (Medaka e Illumina) :material-flask-outline: *(opcional)*
 
-O polimento tem como objetivo corrigir erros residuais da montagem, melhorando a acurácia das bases. O ideal seria usar reads Illumina (muito mais precisas, com padrão de erro diferente do Nanopore) para essa correção, uma abordagem conhecida como polimento híbrido. Porém, quando não há dados Illumina disponíveis, como é o nosso caso aqui, é possível usar os próprios reads Nanopore para polir a montagem. O Medaka faz esse polimento a partir de um modelo neural treinado especificamente para reads ONT. Essa abordagem não chega à precisão do polimento híbrido com Illumina, mas ainda pode trazer ganhos de acurácia em relação à montagem bruta.
+O polimento tem como objetivo corrigir erros residuais da montagem, melhorando a acurácia das bases. O ideal seria usar reads Illumina (muito mais precisas, com padrão de erro diferente do Nanopore) para essa correção, uma abordagem conhecida como polimento híbrido. Quando não há dados Illumina disponíveis, como é o caso da Scer2, é possível usar os próprios reads Nanopore para polir a montagem. O Medaka faz esse polimento a partir de um modelo neural treinado especificamente para reads ONT. Essa abordagem não chega à precisão do polimento híbrido com Illumina, mas ainda pode trazer ganhos de acurácia em relação à montagem bruta. Para a Scer1 existem reads Illumina públicas da mesma linhagem, e faremos o polimento híbrido na Etapa 10.1.
 
 O Medaka precisa de um modelo compatível com a química da flowcell e com o basecaller usados no sequenciamento. Quando essa informação não está nos metadados, o cabeçalho das reads pode dar pistas: ele traz o ID da flowcell usada.
 
@@ -3921,119 +3921,212 @@ conda deactivate
 
 ### 10.1 Polimento híbrido com reads Illumina
 
-O polimento mais eficiente para montagens Nanopore usa reads Illumina: elas são curtas, mas muito precisas, e têm um perfil de erro diferente do Nanopore (substituições raras, quase nenhum erro em homopolímeros). Nesta etapa, vamos polir um draft da Scer1 com um conjunto de reads Illumina paired-end (2×150 pb, ~10×) e avaliar o resultado como faríamos com dados reais: pelo QV do Merqury, usando os k-mers das próprias reads Illumina.
+O polimento mais eficiente para montagens Nanopore usa reads Illumina: elas são curtas, mas muito precisas, e têm um perfil de erro diferente do Nanopore (substituições raras, quase nenhum erro em homopolímeros). É uma situação comum na prática: o genoma é montado com reads longas e uma rodada Illumina da mesma linhagem é usada para corrigir as bases.
+
+Nesta etapa vamos polir as três montagens da Scer1 (Flye, Hifiasm e NextDenovo), já polidas com o Medaka, usando reads Illumina reais da mesma linhagem. O polimento é feito em sequência: primeiro o Medaka corrige com as próprias reads Nanopore, depois as reads Illumina corrigem o que sobrou.
 
 !!! note "Sobre os dados desta etapa"
-    As amostras deste tutorial não têm sequenciamento Illumina. Por isso, os dados desta etapa foram **simulados**: o draft `Scer1_defeito.fasta` é uma montagem Scer1 na qual foram inseridos **3.000 SNPs e 500 indels** (simuG), e as reads foram simuladas com o ART (perfil HiSeq 2500, 2×150 pb, fragmento de 400 ± 50 pb, 10×) a partir da montagem original, sem esses erros. As posições dos erros inseridos estão em `Scer1_erros_SNP.vcf` e `Scer1_erros_INDEL.vcf`, que usaremos como gabarito no final.
+    A amostra Scer1 é a linhagem **CBS7963**. Além do sequenciamento Nanopore usado até aqui (projeto PRJEB77686), essa linhagem foi sequenciada com Illumina no projeto *1002 Saccharomyces cerevisiae genomes* (PRJEB13017):
 
-    Por isso, vamos polir o `Scer1_defeito.fasta`, e **não** a montagem que você gerou: as reads foram simuladas a partir de outra montagem, e polir a sua montagem com elas só copiaria as diferenças entre as duas.
+    | | |
+    |---|---|
+    | Run | [ERR1309041](https://www.ebi.ac.uk/ena/browser/view/ERR1309041){ target=_blank } |
+    | Plataforma | Illumina HiSeq 2000, paired-end, 2×100 pb |
+    | Volume | 16,2 milhões de pares, 3,2 Gb (≈ 260× de cobertura) |
 
-**Baixar os dados do repositório:**
+    A amostra Scer2 (SM.9.1.AL1) não tem dados Illumina públicos; por isso, esta etapa usa só a Scer1.
+
+    Dois detalhes que valem para dados reais em geral: as reads Illumina e Nanopore vieram de **culturas diferentes** da mesma linhagem, sequenciadas com anos de diferença, então pode haver algumas mutações reais entre elas (poucas, perto dos erros de montagem). E muitas linhagens de *S. cerevisiae* são **diploides e heterozigotas**: nos sítios heterozigotos as reads discordam entre si, e os polidores tendem, corretamente, a não alterar a base.
+
+??? tip "Instalação: ambiente `polimento`"
+    ```bash
+    conda create -n polimento -c conda-forge -c bioconda \
+      "polypolish>=0.6" pypolca bwa samtools seqtk pilon
+    ```
+
+    A versão do Polypolish precisa ser 0.6 ou mais nova: as anteriores usam outra sintaxe (`polypolish_insert_filter.py`).
+
+**Baixar uma parte das reads Illumina:**
+
+Os arquivos completos têm ~1,5 GB cada (≈ 260× de cobertura), muito mais do que o polimento precisa. Em vez de baixar tudo e depois sortear uma fração, vamos ler **só o começo** de cada arquivo direto do ENA: o `head` pega os primeiros 2,4 milhões de reads (4 linhas por read = 9.600.000 linhas), o que dá ≈ 40× (2,4 M pares × 2 × 100 pb ÷ 12 Mb), e o `wget` para sozinho quando o `head` termina.
+
+Isso funciona por dois motivos. Num FASTQ Illumina, a ordem das reads segue a posição na lâmina do sequenciador, e não a posição no genoma, então as primeiras reads cobrem o genoma inteiro. E os arquivos R1 e R2 estão na mesma ordem, então as primeiras 2,4 milhões de reads de cada um formam os mesmos pares.
 
 ```bash
-mkdir -p 0.DadosBrutos/illumina_simulado
-URL=https://raw.githubusercontent.com/LGBIO-UFG/PRO-BIOINFO/main/data/exemplos/nanopore/illumina_simulado
-for f in Scer1_defeito.fasta Scer1_sim_1.fq.gz Scer1_sim_2.fq.gz Scer1_erros_SNP.vcf Scer1_erros_INDEL.vcf LEIAME.txt; do
-  wget -nc -P 0.DadosBrutos/illumina_simulado $URL/$f
+mkdir -p 0.DadosBrutos/illumina
+URL=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR130/001/ERR1309041
+for r in 1 2; do
+  wget -qO- $URL/ERR1309041_$r.fastq.gz | zcat | head -n 9600000 | gzip > 0.DadosBrutos/illumina/Scer1_ilmn_40x_$r.fq.gz
 done
-cat 0.DadosBrutos/illumina_simulado/LEIAME.txt
+
+ls -lh 0.DadosBrutos/illumina/
+for r in 1 2; do echo "R$r: $(( $(zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_$r.fq.gz | wc -l) / 4 )) reads"; done
+zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_1.fq.gz | head -1
+zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_2.fq.gz | head -1
 ```
 
-**Polir com Polypolish e pypolca:**
+Mensagens como *"gzip: stdout: Broken pipe"* são esperadas: indicam apenas que o `head` fechou a leitura quando chegou ao número de linhas pedido. Para conferir que os pares estão corretos, as duas últimas linhas devem mostrar o **mesmo nome de read** em R1 e R2.
+
+??? tip "Alternativa: baixar tudo e sortear"
+    Se você precisar dos arquivos completos, baixe-os e sorteie uma fração com o `seqtk`. Usar a **mesma semente** (`-s 42`) nos dois arquivos garante que os mesmos pares sejam sorteados em R1 e R2. O sorteio é mais rigoroso que pegar o começo do arquivo, mas exige baixar ~2,9 GB.
+
+    ```bash
+    wget -nc -P 0.DadosBrutos/illumina ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR130/001/ERR1309041/ERR1309041_1.fastq.gz
+    wget -nc -P 0.DadosBrutos/illumina ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR130/001/ERR1309041/ERR1309041_2.fastq.gz
+    md5sum 0.DadosBrutos/illumina/ERR1309041_*.fastq.gz
+    # esperado: 27978d9658c241b7e7d78a66cbb4f10b  ERR1309041_1.fastq.gz
+    #           e5a6fa179a09891484e88bf116746fa1  ERR1309041_2.fastq.gz
+
+    conda activate polimento
+    for r in 1 2; do
+      seqtk sample -s 42 0.DadosBrutos/illumina/ERR1309041_$r.fastq.gz 0.15 | gzip > 0.DadosBrutos/illumina/Scer1_ilmn_40x_$r.fq.gz
+    done
+    conda deactivate
+    ```
+
+??? note "Ver saída do comando"
+
+    ```bash
+    $ ls -lh 0.DadosBrutos/illumina/
+    total 427M
+    -rw-rw-r--+ 1 renata renata 214M nov 17 18:47 Scer1_ilmn_40x_1.fq.gz
+    -rw-rw-r--+ 1 renata renata 214M nov 17 19:07 Scer1_ilmn_40x_2.fq.gz
+
+    $ for r in 1 2; do echo "R$r: $(( $(zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_$r.fq.gz | wc -l) / 4 )) reads"; done
+    R1: 2400000 reads
+    R2: 2400000 reads
+
+    $ zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_1.fq.gz | head -1
+    @ERR1309041.1 H8:D2C6RACXX:2:1101:2101:2243/1
+    $ zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_2.fq.gz | head -1
+    @ERR1309041.1 H8:D2C6RACXX:2:1101:2101:2243/2
+    ```
+
+    O nome da read é o mesmo nos dois arquivos; só muda o sufixo `/1` (R1) ou `/2` (R2). O restante do nome traz o instrumento, a flowcell (`D2C6RACXX`), a lane (`2`), o tile (`1101`) e as coordenadas x:y do cluster na lâmina. Por isso a ordem das reads segue a lâmina, e não o genoma. Pelo horário dos arquivos, cada download levou cerca de 20 minutos.
+
+**Polir as três montagens da Scer1 com Polypolish e pypolca:**
 
 O Polypolish usa **todos** os alinhamentos de cada read (`bwa mem -a`), inclusive os de regiões repetitivas, e só altera uma base quando as reads concordam. Isso o torna muito conservador: ele quase nunca introduz erros novos. O pypolca roda em seguida e corrige o que o Polypolish deixou passar, principalmente indels.
 
+O laço abaixo repete o mesmo processo para as três montagens da Scer1 já polidas com o Medaka. Para cada uma, ele copia a montagem para uma pasta própria em `9.Polimento-Illumina/`, alinha as reads, roda o Polypolish e o pypolca e salva o resultado final como `<montagem>_hibrido.fasta`. Leva cerca de 5 minutos por montagem.
+
 ```bash
 conda activate polimento
-mkdir -p 9.Polimento-Illumina
-D=0.DadosBrutos/illumina_simulado
-O=9.Polimento-Illumina
+D=0.DadosBrutos/illumina
 
-cp $D/Scer1_defeito.fasta $O/
-bwa index $O/Scer1_defeito.fasta
-bwa mem -t 24 -a $O/Scer1_defeito.fasta $D/Scer1_sim_1.fq.gz > $O/aln_1.sam
-bwa mem -t 24 -a $O/Scer1_defeito.fasta $D/Scer1_sim_2.fq.gz > $O/aln_2.sam
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  echo "===== $s ====="
+  O=9.Polimento-Illumina/$s
+  mkdir -p $O
 
-polypolish filter --in1 $O/aln_1.sam --in2 $O/aln_2.sam --out1 $O/filt_1.sam --out2 $O/filt_2.sam
-polypolish polish $O/Scer1_defeito.fasta $O/filt_1.sam $O/filt_2.sam \
-  > $O/Scer1_polypolish.fasta 2> $O/polypolish.log
+  # montagem polida com Medaka (Etapa 10)
+  cp 9.Polimento-Medaka/$s/consensus.fasta $O/${s}_medaka.fasta
 
-pypolca run -a $O/Scer1_polypolish.fasta -1 $D/Scer1_sim_1.fq.gz -2 $D/Scer1_sim_2.fq.gz -t 24 -o $O/pypolca --careful
+  # alinhamento: cada arquivo de reads separadamente, com todos os alinhamentos (-a)
+  bwa index $O/${s}_medaka.fasta
+  bwa mem -t 24 -a $O/${s}_medaka.fasta $D/Scer1_ilmn_40x_1.fq.gz > $O/aln_1.sam
+  bwa mem -t 24 -a $O/${s}_medaka.fasta $D/Scer1_ilmn_40x_2.fq.gz > $O/aln_2.sam
+
+  # Polypolish
+  polypolish filter --in1 $O/aln_1.sam --in2 $O/aln_2.sam --out1 $O/filt_1.sam --out2 $O/filt_2.sam
+  polypolish polish $O/${s}_medaka.fasta $O/filt_1.sam $O/filt_2.sam \
+    > $O/${s}_polypolish.fasta 2> $O/polypolish.log
+
+  # pypolca
+  pypolca run -a $O/${s}_polypolish.fasta -1 $D/Scer1_ilmn_40x_1.fq.gz -2 $D/Scer1_ilmn_40x_2.fq.gz \
+    -t 24 -o $O/pypolca --careful
+  cp $O/pypolca/pypolca_corrected.fasta $O/${s}_hibrido.fasta
+
+  # os SAM são grandes e só servem de entrada para o Polypolish
+  rm $O/aln_*.sam $O/filt_*.sam
+done 2>&1 | tee 9.Polimento-Illumina/polimento_hibrido.log
+
 conda deactivate
 ```
 
-O resultado final fica em `9.Polimento-Illumina/pypolca/pypolca_corrected.fasta`.
+O `2>&1 | tee` grava tudo o que aparece na tela em `9.Polimento-Illumina/polimento_hibrido.log`, para você consultar depois. Ao final, cada montagem terá três versões: a bruta (Etapas 5–7), a polida com Medaka (`9.Polimento-Medaka/<montagem>/consensus.fasta`) e a polida com Medaka + Illumina (`9.Polimento-Illumina/<montagem>/<montagem>_hibrido.fasta`).
+
+<!-- SAÍDA: laço de polimento (polypolish filter + pypolca) das 3 montagens -->
+
+??? info "Como ler a saída"
+    - **Reads alinhadas:** das 2.400.000 reads de cada arquivo, quase todas alinham (> 99%). As poucas que não alinham vêm de regiões ausentes da montagem ou de contaminação.
+    - **Mais alinhamentos do que reads:** com `bwa mem -a`, uma read de uma região repetitiva é registrada em **todas** as cópias, por isso há ~1,8 alinhamento por read. O genoma de levedura tem muitas repetições (retrotransposons Ty, rDNA, subtelômeros), e é justamente nelas que o Polypolish leva vantagem sobre polidores que usam só o melhor alinhamento.
+    - **Orientação e inserto:** quase todos os pares estão na orientação `fr`, como esperado para uma biblioteca paired-end comum. Pares fora do intervalo de tamanho de inserto, ou discordantes, são marcados como `fail` (~11% dos alinhamentos) e não são usados.
+    - **pypolca:** os números em *"Stats BEFORE polishing"* referem-se à montagem que **entrou** no pypolca, já polida pelo Polypolish. Em montagens Nanopore, a maior parte dos erros residuais são indels em homopolímeros (sequências como `AAAAAA`), e é para isso que rodamos o pypolca depois do Polypolish.
+
+**Quantas correções foram feitas?**
+
+O log do Polypolish informa, para cada contig, quantas posições foram alteradas (linhas `N positions changed`); o `awk` abaixo soma todas. O relatório do pypolca só tem o bloco *"Stats BEFORE polishing"*: são os erros que ele **encontrou e corrigiu** na montagem que recebeu, isto é, a que já tinha passado pelo Polypolish.
+
+```bash
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  O=9.Polimento-Illumina/$s
+  echo "===== $s"
+  awk '/positions? changed/ {gsub(",","",$1); s+=$1} END {print "Polypolish - posições alteradas:", s}' $O/polypolish.log
+  grep -E 'Substitution|Insertion' $O/pypolca/pypolca.report | sed 's/^/pypolca - /'
+done
+```
+
+<!-- SAÍDA: contagens das 3 montagens -->
 
 ??? tip "Alternativa clássica: Pilon"
-    O Pilon foi por muitos anos o padrão para polimento com Illumina e ainda aparece em muitos artigos. Ele é mais lento, usa mais memória e descarta reads com alinhamento ambíguo, o que pode introduzir erros em regiões repetitivas. Também funciona melhor com cobertura maior que os 10× deste exercício.
+    O Pilon foi por muitos anos o padrão para polimento com Illumina e ainda aparece em muitos artigos. Ele é mais lento, usa mais memória e descarta reads com alinhamento ambíguo, o que pode deixar erros sem correção em regiões repetitivas. Exemplo para uma montagem:
 
     ```bash
-    bwa mem -t 24 $O/Scer1_defeito.fasta $D/Scer1_sim_1.fq.gz $D/Scer1_sim_2.fq.gz \
+    conda activate polimento
+    D=0.DadosBrutos/illumina
+    s=Scer1_q10_l500_Flye
+    O=9.Polimento-Illumina/$s
+    bwa mem -t 24 $O/${s}_medaka.fasta $D/Scer1_ilmn_40x_1.fq.gz $D/Scer1_ilmn_40x_2.fq.gz \
       | samtools sort -@ 8 -o $O/pilon_aln.bam
     samtools index $O/pilon_aln.bam
-    pilon -Xmx16G --genome $O/Scer1_defeito.fasta --frags $O/pilon_aln.bam \
-      --outdir $O/pilon --output Scer1_pilon --changes --threads 24
+    pilon -Xmx16G --genome $O/${s}_medaka.fasta --frags $O/pilon_aln.bam \
+      --outdir $O/pilon --output ${s}_pilon --changes --threads 24
+    conda deactivate
     ```
 
-    O arquivo `Scer1_pilon.changes` lista cada alteração feita.
+    O arquivo `${s}_pilon.changes` lista cada alteração feita.
 
-**Avaliar o polimento com Merqury (k-mers Illumina):**
-
-Com dados reais não existe uma sequência "correta" para comparar. A forma padrão de medir a acurácia é o QV do Merqury, que verifica se os k-mers da montagem aparecem nas reads. Na Etapa 9.2 usamos k-mers das reads Nanopore; aqui usaremos os das reads Illumina, que são muito mais confiáveis para essa medida.
-
-```bash
-D=0.DadosBrutos/illumina_simulado
-O=9.Polimento-Illumina
-
-meryl k=21 count output $O/Scer1_illumina.meryl $D/Scer1_sim_1.fq.gz $D/Scer1_sim_2.fq.gz
-
-mkdir -p 8.QC_montagens/merqury_illumina && cd 8.QC_montagens/merqury_illumina
-merqury.sh ../../$O/Scer1_illumina.meryl ../../$O/Scer1_defeito.fasta Scer1_defeito
-merqury.sh ../../$O/Scer1_illumina.meryl ../../$O/Scer1_polypolish.fasta Scer1_polypolish
-merqury.sh ../../$O/Scer1_illumina.meryl ../../$O/pypolca/pypolca_corrected.fasta Scer1_pypolca
-cat Scer1_defeito.qv Scer1_polypolish.qv Scer1_pypolca.qv
-cd ../..
-```
-
-Na saída do `.qv`, a 4ª coluna é o QV e a 5ª, a taxa de erro. Um QV mais alto depois do polimento indica que a montagem ficou mais próxima do que as reads Illumina mostram.
-
-**Quantas correções foram feitas? Conferindo com o gabarito:**
-
-```bash
-tail -5 9.Polimento-Illumina/polypolish.log
-cat 9.Polimento-Illumina/pypolca/pypolca.report
-echo "SNPs inseridos:   $(grep -vc '^#' 0.DadosBrutos/illumina_simulado/Scer1_erros_SNP.vcf)"
-echo "Indels inseridos: $(grep -vc '^#' 0.DadosBrutos/illumina_simulado/Scer1_erros_INDEL.vcf)"
-```
-
-!!! question "O que esperar"
-    O log do Polypolish informa quantas posições foram alteradas, e o relatório do pypolca, quantas substituições e indels ele corrigiu. Some as correções e compare com os 3.500 erros inseridos (3.000 SNPs + 500 indels). O número não deve bater exatamente: erros em regiões repetitivas, onde reads de 150 pb não alinham de forma única, ou em trechos com pouca cobertura (são só 10×) tendem a ficar sem correção. Com dados reais não existe esse gabarito, e o QV do Merqury é o que guia a avaliação.
+A avaliação das três versões de cada montagem (bruta, Medaka e Medaka + Illumina) fica para a Etapa 11.
 
 ### Checklist da Etapa 10
 
 - [ ] Identifiquei o modelo Medaka correto para cada amostra (R9.4.1 × R10.4.1)
 - [ ] Tenho `consensus.fasta` polido em `9.Polimento-Medaka/<sample>_<assembler>/`
-- [ ] Poli o draft com as reads Illumina e comparei o QV do Merqury (k-mers Illumina) antes e depois
+- [ ] Poli as três montagens da Scer1 (já polidas com Medaka) com as reads Illumina (Polypolish + pypolca)
+- [ ] Tenho `<montagem>_hibrido.fasta` em `9.Polimento-Illumina/<montagem>/`
 
 ---
 
 ## :material-numeric-9-plus-circle: Etapa 11 — Avaliação da qualidade após o polimento
+
+Agora comparamos as versões de cada montagem lado a lado:
+
+| Amostra | Versões |
+|---|---|
+| Scer1 (Flye, Hifiasm, NextDenovo) | bruta → Medaka → Medaka + Illumina (híbrido) |
+| Scer2 (Flye, Hifiasm) | bruta → Medaka (não há Illumina para a Scer2) |
+
+Usamos três réguas: o **QUAST** (contiguidade e comparação com a referência), o **Merqury com k-mers Nanopore** (as mesmas reads usadas na montagem) e, para a Scer1, o **Merqury com k-mers Illumina** (uma régua independente).
 
 ### 11.1 Estatísticas básicas (QUAST)
 
 ```bash
 quast.py \
   -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
-  -o 8.QC_montagens/quast-medaka_q10_l500 \
+  -o 8.QC_montagens/quast-polimento_q10_l500 \
   -s \
   -t 24 \
-  --labels "Scer1_Flye,Scer1_Flye_medaka,Scer1_Hifiasm,Scer1_Hifiasm_medaka,Scer1_NextDenovo,Scer1_NextDenovo_medaka,Scer2_Flye,Scer2_Flye_medaka,Scer2_Hifiasm,Scer2_Hifiasm_medaka" \
+  --labels "Scer1_Flye,Scer1_Flye_medaka,Scer1_Flye_hibrido,Scer1_Hifiasm,Scer1_Hifiasm_medaka,Scer1_Hifiasm_hibrido,Scer1_NextDenovo,Scer1_NextDenovo_medaka,Scer1_NextDenovo_hibrido,Scer2_Flye,Scer2_Flye_medaka,Scer2_Hifiasm,Scer2_Hifiasm_medaka" \
   5.Montagem-Flye/Scer1_q10_l500/assembly.fasta \
   9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta \
+  9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_hibrido.fasta \
   6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa \
   9.Polimento-Medaka/Scer1_q10_l500_hifiasm/consensus.fasta \
+  9.Polimento-Illumina/Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm_hibrido.fasta \
   7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta \
   9.Polimento-Medaka/Scer1_q10_l500_nextdenovo/consensus.fasta \
+  9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo_hibrido.fasta \
   5.Montagem-Flye/Scer2_q10_l500/assembly.fasta \
   9.Polimento-Medaka/Scer2_q10_l500_Flye/consensus.fasta \
   6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa \
@@ -4042,235 +4135,20 @@ quast.py \
 
 Abra os arquivos report.html e icarus.html no seu navegador de internet.
 
-??? note "Ver saída do comando"
-
-    ```bash
-    $ quast.py \
-    >   -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
-    >   -o 8.QC_montagens/quast-medaka_q10_l500 \
-    >   -s \
-    >   -t 24 \
-    >   --labels "Scer1_Flye,Scer1_Flye_medaka,Scer1_Hifiasm,Scer1_Hifiasm_medaka,Scer1_NextDenovo,Scer1_NextDenovo_medaka,Scer2_Flye,Scer2_Flye_medaka,Scer2_Hifiasm,Scer2_Hifiasm_medaka" \
-    >   5.Montagem-Flye/Scer1_q10_l500/assembly.fasta \
-    >   9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta \
-    >   6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa \
-    >   9.Polimento-Medaka/Scer1_q10_l500_hifiasm/consensus.fasta \
-    >   7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta \
-    >   9.Polimento-Medaka/Scer1_q10_l500_nextdenovo/consensus.fasta \
-    >   5.Montagem-Flye/Scer2_q10_l500/assembly.fasta \
-    >   9.Polimento-Medaka/Scer2_q10_l500_Flye/consensus.fasta \
-    >   6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa \
-    >   9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta
-    /usr/local/bin/quast.py -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -o 8.QC_montagens/quast-medaka_q10_l500 -s -t 24 --labels Scer1_Flye,Scer1_Flye_medaka,Scer1_Hifiasm,Scer1_Hifiasm_medaka,Scer1_NextDenovo,Scer1_NextDenovo_medaka,Scer2_Flye,Scer2_Flye_medaka,Scer2_Hifiasm,Scer2_Hifiasm_medaka 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa 9.Polimento-Medaka/Scer1_q10_l500_hifiasm/consensus.fasta 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta 9.Polimento-Medaka/Scer1_q10_l500_nextdenovo/consensus.fasta 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 9.Polimento-Medaka/Scer2_q10_l500_Flye/consensus.fasta 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa 9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta
-
-    Version: 5.3.0, fb88221c
-
-    System information:
-      OS: Linux-5.15.0-139-generic-x86_64-with-glibc2.31 (linux_64)
-      Python version: 3.12.13
-      CPUs number: 144
-
-    Started: 2026-11-17 15:59:22
-
-    Logging to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/quast.log
-
-    CWD: /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26
-    Main parameters:
-      MODE: default, threads: 24, split scaffolds: true, min contig length: 500, min alignment length: 65, \
-      min alignment IDY: 95.0, ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
-
-    Reference:
-      /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna ==> GCF_000146045.2_R64_genomic
-
-    Contigs:
-      Pre-processing...
-      1  5.Montagem-Flye/Scer1_q10_l500/assembly.fasta ==> Scer1_Flye
-      1    breaking scaffolds into contigs:
-      1      79 scaffolds (Scer1_Flye) were broken into 81 contigs (Scer1_Flye_broken)
-      2  9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta ==> Scer1_Flye_medaka
-      2    breaking scaffolds into contigs:
-      2      WARNING: nothing was broken, skipping 'Scer1_Flye_medaka broken' from further analysis
-      3  6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa ==> Scer1_Hifiasm
-      3    breaking scaffolds into contigs:
-      3      WARNING: nothing was broken, skipping 'Scer1_Hifiasm broken' from further analysis
-      4  9.Polimento-Medaka/Scer1_q10_l500_hifiasm/consensus.fasta ==> Scer1_Hifiasm_medaka
-      4    breaking scaffolds into contigs:
-      4      WARNING: nothing was broken, skipping 'Scer1_Hifiasm_medaka broken' from further analysis
-      5  7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta ==> Scer1_NextDenovo
-      5    breaking scaffolds into contigs:
-      5      WARNING: nothing was broken, skipping 'Scer1_NextDenovo broken' from further analysis
-      6  9.Polimento-Medaka/Scer1_q10_l500_nextdenovo/consensus.fasta ==> Scer1_NextDenovo_medaka
-      6    breaking scaffolds into contigs:
-      6      WARNING: nothing was broken, skipping 'Scer1_NextDenovo_medaka broken' from further analysis
-      7  5.Montagem-Flye/Scer2_q10_l500/assembly.fasta ==> Scer2_Flye
-      7    breaking scaffolds into contigs:
-      7      WARNING: nothing was broken, skipping 'Scer2_Flye broken' from further analysis
-      8  9.Polimento-Medaka/Scer2_q10_l500_Flye/consensus.fasta ==> Scer2_Flye_medaka
-      8    breaking scaffolds into contigs:
-      8      WARNING: nothing was broken, skipping 'Scer2_Flye_medaka broken' from further analysis
-      9  6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa ==> Scer2_Hifiasm
-      9    breaking scaffolds into contigs:
-      9      WARNING: nothing was broken, skipping 'Scer2_Hifiasm broken' from further analysis
-      10 9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta ==> Scer2_Hifiasm_medaka
-      10   breaking scaffolds into contigs:
-      10     WARNING: nothing was broken, skipping 'Scer2_Hifiasm_medaka broken' from further analysis
-
-    2026-11-17 15:59:26
-    Running Basic statistics processor...
-      Reference genome:
-        GCF_000146045.2_R64_genomic.fna, length = 12157105, num fragments = 17, GC % = 38.15
-      Contig files:
-        1  Scer1_Flye
-        2  Scer1_Flye_broken
-        3  Scer1_Flye_medaka
-        4  Scer1_Hifiasm
-        5  Scer1_Hifiasm_medaka
-        6  Scer1_NextDenovo
-        7  Scer1_NextDenovo_medaka
-        8  Scer2_Flye
-        9  Scer2_Flye_medaka
-        10 Scer2_Hifiasm
-        11 Scer2_Hifiasm_medaka
-      Calculating N50 and L50...
-        1  Scer1_Flye, N50 = 751043, L50 = 7, auN = 760329.1, Total length = 12301315, GC % = 37.98, # N's per 100 kbp =  1.63
-        2  Scer1_Flye_broken, N50 = 681036, L50 = 7, auN = 715300.6, Total length = 12301115, GC % = 37.98, # N's per 100 kbp =  0.00
-        3  Scer1_Flye_medaka, N50 = 751316, L50 = 7, auN = 760685.7, Total length = 12310102, GC % = 37.98, # N's per 100 kbp =  0.00
-        4  Scer1_Hifiasm, N50 = 709754, L50 = 8, auN = 663675.9, Total length = 12980404, GC % = 37.68, # N's per 100 kbp =  0.00
-        5  Scer1_Hifiasm_medaka, N50 = 709902, L50 = 8, auN = 663993.3, Total length = 12988007, GC % = 37.68, # N's per 100 kbp =  0.00
-        6  Scer1_NextDenovo, N50 = 766859, L50 = 7, auN = 750855.2, Total length = 12123689, GC % = 38.39, # N's per 100 kbp =  0.00
-        7  Scer1_NextDenovo_medaka, N50 = 766974, L50 = 7, auN = 750909.3, Total length = 12125391, GC % = 38.39, # N's per 100 kbp =  0.00
-        8  Scer2_Flye, N50 = 16118, L50 = 163, auN = 19945.6, Total length = 8359493, GC % = 38.10, # N's per 100 kbp =  0.00
-        9  Scer2_Flye_medaka, N50 = 16071, L50 = 163, auN = 19914.4, Total length = 8342160, GC % = 37.96, # N's per 100 kbp =  0.00
-        10 Scer2_Hifiasm, N50 = 102299, L50 = 1, auN = 59051.2, Total length = 189042, GC % = 26.39, # N's per 100 kbp =  0.00
-        11 Scer2_Hifiasm_medaka, N50 = 102340, L50 = 1, auN = 59081.6, Total length = 189086, GC % = 26.39, # N's per 100 kbp =  0.00
-      Drawing Nx plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/basic_stats/Nx_plot.pdf
-      Drawing NGx plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/basic_stats/NGx_plot.pdf
-      Drawing cumulative plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/basic_stats/cumulative_plot.pdf
-      Drawing GC content plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/basic_stats/GC_content_plot.pdf
-      (... um gráfico de GC por montagem ...)
-    Done.
-
-    2026-11-17 15:59:32
-    Running Contig analyzer...
-    WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
-      1  Scer1_Flye
-      1  Logging to files /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/contigs_reports/contigs_report_Scer1_Flye.stdout and contigs_report_Scer1_Flye.stderr...
-      1  Aligning contigs to the reference
-      (... mesmas mensagens para as outras 10 montagens ...)
-      11 Analysis is finished.
-      10 Analysis is finished.
-      8  Analysis is finished.
-      9  Analysis is finished.
-      2  Analysis is finished.
-      1  Analysis is finished.
-      3  Analysis is finished.
-      6  Analysis is finished.
-      7  Analysis is finished.
-      4  Analysis is finished.
-      5  Analysis is finished.
-      Creating total report...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
-      Transposed version of total report...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
-      Creating total report...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
-      Drawing misassemblies by types plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/contigs_reports/misassemblies_plot.pdf
-      Drawing misassemblies FRCurve plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/contigs_reports/misassemblies_frcurve_plot.pdf
-    Done.
-
-    2026-11-17 15:59:41
-    Running NA-NGA calculation...
-      1  Scer1_Flye, Largest alignment = 663281, NA50 = 221923, NGA50 = 221923, LA50 = 18, LGA50 = 18
-      2  Scer1_Flye_broken, Largest alignment = 663281, NA50 = 221923, NGA50 = 221923, LA50 = 18, LGA50 = 18
-      3  Scer1_Flye_medaka, Largest alignment = 663473, NA50 = 221960, NGA50 = 221960, LA50 = 18, LGA50 = 18
-      4  Scer1_Hifiasm, Largest alignment = 522170, NA50 = 184740, NGA50 = 186270, LA50 = 22, LGA50 = 20
-      5  Scer1_Hifiasm_medaka, Largest alignment = 522341, NA50 = 184799, NGA50 = 186382, LA50 = 22, LGA50 = 20
-      6  Scer1_NextDenovo, Largest alignment = 522275, NA50 = 195195, NGA50 = 195195, LA50 = 21, LGA50 = 21
-      7  Scer1_NextDenovo_medaka, Largest alignment = 522423, NA50 = 195238, NGA50 = 185986, LA50 = 21, LGA50 = 22
-      8  Scer2_Flye, Largest alignment = 69649, NA50 = 15391, NGA50 = 9628, LA50 = 177, LGA50 = 332
-      9  Scer2_Flye_medaka, Largest alignment = 69538, NA50 = 15365, NGA50 = 9529, LA50 = 177, LGA50 = 333
-      10 Scer2_Hifiasm, Largest alignment = 52811, NA50 = 7331, LA50 = 5
-      11 Scer2_Hifiasm_medaka, Largest alignment = 52840, NA50 = 7329, LA50 = 5
-      Drawing cumulative plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/aligned_stats/cumulative_plot.pdf
-      Drawing NAx plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/aligned_stats/NAx_plot.pdf
-      Drawing NGAx plot...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/aligned_stats/NGAx_plot.pdf
-    Done.
-
-    2026-11-17 15:59:42
-    Running Genome analyzer...
-      NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
-
-      NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
-      1  Scer1_Flye
-      2  Scer1_Flye_broken
-      3  Scer1_Flye_medaka
-      4  Scer1_Hifiasm
-      5  Scer1_Hifiasm_medaka
-      6  Scer1_NextDenovo
-      7  Scer1_NextDenovo_medaka
-      8  Scer2_Flye
-      9  Scer2_Flye_medaka
-      10 Scer2_Hifiasm
-      11 Scer2_Hifiasm_medaka
-      11 Analysis is finished.
-      10 Analysis is finished.
-      9  Analysis is finished.
-      8  Analysis is finished.
-      7  Analysis is finished.
-      2  Analysis is finished.
-      1  Analysis is finished.
-      5  Analysis is finished.
-      3  Analysis is finished.
-      4  Analysis is finished.
-      6  Analysis is finished.
-      Drawing Genome fraction, % histogram...
-        saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/genome_stats/genome_fraction_histogram.pdf
-    Done.
-
-    NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
-
-    2026-11-17 15:59:45
-    Creating large visual summaries...
-    This may take a while: press Ctrl-C to skip this step..
-      1 of 2: Creating PDF with all tables and plots...
-      2 of 2: Creating Icarus viewers...
-    Done
-
-    2026-11-17 15:59:49
-    RESULTS:
-      Text versions of total report are saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/report.txt, report.tsv, and report.tex
-      Text versions of transposed total report are saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
-      HTML version (interactive tables and plots) is saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/report.html
-      PDF version (tables and plots) is saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/report.pdf
-      Icarus (contig browser) is saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/icarus.html
-      Log is saved to /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/8.QC_montagens/quast-medaka_q10_l500/quast.log
-
-    Finished: 2026-11-17 15:59:49
-    Elapsed time: 0:00:27.396379
-    NOTICEs: 3; WARNINGs: 1; non-fatal ERRORs: 0
-
-    Thank you for using QUAST!
-
-    ```
+<!-- SAÍDA: QUAST 13 versões -->
 
 !!! tip "Relatório pré-computado"
-    [:material-file-chart: QUAST report.html (pós-polimento)](outputs/quast-medaka/report.html){ target=_blank } ·
-    [:material-file-chart: QUAST icarus.html](outputs/quast-medaka/icarus.html){ target=_blank }
+    [:material-file-chart: QUAST report.html (pós-polimento)](outputs/quast-polimento/report.html){ target=_blank } ·
+    [:material-file-chart: QUAST icarus.html](outputs/quast-polimento/icarus.html){ target=_blank }
 
-### 11.2 Qualidade das bases e completude por k-mers (Merqury)
+### 11.2 Qualidade das bases e completude por k-mers Nanopore (Merqury)
+
+Como na Etapa 9.2, usamos os k-mers das reads Nanopore filtradas. As montagens brutas já foram avaliadas lá; agora avaliamos as versões polidas.
 
 ```bash
 cd 8.QC_montagens/merqury
 
+# Scer1: versões Medaka e híbrida
 for sample in Scer1_q10_l500_Flye_medaka Scer1_q10_l500_hifiasm_medaka Scer1_q10_l500_nextdenovo_medaka; do
   mkdir -p $sample && cd $sample
   merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
@@ -4279,6 +4157,15 @@ for sample in Scer1_q10_l500_Flye_medaka Scer1_q10_l500_hifiasm_medaka Scer1_q10
   cd ..
 done
 
+for sample in Scer1_q10_l500_Flye_hibrido Scer1_q10_l500_hifiasm_hibrido Scer1_q10_l500_nextdenovo_hibrido; do
+  mkdir -p $sample && cd $sample
+  merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
+             ../../../9.Polimento-Illumina/${sample%_hibrido}/${sample}.fasta \
+             $sample
+  cd ..
+done
+
+# Scer2: versão Medaka
 for sample in Scer2_q10_l500_Flye_medaka Scer2_q10_l500_hifiasm_medaka; do
   mkdir -p $sample && cd $sample
   merqury.sh ../../../4.QC_dadosfiltrados/Scer2_q10_l500.meryl \
@@ -4286,57 +4173,131 @@ for sample in Scer2_q10_l500_Flye_medaka Scer2_q10_l500_hifiasm_medaka; do
              $sample
   cd ..
 done
+
+cd ../..
 ```
 
-** Juntar os resultados do Merqury em um arquivo: **
+O `${sample%_medaka}` remove o sufixo `_medaka` do nome da amostra (por exemplo, `Scer1_q10_l500_Flye_medaka` vira `Scer1_q10_l500_Flye`), que é o nome da pasta de saída do Medaka. O `${sample%_hibrido}` faz o mesmo com o sufixo `_hibrido`.
+
+**Juntar os resultados do Merqury em um arquivo:**
+
 ```bash
 cd 8.QC_montagens/merqury
 
-echo -e "Sample\tQV\tError_rate\tCompleteness" > merqury_summary_medaka.tsv
+echo -e "Sample\tQV\tError_rate\tCompleteness" > merqury_summary_polimento.tsv
 
-for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_Flye_medaka Scer1_q10_l500_hifiasm Scer1_q10_l500_hifiasm_medaka Scer1_q10_l500_nextdenovo Scer1_q10_l500_nextdenovo_medaka Scer2_q10_l500_Flye Scer2_q10_l500_Flye_medaka Scer2_q10_l500_hifiasm Scer2_q10_l500_hifiasm_medaka ; do
+for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_Flye_medaka Scer1_q10_l500_Flye_hibrido \
+              Scer1_q10_l500_hifiasm Scer1_q10_l500_hifiasm_medaka Scer1_q10_l500_hifiasm_hibrido \
+              Scer1_q10_l500_nextdenovo Scer1_q10_l500_nextdenovo_medaka Scer1_q10_l500_nextdenovo_hibrido \
+              Scer2_q10_l500_Flye Scer2_q10_l500_Flye_medaka \
+              Scer2_q10_l500_hifiasm Scer2_q10_l500_hifiasm_medaka; do
   qv=$(awk 'END{print $4}' ${prefix}/${prefix}.qv 2>/dev/null)
   err=$(awk 'END{print $5}' ${prefix}/${prefix}.qv 2>/dev/null)
   comp=$(awk 'END{print $5}' ${prefix}/${prefix}.completeness.stats 2>/dev/null)
   echo -e "$prefix\t$qv\t$err\t$comp"
-done >> merqury_summary_medaka.tsv
+done >> merqury_summary_polimento.tsv
 
-cat merqury_summary_medaka.tsv
+column -t merqury_summary_polimento.tsv
 
 cd ../..
-
 ```
+
+<!-- SAÍDA: merqury_summary_polimento.tsv -->
+
+!!! tip "Resultado pré-computado"
+    [:material-file-document: merqury_summary_polimento.tsv](outputs/merqury/merqury_summary_polimento.tsv)
 
 !!! warning "Quando o Medaka não melhora"
     Em dados R9.4.1 com montadores que já fazem polimento interno (Flye, Hifiasm), o ganho do Medaka pode ser marginal ou até negativo. O Medaka é mais útil em dados R10.4+ ou quando usado com montadores sem polimento interno. Sempre compare o QV antes e depois usando o Merqury.
 
+### 11.3 Qualidade das bases com k-mers Illumina (Merqury, só Scer1)
 
-??? note "Ver saída do comando"
+Os k-mers das reads Nanopore têm os mesmos vieses de erro das montagens feitas com elas: um erro sistemático do Nanopore (como os de homopolímeros) aparece tanto na montagem quanto na régua e não é contado. Os k-mers das reads Illumina são uma régua **independente** e mais confiável. Vamos medir as três versões de cada montagem da Scer1 com eles.
+
+```bash
+D=0.DadosBrutos/illumina
+meryl k=21 memory=24 threads=24 count $D/Scer1_ilmn_40x_1.fq.gz $D/Scer1_ilmn_40x_2.fq.gz output 4.QC_dadosfiltrados/Scer1_ilmn.meryl
+
+mkdir -p 8.QC_montagens/merqury_illumina && cd 8.QC_montagens/merqury_illumina
+M=../../../4.QC_dadosfiltrados/Scer1_ilmn.meryl
+
+# montagens brutas (os caminhos são diferentes para cada montador)
+mkdir -p Scer1_q10_l500_Flye && cd Scer1_q10_l500_Flye
+merqury.sh $M ../../../5.Montagem-Flye/Scer1_q10_l500/assembly.fasta Scer1_q10_l500_Flye
+cd ..
+mkdir -p Scer1_q10_l500_hifiasm && cd Scer1_q10_l500_hifiasm
+merqury.sh $M ../../../6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa Scer1_q10_l500_hifiasm
+cd ..
+mkdir -p Scer1_q10_l500_nextdenovo && cd Scer1_q10_l500_nextdenovo
+merqury.sh $M ../../../7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta Scer1_q10_l500_nextdenovo
+cd ..
+
+# versões Medaka e híbrida
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  mkdir -p ${s}_medaka && cd ${s}_medaka
+  merqury.sh $M ../../../9.Polimento-Medaka/$s/consensus.fasta ${s}_medaka
+  cd ..
+  mkdir -p ${s}_hibrido && cd ${s}_hibrido
+  merqury.sh $M ../../../9.Polimento-Illumina/$s/${s}_hibrido.fasta ${s}_hibrido
+  cd ..
+done
+
+# resumo
+echo -e "Sample\tQV\tError_rate\tCompleteness" > merqury_illumina_summary.tsv
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  for prefix in $s ${s}_medaka ${s}_hibrido; do
+    qv=$(awk 'END{print $4}' ${prefix}/${prefix}.qv 2>/dev/null)
+    err=$(awk 'END{print $5}' ${prefix}/${prefix}.qv 2>/dev/null)
+    comp=$(awk 'END{print $5}' ${prefix}/${prefix}.completeness.stats 2>/dev/null)
+    echo -e "$prefix\t$qv\t$err\t$comp"
+  done
+done >> merqury_illumina_summary.tsv
+column -t merqury_illumina_summary.tsv
+
+cd ../..
+```
+
+Cada versão é avaliada numa pasta própria. Isso evita um problema do Merqury: ele guarda os k-mers de cada montagem num banco com o **nome do arquivo FASTA** (por exemplo, `consensus.meryl`) e reaproveita esse banco, sem avisar, se ele já existir na pasta. Como várias montagens têm o mesmo nome de arquivo (`consensus.fasta`), avaliá-las na mesma pasta faria a segunda receber o resultado da primeira.
+
+<!-- SAÍDA: merqury_illumina_summary.tsv + tabela + interpretação -->
+
+??? info "Por que o QV não passa de ~35? (QV por contig)"
+    O Merqury também calcula o QV de cada sequência (aqui, a montagem Flye híbrida), no arquivo `<saída>.<montagem>.qv`. Ordenando pelo número de k-mers com erro (2ª coluna), vemos onde eles se concentram:
 
     ```bash
-    $ cat merqury_summary_medaka.tsv
-Sample	QV	Error_rate	Completeness
-Scer1_q10_l500_Flye	43.7133	4.25273e-05	92.6002
-Scer1_q10_l500_Flye_medaka	41.541	7.01295e-05	92.5829
-Scer1_q10_l500_hifiasm	48.6372	1.36863e-05	92.6749
-Scer1_q10_l500_hifiasm_medaka	42.2489	5.95809e-05	92.7389
-Scer1_q10_l500_nextdenovo	40.8752	8.17486e-05	82.7026
-Scer1_q10_l500_nextdenovo_medaka	38.1979	0.000151429	82.9804
-Scer2_q10_l500_Flye	24.3534	0.00366996	95.594
-Scer2_q10_l500_Flye_medaka	24.6501	0.00342757	95.8207
-Scer2_q10_l500_hifiasm	37.4762	0.000178805	79.6565
-Scer2_q10_l500_hifiasm_medaka	34.1083	0.0003883	79.5304
-
-
+    cd 8.QC_montagens/merqury_illumina/Scer1_q10_l500_Flye_hibrido
+    sort -k2,2nr Scer1_q10_l500_Flye_hibrido.Scer1_q10_l500_Flye_hibrido.qv | head
+    cd ../../..
     ```
 
-!!! tip "Resultado pré-computado"
-    [:material-file-document: merqury_summary.tsv (pós-polimento)](outputs/merqury/merqury_summary_medaka.tsv)
+    ```
+    contig_108      16888   32725   14.6889 0.033971
+    contig_100      11269   1059850 32.9337 0.000508897
+    contig_138      6940    8341    10.8914 0.0814438
+    scaffold_33     6503    1050434 35.2919 0.000295671
+    contig_123      5621    6386    10.1723 0.0961095
+    contig_68       5341    22601   18.9428 0.0127562
+    contig_36       5161    5769    9.9308  0.101606
+    contig_80       4332    53901   23.9993 0.00398174
+    contig_111      3754    64342   25.4385 0.00285856
+    contig_12       2147    814323  39.0064 0.000125708
+    ```
+
+    Poucos contigs pequenos (QV entre 10 e 25), que somam só ~1,7% da montagem, concentram mais da metade dos k-mers com erro. Nos cromossomos grandes, o QV fica entre 37 e 40. Parte desses contigs pequenos é **DNA mitocondrial**, tão rico em AT (~15% de GC) que o sequenciamento Illumina mal o cobre; os demais são sequências que praticamente não aparecem nas reads Illumina, porque vieram de outra cultura, sequenciada anos antes. Em nenhum dos casos há erro de base para o polidor corrigir.
+
+    **Lição:** quando o QV do Merqury "empaca", olhe o QV por contig antes de concluir que o polimento falhou.
+
+!!! question "Para pensar"
+    - O Medaka melhorou as montagens pela régua Nanopore (11.2)? E pela régua Illumina (11.3)? As duas réguas concordam?
+    - Quanto do ganho total veio do Medaka e quanto do polimento com Illumina?
+    - A montagem com melhor QV mudou depois do polimento híbrido?
+    - Por que um QV medido com k-mers das próprias reads Nanopore pode superestimar a qualidade de uma montagem Nanopore?
 
 ### Checklist da Etapa 11
 
-- [ ] QUAST mostra o impacto do polimento na contiguidade
-- [ ] Merqury mostra QV antes/depois (positivo ou negativo) para cada montagem
+- [ ] QUAST com as versões bruta, Medaka e híbrida de cada montagem
+- [ ] Merqury (k-mers Nanopore) para as versões polidas de todas as montagens
+- [ ] Merqury (k-mers Illumina) para as três versões das montagens da Scer1
 - [ ] **Decidi se vou seguir com a versão polida ou a não-polida** para cada amostra
 
 **A partir daqui, vamos seguir sem o polimento, uma vez que na vasta maioria dos casos, ele diminuiu a qualidade das montagens.**
@@ -4366,94 +4327,94 @@ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic
 
     ```bash
     $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 10.Scaffolding/Scer1_q10_l500_Flye -t 24
-Tue Jul  7 22:57:54 2026 --- VERSION: RagTag v2.1.0
-Tue Jul  7 22:57:54 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 10.Scaffolding/Scer1_q10_l500_Flye -t 24
-Tue Jul  7 22:57:54 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-Tue Jul  7 22:57:54 2026 --- INFO: Mapping the query genome to the reference genome
-Tue Jul  7 22:57:54 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:55 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:55 2026 --- INFO: Reading whole genome alignments
-Tue Jul  7 22:57:55 2026 --- INFO: Filtering and merging alignments
-Tue Jul  7 22:57:55 2026 --- INFO: Ordering and orienting query sequences
-Tue Jul  7 22:57:55 2026 --- INFO: Writing scaffolds
-Tue Jul  7 22:57:55 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp
-Tue Jul  7 22:57:55 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:55 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:55 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:55 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:55 2026 --- INFO: Goodbye
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ 
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 10.Scaffolding/Scer2_q10_l500_Flye -t 24
-Tue Jul  7 22:57:55 2026 --- VERSION: RagTag v2.1.0
-Tue Jul  7 22:57:55 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 10.Scaffolding/Scer2_q10_l500_Flye -t 24
-Tue Jul  7 22:57:55 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-Tue Jul  7 22:57:55 2026 --- INFO: Mapping the query genome to the reference genome
-Tue Jul  7 22:57:55 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:56 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:56 2026 --- INFO: Reading whole genome alignments
-Tue Jul  7 22:57:56 2026 --- INFO: Filtering and merging alignments
-Tue Jul  7 22:57:56 2026 --- INFO: Ordering and orienting query sequences
-Tue Jul  7 22:57:56 2026 --- INFO: Writing scaffolds
-Tue Jul  7 22:57:56 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp
-Tue Jul  7 22:57:56 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:56 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:56 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:56 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-Tue Jul  7 22:57:56 2026 --- INFO: Goodbye
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ 
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer1_q10_l500_hifiasm -t 24
-Tue Jul  7 22:57:56 2026 --- VERSION: RagTag v2.1.0
-Tue Jul  7 22:57:56 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer1_q10_l500_hifiasm -t 24
-Tue Jul  7 22:57:56 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-Tue Jul  7 22:57:56 2026 --- INFO: Mapping the query genome to the reference genome
-Tue Jul  7 22:57:56 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:57 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:57 2026 --- INFO: Reading whole genome alignments
-Tue Jul  7 22:57:57 2026 --- INFO: Filtering and merging alignments
-Tue Jul  7 22:57:57 2026 --- INFO: Ordering and orienting query sequences
-Tue Jul  7 22:57:57 2026 --- INFO: Writing scaffolds
-Tue Jul  7 22:57:57 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp
-Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Goodbye
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ 
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer2_q10_l500_hifiasm -t 24
-Tue Jul  7 22:57:58 2026 --- VERSION: RagTag v2.1.0
-Tue Jul  7 22:57:58 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer2_q10_l500_hifiasm -t 24
-Tue Jul  7 22:57:58 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-Tue Jul  7 22:57:58 2026 --- INFO: Mapping the query genome to the reference genome
-Tue Jul  7 22:57:58 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:58 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:58 2026 --- INFO: Reading whole genome alignments
-Tue Jul  7 22:57:58 2026 --- INFO: Filtering and merging alignments
-Tue Jul  7 22:57:58 2026 --- INFO: Ordering and orienting query sequences
-Tue Jul  7 22:57:58 2026 --- INFO: Writing scaffolds
-Tue Jul  7 22:57:58 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp
-Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-Tue Jul  7 22:57:58 2026 --- INFO: Goodbye
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ 
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
-Tue Jul  7 22:57:58 2026 --- VERSION: RagTag v2.1.0
-Tue Jul  7 22:57:58 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
-Tue Jul  7 22:57:58 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-Tue Jul  7 22:57:58 2026 --- INFO: Mapping the query genome to the reference genome
-Tue Jul  7 22:57:58 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:59 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf.log
-Tue Jul  7 22:57:59 2026 --- INFO: Reading whole genome alignments
-Tue Jul  7 22:57:59 2026 --- INFO: Filtering and merging alignments
-Tue Jul  7 22:57:59 2026 --- INFO: Ordering and orienting query sequences
-Tue Jul  7 22:57:59 2026 --- INFO: Writing scaffolds
-Tue Jul  7 22:57:59 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp
-Tue Jul  7 22:57:59 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-Tue Jul  7 22:57:59 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-Tue Jul  7 22:57:59 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-Tue Jul  7 22:57:59 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-Tue Jul  7 22:57:59 2026 --- INFO: Goodbye
+    Tue Jul  7 22:57:54 2026 --- VERSION: RagTag v2.1.0
+    Tue Jul  7 22:57:54 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 10.Scaffolding/Scer1_q10_l500_Flye -t 24
+    Tue Jul  7 22:57:54 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
+    Tue Jul  7 22:57:54 2026 --- INFO: Mapping the query genome to the reference genome
+    Tue Jul  7 22:57:54 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:55 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:55 2026 --- INFO: Reading whole genome alignments
+    Tue Jul  7 22:57:55 2026 --- INFO: Filtering and merging alignments
+    Tue Jul  7 22:57:55 2026 --- INFO: Ordering and orienting query sequences
+    Tue Jul  7 22:57:55 2026 --- INFO: Writing scaffolds
+    Tue Jul  7 22:57:55 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp
+    Tue Jul  7 22:57:55 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:55 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:55 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:55 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:55 2026 --- INFO: Goodbye
+    $ 
+    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 10.Scaffolding/Scer2_q10_l500_Flye -t 24
+    Tue Jul  7 22:57:55 2026 --- VERSION: RagTag v2.1.0
+    Tue Jul  7 22:57:55 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 10.Scaffolding/Scer2_q10_l500_Flye -t 24
+    Tue Jul  7 22:57:55 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
+    Tue Jul  7 22:57:55 2026 --- INFO: Mapping the query genome to the reference genome
+    Tue Jul  7 22:57:55 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:56 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:56 2026 --- INFO: Reading whole genome alignments
+    Tue Jul  7 22:57:56 2026 --- INFO: Filtering and merging alignments
+    Tue Jul  7 22:57:56 2026 --- INFO: Ordering and orienting query sequences
+    Tue Jul  7 22:57:56 2026 --- INFO: Writing scaffolds
+    Tue Jul  7 22:57:56 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp
+    Tue Jul  7 22:57:56 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:56 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:56 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:56 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
+    Tue Jul  7 22:57:56 2026 --- INFO: Goodbye
+    $ 
+    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer1_q10_l500_hifiasm -t 24
+    Tue Jul  7 22:57:56 2026 --- VERSION: RagTag v2.1.0
+    Tue Jul  7 22:57:56 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer1_q10_l500_hifiasm -t 24
+    Tue Jul  7 22:57:56 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
+    Tue Jul  7 22:57:56 2026 --- INFO: Mapping the query genome to the reference genome
+    Tue Jul  7 22:57:56 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:57 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:57 2026 --- INFO: Reading whole genome alignments
+    Tue Jul  7 22:57:57 2026 --- INFO: Filtering and merging alignments
+    Tue Jul  7 22:57:57 2026 --- INFO: Ordering and orienting query sequences
+    Tue Jul  7 22:57:57 2026 --- INFO: Writing scaffolds
+    Tue Jul  7 22:57:57 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp
+    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Goodbye
+    $ 
+    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer2_q10_l500_hifiasm -t 24
+    Tue Jul  7 22:57:58 2026 --- VERSION: RagTag v2.1.0
+    Tue Jul  7 22:57:58 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer2_q10_l500_hifiasm -t 24
+    Tue Jul  7 22:57:58 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
+    Tue Jul  7 22:57:58 2026 --- INFO: Mapping the query genome to the reference genome
+    Tue Jul  7 22:57:58 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:58 2026 --- INFO: Reading whole genome alignments
+    Tue Jul  7 22:57:58 2026 --- INFO: Filtering and merging alignments
+    Tue Jul  7 22:57:58 2026 --- INFO: Ordering and orienting query sequences
+    Tue Jul  7 22:57:58 2026 --- INFO: Writing scaffolds
+    Tue Jul  7 22:57:58 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp
+    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
+    Tue Jul  7 22:57:58 2026 --- INFO: Goodbye
+    $ 
+    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
+    Tue Jul  7 22:57:58 2026 --- VERSION: RagTag v2.1.0
+    Tue Jul  7 22:57:58 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
+    Tue Jul  7 22:57:58 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
+    Tue Jul  7 22:57:58 2026 --- INFO: Mapping the query genome to the reference genome
+    Tue Jul  7 22:57:58 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:59 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf.log
+    Tue Jul  7 22:57:59 2026 --- INFO: Reading whole genome alignments
+    Tue Jul  7 22:57:59 2026 --- INFO: Filtering and merging alignments
+    Tue Jul  7 22:57:59 2026 --- INFO: Ordering and orienting query sequences
+    Tue Jul  7 22:57:59 2026 --- INFO: Writing scaffolds
+    Tue Jul  7 22:57:59 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp
+    Tue Jul  7 22:57:59 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
+    Tue Jul  7 22:57:59 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
+    Tue Jul  7 22:57:59 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
+    Tue Jul  7 22:57:59 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
+    Tue Jul  7 22:57:59 2026 --- INFO: Goodbye
 
     ```
 
@@ -4471,29 +4432,29 @@ done
 
     ```bash
     $ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
->   echo "=== $prefix ==="
->   cat 10.Scaffolding/${prefix}/ragtag.scaffold.stats
->   echo
-> done
-=== Scer1_q10_l500_Flye ===
-placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-29	11898839	49	370611	1200	12
+    >   echo "=== $prefix ==="
+    >   cat 10.Scaffolding/${prefix}/ragtag.scaffold.stats
+    >   echo
+    > done
+    === Scer1_q10_l500_Flye ===
+    placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
+    29	11898839	49	370611	1200	12
 
-=== Scer2_q10_l500_Flye ===
-placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-706	8173957	34	178893	68900	689
+    === Scer2_q10_l500_Flye ===
+    placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
+    706	8173957	34	178893	68900	689
 
-=== Scer1_q10_l500_hifiasm ===
-placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-24	12327344	59	622276	700	7
+    === Scer1_q10_l500_hifiasm ===
+    placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
+    24	12327344	59	622276	700	7
 
-=== Scer2_q10_l500_hifiasm ===
-placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-12	146298	2	22896	300	3
+    === Scer2_q10_l500_hifiasm ===
+    placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
+    12	146298	2	22896	300	3
 
-=== Scer1_q10_l500_nextdenovo ===
-placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-22	11000732	1	37442	700	7
+    === Scer1_q10_l500_nextdenovo ===
+    placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
+    22	11000732	1	37442	700	7
 
     ```
 
@@ -4535,680 +4496,680 @@ done
 
     ```bash
     $ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
->   sample=${prefix%%_*}
->   mkdir -p 10.Scaffolding-Longstitch/${prefix}
->   cd 10.Scaffolding-Longstitch/${prefix}
->   ln -sf ${BASE}/${draft_path[$prefix]} draft.fa
->   ln -sf ${BASE}/2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz ${sample}_q10_l500.fastq.gz
->   longstitch run \
->     draft=draft \
->     reads=${sample}_q10_l500 \
->     G=12000000 t=24
->   cd ${BASE}
-> done
-tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
-samtools faidx draft.fa
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
-minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
-long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-[M::mm_idx_gen::0.306*1.01] collected minimizers
-[M::mm_idx_gen::0.369*3.86] sorted minimizers
-[M::main::0.369*3.86] loaded/built the index for 78 target sequence(s)
-[M::mm_mapopt_update::0.411*3.57] mid_occ = 30
-[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 78
-[M::mm_idx_stat::0.446*3.37] distinct minimizers: 2095775 (94.98% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12269450
-[M::worker_pipeline::11.777*8.54] mapped 2046130 sequences
-[M::worker_pipeline::13.657*7.43] mapped 915590 sequences
-[M::main] Version: 2.31-r1302
-[M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-[M::main] Real time: 13.689 sec; CPU: 101.505 sec; Peak RSS: 1.493 GB
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
-Started at: 2026-07-07 23:00:30.600224
-Reading contig lengths...
-Finding breakpoints...
-Attempted corrections: 39
-Cutting assembly at breakpoints...
-DONE!
-Ended at: 2026-07-07 23:00:34.211554
-ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
-ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
-indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
-indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
--k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Running pairing stage of ntLink ...
+    >   sample=${prefix%%_*}
+    >   mkdir -p 10.Scaffolding-Longstitch/${prefix}
+    >   cd 10.Scaffolding-Longstitch/${prefix}
+    >   ln -sf ${BASE}/${draft_path[$prefix]} draft.fa
+    >   ln -sf ${BASE}/2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz ${sample}_q10_l500.fastq.gz
+    >   longstitch run \
+    >     draft=draft \
+    >     reads=${sample}_q10_l500 \
+    >     G=12000000 t=24
+    >   cd ${BASE}
+    > done
+    tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
+    samtools faidx draft.fa
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
+    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
+    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
+    [M::mm_idx_gen::0.306*1.01] collected minimizers
+    [M::mm_idx_gen::0.369*3.86] sorted minimizers
+    [M::main::0.369*3.86] loaded/built the index for 78 target sequence(s)
+    [M::mm_mapopt_update::0.411*3.57] mid_occ = 30
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 78
+    [M::mm_idx_stat::0.446*3.37] distinct minimizers: 2095775 (94.98% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12269450
+    [M::worker_pipeline::11.777*8.54] mapped 2046130 sequences
+    [M::worker_pipeline::13.657*7.43] mapped 915590 sequences
+    [M::main] Version: 2.31-r1302
+    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
+    [M::main] Real time: 13.689 sec; CPU: 101.505 sec; Peak RSS: 1.493 GB
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
+    Started at: 2026-07-07 23:00:30.600224
+    Reading contig lengths...
+    Finding breakpoints...
+    Attempted corrections: 39
+    Cutting assembly at breakpoints...
+    DONE!
+    Ended at: 2026-07-07 23:00:34.211554
+    ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
+    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
+    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
+    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
+    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Running pairing stage of ntLink ...
 
-Parameters:
-	Read minimizer files:  ['-']
-	-s  draft.cut250.tigmint.fa
-	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-	-n  2
-	-k  32
-	-a  1
-	-z  1000
-	-f  10
-	-x  0.0
-2026-07-07 23:00:34.993570 : Reading minimizers draft.cut250.tigmint.fa
-2026-07-07 23:00:35.281340 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:00:35.290341 : Finding pairs
-2026-07-07 23:00:55.783325 : Building scaffold graph
-2026-07-07 23:00:55.784869 : Filtering the graph
-2026-07-07 23:00:55.785252 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:00:55.787434 : DONE!
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
--g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-Running ntLink stitch paths stage...
+    Parameters:
+    	Read minimizer files:  ['-']
+    	-s  draft.cut250.tigmint.fa
+    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
+    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
+    	-n  2
+    	-k  32
+    	-a  1
+    	-z  1000
+    	-f  10
+    	-x  0.0
+    2026-07-07 23:00:34.993570 : Reading minimizers draft.cut250.tigmint.fa
+    2026-07-07 23:00:35.281340 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:00:35.290341 : Finding pairs
+    2026-07-07 23:00:55.783325 : Building scaffold graph
+    2026-07-07 23:00:55.784869 : Filtering the graph
+    2026-07-07 23:00:55.785252 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:00:55.787434 : DONE!
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
+    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
+    Running ntLink stitch paths stage...
 
-2026-07-07 23:00:57.405839  : Finding optimal n...
-2026-07-07 23:00:57.406090  : Optimal n = 10 at N50 = 766493.0
-2026-07-07 23:00:57.406106 : Building path graph
-2026-07-07 23:00:57.406557 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-Printing paths for optimal N50, no stitching...
+    2026-07-07 23:00:57.405839  : Finding optimal n...
+    2026-07-07 23:00:57.406090  : Optimal n = 10 at N50 = 766493.0
+    2026-07-07 23:00:57.406106 : Building path graph
+    2026-07-07 23:00:57.406557 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    Printing paths for optimal N50, no stitching...
 
-2026-07-07 23:00:57.409115 : Finding paths
+    2026-07-07 23:00:57.409115 : Finding paths
 
-Total number of components in graph: 28 
+    Total number of components in graph: 28 
 
-rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
---dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-indexlr --long --pos -k 15 -w 5 -t 24 - |\
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
--s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Assessing putative overlaps...
-Parameters for overlap stage:
-	-m -
-	-f 0.5
-	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-	-s draft.cut250.tigmint.fa
-	-k 15
-	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-	-g 20
-	--outgap 0
-	-p draft.cut250.tigmint.fa.k32.w100.z1000
-2026-07-07 23:00:57.633826 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:00:57.644690 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:00:57.647341 : Finding valid minimizer regions
-2026-07-07 23:00:57.647536 : Finding scaffold overlaps
-2026-07-07 23:00:58.010764 : Printing trimmed scaffolds
-2026-07-07 23:00:58.028150 : DONE!
-MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-The minimum coverage of single-end contigs is inf.
-The minimum coverage of merged contigs is inf.
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
-Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-samtools faidx draft.fa
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer2_q10_l500.fastq.gz -n 1000000 -o Scer2_q10_l500.tigmint-long.params.tsv
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer2_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer2_q10_l500.tigmint-long.params.tsv Scer2_q10_l500.fastq.gz | \
-minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer2_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed'
-long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-[M::mm_idx_gen::0.206*1.01] collected minimizers
-[M::mm_idx_gen::0.249*3.92] sorted minimizers
-[M::main::0.249*3.92] loaded/built the index for 740 target sequence(s)
-[M::mm_mapopt_update::0.277*3.62] mid_occ = 15
-[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 740
-[M::mm_idx_stat::0.299*3.43] distinct minimizers: 1484126 (96.14% are singletons); average occurrences: 1.054; average spacing: 5.342; total length: 8352850
-[M::worker_pipeline::1.625*3.92] mapped 242850 sequences
-[M::main] Version: 2.31-r1302
-[M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-[M::main] Real time: 1.643 sec; CPU: 6.386 sec; Peak RSS: 0.188 GB
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer2_q10_l500.tigmint-long.params.tsv -o draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed
-Started at: 2026-07-07 23:01:01.646602
-Reading contig lengths...
-Finding breakpoints...
-Attempted corrections: 4
-Cutting assembly at breakpoints...
-DONE!
-Ended at: 2026-07-07 23:01:01.849537
-ln -sf draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer2_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-sh -c 'pigz -p24 -f -cd Scer2_q10_l500.fastq.gz | \
-indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
--k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Running pairing stage of ntLink ...
+    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
+    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
+    indexlr --long --pos -k 15 -w 5 -t 24 - |\
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
+    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Assessing putative overlaps...
+    Parameters for overlap stage:
+    	-m -
+    	-f 0.5
+    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
+    	-s draft.cut250.tigmint.fa
+    	-k 15
+    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    	-g 20
+    	--outgap 0
+    	-p draft.cut250.tigmint.fa.k32.w100.z1000
+    2026-07-07 23:00:57.633826 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:00:57.644690 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:00:57.647341 : Finding valid minimizer regions
+    2026-07-07 23:00:57.647536 : Finding scaffold overlaps
+    2026-07-07 23:00:58.010764 : Printing trimmed scaffolds
+    2026-07-07 23:00:58.028150 : DONE!
+    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
+    The minimum coverage of single-end contigs is inf.
+    The minimum coverage of merged contigs is inf.
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
+    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
+    samtools faidx draft.fa
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer2_q10_l500.fastq.gz -n 1000000 -o Scer2_q10_l500.tigmint-long.params.tsv
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer2_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer2_q10_l500.tigmint-long.params.tsv Scer2_q10_l500.fastq.gz | \
+    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer2_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed'
+    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
+    [M::mm_idx_gen::0.206*1.01] collected minimizers
+    [M::mm_idx_gen::0.249*3.92] sorted minimizers
+    [M::main::0.249*3.92] loaded/built the index for 740 target sequence(s)
+    [M::mm_mapopt_update::0.277*3.62] mid_occ = 15
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 740
+    [M::mm_idx_stat::0.299*3.43] distinct minimizers: 1484126 (96.14% are singletons); average occurrences: 1.054; average spacing: 5.342; total length: 8352850
+    [M::worker_pipeline::1.625*3.92] mapped 242850 sequences
+    [M::main] Version: 2.31-r1302
+    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
+    [M::main] Real time: 1.643 sec; CPU: 6.386 sec; Peak RSS: 0.188 GB
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer2_q10_l500.tigmint-long.params.tsv -o draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed
+    Started at: 2026-07-07 23:01:01.646602
+    Reading contig lengths...
+    Finding breakpoints...
+    Attempted corrections: 4
+    Cutting assembly at breakpoints...
+    DONE!
+    Ended at: 2026-07-07 23:01:01.849537
+    ln -sf draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
+    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer2_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
+    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    sh -c 'pigz -p24 -f -cd Scer2_q10_l500.fastq.gz | \
+    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
+    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Running pairing stage of ntLink ...
 
-Parameters:
-	Read minimizer files:  ['-']
-	-s  draft.cut250.tigmint.fa
-	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-	-n  2
-	-k  32
-	-a  1
-	-z  1000
-	-f  10
-	-x  0.0
-2026-07-07 23:01:02.510271 : Reading minimizers draft.cut250.tigmint.fa
-2026-07-07 23:01:02.707015 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:01:02.715837 : Finding pairs
-2026-07-07 23:01:05.061758 : Building scaffold graph
-2026-07-07 23:01:05.063967 : Filtering the graph
-2026-07-07 23:01:05.064427 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:01:05.067896 : DONE!
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
--g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-Running ntLink stitch paths stage...
+    Parameters:
+    	Read minimizer files:  ['-']
+    	-s  draft.cut250.tigmint.fa
+    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
+    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
+    	-n  2
+    	-k  32
+    	-a  1
+    	-z  1000
+    	-f  10
+    	-x  0.0
+    2026-07-07 23:01:02.510271 : Reading minimizers draft.cut250.tigmint.fa
+    2026-07-07 23:01:02.707015 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:01:02.715837 : Finding pairs
+    2026-07-07 23:01:05.061758 : Building scaffold graph
+    2026-07-07 23:01:05.063967 : Filtering the graph
+    2026-07-07 23:01:05.064427 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:01:05.067896 : DONE!
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
+    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
+    Running ntLink stitch paths stage...
 
-2026-07-07 23:01:06.270886  : Finding optimal n...
-2026-07-07 23:01:06.271148  : Optimal n = 2 at N50 = 19723.0
-2026-07-07 23:01:06.271166 : Building path graph
-2026-07-07 23:01:06.272260 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-Printing paths for optimal N50, no stitching...
+    2026-07-07 23:01:06.270886  : Finding optimal n...
+    2026-07-07 23:01:06.271148  : Optimal n = 2 at N50 = 19723.0
+    2026-07-07 23:01:06.271166 : Building path graph
+    2026-07-07 23:01:06.272260 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    Printing paths for optimal N50, no stitching...
 
-2026-07-07 23:01:06.275894 : Finding paths
+    2026-07-07 23:01:06.275894 : Finding paths
 
-Total number of components in graph: 214 
+    Total number of components in graph: 214 
 
-rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
---dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-indexlr --long --pos -k 15 -w 5 -t 24 - |\
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
--s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Assessing putative overlaps...
-Parameters for overlap stage:
-	-m -
-	-f 0.5
-	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-	-s draft.cut250.tigmint.fa
-	-k 15
-	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-	-g 20
-	--outgap 0
-	-p draft.cut250.tigmint.fa.k32.w100.z1000
-2026-07-07 23:01:06.513406 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:01:06.519221 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:01:06.523591 : Finding valid minimizer regions
-2026-07-07 23:01:06.524353 : Finding scaffold overlaps
-2026-07-07 23:01:06.962269 : Printing trimmed scaffolds
-2026-07-07 23:01:06.975656 : DONE!
-MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-The minimum coverage of single-end contigs is inf.
-The minimum coverage of merged contigs is inf.
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
-Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
-samtools faidx draft.fa
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
-minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
-long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-[M::mm_idx_gen::0.318*1.01] collected minimizers
-[M::mm_idx_gen::0.380*3.82] sorted minimizers
-[M::main::0.380*3.82] loaded/built the index for 83 target sequence(s)
-[M::mm_mapopt_update::0.422*3.53] mid_occ = 32
-[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 83
-[M::mm_idx_stat::0.457*3.34] distinct minimizers: 2096445 (93.56% are singletons); average occurrences: 1.158; average spacing: 5.333; total length: 12949620
-[M::worker_pipeline::15.623*14.95] mapped 2046130 sequences
-[M::worker_pipeline::17.624*13.31] mapped 915590 sequences
-[M::main] Version: 2.31-r1302
-[M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-[M::main] Real time: 17.677 sec; CPU: 234.719 sec; Peak RSS: 1.561 GB
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
-Started at: 2026-07-07 23:01:33.280225
-Reading contig lengths...
-Finding breakpoints...
-Attempted corrections: 61
-Cutting assembly at breakpoints...
-DONE!
-Ended at: 2026-07-07 23:01:34.716906
-ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
-ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
-indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
-indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
--k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Running pairing stage of ntLink ...
+    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
+    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
+    indexlr --long --pos -k 15 -w 5 -t 24 - |\
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
+    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Assessing putative overlaps...
+    Parameters for overlap stage:
+    	-m -
+    	-f 0.5
+    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
+    	-s draft.cut250.tigmint.fa
+    	-k 15
+    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    	-g 20
+    	--outgap 0
+    	-p draft.cut250.tigmint.fa.k32.w100.z1000
+    2026-07-07 23:01:06.513406 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:01:06.519221 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:01:06.523591 : Finding valid minimizer regions
+    2026-07-07 23:01:06.524353 : Finding scaffold overlaps
+    2026-07-07 23:01:06.962269 : Printing trimmed scaffolds
+    2026-07-07 23:01:06.975656 : DONE!
+    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
+    The minimum coverage of single-end contigs is inf.
+    The minimum coverage of merged contigs is inf.
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
+    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
+    samtools faidx draft.fa
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
+    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
+    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
+    [M::mm_idx_gen::0.318*1.01] collected minimizers
+    [M::mm_idx_gen::0.380*3.82] sorted minimizers
+    [M::main::0.380*3.82] loaded/built the index for 83 target sequence(s)
+    [M::mm_mapopt_update::0.422*3.53] mid_occ = 32
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 83
+    [M::mm_idx_stat::0.457*3.34] distinct minimizers: 2096445 (93.56% are singletons); average occurrences: 1.158; average spacing: 5.333; total length: 12949620
+    [M::worker_pipeline::15.623*14.95] mapped 2046130 sequences
+    [M::worker_pipeline::17.624*13.31] mapped 915590 sequences
+    [M::main] Version: 2.31-r1302
+    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
+    [M::main] Real time: 17.677 sec; CPU: 234.719 sec; Peak RSS: 1.561 GB
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
+    Started at: 2026-07-07 23:01:33.280225
+    Reading contig lengths...
+    Finding breakpoints...
+    Attempted corrections: 61
+    Cutting assembly at breakpoints...
+    DONE!
+    Ended at: 2026-07-07 23:01:34.716906
+    ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
+    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
+    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
+    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
+    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Running pairing stage of ntLink ...
 
-Parameters:
-	Read minimizer files:  ['-']
-	-s  draft.cut250.tigmint.fa
-	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-	-n  2
-	-k  32
-	-a  1
-	-z  1000
-	-f  10
-	-x  0.0
-2026-07-07 23:01:35.541590 : Reading minimizers draft.cut250.tigmint.fa
-2026-07-07 23:01:35.819963 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:01:35.827869 : Finding pairs
-2026-07-07 23:01:55.249144 : Building scaffold graph
-2026-07-07 23:01:55.249846 : Filtering the graph
-2026-07-07 23:01:55.250081 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:01:55.251041 : DONE!
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
--g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-Running ntLink stitch paths stage...
+    Parameters:
+    	Read minimizer files:  ['-']
+    	-s  draft.cut250.tigmint.fa
+    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
+    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
+    	-n  2
+    	-k  32
+    	-a  1
+    	-z  1000
+    	-f  10
+    	-x  0.0
+    2026-07-07 23:01:35.541590 : Reading minimizers draft.cut250.tigmint.fa
+    2026-07-07 23:01:35.819963 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:01:35.827869 : Finding pairs
+    2026-07-07 23:01:55.249144 : Building scaffold graph
+    2026-07-07 23:01:55.249846 : Filtering the graph
+    2026-07-07 23:01:55.250081 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:01:55.251041 : DONE!
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
+    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
+    Running ntLink stitch paths stage...
 
-2026-07-07 23:01:56.930656  : Finding optimal n...
-2026-07-07 23:01:56.930909  : Optimal n = 2 at N50 = 768425.0
-2026-07-07 23:01:56.930926 : Building path graph
-2026-07-07 23:01:56.931365 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-Printing paths for optimal N50, no stitching...
+    2026-07-07 23:01:56.930656  : Finding optimal n...
+    2026-07-07 23:01:56.930909  : Optimal n = 2 at N50 = 768425.0
+    2026-07-07 23:01:56.930926 : Building path graph
+    2026-07-07 23:01:56.931365 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    Printing paths for optimal N50, no stitching...
 
-2026-07-07 23:01:56.932349 : Finding paths
+    2026-07-07 23:01:56.932349 : Finding paths
 
-Total number of components in graph: 36 
+    Total number of components in graph: 36 
 
-rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
---dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-indexlr --long --pos -k 15 -w 5 -t 24 - |\
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
--s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Assessing putative overlaps...
-Parameters for overlap stage:
-	-m -
-	-f 0.5
-	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-	-s draft.cut250.tigmint.fa
-	-k 15
-	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-	-g 20
-	--outgap 0
-	-p draft.cut250.tigmint.fa.k32.w100.z1000
-2026-07-07 23:01:57.151155 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:01:57.161676 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:01:57.162745 : Finding valid minimizer regions
-2026-07-07 23:01:57.162979 : Finding scaffold overlaps
-2026-07-07 23:01:59.038867 : Printing trimmed scaffolds
-2026-07-07 23:01:59.056067 : DONE!
-MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-The minimum coverage of single-end contigs is inf.
-The minimum coverage of merged contigs is inf.
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
-Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-samtools faidx draft.fa
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer2_q10_l500.fastq.gz -n 1000000 -o Scer2_q10_l500.tigmint-long.params.tsv
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer2_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer2_q10_l500.tigmint-long.params.tsv Scer2_q10_l500.fastq.gz | \
-minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer2_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed'
-long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-[M::mm_idx_gen::0.012*1.14] collected minimizers
-[M::mm_idx_gen::0.017*5.38] sorted minimizers
-[M::main::0.017*5.38] loaded/built the index for 14 target sequence(s)
-[M::mm_mapopt_update::0.019*4.82] mid_occ = 43
-[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 14
-[M::mm_idx_stat::0.021*4.50] distinct minimizers: 26356 (88.63% are singletons); average occurrences: 1.214; average spacing: 5.290; total length: 169194
-[M::worker_pipeline::1.038*3.99] mapped 242850 sequences
-[M::main] Version: 2.31-r1302
-[M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-[M::main] Real time: 1.047 sec; CPU: 4.152 sec; Peak RSS: 0.112 GB
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer2_q10_l500.tigmint-long.params.tsv -o draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed
-Started at: 2026-07-07 23:02:02.881410
-Reading contig lengths...
-Finding breakpoints...
-Attempted corrections: 0
-Cutting assembly at breakpoints...
-DONE!
-Ended at: 2026-07-07 23:02:03.042986
-ln -sf draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer2_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-sh -c 'pigz -p24 -f -cd Scer2_q10_l500.fastq.gz | \
-indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
--k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Running pairing stage of ntLink ...
+    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
+    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
+    indexlr --long --pos -k 15 -w 5 -t 24 - |\
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
+    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Assessing putative overlaps...
+    Parameters for overlap stage:
+    	-m -
+    	-f 0.5
+    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
+    	-s draft.cut250.tigmint.fa
+    	-k 15
+    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    	-g 20
+    	--outgap 0
+    	-p draft.cut250.tigmint.fa.k32.w100.z1000
+    2026-07-07 23:01:57.151155 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:01:57.161676 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:01:57.162745 : Finding valid minimizer regions
+    2026-07-07 23:01:57.162979 : Finding scaffold overlaps
+    2026-07-07 23:01:59.038867 : Printing trimmed scaffolds
+    2026-07-07 23:01:59.056067 : DONE!
+    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
+    The minimum coverage of single-end contigs is inf.
+    The minimum coverage of merged contigs is inf.
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
+    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
+    samtools faidx draft.fa
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer2_q10_l500.fastq.gz -n 1000000 -o Scer2_q10_l500.tigmint-long.params.tsv
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer2_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer2_q10_l500.tigmint-long.params.tsv Scer2_q10_l500.fastq.gz | \
+    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer2_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed'
+    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
+    [M::mm_idx_gen::0.012*1.14] collected minimizers
+    [M::mm_idx_gen::0.017*5.38] sorted minimizers
+    [M::main::0.017*5.38] loaded/built the index for 14 target sequence(s)
+    [M::mm_mapopt_update::0.019*4.82] mid_occ = 43
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 14
+    [M::mm_idx_stat::0.021*4.50] distinct minimizers: 26356 (88.63% are singletons); average occurrences: 1.214; average spacing: 5.290; total length: 169194
+    [M::worker_pipeline::1.038*3.99] mapped 242850 sequences
+    [M::main] Version: 2.31-r1302
+    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
+    [M::main] Real time: 1.047 sec; CPU: 4.152 sec; Peak RSS: 0.112 GB
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer2_q10_l500.tigmint-long.params.tsv -o draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed
+    Started at: 2026-07-07 23:02:02.881410
+    Reading contig lengths...
+    Finding breakpoints...
+    Attempted corrections: 0
+    Cutting assembly at breakpoints...
+    DONE!
+    Ended at: 2026-07-07 23:02:03.042986
+    ln -sf draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
+    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer2_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
+    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    sh -c 'pigz -p24 -f -cd Scer2_q10_l500.fastq.gz | \
+    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
+    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Running pairing stage of ntLink ...
 
-Parameters:
-	Read minimizer files:  ['-']
-	-s  draft.cut250.tigmint.fa
-	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-	-n  2
-	-k  32
-	-a  1
-	-z  1000
-	-f  10
-	-x  0.0
-2026-07-07 23:02:03.292650 : Reading minimizers draft.cut250.tigmint.fa
-2026-07-07 23:02:03.295392 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:02:03.295569 : Finding pairs
-2026-07-07 23:02:04.717904 : Building scaffold graph
-2026-07-07 23:02:04.718165 : Filtering the graph
-2026-07-07 23:02:04.718320 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:02:04.718590 : DONE!
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
--g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-Running ntLink stitch paths stage...
+    Parameters:
+    	Read minimizer files:  ['-']
+    	-s  draft.cut250.tigmint.fa
+    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
+    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
+    	-n  2
+    	-k  32
+    	-a  1
+    	-z  1000
+    	-f  10
+    	-x  0.0
+    2026-07-07 23:02:03.292650 : Reading minimizers draft.cut250.tigmint.fa
+    2026-07-07 23:02:03.295392 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:02:03.295569 : Finding pairs
+    2026-07-07 23:02:04.717904 : Building scaffold graph
+    2026-07-07 23:02:04.718165 : Filtering the graph
+    2026-07-07 23:02:04.718320 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:02:04.718590 : DONE!
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
+    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
+    Running ntLink stitch paths stage...
 
-2026-07-07 23:02:05.011976  : Finding optimal n...
-2026-07-07 23:02:05.012214  : Optimal n = 2 at N50 = 12548.0
-2026-07-07 23:02:05.012231 : Building path graph
-2026-07-07 23:02:05.012425 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-Printing paths for optimal N50, no stitching...
+    2026-07-07 23:02:05.011976  : Finding optimal n...
+    2026-07-07 23:02:05.012214  : Optimal n = 2 at N50 = 12548.0
+    2026-07-07 23:02:05.012231 : Building path graph
+    2026-07-07 23:02:05.012425 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    Printing paths for optimal N50, no stitching...
 
-2026-07-07 23:02:05.012814 : Finding paths
+    2026-07-07 23:02:05.012814 : Finding paths
 
-Total number of components in graph: 2 
+    Total number of components in graph: 2 
 
-rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
---dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-indexlr --long --pos -k 15 -w 5 -t 24 - |\
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
--s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Assessing putative overlaps...
-Parameters for overlap stage:
-	-m -
-	-f 0.5
-	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-	-s draft.cut250.tigmint.fa
-	-k 15
-	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-	-g 20
-	--outgap 0
-	-p draft.cut250.tigmint.fa.k32.w100.z1000
-2026-07-07 23:02:05.226558 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:02:05.226769 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:02:05.227284 : Finding valid minimizer regions
-2026-07-07 23:02:05.227364 : Finding scaffold overlaps
-2026-07-07 23:02:05.286813 : Printing trimmed scaffolds
-2026-07-07 23:02:05.287428 : DONE!
-MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-The minimum coverage of single-end contigs is inf.
-The minimum coverage of merged contigs is inf.
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
-Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-samtools faidx draft.fa
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
-minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
-long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-[M::mm_idx_gen::0.267*1.01] collected minimizers
-[M::mm_idx_gen::0.326*4.00] sorted minimizers
-[M::main::0.326*4.00] loaded/built the index for 23 target sequence(s)
-[M::mm_mapopt_update::0.358*3.74] mid_occ = 30
-[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 23
-[M::mm_idx_stat::0.389*3.52] distinct minimizers: 1892502 (95.90% are singletons); average occurrences: 1.093; average spacing: 5.335; total length: 11038174
-[M::worker_pipeline::10.893*7.76] mapped 2046130 sequences
-[M::worker_pipeline::12.559*6.80] mapped 915590 sequences
-[M::main] Version: 2.31-r1302
-[M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-[M::main] Real time: 12.602 sec; CPU: 85.386 sec; Peak RSS: 1.436 GB
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
-Started at: 2026-07-07 23:02:26.443332
-Reading contig lengths...
-Finding breakpoints...
-Attempted corrections: 50
-Cutting assembly at breakpoints...
-DONE!
-Ended at: 2026-07-07 23:02:29.756430
-ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
-indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
--k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Running pairing stage of ntLink ...
+    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
+    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
+    indexlr --long --pos -k 15 -w 5 -t 24 - |\
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
+    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Assessing putative overlaps...
+    Parameters for overlap stage:
+    	-m -
+    	-f 0.5
+    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
+    	-s draft.cut250.tigmint.fa
+    	-k 15
+    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    	-g 20
+    	--outgap 0
+    	-p draft.cut250.tigmint.fa.k32.w100.z1000
+    2026-07-07 23:02:05.226558 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:02:05.226769 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:02:05.227284 : Finding valid minimizer regions
+    2026-07-07 23:02:05.227364 : Finding scaffold overlaps
+    2026-07-07 23:02:05.286813 : Printing trimmed scaffolds
+    2026-07-07 23:02:05.287428 : DONE!
+    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
+    The minimum coverage of single-end contigs is inf.
+    The minimum coverage of merged contigs is inf.
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
+    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
+    samtools faidx draft.fa
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
+    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
+    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
+    [M::mm_idx_gen::0.267*1.01] collected minimizers
+    [M::mm_idx_gen::0.326*4.00] sorted minimizers
+    [M::main::0.326*4.00] loaded/built the index for 23 target sequence(s)
+    [M::mm_mapopt_update::0.358*3.74] mid_occ = 30
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 23
+    [M::mm_idx_stat::0.389*3.52] distinct minimizers: 1892502 (95.90% are singletons); average occurrences: 1.093; average spacing: 5.335; total length: 11038174
+    [M::worker_pipeline::10.893*7.76] mapped 2046130 sequences
+    [M::worker_pipeline::12.559*6.80] mapped 915590 sequences
+    [M::main] Version: 2.31-r1302
+    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
+    [M::main] Real time: 12.602 sec; CPU: 85.386 sec; Peak RSS: 1.436 GB
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
+    Started at: 2026-07-07 23:02:26.443332
+    Reading contig lengths...
+    Finding breakpoints...
+    Attempted corrections: 50
+    Cutting assembly at breakpoints...
+    DONE!
+    Ended at: 2026-07-07 23:02:29.756430
+    ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
+    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
+    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
+    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
+    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
+    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Running pairing stage of ntLink ...
 
-Parameters:
-	Read minimizer files:  ['-']
-	-s  draft.cut250.tigmint.fa
-	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-	-n  2
-	-k  32
-	-a  1
-	-z  1000
-	-f  10
-	-x  0.0
-2026-07-07 23:02:30.380703 : Reading minimizers draft.cut250.tigmint.fa
-2026-07-07 23:02:30.633189 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:02:30.640295 : Finding pairs
-2026-07-07 23:02:50.276154 : Building scaffold graph
-2026-07-07 23:02:50.277024 : Filtering the graph
-2026-07-07 23:02:50.277295 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:02:50.278589 : DONE!
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-sh -c 'cat draft.cut250.tigmint.fa | \
-cut -d " " -f1  | \
-abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
--g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-Running ntLink stitch paths stage...
+    Parameters:
+    	Read minimizer files:  ['-']
+    	-s  draft.cut250.tigmint.fa
+    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
+    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
+    	-n  2
+    	-k  32
+    	-a  1
+    	-z  1000
+    	-f  10
+    	-x  0.0
+    2026-07-07 23:02:30.380703 : Reading minimizers draft.cut250.tigmint.fa
+    2026-07-07 23:02:30.633189 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:02:30.640295 : Finding pairs
+    2026-07-07 23:02:50.276154 : Building scaffold graph
+    2026-07-07 23:02:50.277024 : Filtering the graph
+    2026-07-07 23:02:50.277295 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:02:50.278589 : DONE!
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
+    sh -c 'cat draft.cut250.tigmint.fa | \
+    cut -d " " -f1  | \
+    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
+    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
+    Running ntLink stitch paths stage...
 
-2026-07-07 23:02:51.763259  : Finding optimal n...
-2026-07-07 23:02:51.763511  : Optimal n = 2 at N50 = 647773.0
-2026-07-07 23:02:51.763527 : Building path graph
-2026-07-07 23:02:51.763773 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-Printing paths for optimal N50, no stitching...
+    2026-07-07 23:02:51.763259  : Finding optimal n...
+    2026-07-07 23:02:51.763511  : Optimal n = 2 at N50 = 647773.0
+    2026-07-07 23:02:51.763527 : Building path graph
+    2026-07-07 23:02:51.763773 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    Printing paths for optimal N50, no stitching...
 
-2026-07-07 23:02:51.765420 : Finding paths
+    2026-07-07 23:02:51.765420 : Finding paths
 
-Total number of components in graph: 14 
+    Total number of components in graph: 14 
 
-rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
---dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-indexlr --long --pos -k 15 -w 5 -t 24 - |\
-/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
--s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-Assessing putative overlaps...
-Parameters for overlap stage:
-	-m -
-	-f 0.5
-	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-	-s draft.cut250.tigmint.fa
-	-k 15
-	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-	-g 20
-	--outgap 0
-	-p draft.cut250.tigmint.fa.k32.w100.z1000
-2026-07-07 23:02:51.986149 : Reading fasta file draft.cut250.tigmint.fa
-2026-07-07 23:02:51.997144 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-2026-07-07 23:02:51.998934 : Finding valid minimizer regions
-2026-07-07 23:02:51.999088 : Finding scaffold overlaps
-2026-07-07 23:02:52.423698 : Printing trimmed scaffolds
-2026-07-07 23:02:52.439616 : DONE!
-MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-The minimum coverage of single-end contigs is inf.
-The minimum coverage of merged contigs is inf.
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
-Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
+    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
+    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
+    indexlr --long --pos -k 15 -w 5 -t 24 - |\
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
+    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Assessing putative overlaps...
+    Parameters for overlap stage:
+    	-m -
+    	-f 0.5
+    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
+    	-s draft.cut250.tigmint.fa
+    	-k 15
+    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    	-g 20
+    	--outgap 0
+    	-p draft.cut250.tigmint.fa.k32.w100.z1000
+    2026-07-07 23:02:51.986149 : Reading fasta file draft.cut250.tigmint.fa
+    2026-07-07 23:02:51.997144 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-07-07 23:02:51.998934 : Finding valid minimizer regions
+    2026-07-07 23:02:51.999088 : Finding scaffold overlaps
+    2026-07-07 23:02:52.423698 : Printing trimmed scaffolds
+    2026-07-07 23:02:52.439616 : DONE!
+    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
+    The minimum coverage of single-end contigs is inf.
+    The minimum coverage of merged contigs is inf.
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
+    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
+    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
+    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
 
     ```
 
@@ -5251,12 +5212,12 @@ cat scaffolding_summary.tsv
 
     ```bash
     $ cat scaffolding_summary.tsv
-Sample	Contigs_assembler	Scaffolds_longstitch	Ragtag_placed	Ragtag_placed_bp	Ragtag_unplaced
-Scer1_q10_l500_Flye	78	130	29	11898839	49
-Scer1_q10_l500_hifiasm	83	179	24	12327344	59
-Scer1_q10_l500_nextdenovo	23	114	22	11000732	1
-Scer2_q10_l500_Flye	740	616	706	8173957	34
-Scer2_q10_l500_hifiasm	14	13	12	146298	2
+    Sample	Contigs_assembler	Scaffolds_longstitch	Ragtag_placed	Ragtag_placed_bp	Ragtag_unplaced
+    Scer1_q10_l500_Flye	78	130	29	11898839	49
+    Scer1_q10_l500_hifiasm	83	179	24	12327344	59
+    Scer1_q10_l500_nextdenovo	23	114	22	11000732	1
+    Scer2_q10_l500_Flye	740	616	706	8173957	34
+    Scer2_q10_l500_hifiasm	14	13	12	146298	2
     ```
 
 
@@ -5291,62 +5252,62 @@ cd ../..
 
     ```bash
     $ awk '{split($4,a,"-"); print a[1]}' draft.*breaktigs.fa.bed | sort | uniq -c | sort -rn | head -5
-     15 contig_116
-      9 contig_64
-      9 contig_51
-      9 contig_40
-      9 contig_20
+         15 contig_116
+          9 contig_64
+          9 contig_51
+          9 contig_40
+          9 contig_20
 
-$ CONTIG=contig_116
-$ samtools faidx draft.fa ${CONTIG} > ${CONTIG}.fa
+    $ CONTIG=contig_116
+    $ samtools faidx draft.fa ${CONTIG} > ${CONTIG}.fa
 
-$ blastn -query ${CONTIG}.fa \
->   -subject ~/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
->   -outfmt "6 sseqid pident length qstart qend evalue bitscore" \
->   -max_target_seqs 10 | sort -k7,7 -rn
-NC_001141.2	97.953	8990	9279	18232	0.0	15527
-NC_001147.6	97.965	6978	9285	16251	0.0	12081
-NC_001142.9	98.262	4603	9279	13880	0.0	8037
-NC_001147.6	96.275	4054	2048	6092	0.0	6634
-NC_001147.6	97.133	3209	6091	9293	0.0	5402
-NC_001147.6	99.065	2032	1	2028	0.0	3644
-NC_001139.9	88.914	1777	9398	11170	0.0	2183
-NC_001147.6	80.828	1883	16115	17962	0.0	1437
-NC_001140.6	83.845	978	16898	17872	0.0	928
-NC_001133.9	83.742	978	16898	17872	0.0	922
-NC_001142.9	84.848	825	5	813	0.0	813
-NC_001141.2	84.848	825	5	813	0.0	813
-NC_001141.2	93.359	512	17902	18412	0.0	754
-NC_001139.9	75.106	1655	9540	11171	0.0	723
-NC_001134.8	75.106	1655	9540	11171	0.0	723
-NC_001146.8	86.677	653	40	689	0.0	712
-NC_001141.2	90.845	426	16147	16572	2.25e-160	568
-NC_001135.5	82.263	654	36	687	3.79e-153	544
-NC_001147.6	89.163	406	16066	16462	2.99e-139	497
-NC_001144.5	85.845	438	36	471	1.41e-127	459
-NC_001141.2	80.739	514	15844	16354	5.22e-107	390
-NC_001141.2	86.364	330	17902	18224	2.46e-95	351
-NC_001141.2	84.911	338	17902	18232	8.92e-90	333
-NC_001140.6	81.679	393	16388	16779	1.49e-87	326
-NC_001133.9	81.425	393	16388	16779	6.95e-86	320
-NC_001141.2	84.195	329	17902	18224	1.16e-83	313
-NC_001141.2	85.811	296	17944	18232	1.95e-81	305
-NC_001141.2	83.183	333	17902	18228	3.26e-79	298
-NC_001141.2	86.194	268	36	300	2.53e-75	285
-NC_001139.9	85.766	274	33	304	2.53e-75	285
-NC_001141.2	83.893	298	17902	18193	4.24e-73	278
-NC_001141.2	81.306	337	17902	18232	9.18e-70	267
-NC_001140.6	89.744	195	16061	16254	3.33e-64	248
-NC_001133.9	89.744	195	16061	16254	3.33e-64	248
-NC_001140.6	88.325	197	16274	16469	2.59e-60	235
-NC_001133.9	87.817	197	16274	16469	1.20e-58	230
-NC_001141.2	82.101	257	17902	18157	4.36e-53	211
-NC_001141.2	81.517	211	16360	16570	7.40e-41	171
-NC_001147.6	81.043	211	16360	16570	3.45e-39	165
+    $ blastn -query ${CONTIG}.fa \
+    >   -subject ~/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
+    >   -outfmt "6 sseqid pident length qstart qend evalue bitscore" \
+    >   -max_target_seqs 10 | sort -k7,7 -rn
+    NC_001141.2	97.953	8990	9279	18232	0.0	15527
+    NC_001147.6	97.965	6978	9285	16251	0.0	12081
+    NC_001142.9	98.262	4603	9279	13880	0.0	8037
+    NC_001147.6	96.275	4054	2048	6092	0.0	6634
+    NC_001147.6	97.133	3209	6091	9293	0.0	5402
+    NC_001147.6	99.065	2032	1	2028	0.0	3644
+    NC_001139.9	88.914	1777	9398	11170	0.0	2183
+    NC_001147.6	80.828	1883	16115	17962	0.0	1437
+    NC_001140.6	83.845	978	16898	17872	0.0	928
+    NC_001133.9	83.742	978	16898	17872	0.0	922
+    NC_001142.9	84.848	825	5	813	0.0	813
+    NC_001141.2	84.848	825	5	813	0.0	813
+    NC_001141.2	93.359	512	17902	18412	0.0	754
+    NC_001139.9	75.106	1655	9540	11171	0.0	723
+    NC_001134.8	75.106	1655	9540	11171	0.0	723
+    NC_001146.8	86.677	653	40	689	0.0	712
+    NC_001141.2	90.845	426	16147	16572	2.25e-160	568
+    NC_001135.5	82.263	654	36	687	3.79e-153	544
+    NC_001147.6	89.163	406	16066	16462	2.99e-139	497
+    NC_001144.5	85.845	438	36	471	1.41e-127	459
+    NC_001141.2	80.739	514	15844	16354	5.22e-107	390
+    NC_001141.2	86.364	330	17902	18224	2.46e-95	351
+    NC_001141.2	84.911	338	17902	18232	8.92e-90	333
+    NC_001140.6	81.679	393	16388	16779	1.49e-87	326
+    NC_001133.9	81.425	393	16388	16779	6.95e-86	320
+    NC_001141.2	84.195	329	17902	18224	1.16e-83	313
+    NC_001141.2	85.811	296	17944	18232	1.95e-81	305
+    NC_001141.2	83.183	333	17902	18228	3.26e-79	298
+    NC_001141.2	86.194	268	36	300	2.53e-75	285
+    NC_001139.9	85.766	274	33	304	2.53e-75	285
+    NC_001141.2	83.893	298	17902	18193	4.24e-73	278
+    NC_001141.2	81.306	337	17902	18232	9.18e-70	267
+    NC_001140.6	89.744	195	16061	16254	3.33e-64	248
+    NC_001133.9	89.744	195	16061	16254	3.33e-64	248
+    NC_001140.6	88.325	197	16274	16469	2.59e-60	235
+    NC_001133.9	87.817	197	16274	16469	1.20e-58	230
+    NC_001141.2	82.101	257	17902	18157	4.36e-53	211
+    NC_001141.2	81.517	211	16360	16570	7.40e-41	171
+    NC_001147.6	81.043	211	16360	16570	3.45e-39	165
 
-$ # 4) o que o RagTag decidiu fazer com esse mesmo contig?
-$ grep -w "${CONTIG}" ~/10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
-NC_001147.6_RagTag	1	18412	1	W	contig_116	1	18412	+
+    $ # 4) o que o RagTag decidiu fazer com esse mesmo contig?
+    $ grep -w "${CONTIG}" ~/10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
+    NC_001147.6_RagTag	1	18412	1	W	contig_116	1	18412	+
     
     ```
 
@@ -5422,12 +5383,12 @@ column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
 
     ```bash
     $ column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
-Sample                     Contigs  Total_length_bp  N50     GC(%)  Genome_fraction(%)  Misassemblies  BUSCO_Complete  BUSCO_Single  BUSCO_Duplicated  BUSCO_Fragmented  BUSCO_Missing  Merqury_QV  Merqury_ErrorRate  Merqury_Completeness
-Scer1_q10_l500_Flye        76       12268473         684380  37.98  95.748              155            99.7            99.5          0.2               0.0               0.3            43.7133     4.25273e-05        92.6002
-Scer1_q10_l500_hifiasm     83       12949620         757070  37.66  95.992              200            99.6            97.9          1.7               0.0               0.4            48.6372     1.36863e-05        92.6749
-Scer1_q10_l500_nextdenovo  23       11038174         760063  38.18  86.765              167            90.6            90.6          0.1               0.0               9.3            40.8752     8.17486e-05        82.7026
-Scer2_q10_l500_Flye        740      8352850          16256   38.12  65.765              67             66.7            66.4          0.3               3.1               30.2           24.3534     0.00366996         95.594
-Scer2_q10_l500_hifiasm     14       169194           12224   27.45  1.185               7              0.5             0.5           0.0               0.1               99.5           37.4762     0.000178805        79.6565
+    Sample                     Contigs  Total_length_bp  N50     GC(%)  Genome_fraction(%)  Misassemblies  BUSCO_Complete  BUSCO_Single  BUSCO_Duplicated  BUSCO_Fragmented  BUSCO_Missing  Merqury_QV  Merqury_ErrorRate  Merqury_Completeness
+    Scer1_q10_l500_Flye        76       12268473         684380  37.98  95.748              155            99.7            99.5          0.2               0.0               0.3            43.7133     4.25273e-05        92.6002
+    Scer1_q10_l500_hifiasm     83       12949620         757070  37.66  95.992              200            99.6            97.9          1.7               0.0               0.4            48.6372     1.36863e-05        92.6749
+    Scer1_q10_l500_nextdenovo  23       11038174         760063  38.18  86.765              167            90.6            90.6          0.1               0.0               9.3            40.8752     8.17486e-05        82.7026
+    Scer2_q10_l500_Flye        740      8352850          16256   38.12  65.765              67             66.7            66.4          0.3               3.1               30.2           24.3534     0.00366996         95.594
+    Scer2_q10_l500_hifiasm     14       169194           12224   27.45  1.185               7              0.5             0.5           0.0               0.1               99.5           37.4762     0.000178805        79.6565
 
     ```
 
@@ -5529,130 +5490,130 @@ blobtools plot -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.b
 
     ```bash
     $ minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-[M::mm_idx_gen::0.329*1.01] collected minimizers
-[M::mm_idx_gen::0.392*3.97] sorted minimizers
-[M::main::0.392*3.97] loaded/built the index for 78 target sequence(s)
-[M::mm_mapopt_update::0.434*3.68] mid_occ = 30
-[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 78
-[M::mm_idx_stat::0.467*3.49] distinct minimizers: 2095775 (94.98% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12269450
-[M::worker_pipeline::36.180*15.53] mapped 140424 sequences
-[M::worker_pipeline::37.814*14.90] mapped 90009 sequences
-[M::main] Version: 2.24-r1122
-[M::main] CMD: minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-[M::main] Real time: 37.931 sec; CPU: 563.700 sec; Peak RSS: 7.692 GB
-[bam_sort_core] merging from 1 files and 1 in-memory blocks...
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ samtools index 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ### Scer2
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
-[M::mm_idx_gen::0.221*1.02] collected minimizers
-[M::mm_idx_gen::0.264*3.68] sorted minimizers
-[M::main::0.264*3.68] loaded/built the index for 740 target sequence(s)
-[M::mm_mapopt_update::0.292*3.42] mid_occ = 15
-[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 740
-[M::mm_idx_stat::0.314*3.26] distinct minimizers: 1484126 (96.14% are singletons); average occurrences: 1.054; average spacing: 5.342; total length: 8352850
-[M::worker_pipeline::3.335*12.09] mapped 33007 sequences
-[M::main] Version: 2.24-r1122
-[M::main] CMD: minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
-[M::main] Real time: 3.358 sec; CPU: 40.346 sec; Peak RSS: 1.057 GB
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ samtools index 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
+    [M::mm_idx_gen::0.329*1.01] collected minimizers
+    [M::mm_idx_gen::0.392*3.97] sorted minimizers
+    [M::main::0.392*3.97] loaded/built the index for 78 target sequence(s)
+    [M::mm_mapopt_update::0.434*3.68] mid_occ = 30
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 78
+    [M::mm_idx_stat::0.467*3.49] distinct minimizers: 2095775 (94.98% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12269450
+    [M::worker_pipeline::36.180*15.53] mapped 140424 sequences
+    [M::worker_pipeline::37.814*14.90] mapped 90009 sequences
+    [M::main] Version: 2.24-r1122
+    [M::main] CMD: minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+    [M::main] Real time: 37.931 sec; CPU: 563.700 sec; Peak RSS: 7.692 GB
+    [bam_sort_core] merging from 1 files and 1 in-memory blocks...
+    $ samtools index 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
+    $ ### Scer2
+    $ minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
+    [M::mm_idx_gen::0.221*1.02] collected minimizers
+    [M::mm_idx_gen::0.264*3.68] sorted minimizers
+    [M::main::0.264*3.68] loaded/built the index for 740 target sequence(s)
+    [M::mm_mapopt_update::0.292*3.42] mid_occ = 15
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 740
+    [M::mm_idx_stat::0.314*3.26] distinct minimizers: 1484126 (96.14% are singletons); average occurrences: 1.054; average spacing: 5.342; total length: 8352850
+    [M::worker_pipeline::3.335*12.09] mapped 33007 sequences
+    [M::main] Version: 2.24-r1122
+    [M::main] CMD: minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
+    [M::main] Real time: 3.358 sec; CPU: 40.346 sec; Peak RSS: 1.057 GB
+    $ samtools index 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
 
-$ blastn -query 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ### Scer2
-grupo_1@lgbio-ProLiant-DL580-Gen10:~$ blastn -query 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
+    $ blastn -query 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
+    $ ### Scer2
+    $ blastn -query 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
 
-$ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye; do
->   base=${prefix%_*}
-> 
->   blobtools create \
->     -i ${BASE}/5.Montagem-Flye/${base}/assembly.fasta \
->     -b ${BASE}/11.Blobtools/${prefix}/${prefix}.bam \
->     -t ${BASE}/11.Blobtools/${prefix}/assembly.blastn.out \
->     -o ${BASE}/11.Blobtools/${prefix}/${prefix}
-> done
-[+] Parsing FASTA - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
-[+] names.dmp/nodes.dmp not specified. Retrieving nodesDB from /home/lgbio/programas/blobtools/lib/../data/nodesDB.txt
-[%] :   0%|                                                                                                                               [%] :   3%|████▉                                                                                                                          [%] :   7%|█████████▉                                                                                                                     [%] :  10%|███████████████▋                                                                                                               [%] :  14%|████████████████████▉                                                                                                          [%] :  17%|█████████████████████████▌                                                                                                     [%] :  20%|███████████████████████████████▏                                                                                               [%] :  24%|████████████████████████████████████▋                                                                                          [%] :  27%|█████████████████████████████████████████▊                                                                                     [%] :  31%|██████████████████████████████████████████████▋                                                                                [%] :  34%|███████████████████████████████████████████████████▎                                                                           [%] :  37%|████████████████████████████████████████████████████████▎                                                                      [%] :  40%|█████████████████████████████████████████████████████████████▎                                                                 [%] :  43%|██████████████████████████████████████████████████████████████████                                                             [%] :  47%|███████████████████████████████████████████████████████████████████████▎                                                       [%] :  50%|████████████████████████████████████████████████████████████████████████████▏                                                  [%] :  53%|████████████████████████████████████████████████████████████████████████████████▌                                              [%] :  56%|█████████████████████████████████████████████████████████████████████████████████████▍                                         [%] :  60%|██████████████████████████████████████████████████████████████████████████████████████████▌                                    [%] :  63%|███████████████████████████████████████████████████████████████████████████████████████████████▎                               [%] :  66%|███████████████████████████████████████████████████████████████████████████████████████████████████▋                           [%] :  69%|████████████████████████████████████████████████████████████████████████████████████████████████████████▎                      [%] :  72%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                 [%] :  75%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍            [%] :  79%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌       [%] :  82%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊  [%] :  86%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  89%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  92%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.84M/2.84M [00:03<00:00, 771kit/s]
-[+] Parsing tax0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
-[+] Computing taxonomy using taxrule(s) bestsum
-[%] :   0%|                                                                                                                               [%] : 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 48.8kit/s]
-[+] Parsing bam0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-[+] -> 100.00 (78/78) of sequences have reads aligned to them.
-[+] -> 99.85 (403256/403846) of reads are mapped.
-[%] :   0%|                                                                                                                               [%] :   1%|█▉                                                                                                                             [%] :   6%|█████████▊                                                                                                                     [%] :  13%|███████████████████▋                                                                                                           [%] :  19%|█████████████████████████████▌                                                                                                 [%] :  22%|█████████████████████████████████▌                                                                                             [%] :  24%|█████████████████████████████████████▌                                                                                         [%] :  27%|█████████████████████████████████████████▍                                                                                     [%] :  32%|█████████████████████████████████████████████████▎                                                                             [%] :  41%|███████████████████████████████████████████████████████████████▏                                                               [%] :  47%|█████████████████████████████████████████████████████████████████████████                                                      [%] :  55%|████████████████████████████████████████████████████████████████████████████████████▉                                          [%] :  59%|██████████████████████████████████████████████████████████████████████████████████████████▊                                    [%] :  64%|██████████████████████████████████████████████████████████████████████████████████████████████████▋                            [%] :  69%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▌                    [%] :  78%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍      [%] :  86%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  91%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:04<00:00, 18.7it/s]
-[+] Generating data for view
-[%] :   0%|                                                                                                                               [%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 562kit/s]
-[+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.bam.cov
-[+] Generating BlobDB and writing to file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
-[+] Parsing FASTA - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
-[+] names.dmp/nodes.dmp not specified. Retrieving nodesDB from /home/lgbio/programas/blobtools/lib/../data/nodesDB.txt
-[%] :   0%|                                                                                                                               [%] :   3%|████▉                                                                                                                          [%] :   6%|█████████▊                                                                                                                     [%] :  10%|███████████████▌                                                                                                               [%] :  14%|████████████████████▊                                                                                                          [%] :  17%|█████████████████████████▍                                                                                                     [%] :  20%|███████████████████████████████                                                                                                [%] :  24%|████████████████████████████████████▌                                                                                          [%] :  27%|█████████████████████████████████████████▌                                                                                     [%] :  30%|██████████████████████████████████████████████▍                                                                                [%] :  33%|██████████████████████████████████████████████████▉                                                                            [%] :  37%|███████████████████████████████████████████████████████▉                                                                       [%] :  40%|█████████████████████████████████████████████████████████████▏                                                                 [%] :  43%|█████████████████████████████████████████████████████████████████▉                                                             [%] :  47%|███████████████████████████████████████████████████████████████████████▏                                                       [%] :  50%|███████████████████████████████████████████████████████████████████████████▉                                                   [%] :  53%|████████████████████████████████████████████████████████████████████████████████▏                                              [%] :  56%|█████████████████████████████████████████████████████████████████████████████████████                                          [%] :  59%|██████████████████████████████████████████████████████████████████████████████████████████▎                                    [%] :  62%|██████████████████████████████████████████████████████████████████████████████████████████████▋                                [%] :  65%|██████████████████████████████████████████████████████████████████████████████████████████████████▊                            [%] :  68%|███████████████████████████████████████████████████████████████████████████████████████████████████████▋                       [%] :  71%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                  [%] :  75%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌             [%] :  78%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋        [%] :  81%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊   [%] :  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  88%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  92%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  98%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.84M/2.84M [00:03<00:00, 768kit/s]
-[+] Parsing tax0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
-[+] Computing taxonomy using taxrule(s) bestsum
-[%] :   0%|                                                                                                                               [%] : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 54.3kit/s]
-[+] Parsing bam0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
-[+] -> 100.00 (740/740) of sequences have reads aligned to them.
-[+] -> 90.05 (40220/44663) of reads are mapped.
-[%] :   0%|                                                                                                                               [%] :  19%|█████████████████████████████▎                                                                                                 [%] :  36%|████████████████████████████████████████████████████████▏                                                                      [%] :  55%|█████████████████████████████████████████████████████████████████████████████████████▉                                         [%] :  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 1.49kit/s]
-[+] Generating data for view
-[%] :   0%|                                                                                                                               [%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 941kit/s]
-[+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.bam.cov
-[+] Generating BlobDB and writing to file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
+    $ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye; do
+    >   base=${prefix%_*}
+    > 
+    >   blobtools create \
+    >     -i ${BASE}/5.Montagem-Flye/${base}/assembly.fasta \
+    >     -b ${BASE}/11.Blobtools/${prefix}/${prefix}.bam \
+    >     -t ${BASE}/11.Blobtools/${prefix}/assembly.blastn.out \
+    >     -o ${BASE}/11.Blobtools/${prefix}/${prefix}
+    > done
+    [+] Parsing FASTA - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
+    [+] names.dmp/nodes.dmp not specified. Retrieving nodesDB from /home/lgbio/programas/blobtools/lib/../data/nodesDB.txt
+    [%] :   0%|                                                                                                                               [%] :   3%|████▉                                                                                                                          [%] :   7%|█████████▉                                                                                                                     [%] :  10%|███████████████▋                                                                                                               [%] :  14%|████████████████████▉                                                                                                          [%] :  17%|█████████████████████████▌                                                                                                     [%] :  20%|███████████████████████████████▏                                                                                               [%] :  24%|████████████████████████████████████▋                                                                                          [%] :  27%|█████████████████████████████████████████▊                                                                                     [%] :  31%|██████████████████████████████████████████████▋                                                                                [%] :  34%|███████████████████████████████████████████████████▎                                                                           [%] :  37%|████████████████████████████████████████████████████████▎                                                                      [%] :  40%|█████████████████████████████████████████████████████████████▎                                                                 [%] :  43%|██████████████████████████████████████████████████████████████████                                                             [%] :  47%|███████████████████████████████████████████████████████████████████████▎                                                       [%] :  50%|████████████████████████████████████████████████████████████████████████████▏                                                  [%] :  53%|████████████████████████████████████████████████████████████████████████████████▌                                              [%] :  56%|█████████████████████████████████████████████████████████████████████████████████████▍                                         [%] :  60%|██████████████████████████████████████████████████████████████████████████████████████████▌                                    [%] :  63%|███████████████████████████████████████████████████████████████████████████████████████████████▎                               [%] :  66%|███████████████████████████████████████████████████████████████████████████████████████████████████▋                           [%] :  69%|████████████████████████████████████████████████████████████████████████████████████████████████████████▎                      [%] :  72%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                 [%] :  75%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍            [%] :  79%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌       [%] :  82%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊  [%] :  86%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  89%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  92%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.84M/2.84M [00:03<00:00, 771kit/s]
+    [+] Parsing tax0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
+    [+] Computing taxonomy using taxrule(s) bestsum
+    [%] :   0%|                                                                                                                               [%] : 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 48.8kit/s]
+    [+] Parsing bam0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
+    [+] -> 100.00 (78/78) of sequences have reads aligned to them.
+    [+] -> 99.85 (403256/403846) of reads are mapped.
+    [%] :   0%|                                                                                                                               [%] :   1%|█▉                                                                                                                             [%] :   6%|█████████▊                                                                                                                     [%] :  13%|███████████████████▋                                                                                                           [%] :  19%|█████████████████████████████▌                                                                                                 [%] :  22%|█████████████████████████████████▌                                                                                             [%] :  24%|█████████████████████████████████████▌                                                                                         [%] :  27%|█████████████████████████████████████████▍                                                                                     [%] :  32%|█████████████████████████████████████████████████▎                                                                             [%] :  41%|███████████████████████████████████████████████████████████████▏                                                               [%] :  47%|█████████████████████████████████████████████████████████████████████████                                                      [%] :  55%|████████████████████████████████████████████████████████████████████████████████████▉                                          [%] :  59%|██████████████████████████████████████████████████████████████████████████████████████████▊                                    [%] :  64%|██████████████████████████████████████████████████████████████████████████████████████████████████▋                            [%] :  69%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▌                    [%] :  78%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍      [%] :  86%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  91%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:04<00:00, 18.7it/s]
+    [+] Generating data for view
+    [%] :   0%|                                                                                                                               [%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 562kit/s]
+    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.bam.cov
+    [+] Generating BlobDB and writing to file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
+    [+] Parsing FASTA - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
+    [+] names.dmp/nodes.dmp not specified. Retrieving nodesDB from /home/lgbio/programas/blobtools/lib/../data/nodesDB.txt
+    [%] :   0%|                                                                                                                               [%] :   3%|████▉                                                                                                                          [%] :   6%|█████████▊                                                                                                                     [%] :  10%|███████████████▌                                                                                                               [%] :  14%|████████████████████▊                                                                                                          [%] :  17%|█████████████████████████▍                                                                                                     [%] :  20%|███████████████████████████████                                                                                                [%] :  24%|████████████████████████████████████▌                                                                                          [%] :  27%|█████████████████████████████████████████▌                                                                                     [%] :  30%|██████████████████████████████████████████████▍                                                                                [%] :  33%|██████████████████████████████████████████████████▉                                                                            [%] :  37%|███████████████████████████████████████████████████████▉                                                                       [%] :  40%|█████████████████████████████████████████████████████████████▏                                                                 [%] :  43%|█████████████████████████████████████████████████████████████████▉                                                             [%] :  47%|███████████████████████████████████████████████████████████████████████▏                                                       [%] :  50%|███████████████████████████████████████████████████████████████████████████▉                                                   [%] :  53%|████████████████████████████████████████████████████████████████████████████████▏                                              [%] :  56%|█████████████████████████████████████████████████████████████████████████████████████                                          [%] :  59%|██████████████████████████████████████████████████████████████████████████████████████████▎                                    [%] :  62%|██████████████████████████████████████████████████████████████████████████████████████████████▋                                [%] :  65%|██████████████████████████████████████████████████████████████████████████████████████████████████▊                            [%] :  68%|███████████████████████████████████████████████████████████████████████████████████████████████████████▋                       [%] :  71%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                  [%] :  75%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌             [%] :  78%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋        [%] :  81%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊   [%] :  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  88%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  92%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  98%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.84M/2.84M [00:03<00:00, 768kit/s]
+    [+] Parsing tax0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
+    [+] Computing taxonomy using taxrule(s) bestsum
+    [%] :   0%|                                                                                                                               [%] : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 54.3kit/s]
+    [+] Parsing bam0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
+    [+] -> 100.00 (740/740) of sequences have reads aligned to them.
+    [+] -> 90.05 (40220/44663) of reads are mapped.
+    [%] :   0%|                                                                                                                               [%] :  19%|█████████████████████████████▎                                                                                                 [%] :  36%|████████████████████████████████████████████████████████▏                                                                      [%] :  55%|█████████████████████████████████████████████████████████████████████████████████████▉                                         [%] :  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 1.49kit/s]
+    [+] Generating data for view
+    [%] :   0%|                                                                                                                               [%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 941kit/s]
+    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.bam.cov
+    [+] Generating BlobDB and writing to file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
 
-$ blobtools view -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
-[+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
-[+] 	Loading BlobDB into memory ...
-[+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-[+] 	Finished in 0.0015523433685302734s
-[+] Preparing view(s) ...
-[+] Generating data for view
-[%] :   0%|                                                                                                                               [%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 117kit/s]
-[+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.table.txt
-[+] Writing output ...
-(blobtools) grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ### Scer2
-(blobtools) grupo_1@lgbio-ProLiant-DL580-Gen10:~$ blobtools view -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
-[+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
-[+] 	Loading BlobDB into memory ...
-[+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-[+] 	Finished in 0.012794971466064453s
-[+] Preparing view(s) ...
-[+] Generating data for view
-[%] :   0%|                                                                                                                               [%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 130kit/s]
-[+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.table.txt
-[+] Writing output ...
+    $ blobtools view -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
+    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
+    [+] 	Loading BlobDB into memory ...
+    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
+    [+] 	Finished in 0.0015523433685302734s
+    [+] Preparing view(s) ...
+    [+] Generating data for view
+    [%] :   0%|                                                                                                                               [%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 117kit/s]
+    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.table.txt
+    [+] Writing output ...
+    (blobtools) $ ### Scer2
+    (blobtools) $ blobtools view -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
+    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
+    [+] 	Loading BlobDB into memory ...
+    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
+    [+] 	Finished in 0.012794971466064453s
+    [+] Preparing view(s) ...
+    [+] Generating data for view
+    [%] :   0%|                                                                                                                               [%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 130kit/s]
+    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.table.txt
+    [+] Writing output ...
 
-$ blobtools plot -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
-[+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
-[+] 	Loading BlobDB into memory ...
-[+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-[+] 	Finished in 0.0018384456634521484s
-[+] Extracting data for plots ...
-[I]	Saccharomyces : sequences = 76, span = 12.27 MB, N50 = 684,380 nt
-[I]	undef : sequences = 1, span = 0.0 MB, N50 = 2,347 nt
-[I]	no-hit : sequences = 1, span = 0.0 MB, N50 = 493 nt
-[+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png
-/home/lgbio/programas/blobtools/lib/BtPlot.py:525: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax_main.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_main.get_yticks()])
-/home/lgbio/programas/blobtools/lib/BtPlot.py:534: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax_group.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_group.get_yticks()])
-[+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png
-[+] Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.stats.txt
-(blobtools) grupo_1@lgbio-ProLiant-DL580-Gen10:~$ ### Scer2
-(blobtools) grupo_1@lgbio-ProLiant-DL580-Gen10:~$ blobtools plot -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
-[+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
-[+] 	Loading BlobDB into memory ...
-[+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-[+] 	Finished in 0.012654781341552734s
-[+] Extracting data for plots ...
-[I]	Saccharomyces : sequences = 735, span = 8.34 MB, N50 = 16,256 nt
-[I]	no-hit : sequences = 4, span = 0.01 MB, N50 = 1,382 nt
-[I]	undef : sequences = 1, span = 0.0 MB, N50 = 2,747 nt
-[+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png
-/home/lgbio/programas/blobtools/lib/BtPlot.py:525: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax_main.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_main.get_yticks()])
-/home/lgbio/programas/blobtools/lib/BtPlot.py:534: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-  ax_group.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_group.get_yticks()])
-[+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png
-[+] Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.stats.txt
+    $ blobtools plot -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
+    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
+    [+] 	Loading BlobDB into memory ...
+    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
+    [+] 	Finished in 0.0018384456634521484s
+    [+] Extracting data for plots ...
+    [I]	Saccharomyces : sequences = 76, span = 12.27 MB, N50 = 684,380 nt
+    [I]	undef : sequences = 1, span = 0.0 MB, N50 = 2,347 nt
+    [I]	no-hit : sequences = 1, span = 0.0 MB, N50 = 493 nt
+    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png
+    /home/lgbio/programas/blobtools/lib/BtPlot.py:525: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+      ax_main.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_main.get_yticks()])
+    /home/lgbio/programas/blobtools/lib/BtPlot.py:534: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+      ax_group.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_group.get_yticks()])
+    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png
+    [+] Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.stats.txt
+    (blobtools) $ ### Scer2
+    (blobtools) $ blobtools plot -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
+    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
+    [+] 	Loading BlobDB into memory ...
+    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
+    [+] 	Finished in 0.012654781341552734s
+    [+] Extracting data for plots ...
+    [I]	Saccharomyces : sequences = 735, span = 8.34 MB, N50 = 16,256 nt
+    [I]	no-hit : sequences = 4, span = 0.01 MB, N50 = 1,382 nt
+    [I]	undef : sequences = 1, span = 0.0 MB, N50 = 2,747 nt
+    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png
+    /home/lgbio/programas/blobtools/lib/BtPlot.py:525: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+      ax_main.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_main.get_yticks()])
+    /home/lgbio/programas/blobtools/lib/BtPlot.py:534: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+      ax_group.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_group.get_yticks()])
+    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png
+    [+] Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.stats.txt
 
     ```
 

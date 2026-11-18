@@ -50,6 +50,3 @@ id_ed25519*
 id_rsa*
 *.pem
 
-# Dataset toy de Illumina simulado (tutorial Nanopore, Etapa 10.1)
-# Permite os reads simulados (os demais .fq.gz continuam ignorados acima)
-!data/exemplos/nanopore/illumina_simulado/*.fq.gz
