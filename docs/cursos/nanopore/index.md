@@ -1975,9 +1975,29 @@ meryl histogram 4.QC_dadosfiltrados/Scer2_q10_l500.meryl | sed 's/\t/ /g' > 4.QC
 
 
 ### Rodar o GenomeScope2:
+
+O GenomeScope2 não descobre a ploidia sozinho: ela é informada com `-p`, e o programa ajusta o modelo correspondente. Antes de rodar, vale procurar o que já se sabe sobre a linhagem.
+
+!!! info "Qual é a ploidia da Scer1?"
+    As duas linhagens fazem parte do projeto *1002 Yeast Genomes* ([Peter et al., 2018, *Nature*](https://doi.org/10.1038/s41586-018-0030-5){ target=_blank }), cuja tabela suplementar traz a ploidia (medida por citometria de fluxo) e a heterozigosidade de cada isolado:
+
+    | | Scer1 | Scer2 |
+    |---|---|---|
+    | Linhagem (código no projeto) | CBS7963 (AHC) | SM.9.1.AL1 (BVD) |
+    | Origem | Industrial, São Paulo, Brasil | Bioetanol, Brasil |
+    | Clado | *Brazilian bioethanol* | *Brazilian bioethanol* |
+    | Ploidia | **1 (haploide)** | **2 (diploide)** |
+    | SNPs heterozigotos | 37 (3,95 × 10⁻⁶) | 108 (1,15 × 10⁻⁵) |
+    | Zigosidade / aneuploidia | homozigota, euploide | homozigota, euploide |
+
+    - A Scer1 é **haploide**: cada região do genoma existe em uma única cópia. Usamos `-p 1`.
+    - A Scer2 é **diploide homozigota**: tem duas cópias de cada cromossomo, mas elas são praticamente idênticas. Usamos `-p 2`, esperando heterozigosidade perto de zero.
+
+    Nos dois casos, não há haplótipos diferentes para separar: para a montagem, as duas se comportam como um genoma de cópia única. Vale notar que linhagens do mesmo clado podem ser bem diferentes: várias linhagens brasileiras de bioetanol na mesma tabela são diploides **heterozigotas**, com mais de 17 mil SNPs heterozigotos.
+
 ```bash
 conda activate genomescope2_env
-genomescope2 -i 4.QC_dadosfiltrados/Scer1_q10_l500.hist -o 4.QC_dadosfiltrados/Scer1_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer1_Oxford_Nanopore"
+genomescope2 -i 4.QC_dadosfiltrados/Scer1_q10_l500.hist -o 4.QC_dadosfiltrados/Scer1_q10_l500_genomescope -k 21 -p 1 --name_prefix "Scer1_Oxford_Nanopore"
 genomescope2 -i 4.QC_dadosfiltrados/Scer2_q10_l500.hist -o 4.QC_dadosfiltrados/Scer2_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer2_Oxford_Nanopore"
 conda deactivate
 ```
@@ -1985,10 +2005,10 @@ conda deactivate
 ??? note "Ver saída do comando"
 
     ```bash
-    $ genomescope2 -i 4.QC_dadosfiltrados/Scer1_q10_l500.hist -o 4.QC_dadosfiltrados/Scer1_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer1_Oxford_Nanopore"
-    GenomeScope analyzing 4.QC_dadosfiltrados/Scer1_q10_l500.hist p=2 k=21 outdir=4.QC_dadosfiltrados/Scer1_q10_l500_genomescope
-    aa:99.7% ab:0.307%
-    Model converged het:0.00307 kcov:15.5 err:0.0204 model fit:0.684 len:17179584
+    $ genomescope2 -i 4.QC_dadosfiltrados/Scer1_q10_l500.hist -o 4.QC_dadosfiltrados/Scer1_q10_l500_genomescope -k 21 -p 1 --name_prefix "Scer1_Oxford_Nanopore"
+    GenomeScope analyzing 4.QC_dadosfiltrados/Scer1_q10_l500.hist p=1 k=21 outdir=4.QC_dadosfiltrados/Scer1_q10_l500_genomescope
+    a:100%
+    Model converged het:0 kcov:31 err:0.0223 model fit:0.687 len:16514664
 
     ####
     $ genomescope2 -i 4.QC_dadosfiltrados/Scer2_q10_l500.hist -o 4.QC_dadosfiltrados/Scer2_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer2_Oxford_Nanopore"
@@ -2016,11 +2036,23 @@ conda deactivate
 
 **Interpretando os resultados:**
 
-- *Scer1:* genoma estimado em ~17,2 Mb, heterozigosidade ~0,31%, cobertura de k-mers (`kcov`) ~15,5x e erro estimado de ~2%. O tamanho está acima do esperado para *S. cerevisiae* (~12 Mb). Isso é comum com reads Nanopore: a taxa de erro gera muitos k-mers com erro que o modelo não separa completamente dos k-mers reais, o que infla a estimativa de tamanho (e pode inflar também a heterozigosidade). Conteúdo repetitivo também contribui.
+- *Scer1:* genoma estimado em ~16,5 Mb, cobertura de k-mers (`kcov`) ~31x e erro estimado de ~2,2%. Com `-p 1` não há heterozigosidade a estimar (`a:100%`: todos os k-mers são de cópia única). O tamanho está acima do esperado para *S. cerevisiae* (~12 Mb). Isso é comum com reads Nanopore: a taxa de erro gera muitos k-mers com erro que o modelo não separa completamente dos k-mers reais, o que infla a estimativa de tamanho. Conteúdo repetitivo também contribui. No gráfico, há um pico único em ~31x (linha tracejada) e um pequeno "ombro" em ~15x. Esse ombro não é um segundo pico do genoma: ele cai sob a curva de erros (laranja), formada por k-mers com erros de leitura que aparecem várias vezes.
 - *Scer2:* resultado sem confiança (genoma estimado de apenas ~97 kb, `kcov` ~93x, model fit 9,33%). Com cobertura de ~6x e erro de ~7%, os k-mers do genoma nuclear quase não se separam dos k-mers com erro, e o modelo se ajusta a outra coisa: o pico em ~175x no gráfico corresponde a ~97 kb de sequência presente em muitas cópias, o que é compatível com o **DNA mitocondrial** da levedura (~86 kb, dezenas de cópias por célula), possivelmente somado a outras sequências multicópia, como o plasmídeo 2-micron e o rDNA. Esse resultado não deve ser usado para estimar o genoma.
 
 !!! note "Por que a `kcov` do Scer1 é tão menor que a cobertura de reads?"
-    A cobertura de reads do Scer1 filtrado é de ~69x (825 Mb / 12 Mb), mas a `kcov` é de ~15,5x. Dois fatores explicam a diferença. Primeiro, com ~2 a 4% de erro por base, só uma fração dos 21-mers de cada read sai sem erro (por exemplo, (1 − 0,04)^21 ≈ 42%). Segundo, com `-p 2`, a `kcov` corresponde à cobertura de **uma** cópia (haplótipo), e o pico homozigoto aparece em ~2 × `kcov` ≈ 31x. Isso é esperado em dados Nanopore e não indica problema nos dados.
+    A cobertura de reads do Scer1 filtrado é de ~69x (825 Mb / 12 Mb), mas a `kcov` é de ~31x. O motivo é a taxa de erro: com ~2 a 4% de erro por base, só uma fração dos 21-mers de cada read sai sem erro (por exemplo, (1 − 0,04)^21 ≈ 42%, e 0,42 × 69 ≈ 29x). Isso é esperado em dados Nanopore e não indica problema nos dados.
+
+??? question "E se tivéssemos usado `-p 2` na Scer1?"
+    Numa primeira versão deste tutorial, rodamos a Scer1 com `-p 2`. O modelo convergiu mesmo assim:
+
+    ```
+    aa:99.7% ab:0.307%
+    Model converged het:0.00307 kcov:15.5 err:0.0204 model fit:0.684 len:17179584
+    ```
+
+    O GenomeScope "encontrou" 0,31% de heterozigosidade numa linhagem haploide. O pico real, em ~31x, foi interpretado como o pico homozigoto (2 × `kcov`), e parte dos k-mers com erro de leitura foi lida como um pico heterozigoto em ~15x. A qualidade do ajuste (*model fit* 0,684 contra 0,687) praticamente não muda entre os dois modelos.
+
+    A lição: **o GenomeScope não testa a ploidia, ele ajusta a que você informa**. Um modelo que converge não prova que a hipótese está certa, sobretudo com dados de erro alto. A ploidia deve vir de outra fonte (literatura, citometria de fluxo, Smudgeplot com reads de alta precisão).
 
 ## :material-numeric-6-circle: Etapa 6 — Montagem com Flye
 
@@ -2184,6 +2216,46 @@ conda deactivate
 !!! tip "FASTAs disponíveis no repositório"
     [:material-dna: Scer1_Flye_assembly.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_assembly.fasta) ·
     [:material-dna: Scer2_Flye_assembly.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer2_Flye_assembly.fasta)
+
+??? tip "Opcional: visualizar o grafo da montagem (Bandage)"
+    O Flye não produz só o FASTA final: ele também salva o **grafo de montagem** (`assembly_graph.gfa`), que mostra como as sequências se conectam. Onde o grafo é uma linha simples, a montagem foi resolvida sem ambiguidade; onde ele forma "nós" com vários caminhos possíveis, há repetições que o montador não conseguiu resolver, e é justamente nesses pontos que os contigs terminam.
+
+    O [Bandage](https://rrwick.github.io/Bandage/){ target=_blank } é um programa gráfico para visualizar esses grafos. Ele roda no seu computador (Windows, macOS ou Linux); em Macs com chip Apple, prefira o [BandageNG](https://github.com/asl/BandageNG/releases){ target=_blank }, a versão mantida do programa. Primeiro, copie o grafo do servidor:
+
+    ```bash
+    # no terminal do SEU computador (ajuste usuário, servidor e caminho)
+    scp usuario@servidor:caminho/do/projeto/5.Montagem-Flye/Scer1_q10_l500/assembly_graph.gfa Scer1_Flye_assembly_graph.gfa
+    scp usuario@servidor:caminho/do/projeto/5.Montagem-Flye/Scer2_q10_l500/assembly_graph.gfa Scer2_Flye_assembly_graph.gfa
+    ```
+
+    No Bandage: **File → Load graph**, escolha o arquivo e clique em **Draw graph**. O que procurar:
+
+    - **Componentes lineares longos**: são os cromossomos bem montados. Compare a Scer1 (~68×) com a Scer2 (~6×): na Scer2, o grafo se desfaz em centenas de pedaços soltos.
+    - **Nós muito conectados**, com várias arestas entrando e saindo: são repetições (retrotransposons Ty, rDNA, subtelômeros). Em **Graph display**, marque **Node lengths** e **Depth** para ver o tamanho e a cobertura de cada nó; repetições costumam ter cobertura múltipla da média.
+    - **Um pequeno círculo com cobertura muito alta**: candidato ao **DNA mitocondrial**, que tem muitas cópias por célula. Vamos separá-lo da montagem nuclear na Etapa 9.4.
+
+    **Os grafos desta rodada:**
+
+    === "Scer1 Flye (~68×)"
+
+        ![Grafo de montagem da Scer1 com Flye no Bandage](outputs/bandage/Scer1_Flye_bandage.png){ width="600" }
+
+        Quase todo o genoma forma **um único componente**: os contigs longos (as "pétalas") saem e voltam a um emaranhado central. Esse centro são as **repetições** compartilhadas entre cromossomos (retrotransposons Ty, rDNA, subtelômeros): como a mesma sequência aparece em vários lugares, o grafo passa por ela várias vezes, e o Flye encerra os contigs nas bordas dessas regiões. Abaixo, ficam alguns componentes pequenos e isolados.
+
+    === "Scer2 Flye (~6×)"
+
+        ![Grafo de montagem da Scer2 com Flye no Bandage](outputs/bandage/Scer2_Flye_bandage.png){ width="600" }
+
+        Com pouca cobertura, o grafo se desfaz em **centenas de pedaços soltos**, sem ligações entre si (756 segmentos e só 57 ligações, contra 153 segmentos e 292 ligações na Scer1). Não há reads suficientes para atravessar as regiões difíceis e conectar os pedaços: cada segmento vira um contig curto.
+
+    O Hifiasm também gera grafos (`6.Montagem-hifiasm/*.p_ctg.gfa`), que podem ser abertos da mesma forma.
+
+    !!! tip "Grafos pré-computados"
+        Se não tiver acesso ao servidor, baixe os grafos desta rodada e abra no Bandage:
+        [:material-graph: Scer1 Flye](outputs/bandage/Scer1_Flye_assembly_graph.gfa) ·
+        [:material-graph: Scer2 Flye](outputs/bandage/Scer2_Flye_assembly_graph.gfa) ·
+        [:material-graph: Scer1 Hifiasm](outputs/bandage/Scer1_Hifiasm_p_ctg.gfa) ·
+        [:material-graph: Scer2 Hifiasm](outputs/bandage/Scer2_Hifiasm_p_ctg.gfa)
 
 ### Checklist da Etapa 6
 
@@ -3478,7 +3550,655 @@ python /home/lgbio/busco/scripts/generate_plot.py -wd 8.QC_montagens/BUSCO/summa
     [:material-file-document: Scer2_Hifiasm](outputs/busco/short_summary.specific.saccharomycetaceae_odb12.Scer2_q10_l500_hifiasm.txt)
 
 !!! tip "Dica"
-    Um Complete alto sozinho não garante uma boa montagem. Vale sempre olhar também o Duplicated. Duplicated alto (como encontramos no Hifiasm, 1,7% vs 0,1% do Flye e 0,2% do NextDenovo) costuma indicar heterozigosidade retida (haplótipos não colapsados), não necessariamente erro de montagem.
+    Um Complete alto sozinho não garante uma boa montagem. Vale sempre olhar também o Duplicated. Duplicated alto (como encontramos no Hifiasm, 1,7% vs 0,1% do Flye e 0,2% do NextDenovo) indica que parte do genoma foi montada duas vezes. Em linhagens diploides heterozigotas, a causa costuma ser haplótipos não colapsados. A Scer1, porém, é **haploide** (Etapa 5): aqui as cópias extras são **falsas duplicações**, criadas pelo próprio montador. O Hifiasm foi desenvolvido para reads HiFi, quase sem erro; com reads Nanopore R9.4.1, cópias de uma mesma região que diferem só por erros de leitura podem ser tratadas como se fossem haplótipos diferentes.
+
+### 9.4 Separação do genoma mitocondrial
+
+As montagens contêm, além dos 16 cromossomos nucleares, contigs do **DNA mitocondrial** (~86 kb em *S. cerevisiae*). Eles são fáceis de reconhecer: GC muito baixo (~17%, contra ~38% do genoma nuclear) e cobertura muito acima da média, porque cada célula tem dezenas de cópias do genoma mitocondrial.
+
+Separamos esses contigs **antes** de qualquer outra limpeza. A mitocôndria é um genoma à parte e não deve ser tratada pelas ferramentas pensadas para o genoma nuclear. Um exemplo concreto: o purge_dups (Etapa 9.5) remove sequências com cobertura muito alta, e numa primeira versão deste tutorial, em que ele rodava antes desta etapa, descartou todos os contigs mitocondriais do Flye e do Hifiasm sem nenhum aviso.
+
+A separação não descarta nada: o genoma mitocondrial fica num arquivo próprio, e as próximas etapas usam só a parte nuclear. Para identificar os contigs mitocondriais, alinhamos cada montagem contra o genoma mitocondrial da referência (`NC_001224.1`) e consideramos mitocondrial todo contig com pelo menos metade do comprimento alinhada a ele.
+
+```bash
+mkdir -p 9.Mitocondria 9.Montagens-nucleares
+conda activate polimento   # para o samtools
+
+samtools faidx ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna NC_001224.1 > 9.Mitocondria/mito_referencia.fasta
+
+declare -A bruta=(
+  [Scer1_q10_l500_Flye]="5.Montagem-Flye/Scer1_q10_l500/assembly.fasta"
+  [Scer1_q10_l500_hifiasm]="6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa"
+  [Scer1_q10_l500_nextdenovo]="7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta"
+  [Scer2_q10_l500_Flye]="5.Montagem-Flye/Scer2_q10_l500/assembly.fasta"
+  [Scer2_q10_l500_hifiasm]="6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa"
+)
+
+for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye Scer2_q10_l500_hifiasm; do
+  f=9.Mitocondria/${prefix}_completa.fasta
+  cp ${bruta[$prefix]} $f
+
+  # contigs com >= 50% do comprimento alinhado ao mitocondrial da referência
+  minimap2 -x asm10 -t 8 9.Mitocondria/mito_referencia.fasta $f 2>/dev/null \
+    | awk '{cob[$1]+=$4-$3; tam[$1]=$2} END{for(c in cob) if(cob[c]/tam[c]>=0.5) print c}' \
+    | sort > 9.Mitocondria/${prefix}.mito.ids
+
+  # separar: mitocondrial para um arquivo, nuclear para outro
+  samtools faidx $f
+  cut -f1 $f.fai | grep -vxF -f 9.Mitocondria/${prefix}.mito.ids > 9.Mitocondria/${prefix}.nuclear.ids
+  samtools faidx $f -r 9.Mitocondria/${prefix}.nuclear.ids > 9.Montagens-nucleares/${prefix}.fasta
+  if [ -s 9.Mitocondria/${prefix}.mito.ids ]; then
+    samtools faidx $f -r 9.Mitocondria/${prefix}.mito.ids > 9.Mitocondria/${prefix}_mito.fasta
+  fi
+  echo "$prefix: $(wc -l < 9.Mitocondria/${prefix}.mito.ids) contigs mitocondriais"
+done
+
+conda deactivate
+
+# conferir: tamanho e GC de cada contig classificado como mitocondrial
+for f in 9.Mitocondria/*_mito.fasta; do
+  echo "== $f"
+  awk '/^>/{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l; n=substr($1,2); l=0; g=0; next}
+       {l+=length($0); g+=gsub(/[GCgc]/,"")}
+       END{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l}' $f
+done
+```
+
+??? note "Ver saída do comando (resumida)"
+    ```
+    Scer1_q10_l500_Flye: 33 contigs mitocondriais
+    Scer1_q10_l500_hifiasm: 49 contigs mitocondriais
+    Scer1_q10_l500_nextdenovo: 0 contigs mitocondriais
+    Scer2_q10_l500_Flye: 9 contigs mitocondriais
+    Scer2_q10_l500_hifiasm: 1 contigs mitocondriais
+
+    == 9.Mitocondria/Scer1_q10_l500_Flye_mito.fasta
+    contig_117      15062 pb        GC 17.0%
+    contig_119      4058 pb GC 17.8%
+    contig_120      9322 pb GC 16.8%
+    ...
+    contig_46       701 pb  GC 8.3%
+    contig_47       15640 pb        GC 16.9%
+    ...
+    contig_55       21582 pb        GC 16.4%
+    contig_56       10696 pb        GC 14.2%
+    ...
+    contig_68       23578 pb        GC 15.2%
+    ...
+    contig_73       14979 pb        GC 19.3%
+    == 9.Mitocondria/Scer1_q10_l500_hifiasm_mito.fasta
+    ptg000016l      2515 pb GC 17.5%
+    ptg000019l      115403 pb       GC 16.4%
+    ptg000026l      2437 pb GC 13.5%
+    ptg000027l      2077 pb GC 17.3%
+    ptg000028c      89648 pb        GC 17.9%
+    ...
+    ptg000038l      31260 pb        GC 16.8%
+    ptg000039l      96126 pb        GC 15.6%
+    ...
+    ptg000054l      17477 pb        GC 16.0%
+    ...
+    ptg000087l      4173 pb GC 21.9%
+    == 9.Mitocondria/Scer2_q10_l500_Flye_mito.fasta
+    contig_128      1382 pb GC 7.8%
+    contig_409      4435 pb GC 8.4%
+    contig_410      959 pb  GC 21.2%
+    contig_412      787 pb  GC 11.7%
+    contig_413      564 pb  GC 9.9%
+    contig_414      1489 pb GC 10.8%
+    contig_447      1046 pb GC 8.1%
+    contig_448      877 pb  GC 6.6%
+    contig_746      78752 pb        GC 16.9%
+    == 9.Mitocondria/Scer2_q10_l500_hifiasm_mito.fasta
+    ptg000005l      102299 pb       GC 16.8%
+    ```
+
+| Montagem | Contigs mitocondriais | Soma | Maior contig |
+|---|---|---|---|
+| Scer1 Flye | 33 | 224.759 pb | 23.578 pb |
+| Scer1 Hifiasm | 49 | 480.246 pb | 115.403 pb |
+| Scer1 NextDenovo | 0 | — | — |
+| Scer2 Flye | 9 | 90.291 pb | 78.752 pb |
+| Scer2 Hifiasm | 1 | 102.299 pb | 102.299 pb |
+
+Todos os contigs selecionados têm GC entre 7% e 26%, bem abaixo dos ~38% do genoma nuclear: a classificação é consistente. Mas cada montador lidou com a mitocôndria de um jeito:
+
+- **Scer1 Flye:** a mitocôndria saiu em 33 pedaços, que somam ~225 kb, mais de duas vezes o tamanho esperado (~86 kb). Com uma cobertura altíssima, pequenas variações entre reads geram caminhos alternativos no grafo, e o mesmo trecho aparece em mais de um contig.
+- **Scer1 Hifiasm:** o caso extremo: 49 contigs e ~480 kb, com **três cópias quase completas** (115, 96 e 90 kb) e dezenas de pedaços de ~2 kb. Isso explica boa parte do tamanho inflado do Hifiasm (13,0 Mb): sem a mitocôndria, ele cai para ~12,5 Mb.
+- **Scer1 NextDenovo:** nenhum contig mitocondrial. O NextDenovo não montou a mitocôndria. Uma explicação provável: ele usa só as reads mais longas como "sementes" da montagem e trata regiões de cobertura muito alta como repetições, e o mtDNA, com reads curtas e cobertura altíssima, se encaixa nos dois casos.
+- **Scer2 Flye:** um contig de 79 kb, quase a mitocôndria inteira, mais 8 fragmentos pequenos e muito ricos em AT (GC < 12%).
+- **Scer2 Hifiasm:** um único contig de 102 kb, mais da metade de toda a montagem (189 kb). É o mesmo sinal que apareceu no GenomeScope da Scer2 (um pico de ~97 kb de sequência multicópia, Etapa 5) e explica o GC anômalo dessa montagem.
+
+!!! note "Por que guardar a mitocôndria em vez de descartar?"
+    O genoma mitocondrial é um produto da montagem como qualquer outro: ele carrega genes próprios e é muito usado em estudos de população e evolução. Aqui, nenhuma das montagens o recuperou de forma limpa (fragmentado ou em cópias redundantes), e montá-lo bem pede uma estratégia própria, a partir só das reads mitocondriais. Por isso ele fica separado em `9.Mitocondria/` e não segue no pipeline do genoma nuclear.
+
+A partir daqui, as montagens seguem pela pasta `9.Montagens-nucleares/`. Os genomas mitocondriais ficam em `9.Mitocondria/`.
+
+### 9.5 Remoção de duplicatas (purge_dups)
+
+Em genomas com heterozigose, o montador às vezes monta as duas versões (haplótipos) de uma mesma região como contigs separados. A montagem fica maior que o genoma e com genes duplicados. A Scer1 é haploide e não tem haplótipos, mas o mesmo sintoma aparece por outro motivo: o montador pode gerar **cópias redundantes** de uma região a partir das reads com erro. Vimos isso no Hifiasm da Scer1: 13,0 Mb para um genoma de ~12,1 Mb e 1,7% de BUSCOs duplicados, contra 0,1–0,2% no Flye e no NextDenovo. Para o purge_dups, os dois casos têm a mesma assinatura e são tratados igual.
+
+O [purge_dups](https://github.com/dfguan/purge_dups){ target=_blank } identifica essas cópias extras combinando duas informações:
+
+- **Cobertura de reads:** numa região duplicada na montagem, as reads se dividem entre as duas cópias, e cada uma fica com cerca de **metade** da cobertura esperada.
+- **Similaridade entre contigs:** a cópia extra tem que ser muito parecida com outro trecho da montagem.
+
+Uma duplicata é removida quando as duas condições se combinam. (O purge_dups também descarta contigs só pela cobertura, quando ela é baixa ou alta demais; veremos isso adiante.) Fazemos isso **antes do polimento**: com uma cópia só de cada região, todas as reads alinham no mesmo lugar e o polimento dessas regiões fica melhor.
+
+!!! note "Por que só a Scer1?"
+    O purge_dups decide o que é duplicata a partir do histograma de cobertura. Com ~6× de cobertura, a Scer2 não tem resolução para separar "cobertura normal" (~6×) de "metade da cobertura" (~3×), e o próprio limite inferior padrão (5×) já cairia em cima do pico: boa parte do genoma seria descartada como "lixo". Além disso, a Scer2 é diploide **homozigota** (Etapa 5), então não esperamos haplótipos separados. As montagens da Scer2 seguem sem purge_dups, só sem a mitocôndria.
+
+??? tip "Instalação: ambiente `purge_dups_env`"
+    ```bash
+    conda create -n purge_dups_env -c conda-forge -c bioconda purge_dups minimap2 matplotlib
+    ```
+
+    O `matplotlib` só é necessário para a figura opcional do histograma de cobertura (`hist_plot.py`). Num ambiente que já existe, ele pode ser acrescentado com `conda install -n purge_dups_env -c conda-forge matplotlib`.
+
+```bash
+conda activate purge_dups_env
+R=2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+
+mkdir -p 9.Purge_dups
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  echo "===== $s ====="
+  O=9.Purge_dups/$s
+  mkdir -p $O
+  cp 9.Montagens-nucleares/$s.fasta $O/$s.fasta   # montagem bruta, já sem a mitocôndria
+
+  # 1) cobertura: alinhar as reads na montagem e calcular os limites de corte
+  minimap2 -x map-ont -t 24 $O/$s.fasta $R > $O/reads.paf
+  pbcstat -O $O $O/reads.paf
+  calcuts $O/PB.stat > $O/cutoffs 2> $O/calcuts.log
+
+  # 2) similaridade: alinhar a montagem contra ela mesma
+  split_fa $O/$s.fasta > $O/$s.split.fasta
+  minimap2 -x asm5 -DP -t 24 $O/$s.split.fasta $O/$s.split.fasta > $O/$s.split.self.paf
+
+  # 3) decidir o que é duplicata e separar as sequências
+  purge_dups -2 -T $O/cutoffs -c $O/PB.base.cov $O/$s.split.self.paf > $O/dups.bed 2> $O/purge_dups.log
+  get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
+done 2>&1 | tee 9.Purge_dups/purge_dups.log
+
+conda deactivate
+```
+
+Para cada montagem, o purge_dups gera dois arquivos:
+
+- **`<montagem>.purged.fa`**: a montagem sem as duplicatas, que segue no pipeline;
+- **`<montagem>.hap.fa`**: as sequências removidas, guardadas à parte.
+
+A opção `-e` do `get_seqs` só remove duplicatas nas **pontas** dos contigs (ou contigs inteiros), sem quebrar um contig no meio. É a escolha mais conservadora para a montagem primária.
+
+??? note "Ver saída do comando (resumida)"
+    ```
+    ===== Scer1_q10_l500_Flye =====
+    [M::main::0.395*3.17] loaded/built the index for 46 target sequence(s)
+    [M::mm_idx_stat::0.477*2.79] distinct minimizers: 2083051 (95.48% are singletons); average occurrences: 1.086; average spacing: 5.337; total length: 12076556
+    [M::worker_pipeline::11.807*11.01] mapped 140416 sequences
+    [M::worker_pipeline::15.078*13.61] mapped 90021 sequences
+    [M::main] CMD: minimap2 -x map-ont -t 24 9.Purge_dups/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+    [M::main] Real time: 15.110 sec; CPU: 205.226 sec; Peak RSS: 1.010 GB
+    Program starts
+    [M::aa_pb] collecting positions from paf file
+    [M::aa_pb] calculating coverage for each base on genome
+    [M::aa_pb] print coverage histogram for the contigs
+    ...
+    Program finished successfully
+    [M::main::0.274*2.90] loaded/built the index for 48 target sequence(s)
+    [M::worker_pipeline::0.572*4.09] mapped 48 sequences
+    [M::main] CMD: minimap2 -x asm5 -DP -t 24 9.Purge_dups/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.split.fasta 9.Purge_dups/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.split.fasta
+    [M::main] Real time: 0.591 sec; CPU: 2.358 sec; Peak RSS: 0.171 GB
+    ===== Scer1_q10_l500_hifiasm =====
+    [M::main::0.386*3.12] loaded/built the index for 38 target sequence(s)
+    [M::mm_idx_stat::0.456*2.79] distinct minimizers: 2080893 (94.28% are singletons); average occurrences: 1.126; average spacing: 5.336; total length: 12500158
+    ...
+    [M::main] Real time: 24.997 sec; CPU: 440.662 sec; Peak RSS: 1.134 GB
+    ...
+    [M::main::0.271*2.94] loaded/built the index for 38 target sequence(s)
+    [M::main] Real time: 1.467 sec; CPU: 4.136 sec; Peak RSS: 0.243 GB
+    ===== Scer1_q10_l500_nextdenovo =====
+    [M::main::0.384*3.41] loaded/built the index for 29 target sequence(s)
+    [M::mm_idx_stat::0.456*3.03] distinct minimizers: 2072410 (95.65% are singletons); average occurrences: 1.096; average spacing: 5.336; total length: 12123689
+    ...
+    [M::main] Real time: 14.678 sec; CPU: 194.130 sec; Peak RSS: 1.025 GB
+    ...
+    [M::main::0.266*2.89] loaded/built the index for 29 target sequence(s)
+    [M::main] Real time: 0.559 sec; CPU: 2.806 sec; Peak RSS: 0.202 GB
+    ```
+
+O log mostra, para cada montagem, as duas etapas de alinhamento: as **reads** contra a montagem (`map-ont`, 230.437 reads), seguidas do `pbcstat` ("Program finished successfully"), e a montagem **contra ela mesma** (`asm5`). As montagens já entram sem a mitocôndria (Etapa 9.4): o Flye tem 46 sequências (12,08 Mb), o Hifiasm 38 (12,50 Mb) e o NextDenovo, que não tinha mitocôndria, continua com 29 (12,12 Mb). No Flye, o alinhamento contra si mesma mostra **48** sequências, e não 46: o `split_fa` quebra os contigs nos trechos de `N` (os 2 *gaps* que o Flye deixou), como o QUAST já havia indicado. O `purge_dups` e o `get_seqs` não escrevem nada na tela: as mensagens deles ficam em `9.Purge_dups/<montagem>/purge_dups.log`, e o resultado aparece nos comandos a seguir.
+
+**Quanto foi removido?**
+
+```bash
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  O=9.Purge_dups/$s
+  echo "===== $s"
+  echo "limites de corte (calcuts): $(cat $O/cutoffs)"
+  awk '/^>/{n++; next}{b+=length($0)} END{printf "antes:    %d sequências, %d pb\n", n, b}' $O/$s.fasta
+  awk '/^>/{n++; next}{b+=length($0)} END{printf "depois:   %d sequências, %d pb\n", n, b}' $O/$s.purged.fa
+  awk '/^>/{n++; next}{b+=length($0)} END{printf "removido: %d sequências, %d pb\n", n, b}' $O/$s.hap.fa
+done
+```
+
+??? note "Ver saída do comando (primeira rodada, limites automáticos)"
+    ```
+    ===== Scer1_q10_l500_Flye
+    limites de corte (calcuts): 5   37      61      73      122    219
+    antes:    46 sequências, 12076556 pb
+    depois:   36 sequências, 11914226 pb
+    removido: 13 sequências, 162330 pb
+    ===== Scer1_q10_l500_hifiasm
+    limites de corte (calcuts): 5   37      61      73      122    219
+    antes:    38 sequências, 12500158 pb
+    depois:   24 sequências, 12110625 pb
+    removido: 18 sequências, 389533 pb
+    ===== Scer1_q10_l500_nextdenovo
+    limites de corte (calcuts): 5   37      61      73      122    219
+    antes:    29 sequências, 12123689 pb
+    depois:   25 sequências, 11984517 pb
+    removido: 9 sequências, 139172 pb
+    ```
+
+| Montagem | Antes | Depois | Removido | % removida |
+|---|---|---|---|---|
+| Scer1 Flye | 46 seq · 12.076.556 pb | 36 seq · 11.914.226 pb | 13 seq · 162.330 pb | 1,3% |
+| Scer1 Hifiasm | 38 seq · 12.500.158 pb | 24 seq · 12.110.625 pb | 18 seq · 389.533 pb | 3,1% |
+| Scer1 NextDenovo | 29 seq · 12.123.689 pb | 25 seq · 11.984.517 pb | 9 seq · 139.172 pb | 1,1% |
+
+Três coisas para observar (e uma suspeita, que o histograma a seguir vai confirmar):
+
+- **Os limites de corte são os mesmos nas três montagens.** Faz sentido: eles saem da cobertura das reads, e as reads são as mesmas. O que muda é quanto de cada montagem cai abaixo desses limites e se sobrepõe a outra parte dela mesma.
+- **As bases fecham, mas as sequências não.** Depois + removido dá exatamente o tamanho original, mas a soma de sequências passa do total (Flye: 36 + 13 = 49, contra 46). É o efeito do `-e`: alguns contigs tiveram só uma **ponta** removida, e assim aparecem nos dois arquivos, a parte principal no `.purged.fa` e a ponta no `.hap.fa`.
+- **O Hifiasm foi o que mais perdeu** (18 sequências, 390 kb), o que bate com os contigs pequenos e redundantes vistos no QUAST e com os BUSCOs duplicados. Mas a **suspeita**: Flye e NextDenovo ficaram com 11,91 e 11,98 Mb, **abaixo** dos ~12,07 Mb do genoma nuclear da referência. Será que o purge_dups removeu mais do que devia?
+
+**Como o purge_dups decidiu: o histograma de cobertura**
+
+O `calcuts` escolhe os limites a partir do histograma de cobertura das reads (`PB.stat`). Numa montagem sem duplicatas, há um único pico, na cobertura média (~58× na Scer1). Se houver duplicatas, aparece um segundo pico (ou um "ombro") na **metade** da cobertura: são as regiões em que as reads se dividiram entre duas cópias. O comando abaixo desenha o histograma no terminal, com os limites do `calcuts` marcados:
+
+```bash
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  O=9.Purge_dups/$s
+  echo "===== $s   limites (calcuts): $(cat $O/cutoffs)"
+  awk -v cortes="$(cat $O/cutoffs)" '
+    BEGIN{n=split(cortes,k," "); for(i=1;i<=n;i++) corte[k[i]]=1}
+    $1<=150 {b=int($1/3); c[b]+=$2; if(c[b]>m) m=c[b]}
+    END{for(b=0;b<=50;b++){bar=""; for(j=0;j<int(50*c[b]/m);j++) bar=bar"#"; mark="";
+        for(x=b*3;x<b*3+3;x++) if(x in corte) mark=mark"  <- corte "x;
+        printf "%3d-%3dx | %s%s\n", b*3, b*3+2, bar, mark}}' $O/PB.stat
+  echo
+  cat $O/calcuts.log
+  echo
+done
+```
+
+Cada linha agrupa 3 valores de cobertura, e o comprimento da barra é proporcional ao número de bases com aquela cobertura. O `calcuts.log` mostra quantos picos o `calcuts` encontrou e como calculou os limites.
+
+??? note "Ver saída do comando (resumida)"
+    === "Flye"
+
+        ```
+        ===== Scer1_q10_l500_Flye   limites (calcuts): 5        37     61       73      122     219
+          0-  2x | 
+          3-  5x |   <- corte 5
+          6-  8x | 
+          9- 11x | 
+         12- 14x | 
+         15- 17x | 
+         18- 20x | 
+         21- 23x | 
+         24- 26x | 
+         27- 29x | 
+         30- 32x | #
+         33- 35x | ####
+         36- 38x | ###########  <- corte 37
+         39- 41x | #####################
+         42- 44x | #################################
+         45- 47x | #############################################
+         48- 50x | ##################################################
+         51- 53x | ##############################################
+         54- 56x | #####################################
+         57- 59x | ##########################
+         60- 62x | ##################  <- corte 61
+         63- 65x | ###########
+         66- 68x | ######
+         69- 71x | ###
+         72- 74x | ##  <- corte 73
+         75- 77x | #
+         78- 80x | 
+            ...
+        120-122x |   <- corte 122
+            ...
+        150-152x | 
+
+        [M::calcuts] Find 1 peaks
+        [M::calcuts] mean: 51, peak: 49, mean larger than peak, treat as diploid assembly
+        [W::calcuts] mean is not significantly different with peak, please recheck the cutoffs
+        ```
+
+    === "Hifiasm"
+
+        ```
+        ===== Scer1_q10_l500_hifiasm   limites (calcuts): 5     37     61       73      122     219
+          0-  2x | 
+          3-  5x |   <- corte 5
+          6-  8x | 
+          9- 11x | #
+         12- 14x | 
+         15- 17x | 
+         18- 20x | #
+         21- 23x | 
+         24- 26x | 
+         27- 29x | 
+         30- 32x | ##
+         33- 35x | #####
+         36- 38x | ###########  <- corte 37
+         39- 41x | #####################
+            ... (daqui em diante, igual ao Flye)
+
+        [M::calcuts] Find 1 peaks
+        [M::calcuts] mean: 53, peak: 49, mean larger than peak, treat as diploid assembly
+        [W::calcuts] mean is not significantly different with peak, please recheck the cutoffs
+        ```
+
+    === "NextDenovo"
+
+        ```
+        ===== Scer1_q10_l500_nextdenovo   limites (calcuts): 5  37     61       73      122     219
+        (histograma praticamente idêntico ao do Flye)
+
+        [M::calcuts] Find 1 peaks
+        [M::calcuts] mean: 51, peak: 49, mean larger than peak, treat as diploid assembly
+        [W::calcuts] mean is not significantly different with peak, please recheck the cutoffs
+        ```
+
+**Lendo o histograma:**
+
+- Há **um único pico, em ~49×**, e nenhum pico em ~25× (metade da cobertura). É o esperado para uma linhagem **haploide**, como a Scer1: quase todo o genoma foi montado uma vez só.
+- A diferença está na cauda da esquerda. Só o **Hifiasm** tem algumas bases com cobertura entre 9× e 20×: são trechos que ele montou duas vezes, e as reads se dividiram entre as cópias. São os verdadeiros candidatos a duplicata. Antes de separarmos a mitocôndria, essa cauda era bem maior: as várias cópias redundantes do mtDNA no Hifiasm dividiam as reads mitocondriais entre si e também caíam nessa faixa.
+- O `calcuts` não sabe a ploidia. Encontrou um pico só e **supôs que ele fosse o pico haploide de uma montagem diploide** ("treat as diploid assembly"). Por isso colocou a fronteira haploide/diploide (o 4º valor) em **73×**, 1,5 vez o pico. Ele mesmo avisa que o resultado é duvidoso: "please recheck the cutoffs".
+
+Com a fronteira em 73×, **quase todo o genoma fica abaixo dela** e é tratado como "cópia haploide". O purge_dups passa então a decidir só pela semelhança da montagem com ela mesma, e pode remover repetições verdadeiras (retrotransposons Ty, rDNA, subtelômeros). Um sinal disso está nas contagens acima: Flye e NextDenovo ficaram com 11,91 e 11,98 Mb, abaixo dos ~12,07 Mb do genoma nuclear da referência.
+
+!!! warning "Nunca aceite os limites automáticos sem olhar o histograma"
+    O `calcuts` funciona bem quando há dois picos (haplótipos separados e regiões colapsadas). Com um pico só, ele precisa adivinhar, e aqui adivinhou errado. O histograma e o `calcuts.log` são a forma de conferir.
+
+**Corrigindo os limites.** Definimos os valores à mão a partir do pico de 49×:
+
+- `-l 5`: abaixo disso, cobertura de lixo (mantemos o valor automático);
+- `-m 37`: a fronteira haploide/diploide fica entre a metade do pico (~25×) e o pico (49×), em ~0,75 × 49. Só regiões com cobertura bem abaixo da média passam a ser candidatas a duplicata;
+- `-u 147`: 3 × 49; acima disso, repetições colapsadas.
+
+Não é preciso refazer os alinhamentos: o `PB.stat`, o `PB.base.cov` e o `.split.self.paf` continuam valendo. Refazemos só as três últimas etapas:
+
+```bash
+conda activate purge_dups_env
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  echo "===== $s"
+  O=9.Purge_dups/$s
+  cp -n $O/cutoffs $O/cutoffs.auto          # guarda os limites automáticos
+  calcuts -l 5 -m 37 -u 147 $O/PB.stat > $O/cutoffs 2> $O/calcuts.log
+  cat $O/cutoffs
+  purge_dups -2 -T $O/cutoffs -c $O/PB.base.cov $O/$s.split.self.paf > $O/dups.bed 2> $O/purge_dups.log
+  get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
+done
+conda deactivate
+```
+
+O `get_seqs` sobrescreve o `.purged.fa` e o `.hap.fa`. Rode de novo o comando **"Quanto foi removido?"** para ver o novo resultado:
+
+??? note "Ver saída do comando (limites manuais)"
+    ```
+    ===== Scer1_q10_l500_Flye
+    limites de corte (calcuts): 5   36      36      37      37     147
+    antes:    46 sequências, 12076556 pb
+    depois:   37 sequências, 11962229 pb
+    removido: 10 sequências, 114327 pb
+    ===== Scer1_q10_l500_hifiasm
+    limites de corte (calcuts): 5   36      36      37      37     147
+    antes:    38 sequências, 12500158 pb
+    depois:   24 sequências, 12161687 pb
+    removido: 15 sequências, 338471 pb
+    ===== Scer1_q10_l500_nextdenovo
+    limites de corte (calcuts): 5   36      36      37      37     147
+    antes:    29 sequências, 12123689 pb
+    depois:   24 sequências, 12016151 pb
+    removido: 6 sequências, 107538 pb
+    ```
+
+| Montagem | Antes (nuclear) | Removido (automático, 73×) | Removido (manual, 37×) | Depois (manual) |
+|---|---|---|---|---|
+| Scer1 Flye | 12.076.556 pb | 162.330 pb (1,3%) | 114.327 pb (0,9%) | 11.962.229 pb |
+| Scer1 Hifiasm | 12.500.158 pb | 389.533 pb (3,1%) | 338.471 pb (2,7%) | 12.161.687 pb |
+| Scer1 NextDenovo | 12.123.689 pb | 139.172 pb (1,1%) | 107.538 pb (0,9%) | 12.016.151 pb |
+
+Com os limites corrigidos, o purge_dups remove de 30 a 50 kb a menos em cada montagem: são os trechos que só saíam porque a fronteira em 73× tratava todo o genoma como "cópia haploide". O Hifiasm continua sendo o que mais perde, como esperado, e as três montagens terminam entre 11,96 e 12,16 Mb, perto dos ~12,07 Mb do genoma nuclear da referência.
+
+**O que foi removido?** O purge_dups classifica cada trecho que retira, e a classe fica na 4ª coluna do `dups.bed`:
+
+| Classe | Significado |
+|---|---|
+| `HAPLOTIG` | contig inteiro que é cópia de outro trecho da montagem (a duplicata clássica) |
+| `OVLP` | ponta de contig que se sobrepõe a outro contig |
+| `REPEAT` | contig formado quase só por repetições presentes em outros contigs |
+| `JUNK` | contig com cobertura abaixo do limite inferior (lixo) |
+| `HIGHCOV` | contig com cobertura acima do limite superior |
+
+Note que `JUNK` e `HIGHCOV` são removidos **só pela cobertura**, sem precisar de semelhança com outro trecho. Foi por isso que, quando o purge_dups rodou com a mitocôndria ainda na montagem, ela saiu como `HIGHCOV`.
+
+```bash
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  echo "===== $s"
+  awk '{n[$4]++; b[$4]+=$3-$2} END{for(k in n) printf "   %-9s %3d regiões %8d pb\n", k, n[k], b[k]}' 9.Purge_dups/$s/dups.bed
+done
+```
+
+??? note "Ver saída do comando"
+    ```
+    ===== Scer1_q10_l500_Flye
+       HIGHCOV     2 regiões     2953 pb
+       HAPLOTIG    5 regiões   102901 pb
+       REPEAT      3 regiões     8471 pb
+    ===== Scer1_q10_l500_hifiasm
+       HIGHCOV     1 regiões    35888 pb
+       OVLP        1 regiões    43261 pb
+       HAPLOTIG    6 regiões   175492 pb
+       REPEAT      6 regiões    71343 pb
+       JUNK        1 regiões    12485 pb
+    ===== Scer1_q10_l500_nextdenovo
+       OVLP        1 regiões    12108 pb
+       HAPLOTIG    1 regiões    29221 pb
+       REPEAT      4 regiões    66209 pb
+    ```
+
+- **Flye e Hifiasm:** a maior parte do que saiu é `HAPLOTIG` (103 kb no Flye, 175 kb no Hifiasm), ou seja, duplicatas de verdade. Como a Scer1 é haploide, são **falsas duplicações** criadas na montagem.
+- **NextDenovo:** quase não tinha duplicatas (um único `HAPLOTIG`, de 29 kb). O que mais saiu foi `REPEAT` (66 kb): contigs formados quase só por repetições que também estão em outros contigs.
+- **`HIGHCOV`:** como a mitocôndria já tinha sido separada, o que sobra nessa classe é nuclear: pequeno no Flye (3 kb) e maior no Hifiasm (36 kb). Regiões de cobertura alta no genoma nuclear de levedura costumam ser repetições colapsadas, como o rDNA (~150 cópias de uma unidade de 9 kb no cromossomo XII) ou o plasmídeo 2-micron.
+
+Para saber o que é esse `HIGHCOV`, alinhamos à referência os contigs que contêm essas regiões:
+
+```bash
+conda activate purge_dups_env
+REF=ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm; do
+  O=9.Purge_dups/$s
+  echo "===== $s"
+  awk '$4=="HIGHCOV"' $O/dups.bed | tee $O/highcov.bed
+  awk 'NR==FNR{c[$1]=1; next} /^>/{n=substr($1,2); p=(n in c); if(p) print ">"n; next} p' $O/highcov.bed $O/$s.fasta > $O/highcov_contigs.fa
+  minimap2 -x asm10 -t 8 $REF $O/highcov_contigs.fa 2>/dev/null | cut -f1-11 | sort -k10,10nr | head -5
+done
+conda deactivate
+```
+
+??? note "Ver saída do comando"
+    ```
+    ===== Scer1_q10_l500_Flye
+    contig_129      1       2197    HIGHCOV
+    contig_127      1       758     HIGHCOV
+    ===== Scer1_q10_l500_hifiasm
+    ptg000025l      1       35889   HIGHCOV
+    ptg000025l      35889   6817    24196   +       NC_001144.5    1078177  451418  468895  17088   17477
+    ptg000025l      35889   15869   33276   +       NC_001144.5    1078177  451418  468919  17078   17502
+    ptg000025l      35889   18      15169   +       NC_001144.5    1078177  453697  468919  14910   15222
+    ptg000025l      35889   33975   35873   +       NC_001144.5    1078177  451418  453318  1877    1900
+    ```
+
+- **Hifiasm:** o `ptg000025l` (35,9 kb) é inteiro **rDNA**. Seus trechos alinham, um após o outro, na mesma região do cromossomo XII (`NC_001144.5`, 451–469 kb), onde a referência guarda duas unidades do rDNA. No genoma real, esse arranjo tem ~150 unidades em sequência (1–2 Mb), e nenhuma montagem com reads deste tamanho o resolve inteiro: o Hifiasm montou um pedaço solto do arranjo, com cobertura muito alta porque as reads de todas as cópias se acumulam nele.
+- **Flye:** os dois contigs `HIGHCOV` são minúsculos (2,2 kb e 0,8 kb) e não alinham na referência. Uma possibilidade é o plasmídeo 2-micron, presente em muitas linhagens e ausente da referência R64.
+
+Remover o contig de rDNA é aceitável: ele não traz informação nova (é o mesmo bloco de 9 kb repetido), não poderia ser posicionado com segurança no cromossomo XII e continua guardado no `.hap.fa`. Mas é bom saber o que saiu: o purge_dups não removeu uma duplicata, e sim uma repetição colapsada real do genoma.
+
+??? tip "O mesmo histograma como figura"
+    O purge_dups inclui um script que desenha o histograma com os limites, como imagem:
+
+    ```bash
+    conda activate purge_dups_env
+    for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+      hist_plot.py -c 9.Purge_dups/$s/cutoffs 9.Purge_dups/$s/PB.stat 9.Purge_dups/$s/$s.cobertura.png
+    done
+    conda deactivate
+    ```
+
+    Copie os arquivos `.png` para o seu computador (`scp`) para visualizá-los.
+
+    As figuras abaixo foram geradas **depois** da correção dos limites (veja adiante), por isso mostram os cortes manuais: 5× (vermelho), 37× (verde) e 147× (azul-claro). O pico em ~49× fica todo à direita da linha verde, fora da zona de remoção.
+
+    === "Flye"
+
+        ![Histograma de cobertura do purge_dups, Scer1 Flye](outputs/purge_dups/Scer1_q10_l500_Flye.cobertura.png){ width="600" }
+
+    === "Hifiasm"
+
+        ![Histograma de cobertura do purge_dups, Scer1 Hifiasm](outputs/purge_dups/Scer1_q10_l500_hifiasm.cobertura.png){ width="600" }
+
+        Repare na pequena elevação entre 10× e 25×, à esquerda da linha verde: são os trechos duplicados que o purge_dups remove.
+
+    === "NextDenovo"
+
+        ![Histograma de cobertura do purge_dups, Scer1 NextDenovo](outputs/purge_dups/Scer1_q10_l500_nextdenovo.cobertura.png){ width="600" }
+
+**Falsas duplicações pelo Merqury**
+
+O Merqury oferece uma régua independente para o mesmo problema. O script `false_duplications.sh` olha o espectro de k-mers da montagem (`*.spectra-cn.hist`): entre os k-mers que aparecem **uma vez** no genoma (pela cobertura nas reads), quantos estão **duas ou mais vezes** na montagem? Essa fração é a taxa de falsas duplicações. As montagens brutas já foram avaliadas pelo Merqury na Etapa 9.2; falta rodar as purgadas. Lembre que as purgadas também estão sem a mitocôndria: os k-mers mitocondriais das reads deixam de ser encontrados na montagem, e a completude cai um pouco por isso, sem relação com o purge_dups.
+
+```bash
+cd 8.QC_montagens/merqury
+
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  mkdir -p ${s}_purgada && cd ${s}_purgada
+  merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
+             ../../../9.Purge_dups/$s/$s.purged.fa \
+             ${s}_purgada
+  cd ..
+done
+
+# falsas duplicações: bruta x purgada
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  for v in $s ${s}_purgada; do
+    bash $MERQURY/eval/false_duplications.sh $v/$v.*.spectra-cn.hist
+  done
+done | awk 'NR==1 || !/^hist/' | column -t
+
+cd ../..
+```
+
+O script usa a variável `$MERQURY`, que aponta para a pasta de instalação do Merqury (a mesma usada pelo `merqury.sh`). Se ela estiver vazia, use o caminho completo (no nosso servidor, `/home/lgbio/programas/merqury/eval/false_duplications.sh`).
+
+Na saída, as colunas `1`, `2`, `3`, `4` e `>4` contam os k-mers de cópia única nas reads que aparecem 1, 2, 3, 4 ou mais vezes na montagem; `dup%` é a porcentagem que aparece mais de uma vez, ou seja, a taxa de falsas duplicações.
+
+??? note "Ver saída do comando"
+    ```
+    hist                                                                                                                  cutoff  1         2       3      4      >4        dup(>1)   all       dup%
+    Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.assembly.spectra-cn.hist                                                      45      10811670  34061   15943  1333   7         51344     10863014  0.47265
+    Scer1_q10_l500_Flye_purgada/Scer1_q10_l500_Flye_purgada.Scer1_q10_l500_Flye.purged.spectra-cn.hist                    45      10812916  14401   7915   22316  10835232  0.205958
+    Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm.Scer1_q10_l500_hifiasm.p_ctg.spectra-cn.hist                            45      10691393  177186  1783   977    268       180214    10871607  1.65766
+    Scer1_q10_l500_hifiasm_purgada/Scer1_q10_l500_hifiasm_purgada.Scer1_q10_l500_hifiasm.purged.spectra-cn.hist           45      10774377  31294   69     2      31365     10805742  0.290262
+    Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo.nd.asm.spectra-cn.hist                                            45      10756032  42305   5328   11     5         47649     10803681  0.441044
+    Scer1_q10_l500_nextdenovo_purgada/Scer1_q10_l500_nextdenovo_purgada.Scer1_q10_l500_nextdenovo.purged.spectra-cn.hist  45      10761370  27681   4678   11     5         32375     10793745  0.299942
+    ```
+
+    Em algumas linhas as colunas parecem "desalinhadas": quando não há k-mers em 4 ou mais cópias, o script simplesmente não imprime essas colunas, e os números seguintes andam para a esquerda. Na tabela abaixo, os valores já estão nas colunas certas.
+
+`cutoff` (45) é a contagem nas reads abaixo da qual o script considera um k-mer como de **cópia única** no genoma.
+
+| Montagem | Versão | 1 cópia | 2 cópias | 3 cópias | 4+ cópias | dup% |
+|---|---|---|---|---|---|---|
+| Scer1 Flye | bruta | 10.811.670 | 34.061 | 15.943 | 1.340 | **0,47%** |
+| | purgada | 10.812.916 | 14.401 | 7.915 | 0 | **0,21%** |
+| Scer1 Hifiasm | bruta | 10.691.393 | 177.186 | 1.783 | 1.245 | **1,66%** |
+| | purgada | 10.774.377 | 31.294 | 69 | 2 | **0,29%** |
+| Scer1 NextDenovo | bruta | 10.756.032 | 42.305 | 5.328 | 16 | **0,44%** |
+| | purgada | 10.761.370 | 27.681 | 4.678 | 16 | **0,30%** |
+
+- **O purge_dups funcionou nas três montagens.** A taxa de falsas duplicações caiu em todas, e de forma mais forte no Hifiasm: de 1,66% para 0,29%, uma redução de quase seis vezes. É a mesma história contada pelo histograma de cobertura e pelos BUSCOs duplicados, agora por uma régua independente (k-mers, sem alinhamento).
+- **Os k-mers duplicados viraram cópia única.** No Hifiasm, a coluna "1 cópia" **aumentou** ~83 mil k-mers: eles estavam em duas cópias na montagem e passaram a estar em uma só, que é exatamente o que se espera de uma remoção de duplicata bem feita.
+- **O custo é pequeno.** A coluna `all` (k-mers de cópia única das reads encontrados na montagem) cai um pouco: ~28 mil no Flye, ~66 mil no Hifiasm e ~10 mil no NextDenovo, menos de 0,7% do total. São trechos que só existiam nas sequências removidas. Uma parte vem das pontas e dos contigs `REPEAT` e do rDNA, e o restante pode ser conteúdo real perdido, que vale acompanhar pela completude do BUSCO a seguir.
+- **Por que não chega a zero?** Restam ~0,2–0,3% de k-mers em duas ou mais cópias, que o purge_dups não remove porque estão **no meio** de contigs (lembre que o `-e` só corta pontas e contigs inteiros) ou porque são cópias reais muito parecidas, como genes de famílias subteloméricas.
+
+**BUSCO das montagens purgadas:** a duplicação de genes é a medida mais direta do efeito do purge_dups.
+
+```bash
+conda activate busco
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  busco -i 9.Purge_dups/$s/$s.purged.fa -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/${s}_purgada -c 24
+done
+conda deactivate
+
+for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  echo "$s  bruta:    $(grep -h 'C:' 8.QC_montagens/BUSCO/$s/short_summary*.txt | tr -d '\t ')"
+  echo "$s  purgada:  $(grep -h 'C:' 8.QC_montagens/BUSCO/${s}_purgada/short_summary*.txt | tr -d '\t ')"
+done
+```
+
+??? example "Saída: BUSCO bruta x purgada"
+
+    ```text
+    Scer1_q10_l500_Flye  bruta:    C:99.7%[S:99.6%,D:0.1%],F:0.0%,M:0.3%,n:3282,E:1.7%
+    Scer1_q10_l500_Flye  purgada:  C:99.6%[S:99.6%,D:0.0%],F:0.0%,M:0.3%,n:3282,E:1.7%
+    Scer1_q10_l500_hifiasm  bruta:    C:99.7%[S:98.0%,D:1.7%],F:0.0%,M:0.3%,n:3282,E:1.6%
+    Scer1_q10_l500_hifiasm  purgada:  C:99.7%[S:99.5%,D:0.2%],F:0.0%,M:0.3%,n:3282,E:1.6%
+    Scer1_q10_l500_nextdenovo  bruta:    C:99.6%[S:99.5%,D:0.2%],F:0.0%,M:0.3%,n:3282,E:1.6%
+    Scer1_q10_l500_nextdenovo  purgada:  C:99.6%[S:99.5%,D:0.1%],F:0.0%,M:0.3%,n:3282,E:1.6%
+    ```
+
+    Trecho do resumo completo de uma das montagens purgadas (Hifiasm):
+
+    ```text
+    |C:99.7%[S:99.5%,D:0.2%],F:0.0%,M:0.3%,n:3282,E:1.6%   |
+    |3272    Complete BUSCOs (C)    (of which 53 contain internal stop codons)
+    |3266    Complete and single-copy BUSCOs (S)
+    |6    Complete and duplicated BUSCOs (D)
+    |1    Fragmented BUSCOs (F)
+    |9    Missing BUSCOs (M)
+    WARNING: 53 of 3272 Complete matches (1.6%) contain internal stop codons in Miniprot gene predictions
+    ```
+
+| Montagem | Versão | Completos (C) | Cópia única (S) | Duplicados (D) | Faltando (M) |
+|---|---|---|---|---|---|
+| Scer1 Flye | bruta | 99,7% | 99,6% | 0,1% | 0,3% |
+| | purgada | 99,6% | 99,6% | **0,0%** (1 gene) | 0,3% |
+| Scer1 Hifiasm | bruta | 99,7% | 98,0% | 1,7% | 0,3% |
+| | purgada | 99,7% | 99,5% | **0,2%** (6 genes) | 0,3% |
+| Scer1 NextDenovo | bruta | 99,6% | 99,5% | 0,2% | 0,3% |
+| | purgada | 99,6% | 99,5% | **0,1%** (4 genes) | 0,3% |
+
+- **A duplicação caiu sem perda de completude.** No Hifiasm, os genes duplicados passaram de 1,7% (~56 genes) para 0,2% (6 genes), e esses ~50 genes voltaram para a coluna de cópia única (S: 98,0% → 99,5%). O total de completos não mudou: o purge_dups tirou a **segunda cópia**, não o gene.
+- **Flye e NextDenovo quase não mudaram**, porque já tinham pouca duplicação. A diferença de 0,1 ponto no C do Flye equivale a um ou dois genes e está dentro da variação esperada.
+- **Os três indicadores concordam.** Histograma de cobertura, k-mers do Merqury e BUSCO contam a mesma história: o Hifiasm era a montagem com mais falsas duplicações, e o purge_dups as removeu.
+- **O `E:` e o aviso de *stop codons*.** Cerca de 1,6% dos genes completos têm um códon de parada no meio da predição. Em montagens Nanopore ainda não polidas, isso costuma ser sinal de **erros de indel** (bases a mais ou a menos que quebram a fase de leitura), e não de genes de fato interrompidos. É um dos números que esperamos ver cair depois do polimento com o Medaka, na Etapa 10.
+
+**Montagens que seguem para o polimento:** as três da Scer1 purgadas e as duas da Scer2 só com a parte nuclear, todas com o mesmo padrão de nome.
+
+```bash
+mkdir -p 9.Montagens-purgadas
+for a in Flye hifiasm nextdenovo; do
+  cp 9.Purge_dups/Scer1_q10_l500_$a/Scer1_q10_l500_$a.purged.fa 9.Montagens-purgadas/Scer1_q10_l500_$a.fasta
+done
+cp 9.Montagens-nucleares/Scer2_q10_l500_Flye.fasta 9.Montagens-purgadas/
+cp 9.Montagens-nucleares/Scer2_q10_l500_hifiasm.fasta 9.Montagens-purgadas/
+ls -lh 9.Montagens-purgadas/
+```
 
 ### Checklist da Etapa 9
 
@@ -3487,6 +4207,8 @@ python /home/lgbio/busco/scripts/generate_plot.py -wd 8.QC_montagens/BUSCO/summa
 - [ ] Tenho BUSCO `short_summary` de cada montagem e da referência
 - [ ] Entendi por que Merqury, BUSCO e QUAST podem discordar sobre "completude"
 
+- [ ] Separei os contigs mitocondriais (`9.Mitocondria/`) e tenho as montagens nucleares em `9.Montagens-nucleares/`
+- [ ] Rodei o purge_dups nas montagens da Scer1, conferi o histograma e os limites de corte, e tenho as montagens de entrada do polimento em `9.Montagens-purgadas/`
 ---
 
 ## :material-numeric-10-circle: Etapa 10 — Polimento (Medaka e Illumina) :material-flask-outline: *(opcional)*
@@ -3538,379 +4260,92 @@ Para o nosso caso, os modelos mais próximos são:
 **Comando para rodar o Medaka**
 
 ```bash
-mkdir 9.Polimento-Medaka/
+mkdir -p 9.Polimento-Medaka
 conda activate medaka
-medaka_consensus -i 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz -d 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 9.Polimento-Medaka/Scer1_q10_l500_Flye -t 24 -m r941_prom_hac_g507
-medaka_consensus -i 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz -d 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 9.Polimento-Medaka/Scer2_q10_l500_Flye -t 24 -m r1041_e82_400bps_hac_g615
-medaka_consensus -i 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz -d 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 9.Polimento-Medaka/Scer1_q10_l500_hifiasm -t 24 -m r941_prom_hac_g507
-medaka_consensus -i 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz -d 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 9.Polimento-Medaka/Scer2_q10_l500_hifiasm -t 24 -m r1041_e82_400bps_hac_g615
-medaka_consensus -i 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz -d 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 9.Polimento-Medaka/Scer1_q10_l500_nextdenovo -t 24 -m r941_prom_hac_g507
+
+for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye Scer2_q10_l500_hifiasm; do
+  sample=${prefix%%_*}
+  # modelo de acordo com a flowcell: Scer1 = R9.4.1, Scer2 = R10.4.1
+  if [ "$sample" = "Scer1" ]; then modelo=r941_prom_hac_g507; else modelo=r1041_e82_400bps_hac_g615; fi
+  rm -rf 9.Polimento-Medaka/$prefix
+  medaka_consensus -i 2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz \
+    -d 9.Montagens-purgadas/${prefix}.fasta \
+    -o 9.Polimento-Medaka/$prefix -t 24 -m $modelo
+done 2>&1 | tee 9.Polimento-Medaka/medaka.log
+
 conda deactivate
 ```
 
-??? note "Ver exemplo de saída do comando"
+O Medaka parte das montagens de `9.Montagens-purgadas/` (Etapa 9.5): todas sem a mitocôndria, e as da Scer1 também sem duplicatas. O `rm -rf` antes de cada execução é importante: se a pasta de saída já existir, o Medaka reaproveita o alinhamento antigo em vez de refazê-lo.
 
-    ```bash
-    $ medaka_consensus -i 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz -d 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 9.Polimento-Medaka/Scer1_q10_l500_Flye -t 24 -m r941_prom_hac_g507
+O log fica em `9.Polimento-Medaka/medaka.log`. Ele é longo (mais de mil linhas para as cinco montagens), então abaixo está só a execução da Scer1 Flye, resumida:
+
+??? example "Saída: medaka.log (Scer1 Flye, resumida)"
+
+    ```text
     Checking program versions
     This is medaka 2.2.1
-    Program    Version    Required   Pass     
-    bcftools   1.23.1     1.11       True     
-    bgzip      1.23.1     1.11       True     
-    minimap2   2.30       2.11       True     
-    samtools   1.23.1     1.11       True     
-    tabix      1.23.1     1.11       True     
-    [15:42:06 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpcavdro2d.
-    [15:42:10 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpz9mj0scp.
-    [15:42:13 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpgkqpntoq.
-    [15:42:13 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp0dv47kci.
+    Program    Version    Required   Pass
+    bcftools   1.23.1     1.11       True
+    bgzip      1.23.1     1.11       True
+    minimap2   2.30       2.11       True
+    samtools   1.23.1     1.11       True
+    tabix      1.23.1     1.11       True
     Aligning basecalls to draft
-    Using the existing fai index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta.fai
-    Using the existing mmi index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta.map-ont.mmi
-    [M::main::0.133*1.01] loaded/built the index for 79 target sequence(s)
-    [M::mm_mapopt_update::0.173*1.01] mid_occ = 30
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 79
-    [M::mm_idx_stat::0.211*1.01] distinct minimizers: 2095877 (95.02% are singletons); average occurrences: 1.100; average spacing: 5.336; total length: 12301315
-    [M::worker_pipeline::25.489*17.50] mapped 140416 sequences
-    [M::worker_pipeline::33.134*17.11] mapped 90021 sequences
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 24 -a /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-    [M::main] Real time: 33.285 sec; CPU: 566.991 sec; Peak RSS: 7.010 GB
-    [bam_sort_core] merging from 0 files and 24 in-memory blocks...
+    Using the existing fai index file .../9.Montagens-purgadas/Scer1_q10_l500_Flye.fasta.fai
+    Using the existing mmi index file .../9.Montagens-purgadas/Scer1_q10_l500_Flye.fasta.map-ont.mmi
+    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 37
+    [M::worker_pipeline::26.452*17.57] mapped 140416 sequences
+    [M::worker_pipeline::34.498*17.34] mapped 90021 sequences
+    [M::main] Real time: 34.674 sec; CPU: 598.412 sec; Peak RSS: 4.572 GB
     Running medaka inference
-    [15:42:58 - Predict] Reducing threads, anymore is a waste.
-    [15:42:58 - Predict] It looks like you attempted to set a high number of threads. We have scaled this down to an optimal number. If you wish to improve performance please see https://nanoporetech.github.io/medaka/installation.html#improving-parallelism.
-    [15:42:58 - Predict] Setting pytorch intra/inter-op threads to 2/1.
-    [15:42:58 - Predict] PyTorch reports intra/inter-op threads as 2/1.
-    [15:42:58 - Predict] Processing region(s): contig_10:0-257647 contig_100:0-1059572 contig_102:0-751043 contig_103:0-754184 contig_104:0-550446 contig_105:0-1229 contig_108:0-32655 contig_111:0-64339 contig_112:0-20348 contig_113:0-13343 contig_117:0-15062 contig_119:0-4058 contig_12:0-812822 contig_120:0-9322 contig_123:0-6405 contig_125:0-2148 contig_126:0-6995 contig_127:0-758 contig_128:0-602 contig_129:0-2197 contig_13:0-1526486 contig_130:0-2654 contig_133:0-386829 contig_138:0-8360 contig_140:0-6489 contig_141:0-1216 contig_142:0-3667 contig_143:0-9831 contig_145:0-10740 contig_147:0-14055 contig_148:0-431560 contig_149:0-377792 contig_150:0-137357 contig_151:0-101503 contig_153:0-2404 contig_16:0-681036 contig_20:0-29297 contig_21:0-70091 contig_22:0-12049 contig_23:0-136522 contig_24:0-537095 contig_25:0-421592 contig_26:0-25176 contig_30:0-3060 contig_36:0-5787 contig_38:0-13834 contig_39:0-1396 contig_40:0-11907 contig_41:0-6901 contig_42:0-2077 contig_43:0-1149 contig_46:0-701 contig_47:0-15640 contig_48:0-5697 contig_49:0-1305 contig_50:0-1438 contig_51:0-3381 contig_52:0-687 contig_53:0-3022 contig_55:0-21582 contig_56:0-10696 contig_58:0-5788 contig_60:0-625 contig_61:0-12552 contig_63:0-786 contig_64:0-725 contig_67:0-2171 contig_68:0-23578 contig_70:0-1619 contig_72:0-2215 contig_73:0-14979 contig_79:0-314926 contig_80:0-53902 contig_85:0-17127 contig_87:0-477007 contig_93:0-912743 contig_98:0-960 contig_99:0-516 scaffold_33:0-1049860
-    [15:42:58 - Predict] Using model: /media/hd2/renata/.medaka/data/r941_prom_hac_g507_model_pt.tar.gz.
-    [15:42:58 - Predict] Using minimum mapQ threshold of 1 for read filtering.
-    [15:42:58 - MdlStrTGZ] Model GRUModel(
-      (gru): GRU(10, 128, num_layers=2, batch_first=True, bidirectional=True)
-      (linear): Linear(in_features=256, out_features=5, bias=True)
-    )
-    [15:42:58 - MdlStrTGZ] loading weights from /tmp/tmpu4l3jybl/model/weights.pt
-    [15:42:59 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpu4l3jybl.
-    [15:42:59 - Predict] Model device: cpu
-    [15:42:59 - Predict] Running prediction at full precision
-    [15:42:59 - Predict] Processing 44 long region(s) with batching.
-    [15:42:59 - PWorker] Running inference for 12.2M draft bases.
-    [15:43:12 - Feature] Pileup counts do not span requested region, requested contig_20:0-29297, received 0-28224.
-    [15:43:12 - Feature] Pileup counts do not span requested region, requested contig_25:0-421592, received 673-1906.
-    [15:43:12 - Feature] Pileup counts do not span requested region, requested contig_25:0-421592, received 2609-421591.
-    [15:43:13 - Feature] Pileup counts do not span requested region, requested contig_40:0-11907, received 0-4129.
-    [15:43:13 - Feature] Pileup counts do not span requested region, requested contig_40:0-11907, received 5398-5814.
-    [15:43:13 - Feature] Pileup counts do not span requested region, requested contig_40:0-11907, received 6616-11906.
-    [15:43:13 - Feature] Pileup counts do not span requested region, requested contig_38:0-13834, received 2-13833.
-    [15:43:13 - Feature] Pileup counts do not span requested region, requested contig_56:0-10696, received 0-10686.
-    [15:47:10 - PWorker] Processed 23 batches
-    [15:47:10 - PWorker] All done, 3 remainder regions.
-    [15:47:10 - Predict] Processing 41 short region(s).
-    [15:47:10 - PWorker] Running inference for 0.1M draft bases.
-    [15:47:11 - Feature] Pileup counts do not span requested region, requested contig_43:0-1149, received 49-1128.
-    [15:47:19 - Feature] Pileup counts do not span requested region, requested contig_52:0-687, received 1-685.
-    [15:47:20 - Feature] Pileup counts do not span requested region, requested contig_60:0-625, received 16-624.
-    [15:47:24 - Feature] Pileup counts do not span requested region, requested contig_64:0-725, received 90-675.
-    [15:47:26 - Feature] Pileup counts do not span requested region, requested contig_72:0-2215, received 0-2210.
-    [15:47:27 - Feature] Pileup counts do not span requested region, requested contig_99:0-516, received 4-515.
-    [15:47:47 - PWorker] Processed 41 batches
-    [15:47:47 - PWorker] All done, 0 remainder regions.
-    [15:47:47 - Predict] Finished processing all regions.
-    [15:47:50 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:50 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:50 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    (... mesma linha repetida, uma por contig ...)
-    [15:47:50 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:51 - TrimOlap] contig_25:673.0-1906.0 and contig_25:2609.0-8772.0 cannot be concatenated as there is no overlap and they do not abut.
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    (... mesma linha repetida, uma por contig ...)
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:51 - TrimOlap] contig_40:0.0-4129.0 and contig_40:5398.0-5814.0 cannot be concatenated as there is no overlap and they do not abut.
-    [15:47:51 - TrimOlap] contig_40:5398.0-5814.0 and contig_40:6616.0-9441.1 cannot be concatenated as there is no overlap and they do not abut.
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    (... mesma linha repetida, uma por contig ...)
-    [15:47:51 - DataIndx] Loaded 1/1 (100.00%) sample files.
+    [21:21:29 - Predict] Reducing threads, anymore is a waste.
+    [21:21:29 - Predict] Setting pytorch intra/inter-op threads to 2/1.
+    [21:21:29 - Predict] Processing region(s): contig_10_1:0-257647 contig_100_1:0-1059572 ... scaffold_33_1:0-1036318
+    [21:21:29 - Predict] Using model: .../r941_prom_hac_g507_model_pt.tar.gz.
+    [21:21:29 - Predict] Model device: cpu
+    [21:21:29 - PWorker] Running inference for 11.9M draft bases.
+    [21:21:34 - Feature] Pileup counts do not span requested region, requested contig_20_1:0-29297, received 0-28224.
+    [21:21:35 - Feature] Pileup counts do not span requested region, requested contig_25_1:0-421592, received 673-1906.
+    [21:21:35 - Feature] Pileup counts do not span requested region, requested contig_25_1:0-421592, received 2609-421591.
+    [21:21:40 - Feature] Pileup counts do not span requested region, requested scaffold_33_1:0-1000000, received 100-999999.
+    [21:26:43 - PWorker] Processed 22 batches
+    [21:26:51 - Predict] Finished processing all regions.
+    [21:26:55 - TrimOlap] contig_25_1:673.0-1906.0 and contig_25_1:2609.0-8760.0 cannot be concatenated as there is no overlap and they do not abut.
     Polished assembly written to 9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta, have a nice day.
-    $ medaka_consensus -i 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz -d 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 9.Polimento-Medaka/Scer2_q10_l500_Flye -t 24 -m r1041_e82_400bps_hac_g615
-    Checking program versions
-    This is medaka 2.2.1
-    Program    Version    Required   Pass     
-    bcftools   1.23.1     1.11       True     
-    bgzip      1.23.1     1.11       True     
-    minimap2   2.30       2.11       True     
-    samtools   1.23.1     1.11       True     
-    tabix      1.23.1     1.11       True     
-    [15:48:03 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpc756xam6.
-    [15:48:06 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp7nszr3cv.
-    [15:48:10 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpxxor0uar.
-    [15:48:10 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp94pbor8z.
-    Aligning basecalls to draft
-    Using the existing fai index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta.fai
-    Using the existing mmi index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta.map-ont.mmi
-    [M::main::0.353*0.34] loaded/built the index for 715 target sequence(s)
-    [M::mm_mapopt_update::0.377*0.38] mid_occ = 16
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 715
-    [M::mm_idx_stat::0.397*0.41] distinct minimizers: 1485786 (96.14% are singletons); average occurrences: 1.053; average spacing: 5.342; total length: 8359888
-    [M::worker_pipeline::3.719*10.15] mapped 33006 sequences
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 24 -a /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
-    [M::main] Real time: 3.747 sec; CPU: 37.788 sec; Peak RSS: 1.151 GB
-    [bam_sort_core] merging from 0 files and 24 in-memory blocks...
-    Running medaka inference
-    [15:48:18 - Predict] Reducing threads, anymore is a waste.
-    [15:48:18 - Predict] It looks like you attempted to set a high number of threads. We have scaled this down to an optimal number. If you wish to improve performance please see https://nanoporetech.github.io/medaka/installation.html#improving-parallelism.
-    [15:48:18 - Predict] Setting pytorch intra/inter-op threads to 2/1.
-    [15:48:18 - Predict] PyTorch reports intra/inter-op threads as 2/1.
-    [15:48:18 - Predict] Processing region(s): contig_1:0-10508 contig_10:0-2542 contig_100:0-2381 contig_101:0-12856 contig_102:0-11105 contig_103:0-25592 contig_104:0-6824 contig_105:0-9803 contig_106:0-11663 contig_107:0-11896 contig_108:0-4233 contig_109:0-25486 contig_11:0-5248 contig_110:0-40775 contig_111:0-10389 contig_114:0-752 contig_115:0-2072 contig_116:0-39998 contig_117:0-5637 contig_118:0-7693 contig_12:0-9242 contig_120:0-1614 contig_121:0-395 contig_122:0-9947 contig_123:0-23093 contig_124:0-2838 contig_125:0-47651 contig_126:0-13849 contig_127:0-3720 contig_128:0-1382 contig_129:0-33267 contig_13:0-4201 contig_130:0-24002 contig_131:0-13101 contig_132:0-3184 contig_135:0-8541 contig_136:0-7651 contig_137:0-13375 contig_138:0-3089 contig_139:0-18341 contig_14:0-3887 contig_140:0-22618 contig_143:0-522 contig_145:0-19357 contig_146:0-8860 contig_147:0-11358 contig_148:0-7140 contig_149:0-6172 contig_15:0-3724 contig_151:0-13013 contig_152:0-5124 contig_153:0-12348 contig_154:0-7934 contig_155:0-6530 contig_156:0-29095 contig_157:0-9240 contig_158:0-14975 contig_159:0-7108 contig_16:0-10289 contig_162:0-4049 contig_163:0-5176 contig_164:0-2535 contig_167:0-26721 contig_17:0-2455 contig_170:0-3032 contig_171:0-8615 contig_172:0-11000 contig_173:0-22966 contig_174:0-8160 contig_175:0-14754 contig_176:0-17722 contig_177:0-9813 contig_178:0-21171 contig_179:0-16572 contig_18:0-6391 contig_180:0-23796 contig_181:0-18648 contig_182:0-35933 contig_183:0-4527 contig_184:0-17007 contig_185:0-21678 contig_186:0-25180 contig_187:0-15772 contig_188:0-29614 contig_189:0-3692 contig_19:0-6988 contig_190:0-4651 contig_191:0-3063 contig_192:0-15885 contig_193:0-11122 contig_194:0-16118 contig_195:0-15724 contig_196:0-27052 contig_197:0-40911 contig_198:0-2403 contig_199:0-35136 contig_2:0-6895 contig_200:0-26621 contig_201:0-15890 contig_202:0-23627 contig_203:0-11089 contig_204:0-49692 contig_205:0-15834 contig_206:0-26839 contig_207:0-3271 contig_208:0-7660 contig_209:0-16672 contig_210:0-14064 contig_211:0-4764 contig_212:0-5702 contig_213:0-3757 contig_214:0-51035 contig_215:0-32506 contig_216:0-5304 contig_217:0-25395 contig_218:0-13051 contig_219:0-15285 contig_22:0-18047 contig_220:0-6654 contig_221:0-24911 contig_222:0-15355 contig_223:0-37171 contig_224:0-11664 contig_225:0-9389 contig_226:0-6569 contig_227:0-26242 contig_228:0-24451 contig_229:0-4715 contig_230:0-20188 contig_231:0-15660 contig_232:0-27772 contig_233:0-29243 contig_234:0-27602 contig_235:0-23548 contig_236:0-7961 contig_237:0-15880 contig_238:0-29293 contig_239:0-4115 contig_240:0-15765 contig_241:0-4115 contig_242:0-12059 contig_243:0-15579 contig_244:0-13608 contig_245:0-21567 contig_248:0-9077 contig_249:0-12075 contig_25:0-4753 contig_250:0-9490 contig_251:0-50191 contig_252:0-5003 contig_253:0-28075 contig_254:0-20928 contig_255:0-10149 contig_256:0-8353 contig_257:0-12662 contig_258:0-23689 contig_259:0-4332 contig_26:0-15436 contig_260:0-17537 contig_261:0-3886 contig_262:0-17708 contig_263:0-8173 contig_264:0-15900 contig_265:0-16208 contig_268:0-8887 contig_269:0-29331 contig_27:0-2867 contig_270:0-16854 contig_271:0-28694 contig_272:0-24304 contig_273:0-9844 contig_274:0-3274 contig_275:0-6085 contig_276:0-2265 contig_277:0-6052 contig_278:0-4218 contig_279:0-8407 contig_28:0-2759 contig_280:0-7107 contig_281:0-36407 contig_283:0-3363 contig_284:0-6679 contig_285:0-16960 contig_286:0-10704 contig_287:0-11870 contig_288:0-30784 contig_289:0-7570 contig_29:0-15366 contig_290:0-11639 contig_291:0-6705 contig_292:0-19185 contig_293:0-10324 contig_294:0-8977 contig_295:0-14101 contig_296:0-21189 contig_297:0-7457 contig_298:0-2951 contig_299:0-2719 contig_3:0-5741 contig_30:0-5873 contig_300:0-8861 contig_301:0-25120 contig_302:0-12643 contig_303:0-12103 contig_304:0-9171 contig_305:0-17438 contig_306:0-12300 contig_307:0-2957 contig_308:0-23729 contig_309:0-15618 contig_31:0-5570 contig_310:0-6754 contig_311:0-11514 contig_312:0-10996 contig_313:0-57315 contig_314:0-3713 contig_315:0-5093 contig_316:0-33346 contig_317:0-35579 contig_318:0-7580 contig_319:0-17083 contig_32:0-12369 contig_320:0-21608 contig_321:0-4983 contig_322:0-5320 contig_323:0-4929 contig_324:0-6459 contig_325:0-15391 contig_326:0-5209 contig_327:0-6555 contig_328:0-11372 contig_329:0-8137 contig_33:0-2658 contig_332:0-5552 contig_333:0-14461 contig_334:0-4709 contig_335:0-18298 contig_336:0-8118 contig_337:0-25813 contig_338:0-8725 contig_339:0-2763 contig_34:0-6794 contig_340:0-14992 contig_341:0-10470 contig_342:0-15456 contig_343:0-4075 contig_344:0-2912 contig_345:0-4752 contig_346:0-10652 contig_347:0-15629 contig_348:0-20816 contig_349:0-10007 contig_35:0-6304 contig_350:0-17161 contig_351:0-19160 contig_353:0-16445 contig_354:0-3888 contig_355:0-3054 contig_356:0-12275 contig_357:0-4024 contig_358:0-15168 contig_359:0-5586 contig_36:0-10311 contig_360:0-9745 contig_361:0-18502 contig_362:0-3976 contig_363:0-2928 contig_364:0-3654 contig_365:0-37356 contig_366:0-10604 contig_367:0-16479 contig_368:0-7076 contig_369:0-10530 contig_370:0-5304 contig_371:0-5391 contig_372:0-9144 contig_373:0-4508 contig_374:0-16711 contig_375:0-6790 contig_376:0-27175 contig_377:0-12763 contig_378:0-19275 contig_379:0-25041 contig_380:0-12658 contig_381:0-12111 contig_382:0-10043 contig_383:0-6596 contig_384:0-7949 contig_385:0-4683 contig_386:0-4782 contig_387:0-6766 contig_388:0-8525 contig_389:0-2379 contig_39:0-42794 contig_390:0-11789 contig_391:0-15501 contig_392:0-2694 contig_393:0-2817 contig_394:0-16258 contig_395:0-12540 contig_396:0-10967 contig_397:0-4070 contig_398:0-4758 contig_399:0-27985 contig_4:0-3193 contig_40:0-7634 contig_400:0-6789 contig_401:0-6954 contig_402:0-11327 contig_403:0-8210 contig_404:0-8093 contig_405:0-14875 contig_406:0-2728 contig_407:0-10280 contig_408:0-10024 contig_409:0-4435 contig_41:0-69906 contig_410:0-959 contig_412:0-787 contig_413:0-564 contig_414:0-1489 contig_415:0-21712 contig_416:0-5688 contig_417:0-16613 contig_418:0-7061 contig_419:0-850 contig_42:0-19184 contig_420:0-567 contig_421:0-3540 contig_422:0-6690 contig_423:0-8519 contig_424:0-17702 contig_425:0-1064 contig_426:0-15613 contig_427:0-2489 contig_428:0-25311 contig_429:0-13123 contig_43:0-18869 contig_430:0-2249 contig_431:0-3368 contig_432:0-2355 contig_433:0-4680 contig_434:0-21970 contig_435:0-19417 contig_436:0-22221 contig_437:0-9565 contig_438:0-2540 contig_439:0-4828 contig_440:0-10205 contig_441:0-6625 contig_442:0-9750 contig_443:0-8090 contig_444:0-6768 contig_445:0-10372 contig_446:0-2585 contig_447:0-1046 contig_448:0-877 contig_449:0-2313 contig_450:0-13248 contig_451:0-5420 contig_452:0-12959 contig_453:0-593 contig_454:0-2348 contig_456:0-18066 contig_457:0-6876 contig_458:0-7299 contig_459:0-12550 contig_46:0-5901 contig_460:0-12884 contig_461:0-15099 contig_462:0-8535 contig_463:0-9398 contig_464:0-4602 contig_465:0-9034 contig_466:0-6093 contig_467:0-3444 contig_468:0-4068 contig_469:0-9635 contig_47:0-14214 contig_470:0-6128 contig_471:0-17060 contig_472:0-6025 contig_473:0-20878 contig_474:0-19168 contig_475:0-13238 contig_476:0-3308 contig_477:0-4594 contig_478:0-2704 contig_479:0-9686 contig_48:0-5243 contig_480:0-6592 contig_481:0-14444 contig_482:0-12211 contig_483:0-14786 contig_484:0-16336 contig_485:0-7888 contig_486:0-6599 contig_487:0-6841 contig_488:0-4487 contig_489:0-8114 contig_49:0-31962 contig_490:0-3164 contig_491:0-8395 contig_492:0-12675 contig_493:0-9085 contig_494:0-28114 contig_495:0-15522 contig_496:0-3160 contig_497:0-7478 contig_498:0-7863 contig_499:0-2389 contig_5:0-2836 contig_50:0-7762 contig_500:0-12772 contig_501:0-13222 contig_502:0-15114 contig_503:0-15261 contig_504:0-5025 contig_505:0-2474 contig_506:0-3338 contig_507:0-26707 contig_508:0-20384 contig_509:0-7985 contig_51:0-10140 contig_510:0-7027 contig_511:0-6689 contig_512:0-6188 contig_513:0-3723 contig_514:0-4781 contig_515:0-15408 contig_516:0-3278 contig_517:0-6222 contig_518:0-2898 contig_519:0-14594 contig_52:0-42937 contig_520:0-7899 contig_521:0-4706 contig_522:0-23738 contig_523:0-6898 contig_524:0-14422 contig_525:0-7187 contig_526:0-13877 contig_527:0-12737 contig_528:0-10802 contig_529:0-21429 contig_53:0-8488 contig_530:0-17381 contig_531:0-3473 contig_532:0-2766 contig_533:0-5571 contig_534:0-7110 contig_535:0-16453 contig_536:0-5991 contig_537:0-8175 contig_538:0-7093 contig_539:0-11096 contig_54:0-29104 contig_540:0-4103 contig_541:0-2377 contig_542:0-7629 contig_543:0-6074 contig_544:0-8411 contig_545:0-25297 contig_546:0-13324 contig_547:0-2712 contig_548:0-6764 contig_549:0-11904 contig_55:0-11387 contig_550:0-21181 contig_551:0-3373 contig_552:0-9832 contig_553:0-2921 contig_554:0-9338 contig_555:0-5494 contig_556:0-7229 contig_557:0-14713 contig_558:0-20448 contig_559:0-3851 contig_56:0-3869 contig_560:0-8107 contig_561:0-2450 contig_562:0-14814 contig_565:0-19709 contig_566:0-13781 contig_567:0-10904 contig_568:0-9153 contig_569:0-4470 contig_57:0-11182 contig_570:0-10672 contig_571:0-5015 contig_572:0-4491 contig_573:0-12463 contig_574:0-22274 contig_575:0-7819 contig_576:0-6560 contig_577:0-7998 contig_578:0-14622 contig_579:0-21165 contig_58:0-4410 contig_580:0-8301 contig_581:0-2844 contig_582:0-12771 contig_583:0-20302 contig_584:0-2332 contig_585:0-7085 contig_586:0-24862 contig_587:0-7012 contig_588:0-4312 contig_589:0-3117 contig_59:0-8844 contig_590:0-12913 contig_591:0-22132 contig_592:0-2404 contig_593:0-12601 contig_594:0-6315 contig_595:0-4272 contig_598:0-12815 contig_599:0-5840 contig_6:0-10683 contig_60:0-7980 contig_600:0-9593 contig_601:0-9324 contig_602:0-19592 contig_603:0-8950 contig_604:0-22431 contig_605:0-3233 contig_606:0-3478 contig_607:0-16928 contig_608:0-4777 contig_609:0-2399 contig_61:0-5066 contig_610:0-25245 contig_611:0-8006 contig_612:0-2734 contig_613:0-4702 contig_614:0-2445 contig_615:0-7007 contig_616:0-2260 contig_617:0-2358 contig_618:0-4374 contig_619:0-4728 contig_62:0-29484 contig_620:0-16419 contig_621:0-6673 contig_622:0-7300 contig_623:0-6041 contig_624:0-19918 contig_625:0-11340 contig_626:0-10487 contig_627:0-6805 contig_628:0-3830 contig_629:0-20453 contig_63:0-20562 contig_630:0-15426 contig_631:0-32694 contig_632:0-5098 contig_633:0-7527 contig_634:0-2599 contig_635:0-2344 contig_636:0-9149 contig_637:0-10847 contig_638:0-4837 contig_639:0-13582 contig_64:0-1782 contig_640:0-15048 contig_641:0-11030 contig_642:0-15537 contig_643:0-5636 contig_644:0-7930 contig_645:0-2888 contig_646:0-4363 contig_647:0-5929 contig_648:0-2355 contig_649:0-5101 contig_65:0-13860 contig_650:0-18092 contig_651:0-2514 contig_652:0-14323 contig_653:0-3293 contig_654:0-5748 contig_655:0-12135 contig_656:0-16665 contig_657:0-7114 contig_658:0-7709 contig_659:0-3459 contig_66:0-12679 contig_660:0-11692 contig_661:0-2876 contig_662:0-10991 contig_663:0-15328 contig_664:0-4638 contig_665:0-18979 contig_666:0-4451 contig_667:0-6726 contig_668:0-4094 contig_669:0-6195 contig_67:0-17283 contig_670:0-3120 contig_671:0-10446 contig_672:0-2442 contig_673:0-6504 contig_674:0-3121 contig_675:0-24659 contig_676:0-12358 contig_677:0-5251 contig_678:0-7768 contig_679:0-16416 contig_68:0-23116 contig_680:0-8017 contig_681:0-11876 contig_682:0-2570 contig_683:0-11078 contig_684:0-13157 contig_685:0-6725 contig_686:0-4441 contig_687:0-11687 contig_688:0-2820 contig_689:0-5326 contig_69:0-10772 contig_690:0-5002 contig_691:0-10652 contig_692:0-4594 contig_693:0-7498 contig_694:0-2885 contig_695:0-8681 contig_696:0-3123 contig_697:0-10724 contig_698:0-19419 contig_699:0-2473 contig_7:0-12021 contig_70:0-6743 contig_700:0-2673 contig_701:0-3299 contig_702:0-4770 contig_703:0-34429 contig_704:0-13984 contig_705:0-6499 contig_706:0-10125 contig_707:0-2450 contig_708:0-3831 contig_709:0-15254 contig_71:0-7248 contig_710:0-2808 contig_711:0-4293 contig_712:0-20172 contig_713:0-3067 contig_714:0-16963 contig_715:0-3322 contig_716:0-2990 contig_717:0-5187 contig_718:0-4794 contig_719:0-2294 contig_72:0-7230 contig_720:0-9346 contig_721:0-2366 contig_722:0-4685 contig_723:0-5920 contig_724:0-2511 contig_725:0-2882 contig_726:0-4322 contig_727:0-3872 contig_728:0-7720 contig_729:0-3649 contig_73:0-7786 contig_730:0-24584 contig_731:0-9813 contig_732:0-24055 contig_733:0-14328 contig_735:0-47216 contig_736:0-61152 contig_737:0-43167 contig_738:0-14405 contig_739:0-25817 contig_74:0-25107 contig_740:0-12301 contig_741:0-18876 contig_742:0-14242 contig_743:0-15545 contig_744:0-8042 contig_745:0-12004 contig_746:0-78752 contig_747:0-2214 contig_748:0-18217 contig_749:0-50247 contig_75:0-11225 contig_750:0-12337 contig_751:0-25137 contig_752:0-13196 contig_753:0-14500 contig_754:0-7513 contig_755:0-21053 contig_756:0-2751 contig_76:0-49977 contig_77:0-11494 contig_78:0-7254 contig_79:0-9452 contig_8:0-3012 contig_80:0-13840 contig_81:0-9063 contig_82:0-16350 contig_83:0-2383 contig_85:0-11538 contig_86:0-18663 contig_87:0-16254 contig_88:0-4840 contig_89:0-2428 contig_9:0-9204 contig_90:0-37258 contig_91:0-2469 contig_92:0-17139 contig_93:0-13215 contig_94:0-2417 contig_95:0-5991 contig_96:0-22628 contig_99:0-3317
-    [15:48:18 - Predict] Using model: /media/hd2/renata/.medaka/data/r1041_e82_400bps_hac_g615_model_pt.tar.gz.
-    [15:48:18 - Predict] Using minimum mapQ threshold of 1 for read filtering.
-    [15:48:18 - MdlStrTGZ] Model GRUModel(
-      (gru): GRU(10, 128, num_layers=2, batch_first=True, bidirectional=True)
-      (linear): Linear(in_features=256, out_features=5, bias=True)
-    )
-    [15:48:18 - MdlStrTGZ] loading weights from /tmp/tmpwtywzy0z/model/weights.pt
-    [15:48:18 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpwtywzy0z.
-    [15:48:18 - Predict] Model device: cpu
-    [15:48:18 - Predict] Running prediction at full precision
-    [15:48:18 - Predict] Processing 327 long region(s) with batching.
-    [15:48:18 - PWorker] Running inference for 6.3M draft bases.
-    [15:48:40 - Feature] Pileup counts do not span requested region, requested contig_201:0-15890, received 2-15889.
-    [15:48:43 - Feature] Pileup counts do not span requested region, requested contig_251:0-50191, received 0-50187.
-    [15:48:59 - Feature] Pileup counts do not span requested region, requested contig_483:0-14786, received 0-14759.
-    [15:50:27 - PWorker] Processed 9 batches
-    [15:50:27 - PWorker] All done, 0 remainder regions.
-    [15:50:27 - Predict] Processing 388 short region(s).
-    [15:50:27 - PWorker] Running inference for 2.1M draft bases.
-    [15:50:28 - Feature] Pileup counts do not span requested region, requested contig_132:0-3184, received 1-2726.
-    [15:50:35 - Feature] Pileup counts do not span requested region, requested contig_170:0-3032, received 0-3027.
-    [15:51:23 - Feature] Pileup counts do not span requested region, requested contig_354:0-3888, received 31-3887.
-    [15:51:23 - Feature] Pileup counts do not span requested region, requested contig_355:0-3054, received 66-3053.
-    [15:51:41 - Feature] Pileup counts do not span requested region, requested contig_410:0-959, received 0-799.
-    [15:51:46 - Feature] Pileup counts do not span requested region, requested contig_420:0-567, received 0-564.
-    [15:53:50 - Feature] Pileup counts do not span requested region, requested contig_83:0-2383, received 597-2017.
-    [15:53:52 - Feature] Pileup counts do not span requested region, requested contig_94:0-2417, received 0-2415.
-    [15:54:04 - PWorker] Processed 386 batches
-    [15:54:04 - PWorker] All done, 0 remainder regions.
-    [15:54:04 - Predict] Finished processing all regions.
-    [15:54:09 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:54:09 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:54:09 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    (... mesma linha repetida, uma por contig ...)
-    [15:54:10 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [15:54:10 - Stitcher] Copying contig 'contig_121' verbatim from input.
-    [15:54:10 - Stitcher] Copying contig 'contig_143' verbatim from input.
-    Polished assembly written to 9.Polimento-Medaka/Scer2_q10_l500_Flye/consensus.fasta, have a nice day.
-    $ medaka_consensus -i 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz -d 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 9.Polimento-Medaka/Scer1_q10_l500_hifiasm -t 24 -m r941_prom_hac_g507
-    Checking program versions
-    This is medaka 2.2.1
-    Program    Version    Required   Pass
-    bcftools   1.23.1     1.11       True
-    bgzip      1.23.1     1.11       True
-    minimap2   2.30       2.11       True
-    samtools   1.23.1     1.11       True
-    tabix      1.23.1     1.11       True
-    [14:35:56 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpl04cq5g4.
-    [14:35:59 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp_9qvwv6e.
-    [14:36:02 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmphapz4uea.
-    [14:36:02 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpcikq2bk3.
-    Aligning basecalls to draft
-    Creating fai index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa.fai
-    Creating mmi index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa.map-ont.mmi
-    [M::mm_idx_gen::0.403*1.01] collected minimizers
-    [M::mm_idx_gen::0.492*1.36] sorted minimizers
-    [M::main::0.606*1.29] loaded/built the index for 87 target sequence(s)
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 87
-    [M::mm_idx_stat::0.646*1.28] distinct minimizers: 2096463 (93.63% are singletons); average occurrences: 1.161; average spacing: 5.333; total length: 12980404
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -I 16G -x map-ont -d /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
-    [M::main] Real time: 0.660 sec; CPU: 0.839 sec; Peak RSS: 0.121 GB
-    [M::main::0.134*1.01] loaded/built the index for 87 target sequence(s)
-    [M::mm_mapopt_update::0.176*1.01] mid_occ = 32
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 87
-    [M::mm_idx_stat::0.215*1.01] distinct minimizers: 2096463 (93.63% are singletons); average occurrences: 1.161; average spacing: 5.333; total length: 12980404
-    [M::worker_pipeline::35.872*19.30] mapped 140416 sequences
-    [M::worker_pipeline::50.258*19.34] mapped 90021 sequences
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 24 -a /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-    [M::main] Real time: 50.408 sec; CPU: 971.999 sec; Peak RSS: 8.698 GB
-    [bam_sort_core] merging from 0 files and 24 in-memory blocks...
-    Running medaka inference
-    [14:37:04 - Predict] Reducing threads, anymore is a waste.
-    [14:37:04 - Predict] It looks like you attempted to set a high number of threads. We have scaled this down to an optimal number. If you wish to improve performance please see https://nanoporetech.github.io/medaka/installation.html#improving-parallelism.
-    [14:37:04 - Predict] Setting pytorch intra/inter-op threads to 2/1.
-    [14:37:04 - Predict] PyTorch reports intra/inter-op threads as 2/1.
-    [14:37:04 - Predict] Processing region(s): ptg000001l:0-1012388 ptg000002l:0-804575 ptg000003l:0-766876 ptg000004l:0-722953 ptg000005l:0-1078125 ptg000006l:0-709754 ptg000007l:0-547339 ptg000008l:0-1066355 ptg000009l:0-315275 ptg000010l:0-673242 ptg000011l:0-455748 ptg000012l:0-850117 ptg000013l:0-458128 ptg000014l:0-464034 ptg000015l:0-412423 ptg000016l:0-2515 ptg000017l:0-486836 ptg000018l:0-212016 ptg000019l:0-115403 ptg000020l:0-419491 ptg000021l:0-262714 ptg000022l:0-6664 ptg000023l:0-228503 ptg000024l:0-137803 ptg000025l:0-35889 ptg000026l:0-2437 ptg000027l:0-2077 ptg000028c:0-89648 ptg000029l:0-19688 ptg000030l:0-2496 ptg000031l:0-2344 ptg000032l:0-2756 ptg000033l:0-2628 ptg000034l:0-2718 ptg000035l:0-39131 ptg000036l:0-2544 ptg000037l:0-2128 ptg000038l:0-31260 ptg000039l:0-96126 ptg000040l:0-4677 ptg000041l:0-2694 ptg000042l:0-2815 ptg000043l:0-12486 ptg000044l:0-2661 ptg000045c:0-12600 ptg000046l:0-2274 ptg000047l:0-2191 ptg000048l:0-1969 ptg000049l:0-8990 ptg000050l:0-2337 ptg000051l:0-2115 ptg000052l:0-1801 ptg000053l:0-1733 ptg000054l:0-17477 ptg000055l:0-7247 ptg000056l:0-38893 ptg000057l:0-4330 ptg000058l:0-106012 ptg000059l:0-2100 ptg000060l:0-2086 ptg000061l:0-10346 ptg000062l:0-5946 ptg000063l:0-2808 ptg000064l:0-1718 ptg000065l:0-24138 ptg000066l:0-2278 ptg000067l:0-9586 ptg000068l:0-1809 ptg000069l:0-1641 ptg000070l:0-1964 ptg000071l:0-2358 ptg000072l:0-2293 ptg000073l:0-2868 ptg000074l:0-3011 ptg000075l:0-2268 ptg000076l:0-4785 ptg000077l:0-40312 ptg000078l:0-1816 ptg000079c:0-24378 ptg000080l:0-2598 ptg000081l:0-2091 ptg000082l:0-2293 ptg000083l:0-27122 ptg000084l:0-4602 ptg000085l:0-4262 ptg000086l:0-4305 ptg000087l:0-4173
-    [14:37:04 - Predict] Using model: /media/hd2/renata/.medaka/data/r941_prom_hac_g507_model_pt.tar.gz.
-    [14:37:04 - Predict] Using minimum mapQ threshold of 1 for read filtering.
-    [14:37:04 - MdlStrTGZ] Model GRUModel(
-      (gru): GRU(10, 128, num_layers=2, batch_first=True, bidirectional=True)
-      (linear): Linear(in_features=256, out_features=5, bias=True)
-    )
-    [14:37:04 - MdlStrTGZ] loading weights from /tmp/tmppmkbp4nr/model/weights.pt
-    [14:37:04 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmppmkbp4nr.
-    [14:37:04 - Predict] Model device: cpu
-    [14:37:04 - Predict] Running prediction at full precision
-    [14:37:05 - Predict] Processing 41 long region(s) with batching.
-    [14:37:05 - PWorker] Running inference for 12.8M draft bases.
-    [14:37:17 - Feature] Pileup counts do not span requested region, requested ptg000007l:0-547339, received 0-547322.
-    [14:38:13 - Feature] Pileup counts do not span requested region, requested ptg000025l:0-35889, received 0-35797.
-    [14:38:14 - Feature] Pileup counts do not span requested region, requested ptg000039l:0-96126, received 0-96124.
-    [14:38:26 - Feature] Pileup counts do not span requested region, requested ptg000056l:0-38893, received 0-38889.
-    [14:38:40 - Feature] Pileup counts do not span requested region, requested ptg000083l:0-27122, received 0-27120.
-    [14:38:40 - Feature] Pileup counts do not span requested region, requested ptg000079c:0-24378, received 1-24377.
-    [14:41:49 - PWorker] Processed 24 batches
-    [14:41:49 - PWorker] All done, 0 remainder regions.
-    [14:41:49 - Predict] Processing 49 short region(s).
-    [14:41:49 - PWorker] Running inference for 0.2M draft bases.
-    [14:41:51 - Feature] Pileup counts do not span requested region, requested ptg000030l:0-2496, received 59-2495.
-    [14:41:51 - Feature] Pileup counts do not span requested region, requested ptg000040l:0-4677, received 0-4665.
-    [14:41:51 - Feature] Pileup counts do not span requested region, requested ptg000046l:0-2274, received 0-2272.
-    [14:41:51 - Feature] Pileup counts do not span requested region, requested ptg000047l:0-2191, received 0-2189.
-    [14:41:51 - Feature] Pileup counts do not span requested region, requested ptg000049l:0-8990, received 15-8989.
-    [14:41:52 - Feature] Pileup counts do not span requested region, requested ptg000052l:0-1801, received 3-1800.
-    [14:41:59 - Feature] Pileup counts do not span requested region, requested ptg000075l:0-2268, received 0-2264.
-    [14:42:11 - PWorker] Processed 49 batches
-    [14:42:11 - PWorker] All done, 0 remainder regions.
-    [14:42:11 - Predict] Finished processing all regions.
-    [14:42:15 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [14:42:15 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [14:42:15 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    (... mesma linha repetida, uma por contig ...)
-    [14:42:16 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    Polished assembly written to 9.Polimento-Medaka/Scer1_q10_l500_hifiasm/consensus.fasta, have a nice day.
-    $ medaka_consensus -i 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz -d 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 9.Polimento-Medaka/Scer2_q10_l500_hifiasm -t 24 -m r1041_e82_400bps_hac_g615
-    Checking program versions
-    This is medaka 2.2.1
-    Program    Version    Required   Pass
-    bcftools   1.23.1     1.11       True
-    bgzip      1.23.1     1.11       True
-    minimap2   2.30       2.11       True
-    samtools   1.23.1     1.11       True
-    tabix      1.23.1     1.11       True
-    [14:42:28 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp7gwzs_da.
-    [14:42:31 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp0hq8gyx2.
-    [14:42:34 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp26jaloz1.
-    [14:42:34 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpiifuv9qx.
-    Aligning basecalls to draft
-    Creating fai index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa.fai
-    Creating mmi index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa.map-ont.mmi
-    [M::mm_idx_gen::0.013*1.16] collected minimizers
-    [M::mm_idx_gen::0.021*1.76] sorted minimizers
-    [M::main::0.028*1.58] loaded/built the index for 14 target sequence(s)
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 14
-    [M::mm_idx_stat::0.029*1.56] distinct minimizers: 26785 (80.75% are singletons); average occurrences: 1.335; average spacing: 5.285; total length: 189042
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -I 16G -x map-ont -d /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa
-    [M::main] Real time: 0.031 sec; CPU: 0.047 sec; Peak RSS: 0.006 GB
-    [M::main::0.008*1.19] loaded/built the index for 14 target sequence(s)
-    [M::mm_mapopt_update::0.009*1.17] mid_occ = 46
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 14
-    [M::mm_idx_stat::0.010*1.15] distinct minimizers: 26785 (80.75% are singletons); average occurrences: 1.335; average spacing: 5.285; total length: 189042
-    [M::worker_pipeline::2.787*11.49] mapped 33006 sequences
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 24 -a /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
-    [M::main] Real time: 2.793 sec; CPU: 32.028 sec; Peak RSS: 0.976 GB
-    [bam_sort_core] merging from 0 files and 24 in-memory blocks...
-    Running medaka inference
-    [14:42:40 - Predict] Reducing threads, anymore is a waste.
-    [14:42:40 - Predict] It looks like you attempted to set a high number of threads. We have scaled this down to an optimal number. If you wish to improve performance please see https://nanoporetech.github.io/medaka/installation.html#improving-parallelism.
-    [14:42:40 - Predict] Setting pytorch intra/inter-op threads to 2/1.
-    [14:42:40 - Predict] PyTorch reports intra/inter-op threads as 2/1.
-    [14:42:40 - Predict] Processing region(s): ptg000001l:0-4737 ptg000002l:0-11309 ptg000003l:0-4144 ptg000004l:0-10672 ptg000005l:0-102299 ptg000006l:0-3306 ptg000007c:0-12224 ptg000008l:0-7282 ptg000009l:0-4425 ptg000010l:0-6041 ptg000011l:0-3462 ptg000012l:0-8329 ptg000013l:0-3481 ptg000014l:0-7331
-    [14:42:40 - Predict] Using model: /media/hd2/renata/.medaka/data/r1041_e82_400bps_hac_g615_model_pt.tar.gz.
-    [14:42:40 - Predict] Using minimum mapQ threshold of 1 for read filtering.
-    [14:42:40 - MdlStrTGZ] Model GRUModel(
-      (gru): GRU(10, 128, num_layers=2, batch_first=True, bidirectional=True)
-      (linear): Linear(in_features=256, out_features=5, bias=True)
-    )
-    [14:42:40 - MdlStrTGZ] loading weights from /tmp/tmpwsreel75/model/weights.pt
-    [14:42:40 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpwsreel75.
-    [14:42:40 - Predict] Model device: cpu
-    [14:42:40 - Predict] Running prediction at full precision
-    [14:42:40 - Predict] Processing 4 long region(s) with batching.
-    [14:42:40 - PWorker] Running inference for 0.1M draft bases.
-    [14:42:41 - Feature] Pileup counts do not span requested region, requested ptg000005l:0-102299, received 0-102297.
-    [14:42:48 - PWorker] Processed 1 batches
-    [14:42:48 - PWorker] All done, 0 remainder regions.
-    [14:42:48 - Predict] Processing 10 short region(s).
-    [14:42:48 - PWorker] Running inference for 0.1M draft bases.
-    [14:42:54 - PWorker] Processed 10 batches
-    [14:42:54 - PWorker] All done, 0 remainder regions.
-    [14:42:54 - Predict] Finished processing all regions.
-    [14:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [14:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [14:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    (... mesma linha repetida, uma por contig ...)
-    [14:42:57 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    Polished assembly written to 9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta, have a nice day.
-    $ medaka_consensus -i 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz -d 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 9.Polimento-Medaka/Scer1_q10_l500_nextdenovo -t 24 -m r941_prom_hac_g507
-    Checking program versions
-    This is medaka 2.2.1
-    Program    Version    Required   Pass
-    bcftools   1.23.1     1.11       True
-    bgzip      1.23.1     1.11       True
-    minimap2   2.30       2.11       True
-    samtools   1.23.1     1.11       True
-    tabix      1.23.1     1.11       True
-    [14:43:10 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpkr8qkarr.
-    [14:43:13 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmp7mxzqkif.
-    [14:43:16 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmph9i3dx6a.
-    [14:43:17 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmpxh5zwbrv.
-    Aligning basecalls to draft
-    Creating fai index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta.fai
-    Creating mmi index file /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta.map-ont.mmi
-    [M::mm_idx_gen::0.371*1.01] collected minimizers
-    [M::mm_idx_gen::0.457*1.38] sorted minimizers
-    [M::main::0.584*1.30] loaded/built the index for 29 target sequence(s)
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 29
-    [M::mm_idx_stat::0.627*1.28] distinct minimizers: 2072410 (95.65% are singletons); average occurrences: 1.096; average spacing: 5.336; total length: 12123689
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -I 16G -x map-ont -d /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta
-    [M::main] Real time: 0.648 sec; CPU: 0.822 sec; Peak RSS: 0.115 GB
-    [M::main::0.129*1.01] loaded/built the index for 29 target sequence(s)
-    [M::mm_mapopt_update::0.168*1.01] mid_occ = 37
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 29
-    [M::mm_idx_stat::0.194*1.01] distinct minimizers: 2072410 (95.65% are singletons); average occurrences: 1.096; average spacing: 5.336; total length: 12123689
-    [M::worker_pipeline::24.549*16.49] mapped 140416 sequences
-    [M::worker_pipeline::30.576*15.92] mapped 90021 sequences
-    [M::main] Version: 2.30-r1287
-    [M::main] CMD: minimap2 -x map-ont --secondary=no -L --MD -A 2 -B 4 -O 4,24 -E 2,1 -t 24 -a /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta.map-ont.mmi /media/hd16-databases/usuarios/renatadias/curso-nanopore-nov26/2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-    [M::main] Real time: 30.735 sec; CPU: 486.828 sec; Peak RSS: 4.177 GB
-    [bam_sort_core] merging from 0 files and 24 in-memory blocks...
-    Running medaka inference
-    [14:44:00 - Predict] Reducing threads, anymore is a waste.
-    [14:44:00 - Predict] It looks like you attempted to set a high number of threads. We have scaled this down to an optimal number. If you wish to improve performance please see https://nanoporetech.github.io/medaka/installation.html#improving-parallelism.
-    [14:44:00 - Predict] Setting pytorch intra/inter-op threads to 2/1.
-    [14:44:00 - Predict] PyTorch reports intra/inter-op threads as 2/1.
-    [14:44:00 - Predict] Processing region(s): ctg000000:0-144411 ctg000010:0-257183 ctg000020:0-220029 ctg000030:0-365547 ctg000040:0-914158 ctg000050:0-728438 ctg000060:0-1417670 ctg000070:0-17776 ctg000080:0-22016 ctg000090:0-37438 ctg000100:0-135780 ctg000110:0-266297 ctg000120:0-766859 ctg000130:0-547530 ctg000140:0-415751 ctg000150:0-395080 ctg000160:0-685824 ctg000170:0-781726 ctg000180:0-12342 ctg000190:0-29221 ctg000200:0-14075 ctg000210:0-41499 ctg000220:0-79953 ctg000230:0-213303 ctg000240:0-321058 ctg000250:0-447363 ctg000260:0-918458 ctg000270:0-892283 ctg000280:0-1034621
-    [14:44:00 - Predict] Using model: /media/hd2/renata/.medaka/data/r941_prom_hac_g507_model_pt.tar.gz.
-    [14:44:00 - Predict] Using minimum mapQ threshold of 1 for read filtering.
-    [14:44:00 - MdlStrTGZ] Model GRUModel(
-      (gru): GRU(10, 128, num_layers=2, batch_first=True, bidirectional=True)
-      (linear): Linear(in_features=256, out_features=5, bias=True)
-    )
-    [14:44:00 - MdlStrTGZ] loading weights from /tmp/tmptrfsamxx/model/weights.pt
-    [14:44:00 - MdlStrTGZ] Successfully removed temporary files from /tmp/tmptrfsamxx.
-    [14:44:00 - Predict] Model device: cpu
-    [14:44:00 - Predict] Running prediction at full precision
-    [14:44:00 - Predict] Processing 31 long region(s) with batching.
-    [14:44:00 - PWorker] Running inference for 12.1M draft bases.
-    [14:44:02 - Feature] Pileup counts do not span requested region, requested ctg000020:0-220029, received 0-219869.
-    [14:48:00 - PWorker] Processed 22 batches
-    [14:48:00 - PWorker] All done, 0 remainder regions.
-    [14:48:00 - Predict] Finished processing all regions.
-    [14:48:03 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [14:48:03 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    [14:48:03 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    (... mesma linha repetida, uma por contig ...)
-    [14:48:03 - DataIndx] Loaded 1/1 (100.00%) sample files.
-    Polished assembly written to 9.Polimento-Medaka/Scer1_q10_l500_nextdenovo/consensus.fasta, have a nice day.
-
     ```
+
+**Lendo o log.** O Medaka trabalha em duas fases:
+
+1. **Alinhamento** (`Aligning basecalls to draft`): o minimap2 alinha todas as reads contra a montagem. As mensagens `Using the existing ... index file` aparecem porque os índices (`.fai` e `.mmi`) ficam ao lado do FASTA de entrada, em `9.Montagens-purgadas/`, e não na pasta de saída. Eles sobrevivem ao `rm -rf` e são reaproveitados, o que não é problema, já que a montagem de entrada não mudou.
+2. **Inferência** (`Running medaka inference`): uma rede neural (`GRUModel`) lê a pilha de reads em cada posição e decide a base mais provável. É a fase mais demorada, cerca de 5 minutos por montagem da Scer1.
+
+Algumas mensagens assustam mas são normais:
+
+- **`Reducing threads, anymore is a waste`**: rodando na CPU (`Model device: cpu`), a inferência usa poucos threads de forma eficiente, então o Medaka ignora parte do `-t 24`. O alinhamento, por outro lado, usa todos.
+- **`Pileup counts do not span requested region`**: há trechos sem reads alinhadas, geralmente nas pontas dos contigs ou em contigs pequenos. Nesses trechos o Medaka não tem o que corrigir e mantém a sequência original. Na Scer1 isso ocorre poucas vezes por montagem (de 1 a 4), e na Scer2 Flye, com ~6x de cobertura, um pouco mais (9).
+- **`cannot be concatenated as there is no overlap`**: no `contig_25_1` há um buraco de cobertura (entre 1906 e 2609 pb), e o Medaka não consegue emendar as duas partes polidas. O contig não é cortado: o trecho sem cobertura fica como estava na montagem.
+
+Ao final, cada pasta tem um `consensus.fasta`, a montagem polida:
+
+```bash
+ls -l 9.Polimento-Medaka/*/consensus.fasta
+```
+
+??? example "Saída: arquivos polidos"
+
+    ```text
+    -rw-rw-r--+ 1 renata renata 11972061 nov 18 21:26 9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta
+    -rw-rw-r--+ 1 renata renata 12168275 nov 18 21:32 9.Polimento-Medaka/Scer1_q10_l500_hifiasm/consensus.fasta
+    -rw-rw-r--+ 1 renata renata 12018251 nov 18 21:38 9.Polimento-Medaka/Scer1_q10_l500_nextdenovo/consensus.fasta
+    -rw-rw-r--+ 1 renata renata  8261274 nov 18 21:45 9.Polimento-Medaka/Scer2_q10_l500_Flye/consensus.fasta
+    -rw-rw-r--+ 1 renata renata    86915 nov 18 21:46 9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta
+    ```
+
+Cada montagem da Scer1 levou cerca de 6 minutos; a Scer2 Flye, 7 minutos; e a Scer2 Hifiasm, menos de 1 minuto, por ser minúscula. O tamanho mostrado pelo `ls` está em **bytes** do arquivo (inclui cabeçalhos e quebras de linha), não em pares de base, mas já mostra que o Medaka não muda o tamanho da montagem: ele corrige bases e pequenos indels, sem juntar nem descartar contigs. A comparação de verdade, antes e depois do polimento, vem na Etapa 11.
+
+!!! warning "Scer2 Hifiasm: quase nada sobrou"
+    O arquivo da Scer2 Hifiasm tem só ~87 kb. A montagem bruta tinha 189 kb, dos quais 102 kb eram o contig mitocondrial separado na Etapa 9.4; o que resta é um punhado de contigs nucleares. Com ~6x de cobertura, o Hifiasm praticamente não montou o genoma nuclear da Scer2. A montagem segue no tutorial só para comparação.
 
 !!! tip "FASTAs polidos disponíveis no repositório"
     [:material-dna: Scer1_Flye_medaka_consensus.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_medaka_consensus.fasta) ·
@@ -3934,9 +4369,9 @@ Nesta etapa vamos polir as três montagens da Scer1 (Flye, Hifiasm e NextDenovo)
     | Plataforma | Illumina HiSeq 2000, paired-end, 2×100 pb |
     | Volume | 16,2 milhões de pares, 3,2 Gb (≈ 260× de cobertura) |
 
-    A amostra Scer2 (SM.9.1.AL1) não tem dados Illumina públicos; por isso, esta etapa usa só a Scer1.
+    A amostra Scer2 (SM.9.1.AL1) também foi sequenciada nesse projeto ([ERR1309387](https://www.ebi.ac.uk/ena/browser/view/ERR1309387){ target=_blank }). Para manter o tempo de execução razoável, esta etapa usa só a Scer1; repetir o polimento na Scer2 fica como exercício opcional.
 
-    Dois detalhes que valem para dados reais em geral: as reads Illumina e Nanopore vieram de **culturas diferentes** da mesma linhagem, sequenciadas com anos de diferença, então pode haver algumas mutações reais entre elas (poucas, perto dos erros de montagem). E muitas linhagens de *S. cerevisiae* são **diploides e heterozigotas**: nos sítios heterozigotos as reads discordam entre si, e os polidores tendem, corretamente, a não alterar a base.
+    Dois detalhes que valem para dados reais em geral: as reads Illumina e Nanopore vieram de **culturas diferentes** da mesma linhagem, sequenciadas com anos de diferença, então pode haver algumas mutações reais entre elas (poucas, perto dos erros de montagem). E muitas linhagens de *S. cerevisiae* são **diploides e heterozigotas**: nos sítios heterozigotos as reads discordam entre si, e os polidores tendem, corretamente, a não alterar a base. A CBS7963 não tem esse problema: é haploide (37 SNPs heterozigotos no genoma inteiro, segundo o próprio projeto 1002 Genomes, que gerou estas reads).
 
 ??? tip "Instalação: ambiente `polimento`"
     ```bash
@@ -4013,10 +4448,13 @@ O laço abaixo repete o mesmo processo para as três montagens da Scer1 já poli
 ```bash
 conda activate polimento
 D=0.DadosBrutos/illumina
+mkdir -p 9.Polimento-Illumina
 
 for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
   echo "===== $s ====="
   O=9.Polimento-Illumina/$s
+  # apaga resultados anteriores: o pypolca não sobrescreve uma pasta existente
+  rm -rf $O
   mkdir -p $O
 
   # montagem polida com Medaka (Etapa 10)
@@ -4046,13 +4484,162 @@ conda deactivate
 
 O `2>&1 | tee` grava tudo o que aparece na tela em `9.Polimento-Illumina/polimento_hibrido.log`, para você consultar depois. Ao final, cada montagem terá três versões: a bruta (Etapas 5–7), a polida com Medaka (`9.Polimento-Medaka/<montagem>/consensus.fasta`) e a polida com Medaka + Illumina (`9.Polimento-Illumina/<montagem>/<montagem>_hibrido.fasta`).
 
-<!-- SAÍDA: laço de polimento (polypolish filter + pypolca) das 3 montagens -->
+??? note "Ver saída do comando (resumida)"
+
+    ```bash
+    $ cat 9.Polimento-Illumina/polimento_hibrido.log
+    ===== Scer1_q10_l500_Flye =====
+    [main] CMD: bwa index 9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_medaka.fasta
+    [main] Real time: 11.882 sec
+    [M::mem_process_seqs] Processed 2400000 reads in 184.459 CPU sec, 45.796 real sec
+    [M::mem_process_seqs] Processed 2400000 reads in 178.449 CPU sec, 33.244 real sec
+
+    Starting Polypolish filter
+    Polypolish version: 0.7.1
+    9.Polimento-Illumina/Scer1_q10_l500_Flye/aln_1.sam: 3,837,861 alignments from 2,195,039 reads
+    9.Polimento-Illumina/Scer1_q10_l500_Flye/aln_2.sam: 3,828,088 alignments from 2,187,951 reads
+    Matching read pairs: 2,171,427
+    fr: 1,725,247 pairs
+    rf: 398 pairs
+    ff: 284 pairs
+    rr: 305 pairs
+    Automatically determined correct orientation: fr
+    Low threshold:  96 (0.1st percentile)
+    High threshold: 630 (99.9th percentile)
+    Filtering 9.Polimento-Illumina/Scer1_q10_l500_Flye/aln_1.sam:
+      3,445,256 pass
+      392,605 fail
+    Filtering 9.Polimento-Illumina/Scer1_q10_l500_Flye/aln_2.sam:
+      3,429,916 pass
+      398,172 fail
+    Alignments before filtering: 7,665,949
+    Alignments after filtering:  6,875,172
+
+    INFO | You are using pypolca version 0.5.0
+    INFO | Samtools v1.24 found.
+    INFO | freebayes v1.3.9 found.
+    INFO | bwa v0.7.19-r1273 found.
+    INFO | Creating BWA index
+    INFO | Aligning reads with BWA
+    INFO | Sorting and indexing alignment file
+    INFO | Calling variants.
+    INFO | POLCA has found variants. Fixing
+    INFO | Stats BEFORE polishing:
+    INFO | Substitution Errors Found: 179
+    INFO | Insertion/Deletion Errors Found: 557
+    INFO | Assembly Size: 11971488
+    INFO | Consensus Quality Before Polishing: 99.99
+    INFO | Consensus QV Before Polishing: 42.11
+    INFO | pypolca has finished
+    INFO | Elapsed time: 119.67 seconds
+
+    ===== Scer1_q10_l500_hifiasm =====
+    [main] CMD: bwa index 9.Polimento-Illumina/Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm_medaka.fasta
+    [main] Real time: 6.680 sec
+    [M::mem_process_seqs] Processed 2400000 reads in 148.048 CPU sec, 6.413 real sec
+    [M::mem_process_seqs] Processed 2400000 reads in 148.487 CPU sec, 6.502 real sec
+
+    Starting Polypolish filter
+    Polypolish version: 0.7.1
+    9.Polimento-Illumina/Scer1_q10_l500_hifiasm/aln_1.sam: 7,454,593 alignments from 2,211,479 reads
+    9.Polimento-Illumina/Scer1_q10_l500_hifiasm/aln_2.sam: 7,426,822 alignments from 2,204,580 reads
+    Matching read pairs: 2,190,465
+    fr: 1,709,449 pairs
+    rf: 279 pairs
+    ff: 245 pairs
+    rr: 260 pairs
+    Automatically determined correct orientation: fr
+    Low threshold:  96 (0.1st percentile)
+    High threshold: 630 (99.9th percentile)
+    Filtering 9.Polimento-Illumina/Scer1_q10_l500_hifiasm/aln_1.sam:
+      6,895,048 pass
+      559,545 fail
+    Filtering 9.Polimento-Illumina/Scer1_q10_l500_hifiasm/aln_2.sam:
+      6,862,564 pass
+      564,258 fail
+    Alignments before filtering: 14,881,415
+    Alignments after filtering:  13,757,612
+
+    INFO | You are using pypolca version 0.5.0
+    INFO | Samtools v1.24 found.
+    INFO | freebayes v1.3.9 found.
+    INFO | bwa v0.7.19-r1273 found.
+    INFO | Creating BWA index
+    INFO | Aligning reads with BWA
+    INFO | Sorting and indexing alignment file
+    INFO | Calling variants.
+    INFO | POLCA has found variants. Fixing
+    INFO | Stats BEFORE polishing:
+    INFO | Substitution Errors Found: 118
+    INFO | Insertion/Deletion Errors Found: 571
+    INFO | Assembly Size: 12167653
+    INFO | Consensus Quality Before Polishing: 99.99
+    INFO | Consensus QV Before Polishing: 42.47
+    INFO | pypolca has finished
+    INFO | Elapsed time: 117.36 seconds
+
+    ===== Scer1_q10_l500_nextdenovo =====
+    [main] CMD: bwa index 9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo_medaka.fasta
+    [main] Real time: 6.777 sec
+    [M::mem_process_seqs] Processed 2400000 reads in 159.300 CPU sec, 7.423 real sec
+    [M::mem_process_seqs] Processed 2400000 reads in 157.404 CPU sec, 7.744 real sec
+
+    Starting Polypolish filter
+    Polypolish version: 0.7.1
+    9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/aln_1.sam: 3,967,895 alignments from 2,152,884 reads
+    9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/aln_2.sam: 3,961,385 alignments from 2,145,693 reads
+    Matching read pairs: 2,137,056
+    fr: 1,697,490 pairs
+    rf: 237 pairs
+    ff: 267 pairs
+    rr: 268 pairs
+    Automatically determined correct orientation: fr
+    Low threshold:  99 (0.1st percentile)
+    High threshold: 631 (99.9th percentile)
+    Filtering 9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/aln_1.sam:
+      3,508,765 pass
+      459,130 fail
+    Filtering 9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/aln_2.sam:
+      3,493,606 pass
+      467,779 fail
+    Alignments before filtering: 7,929,280
+    Alignments after filtering:  7,002,371
+
+    INFO | You are using pypolca version 0.5.0
+    INFO | Samtools v1.24 found.
+    INFO | freebayes v1.3.9 found.
+    INFO | bwa v0.7.19-r1273 found.
+    INFO | Creating BWA index
+    INFO | Aligning reads with BWA
+    INFO | Sorting and indexing alignment file
+    INFO | Calling variants.
+    INFO | POLCA has found variants. Fixing
+    INFO | Stats BEFORE polishing:
+    INFO | Substitution Errors Found: 341
+    INFO | Insertion/Deletion Errors Found: 1001
+    INFO | Assembly Size: 12016795
+    INFO | Consensus Quality Before Polishing: 99.99
+    INFO | Consensus QV Before Polishing: 39.52
+    INFO | pypolca has finished
+    INFO | Elapsed time: 129.84 seconds
+    ```
+
+    O log completo tem também os textos explicativos do Polypolish e a lista de parâmetros do pypolca, omitidos aqui.
 
 ??? info "Como ler a saída"
-    - **Reads alinhadas:** das 2.400.000 reads de cada arquivo, quase todas alinham (> 99%). As poucas que não alinham vêm de regiões ausentes da montagem ou de contaminação.
-    - **Mais alinhamentos do que reads:** com `bwa mem -a`, uma read de uma região repetitiva é registrada em **todas** as cópias, por isso há ~1,8 alinhamento por read. O genoma de levedura tem muitas repetições (retrotransposons Ty, rDNA, subtelômeros), e é justamente nelas que o Polypolish leva vantagem sobre polidores que usam só o melhor alinhamento.
-    - **Orientação e inserto:** quase todos os pares estão na orientação `fr`, como esperado para uma biblioteca paired-end comum. Pares fora do intervalo de tamanho de inserto, ou discordantes, são marcados como `fail` (~11% dos alinhamentos) e não são usados.
-    - **pypolca:** os números em *"Stats BEFORE polishing"* referem-se à montagem que **entrou** no pypolca, já polida pelo Polypolish. Em montagens Nanopore, a maior parte dos erros residuais são indels em homopolímeros (sequências como `AAAAAA`), e é para isso que rodamos o pypolca depois do Polypolish.
+    | | Flye | Hifiasm | NextDenovo |
+    |---|---|---|---|
+    | Reads de R1 alinhadas | 2.195.039 (91,5%) | 2.211.479 (92,1%) | 2.152.884 (89,7%) |
+    | Alinhamentos por read | ~1,7 | ~3,4 | ~1,8 |
+    | Alinhamentos descartados pelo filtro | 10,3% | 7,6% | 11,7% |
+    | pypolca: substituições / indels corrigidos | 179 / 557 | 118 / 571 | 341 / 1.001 |
+    | QV estimado pelo pypolca (após o Polypolish) | 42,11 | 42,47 | 39,52 |
+
+    - **~8–10% das reads não alinham:** as montagens que entram aqui não têm mais a mitocôndria (Etapa 9.4), e boa parte das reads Illumina que sobram deve ser justamente de DNA mitocondrial, que está presente em dezenas de cópias por célula. Isso não atrapalha: essas reads não teriam onde alinhar no genoma nuclear de qualquer forma. O mesmo vale para outros elementos que não estão nas montagens, como o plasmídeo 2-mícrons.
+    - **Mais alinhamentos do que reads:** com `bwa mem -a`, uma read de uma região repetitiva é registrada em **todas** as cópias. O genoma de levedura tem muitas repetições (retrotransposons Ty, rDNA, subtelômeros), e é justamente nelas que o Polypolish leva vantagem sobre polidores que usam só o melhor alinhamento.
+    - **Hifiasm, ~3,4 alinhamentos por read:** o dobro das outras montagens. Mesmo depois do purge_dups, o Hifiasm guarda mais cópias de regiões repetitivas, como as unidades do rDNA (Etapa 9.5), e cada read dessas regiões alinha em todas elas.
+    - **Orientação e inserto:** nas três montagens, quase todos os pares estão na orientação `fr`, como esperado para uma biblioteca paired-end comum. Pares fora do intervalo de tamanho de inserto (~100–630 pb), ou discordantes, são marcados como `fail` e não são usados.
+    - **pypolca:** os números em *"Stats BEFORE polishing"* referem-se à montagem que **entrou** no pypolca, já polida pelo Medaka e pelo Polypolish. Em montagens Nanopore, a maior parte dos erros residuais são indels em homopolímeros (sequências como `AAAAAA`), e é para isso que rodamos o pypolca por último. O NextDenovo, que não faz polimento interno, chega a esta etapa com quase o dobro de erros residuais das outras montagens.
 
 **Quantas correções foram feitas?**
 
@@ -4067,7 +4654,30 @@ for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; d
 done
 ```
 
-<!-- SAÍDA: contagens das 3 montagens -->
+??? note "Ver saída do comando"
+
+    ```bash
+    ===== Scer1_q10_l500_Flye
+    Polypolish - posições alteradas: 1854
+    pypolca - Substitution Errors Found: 179
+    pypolca - Insertion/Deletion Errors Found: 557
+    ===== Scer1_q10_l500_hifiasm
+    Polypolish - posições alteradas: 1583
+    pypolca - Substitution Errors Found: 118
+    pypolca - Insertion/Deletion Errors Found: 571
+    ===== Scer1_q10_l500_nextdenovo
+    Polypolish - posições alteradas: 2784
+    pypolca - Substitution Errors Found: 341
+    pypolca - Insertion/Deletion Errors Found: 1001
+    ```
+
+| Montagem | Polypolish (posições alteradas) | pypolca (correções) | Total |
+|---|---|---|---|
+| Flye | 1.854 | 736 | 2.590 |
+| Hifiasm | 1.583 | 689 | 2.272 |
+| NextDenovo | 2.784 | 1.342 | 4.126 |
+
+Mesmo depois do Medaka, cada montagem ainda tinha milhares de bases que as reads Illumina contradizem. Os números não são diretamente comparáveis entre as ferramentas: o Polypolish conta **bases** alteradas (um indel de 3 pb vale 3), e o pypolca conta **eventos** (cada substituição ou indel vale 1). O NextDenovo, que não faz polimento interno, foi o que mais precisou de correções nas duas ferramentas. Mais correções não significam, por si só, uma montagem melhor ou pior: quem diz se a montagem melhorou é o QV do Merqury, na Etapa 11.
 
 ??? tip "Alternativa clássica: Pilon"
     O Pilon foi por muitos anos o padrão para polimento com Illumina e ainda aparece em muitos artigos. Ele é mais lento, usa mais memória e descarta reads com alinhamento ambíguo, o que pode deixar erros sem correção em regiões repetitivas. Exemplo para uma montagem:
@@ -4104,8 +4714,10 @@ Agora comparamos as versões de cada montagem lado a lado:
 
 | Amostra | Versões |
 |---|---|
-| Scer1 (Flye, Hifiasm, NextDenovo) | bruta → Medaka → Medaka + Illumina (híbrido) |
-| Scer2 (Flye, Hifiasm) | bruta → Medaka (não há Illumina para a Scer2) |
+| Scer1 (Flye, Hifiasm, NextDenovo) | bruta → purgada (sem mitocôndria + purge_dups) → Medaka → Medaka + Illumina (híbrido) |
+| Scer2 (Flye, Hifiasm) | bruta → Medaka (sobre a parte nuclear; sem polimento Illumina) |
+
+A versão "bruta" é a montagem original, ainda com a mitocôndria; todas as outras já estão sem ela (Etapa 9.4).
 
 Usamos três réguas: o **QUAST** (contiguidade e comparação com a referência), o **Merqury com k-mers Nanopore** (as mesmas reads usadas na montagem) e, para a Scer1, o **Merqury com k-mers Illumina** (uma régua independente).
 
@@ -4117,14 +4729,17 @@ quast.py \
   -o 8.QC_montagens/quast-polimento_q10_l500 \
   -s \
   -t 24 \
-  --labels "Scer1_Flye,Scer1_Flye_medaka,Scer1_Flye_hibrido,Scer1_Hifiasm,Scer1_Hifiasm_medaka,Scer1_Hifiasm_hibrido,Scer1_NextDenovo,Scer1_NextDenovo_medaka,Scer1_NextDenovo_hibrido,Scer2_Flye,Scer2_Flye_medaka,Scer2_Hifiasm,Scer2_Hifiasm_medaka" \
+  --labels "Scer1_Flye,Scer1_Flye_purgada,Scer1_Flye_medaka,Scer1_Flye_hibrido,Scer1_Hifiasm,Scer1_Hifiasm_purgada,Scer1_Hifiasm_medaka,Scer1_Hifiasm_hibrido,Scer1_NextDenovo,Scer1_NextDenovo_purgada,Scer1_NextDenovo_medaka,Scer1_NextDenovo_hibrido,Scer2_Flye,Scer2_Flye_medaka,Scer2_Hifiasm,Scer2_Hifiasm_medaka" \
   5.Montagem-Flye/Scer1_q10_l500/assembly.fasta \
+  9.Montagens-purgadas/Scer1_q10_l500_Flye.fasta \
   9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta \
   9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_hibrido.fasta \
   6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa \
+  9.Montagens-purgadas/Scer1_q10_l500_hifiasm.fasta \
   9.Polimento-Medaka/Scer1_q10_l500_hifiasm/consensus.fasta \
   9.Polimento-Illumina/Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm_hibrido.fasta \
   7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta \
+  9.Montagens-purgadas/Scer1_q10_l500_nextdenovo.fasta \
   9.Polimento-Medaka/Scer1_q10_l500_nextdenovo/consensus.fasta \
   9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo_hibrido.fasta \
   5.Montagem-Flye/Scer2_q10_l500/assembly.fasta \
@@ -4135,7 +4750,163 @@ quast.py \
 
 Abra os arquivos report.html e icarus.html no seu navegador de internet.
 
-<!-- SAÍDA: QUAST 13 versões -->
+!!! note "QUAST reaproveita alinhamentos"
+    Se a pasta de saída já existir, o QUAST avisa `Existing results can be reused` e, para cada montagem cujo rótulo (`--labels`) já foi analisado, usa o alinhamento antigo (`Using existing alignments...`). Isso só é seguro se o arquivo daquela montagem não mudou. Na dúvida, apague a pasta antes (`rm -rf 8.QC_montagens/quast-polimento_q10_l500`).
+
+??? note "Ver saída do comando (resumida)"
+
+    ```bash
+    $ quast.py -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -o 8.QC_montagens/quast-polimento_q10_l500 -s -t 24 --labels "..." (16 montagens)
+
+    Version: 5.3.0, fb88221c
+
+    Started: 2026-11-19 09:45:49
+
+    Main parameters:
+      MODE: default, threads: 24, split scaffolds: true, min contig length: 500, min alignment length: 65, \
+      min alignment IDY: 95.0, ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+    WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+    Contigs:
+      Pre-processing...
+      1  5.Montagem-Flye/Scer1_q10_l500/assembly.fasta ==> Scer1_Flye
+      1      79 scaffolds (Scer1_Flye) were broken into 81 contigs (Scer1_Flye_broken)
+      2  9.Montagens-purgadas/Scer1_q10_l500_Flye.fasta ==> Scer1_Flye_purgada
+      2      37 scaffolds (Scer1_Flye_purgada) were broken into 39 contigs (Scer1_Flye_purgada_broken)
+      3  9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta ==> Scer1_Flye_medaka
+      3      37 scaffolds (Scer1_Flye_medaka) were broken into 38 contigs (Scer1_Flye_medaka_broken)
+      4  9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_hibrido.fasta ==> Scer1_Flye_hibrido
+      4      37 scaffolds (Scer1_Flye_hibrido) were broken into 38 contigs (Scer1_Flye_hibrido_broken)
+      5  6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa ==> Scer1_Hifiasm
+      5      WARNING: nothing was broken, skipping 'Scer1_Hifiasm broken' from further analysis
+      (... o mesmo para as demais montagens ...)
+
+    Running Basic statistics processor...
+      Reference genome:
+        GCF_000146045.2_R64_genomic.fna, length = 12157105, num fragments = 17, GC % = 38.15
+      Calculating N50 and L50...
+        1  Scer1_Flye, N50 = 751043, L50 = 7, auN = 760329.1, Total length = 12301315, GC % = 37.98, # N's per 100 kbp =  1.63
+        3  Scer1_Flye_purgada, N50 = 754184, L50 = 6, auN = 778986.7, Total length = 11962229, GC % = 38.38, # N's per 100 kbp =  1.67
+        5  Scer1_Flye_medaka, N50 = 754537, L50 = 6, auN = 779324.0, Total length = 11971521, GC % = 38.37, # N's per 100 kbp =  0.84
+        7  Scer1_Flye_hibrido, N50 = 754533, L50 = 6, auN = 779307.9, Total length = 11971151, GC % = 38.36, # N's per 100 kbp =  0.84
+        9  Scer1_Hifiasm, N50 = 709754, L50 = 8, auN = 663675.9, Total length = 12980404, GC % = 37.68, # N's per 100 kbp =  0.00
+        10 Scer1_Hifiasm_purgada, N50 = 722953, L50 = 7, auN = 704379.3, Total length = 12161687, GC % = 38.43, # N's per 100 kbp =  0.00
+        11 Scer1_Hifiasm_medaka, N50 = 723241, L50 = 7, auN = 704731.3, Total length = 12167915, GC % = 38.43, # N's per 100 kbp =  0.00
+        12 Scer1_Hifiasm_hibrido, N50 = 723225, L50 = 7, auN = 704706.3, Total length = 12167298, GC % = 38.42, # N's per 100 kbp =  0.00
+        13 Scer1_NextDenovo, N50 = 766859, L50 = 7, auN = 750855.2, Total length = 12123689, GC % = 38.39, # N's per 100 kbp =  0.00
+        14 Scer1_NextDenovo_purgada, N50 = 766859, L50 = 7, auN = 757129.3, Total length = 12016151, GC % = 38.36, # N's per 100 kbp =  0.00
+        15 Scer1_NextDenovo_medaka, N50 = 766989, L50 = 7, auN = 757192.5, Total length = 12017915, GC % = 38.36, # N's per 100 kbp =  0.00
+        16 Scer1_NextDenovo_hibrido, N50 = 766906, L50 = 7, auN = 757054.6, Total length = 12015996, GC % = 38.36, # N's per 100 kbp =  0.00
+        17 Scer2_Flye, N50 = 16118, L50 = 163, auN = 19945.6, Total length = 8359493, GC % = 38.10, # N's per 100 kbp =  0.00
+        18 Scer2_Flye_medaka, N50 = 15859, L50 = 164, auN = 19376.8, Total length = 8251798, GC % = 38.20, # N's per 100 kbp =  0.00
+        19 Scer2_Hifiasm, N50 = 102299, L50 = 1, auN = 59051.2, Total length = 189042, GC % = 26.39, # N's per 100 kbp =  0.00
+        20 Scer2_Hifiasm_medaka, N50 = 7329, L50 = 5, auN = 8046.9, Total length = 86746, GC % = 37.75, # N's per 100 kbp =  0.00
+        (as versões "_broken" do Flye foram omitidas)
+    Done.
+
+    Running Contig analyzer...
+    WARNING: Version of installed minimap2 differs from its version in the QUAST package (2.28). Please make sure that you use an actual version of software.
+      (... mensagens de alinhamento de cada montagem contra a referência ...)
+    Done.
+
+    Running NA-NGA calculation...
+      1  Scer1_Flye, Largest alignment = 663281, NA50 = 221923, NGA50 = 221923, LA50 = 18, LGA50 = 18
+      3  Scer1_Flye_purgada, Largest alignment = 663281, NA50 = 247820, NGA50 = 221923, LA50 = 17, LGA50 = 18
+      5  Scer1_Flye_medaka, Largest alignment = 663473, NA50 = 247865, NGA50 = 221961, LA50 = 17, LGA50 = 18
+      7  Scer1_Flye_hibrido, Largest alignment = 663474, NA50 = 247835, NGA50 = 221944, LA50 = 17, LGA50 = 18
+      9  Scer1_Hifiasm, Largest alignment = 522170, NA50 = 184740, NGA50 = 186270, LA50 = 22, LGA50 = 20
+      10 Scer1_Hifiasm_purgada, Largest alignment = 522170, NA50 = 186270, NGA50 = 186270, LA50 = 20, LGA50 = 20
+      11 Scer1_Hifiasm_medaka, Largest alignment = 522341, NA50 = 186382, NGA50 = 186382, LA50 = 20, LGA50 = 20
+      12 Scer1_Hifiasm_hibrido, Largest alignment = 522334, NA50 = 186340, NGA50 = 186340, LA50 = 20, LGA50 = 20
+      13 Scer1_NextDenovo, Largest alignment = 522275, NA50 = 195195, NGA50 = 195195, LA50 = 21, LGA50 = 21
+      14 Scer1_NextDenovo_purgada, Largest alignment = 522275, NA50 = 195195, NGA50 = 185942, LA50 = 21, LGA50 = 22
+      15 Scer1_NextDenovo_medaka, Largest alignment = 522424, NA50 = 195238, NGA50 = 185986, LA50 = 21, LGA50 = 22
+      16 Scer1_NextDenovo_hibrido, Largest alignment = 522356, NA50 = 195208, NGA50 = 185947, LA50 = 21, LGA50 = 22
+      17 Scer2_Flye, Largest alignment = 69649, NA50 = 15391, NGA50 = 9628, LA50 = 177, LGA50 = 332
+      18 Scer2_Flye_medaka, Largest alignment = 69538, NA50 = 15312, NGA50 = 9297, LA50 = 176, LGA50 = 337
+      19 Scer2_Hifiasm, Largest alignment = 52811, NA50 = 7331, LA50 = 5
+      20 Scer2_Hifiasm_medaka, Largest alignment = 11295, NA50 = 6039, LA50 = 6
+    Done.
+
+    RESULTS:
+      Text versions of total report are saved to .../8.QC_montagens/quast-polimento_q10_l500/report.txt, report.tsv, and report.tex
+      HTML version (interactive tables and plots) is saved to .../8.QC_montagens/quast-polimento_q10_l500/report.html
+      Icarus (contig browser) is saved to .../8.QC_montagens/quast-polimento_q10_l500/icarus.html
+
+    Finished: 2026-11-19 09:47:03
+    Elapsed time: 0:01:14.090233
+    NOTICEs: 4; WARNINGs: 2; non-fatal ERRORs: 0
+    ```
+
+| Montagem | Versão | N50 | Tamanho total | NGA50 |
+|---|---|---|---|---|
+| Scer1 Flye | bruta | 751.043 | 12.301.315 | 221.923 |
+| | purgada | 754.184 | 11.962.229 | 221.923 |
+| | Medaka | 754.537 | 11.971.521 | 221.961 |
+| | híbrido | 754.533 | 11.971.151 | 221.944 |
+| Scer1 Hifiasm | bruta | 709.754 | 12.980.404 | 186.270 |
+| | purgada | 722.953 | 12.161.687 | 186.270 |
+| | Medaka | 723.241 | 12.167.915 | 186.382 |
+| | híbrido | 723.225 | 12.167.298 | 186.340 |
+| Scer1 NextDenovo | bruta | 766.859 | 12.123.689 | 195.195 |
+| | purgada | 766.859 | 12.016.151 | 185.942 |
+| | Medaka | 766.989 | 12.017.915 | 185.986 |
+| | híbrido | 766.906 | 12.015.996 | 185.947 |
+| Scer2 Flye | bruta | 16.118 | 8.359.493 | 9.628 |
+| | Medaka | 15.859 | 8.251.798 | 9.297 |
+| Scer2 Hifiasm | bruta | 102.299 | 189.042 | — |
+| | Medaka | 7.329 | 86.746 | — |
+
+!!! tip "Como interpretar"
+    **Da bruta para a purgada** (mitocôndria + purge_dups, Etapas 9.4 e 9.5):
+
+    - **O tamanho cai para perto do genoma de referência** (12,16 Mb): −339 kb no Flye, −819 kb no Hifiasm e −108 kb no NextDenovo. No Hifiasm, a montagem purgada (12,16 Mb) fica praticamente do tamanho da referência.
+    - **O N50 sobe um pouco** (Flye 751 → 754 kb; Hifiasm 710 → 723 kb), porque saíram contigs pequenos (mitocondriais e duplicados) e o N50 é calculado sobre um total menor. Não é ganho real de contiguidade.
+    - **O NGA50, que é medido contra a referência, não mudou no Flye nem no Hifiasm.** Isso mostra que o que saiu era redundante: nenhum trecho do genoma nuclear foi perdido nos blocos grandes. No NextDenovo ele caiu de 195 para 186 kb, sinal de que um dos cortes do purge_dups pegou a ponta de um bloco bem alinhado. É uma perda pequena, mas é o tipo de efeito colateral que vale conferir depois de remover duplicatas.
+    - **O GC sobe** (37,7–38,0% → 38,4%), porque o DNA mitocondrial da levedura é muito rico em AT (~17% de GC) e saiu da montagem.
+
+    **Da purgada para o Medaka e o híbrido:**
+
+    - **A contiguidade praticamente não muda.** O polimento corrige bases; ele não junta nem quebra contigs. O número de contigs é o mesmo, e o N50 varia só algumas centenas de pares de bases.
+    - **O Medaka aumenta as montagens da Scer1** (de 1,8 a 9,3 kb): o erro mais comum do Nanopore é a **deleção** de bases em homopolímeros, e o Medaka devolve essas bases.
+    - **No Flye, o Medaka também preencheu uma das duas lacunas** (`N`) que o Flye tinha deixado entre contigs de um mesmo scaffold: os `N's per 100 kbp` caem de 1,67 para 0,84, e o QUAST passa a quebrar os scaffolds em 38 contigs em vez de 39.
+    - **O polimento com Illumina reduz um pouco** (de ~370 pb a ~1,9 kb): ele remove parte das inserções do Medaka que as reads Illumina não confirmam.
+    - **Na Scer2**, a comparação com a bruta mistura dois efeitos: a remoção da mitocôndria (90 kb no Flye, 102 kb no Hifiasm) e o polimento. Descontada a mitocôndria, o Medaka reduziu a Scer2 Flye em ~17 kb. Com cobertura baixa (~6×), o Medaka tem pouca informação, e as alterações são menos confiáveis. A Scer2 Hifiasm, sem o contig mitocondrial, fica com só ~87 kb (Etapa 10).
+    - Para saber se as bases ficaram **mais corretas**, o QUAST não basta: a comparação com a referência (S288C) mistura erros de montagem com diferenças reais entre linhagens. Para isso, usamos o Merqury (11.2 e 11.3).
+
+**Comparação com a referência.** O `report.txt` traz também as métricas de alinhamento contra a S288C:
+
+```bash
+grep -E '^Assembly|^# contigs  |^Genome fraction|^Duplication|^# misassemblies|^# mismatches|^# indels' \
+  8.QC_montagens/quast-polimento_q10_l500/report.txt
+```
+
+| Montagem | Versão | Contigs | Fração do genoma (%) | Duplicação | Misassemblies | Mismatches /100 kb | Indels /100 kb |
+|---|---|---|---|---|---|---|---|
+| Scer1 Flye | bruta | 79 | 95,69 | 1,033 | 155 | 503 | 83,5 |
+| | purgada | 37 | 94,92 | 1,019 | 135 | 484 | 72,4 |
+| | Medaka | 37 | 95,00 | 1,016 | 131 | 483 | 58,3 |
+| | híbrido | 37 | 95,00 | 1,016 | 132 | 482 | **52,5** |
+| Scer1 Hifiasm | bruta | 87 | 96,01 | 1,084 | 197 | 497 | 94,6 |
+| | purgada | 24 | 95,26 | 1,032 | 169 | 478 | 72,9 |
+| | Medaka | 24 | 95,24 | 1,033 | 167 | 478 | 56,8 |
+| | híbrido | 24 | 95,28 | 1,033 | 168 | 477 | **51,4** |
+| Scer1 NextDenovo | bruta | 29 | 95,47 | 1,028 | 167 | 490 | 83,6 |
+| | purgada | 24 | 95,41 | 1,021 | 164 | 488 | 82,0 |
+| | Medaka | 24 | 95,33 | 1,021 | 166 | 487 | 61,7 |
+| | híbrido | 24 | 95,39 | 1,020 | 164 | 487 | **53,4** |
+| Scer2 Flye | bruta | 714 | 65,93 | 1,022 | 69 | 746 | 550 |
+| | Medaka | 705 | 65,31 | 1,019 | 61 | 746 | 528 |
+| Scer2 Hifiasm | bruta | 14 | 1,18 | 1,083 | 7 | 706 | 439 |
+| | Medaka | 13 | 0,61 | 0,998 | 2 | 613 | 159 |
+
+!!! tip "Como interpretar"
+    - **A fração do genoma cai ~0,7 ponto da bruta para a purgada no Flye e no Hifiasm.** Isso é exatamente o tamanho da mitocôndria: 85,8 kb de 12,16 Mb da referência são 0,7%. Saiu da montagem e, portanto, deixou de ser "coberta". No NextDenovo, que não tinha mitocôndria, a queda é de só 0,06 ponto (~7 kb), a perda de sequência real que já tinha aparecido no NGA50.
+    - **A razão de duplicação do Hifiasm cai de 1,084 para 1,032**, mais uma confirmação de que o purge_dups removeu cópias redundantes.
+    - **Os indels são o que o polimento corrige.** Nas três montagens da Scer1, os indels por 100 kb caem a cada etapa, de 83–95 na bruta para 51–53 no híbrido. A queda maior vem do Medaka; o Illumina tira mais um pouco. A queda da bruta para a purgada no Flye e no Hifiasm vem da remoção da mitocôndria e das duplicatas, que concentravam erros.
+    - **Os mismatches quase não mudam** (~480 por 100 kb, ou ~0,5%) e não devem mudar: são, em sua maioria, **diferenças reais** entre a CBS7963 e a S288C, e não erros. Duas linhagens de *S. cerevisiae* diferem tipicamente em 0,5–1% das posições. O mesmo vale para boa parte dos indels que restam no híbrido e para os misassemblies, que incluem rearranjos verdadeiros entre linhagens. É por isso que medimos a qualidade das bases com o Merqury, que não depende de uma referência.
+    - **Na Scer2 Flye**, o Medaka reduziu pouco os indels (550 → 528). Com ~6× de cobertura, sobram muitos erros, e a fração do genoma montada é de só 65%. A Scer2 Hifiasm cobre menos de 1% do genoma.
 
 !!! tip "Relatório pré-computado"
     [:material-file-chart: QUAST report.html (pós-polimento)](outputs/quast-polimento/report.html){ target=_blank } ·
@@ -4143,13 +4914,14 @@ Abra os arquivos report.html e icarus.html no seu navegador de internet.
 
 ### 11.2 Qualidade das bases e completude por k-mers Nanopore (Merqury)
 
-Como na Etapa 9.2, usamos os k-mers das reads Nanopore filtradas. As montagens brutas já foram avaliadas lá; agora avaliamos as versões polidas.
+Como na Etapa 9.2, usamos os k-mers das reads Nanopore filtradas. As montagens brutas foram avaliadas na 9.2 e as purgadas na 9.5; agora avaliamos as versões polidas, e o resumo junta todas.
 
 ```bash
 cd 8.QC_montagens/merqury
 
-# Scer1: versões Medaka e híbrida
+# Scer1: versões Medaka e híbrida (a versão purgada já foi avaliada na Etapa 9.5)
 for sample in Scer1_q10_l500_Flye_medaka Scer1_q10_l500_hifiasm_medaka Scer1_q10_l500_nextdenovo_medaka; do
+  rm -rf $sample   # apaga resultados antigos: o Merqury reaproveita arquivos existentes
   mkdir -p $sample && cd $sample
   merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
              ../../../9.Polimento-Medaka/${sample%_medaka}/consensus.fasta \
@@ -4158,6 +4930,7 @@ for sample in Scer1_q10_l500_Flye_medaka Scer1_q10_l500_hifiasm_medaka Scer1_q10
 done
 
 for sample in Scer1_q10_l500_Flye_hibrido Scer1_q10_l500_hifiasm_hibrido Scer1_q10_l500_nextdenovo_hibrido; do
+  rm -rf $sample
   mkdir -p $sample && cd $sample
   merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
              ../../../9.Polimento-Illumina/${sample%_hibrido}/${sample}.fasta \
@@ -4167,6 +4940,7 @@ done
 
 # Scer2: versão Medaka
 for sample in Scer2_q10_l500_Flye_medaka Scer2_q10_l500_hifiasm_medaka; do
+  rm -rf $sample
   mkdir -p $sample && cd $sample
   merqury.sh ../../../4.QC_dadosfiltrados/Scer2_q10_l500.meryl \
              ../../../9.Polimento-Medaka/${sample%_medaka}/consensus.fasta \
@@ -4177,6 +4951,48 @@ done
 cd ../..
 ```
 
+??? note "Ver saída do comando (resumida)"
+
+    ```bash
+    # Scer1: versões Medaka
+    read: Scer1_q10_l500.meryl
+
+    No haplotype dbs provided.
+    Running Merqury in non-trio mode...
+
+    asm1: consensus.fasta
+    out : Scer1_q10_l500_Flye_medaka
+
+    Get spectra-cn plots and QV stats
+    (... o mesmo para Scer1_q10_l500_hifiasm_medaka e Scer1_q10_l500_nextdenovo_medaka ...)
+
+    # Scer1: versões híbridas
+    read: Scer1_q10_l500.meryl
+
+    No haplotype dbs provided.
+    Running Merqury in non-trio mode...
+
+    asm1: Scer1_q10_l500_Flye_hibrido.fasta
+    out : Scer1_q10_l500_Flye_hibrido
+
+    Get spectra-cn plots and QV stats
+    (... o mesmo para Scer1_q10_l500_hifiasm_hibrido e Scer1_q10_l500_nextdenovo_hibrido ...)
+
+    # Scer2: versões Medaka
+    read: Scer2_q10_l500.meryl
+
+    No haplotype dbs provided.
+    Running Merqury in non-trio mode...
+
+    asm1: consensus.fasta
+    out : Scer2_q10_l500_Flye_medaka
+
+    Get spectra-cn plots and QV stats
+    (... o mesmo para Scer2_q10_l500_hifiasm_medaka ...)
+    ```
+
+    O Merqury não mostra os resultados na tela: o QV e a completude ficam nos arquivos `.qv` e `.completeness.stats` dentro da pasta de cada amostra, que vamos juntar a seguir. Repare que, para as versões Medaka, a montagem aparece sempre como `consensus.fasta`; é por isso que cada amostra roda em uma pasta própria.
+
 O `${sample%_medaka}` remove o sufixo `_medaka` do nome da amostra (por exemplo, `Scer1_q10_l500_Flye_medaka` vira `Scer1_q10_l500_Flye`), que é o nome da pasta de saída do Medaka. O `${sample%_hibrido}` faz o mesmo com o sufixo `_hibrido`.
 
 **Juntar os resultados do Merqury em um arquivo:**
@@ -4186,9 +5002,9 @@ cd 8.QC_montagens/merqury
 
 echo -e "Sample\tQV\tError_rate\tCompleteness" > merqury_summary_polimento.tsv
 
-for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_Flye_medaka Scer1_q10_l500_Flye_hibrido \
-              Scer1_q10_l500_hifiasm Scer1_q10_l500_hifiasm_medaka Scer1_q10_l500_hifiasm_hibrido \
-              Scer1_q10_l500_nextdenovo Scer1_q10_l500_nextdenovo_medaka Scer1_q10_l500_nextdenovo_hibrido \
+for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_Flye_purgada Scer1_q10_l500_Flye_medaka Scer1_q10_l500_Flye_hibrido \
+              Scer1_q10_l500_hifiasm Scer1_q10_l500_hifiasm_purgada Scer1_q10_l500_hifiasm_medaka Scer1_q10_l500_hifiasm_hibrido \
+              Scer1_q10_l500_nextdenovo Scer1_q10_l500_nextdenovo_purgada Scer1_q10_l500_nextdenovo_medaka Scer1_q10_l500_nextdenovo_hibrido \
               Scer2_q10_l500_Flye Scer2_q10_l500_Flye_medaka \
               Scer2_q10_l500_hifiasm Scer2_q10_l500_hifiasm_medaka; do
   qv=$(awk 'END{print $4}' ${prefix}/${prefix}.qv 2>/dev/null)
@@ -4202,7 +5018,71 @@ column -t merqury_summary_polimento.tsv
 cd ../..
 ```
 
-<!-- SAÍDA: merqury_summary_polimento.tsv -->
+??? note "Ver saída do comando"
+
+    ```bash
+    $ column -t merqury_summary_polimento.tsv
+    Sample                             QV       Error_rate   Completeness
+    Scer1_q10_l500_Flye                43.3392  4.63532e-05  93.9846
+    Scer1_q10_l500_Flye_purgada        45.3423  2.92259e-05  93.0454
+    Scer1_q10_l500_Flye_medaka         43.3389  4.63569e-05  93.0713
+    Scer1_q10_l500_Flye_hibrido        44.971   3.18349e-05  93.0835
+    Scer1_q10_l500_hifiasm             49.3833  1.15257e-05  94.0388
+    Scer1_q10_l500_hifiasm_purgada     50.7533  8.40761e-06  92.9639
+    Scer1_q10_l500_hifiasm_medaka      46.3397  2.3229e-05   93.0422
+    Scer1_q10_l500_hifiasm_hibrido     49.7119  1.06859e-05  93.0596
+    Scer1_q10_l500_nextdenovo          42.3283  5.85018e-05  92.4538
+    Scer1_q10_l500_nextdenovo_purgada  42.8126  5.23281e-05  92.3822
+    Scer1_q10_l500_nextdenovo_medaka   40.6819  8.54688e-05  92.5878
+    Scer1_q10_l500_nextdenovo_hibrido  43.0445  4.96073e-05  92.6542
+    Scer2_q10_l500_Flye                25.1942  0.00302399   89.9916
+    Scer2_q10_l500_Flye_medaka         25.5501  0.00278608   24.4887
+    Scer2_q10_l500_hifiasm             38.7082  0.000134641  71.8306
+    Scer2_q10_l500_hifiasm_medaka      32.5242  0.000559221  6.4674
+    ```
+
+QV com k-mers **Nanopore**:
+
+| Montagem | Bruta | Purgada | Medaka | Híbrido (Medaka + Illumina) |
+|---|---|---|---|---|
+| Scer1 Flye | 43,3 | 45,3 | 43,3 | 45,0 |
+| Scer1 Hifiasm | 49,4 | 50,8 | 46,3 | 49,7 |
+| Scer1 NextDenovo | 42,3 | 42,8 | 40,7 | 43,0 |
+| Scer2 Flye | 25,2 | — | 25,6 | — |
+| Scer2 Hifiasm | 38,7 | — | 32,5 | — |
+
+Na Scer2 não há versão purgada: a coluna "Medaka" já é só a parte nuclear (sem a mitocôndria) e polida.
+
+**Da bruta para a purgada, o QV sobe** nas três montagens da Scer1 (+0,5 a +2,0). O que saiu (cópias redundantes da mitocôndria, duplicatas e contigs `JUNK` de baixa cobertura) concentrava mais erros do que o resto da montagem.
+
+**A completude** (fração dos k-mers confiáveis das reads presentes na montagem):
+
+- **Scer1: cai ~1 ponto da bruta para a purgada** e depois praticamente não muda. Esse ponto é a mitocôndria: seus k-mers estão nas reads, mas não estão mais na montagem nuclear. O polimento não acrescenta nem remove regiões, como vimos no QUAST.
+- **Scer2: despenca** (Flye 90,0% → 24,5%; Hifiasm 71,8% → 6,5%). Isso não é o Medaka estragando a montagem. A pista está na Scer2 Hifiasm bruta: ela tem só 189 kb, dos quais 102 kb são a mitocôndria, e mesmo assim tinha "71,8% de completude", algo impossível se a régua fosse o genoma nuclear. Com ~6× de cobertura, a maioria dos k-mers nucleares aparece poucas vezes nas reads e fica abaixo do limite que o Merqury usa para considerar um k-mer confiável. Sobram como "confiáveis" sobretudo os k-mers de sequências com muitas cópias, e a principal delas é o DNA mitocondrial, com dezenas de cópias por célula. Quando a mitocôndria sai da montagem, a completude cai junto. Na Scer2, a completude do Merqury mede quase só a mitocôndria e não diz nada sobre o genoma nuclear.
+
+    Dá para confirmar olhando o arquivo `.completeness.stats`, cuja 4ª coluna é o número de k-mers confiáveis das reads:
+
+    ```bash
+    cd 8.QC_montagens/merqury
+    cat Scer1_q10_l500_Flye/*.completeness.stats
+    cat Scer2_q10_l500_Flye/*.completeness.stats Scer2_q10_l500_Flye_medaka/*.completeness.stats
+    cd ../..
+    ```
+
+    ```text
+    assembly        all     11299872        12023116        93.9846
+    assembly        all     104986  116662  89.9916
+    consensus       all     28569   116662  24.4887
+    ```
+
+    Na Scer1 são ~12 milhões de k-mers confiáveis, o tamanho do genoma. Na Scer2 são só ~117 mil, cem vezes menos e da ordem do tamanho da mitocôndria (~86 kb). A Scer2 Flye bruta continha ~105 mil deles; sem a mitocôndria, restam ~29 mil.
+
+!!! question "O Medaka piorou as montagens?"
+    Por esta régua, sim: da purgada para o Medaka, o QV cai nas três montagens da Scer1 (−2,0 a −4,4), e o polimento com Illumina recupera quase tudo. Mas lembre o que estamos usando como régua: os k-mers das **mesmas reads Nanopore** usadas na montagem e no próprio Medaka.
+
+    As reads Nanopore têm **erros sistemáticos**, principalmente em homopolímeros: muitas reads erram do mesmo jeito no mesmo lugar. A montagem herda esses erros, e eles também estão nos k-mers das reads, então o Merqury não os conta como erro. Quando o Medaka corrige um desses erros, a sequência corrigida gera k-mers que quase não aparecem nas reads, e o Merqury passa a contá-los como erro. Ou seja, esta régua pode **punir justamente as correções**.
+
+    Para decidir, precisamos de uma régua que não compartilhe os erros do Nanopore: os k-mers Illumina, na próxima seção.
 
 !!! tip "Resultado pré-computado"
     [:material-file-document: merqury_summary_polimento.tsv](outputs/merqury/merqury_summary_polimento.tsv)
@@ -4232,12 +5112,15 @@ mkdir -p Scer1_q10_l500_nextdenovo && cd Scer1_q10_l500_nextdenovo
 merqury.sh $M ../../../7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta Scer1_q10_l500_nextdenovo
 cd ..
 
-# versões Medaka e híbrida
+# versões purgada, Medaka e híbrida
 for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  mkdir -p ${s}_medaka && cd ${s}_medaka
+  rm -rf ${s}_purgada; mkdir -p ${s}_purgada && cd ${s}_purgada
+  merqury.sh $M ../../../9.Montagens-purgadas/$s.fasta ${s}_purgada
+  cd ..
+  rm -rf ${s}_medaka; mkdir -p ${s}_medaka && cd ${s}_medaka
   merqury.sh $M ../../../9.Polimento-Medaka/$s/consensus.fasta ${s}_medaka
   cd ..
-  mkdir -p ${s}_hibrido && cd ${s}_hibrido
+  rm -rf ${s}_hibrido; mkdir -p ${s}_hibrido && cd ${s}_hibrido
   merqury.sh $M ../../../9.Polimento-Illumina/$s/${s}_hibrido.fasta ${s}_hibrido
   cd ..
 done
@@ -4245,7 +5128,7 @@ done
 # resumo
 echo -e "Sample\tQV\tError_rate\tCompleteness" > merqury_illumina_summary.tsv
 for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  for prefix in $s ${s}_medaka ${s}_hibrido; do
+  for prefix in $s ${s}_purgada ${s}_medaka ${s}_hibrido; do
     qv=$(awk 'END{print $4}' ${prefix}/${prefix}.qv 2>/dev/null)
     err=$(awk 'END{print $5}' ${prefix}/${prefix}.qv 2>/dev/null)
     comp=$(awk 'END{print $5}' ${prefix}/${prefix}.completeness.stats 2>/dev/null)
@@ -4259,9 +5142,86 @@ cd ../..
 
 Cada versão é avaliada numa pasta própria. Isso evita um problema do Merqury: ele guarda os k-mers de cada montagem num banco com o **nome do arquivo FASTA** (por exemplo, `consensus.meryl`) e reaproveita esse banco, sem avisar, se ele já existir na pasta. Como várias montagens têm o mesmo nome de arquivo (`consensus.fasta`), avaliá-las na mesma pasta faria a segunda receber o resultado da primeira.
 
-<!-- SAÍDA: merqury_illumina_summary.tsv + tabela + interpretação -->
+??? note "Ver saída do comando (resumida)"
 
-??? info "Por que o QV não passa de ~35? (QV por contig)"
+    ```bash
+    $ meryl k=21 memory=24 threads=24 count 0.DadosBrutos/illumina/Scer1_ilmn_40x_1.fq.gz 0.DadosBrutos/illumina/Scer1_ilmn_40x_2.fq.gz output 4.QC_dadosfiltrados/Scer1_ilmn.meryl
+
+    Found 1 command tree.
+
+    Counting 1278 (estimated) million canonical 21-mers from 2 input files:
+        sequence-file: 0.DadosBrutos/illumina/Scer1_ilmn_40x_1.fq.gz
+        sequence-file: 0.DadosBrutos/illumina/Scer1_ilmn_40x_2.fq.gz
+    (...)
+    FINAL CONFIGURATION
+    -------------------
+
+    Estimated to require 4539 MB memory out of 24 GB allowed.
+    Estimated to require 2 batches.
+    (...)
+    Input complete.  Writing results to '4.QC_dadosfiltrados/Scer1_ilmn.meryl', using 24 threads.
+    finishIteration()--
+
+    Finished counting.
+
+    Cleaning up.
+
+    Bye.
+
+    $ merqury.sh $M ../../../5.Montagem-Flye/Scer1_q10_l500/assembly.fasta Scer1_q10_l500_Flye
+    read: Scer1_ilmn.meryl
+
+    No haplotype dbs provided.
+    Running Merqury in non-trio mode...
+
+    asm1: assembly.fasta
+    out : Scer1_q10_l500_Flye
+
+    Get spectra-cn plots and QV stats
+
+    (... o mesmo para as outras versões ...)
+
+    $ column -t merqury_illumina_summary.tsv
+    Sample                             QV       Error_rate   Completeness
+    Scer1_q10_l500_Flye                32.5739  0.000552852  99.3021
+    Scer1_q10_l500_Flye_purgada        33.881   0.000409164  98.5443
+    Scer1_q10_l500_Flye_medaka         34.9703  0.000318394  98.8318
+    Scer1_q10_l500_Flye_hibrido        36.2018  0.000239785  98.9676
+    Scer1_q10_l500_hifiasm             32.1296  0.000612401  99.2242
+    Scer1_q10_l500_hifiasm_purgada     35.6488  0.000272346  98.52
+    Scer1_q10_l500_hifiasm_medaka      38.6867  0.000135309  98.887
+    Scer1_q10_l500_hifiasm_hibrido     41.2846  7.43949e-05  99.017
+    Scer1_q10_l500_nextdenovo          32.0048  0.000630261  97.8113
+    Scer1_q10_l500_nextdenovo_purgada  32.0963  0.000617116  97.7385
+    Scer1_q10_l500_nextdenovo_medaka   33.9771  0.000400209  98.2778
+    Scer1_q10_l500_nextdenovo_hibrido  35.4923  0.00028234   98.4936
+    ```
+
+!!! tip "Resultado pré-computado"
+    [:material-file-document: merqury_illumina_summary.tsv](outputs/merqury/merqury_illumina_summary.tsv)
+
+QV da Scer1 pelas duas réguas:
+
+| Montagem | Régua | Bruta | Purgada | Medaka | Híbrido (Medaka + Illumina) |
+|---|---|---|---|---|---|
+| Flye | Nanopore (11.2) | 43,3 | 45,3 | 43,3 | 45,0 |
+| | **Illumina** | **32,6** | **33,9** | **35,0** | **36,2** |
+| Hifiasm | Nanopore (11.2) | 49,4 | 50,8 | 46,3 | 49,7 |
+| | **Illumina** | **32,1** | **35,6** | **38,7** | **41,3** |
+| NextDenovo | Nanopore (11.2) | 42,3 | 42,8 | 40,7 | 43,0 |
+| | **Illumina** | **32,0** | **32,1** | **34,0** | **35,5** |
+
+!!! tip "Como interpretar"
+    - **Pela régua Illumina, cada passo melhorou as três montagens.** A remoção da mitocôndria e das duplicatas trouxe de +0,1 a +3,5 de QV, o Medaka mais +1,1 a +3,0, e o polimento com Illumina mais +1,2 a +2,6. Do começo ao fim, o Hifiasm foi de QV 32,1 para 41,3: a taxa de erro caiu de ~1 a cada 1.600 bases para ~1 a cada 13.000.
+    - **Por que a purgada já melhora o QV?** O DNA mitocondrial é tão rico em AT (~17% de GC) que o Illumina o cobre mal, e os k-mers dos contigs mitocondriais parecem erros para esta régua. O ganho é maior no Hifiasm (+3,5), que tinha 49 contigs mitocondriais, e quase nulo no NextDenovo (+0,1), que não tinha nenhum.
+    - **A completude cai um pouco na purgada e volta a subir com o polimento.** A queda (~0,8 ponto no Flye e no Hifiasm) é a mitocôndria: as reads Illumina também têm k-mers mitocondriais, que deixaram de estar na montagem. Depois, cada polimento devolve à montagem k-mers corretos que antes estavam com erro.
+    - **As duas réguas discordam, e em sentidos opostos.** A régua Nanopore dizia que o Medaka piorava as montagens; a régua Illumina, que é independente dos erros do Nanopore, mostra que ele melhorou. A régua Nanopore estava punindo as correções, como discutimos na 11.2.
+    - **A régua Nanopore também superestima a qualidade:** ela dá QV 42–51 para as montagens, contra 32–41 pela régua Illumina. Os erros sistemáticos do Nanopore estão tanto na montagem quanto nas reads, e por isso não são contados.
+    - **A melhor montagem muda conforme a régua.** As três montagens brutas estavam empatadas pela régua Illumina (QV ~32). Depois de todas as etapas, o Hifiasm se destaca (41,3), seguido do Flye (36,2) e do NextDenovo (35,5).
+    - **Lição geral:** avalie uma montagem com uma régua que não compartilhe os vieses dos dados usados para construí-la. Quando não há dados independentes (como na Scer2), o QV do Merqury com as próprias reads deve ser lido com cautela, principalmente para comparar versões antes e depois do polimento.
+
+
+??? info "Onde estão os erros que sobram? (QV por contig)"
     O Merqury também calcula o QV de cada sequência (aqui, a montagem Flye híbrida), no arquivo `<saída>.<montagem>.qv`. Ordenando pelo número de k-mers com erro (2ª coluna), vemos onde eles se concentram:
 
     ```bash
@@ -4270,22 +5230,104 @@ Cada versão é avaliada numa pasta própria. Isso evita um problema do Merqury:
     cd ../../..
     ```
 
-    ```
-    contig_108      16888   32725   14.6889 0.033971
-    contig_100      11269   1059850 32.9337 0.000508897
-    contig_138      6940    8341    10.8914 0.0814438
-    scaffold_33     6503    1050434 35.2919 0.000295671
-    contig_123      5621    6386    10.1723 0.0961095
-    contig_68       5341    22601   18.9428 0.0127562
-    contig_36       5161    5769    9.9308  0.101606
-    contig_80       4332    53901   23.9993 0.00398174
-    contig_111      3754    64342   25.4385 0.00285856
-    contig_12       2147    814323  39.0064 0.000125708
+    ```text
+    contig_108_1    16888   32725   14.6889 0.033971
+    contig_100_1    11110   1059905 32.9959 0.000501655
+    contig_138_1    6940    8341    10.8914 0.0814438
+    contig_123_1    5621    6386    10.1723 0.0961095
+    contig_36_1     5161    5769    9.9308  0.101606
+    contig_150_1    2397    139847  30.8463 0.000822935
+    contig_12_1     2126    814232  39.0486 0.000124491
+    contig_93_1     1879    913413  40.0853 9.80542e-05
+    contig_10_1     1859    257809  34.6274 0.000344554
+    contig_103_1    1480    754513  40.2922 9.34936e-05
     ```
 
-    Poucos contigs pequenos (QV entre 10 e 25), que somam só ~1,7% da montagem, concentram mais da metade dos k-mers com erro. Nos cromossomos grandes, o QV fica entre 37 e 40. Parte desses contigs pequenos é **DNA mitocondrial**, tão rico em AT (~15% de GC) que o sequenciamento Illumina mal o cobre; os demais são sequências que praticamente não aparecem nas reads Illumina, porque vieram de outra cultura, sequenciada anos antes. Em nenhum dos casos há erro de base para o polidor corrigir.
+    As colunas são: contig, k-mers com erro, tamanho, QV e taxa de erro.
 
-    **Lição:** quando o QV do Merqury "empaca", olhe o QV por contig antes de concluir que o polimento falhou.
+    - **Quatro contigs pequenos** (`contig_108_1`, `contig_138_1`, `contig_123_1` e `contig_36_1`, com QV entre 10 e 15) somam só ~53 kb, ou 0,4% da montagem, mas concentram mais da metade dos k-mers com erro. Sem eles, o QV da montagem ficaria perto de 40.
+    - **Nos cromossomos grandes, o QV fica entre 39 e 40** (`contig_12_1`, `contig_93_1`, `contig_103_1`).
+
+    **O que são esses quatro contigs?** Não são mitocondriais, porque a mitocôndria já foi separada na Etapa 9.4. Para descobrir, medimos o GC deles e procuramos onde alinham na referência:
+
+    ```bash
+    conda activate polimento
+    f=9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_hibrido.fasta
+    samtools faidx $f
+    samtools faidx $f contig_108_1 contig_138_1 contig_123_1 contig_36_1 > pequenos.fa
+
+    # tamanho e GC de cada um
+    awk '/^>/{if(n) print id, n, sprintf("%.1f%%", 100*gc/n); id=substr($1,2); n=0; gc=0; next}
+         {n+=length($0); gc+=gsub(/[GCgc]/,"")} END{print id, n, sprintf("%.1f%%", 100*gc/n)}' pequenos.fa
+
+    # onde alinham na referência? (contig, tamanho, cromossomo, início, fim, bases idênticas, tamanho do alinhamento)
+    minimap2 -x asm10 ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna pequenos.fa \
+      | cut -f1,2,6,8,9,10,11 | sort -k1,1 -k6,6nr
+    conda deactivate
+    ```
+
+    ```text
+    contig_108_1 32745 39.2%
+    contig_138_1 8361 38.8%
+    contig_123_1 6406 33.0%
+    contig_36_1 5789 36.9%
+
+    contig_108_1    32745   NC_001141.2     119     26093   14569   33152
+    contig_108_1    32745   NC_001147.6     11551   30627   12575   19452
+    contig_123_1    6406    NC_001142.9     197547  203767  6109    6220
+    contig_123_1    6406    NC_001140.6     85562   91731   5513    6169
+    contig_123_1    6406    NC_001148.4     436919  443109  5420    6191
+    contig_123_1    6406    NC_001145.3     504794  504870  55      76
+    contig_138_1    8361    NC_001141.2     37277   39169   1224    1892
+    contig_138_1    8361    NC_001144.5     1064465 1072808 72      8343
+    (... alinhamentos curtos omitidos ...)
+    contig_36_1     5789    NC_001136.10    1523090 1523989 389     899
+    contig_36_1     5789    NC_001133.9     1308    2087    331     780
+    ```
+
+    - **O GC é de levedura** (33–39%), então não é contaminação bacteriana.
+    - **`contig_123_1` é um retrotransposon Ty.** Ele tem ~6 kb, o tamanho de um elemento Ty completo, e alinha quase inteiro em três cromossomos diferentes (X, VIII e XVI), justamente porque o genoma tem várias cópias desse elemento.
+    - **Os outros três são de regiões subteloméricas**, as pontas dos cromossomos: o início dos cromossomos IX, XV e I e o final dos cromossomos XII e IV. Os alinhamentos são parciais e com muitas diferenças (no `contig_108_1`, só ~44% de bases idênticas). Essas regiões são cheias de repetições e mudam muito entre linhagens.
+
+    **Por que o QV deles é tão baixo?** Para responder, alinhamos as reads Nanopore e as Illumina na montagem e contamos quantas caem em cada contig, com o `contig_12_1` (um cromossomo grande) como comparação. Contamos de duas formas: com todas as reads e só com as de MAPQ ≥ 1, as que o Medaka e o pypolca usam.
+
+    ```bash
+    conda activate polimento
+    f=9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_hibrido.fasta
+    C=cobertura_pequenos
+    D=0.DadosBrutos/illumina
+    mkdir -p $C
+
+    minimap2 -ax map-ont -t 24 $f 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz | samtools sort -@ 8 -o $C/ont.bam
+    samtools index $C/ont.bam
+    bwa index -p $C/hib $f
+    bwa mem -t 24 $C/hib $D/Scer1_ilmn_40x_1.fq.gz $D/Scer1_ilmn_40x_2.fq.gz | samtools sort -@ 8 -o $C/ilmn.bam
+    samtools index $C/ilmn.bam
+
+    for b in ont ilmn; do
+      for q in 0 1; do
+        echo "== $b, MAPQ >= $q  (contig, reads, % coberto, profundidade média, MAPQ médio)"
+        samtools coverage -q $q $C/$b.bam | grep -wE 'contig_108_1|contig_138_1|contig_123_1|contig_36_1|contig_12_1' | cut -f1,4,6,7,9
+      done
+    done
+    conda deactivate
+    ```
+
+    | Contig | Nanopore: profundidade (MAPQ médio) | Illumina: % coberto | Illumina: profundidade | Illumina com MAPQ ≥ 1: % coberto |
+    |---|---|---|---|---|
+    | `contig_12_1` (cromossomo) | 54× (56) | 99,6% | 31× | 98,1% |
+    | `contig_123_1` (Ty) | 54× (54) | 3,9% | 0,06× | 0% |
+    | `contig_108_1` | 28× (43) | 44,2% | 8,9× | 23,4% |
+    | `contig_138_1` | 23× (59) | 14,4% | 1,2× | 0% |
+    | `contig_36_1` | 16× (60) | 11,6% | 1,2× | 11,6% |
+
+    - **As reads Nanopore cobrem os quatro contigs normalmente**, com profundidade parecida com a do genoma e MAPQ alto: são reads que alinham só ali, e não em outra cópia. Ou seja, são **sequências reais** da cultura sequenciada com Nanopore, e o Medaka teve reads para poli-las. Pelo mesmo motivo o purge_dups não as removeu: a cobertura delas está dentro dos limites normais (5–147×), e elas não se parecem com nenhum outro contig.
+    - **As reads Illumina praticamente não existem nesses contigs.** Elas cobrem de 0% a 44% de cada um, contra 99,6% do cromossomo.
+    - **O QV baixo, portanto, não é erro de base.** O Merqury conta como "erro" todo k-mer da montagem que não aparece nas reads usadas como régua. Uma sequência correta que simplesmente não existe nas reads Illumina recebe QV ~10. Pelo mesmo motivo, os polidores Illumina não tinham reads para corrigir nada ali.
+
+    A explicação mais provável é a diferença entre as culturas. As reads Illumina e Nanopore vieram de culturas diferentes da mesma linhagem, sequenciadas com anos de diferença, e os elementos Ty e as regiões subteloméricas são justamente as partes mais variáveis do genoma da levedura: elementos Ty se movem e se perdem, e subtelômeros se rearranjam. Uma cópia de Ty ou um trecho subtelomérico presente em uma cultura pode faltar na outra. Contaminação cruzada com outra linhagem também produziria esse padrão, e com estes dados não dá para separar as duas hipóteses.
+
+    **Lição:** quando o QV do Merqury "empaca", olhe o QV por contig antes de concluir que o polimento falhou. E lembre que o QV do Merqury mede a concordância com a régua: uma sequência ausente das reads usadas como régua aparece como erro, mesmo que esteja correta.
 
 !!! question "Para pensar"
     - O Medaka melhorou as montagens pela régua Nanopore (11.2)? E pela régua Illumina (11.3)? As duas réguas concordam?
@@ -4293,14 +5335,49 @@ Cada versão é avaliada numa pasta própria. Isso evita um problema do Merqury:
     - A montagem com melhor QV mudou depois do polimento híbrido?
     - Por que um QV medido com k-mers das próprias reads Nanopore pode superestimar a qualidade de uma montagem Nanopore?
 
+### 11.4 Versões que seguem no tutorial
+
+Para a Scer1, a régua independente (k-mers Illumina) mostrou que o polimento melhorou as três montagens: seguiremos com as versões **híbridas** (purge_dups + Medaka + Illumina). Para a Scer2, não polimos com Illumina e, portanto, não temos como confirmar o efeito do Medaka. Pelo que vimos na Scer1, em que a régua Nanopore "puniu" correções que a régua Illumina confirmou, é provável que o Medaka também tenha melhorado a Scer2 (que, além disso, é R10.4.1, uma química mais precisa); seguiremos com as versões **Medaka**, lembrando que, com cobertura de ~6×, esse efeito não pôde ser verificado.
+
+Primeiro, copiamos a versão escolhida de cada montagem para uma mesma pasta, com nomes padronizados:
+
+```bash
+# apaga versões anteriores (e índices .fai antigos, que ficariam desatualizados)
+rm -rf 9.Montagens-polidas
+mkdir -p 9.Montagens-polidas
+
+# Scer1: purge_dups + Medaka + Illumina
+for a in Flye hifiasm nextdenovo; do
+  cp 9.Polimento-Illumina/Scer1_q10_l500_$a/Scer1_q10_l500_${a}_hibrido.fasta 9.Montagens-polidas/Scer1_q10_l500_$a.fasta
+done
+
+# Scer2: Medaka
+for a in Flye hifiasm; do
+  cp 9.Polimento-Medaka/Scer2_q10_l500_$a/consensus.fasta 9.Montagens-polidas/Scer2_q10_l500_$a.fasta
+done
+
+ls -lh 9.Montagens-polidas/
+```
+
+??? example "Saída: ls 9.Montagens-polidas"
+
+    ```text
+    total 44M
+    -rw-rw-r--+ 1 renata renata  12M nov 19 10:38 Scer1_q10_l500_Flye.fasta
+    -rw-rw-r--+ 1 renata renata  12M nov 19 10:38 Scer1_q10_l500_hifiasm.fasta
+    -rw-rw-r--+ 1 renata renata  12M nov 19 10:38 Scer1_q10_l500_nextdenovo.fasta
+    -rw-rw-r--+ 1 renata renata 7,9M nov 19 10:38 Scer2_q10_l500_Flye.fasta
+    -rw-rw-r--+ 1 renata renata  85K nov 19 10:38 Scer2_q10_l500_hifiasm.fasta
+    ```
+
+A partir daqui, todas as etapas usam os arquivos de `9.Montagens-polidas/` (só a parte nuclear, já que a mitocôndria foi separada na Etapa 9.4).
+
 ### Checklist da Etapa 11
 
 - [ ] QUAST com as versões bruta, Medaka e híbrida de cada montagem
 - [ ] Merqury (k-mers Nanopore) para as versões polidas de todas as montagens
 - [ ] Merqury (k-mers Illumina) para as três versões das montagens da Scer1
-- [ ] **Decidi se vou seguir com a versão polida ou a não-polida** para cada amostra
-
-**A partir daqui, vamos seguir sem o polimento, uma vez que na vasta maioria dos casos, ele diminuiu a qualidade das montagens.**
+- [ ] Copiei a versão escolhida de cada montagem para `9.Montagens-polidas/`
 
 ---
 
@@ -4308,116 +5385,42 @@ Cada versão é avaliada numa pasta própria. Isso evita um problema do Merqury:
 
 ### 12.1 - Scaffolding com referência
 
-Nesse caso, como temos um genoma de referência da própria espécie, vamos testar utilizar o RagTag para o scaffolding com os dados provenientes do Medaka
+Nesse caso, como temos um genoma de referência da própria espécie, vamos testar utilizar o RagTag para o scaffolding das montagens polidas, só com a parte nuclear (Etapas 9.4 e 11.4)
 
 
 ```bash
-mkdir 10.Scaffolding
-ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 10.Scaffolding/Scer1_q10_l500_Flye -t 24
+mkdir -p 10.Scaffolding
 
-ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 10.Scaffolding/Scer2_q10_l500_Flye -t 24
-
-ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer1_q10_l500_hifiasm -t 24
-
-ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer2_q10_l500_hifiasm -t 24
-
-ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
+for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
+  # apaga resultados anteriores: o RagTag reaproveita o alinhamento (.paf) que encontrar na pasta
+  rm -rf 10.Scaffolding/${prefix}
+  ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 9.Montagens-polidas/${prefix}.fasta -o 10.Scaffolding/${prefix} -t 24
+done
 ```
-??? note "Ver saída do comando"
+??? note "Ver saída do comando (resumida)"
 
     ```bash
-    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 10.Scaffolding/Scer1_q10_l500_Flye -t 24
-    Tue Jul  7 22:57:54 2026 --- VERSION: RagTag v2.1.0
-    Tue Jul  7 22:57:54 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -o 10.Scaffolding/Scer1_q10_l500_Flye -t 24
-    Tue Jul  7 22:57:54 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-    Tue Jul  7 22:57:54 2026 --- INFO: Mapping the query genome to the reference genome
-    Tue Jul  7 22:57:54 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:55 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:55 2026 --- INFO: Reading whole genome alignments
-    Tue Jul  7 22:57:55 2026 --- INFO: Filtering and merging alignments
-    Tue Jul  7 22:57:55 2026 --- INFO: Ordering and orienting query sequences
-    Tue Jul  7 22:57:55 2026 --- INFO: Writing scaffolds
-    Tue Jul  7 22:57:55 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp
-    Tue Jul  7 22:57:55 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:55 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:55 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:55 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:55 2026 --- INFO: Goodbye
-    $ 
-    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 10.Scaffolding/Scer2_q10_l500_Flye -t 24
-    Tue Jul  7 22:57:55 2026 --- VERSION: RagTag v2.1.0
-    Tue Jul  7 22:57:55 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -o 10.Scaffolding/Scer2_q10_l500_Flye -t 24
-    Tue Jul  7 22:57:55 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-    Tue Jul  7 22:57:55 2026 --- INFO: Mapping the query genome to the reference genome
-    Tue Jul  7 22:57:55 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:56 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:56 2026 --- INFO: Reading whole genome alignments
-    Tue Jul  7 22:57:56 2026 --- INFO: Filtering and merging alignments
-    Tue Jul  7 22:57:56 2026 --- INFO: Ordering and orienting query sequences
-    Tue Jul  7 22:57:56 2026 --- INFO: Writing scaffolds
-    Tue Jul  7 22:57:56 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp
-    Tue Jul  7 22:57:56 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:56 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:56 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:56 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_Flye/ragtag.scaffold.err
-    Tue Jul  7 22:57:56 2026 --- INFO: Goodbye
-    $ 
-    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer1_q10_l500_hifiasm -t 24
-    Tue Jul  7 22:57:56 2026 --- VERSION: RagTag v2.1.0
-    Tue Jul  7 22:57:56 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer1_q10_l500_hifiasm -t 24
-    Tue Jul  7 22:57:56 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-    Tue Jul  7 22:57:56 2026 --- INFO: Mapping the query genome to the reference genome
-    Tue Jul  7 22:57:56 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:57 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:57 2026 --- INFO: Reading whole genome alignments
-    Tue Jul  7 22:57:57 2026 --- INFO: Filtering and merging alignments
-    Tue Jul  7 22:57:57 2026 --- INFO: Ordering and orienting query sequences
-    Tue Jul  7 22:57:57 2026 --- INFO: Writing scaffolds
-    Tue Jul  7 22:57:57 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp
-    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Goodbye
-    $ 
-    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer2_q10_l500_hifiasm -t 24
-    Tue Jul  7 22:57:58 2026 --- VERSION: RagTag v2.1.0
-    Tue Jul  7 22:57:58 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 10.Scaffolding/Scer2_q10_l500_hifiasm -t 24
-    Tue Jul  7 22:57:58 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-    Tue Jul  7 22:57:58 2026 --- INFO: Mapping the query genome to the reference genome
-    Tue Jul  7 22:57:58 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:58 2026 --- INFO: Reading whole genome alignments
-    Tue Jul  7 22:57:58 2026 --- INFO: Filtering and merging alignments
-    Tue Jul  7 22:57:58 2026 --- INFO: Ordering and orienting query sequences
-    Tue Jul  7 22:57:58 2026 --- INFO: Writing scaffolds
-    Tue Jul  7 22:57:58 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp
-    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer2_q10_l500_hifiasm/ragtag.scaffold.err
-    Tue Jul  7 22:57:58 2026 --- INFO: Goodbye
-    $ 
-    $ ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
-    Tue Jul  7 22:57:58 2026 --- VERSION: RagTag v2.1.0
-    Tue Jul  7 22:57:58 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
-    Tue Jul  7 22:57:58 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
-    Tue Jul  7 22:57:58 2026 --- INFO: Mapping the query genome to the reference genome
-    Tue Jul  7 22:57:58 2026 --- INFO: Running: minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:59 2026 --- INFO: Finished running : minimap2 -x asm5 -t 24 /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.asm.paf.log
-    Tue Jul  7 22:57:59 2026 --- INFO: Reading whole genome alignments
-    Tue Jul  7 22:57:59 2026 --- INFO: Filtering and merging alignments
-    Tue Jul  7 22:57:59 2026 --- INFO: Ordering and orienting query sequences
-    Tue Jul  7 22:57:59 2026 --- INFO: Writing scaffolds
-    Tue Jul  7 22:57:59 2026 --- INFO: Writing: /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp
-    Tue Jul  7 22:57:59 2026 --- INFO: Running: ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-    Tue Jul  7 22:57:59 2026 --- INFO: Finished running : ragtag_agp2fa.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.fasta 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-    Tue Jul  7 22:57:59 2026 --- INFO: Running: ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-    Tue Jul  7 22:57:59 2026 --- INFO: Finished running : ragtag_stats.py /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.agp /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.confidence.txt > /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.stats 2> /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding/Scer1_q10_l500_nextdenovo/ragtag.scaffold.err
-    Tue Jul  7 22:57:59 2026 --- INFO: Goodbye
+    Thu Nov 19 10:50:15 2026 --- VERSION: RagTag v2.1.0
+    Thu Nov 19 10:50:15 2026 --- CMD: ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta -o 10.Scaffolding/Scer1_q10_l500_Flye -t 24
+    Thu Nov 19 10:50:15 2026 --- WARNING: Without '-u' invoked, some component/object AGP pairs might share the same ID. Some external programs/databases don't like this. To ensure valid AGP format, use '-u'.
+    Thu Nov 19 10:50:15 2026 --- INFO: Mapping the query genome to the reference genome
+    Thu Nov 19 10:50:15 2026 --- INFO: Running: minimap2 -x asm5 -t 24 ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta > 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf 2> 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.asm.paf.log
+    Thu Nov 19 10:50:17 2026 --- INFO: Finished running : minimap2 -x asm5 (...)
+    Thu Nov 19 10:50:17 2026 --- INFO: Reading whole genome alignments
+    Thu Nov 19 10:50:17 2026 --- INFO: Filtering and merging alignments
+    Thu Nov 19 10:50:17 2026 --- INFO: Ordering and orienting query sequences
+    Thu Nov 19 10:50:17 2026 --- INFO: Writing scaffolds
+    Thu Nov 19 10:50:17 2026 --- INFO: Writing: 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp
+    Thu Nov 19 10:50:17 2026 --- INFO: Running: ragtag_agp2fa.py 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta > 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta 2> 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
+    Thu Nov 19 10:50:17 2026 --- INFO: Finished running : ragtag_agp2fa.py (...)
+    Thu Nov 19 10:50:17 2026 --- INFO: Running: ragtag_stats.py 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.agp 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.confidence.txt > 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.stats 2> 10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.err
+    Thu Nov 19 10:50:17 2026 --- INFO: Finished running : ragtag_stats.py (...)
+    Thu Nov 19 10:50:17 2026 --- INFO: Goodbye
 
+    (... o mesmo para Scer2_q10_l500_Flye, Scer1_q10_l500_hifiasm, Scer2_q10_l500_hifiasm e Scer1_q10_l500_nextdenovo ...)
     ```
 
+    O RagTag roda em poucos segundos por montagem: ele alinha os contigs contra a referência com o minimap2 (`-x asm5`, para sequências muito parecidas), decide a ordem e a orientação de cada contig e escreve os scaffolds (`ragtag.scaffold.fasta`) e a descrição de como foram montados (`ragtag.scaffold.agp`). O *WARNING* sobre `-u` não é um erro: ele só avisa que, sem essa opção, alguns nomes no arquivo AGP podem se repetir, o que incomoda alguns programas externos.
 
 **Analisar os resultados**
 ```bash
@@ -4431,32 +5434,43 @@ done
 ??? note "Ver saída do comando"
 
     ```bash
-    $ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-    >   echo "=== $prefix ==="
-    >   cat 10.Scaffolding/${prefix}/ragtag.scaffold.stats
-    >   echo
-    > done
     === Scer1_q10_l500_Flye ===
     placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-    29	11898839	49	370611	1200	12
+    28	11918716	9	52435	1100	11
 
     === Scer2_q10_l500_Flye ===
     placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-    706	8173957	34	178893	68900	689
+    684	8161366	22	90827	66800	668
 
     === Scer1_q10_l500_hifiasm ===
     placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-    24	12327344	59	622276	700	7
+    23	12154698	1	12600	600	6
 
     === Scer2_q10_l500_hifiasm ===
     placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-    12	146298	2	22896	300	3
+    11	63845	2	22901	300	3
 
     === Scer1_q10_l500_nextdenovo ===
     placed_sequences	placed_bp	unplaced_sequences	unplaced_bp	gap_bp	gap_sequences
-    22	11000732	1	37442	700	7
-
+    23	11978592	1	37404	700	7
     ```
+
+| Montagem | Contigs | Posicionados (placed) | pb posicionados | Não posicionados (unplaced) | pb não posicionados | Lacunas (gaps) |
+|---|---|---|---|---|---|---|
+| Scer1 Flye | 37 | 28 | 11.918.716 | 9 | 52.435 | 11 |
+| Scer1 Hifiasm | 24 | 23 | 12.154.698 | 1 | 12.600 | 6 |
+| Scer1 NextDenovo | 24 | 23 | 11.978.592 | 1 | 37.404 | 7 |
+| Scer2 Flye | 706 | 684 | 8.161.366 | 22 | 90.827 | 668 |
+| Scer2 Hifiasm | 13 | 11 | 63.845 | 2 | 22.901 | 3 |
+
+!!! tip "Como interpretar"
+    - **Placed** são os contigs que o RagTag conseguiu ordenar e orientar ao longo de um cromossomo da referência; **unplaced** são os que ele não conseguiu posicionar com confiança (ficam como sequências soltas no FASTA final). Cada **gap** é uma junção entre dois contigs, preenchida com 100 `N`.
+    - **Nas três montagens da Scer1, praticamente todo o genoma foi posicionado** nos 16 cromossomos nucleares da referência: sobram só 13 a 52 kb como *unplaced*. No Flye, são 9 contigs pequenos, provavelmente incluindo parte dos contigs de Ty e subteloméricos que discutimos no QV por contig (Etapa 11.3): sequências repetitivas, que alinham em vários lugares da referência, são difíceis de posicionar.
+    - **O purge_dups fez diferença aqui.** Sem ele, o Hifiasm deixava ~770 kb sem posição, em 63 contigs: eram as cópias duplicadas, e como a referência só tem uma cópia de cada região, o RagTag não tinha onde colocar a segunda. Na versão purgada, sobra um único contig de 12,6 kb.
+    - **Poucas junções bastam para chegar aos cromossomos:** 6 a 11 lacunas no total. As montagens da Scer1 já eram quase cromossômicas antes do scaffolding.
+    - **Scer2 Flye:** quase todos os 706 contigs foram posicionados, mas com 668 lacunas. O resultado parece um genoma "completo", mas é uma colcha de retalhos: a ordem dos pedaços vem da referência, e não dos dados da Scer2. Com cobertura de ~6×, o scaffolding por referência só esconde a fragmentação.
+    - **Scer2 Hifiasm:** a montagem tem só ~87 kb (sem a mitocôndria); não há o que escafolear.
+    - **Cuidado:** o scaffolding por referência assume que a sua linhagem tem a mesma organização cromossômica da referência (S288C). Rearranjos reais da linhagem estudada são "corrigidos" para a ordem da referência e deixam de ser visíveis. Por isso, na próxima seção, compararemos com um scaffolding que não usa referência.
 
 !!! tip "Scaffolds RagTag disponíveis no repositório"
     [:material-dna: Scer1_Flye_ragtag_scaffold.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_ragtag_scaffold.fasta) ·
@@ -4470,708 +5484,125 @@ mkdir -p 10.Scaffolding-Longstitch
 
 BASE=$(pwd)
 
-declare -A draft_path=(
-  [Scer1_q10_l500_Flye]="5.Montagem-Flye/Scer1_q10_l500/assembly.fasta"
-  [Scer2_q10_l500_Flye]="5.Montagem-Flye/Scer2_q10_l500/assembly.fasta"
-  [Scer1_q10_l500_hifiasm]="6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa"
-  [Scer2_q10_l500_hifiasm]="6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa"
-  [Scer1_q10_l500_nextdenovo]="7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta"
-)
-
 for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
   sample=${prefix%%_*}
+  # apaga resultados anteriores: o LongStitch (make) pula etapas cujos arquivos já existem
+  rm -rf 10.Scaffolding-Longstitch/${prefix}
   mkdir -p 10.Scaffolding-Longstitch/${prefix}
   cd 10.Scaffolding-Longstitch/${prefix}
-  ln -sf ${BASE}/${draft_path[$prefix]} draft.fa
+  ln -sf ${BASE}/9.Montagens-polidas/${prefix}.fasta draft.fa
   ln -sf ${BASE}/2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz ${sample}_q10_l500.fastq.gz
   longstitch run \
     draft=draft \
     reads=${sample}_q10_l500 \
     G=12000000 t=24
   cd ${BASE}
-done
+done 2>&1 | tee 10.Scaffolding-Longstitch/longstitch.log
 ```
 
-??? note "Ver exemplo de saída do comando"
+A saída do LongStitch é muito longa e passa do limite de rolagem do terminal. O `2>&1 | tee` grava tudo em `10.Scaffolding-Longstitch/longstitch.log`, para consultar depois (por exemplo, `grep -E 'Attempted corrections|Optimal n' 10.Scaffolding-Longstitch/longstitch.log`).
+
+??? note "Ver exemplo de saída do comando (Scer1 NextDenovo, resumida)"
 
     ```bash
-    $ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-    >   sample=${prefix%%_*}
-    >   mkdir -p 10.Scaffolding-Longstitch/${prefix}
-    >   cd 10.Scaffolding-Longstitch/${prefix}
-    >   ln -sf ${BASE}/${draft_path[$prefix]} draft.fa
-    >   ln -sf ${BASE}/2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz ${sample}_q10_l500.fastq.gz
-    >   longstitch run \
-    >     draft=draft \
-    >     reads=${sample}_q10_l500 \
-    >     G=12000000 t=24
-    >   cd ${BASE}
-    > done
     tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
     samtools faidx draft.fa
     /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
-    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
+    (...)
     long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-    [M::mm_idx_gen::0.306*1.01] collected minimizers
-    [M::mm_idx_gen::0.369*3.86] sorted minimizers
-    [M::main::0.369*3.86] loaded/built the index for 78 target sequence(s)
-    [M::mm_mapopt_update::0.411*3.57] mid_occ = 30
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 78
-    [M::mm_idx_stat::0.446*3.37] distinct minimizers: 2095775 (94.98% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12269450
-    [M::worker_pipeline::11.777*8.54] mapped 2046130 sequences
-    [M::worker_pipeline::13.657*7.43] mapped 915590 sequences
-    [M::main] Version: 2.31-r1302
-    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-    [M::main] Real time: 13.689 sec; CPU: 101.505 sec; Peak RSS: 1.493 GB
+    [M::main::0.395*2.97] loaded/built the index for 29 target sequence(s)
+    [M::mm_idx_stat::0.479*2.62] distinct minimizers: 2071666 (95.62% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12123408
+    [M::worker_pipeline::12.882*10.63] mapped 2046130 sequences
+    [M::worker_pipeline::14.627*9.43] mapped 915664 sequences
+    [M::main] Real time: 14.660 sec; CPU: 137.923sec; Peak RSS: 1.447 GB
     /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
-    Started at: 2026-07-07 23:00:30.600224
-    Reading contig lengths...
-    Finding breakpoints...
-    Attempted corrections: 39
-    Cutting assembly at breakpoints...
-    DONE!
-    Ended at: 2026-07-07 23:00:34.211554
-    ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
-    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
-    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
-    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
-    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Running pairing stage of ntLink ...
-
-    Parameters:
-    	Read minimizer files:  ['-']
-    	-s  draft.cut250.tigmint.fa
-    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-    	-n  2
-    	-k  32
-    	-a  1
-    	-z  1000
-    	-f  10
-    	-x  0.0
-    2026-07-07 23:00:34.993570 : Reading minimizers draft.cut250.tigmint.fa
-    2026-07-07 23:00:35.281340 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:00:35.290341 : Finding pairs
-    2026-07-07 23:00:55.783325 : Building scaffold graph
-    2026-07-07 23:00:55.784869 : Filtering the graph
-    2026-07-07 23:00:55.785252 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:00:55.787434 : DONE!
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
-    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-    Running ntLink stitch paths stage...
-
-    2026-07-07 23:00:57.405839  : Finding optimal n...
-    2026-07-07 23:00:57.406090  : Optimal n = 10 at N50 = 766493.0
-    2026-07-07 23:00:57.406106 : Building path graph
-    2026-07-07 23:00:57.406557 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    Printing paths for optimal N50, no stitching...
-
-    2026-07-07 23:00:57.409115 : Finding paths
-
-    Total number of components in graph: 28 
-
-    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
-    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-    indexlr --long --pos -k 15 -w 5 -t 24 - |\
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
-    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Assessing putative overlaps...
-    Parameters for overlap stage:
-    	-m -
-    	-f 0.5
-    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-    	-s draft.cut250.tigmint.fa
-    	-k 15
-    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    	-g 20
-    	--outgap 0
-    	-p draft.cut250.tigmint.fa.k32.w100.z1000
-    2026-07-07 23:00:57.633826 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:00:57.644690 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:00:57.647341 : Finding valid minimizer regions
-    2026-07-07 23:00:57.647536 : Finding scaffold overlaps
-    2026-07-07 23:00:58.010764 : Printing trimmed scaffolds
-    2026-07-07 23:00:58.028150 : DONE!
-    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-    The minimum coverage of single-end contigs is inf.
-    The minimum coverage of merged contigs is inf.
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye'
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
-    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-    tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-    samtools faidx draft.fa
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer2_q10_l500.fastq.gz -n 1000000 -o Scer2_q10_l500.tigmint-long.params.tsv
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer2_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer2_q10_l500.tigmint-long.params.tsv Scer2_q10_l500.fastq.gz | \
-    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer2_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed'
-    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-    [M::mm_idx_gen::0.206*1.01] collected minimizers
-    [M::mm_idx_gen::0.249*3.92] sorted minimizers
-    [M::main::0.249*3.92] loaded/built the index for 740 target sequence(s)
-    [M::mm_mapopt_update::0.277*3.62] mid_occ = 15
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 740
-    [M::mm_idx_stat::0.299*3.43] distinct minimizers: 1484126 (96.14% are singletons); average occurrences: 1.054; average spacing: 5.342; total length: 8352850
-    [M::worker_pipeline::1.625*3.92] mapped 242850 sequences
-    [M::main] Version: 2.31-r1302
-    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-    [M::main] Real time: 1.643 sec; CPU: 6.386 sec; Peak RSS: 0.188 GB
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer2_q10_l500.tigmint-long.params.tsv -o draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed
-    Started at: 2026-07-07 23:01:01.646602
-    Reading contig lengths...
-    Finding breakpoints...
-    Attempted corrections: 4
-    Cutting assembly at breakpoints...
-    DONE!
-    Ended at: 2026-07-07 23:01:01.849537
-    ln -sf draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer2_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    sh -c 'pigz -p24 -f -cd Scer2_q10_l500.fastq.gz | \
-    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
-    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Running pairing stage of ntLink ...
-
-    Parameters:
-    	Read minimizer files:  ['-']
-    	-s  draft.cut250.tigmint.fa
-    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-    	-n  2
-    	-k  32
-    	-a  1
-    	-z  1000
-    	-f  10
-    	-x  0.0
-    2026-07-07 23:01:02.510271 : Reading minimizers draft.cut250.tigmint.fa
-    2026-07-07 23:01:02.707015 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:01:02.715837 : Finding pairs
-    2026-07-07 23:01:05.061758 : Building scaffold graph
-    2026-07-07 23:01:05.063967 : Filtering the graph
-    2026-07-07 23:01:05.064427 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:01:05.067896 : DONE!
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
-    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-    Running ntLink stitch paths stage...
-
-    2026-07-07 23:01:06.270886  : Finding optimal n...
-    2026-07-07 23:01:06.271148  : Optimal n = 2 at N50 = 19723.0
-    2026-07-07 23:01:06.271166 : Building path graph
-    2026-07-07 23:01:06.272260 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    Printing paths for optimal N50, no stitching...
-
-    2026-07-07 23:01:06.275894 : Finding paths
-
-    Total number of components in graph: 214 
-
-    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
-    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-    indexlr --long --pos -k 15 -w 5 -t 24 - |\
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
-    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Assessing putative overlaps...
-    Parameters for overlap stage:
-    	-m -
-    	-f 0.5
-    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-    	-s draft.cut250.tigmint.fa
-    	-k 15
-    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    	-g 20
-    	--outgap 0
-    	-p draft.cut250.tigmint.fa.k32.w100.z1000
-    2026-07-07 23:01:06.513406 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:01:06.519221 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:01:06.523591 : Finding valid minimizer regions
-    2026-07-07 23:01:06.524353 : Finding scaffold overlaps
-    2026-07-07 23:01:06.962269 : Printing trimmed scaffolds
-    2026-07-07 23:01:06.975656 : DONE!
-    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-    The minimum coverage of single-end contigs is inf.
-    The minimum coverage of merged contigs is inf.
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_Flye'
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
-    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-    tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
-    samtools faidx draft.fa
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
-    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
-    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-    [M::mm_idx_gen::0.318*1.01] collected minimizers
-    [M::mm_idx_gen::0.380*3.82] sorted minimizers
-    [M::main::0.380*3.82] loaded/built the index for 83 target sequence(s)
-    [M::mm_mapopt_update::0.422*3.53] mid_occ = 32
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 83
-    [M::mm_idx_stat::0.457*3.34] distinct minimizers: 2096445 (93.56% are singletons); average occurrences: 1.158; average spacing: 5.333; total length: 12949620
-    [M::worker_pipeline::15.623*14.95] mapped 2046130 sequences
-    [M::worker_pipeline::17.624*13.31] mapped 915590 sequences
-    [M::main] Version: 2.31-r1302
-    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-    [M::main] Real time: 17.677 sec; CPU: 234.719 sec; Peak RSS: 1.561 GB
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
-    Started at: 2026-07-07 23:01:33.280225
+    Started at: 2026-11-18 14:50:35.471029
     Reading contig lengths...
     Finding breakpoints...
     Attempted corrections: 61
     Cutting assembly at breakpoints...
     DONE!
-    Ended at: 2026-07-07 23:01:34.716906
-    ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
+    Ended at: 2026-11-18 14:50:39.725629
+
     ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
-    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
-    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
-    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    indexlr 1.7.8: Using more than 5 threads doesnot scale, reverting to 5.
     Running pairing stage of ntLink ...
-
-    Parameters:
-    	Read minimizer files:  ['-']
-    	-s  draft.cut250.tigmint.fa
-    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-    	-n  2
-    	-k  32
-    	-a  1
-    	-z  1000
-    	-f  10
-    	-x  0.0
-    2026-07-07 23:01:35.541590 : Reading minimizers draft.cut250.tigmint.fa
-    2026-07-07 23:01:35.819963 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:01:35.827869 : Finding pairs
-    2026-07-07 23:01:55.249144 : Building scaffold graph
-    2026-07-07 23:01:55.249846 : Filtering the graph
-    2026-07-07 23:01:55.250081 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:01:55.251041 : DONE!
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
-    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
+    2026-11-18 14:50:40.496919 : Reading minimizers draft.cut250.tigmint.fa
+    2026-11-18 14:50:40.859748 : Finding pairs
+    2026-11-18 14:51:01.407002 : Building scaffold graph
+    2026-11-18 14:51:01.408297 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-11-18 14:51:01.409611 : DONE!
+    (... abyss-scaffold testado com n = 2 a 10 ...)
     Running ntLink stitch paths stage...
-
-    2026-07-07 23:01:56.930656  : Finding optimal n...
-    2026-07-07 23:01:56.930909  : Optimal n = 2 at N50 = 768425.0
-    2026-07-07 23:01:56.930926 : Building path graph
-    2026-07-07 23:01:56.931365 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-11-18 14:51:03.087759  : Finding optimaln...
+    2026-11-18 14:51:03.088052  : Optimal n = 4 at N50 = 912854.0
     Printing paths for optimal N50, no stitching...
-
-    2026-07-07 23:01:56.932349 : Finding paths
-
-    Total number of components in graph: 36 
-
-    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
-    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-    indexlr --long --pos -k 15 -w 5 -t 24 - |\
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
-    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
+    Total number of components in graph: 30
     Assessing putative overlaps...
-    Parameters for overlap stage:
-    	-m -
-    	-f 0.5
-    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-    	-s draft.cut250.tigmint.fa
-    	-k 15
-    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    	-g 20
-    	--outgap 0
-    	-p draft.cut250.tigmint.fa.k32.w100.z1000
-    2026-07-07 23:01:57.151155 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:01:57.161676 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:01:57.162745 : Finding valid minimizer regions
-    2026-07-07 23:01:57.162979 : Finding scaffold overlaps
-    2026-07-07 23:01:59.038867 : Printing trimmed scaffolds
-    2026-07-07 23:01:59.056067 : DONE!
+    2026-11-18 14:51:05.084114 : DONE!
     MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-    The minimum coverage of single-end contigs is inf.
-    The minimum coverage of merged contigs is inf.
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
     Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_hifiasm'
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    ```
+
+    Os avisos *"Using more than 6 threads does not scale"* e *"Using more than 5 threads doesnot scale"* só informam que essas etapas usam no máximo 5 ou 6 threads, mesmo pedindo 24; não são erros. Três linhas resumem o que aconteceu:
+
+    - **`Attempted corrections: 61`**: o Tigmint encontrou 61 pontos onde as reads longas não sustentam a continuidade do contig e **cortou** a montagem nesses pontos.
+    - **`Optimal n = 4 at N50 = 912854.0`**: o ntLink testou de 2 a 10 o número mínimo de reads exigido para ligar dois contigs (`n`) e escolheu o valor que deu o maior N50.
+    - **`Done LongStitch steps ...`**: os scaffolds finais estão em `draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa`.
+
+    Em outras montagens, os números mudam: na Scer1 Hifiasm foram 52 cortes (n ótimo = 8, N50 = 606.063), e na Scer2 Hifiasm, nenhum corte e nenhuma junção, já que a montagem é minúscula.
+
+**Resumo do LongStitch para as cinco montagens**, a partir do log:
+
+```bash
+grep -E 'tigmint-make|Attempted corrections|Optimal n|Done LongStitch' 10.Scaffolding-Longstitch/longstitch.log
+```
+
+??? note "Ver saída do comando"
+
+    ```bash
+    # na ordem do laço: Scer1 Flye, Scer2 Flye, Scer1 Hifiasm, Scer2 Hifiasm, Scer1 NextDenovo
+    tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    Attempted corrections: 38
+    2026-11-18 15:25:32.977642  : Optimal n = 10 at N50 = 677484.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-    samtools faidx draft.fa
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer2_q10_l500.fastq.gz -n 1000000 -o Scer2_q10_l500.tigmint-long.params.tsv
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer2_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer2_q10_l500.tigmint-long.params.tsv Scer2_q10_l500.fastq.gz | \
-    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer2_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed'
-    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-    [M::mm_idx_gen::0.012*1.14] collected minimizers
-    [M::mm_idx_gen::0.017*5.38] sorted minimizers
-    [M::main::0.017*5.38] loaded/built the index for 14 target sequence(s)
-    [M::mm_mapopt_update::0.019*4.82] mid_occ = 43
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 14
-    [M::mm_idx_stat::0.021*4.50] distinct minimizers: 26356 (88.63% are singletons); average occurrences: 1.214; average spacing: 5.290; total length: 169194
-    [M::worker_pipeline::1.038*3.99] mapped 242850 sequences
-    [M::main] Version: 2.31-r1302
-    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-    [M::main] Real time: 1.047 sec; CPU: 4.152 sec; Peak RSS: 0.112 GB
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer2_q10_l500.tigmint-long.params.tsv -o draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.bed
-    Started at: 2026-07-07 23:02:02.881410
-    Reading contig lengths...
-    Finding breakpoints...
-    Attempted corrections: 0
-    Cutting assembly at breakpoints...
-    DONE!
-    Ended at: 2026-07-07 23:02:03.042986
-    ln -sf draft.Scer2_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer2_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    sh -c 'pigz -p24 -f -cd Scer2_q10_l500.fastq.gz | \
-    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
-    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Running pairing stage of ntLink ...
-
-    Parameters:
-    	Read minimizer files:  ['-']
-    	-s  draft.cut250.tigmint.fa
-    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-    	-n  2
-    	-k  32
-    	-a  1
-    	-z  1000
-    	-f  10
-    	-x  0.0
-    2026-07-07 23:02:03.292650 : Reading minimizers draft.cut250.tigmint.fa
-    2026-07-07 23:02:03.295392 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:02:03.295569 : Finding pairs
-    2026-07-07 23:02:04.717904 : Building scaffold graph
-    2026-07-07 23:02:04.718165 : Filtering the graph
-    2026-07-07 23:02:04.718320 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:02:04.718590 : DONE!
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
-    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-    Running ntLink stitch paths stage...
-
-    2026-07-07 23:02:05.011976  : Finding optimal n...
-    2026-07-07 23:02:05.012214  : Optimal n = 2 at N50 = 12548.0
-    2026-07-07 23:02:05.012231 : Building path graph
-    2026-07-07 23:02:05.012425 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    Printing paths for optimal N50, no stitching...
-
-    2026-07-07 23:02:05.012814 : Finding paths
-
-    Total number of components in graph: 2 
-
-    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
-    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-    indexlr --long --pos -k 15 -w 5 -t 24 - |\
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
-    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Assessing putative overlaps...
-    Parameters for overlap stage:
-    	-m -
-    	-f 0.5
-    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-    	-s draft.cut250.tigmint.fa
-    	-k 15
-    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    	-g 20
-    	--outgap 0
-    	-p draft.cut250.tigmint.fa.k32.w100.z1000
-    2026-07-07 23:02:05.226558 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:02:05.226769 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:02:05.227284 : Finding valid minimizer regions
-    2026-07-07 23:02:05.227364 : Finding scaffold overlaps
-    2026-07-07 23:02:05.286813 : Printing trimmed scaffolds
-    2026-07-07 23:02:05.287428 : DONE!
-    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-    The minimum coverage of single-end contigs is inf.
-    The minimum coverage of merged contigs is inf.
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer2_q10_l500_hifiasm'
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    Attempted corrections: 4
+    2026-11-18 15:25:41.383825  : Optimal n = 2 at N50 = 19572.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-    samtools faidx draft.fa
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/../src/long-to-linked-pe -l 250 -m2000 -g12000000 -s -b Scer1_q10_l500.barcode-multiplicity.tsv --bx -t24 --fasta -f Scer1_q10_l500.tigmint-long.params.tsv Scer1_q10_l500.fastq.gz | \
-    minimap2 -y -t24 -x map-ont --secondary=no draft.fa - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_molecule_paf.py -q0 -s2000 -p Scer1_q10_l500.tigmint-long.params.tsv - | sort -k1,1 -k2,2n -k3,3n  > draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed'
-    long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-    [M::mm_idx_gen::0.267*1.01] collected minimizers
-    [M::mm_idx_gen::0.326*4.00] sorted minimizers
-    [M::main::0.326*4.00] loaded/built the index for 23 target sequence(s)
-    [M::mm_mapopt_update::0.358*3.74] mid_occ = 30
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 23
-    [M::mm_idx_stat::0.389*3.52] distinct minimizers: 1892502 (95.90% are singletons); average occurrences: 1.093; average spacing: 5.335; total length: 11038174
-    [M::worker_pipeline::10.893*7.76] mapped 2046130 sequences
-    [M::worker_pipeline::12.559*6.80] mapped 915590 sequences
-    [M::main] Version: 2.31-r1302
-    [M::main] CMD: minimap2 -y -t24 -x map-ont --secondary=no draft.fa -
-    [M::main] Real time: 12.602 sec; CPU: 85.386 sec; Peak RSS: 1.436 GB
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
-    Started at: 2026-07-07 23:02:26.443332
-    Reading contig lengths...
-    Finding breakpoints...
-    Attempted corrections: 50
-    Cutting assembly at breakpoints...
-    DONE!
-    Ended at: 2026-07-07 23:02:29.756430
-    ln -sf draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.cut250.tigmint.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-    ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-    make[1]: Entrando no diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-    indexlr --long --pos --strand -k 32 -w 100 -t 24 draft.cut250.tigmint.fa > draft.cut250.tigmint.fa.k32.w100.tsv
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    sh -c 'pigz -p24 -f -cd Scer1_q10_l500.fastq.gz | \
-    indexlr --long --pos --strand --len -k 32 -w 100 -t 24 - | \
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_pair.py -p draft.cut250.tigmint.fa.k32.w100.z1000 -n 2 -m draft.cut250.tigmint.fa.k32.w100.tsv -s draft.cut250.tigmint.fa  \
-    -k 32 -a 1 -z 1000 -f 10 -x 0 --verbose -'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Running pairing stage of ntLink ...
-
-    Parameters:
-    	Read minimizer files:  ['-']
-    	-s  draft.cut250.tigmint.fa
-    	-m  draft.cut250.tigmint.fa.k32.w100.tsv
-    	-p  draft.cut250.tigmint.fa.k32.w100.z1000
-    	-n  2
-    	-k  32
-    	-a  1
-    	-z  1000
-    	-f  10
-    	-x  0.0
-    2026-07-07 23:02:30.380703 : Reading minimizers draft.cut250.tigmint.fa
-    2026-07-07 23:02:30.633189 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:02:30.640295 : Finding pairs
-    2026-07-07 23:02:50.276154 : Building scaffold graph
-    2026-07-07 23:02:50.277024 : Filtering the graph
-    2026-07-07 23:02:50.277295 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:02:50.278589 : DONE!
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 2 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 3 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 4 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 5 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 6 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 7 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 8 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 9 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path.sterr'
-    sh -c 'cat draft.cut250.tigmint.fa | \
-    cut -d " " -f1  | \
-    abyss-scaffold -k2 -n 10 -s1000 --min-gap 20 - draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot 1> draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path 2>draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path.sterr'
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_stitch_paths.py --min_n 2 --max_n 10  -p out \
-    -g draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --conservative draft.cut250.tigmint.fa.k32.w100.z1000.n2.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n3.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n4.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n5.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n6.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n7.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n8.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n9.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n10.abyss-scaffold.path -o draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path --max_gap 12000000
-    Running ntLink stitch paths stage...
-
-    2026-07-07 23:02:51.763259  : Finding optimal n...
-    2026-07-07 23:02:51.763511  : Optimal n = 2 at N50 = 647773.0
-    2026-07-07 23:02:51.763527 : Building path graph
-    2026-07-07 23:02:51.763773 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    Printing paths for optimal N50, no stitching...
-
-    2026-07-07 23:02:51.765420 : Finding paths
-
-    Total number of components in graph: 14 
-
-    rm -f draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path draft.cut250.tigmint.fa.k32.w100.z1000.n*.abyss-scaffold.path.sterr
-    sh -c '/usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_filter_sequences.py --fasta draft.cut250.tigmint.fa \
-    --dot draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path -k 15 -g 20 -t 24 |\
-    indexlr --long --pos -k 15 -w 5 -t 24 - |\
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/ntlink-1.3.11-1/bin/ntlink_overlap_sequences.py -m -  --path draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path \
-    -s draft.cut250.tigmint.fa -d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot -p draft.cut250.tigmint.fa.k32.w100.z1000 -g 20 -k 15 --outgap 0 --trim_info'
-    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
-    Assessing putative overlaps...
-    Parameters for overlap stage:
-    	-m -
-    	-f 0.5
-    	-a draft.cut250.tigmint.fa.k32.w100.z1000.stitch.path
-    	-s draft.cut250.tigmint.fa
-    	-k 15
-    	-d draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    	-g 20
-    	--outgap 0
-    	-p draft.cut250.tigmint.fa.k32.w100.z1000
-    2026-07-07 23:02:51.986149 : Reading fasta file draft.cut250.tigmint.fa
-    2026-07-07 23:02:51.997144 : Reading scaffold file draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-07-07 23:02:51.998934 : Finding valid minimizer regions
-    2026-07-07 23:02:51.999088 : Finding scaffold overlaps
-    2026-07-07 23:02:52.423698 : Printing trimmed scaffolds
-    2026-07-07 23:02:52.439616 : DONE!
-    MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
-    The minimum coverage of single-end contigs is inf.
-    The minimum coverage of merged contigs is inf.
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    echo "Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa"
-    Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
-    make[1]: Saindo do diretório '/media/hd15-cursos/nanopore_lgbio_2026/grupo_1/10.Scaffolding-Longstitch/Scer1_q10_l500_nextdenovo'
-    ln -sf draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    Attempted corrections: 52
+    2026-11-18 15:26:31.601404  : Optimal n = 8 at N50 = 606063.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
-
+    tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    Attempted corrections: 0
+    2026-11-18 15:26:38.229949  : Optimal n = 2 at N50 = 102340.0
+    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
+    tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
+    Attempted corrections: 61
+    2026-11-18 15:27:24.383426  : Optimal n = 4 at N50 = 912854.0
+    echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
+    Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     ```
+
+| Montagem | Cortes do Tigmint | n ótimo (ntLink) | N50 antes (QUAST, 11.1) | N50 depois do LongStitch |
+|---|---|---|---|---|
+| Scer1 Flye | 38 | 10 | 751.286 | 677.484 |
+| Scer1 Hifiasm | 52 | 8 | 709.868 | 606.063 |
+| Scer1 NextDenovo | 61 | 4 | 766.898 | 912.854 |
+| Scer2 Flye | 4 | 2 | 16.071 | 19.572 |
+| Scer2 Hifiasm | 0 | 2 | 102.340 | 102.340 |
+
+!!! tip "Como interpretar"
+    - **O LongStitch nem sempre aumenta o N50.** No Flye e no Hifiasm da Scer1, o N50 **caiu**: o Tigmint cortou os contigs em 38 e 52 pontos, e o ntLink não conseguiu religar todos os pedaços. No NextDenovo, ao contrário, o ntLink juntou mais do que o Tigmint cortou, e o N50 subiu de 767 kb para 913 kb.
+    - **Cortar pode ser bom.** Um corte do Tigmint indica um ponto onde as reads longas não sustentam a continuidade do contig: pode ser uma junção errada do montador (*misassembly*). Um N50 menor com menos junções erradas é uma montagem **melhor**, não pior. Investigamos alguns desses cortes na seção 12.4.
+    - **Na Scer2 Flye, o ganho é pequeno** (16 → 20 kb): com ~6× de cobertura, há poucas reads ligando os contigs. Na Scer2 Hifiasm, não houve cortes nem junções.
+    - Compare com o RagTag (12.1): lá, quase todo o genoma foi posicionado nos cromossomos, porque a ordem veio da referência. O LongStitch só usa as reads da própria amostra, então só junta o que as reads realmente sustentam.
 
 !!! info "Como o LongStitch funciona"
     O LongStitch encadeia três passos: **Tigmint-long** (quebra contigs em pontos de evidência conflitante, corrigindo misassemblies), **ntLink** (encontra pares de contigs conectados por reads) e **abyss-scaffold** (monta o grafo final de scaffolds). O output principal é `draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa`, dentro de cada `10.Scaffolding-Longstitch/<prefix>/`.
@@ -5186,16 +5617,7 @@ done
 echo -e "Sample\tContigs_assembler\tScaffolds_longstitch\tRagtag_placed\tRagtag_placed_bp\tRagtag_unplaced" > scaffolding_summary.tsv
 
 for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye Scer2_q10_l500_hifiasm; do
-  base=${prefix%_*}        # Scer1_q10_l500 / Scer2_q10_l500
-  assembler=${prefix##*_}  # Flye / hifiasm / nextdenovo
-
-  if [ "$assembler" = "Flye" ]; then
-    pre=$(grep -c "^>" 5.Montagem-Flye/${base}/assembly.fasta 2>/dev/null)
-  elif [ "$assembler" = "hifiasm" ]; then
-    pre=$(grep -c "^>" 6.Montagem-hifiasm/${prefix}.p_ctg.fa 2>/dev/null)
-  elif [ "$assembler" = "nextdenovo" ]; then
-    pre=$(grep -c "^>" 7.Montagem-NextDenovo/${base}/01_rundir/03.ctg_graph/nd.asm.fasta 2>/dev/null)
-  fi
+  pre=$(grep -c "^>" 9.Montagens-polidas/${prefix}.fasta 2>/dev/null)
 
   longstitch=$(grep -c "^>" 10.Scaffolding-Longstitch/${prefix}/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa 2>/dev/null)
   ragtag_placed=$(awk 'NR==2{print $1}' 10.Scaffolding/${prefix}/ragtag.scaffold.stats 2>/dev/null)
@@ -5213,36 +5635,50 @@ cat scaffolding_summary.tsv
     ```bash
     $ cat scaffolding_summary.tsv
     Sample	Contigs_assembler	Scaffolds_longstitch	Ragtag_placed	Ragtag_placed_bp	Ragtag_unplaced
-    Scer1_q10_l500_Flye	78	130	29	11898839	49
-    Scer1_q10_l500_hifiasm	83	179	24	12327344	59
-    Scer1_q10_l500_nextdenovo	23	114	22	11000732	1
-    Scer2_q10_l500_Flye	740	616	706	8173957	34
-    Scer2_q10_l500_hifiasm	14	13	12	146298	2
+    Scer1_q10_l500_Flye	79	125	32	12032604	47
+    Scer1_q10_l500_hifiasm	87	177	24	12218386	63
+    Scer1_q10_l500_nextdenovo	29	125	27	12073782	2
+    Scer2_q10_l500_Flye	715	625	690	8244934	25
+    Scer2_q10_l500_hifiasm	14	14	12	166185	2
     ```
 
+| Montagem | Contigs (montagem polida) | Scaffolds LongStitch | RagTag: posicionados | RagTag: não posicionados |
+|---|---|---|---|---|
+| Scer1 Flye | 79 | 125 | 32 | 47 |
+| Scer1 Hifiasm | 87 | 177 | 24 | 63 |
+| Scer1 NextDenovo | 29 | 125 | 27 | 2 |
+| Scer2 Flye | 715 | 625 | 690 | 25 |
+| Scer2 Hifiasm | 14 | 14 | 12 | 2 |
+
+!!! question "Por que o LongStitch aumentou o número de sequências na Scer1?"
+    Nas três montagens da Scer1, o LongStitch terminou com **mais** sequências do que a montagem de entrada (79 → 125, 87 → 177, 29 → 125). Scaffolding deveria juntar contigs, e não multiplicá-los. A explicação está nos cortes do Tigmint (12.2): cada corte transforma um contig em dois ou mais pedaços, e o ntLink só religa os pedaços quando as reads sustentam a junção. Os pedaços que sobram ficam soltos.
+
+    Isso aconteceu até no NextDenovo, cujo N50 **subiu** (de 767 kb para 913 kb): o ntLink juntou bem os contigs grandes, mas sobraram muitos fragmentos pequenos dos cortes. Por isso, número de sequências e N50 contam histórias diferentes e precisam ser lidos juntos.
+
+    Já na Scer2 Flye, com só 4 cortes, o efeito de juntar predominou: de 715 para 625 sequências. A seção 12.4 mostra como investigar o que aconteceu num dos contigs mais cortados.
 
 ### 12.4 Verificar o que houve para que aumentasse tanto o número de scaffolds (OPCIONAL)
 
 ```bash
 # 0) defina o alvo
 PREFIX=Scer1_q10_l500_Flye
-cd ~/10.Scaffolding-Longstitch/${PREFIX}
+cd 10.Scaffolding-Longstitch/${PREFIX}
 
 # 1) quais contigs mais quebraram no tigmint?
 awk '{split($4,a,"-"); print a[1]}' draft.*breaktigs.fa.bed | sort | uniq -c | sort -rn | head -5
 
 # 2) extrai o contig mais suspeito (troque pelo nome que apareceu acima)
-CONTIG=contig_116
+CONTIG=contig_108
 samtools faidx draft.fa ${CONTIG} > ${CONTIG}.fa
 
 # 3) blast local contra a referência inteira (16 cromossomos)
 blastn -query ${CONTIG}.fa \
-  -subject ~/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
+  -subject ../../ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
   -outfmt "6 sseqid pident length qstart qend evalue bitscore" \
-  -max_target_seqs 10 | sort -k7,7 -rn
+  -max_target_seqs 10 | LC_ALL=C sort -k7,7gr | head -20
 
 # 4) o que o RagTag decidiu fazer com esse mesmo contig?
-grep -w "${CONTIG}" ~/10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
+grep -w "${CONTIG}" ../../10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
 
 cd ../..
 
@@ -5252,64 +5688,96 @@ cd ../..
 
     ```bash
     $ awk '{split($4,a,"-"); print a[1]}' draft.*breaktigs.fa.bed | sort | uniq -c | sort -rn | head -5
-         15 contig_116
-          9 contig_64
-          9 contig_51
-          9 contig_40
-          9 contig_20
+         21 contig_108
+          9 contig_80
+          7 contig_16
+          7 contig_100
+          5 scaffold_33
+    ```
 
-    $ CONTIG=contig_116
+Na saída do BLAST, as colunas são: cromossomo da referência (`sseqid`), identidade (%), comprimento do alinhamento, início e fim no contig (`qstart`, `qend`), e-value e bitscore. O `LC_ALL=C` antes do `sort` é necessário em computadores configurados em português: nesse idioma, o `sort -n` trata o ponto como separador de milhar (e "99.0" vira 990), embaralhando a ordem.
+
+??? note "Ver saída dos passos 2 a 4"
+
+    ```bash
+    $ CONTIG=contig_108
     $ samtools faidx draft.fa ${CONTIG} > ${CONTIG}.fa
 
-    $ blastn -query ${CONTIG}.fa \
-    >   -subject ~/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
-    >   -outfmt "6 sseqid pident length qstart qend evalue bitscore" \
-    >   -max_target_seqs 10 | sort -k7,7 -rn
-    NC_001141.2	97.953	8990	9279	18232	0.0	15527
-    NC_001147.6	97.965	6978	9285	16251	0.0	12081
-    NC_001142.9	98.262	4603	9279	13880	0.0	8037
-    NC_001147.6	96.275	4054	2048	6092	0.0	6634
-    NC_001147.6	97.133	3209	6091	9293	0.0	5402
-    NC_001147.6	99.065	2032	1	2028	0.0	3644
-    NC_001139.9	88.914	1777	9398	11170	0.0	2183
-    NC_001147.6	80.828	1883	16115	17962	0.0	1437
-    NC_001140.6	83.845	978	16898	17872	0.0	928
-    NC_001133.9	83.742	978	16898	17872	0.0	922
-    NC_001142.9	84.848	825	5	813	0.0	813
-    NC_001141.2	84.848	825	5	813	0.0	813
-    NC_001141.2	93.359	512	17902	18412	0.0	754
-    NC_001139.9	75.106	1655	9540	11171	0.0	723
-    NC_001134.8	75.106	1655	9540	11171	0.0	723
-    NC_001146.8	86.677	653	40	689	0.0	712
-    NC_001141.2	90.845	426	16147	16572	2.25e-160	568
-    NC_001135.5	82.263	654	36	687	3.79e-153	544
-    NC_001147.6	89.163	406	16066	16462	2.99e-139	497
-    NC_001144.5	85.845	438	36	471	1.41e-127	459
-    NC_001141.2	80.739	514	15844	16354	5.22e-107	390
-    NC_001141.2	86.364	330	17902	18224	2.46e-95	351
-    NC_001141.2	84.911	338	17902	18232	8.92e-90	333
-    NC_001140.6	81.679	393	16388	16779	1.49e-87	326
-    NC_001133.9	81.425	393	16388	16779	6.95e-86	320
-    NC_001141.2	84.195	329	17902	18224	1.16e-83	313
-    NC_001141.2	85.811	296	17944	18232	1.95e-81	305
-    NC_001141.2	83.183	333	17902	18228	3.26e-79	298
-    NC_001141.2	86.194	268	36	300	2.53e-75	285
-    NC_001139.9	85.766	274	33	304	2.53e-75	285
-    NC_001141.2	83.893	298	17902	18193	4.24e-73	278
-    NC_001141.2	81.306	337	17902	18232	9.18e-70	267
-    NC_001140.6	89.744	195	16061	16254	3.33e-64	248
-    NC_001133.9	89.744	195	16061	16254	3.33e-64	248
-    NC_001140.6	88.325	197	16274	16469	2.59e-60	235
-    NC_001133.9	87.817	197	16274	16469	1.20e-58	230
-    NC_001141.2	82.101	257	17902	18157	4.36e-53	211
-    NC_001141.2	81.517	211	16360	16570	7.40e-41	171
-    NC_001147.6	81.043	211	16360	16570	3.45e-39	165
+    $ blastn -query ${CONTIG}.fa -subject ../../ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
+        -outfmt "6 sseqid pident length qstart qend evalue bitscore" -max_target_seqs 10 | LC_ALL=C sort -k7,7gr | head -20
+    NC_001147.6	97.158	10310	20319	30576	0.0	17344
+    NC_001141.2	98.182	8965	23629	32566	0.0	15603
+    NC_001142.9	98.532	6881	1	6841	0.0	12107
+    NC_001141.2	98.503	6881	1	6841	0.0	12096
+    NC_001139.9	97.301	6668	7861	14513	0.0	11289
+    NC_001139.9	95.226	6012	1880	7861	0.0	9441
+    NC_001137.3	95.524	5831	1880	7691	0.0	9243
+    NC_001148.4	95.169	5837	1880	7688	0.0	9138
+    NC_001147.6	94.995	5854	1880	7691	0.0	9077
+    NC_001146.8	96.724	5037	1880	6891	0.0	8362
+    NC_001144.5	96.555	5051	1880	6891	0.0	8307
+    NC_001136.10	96.555	5051	1880	6891	0.0	8307
+    NC_001142.9	98.273	4574	23629	28202	0.0	7991
+    NC_001147.6	95.781	4053	16258	20301	0.0	6523
+    NC_001137.3	96.841	3102	1689	4771	0.0	5158
+    NC_001147.6	97.129	2891	13353	16238	0.0	4867
+    NC_001144.5	96.556	2904	1880	4771	0.0	4789
+    NC_001134.8	93.730	2472	5253	7688	0.0	3648
+    (...)
 
-    $ # 4) o que o RagTag decidiu fazer com esse mesmo contig?
-    $ grep -w "${CONTIG}" ~/10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
-    NC_001147.6_RagTag	1	18412	1	W	contig_116	1	18412	+
-    
+    $ grep -w "${CONTIG}" ../../10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
+    NC_001141.2_RagTag	1	32745	1	W	contig_108	1	32745	+
     ```
+
+    Os identificadores `NC_...` são os cromossomos da referência S288C: NC_001133 = I, NC_001134 = II, NC_001136 = IV, NC_001137 = V, NC_001139 = VII, NC_001141 = IX, NC_001142 = X, NC_001144 = XII, NC_001146 = XIV, NC_001147 = XV, NC_001148 = XVI.
+
+| Trecho do contig_108 (32,7 kb) | Melhor alinhamento na referência | Identidade |
+|---|---|---|
+| 1–6.841 | cromossomos IX **e** X (mesma sequência nos dois) | 98,5% |
+| 1.880–7.861 | **oito cromossomos diferentes** (IV, V, VII, XII, XIV, XV, XVI...) | 95–97% |
+| 7.861–14.513 | cromossomo VII | 97,3% |
+| 20.319–30.576 | cromossomo XV | 97,2% |
+| 23.629–32.566 | cromossomo IX | 98,2% |
+
+!!! question "O que aconteceu com o contig_108?"
+    - **É um mosaico de sequências repetitivas.** Trechos diferentes do contig se parecem com regiões de cromossomos diferentes, e um deles aparece em oito cromossomos. Em *S. cerevisiae*, as regiões próximas aos telômeros (**subtelômeros**) compartilham elementos repetidos entre vários cromossomos e são as partes do genoma que mais variam entre linhagens.
+    - **A identidade de 95–98% é baixa para a mesma espécie** (o normal fica acima de 99%). Este contig também apareceu como problemático em outras análises: na Etapa 11.3, teve o pior QV pela régua Illumina (≈ 15, ou seja, quase não aparece nas reads Illumina), e a cobertura Nanopore dele é de só 19×, um terço da média.
+    - **RagTag e LongStitch discordam.** O LongStitch (Tigmint) **cortou** o contig em 21 pedaços, porque as reads longas da amostra não sustentam a continuidade dele. O RagTag, guiado pela referência, colocou o contig **inteiro** no início do cromossomo IX (`NC_001141.2_RagTag`, posições 1–32.745), por ser o melhor alinhamento.
+    - **Lição:** regiões repetitivas, como os subtelômeros, são onde os montadores mais erram e onde as ferramentas de scaffolding mais discordam. É também por isso que o número de sequências do LongStitch aumentou (12.3): muitos cortes caem nessas regiões. Antes de confiar na estrutura de uma região assim, confira por mais de um método.
+
+
+
+### 12.5 Comparação visual com a referência (dotplot)
+
+Tabelas e números resumem bem, mas um **dotplot** mostra de uma vez como a montagem se relaciona com a referência. Cada alinhamento entre a montagem (eixo Y) e a referência (eixo X) vira um segmento no gráfico:
+
+- **diagonal contínua**: a montagem segue a referência naquele trecho;
+- **diagonal invertida** (descendo): inversão em relação à referência;
+- **segmento fora da diagonal**: o trecho pertence a outro cromossomo da referência (translocação, ou erro de montagem);
+- **vários segmentos na mesma altura**: sequência repetida, que alinha em vários lugares.
+
+Vamos usar o [D-GENIES](https://dgenies.toulouse.inrae.fr){ target=_blank }, que faz o alinhamento e o gráfico interativo pela web. Copie para o seu computador a referência e as três versões da montagem Scer1 Flye: sem scaffolding, scaffolding com RagTag e scaffolding com LongStitch.
+
+```bash
+# no terminal do SEU computador (ajuste usuário, servidor e caminho)
+P=usuario@servidor:caminho/do/projeto
+scp $P/ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna S288C_referencia.fasta
+scp $P/9.Montagens-polidas/Scer1_q10_l500_Flye.fasta Scer1_Flye_contigs.fasta
+scp $P/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta Scer1_Flye_ragtag.fasta
+scp $P/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa Scer1_Flye_longstitch.fasta
+```
+
+No D-GENIES, em **Run**: escolha `S288C_referencia.fasta` como **Target** e uma das montagens como **Query**, e clique em **Submit**. Repita para as três versões e compare:
+
+- **Contigs (sem scaffolding):** cada cromossomo da referência aparece coberto por um ou poucos segmentos; as quebras entre eles são os pontos onde o montador parou.
+- **RagTag:** uma diagonal limpa por cromossomo, porque o RagTag ordenou os contigs **pela referência**. Isso parece perfeito, mas é em parte circular: a ordem veio da própria referência.
+- **LongStitch:** mais pedaços do que nos contigs, por causa dos cortes do Tigmint (12.2), mas cada junção foi feita com base nas reads da própria amostra.
+- **O contig_108 (12.4):** no gráfico dos contigs, procure um contig pequeno (~33 kb) com segmentos em vários cromossomos diferentes, sempre perto das pontas (subtelômeros).
+
+!!! tip "Pela linha de comando"
+    Se preferir não usar a web, o mesmo alinhamento pode ser feito no servidor com `minimap2 -x asm5 referencia.fasta montagem.fasta > alinhamento.paf`. O arquivo PAF pode ser carregado no D-GENIES (opção **Plot**) ou desenhado com pacotes como o `pafr` (R).
+
+<!-- SAÍDA: imagem do dotplot (opcional) -->
 
 ### Checklist da Etapa 12
 
@@ -5318,26 +5786,51 @@ cd ../..
 - [ ] Comparei número de placed vs. unplaced no RagTag
 - [ ] Entendi por que o número de scaffolds pode aumentar em regiões repetitivas/subteloméricas
 
+- [ ] Comparei os contigs e os dois scaffoldings com a referência num dotplot (D-GENIES)
 ---
 
 ## :material-numeric-9-plus-circle: Etapa 13 — Escolha da montagem final
 
 Chegamos ao momento de decidir com qual montagem seguir. Note que, embora tenhamos gerado scaffolds com RagTag e LongStitch nas etapas anteriores, a comparação e a escolha aqui são feitas com base nas montagens **sem** scaffolding (os contigs brutos de cada montador). O scaffolding depende de decisões adicionais (sintenia com uma referência, no caso do RagTag, ou suporte de long reads atravessando regiões repetitivas, no caso do LongStitch) que podem introduzir viés ou fragmentar ainda mais a montagem justamente nas regiões repetitivas/subteloméricas, como vimos na investigação anterior. Por isso, preferimos avaliar a qualidade "pura" de cada montador antes de aplicar qualquer scaffolding.
 
-### 13.1 Comparar as estatísticas das montagens sem scaffolding
+### 13.1 Comparar as estatísticas das montagens polidas (sem scaffolding)
+
+Antes de montar a tabela, precisamos do BUSCO das montagens finais (purgadas, polidas e só com a parte nuclear); na Etapa 9.3, rodamos o BUSCO nas montagens brutas. Corrigir indels pode consertar genes com a fase de leitura quebrada, então vale conferir:
 
 ```bash
-cd
+conda activate busco
+for f in 9.Montagens-polidas/*.fasta; do
+  prefix=$(basename $f .fasta)
+  busco -i $f -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/${prefix}_final -c 24
+done
+conda deactivate
+```
 
-QREPORT=8.QC_montagens/quast-medaka_q10_l500/report.tsv
-MERQURY=8.QC_montagens/merqury/merqury_summary.tsv
+<!-- SAÍDA: BUSCO das montagens polidas -->
 
-declare -A label_to_prefix=(
-  [Scer1_Flye]="Scer1_q10_l500_Flye"
-  [Scer1_Hifiasm]="Scer1_q10_l500_hifiasm"
-  [Scer1_NextDenovo]="Scer1_q10_l500_nextdenovo"
-  [Scer2_Flye]="Scer2_q10_l500_Flye"
-  [Scer2_Hifiasm]="Scer2_q10_l500_hifiasm"
+Agora juntamos QUAST (11.1), BUSCO e Merqury (11.2 e 11.3) das versões polidas numa tabela só:
+
+```bash
+QREPORT=8.QC_montagens/quast-polimento_q10_l500/report.tsv
+MERQURY=8.QC_montagens/merqury/merqury_summary_polimento.tsv
+MERQURY_ILMN=8.QC_montagens/merqury_illumina/merqury_illumina_summary.tsv
+
+# versão escolhida de cada montagem (Etapa 11.4)
+declare -A versao=(
+  [Scer1_q10_l500_Flye]="hibrido"
+  [Scer1_q10_l500_hifiasm]="hibrido"
+  [Scer1_q10_l500_nextdenovo]="hibrido"
+  [Scer2_q10_l500_Flye]="medaka"
+  [Scer2_q10_l500_hifiasm]="medaka"
+)
+
+# nome de cada montagem no relatório do QUAST (--labels da Etapa 11.1)
+declare -A quast_label=(
+  [Scer1_q10_l500_Flye]="Scer1_Flye_hibrido"
+  [Scer1_q10_l500_hifiasm]="Scer1_Hifiasm_hibrido"
+  [Scer1_q10_l500_nextdenovo]="Scer1_NextDenovo_hibrido"
+  [Scer2_q10_l500_Flye]="Scer2_Flye_medaka"
+  [Scer2_q10_l500_hifiasm]="Scer2_Hifiasm_medaka"
 )
 
 get_quast_value () {
@@ -5347,11 +5840,12 @@ get_quast_value () {
   ' "$QREPORT"
 }
 
-echo -e "Sample\tContigs\tTotal_length_bp\tN50\tGC(%)\tGenome_fraction(%)\tMisassemblies\tBUSCO_Complete\tBUSCO_Single\tBUSCO_Duplicated\tBUSCO_Fragmented\tBUSCO_Missing\tMerqury_QV\tMerqury_ErrorRate\tMerqury_Completeness" > 8.QC_montagens/qc_summary.tsv
+echo -e "Sample\tVersao\tContigs\tTotal_length_bp\tN50\tGC(%)\tGenome_fraction(%)\tMisassemblies\tBUSCO_Complete\tBUSCO_Single\tBUSCO_Duplicated\tBUSCO_Fragmented\tBUSCO_Missing\tQV_Nanopore\tCompleteness_Nanopore\tQV_Illumina" > 8.QC_montagens/qc_summary.tsv
 
-for label in Scer1_Flye Scer1_Hifiasm Scer1_NextDenovo Scer2_Flye Scer2_Hifiasm; do
+for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye Scer2_q10_l500_hifiasm; do
 
-  prefix=${label_to_prefix[$label]}
+  v=${versao[$prefix]}
+  label=${quast_label[$prefix]}
 
   # --- QUAST ---
   contigs=$(get_quast_value "$label" "# contigs")
@@ -5362,18 +5856,18 @@ for label in Scer1_Flye Scer1_Hifiasm Scer1_NextDenovo Scer2_Flye Scer2_Hifiasm;
   misassemblies=$(get_quast_value "$label" "# misassemblies")
 
   # --- BUSCO ---
-  busco_dir=8.QC_montagens/BUSCO/${prefix}
-  busco_line=$(grep -h "C:" ${busco_dir}/short_summary*.txt 2>/dev/null | head -1)
+  busco_line=$(grep -h "C:" 8.QC_montagens/BUSCO/${prefix}_final/short_summary*.txt 2>/dev/null | head -1)
   bc=$(grep -oP 'C:\K[0-9.]+' <<< "$busco_line")
   bs=$(grep -oP 'S:\K[0-9.]+' <<< "$busco_line")
   bd=$(grep -oP 'D:\K[0-9.]+' <<< "$busco_line")
   bf=$(grep -oP 'F:\K[0-9.]+' <<< "$busco_line")
   bm=$(grep -oP 'M:\K[0-9.]+' <<< "$busco_line")
 
-  # --- Merqury ---
-  read qv err comp <<< $(awk -F'\t' -v p="$prefix" '$1==p{print $2, $3, $4}' "$MERQURY")
+  # --- Merqury: k-mers Nanopore e, para a Scer1, k-mers Illumina ---
+  read qv comp <<< $(awk -F'\t' -v p="${prefix}_${v}" '$1==p{print $2, $4}' "$MERQURY")
+  qv_ilmn=$(awk -F'\t' -v p="${prefix}_${v}" '$1==p{print $2}' "$MERQURY_ILMN")
 
-  echo -e "$prefix\t$contigs\t$total_len\t$n50\t$gc\t$genome_frac\t$misassemblies\t$bc\t$bs\t$bd\t$bf\t$bm\t${qv:-NA}\t${err:-NA}\t${comp:-NA}"
+  echo -e "$prefix\t$v\t$contigs\t$total_len\t$n50\t$gc\t$genome_frac\t$misassemblies\t$bc\t$bs\t$bd\t$bf\t$bm\t${qv:-NA}\t${comp:-NA}\t${qv_ilmn:-NA}"
 done >> 8.QC_montagens/qc_summary.tsv
 
 column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
@@ -5404,11 +5898,111 @@ column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
 | Scer2_q10_l500_Flye | 740 | 8,352,850 | 16,256 | 38.12 | 65.765 | 67 | 66.7 | 66.4 | 0.3 | 3.1 | 30.2 | 24.3534 | 0.00366996 | 95.594 |
 | Scer2_q10_l500_hifiasm | 14 | 169,194 | 12,224 | 27.45 | 1.185 | 7 | 0.5 | 0.5 | 0.0 | 0.1 | 99.5 | 37.4762 | 0.000178805 | 79.6565 |
 
+### 13.3 Telômeros: quantos cromossomos foram montados de ponta a ponta?
+
+Nenhuma das métricas anteriores responde a uma pergunta simples: **os cromossomos estão completos**, de um telômero ao outro? Um contig que começa e termina em telômero representa um cromossomo inteiro (*telomere-to-telomere*, T2T). Como *S. cerevisiae* tem 16 cromossomos, o máximo esperado é 16 contigs T2T, ou 32 pontas teloméricas.
+
+Os telômeros de levedura não são uma repetição fixa, como o `TTAGGG` de vertebrados: são repetições **irregulares** do tipo TG₁₋₃ (algo como `TGTGGGTGTGGTGTG...`). Lida na fita de cima, a ponta esquerda de um cromossomo aparece como o complemento, C₁₋₃A (`CCCACACCCACACA...`), e a ponta direita como TG₁₋₃. Por isso, ferramentas que procuram um motivo fixo funcionam mal em levedura. O script abaixo procura esses padrões nos 150 pb de cada ponta de cada contig:
+
+```bash
+cat > telomeros.py <<'EOF'
+import sys, re
+# Telômeros de S. cerevisiae: C(1-3)A na ponta esquerda e TG(1-3) na ponta direita
+JANELA, MINIMO = 150, 0.6
+rx_esq = re.compile(r'(?:C{1,3}A){3,}')
+rx_dir = re.compile(r'(?:TG{1,3}){3,}')
+def fracao(s, rx):
+    return sum(m.end() - m.start() for m in rx.finditer(s)) / max(len(s), 1)
+seqs, nome = {}, None
+for linha in open(sys.argv[1]):
+    linha = linha.strip()
+    if linha.startswith('>'):
+        nome = linha[1:].split()[0]; seqs[nome] = []
+    elif nome:
+        seqs[nome].append(linha.upper())
+t2t = uma = 0
+for nome, partes in seqs.items():
+    s = ''.join(partes)
+    e = fracao(s[:JANELA], rx_esq) >= MINIMO
+    d = fracao(s[-JANELA:], rx_dir) >= MINIMO
+    if not (e or d):  # o contig pode estar invertido
+        rc = s[::-1].translate(str.maketrans('ACGT', 'TGCA'))
+        e = fracao(rc[:JANELA], rx_esq) >= MINIMO
+        d = fracao(rc[-JANELA:], rx_dir) >= MINIMO
+    t2t += e and d
+    uma += (e or d) and not (e and d)
+print(f"{sys.argv[1]}\tT2T: {t2t}\tuma ponta: {uma}\tpontas teloméricas: {2*t2t + uma}")
+EOF
+
+# montagens brutas
+python3 telomeros.py 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
+python3 telomeros.py 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
+python3 telomeros.py 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta
+python3 telomeros.py 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
+python3 telomeros.py 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa
+
+# montagens finais (purge_dups + polimento, só a parte nuclear)
+for f in 9.Montagens-polidas/*.fasta; do python3 telomeros.py $f; done
+```
+
+<!-- SAÍDA: telômeros -->
+
+### 13.4 Snail plot
+
+O **snail plot** ("gráfico caracol") é a figura de resumo de montagem que aparece em muitas publicações de genomas, como as do Darwin Tree of Life. Ele é produzido pelo [BlobToolKit](https://blobtoolkit.genomehubs.org){ target=_blank } e mostra, numa só imagem:
+
+- **o anel externo azul**: a composição de bases (GC e AT) ao longo da montagem;
+- **o círculo cinza**: os contigs ordenados do maior para o menor, com o comprimento de cada um no raio e a fração acumulada da montagem no ângulo (de 0 a 100%);
+- **as faixas coloridas**: o maior contig (vermelho), o N50 (laranja-escuro) e o N90 (laranja-claro);
+- **o canto superior direito**: a completude do BUSCO, quando ela é fornecida.
+
+Quanto mais a área cinza se aproxima de um "disco cheio" com bordas regulares, mais contígua é a montagem. Uma montagem fragmentada vira uma espiral fina que desce rápido.
+
+??? tip "Instalação: ambiente `blobtoolkit`"
+    ```bash
+    conda create -n blobtoolkit -c conda-forge python=3.9
+    conda activate blobtoolkit
+    pip install blobtoolkit blobtk
+    conda deactivate
+    ```
+
+    O pacote `blobtoolkit` cria o banco de dados (*BlobDir*) da montagem; o `blobtk` desenha os gráficos.
+
+    Atenção: o BlobTools **v1** (usado na Etapa 14) e o BlobToolKit se chamam `blobtools` na linha de comando. Para saber qual está ativo, rode `blobtools --version`: o v1 responde `1.1.1`; o BlobToolKit, `4.x`.
+
+```bash
+conda activate blobtoolkit
+mkdir -p 13.Snailplot
+
+for f in 9.Montagens-polidas/*.fasta; do
+  prefix=$(basename $f .fasta)
+
+  # 1) criar o BlobDir com as sequências da montagem (tamanho, GC e Ns de cada contig)
+  blobtools create --fasta $f 13.Snailplot/$prefix
+
+  # 2) acrescentar o resultado do BUSCO (Etapa 13.1)
+  blobtools add --busco 8.QC_montagens/BUSCO/${prefix}_final/run_saccharomycetaceae_odb12/full_table.tsv 13.Snailplot/$prefix
+
+  # 3) desenhar o snail plot
+  python -c "import blobtk; blobtk.plot.snail(blobdir='13.Snailplot/$prefix', output='13.Snailplot/${prefix}.snail.png')"
+done
+
+conda deactivate
+ls -lh 13.Snailplot/*.png
+```
+
+Se o passo 2 der erro (o formato do `full_table.tsv` muda entre versões do BUSCO), o snail plot ainda pode ser gerado sem ele: só o painel do BUSCO fica de fora. Copie os arquivos `.png` para o seu computador (`scp`) para visualizá-los.
+
+<!-- SAÍDA: snail plots (imagens em outputs/snailplot/) -->
+
+!!! question "Para comparar"
+    Coloque lado a lado os snail plots da Scer1 Flye e da Scer2 Flye. Na Scer1, a área cinza ocupa quase todo o círculo: poucos contigs grandes cobrem o genoma. Na Scer2, com ~6× de cobertura, o maior contig é pequeno, e a espiral desce rapidamente para centenas de contigs curtos. Que outras diferenças entre as montagens da Scer1 (Flye, Hifiasm, NextDenovo) aparecem no gráfico?
+
 ### Pontos de discussão
 
 **"Completude" não é uma medida única.** A tabela traz três definições diferentes de completude, e elas nem sempre concordam. O BUSCO mede presença de genes ortólogos conservados (independe de referência, depende de anotação); o Merqury mede sobreposição de k-mers entre o assembly e os próprios reads (não usa referência nem anotação, só a redundância interna dos dados); o QUAST mede fração da referência coberta por alinhamentos (depende de uma referência externa). O caso mais didático da tabela é o Scer2_q10_l500_hifiasm: Merqury diz 79,66% de completude, enquanto BUSCO diz 0,5% e QUAST diz 1,19%. As duas métricas baseadas em referência/anotação concordam que a montagem é praticamente inexistente; o Merqury "erra" porque sua métrica é uma razão sobre os k-mers sólidos dos próprios reads (com cobertura muito baixa, esse denominador também fica pequeno, e a razão parece artificialmente alta). A lição: nunca confiar em uma métrica de completude isolada.
 
-**Acurácia de base e correção estrutural são eixos independentes.** O hifiasm tem o melhor QV da tabela (48,64, o menor error rate de todos), mas também o maior número de misassemblies (200, contra 155 do Flye) e maior duplicação de BUSCOs (1,7% vs 0,2%). Ou seja, o assembly com bases mais precisas não é necessariamente o mais correto estruturalmente, uma vez que a duplicação sugere haplótipos não colapsados (heterozigosidade retida), o que também explica o total_length mais alto (12,95 Mb, cerca de 0,85 Mb acima do esperado ~12,1 Mb).
+**Acurácia de base e correção estrutural são eixos independentes.** O hifiasm tem o melhor QV da tabela (48,64, o menor error rate de todos), mas também o maior número de misassemblies (200, contra 155 do Flye) e maior duplicação de BUSCOs (1,7% vs 0,2%). Ou seja, o assembly com bases mais precisas não é necessariamente o mais correto estruturalmente, uma vez que a duplicação indica regiões montadas duas vezes (falsas duplicações, já que a Scer1 é haploide), o que também explica o total_length mais alto (12,95 Mb, cerca de 0,85 Mb acima do esperado ~12,1 Mb).
 
 **O número de misassemblies é alto até nas montagens boas.** 155–200 misassemblies num genoma haploide de ~12 Mb parece muito. Mas cruzando com a investigação de fragmentação que fizemos no LongStitch (contig_59, contig_66 e outros contigs subteloméricos/repetitivos do Scer1_Flye), boa parte disso provavelmente é ambiguidade de mapeamento em regiões repetitivas (elemento Y', genes de família subtelomérica como AWA1) e não erro real de montagem, uma vez que o BLAST desses contigs contra a própria referência mostrou hits fortes em múltiplos cromossomos diferentes, o que naturalmente confunde qualquer comparação estrutural contra uma referência única.
 
@@ -5430,6 +6024,8 @@ Vamos seguir com as montagens do Flye (Scer1_q10_l500_Flye e Scer2_q10_l500_Flye
 - [ ] Entendi por que as três métricas de completude podem divergir
 - [ ] Escolhi a montagem final com justificativa (não apenas pelo maior N50)
 
+- [ ] Contei os telômeros e os cromossomos montados de ponta a ponta (T2T) em cada montagem
+- [ ] Gerei o snail plot de cada montagem final
 ---
 
 ## :material-numeric-9-plus-circle: Etapa 14 — Checagem de contaminantes na montagem (BlobTools)
@@ -5444,27 +6040,25 @@ mkdir -p 11.Blobtools/Scer2_q10_l500_Flye
 
 # 1. Mapear reads nas montagems
 ### Scer1
-minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
+minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
 samtools index 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
 ### Scer2
-minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
+minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
 samtools index 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
 
 # 2. BLAST contra nt
 ### Scer1
-blastn -query 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
+blastn -query 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
 ### Scer2
-blastn -query 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
+blastn -query 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
 
 # Criar blobdb
 conda activate blobtools
-BASE=$HOME
+BASE=$(pwd)
 
 for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye; do
-  base=${prefix%_*}
-
   blobtools create \
-    -i ${BASE}/5.Montagem-Flye/${base}/assembly.fasta \
+    -i ${BASE}/9.Montagens-polidas/${prefix}.fasta \
     -b ${BASE}/11.Blobtools/${prefix}/${prefix}.bam \
     -t ${BASE}/11.Blobtools/${prefix}/assembly.blastn.out \
     -o ${BASE}/11.Blobtools/${prefix}/${prefix}
@@ -5472,14 +6066,14 @@ done
   
 # Gerar tabela
 ### Scer1
-BASE=$HOME
+BASE=$(pwd)
 blobtools view -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
 ### Scer2
 blobtools view -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
 
 # Gerar plot
 ### Scer1
-BASE=$HOME
+BASE=$(pwd)
 blobtools plot -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
 ### Scer2
 blobtools plot -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
@@ -5658,7 +6252,7 @@ A "melhor" montagem depende do que você quer fazer:
 
 | Objetivo | Versão recomendada |
 |---|---|
-| **Uso didático / referência de bom resultado** | Scer1_Flye (bruta, pré-scaffolding) |
+| **Uso didático / referência de bom resultado** | Scer1_Flye (polida, pré-scaffolding) |
 | **Comparação de acurácia de base** | Hifiasm (maior QV no Merqury) |
 | **Anotação gênica / completude** | Flye (melhor BUSCO Complete) |
 | **Comparação sintênica com uma referência** | RagTag scaffold |
@@ -5666,7 +6260,7 @@ A "melhor" montagem depende do que você quer fazer:
 | **Checagem final de contaminação** | Sempre rodar BlobTools na montagem escolhida |
 
 !!! tip "Próximos passos típicos"
-    - **Polimento iterativo:** rodar Medaka mais de uma vez, ou usar Pilon/Polypolish se houver dados Illumina (polimento híbrido)
+    - **Projetos sem Illumina:** sequenciar uma biblioteca Illumina da mesma linhagem, tanto para o polimento híbrido quanto para ter uma régua independente de qualidade
     - **Análise de telômeros:** confirmar contigs telômero-a-telômero (T2T) com `seqtk telo` ou `tidk`
     - **Detecção de elementos repetitivos:** RepeatModeler + RepeatMasker
     - **Anotação estrutural:** BRAKER3 ou MAKER
