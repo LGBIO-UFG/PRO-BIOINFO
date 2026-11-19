@@ -6508,6 +6508,7 @@ O resultado é um SVG, que pode ser aberto no navegador. Cada painel é um conti
     - **Do bruto para o final, o Hifiasm não perdeu nenhuma ponta; o Flye perdeu duas** (18 → 16). O mais provável é que essas pontas estivessem em trechos removidos pelo purge_dups (Etapa 9.5), que corta pontas de contigs e contigs inteiros classificados como duplicados. É um custo pequeno, mas que vale conhecer.
     - **A Scer2 Flye tem 11 pontas teloméricas**, mesmo com ~6× de cobertura e 705 contigs: alguns pedaços pequenos das pontas dos cromossomos foram montados, só que soltos.
     - **Este é mais um ponto a favor do Hifiasm** como montagem final da Scer1, somado ao QV (14.2).
+    - **Atenção:** contar telômeros não verifica se o que está entre eles está certo. Na Etapa 15, vamos ver que um dos 3 T2T do Hifiasm (o do chrV) é, na verdade, uma junção errada.
 
 !!! note "Os parâmetros dependem do organismo"
     O tamanho da janela (`--window`) e o mínimo de cópias (`MIN`) precisam combinar com o tamanho dos telômeros: em vertebrados e plantas, eles têm vários kb e janelas de 10 kb funcionam bem; em levedura, têm só ~300 pb, por isso usamos janelas de 1 kb. Confira sempre o resultado olhando algumas pontas no arquivo `.tsv`. Isso vale especialmente para telômeros irregulares, como o da levedura: comparamos este resultado com um script que procura o padrão irregular TG₁₋₃ por expressão regular, e os dois concordaram (no máximo uma ponta de diferença por montagem).
@@ -6610,6 +6611,8 @@ Como a Etapa 13 não removeu nenhum contig, os números são os da 14.2, agora c
 
 !!! success "Montagem final"
     **Scer1: Hifiasm híbrida** (`9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta`). Ela tem o maior QV pela régua independente, com 3 a 4 vezes menos erros que as outras duas, o maior BUSCO, o menor número de contigs e o maior número de pontas teloméricas. Além disso, é a única com o plasmídeo 2-mícron montado completo. A NextDenovo tem o maior N50, mas quase não tem telômeros nas pontas. A Flye tem menos misassemblies, mas boa parte deles são diferenças reais entre linhagens (11.1).
+
+    Ela não é perfeita: na Etapa 15, a tabela por cromossomo revela duas junções erradas envolvendo o chrV, que reduzem os T2T de 3 para 2. Os outros critérios continuam a favor dela, e as junções podem ser corrigidas, quebrando os contigs nesses pontos.
 
     **Scer2: Flye Medaka**, por ser a única utilizável, mas como um rascunho: 65% do genoma e dois terços dos genes. Para uma montagem completa, é preciso sequenciar mais (~6× é muito pouco).
 
@@ -6770,12 +6773,107 @@ Na Scer1 Hifiasm, a montagem escolhida, fica assim (cromossomos T2T em negrito):
 
 !!! example "O que a tabela da Scer1 Hifiasm mostra"
     - **Os 16 cromossomos estão representados.** Onze foram montados em **um contig só** (I, II, III, VI, VII, IX, X, XI, XIV, XV e XVI). Os outros estão em 2 contigs (V, VIII, XII e XIII) ou em 3 (IV, o maior cromossomo).
-    - **Os três T2T da 14.3 são chrIII, chrV e chrX.** A tabela também mostra os 22 telômeros da 14.3 distribuídos pelos cromossomos. Repare nos pares `sim`/`nao` + `nao`/`sim` em cromossomos quebrados em dois, como o chrVIII: cada metade traz o telômero da sua ponta. O cromossomo está completo, com uma quebra no meio.
+    - **Os três T2T da 14.3 aparecem como chrIII, chrV e chrX.** O do chrV, porém, não é o que parece (veja o quadro abaixo). A tabela também mostra os 22 telômeros da 14.3 distribuídos pelos cromossomos. Repare nos pares `sim`/`nao` + `nao`/`sim` em cromossomos quebrados em dois, como o chrVIII: cada metade traz o telômero da sua ponta. O cromossomo está completo, com uma quebra no meio.
     - **O chrXII tem um contig com cobertura de 702×**, cerca de 13 vezes a média de ~55×. É o **rDNA**: na levedura, ~150 cópias em tandem de uma unidade de 9,1 kb, no chrXII. O montador colapsa todas as cópias em poucas, e as reads de todas elas se acumulam ali. A cobertura é uma forma de estimar o número de cópias.
     - **Um contig de 1,6 kb do chrMT sobrou** na montagem (`ptg000069l_1`). Ele tem GC de 19% (o mtDNA da levedura é muito rico em AT) e cobertura de 2260×. Ele escapou da separação da mitocôndria na Etapa 9.4, provavelmente porque só ~51% dele alinha no mtDNA de referência. É um bom exemplo de como a tabela por contig revela o que as métricas da montagem inteira escondem.
     - **O 2-mícron (`ptg000045c_1`, 13.4) tem cobertura de 191×**, ~3,5 vezes a do genoma nuclear, ou seja, várias cópias por célula. O QV `+inf` indica que nenhum k-mer dele está ausente das reads Illumina: zero erros detectados.
     - **Dois contigs têm QV bem abaixo dos outros** (ptg000005, chrVII, com 34,5, e ptg000011, chrXIII, com 32,2). Nos demais, o QV fica entre 42 e 60. Vale olhar esses dois como fizemos na 11.3.
-    - **`alinhado_%` abaixo de 90%** em dois contigs do chrV (84% e 62%). Parte deles alinha melhor em outro cromossomo ou não existe na S288C: pode ser uma diferença estrutural real da CBS7963, ou uma junção errada. É o tipo de caso que se confere com o dotplot da 12.5.
+    - **`alinhado_%` abaixo de 90%** em dois contigs do chrV (84% e 62%): parte deles alinha em outro cromossomo. Investigamos esse caso no quadro abaixo.
+
+!!! example "Investigando o chrV: um T2T que é uma junção errada"
+    Por que o chrV, que tem um contig T2T, aparece em dois contigs, e nenhum deles alinha 100% no chrV? Para ver onde cada pedaço dos dois contigs cai na referência:
+
+    ```bash
+    for c in ptg000007l_1 ptg000023l_1; do
+      awk -v c=$c '$1==c && $11>=10000' 15.Tabela-cromossomos/Scer1_q10_l500_hifiasm.vs_R64.paf \
+        | sort -k3,3n | cut -f1-12 | column -t
+    done
+    ```
+
+    ```text
+    ptg000007l_1  547688  456     454294  +  NC_001137.3  576874  0       448958  406710  458057  60
+    ptg000007l_1  547688  448890  547011  +  NC_001148.4  948066  850787  948048  90891   98460   60
+    ptg000023l_1  228556  1495    127638  -  NC_001137.3  576874  436624  576371  108700  141360  60
+    ptg000023l_1  228556  127669  221717  -  NC_001146.8  784333  8992    102496  84566   94078   60
+    ```
+
+    | Contig | Parte 1 | Parte 2 |
+    |---|---|---|
+    | `ptg000007l_1` (548 kb, T2T) | chrV 0–449 kb | **chrXVI** 851–948 kb (ponta do braço direito) |
+    | `ptg000023l_1` (229 kb) | chrV 437–577 kb | **chrXIV** 9–102 kb (braço esquerdo) |
+
+    Juntos, os dois contigs cobrem o chrV inteiro, mas cada um está ligado a um pedaço de outro cromossomo. A tabela confirma: o contig do chrXVI (`ptg000012l_1`, 850 kb) termina exatamente onde começa o pedaço de chrXVI do `ptg000007`, e o do chrXIV (`ptg000010l_1`, 674 kb) começa onde termina o pedaço de chrXIV do `ptg000023`. Há duas explicações possíveis: um **rearranjo real** da CBS7963 (translocação entre os cromossomos V, XIV e XVI) ou **duas junções erradas** do Hifiasm.
+
+    **Teste 1: as reads atravessam as junções?** Contamos as reads que cobrem a junção inteira, com 1 kb de margem de cada lado, e comparamos com um trecho comum do mesmo contig, do mesmo tamanho:
+
+    ```bash
+    conda activate polimento
+    BAM=13.Contaminantes/Scer1_q10_l500_hifiasm.bam
+    # reads (MAPQ>=20, alinhamento primário) que começam antes de A e terminam depois de B
+    span () {
+      samtools view -q 20 -F 0x904 $BAM "$1:$2-$3" | awk -v a=$2 -v b=$3 '
+        { len=0; c=$6
+          while (match(c, /[0-9]+[MDN=X]/)) { len+=substr(c,RSTART,RLENGTH-1); c=substr(c,RSTART+RLENGTH) }
+          if ($4<=a && $4+len>=b) n++ }
+        END { print n+0 }'
+    }
+    echo "ptg7  junção chrV|chrXVI: $(span ptg000007l_1 447890 455294)  controle: $(span ptg000007l_1 200000 207404)"
+    echo "ptg23 junção chrV|chrXIV: $(span ptg000023l_1 126638 128669)  controle: $(span ptg000023l_1 60000 62031)"
+    conda deactivate
+    ```
+
+    ```text
+    ptg7  junção chrV|chrXVI: 0  controle: 7
+    ptg23 junção chrV|chrXIV: 17  controle: 34
+    ```
+
+    Nenhuma read atravessa a junção chrV|chrXVI, contra 7 no controle. Ali, os dois pedaços se sobrepõem em ~5,4 kb, o que sugere uma repetição, e só reads com mais de ~7 kb conseguiriam atravessá-la. A junção chrV|chrXIV tem metade das reads do controle. Como a janela é curta (2 kb), essas reads podem estar apenas atravessando uma sequência repetida que existe nos dois cromossomos.
+
+    **Teste 2: os outros montadores fizeram as mesmas junções?** Usando os PAFs da 15.1:
+
+    ```bash
+    for P in Scer1_q10_l500_Flye Scer1_q10_l500_nextdenovo; do
+      echo "===== $P"
+      awk '$11>=10000 && ($6=="NC_001137.3" || $6=="NC_001148.4" || $6=="NC_001146.8")' \
+          15.Tabela-cromossomos/$P.vs_R64.paf | sort -k1,1 -k3,3n | cut -f1-4,6,8,9 | column -t
+    done
+    ```
+
+    ```text
+    ===== Scer1_q10_l500_Flye
+    contig_103_1  754533  201     754516  NC_001146.8  4       766864
+    contig_149_1  377922  12      372641  NC_001137.3  63026   435837
+    contig_20_1   29304   30      29023   NC_001146.8  754970  783974
+    contig_21_1   70113   504     64185   NC_001137.3  0       63017
+    contig_23_1   136493  273     126747  NC_001137.3  436624  576743
+    contig_93_1   913433  24      912797  NC_001148.4  9635    948048
+    ===== Scer1_q10_l500_nextdenovo
+    ctg000000_1   132323  8       132309  NC_001137.3  314381  448292
+    ctg000090_1   37404   5475    37387   NC_001146.8  4       15783
+    ctg000100_1   134961  7325    134656  NC_001137.3  436624  576725
+    ctg000120_1   766906  3580    766860  NC_001146.8  9015    783974
+    ctg000150_1   395161  385289  395111  NC_001146.8  4       9842
+    ctg000240_1   321021  144     321009  NC_001137.3  0       314367
+    ctg000260_1   918772  60      918758  NC_001148.4  9617    948048
+    ```
+
+    Tanto no Flye quanto no NextDenovo, o **chrXVI** (`contig_93_1`, `ctg000260_1`) e o **chrXIV** (`contig_103_1`, `ctg000120_1`) estão inteiros, sem quebra em 851 kb nem em 102 kb. E os dois quebram o chrV no mesmo lugar, por volta de 436–449 kb: o pedaço da direita sempre começa em 436.624.
+
+    **Conclusão:** o mais provável é que o Hifiasm tenha feito **duas junções erradas** numa região repetitiva do chrV, em ~437–449 kb, que nenhum dos três montadores conseguiu atravessar. O Flye e o NextDenovo pararam ali. O Hifiasm "continuou" em cromossomos errados. Portanto, o contig `ptg000007l_1` tem telômero nas duas pontas, mas não é um cromossomo: é o chrV esquerdo colado à ponta do chrXVI. Na Scer1 Hifiasm, os T2T de verdade são **2** (chrIII e chrX), e não 3.
+
+    **Lições:**
+
+    - **T2T quer dizer "telômero nas duas pontas", não "cromossomo correto".** A contagem de telômeros da 14.3 não tem como perceber uma junção errada.
+    - **Desconfie de contigs que alinham em mais de um cromossomo.** Translocações reais existem em levedura, mas a primeira hipótese a testar é erro de montagem. Os testes são reads atravessando a junção e outros montadores concordando com ela.
+    - **Como corrigir:** quebrar os contigs nas junções sem suporte, por exemplo com `samtools faidx` (`ptg000007l_1:1-448890` e `ptg000007l_1:454295-547688`), ou usar ferramentas que fazem isso a partir das reads, como o `ragtag.py correct` ou o Inspector. Isso não muda as outras métricas da montagem (QV, BUSCO), mas muda a contagem de T2T e o que se pode afirmar sobre a estrutura dos cromossomos.
+
+!!! tip "Checagem de rotina: confira as junções com as reads"
+    Sempre que um contig alinhar em mais de um cromossomo, ou que um T2T parecer bom demais, olhe as reads na região antes de tirar conclusões. Rearranjos reais têm reads atravessando a junção; junções erradas, não. Duas ferramentas ajudam:
+
+    - **[IGV](https://igv.org){ target=_blank }**: abra a montagem (`.fasta`) e o BAM das reads (o da 13.2) e vá até a junção. Numa junção correta, várias reads passam inteiras de um lado para o outro. Numa junção errada, as reads param na junção ou aparecem cortadas (*soft-clipped*) exatamente ali, e a cobertura cai.
+    - **[Inspector](https://github.com/ChongLab/Inspector){ target=_blank }**: avalia a montagem inteira a partir das reads longas (aceita Nanopore com `--datatype nanopore`) e lista as regiões com erros estruturais, sem precisar saber onde procurar. Ele também pode corrigir as que encontrar.
+
+    Um exemplo do que vale olhar: o T2T do chrVI na Flye (`contig_10_1`) alinha no chrVI no meio, mas as pontas (~11 kb de cada lado) alinham em subtelômeros do chrXII e do chrVIII, com MAPQ baixo (23–33). Pontas de cromossomos de levedura compartilham famílias de sequências subteloméricas, que variam entre linhagens. Por isso, isso provavelmente é uma diferença real da CBS7963, e não um erro, mas só as reads podem confirmar.
 
 O arquivo `.tsv` abre direto em planilhas (Excel, LibreOffice, Google Sheets), o que facilita filtrar e colorir.
 
