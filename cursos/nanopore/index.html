@@ -9925,6 +9925,7 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <li><strong>Do bruto para o final, o Hifiasm não perdeu nenhuma ponta; o Flye perdeu duas</strong> (18 → 16). O mais provável é que essas pontas estivessem em trechos removidos pelo purge_dups (Etapa 9.5), que corta pontas de contigs e contigs inteiros classificados como duplicados. É um custo pequeno, mas que vale conhecer.</li>
 <li><strong>A Scer2 Flye tem 11 pontas teloméricas</strong>, mesmo com ~6× de cobertura e 705 contigs: alguns pedaços pequenos das pontas dos cromossomos foram montados, só que soltos.</li>
 <li><strong>Este é mais um ponto a favor do Hifiasm</strong> como montagem final da Scer1, somado ao QV (14.2).</li>
+<li><strong>Atenção:</strong> contar telômeros não verifica se o que está entre eles está certo. Na Etapa 15, vamos ver que um dos 3 T2T do Hifiasm (o do chrV) é, na verdade, uma junção errada.</li>
 </ul>
 </div>
 <div class="admonition note">
@@ -10104,6 +10105,7 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <div class="admonition success">
 <p class="admonition-title">Montagem final</p>
 <p><strong>Scer1: Hifiasm híbrida</strong> (<code>9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta</code>). Ela tem o maior QV pela régua independente, com 3 a 4 vezes menos erros que as outras duas, o maior BUSCO, o menor número de contigs e o maior número de pontas teloméricas. Além disso, é a única com o plasmídeo 2-mícron montado completo. A NextDenovo tem o maior N50, mas quase não tem telômeros nas pontas. A Flye tem menos misassemblies, mas boa parte deles são diferenças reais entre linhagens (11.1).</p>
+<p>Ela não é perfeita: na Etapa 15, a tabela por cromossomo revela duas junções erradas envolvendo o chrV, que reduzem os T2T de 3 para 2. Os outros critérios continuam a favor dela, e as junções podem ser corrigidas, quebrando os contigs nesses pontos.</p>
 <p><strong>Scer2: Flye Medaka</strong>, por ser a única utilizável, mas como um rascunho: 65% do genoma e dois terços dos genes. Para uma montagem completa, é preciso sequenciar mais (~6× é muito pouco).</p>
 <p>Em todas as montagens, a checagem de contaminantes não encontrou nada além de levedura. Isso confirma que os ~24% de reads "humanos" e os ~5–8% de <em>B. cereus</em> do Kraken2 (Etapa 4) eram falsos positivos.</p>
 </div>
@@ -10552,13 +10554,108 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <p class="admonition-title">O que a tabela da Scer1 Hifiasm mostra</p>
 <ul>
 <li><strong>Os 16 cromossomos estão representados.</strong> Onze foram montados em <strong>um contig só</strong> (I, II, III, VI, VII, IX, X, XI, XIV, XV e XVI). Os outros estão em 2 contigs (V, VIII, XII e XIII) ou em 3 (IV, o maior cromossomo).</li>
-<li><strong>Os três T2T da 14.3 são chrIII, chrV e chrX.</strong> A tabela também mostra os 22 telômeros da 14.3 distribuídos pelos cromossomos. Repare nos pares <code>sim</code>/<code>nao</code> + <code>nao</code>/<code>sim</code> em cromossomos quebrados em dois, como o chrVIII: cada metade traz o telômero da sua ponta. O cromossomo está completo, com uma quebra no meio.</li>
+<li><strong>Os três T2T da 14.3 aparecem como chrIII, chrV e chrX.</strong> O do chrV, porém, não é o que parece (veja o quadro abaixo). A tabela também mostra os 22 telômeros da 14.3 distribuídos pelos cromossomos. Repare nos pares <code>sim</code>/<code>nao</code> + <code>nao</code>/<code>sim</code> em cromossomos quebrados em dois, como o chrVIII: cada metade traz o telômero da sua ponta. O cromossomo está completo, com uma quebra no meio.</li>
 <li><strong>O chrXII tem um contig com cobertura de 702×</strong>, cerca de 13 vezes a média de ~55×. É o <strong>rDNA</strong>: na levedura, ~150 cópias em tandem de uma unidade de 9,1 kb, no chrXII. O montador colapsa todas as cópias em poucas, e as reads de todas elas se acumulam ali. A cobertura é uma forma de estimar o número de cópias.</li>
 <li><strong>Um contig de 1,6 kb do chrMT sobrou</strong> na montagem (<code>ptg000069l_1</code>). Ele tem GC de 19% (o mtDNA da levedura é muito rico em AT) e cobertura de 2260×. Ele escapou da separação da mitocôndria na Etapa 9.4, provavelmente porque só ~51% dele alinha no mtDNA de referência. É um bom exemplo de como a tabela por contig revela o que as métricas da montagem inteira escondem.</li>
 <li><strong>O 2-mícron (<code>ptg000045c_1</code>, 13.4) tem cobertura de 191×</strong>, ~3,5 vezes a do genoma nuclear, ou seja, várias cópias por célula. O QV <code>+inf</code> indica que nenhum k-mer dele está ausente das reads Illumina: zero erros detectados.</li>
 <li><strong>Dois contigs têm QV bem abaixo dos outros</strong> (ptg000005, chrVII, com 34,5, e ptg000011, chrXIII, com 32,2). Nos demais, o QV fica entre 42 e 60. Vale olhar esses dois como fizemos na 11.3.</li>
-<li><strong><code>alinhado_%</code> abaixo de 90%</strong> em dois contigs do chrV (84% e 62%). Parte deles alinha melhor em outro cromossomo ou não existe na S288C: pode ser uma diferença estrutural real da CBS7963, ou uma junção errada. É o tipo de caso que se confere com o dotplot da 12.5.</li>
+<li><strong><code>alinhado_%</code> abaixo de 90%</strong> em dois contigs do chrV (84% e 62%): parte deles alinha em outro cromossomo. Investigamos esse caso no quadro abaixo.</li>
 </ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Investigando o chrV: um T2T que é uma junção errada</p>
+<p>Por que o chrV, que tem um contig T2T, aparece em dois contigs, e nenhum deles alinha 100% no chrV? Para ver onde cada pedaço dos dois contigs cai na referência:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a><span class="k">for</span><span class="w"> </span>c<span class="w"> </span><span class="k">in</span><span class="w"> </span>ptg000007l_1<span class="w"> </span>ptg000023l_1<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-173-2"><a id="__codelineno-173-2" name="__codelineno-173-2" href="#__codelineno-173-2"></a><span class="w">  </span>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">c</span><span class="o">=</span><span class="nv">$c</span><span class="w"> </span><span class="s1">'$1==c &amp;&amp; $11&gt;=10000'</span><span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_hifiasm.vs_R64.paf<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-173-3"><a id="__codelineno-173-3" name="__codelineno-173-3" href="#__codelineno-173-3"></a><span class="w">    </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k3,3n<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1-12<span class="w"> </span><span class="p">|</span><span class="w"> </span>column<span class="w"> </span>-t
+</span><span id="__span-173-4"><a id="__codelineno-173-4" name="__codelineno-173-4" href="#__codelineno-173-4"></a><span class="k">done</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-174-1"><a id="__codelineno-174-1" name="__codelineno-174-1" href="#__codelineno-174-1"></a>ptg000007l_1  547688  456     454294  +  NC_001137.3  576874  0       448958  406710  458057  60
+</span><span id="__span-174-2"><a id="__codelineno-174-2" name="__codelineno-174-2" href="#__codelineno-174-2"></a>ptg000007l_1  547688  448890  547011  +  NC_001148.4  948066  850787  948048  90891   98460   60
+</span><span id="__span-174-3"><a id="__codelineno-174-3" name="__codelineno-174-3" href="#__codelineno-174-3"></a>ptg000023l_1  228556  1495    127638  -  NC_001137.3  576874  436624  576371  108700  141360  60
+</span><span id="__span-174-4"><a id="__codelineno-174-4" name="__codelineno-174-4" href="#__codelineno-174-4"></a>ptg000023l_1  228556  127669  221717  -  NC_001146.8  784333  8992    102496  84566   94078   60
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Contig</th>
+<th>Parte 1</th>
+<th>Parte 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ptg000007l_1</code> (548 kb, T2T)</td>
+<td>chrV 0–449 kb</td>
+<td><strong>chrXVI</strong> 851–948 kb (ponta do braço direito)</td>
+</tr>
+<tr>
+<td><code>ptg000023l_1</code> (229 kb)</td>
+<td>chrV 437–577 kb</td>
+<td><strong>chrXIV</strong> 9–102 kb (braço esquerdo)</td>
+</tr>
+</tbody>
+</table>
+<p>Juntos, os dois contigs cobrem o chrV inteiro, mas cada um está ligado a um pedaço de outro cromossomo. A tabela confirma: o contig do chrXVI (<code>ptg000012l_1</code>, 850 kb) termina exatamente onde começa o pedaço de chrXVI do <code>ptg000007</code>, e o do chrXIV (<code>ptg000010l_1</code>, 674 kb) começa onde termina o pedaço de chrXIV do <code>ptg000023</code>. Há duas explicações possíveis: um <strong>rearranjo real</strong> da CBS7963 (translocação entre os cromossomos V, XIV e XVI) ou <strong>duas junções erradas</strong> do Hifiasm.</p>
+<p><strong>Teste 1: as reads atravessam as junções?</strong> Contamos as reads que cobrem a junção inteira, com 1 kb de margem de cada lado, e comparamos com um trecho comum do mesmo contig, do mesmo tamanho:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-175-1"><a id="__codelineno-175-1" name="__codelineno-175-1" href="#__codelineno-175-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>polimento
+</span><span id="__span-175-2"><a id="__codelineno-175-2" name="__codelineno-175-2" href="#__codelineno-175-2"></a><span class="nv">BAM</span><span class="o">=</span><span class="m">13</span>.Contaminantes/Scer1_q10_l500_hifiasm.bam
+</span><span id="__span-175-3"><a id="__codelineno-175-3" name="__codelineno-175-3" href="#__codelineno-175-3"></a><span class="c1"># reads (MAPQ&gt;=20, alinhamento primário) que começam antes de A e terminam depois de B</span>
+</span><span id="__span-175-4"><a id="__codelineno-175-4" name="__codelineno-175-4" href="#__codelineno-175-4"></a>span<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-175-5"><a id="__codelineno-175-5" name="__codelineno-175-5" href="#__codelineno-175-5"></a><span class="w">  </span>samtools<span class="w"> </span>view<span class="w"> </span>-q<span class="w"> </span><span class="m">20</span><span class="w"> </span>-F<span class="w"> </span>0x904<span class="w"> </span><span class="nv">$BAM</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">:</span><span class="nv">$2</span><span class="s2">-</span><span class="nv">$3</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">a</span><span class="o">=</span><span class="nv">$2</span><span class="w"> </span>-v<span class="w"> </span><span class="nv">b</span><span class="o">=</span><span class="nv">$3</span><span class="w"> </span><span class="s1">'</span>
+</span><span id="__span-175-6"><a id="__codelineno-175-6" name="__codelineno-175-6" href="#__codelineno-175-6"></a><span class="s1">    { len=0; c=$6</span>
+</span><span id="__span-175-7"><a id="__codelineno-175-7" name="__codelineno-175-7" href="#__codelineno-175-7"></a><span class="s1">      while (match(c, /[0-9]+[MDN=X]/)) { len+=substr(c,RSTART,RLENGTH-1); c=substr(c,RSTART+RLENGTH) }</span>
+</span><span id="__span-175-8"><a id="__codelineno-175-8" name="__codelineno-175-8" href="#__codelineno-175-8"></a><span class="s1">      if ($4&lt;=a &amp;&amp; $4+len&gt;=b) n++ }</span>
+</span><span id="__span-175-9"><a id="__codelineno-175-9" name="__codelineno-175-9" href="#__codelineno-175-9"></a><span class="s1">    END { print n+0 }'</span>
+</span><span id="__span-175-10"><a id="__codelineno-175-10" name="__codelineno-175-10" href="#__codelineno-175-10"></a><span class="o">}</span>
+</span><span id="__span-175-11"><a id="__codelineno-175-11" name="__codelineno-175-11" href="#__codelineno-175-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ptg7  junção chrV|chrXVI: </span><span class="k">$(</span>span<span class="w"> </span>ptg000007l_1<span class="w"> </span><span class="m">447890</span><span class="w"> </span><span class="m">455294</span><span class="k">)</span><span class="s2">  controle: </span><span class="k">$(</span>span<span class="w"> </span>ptg000007l_1<span class="w"> </span><span class="m">200000</span><span class="w"> </span><span class="m">207404</span><span class="k">)</span><span class="s2">"</span>
+</span><span id="__span-175-12"><a id="__codelineno-175-12" name="__codelineno-175-12" href="#__codelineno-175-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ptg23 junção chrV|chrXIV: </span><span class="k">$(</span>span<span class="w"> </span>ptg000023l_1<span class="w"> </span><span class="m">126638</span><span class="w"> </span><span class="m">128669</span><span class="k">)</span><span class="s2">  controle: </span><span class="k">$(</span>span<span class="w"> </span>ptg000023l_1<span class="w"> </span><span class="m">60000</span><span class="w"> </span><span class="m">62031</span><span class="k">)</span><span class="s2">"</span>
+</span><span id="__span-175-13"><a id="__codelineno-175-13" name="__codelineno-175-13" href="#__codelineno-175-13"></a>conda<span class="w"> </span>deactivate
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-176-1"><a id="__codelineno-176-1" name="__codelineno-176-1" href="#__codelineno-176-1"></a>ptg7  junção chrV|chrXVI: 0  controle: 7
+</span><span id="__span-176-2"><a id="__codelineno-176-2" name="__codelineno-176-2" href="#__codelineno-176-2"></a>ptg23 junção chrV|chrXIV: 17  controle: 34
+</span></code></pre></div>
+<p>Nenhuma read atravessa a junção chrV|chrXVI, contra 7 no controle. Ali, os dois pedaços se sobrepõem em ~5,4 kb, o que sugere uma repetição, e só reads com mais de ~7 kb conseguiriam atravessá-la. A junção chrV|chrXIV tem metade das reads do controle. Como a janela é curta (2 kb), essas reads podem estar apenas atravessando uma sequência repetida que existe nos dois cromossomos.</p>
+<p><strong>Teste 2: os outros montadores fizeram as mesmas junções?</strong> Usando os PAFs da 15.1:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-177-1"><a id="__codelineno-177-1" name="__codelineno-177-1" href="#__codelineno-177-1"></a><span class="k">for</span><span class="w"> </span>P<span class="w"> </span><span class="k">in</span><span class="w"> </span>Scer1_q10_l500_Flye<span class="w"> </span>Scer1_q10_l500_nextdenovo<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-177-2"><a id="__codelineno-177-2" name="__codelineno-177-2" href="#__codelineno-177-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"===== </span><span class="nv">$P</span><span class="s2">"</span>
+</span><span id="__span-177-3"><a id="__codelineno-177-3" name="__codelineno-177-3" href="#__codelineno-177-3"></a><span class="w">  </span>awk<span class="w"> </span><span class="s1">'$11&gt;=10000 &amp;&amp; ($6=="NC_001137.3" || $6=="NC_001148.4" || $6=="NC_001146.8")'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-177-4"><a id="__codelineno-177-4" name="__codelineno-177-4" href="#__codelineno-177-4"></a><span class="w">      </span><span class="m">15</span>.Tabela-cromossomos/<span class="nv">$P</span>.vs_R64.paf<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k1,1<span class="w"> </span>-k3,3n<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1-4,6,8,9<span class="w"> </span><span class="p">|</span><span class="w"> </span>column<span class="w"> </span>-t
+</span><span id="__span-177-5"><a id="__codelineno-177-5" name="__codelineno-177-5" href="#__codelineno-177-5"></a><span class="k">done</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-178-1"><a id="__codelineno-178-1" name="__codelineno-178-1" href="#__codelineno-178-1"></a>===== Scer1_q10_l500_Flye
+</span><span id="__span-178-2"><a id="__codelineno-178-2" name="__codelineno-178-2" href="#__codelineno-178-2"></a>contig_103_1  754533  201     754516  NC_001146.8  4       766864
+</span><span id="__span-178-3"><a id="__codelineno-178-3" name="__codelineno-178-3" href="#__codelineno-178-3"></a>contig_149_1  377922  12      372641  NC_001137.3  63026   435837
+</span><span id="__span-178-4"><a id="__codelineno-178-4" name="__codelineno-178-4" href="#__codelineno-178-4"></a>contig_20_1   29304   30      29023   NC_001146.8  754970  783974
+</span><span id="__span-178-5"><a id="__codelineno-178-5" name="__codelineno-178-5" href="#__codelineno-178-5"></a>contig_21_1   70113   504     64185   NC_001137.3  0       63017
+</span><span id="__span-178-6"><a id="__codelineno-178-6" name="__codelineno-178-6" href="#__codelineno-178-6"></a>contig_23_1   136493  273     126747  NC_001137.3  436624  576743
+</span><span id="__span-178-7"><a id="__codelineno-178-7" name="__codelineno-178-7" href="#__codelineno-178-7"></a>contig_93_1   913433  24      912797  NC_001148.4  9635    948048
+</span><span id="__span-178-8"><a id="__codelineno-178-8" name="__codelineno-178-8" href="#__codelineno-178-8"></a>===== Scer1_q10_l500_nextdenovo
+</span><span id="__span-178-9"><a id="__codelineno-178-9" name="__codelineno-178-9" href="#__codelineno-178-9"></a>ctg000000_1   132323  8       132309  NC_001137.3  314381  448292
+</span><span id="__span-178-10"><a id="__codelineno-178-10" name="__codelineno-178-10" href="#__codelineno-178-10"></a>ctg000090_1   37404   5475    37387   NC_001146.8  4       15783
+</span><span id="__span-178-11"><a id="__codelineno-178-11" name="__codelineno-178-11" href="#__codelineno-178-11"></a>ctg000100_1   134961  7325    134656  NC_001137.3  436624  576725
+</span><span id="__span-178-12"><a id="__codelineno-178-12" name="__codelineno-178-12" href="#__codelineno-178-12"></a>ctg000120_1   766906  3580    766860  NC_001146.8  9015    783974
+</span><span id="__span-178-13"><a id="__codelineno-178-13" name="__codelineno-178-13" href="#__codelineno-178-13"></a>ctg000150_1   395161  385289  395111  NC_001146.8  4       9842
+</span><span id="__span-178-14"><a id="__codelineno-178-14" name="__codelineno-178-14" href="#__codelineno-178-14"></a>ctg000240_1   321021  144     321009  NC_001137.3  0       314367
+</span><span id="__span-178-15"><a id="__codelineno-178-15" name="__codelineno-178-15" href="#__codelineno-178-15"></a>ctg000260_1   918772  60      918758  NC_001148.4  9617    948048
+</span></code></pre></div>
+<p>Tanto no Flye quanto no NextDenovo, o <strong>chrXVI</strong> (<code>contig_93_1</code>, <code>ctg000260_1</code>) e o <strong>chrXIV</strong> (<code>contig_103_1</code>, <code>ctg000120_1</code>) estão inteiros, sem quebra em 851 kb nem em 102 kb. E os dois quebram o chrV no mesmo lugar, por volta de 436–449 kb: o pedaço da direita sempre começa em 436.624.</p>
+<p><strong>Conclusão:</strong> o mais provável é que o Hifiasm tenha feito <strong>duas junções erradas</strong> numa região repetitiva do chrV, em ~437–449 kb, que nenhum dos três montadores conseguiu atravessar. O Flye e o NextDenovo pararam ali. O Hifiasm "continuou" em cromossomos errados. Portanto, o contig <code>ptg000007l_1</code> tem telômero nas duas pontas, mas não é um cromossomo: é o chrV esquerdo colado à ponta do chrXVI. Na Scer1 Hifiasm, os T2T de verdade são <strong>2</strong> (chrIII e chrX), e não 3.</p>
+<p><strong>Lições:</strong></p>
+<ul>
+<li><strong>T2T quer dizer "telômero nas duas pontas", não "cromossomo correto".</strong> A contagem de telômeros da 14.3 não tem como perceber uma junção errada.</li>
+<li><strong>Desconfie de contigs que alinham em mais de um cromossomo.</strong> Translocações reais existem em levedura, mas a primeira hipótese a testar é erro de montagem. Os testes são reads atravessando a junção e outros montadores concordando com ela.</li>
+<li><strong>Como corrigir:</strong> quebrar os contigs nas junções sem suporte, por exemplo com <code>samtools faidx</code> (<code>ptg000007l_1:1-448890</code> e <code>ptg000007l_1:454295-547688</code>), ou usar ferramentas que fazem isso a partir das reads, como o <code>ragtag.py correct</code> ou o Inspector. Isso não muda as outras métricas da montagem (QV, BUSCO), mas muda a contagem de T2T e o que se pode afirmar sobre a estrutura dos cromossomos.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Checagem de rotina: confira as junções com as reads</p>
+<p>Sempre que um contig alinhar em mais de um cromossomo, ou que um T2T parecer bom demais, olhe as reads na região antes de tirar conclusões. Rearranjos reais têm reads atravessando a junção; junções erradas, não. Duas ferramentas ajudam:</p>
+<ul>
+<li><strong><a href="https://igv.org" target="_blank">IGV</a></strong>: abra a montagem (<code>.fasta</code>) e o BAM das reads (o da 13.2) e vá até a junção. Numa junção correta, várias reads passam inteiras de um lado para o outro. Numa junção errada, as reads param na junção ou aparecem cortadas (<em>soft-clipped</em>) exatamente ali, e a cobertura cai.</li>
+<li><strong><a href="https://github.com/ChongLab/Inspector" target="_blank">Inspector</a></strong>: avalia a montagem inteira a partir das reads longas (aceita Nanopore com <code>--datatype nanopore</code>) e lista as regiões com erros estruturais, sem precisar saber onde procurar. Ele também pode corrigir as que encontrar.</li>
+</ul>
+<p>Um exemplo do que vale olhar: o T2T do chrVI na Flye (<code>contig_10_1</code>) alinha no chrVI no meio, mas as pontas (~11 kb de cada lado) alinham em subtelômeros do chrXII e do chrVIII, com MAPQ baixo (23–33). Pontas de cromossomos de levedura compartilham famílias de sequências subteloméricas, que variam entre linhagens. Por isso, isso provavelmente é uma diferença real da CBS7963, e não um erro, mas só as reads podem confirmar.</p>
 </div>
 <p>O arquivo <code>.tsv</code> abre direto em planilhas (Excel, LibreOffice, Google Sheets), o que facilita filtrar e colorir.</p>
 <div class="admonition question">
