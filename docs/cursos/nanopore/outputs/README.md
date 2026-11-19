@@ -49,6 +49,9 @@ Coloque os arquivos exatamente com os nomes abaixo (ou ajuste os links no `index
 ## snailplot/
 - `<montagem>.snail.png` — snail plots do BlobToolKit (Etapa 14.4)
 
+## igv/
+- `igv_ptg7_juncao_chrV_chrXVI.png`, `igv_ptg7_controle.png`, `igv_ptg23_juncao_chrV_chrXIV.png` — prints do IGV das junções do chrV (Etapa 15)
+
 ---
 
 Os FASTAs de montagem (grandes) **não** vão aqui — eles ficam em

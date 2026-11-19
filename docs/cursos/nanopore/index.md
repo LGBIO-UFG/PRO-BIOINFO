@@ -6859,6 +6859,46 @@ Na Scer1 Hifiasm, a montagem escolhida, fica assim (cromossomos T2T em negrito):
 
     Tanto no Flye quanto no NextDenovo, o **chrXVI** (`contig_93_1`, `ctg000260_1`) e o **chrXIV** (`contig_103_1`, `ctg000120_1`) estão inteiros, sem quebra em 851 kb nem em 102 kb. E os dois quebram o chrV no mesmo lugar, por volta de 436–449 kb: o pedaço da direita sempre começa em 436.624.
 
+    **Teste 3: olhar as reads no IGV.** Os números ficam mais claros quando vemos as reads. Para não baixar o BAM inteiro, recortamos só as regiões de interesse: as duas junções e um controle.
+
+    ```bash
+    conda activate polimento
+    mkdir -p 15.Tabela-cromossomos/igv && cd 15.Tabela-cromossomos/igv
+    samtools view -b ../../13.Contaminantes/Scer1_q10_l500_hifiasm.bam \
+      ptg000007l_1:190000-215000 ptg000007l_1:430000-470000 ptg000023l_1:110000-145000 \
+      | samtools sort -o hifiasm_juncoes.bam       # o IGV exige o BAM ordenado e indexado
+    samtools index hifiasm_juncoes.bam
+    samtools faidx ../../9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta ptg000007l_1 ptg000023l_1 > hifiasm_chrV.fasta
+    samtools faidx hifiasm_chrV.fasta
+    cd ../.. && conda deactivate
+    ```
+
+    Copie os quatro arquivos para o seu computador (`scp`). Se preferir, baixe os que já preparamos: [`hifiasm_chrV.fasta`](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_chrV.fasta), [`.fai`](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_chrV.fasta.fai), [`hifiasm_juncoes.bam`](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_juncoes.bam) e [`.bai`](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_juncoes.bam.bai). Depois abra o [IGV no navegador](https://igv.org/app){ target=_blank }, sem precisar instalar nada:
+
+    1. **Genome → Local File**: selecione o `hifiasm_chrV.fasta` **e** o `.fai` juntos;
+    2. **Tracks → Local File**: selecione o `hifiasm_juncoes.bam` **e** o `.bai` juntos;
+    3. digite cada região na caixa de busca: `ptg000007l_1:445,000-458,000` (junção chrV|chrXVI), `ptg000007l_1:196,000-211,000` (controle) e `ptg000023l_1:122,000-133,000` (junção chrV|chrXIV).
+
+    No IGV, cada barra é uma read. **Cinza** são as reads com alinhamento único; **brancas** (transparentes) são as com MAPQ 0, que alinham igualmente bem em mais de um lugar da montagem. Os traços roxos e coloridos são indels e diferenças de base, normais em reads Nanopore. O gráfico cinza acima das reads é a cobertura (o número à esquerda é o máximo da escala).
+
+    === "Junção chrV|chrXVI"
+
+        ![IGV: junção chrV|chrXVI no ptg000007l_1](outputs/igv/igv_ptg7_juncao_chrV_chrXVI.png)
+
+        A escala da cobertura vai até 312×. Até ~452 kb, a cobertura fica em ~250–300×, cerca de 5 vezes a média do genoma, e as reads são quase todas brancas. A junção cai dentro de uma **sequência repetida em várias cópias**. Depois de ~452 kb, a cobertura volta ao normal e as reads ficam cinza, mas nenhuma read cinza vem do lado esquerdo atravessando a repetição. Não há nada nas reads que ligue o chrV ao chrXVI.
+
+    === "Controle (meio do chrV)"
+
+        ![IGV: região controle no ptg000007l_1](outputs/igv/igv_ptg7_controle.png)
+
+        É assim que uma região bem montada aparece: cobertura uniforme de ~55× (a escala vai só até 58), reads cinza e muitas reads longas cruzando a janela inteira, sem cortes.
+
+    === "Junção chrV|chrXIV"
+
+        ![IGV: junção chrV|chrXIV no ptg000023l_1](outputs/igv/igv_ptg23_juncao_chrV_chrXIV.png)
+
+        Do lado esquerdo (chrV), a cobertura é normal e as reads são cinza. A escala vai até 311×, por isso ela parece baixa. Em ~127,7 kb, exatamente na junção, a cobertura salta para ~300× e as reads ficam brancas: começa a mesma região repetida. As reads do chrV entram na repetição, mas daí em diante o alinhamento é ambíguo. Por isso, as 17 reads do Teste 1 não comprovam a ligação com o chrXIV.
+
     **Conclusão:** o mais provável é que o Hifiasm tenha feito **duas junções erradas** numa região repetitiva do chrV, em ~437–449 kb, que nenhum dos três montadores conseguiu atravessar. O Flye e o NextDenovo pararam ali. O Hifiasm "continuou" em cromossomos errados. Portanto, o contig `ptg000007l_1` tem telômero nas duas pontas, mas não é um cromossomo: é o chrV esquerdo colado à ponta do chrXVI. Na Scer1 Hifiasm, os T2T de verdade são **2** (chrIII e chrX), e não 3.
 
     **Lições:**
@@ -6870,7 +6910,7 @@ Na Scer1 Hifiasm, a montagem escolhida, fica assim (cromossomos T2T em negrito):
 !!! tip "Checagem de rotina: confira as junções com as reads"
     Sempre que um contig alinhar em mais de um cromossomo, ou que um T2T parecer bom demais, olhe as reads na região antes de tirar conclusões. Rearranjos reais têm reads atravessando a junção; junções erradas, não. Duas ferramentas ajudam:
 
-    - **[IGV](https://igv.org){ target=_blank }**: abra a montagem (`.fasta`) e o BAM das reads (o da 13.2) e vá até a junção. Numa junção correta, várias reads passam inteiras de um lado para o outro. Numa junção errada, as reads param na junção ou aparecem cortadas (*soft-clipped*) exatamente ali, e a cobertura cai.
+    - **[IGV](https://igv.org){ target=_blank }**: abra a montagem (`.fasta`) e o BAM das reads (o da 13.2) e vá até a junção, como no Teste 3 acima. Numa junção correta, várias reads passam inteiras de um lado para o outro. Numa junção errada, as reads param na junção ou aparecem cortadas (*soft-clipped*) exatamente ali, e a cobertura cai.
     - **[Inspector](https://github.com/ChongLab/Inspector){ target=_blank }**: avalia a montagem inteira a partir das reads longas (aceita Nanopore com `--datatype nanopore`) e lista as regiões com erros estruturais, sem precisar saber onde procurar. Ele também pode corrigir as que encontrar.
 
     Um exemplo do que vale olhar: o T2T do chrVI na Flye (`contig_10_1`) alinha no chrVI no meio, mas as pontas (~11 kb de cada lado) alinham em subtelômeros do chrXII e do chrVIII, com MAPQ baixo (23–33). Pontas de cromossomos de levedura compartilham famílias de sequências subteloméricas, que variam entre linhagens. Por isso, isso provavelmente é uma diferença real da CBS7963, e não um erro, mas só as reads podem confirmar.
