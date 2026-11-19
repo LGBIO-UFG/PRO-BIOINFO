@@ -5510,48 +5510,48 @@ A saída do LongStitch é muito longa e passa do limite de rolagem do terminal. 
     /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint_estimate_dist.py Scer1_q10_l500.fastq.gz -n 1000000 -o Scer1_q10_l500.tigmint-long.params.tsv
     (...)
     long-to-linked-pe v1.2.10: Using more than 6 threads does not scale, reverting to 6.
-    [M::main::0.395*2.97] loaded/built the index for 29 target sequence(s)
-    [M::mm_idx_stat::0.479*2.62] distinct minimizers: 2071666 (95.62% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12123408
-    [M::worker_pipeline::12.882*10.63] mapped 2046130 sequences
-    [M::worker_pipeline::14.627*9.43] mapped 915664 sequences
-    [M::main] Real time: 14.660 sec; CPU: 137.923sec; Peak RSS: 1.447 GB
-    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa draft.fa draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.bed
-    Started at: 2026-11-18 14:50:35.471029
+    [M::main::0.885*1.01] loaded/built the index for 24 target sequence(s)
+    [M::mm_idx_stat::0.970*1.01] distinct minimizers: 2069979 (95.79% are singletons); average occurrences: 1.088; average spacing: 5.335; total length: 12015996
+    [M::worker_pipeline::54.700*2.99] mapped 2046130 sequences
+    [M::worker_pipeline::60.655*2.72] mapped 915664 sequences
+    [M::main] Real time: 60.701 sec; CPU: 164.990 sec; Peak RSS: 1.408 GB
+    /usr/local/bin/miniconda/miniconda3/envs/longstitch/bin/share/tigmint-1.2.10-4/bin/tigmint-cut -p24 -w1000 -t0 -m3000 -f Scer1_q10_l500.tigmint-long.params.tsv -o draft.Scer1_q10_l500.cut250.molecule.size2000.distauto.trim0.window1000.spanauto.breaktigs.fa (...)
+    Started at: 2026-11-19 11:01:25.231099
     Reading contig lengths...
     Finding breakpoints...
-    Attempted corrections: 61
+    Attempted corrections: 57
     Cutting assembly at breakpoints...
     DONE!
-    Ended at: 2026-11-18 14:50:39.725629
+    Ended at: 2026-11-19 11:01:35.337145
 
     ntLink scaffold target=draft.cut250.tigmint.fa reads="Scer1_q10_l500.fastq.gz" t=24 k=32 w=100 z=1000 n=2 a=1 conservative=True
-    indexlr 1.7.8: Using more than 5 threads doesnot scale, reverting to 5.
+    indexlr 1.7.8: Using more than 5 threads does not scale, reverting to 5.
     Running pairing stage of ntLink ...
-    2026-11-18 14:50:40.496919 : Reading minimizers draft.cut250.tigmint.fa
-    2026-11-18 14:50:40.859748 : Finding pairs
-    2026-11-18 14:51:01.407002 : Building scaffold graph
-    2026-11-18 14:51:01.408297 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
-    2026-11-18 14:51:01.409611 : DONE!
+    2026-11-19 11:01:37.115217 : Reading minimizers draft.cut250.tigmint.fa
+    2026-11-19 11:01:38.101648 : Finding pairs
+    2026-11-19 11:03:09.677501 : Building scaffold graph
+    2026-11-19 11:03:09.679199 : Printing graph draft.cut250.tigmint.fa.k32.w100.z1000.n2.scaffold.dot
+    2026-11-19 11:03:09.681190 : DONE!
     (... abyss-scaffold testado com n = 2 a 10 ...)
     Running ntLink stitch paths stage...
-    2026-11-18 14:51:03.087759  : Finding optimaln...
-    2026-11-18 14:51:03.088052  : Optimal n = 4 at N50 = 912854.0
+    2026-11-19 11:03:14.833662  : Finding optimal n...
+    2026-11-19 11:03:14.834125  : Optimal n = 2 at N50 = 912835.0
     Printing paths for optimal N50, no stitching...
-    Total number of components in graph: 30
+    Total number of components in graph: 24
     Assessing putative overlaps...
-    2026-11-18 14:51:05.084114 : DONE!
+    2026-11-19 11:03:18.663270 : DONE!
     MergeContigs -k2 draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.fa draft.cut250.tigmint.fa.k32.w100.z1000.trimmed_scafs.path > draft.cut250.tigmint.fa.k32.w100.z1000.stitch.abyss-scaffold.fa
     Done ntLink! Final post-ntLink scaffolds can be found in: draft.cut250.tigmint.fa.k32.w100.z1000.ntLink.scaffolds.fa
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     ```
 
-    Os avisos *"Using more than 6 threads does not scale"* e *"Using more than 5 threads doesnot scale"* só informam que essas etapas usam no máximo 5 ou 6 threads, mesmo pedindo 24; não são erros. Três linhas resumem o que aconteceu:
+    Os avisos *"Using more than 6 threads does not scale"* e *"Using more than 5 threads does not scale"* só informam que essas etapas usam no máximo 5 ou 6 threads, mesmo pedindo 24; não são erros. Três linhas resumem o que aconteceu:
 
-    - **`Attempted corrections: 61`**: o Tigmint encontrou 61 pontos onde as reads longas não sustentam a continuidade do contig e **cortou** a montagem nesses pontos.
-    - **`Optimal n = 4 at N50 = 912854.0`**: o ntLink testou de 2 a 10 o número mínimo de reads exigido para ligar dois contigs (`n`) e escolheu o valor que deu o maior N50.
+    - **`Attempted corrections: 57`**: o Tigmint encontrou 57 pontos onde as reads longas não sustentam a continuidade do contig e **cortou** a montagem nesses pontos.
+    - **`Optimal n = 2 at N50 = 912835.0`**: o ntLink testou de 2 a 10 o número mínimo de reads exigido para ligar dois contigs (`n`) e escolheu o valor que deu o maior N50.
     - **`Done LongStitch steps ...`**: os scaffolds finais estão em `draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa`.
 
-    Em outras montagens, os números mudam: na Scer1 Hifiasm foram 52 cortes (n ótimo = 8, N50 = 606.063), e na Scer2 Hifiasm, nenhum corte e nenhuma junção, já que a montagem é minúscula.
+    Em outras montagens, os números mudam: na Scer1 Hifiasm foram 29 cortes (n ótimo = 6, N50 = 600.849), e na Scer2 Hifiasm, nenhum corte e nenhuma junção, já que a montagem é minúscula.
 
 **Resumo do LongStitch para as cinco montagens**, a partir do log:
 
@@ -5564,44 +5564,47 @@ grep -E 'tigmint-make|Attempted corrections|Optimal n|Done LongStitch' 10.Scaffo
     ```bash
     # na ordem do laço: Scer1 Flye, Scer2 Flye, Scer1 Hifiasm, Scer2 Hifiasm, Scer1 NextDenovo
     tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    Attempted corrections: 38
-    2026-11-18 15:25:32.977642  : Optimal n = 10 at N50 = 677484.0
+    Attempted corrections: 29
+    2026-11-19 10:55:53.010262  : Optimal n = 2 at N50 = 746925.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    Attempted corrections: 4
-    2026-11-18 15:25:41.383825  : Optimal n = 2 at N50 = 19572.0
+    Attempted corrections: 3
+    2026-11-19 10:56:19.795264  : Optimal n = 2 at N50 = 19450.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    Attempted corrections: 52
-    2026-11-18 15:26:31.601404  : Optimal n = 8 at N50 = 606063.0
+    Attempted corrections: 29
+    2026-11-19 10:59:44.681608  : Optimal n = 6 at N50 = 600849.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     tigmint-make tigmint-long draft=draft reads=Scer2_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
     Attempted corrections: 0
-    2026-11-18 15:26:38.229949  : Optimal n = 2 at N50 = 102340.0
+    2026-11-19 11:00:02.947255  : Optimal n = 2 at N50 = 7329.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     tigmint-make tigmint-long draft=draft reads=Scer1_q10_l500 cut=250 t=24 G=12000000 span=auto dist=auto longmap=ont
-    Attempted corrections: 61
-    2026-11-18 15:27:24.383426  : Optimal n = 4 at N50 = 912854.0
+    Attempted corrections: 57
+    2026-11-19 11:03:14.834125  : Optimal n = 2 at N50 = 912835.0
     echo "Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa"
     Done LongStitch steps Tigmint-long and ntLink! Scaffolds can be found in: draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa
     ```
 
 | Montagem | Cortes do Tigmint | n ótimo (ntLink) | N50 antes (QUAST, 11.1) | N50 depois do LongStitch |
 |---|---|---|---|---|
-| Scer1 Flye | 38 | 10 | 751.286 | 677.484 |
-| Scer1 Hifiasm | 52 | 8 | 709.868 | 606.063 |
-| Scer1 NextDenovo | 61 | 4 | 766.898 | 912.854 |
-| Scer2 Flye | 4 | 2 | 16.071 | 19.572 |
-| Scer2 Hifiasm | 0 | 2 | 102.340 | 102.340 |
+| Scer1 Flye | 29 | 2 | 754.533 | 746.925 |
+| Scer1 Hifiasm | 29 | 6 | 723.225 | 600.849 |
+| Scer1 NextDenovo | 57 | 2 | 766.906 | 912.835 |
+| Scer2 Flye | 3 | 2 | 15.859 | 19.450 |
+| Scer2 Hifiasm | 0 | 2 | 7.329 | 7.329 |
+
+O "N50 antes" é o das versões que entraram no LongStitch: as híbridas da Scer1 e as Medaka da Scer2 (tabela da Etapa 11.1).
 
 !!! tip "Como interpretar"
-    - **O LongStitch nem sempre aumenta o N50.** No Flye e no Hifiasm da Scer1, o N50 **caiu**: o Tigmint cortou os contigs em 38 e 52 pontos, e o ntLink não conseguiu religar todos os pedaços. No NextDenovo, ao contrário, o ntLink juntou mais do que o Tigmint cortou, e o N50 subiu de 767 kb para 913 kb.
+    - **O LongStitch nem sempre aumenta o N50.** No Flye, o N50 praticamente não mudou (755 → 747 kb); no Hifiasm, **caiu** (723 → 601 kb): o Tigmint cortou os contigs em 29 pontos, e o ntLink não conseguiu religar todos os pedaços. No NextDenovo, ao contrário, o ntLink juntou mais do que o Tigmint cortou, e o N50 subiu de 767 kb para 913 kb.
     - **Cortar pode ser bom.** Um corte do Tigmint indica um ponto onde as reads longas não sustentam a continuidade do contig: pode ser uma junção errada do montador (*misassembly*). Um N50 menor com menos junções erradas é uma montagem **melhor**, não pior. Investigamos alguns desses cortes na seção 12.4.
-    - **Na Scer2 Flye, o ganho é pequeno** (16 → 20 kb): com ~6× de cobertura, há poucas reads ligando os contigs. Na Scer2 Hifiasm, não houve cortes nem junções.
+    - **Menos cortes que na versão sem purge_dups.** Antes da remoção da mitocôndria e das duplicatas, o Tigmint cortava o Flye em 38 pontos e o Hifiasm em 52. Uma explicação provável: com cópias redundantes na montagem, as reads de uma região se dividem entre as cópias, e cada cópia parece ter "poucas reads" sustentando a continuidade.
+    - **Na Scer2 Flye, o ganho é pequeno** (16 → 19 kb): com ~6× de cobertura, há poucas reads ligando os contigs. Na Scer2 Hifiasm, não houve cortes nem junções.
     - Compare com o RagTag (12.1): lá, quase todo o genoma foi posicionado nos cromossomos, porque a ordem veio da referência. O LongStitch só usa as reads da própria amostra, então só junta o que as reads realmente sustentam.
 
 !!! info "Como o LongStitch funciona"
@@ -5635,27 +5638,27 @@ cat scaffolding_summary.tsv
     ```bash
     $ cat scaffolding_summary.tsv
     Sample	Contigs_assembler	Scaffolds_longstitch	Ragtag_placed	Ragtag_placed_bp	Ragtag_unplaced
-    Scer1_q10_l500_Flye	79	125	32	12032604	47
-    Scer1_q10_l500_hifiasm	87	177	24	12218386	63
-    Scer1_q10_l500_nextdenovo	29	125	27	12073782	2
-    Scer2_q10_l500_Flye	715	625	690	8244934	25
-    Scer2_q10_l500_hifiasm	14	14	12	166185	2
+    Scer1_q10_l500_Flye	37	75	28	11918716	9
+    Scer1_q10_l500_hifiasm	24	71	23	12154698	1
+    Scer1_q10_l500_nextdenovo	24	112	23	11978592	1
+    Scer2_q10_l500_Flye	706	614	684	8161366	22
+    Scer2_q10_l500_hifiasm	13	13	11	63845	2
     ```
 
 | Montagem | Contigs (montagem polida) | Scaffolds LongStitch | RagTag: posicionados | RagTag: não posicionados |
 |---|---|---|---|---|
-| Scer1 Flye | 79 | 125 | 32 | 47 |
-| Scer1 Hifiasm | 87 | 177 | 24 | 63 |
-| Scer1 NextDenovo | 29 | 125 | 27 | 2 |
-| Scer2 Flye | 715 | 625 | 690 | 25 |
-| Scer2 Hifiasm | 14 | 14 | 12 | 2 |
+| Scer1 Flye | 37 | 75 | 28 | 9 |
+| Scer1 Hifiasm | 24 | 71 | 23 | 1 |
+| Scer1 NextDenovo | 24 | 112 | 23 | 1 |
+| Scer2 Flye | 706 | 614 | 684 | 22 |
+| Scer2 Hifiasm | 13 | 13 | 11 | 2 |
 
 !!! question "Por que o LongStitch aumentou o número de sequências na Scer1?"
-    Nas três montagens da Scer1, o LongStitch terminou com **mais** sequências do que a montagem de entrada (79 → 125, 87 → 177, 29 → 125). Scaffolding deveria juntar contigs, e não multiplicá-los. A explicação está nos cortes do Tigmint (12.2): cada corte transforma um contig em dois ou mais pedaços, e o ntLink só religa os pedaços quando as reads sustentam a junção. Os pedaços que sobram ficam soltos.
+    Nas três montagens da Scer1, o LongStitch terminou com **mais** sequências do que a montagem de entrada (37 → 75, 24 → 71, 24 → 112). Scaffolding deveria juntar contigs, e não multiplicá-los. A explicação está nos cortes do Tigmint (12.2): cada corte transforma um contig em dois ou mais pedaços, e o ntLink só religa os pedaços quando há reads suficientes ligando um ao outro. Os que sobram ficam como sequências separadas.
 
-    Isso aconteceu até no NextDenovo, cujo N50 **subiu** (de 767 kb para 913 kb): o ntLink juntou bem os contigs grandes, mas sobraram muitos fragmentos pequenos dos cortes. Por isso, número de sequências e N50 contam histórias diferentes e precisam ser lidos juntos.
+    Isso aconteceu até no NextDenovo, cujo N50 **subiu** (de 767 kb para 913 kb): o ntLink juntou bem os contigs grandes, mas sobraram muitos fragmentos pequenos dos 57 cortes. Por isso, número de sequências e N50 contam histórias diferentes e precisam ser lidos juntos.
 
-    Já na Scer2 Flye, com só 4 cortes, o efeito de juntar predominou: de 715 para 625 sequências. A seção 12.4 mostra como investigar o que aconteceu num dos contigs mais cortados.
+    Já na Scer2 Flye, com só 3 cortes, o efeito de juntar predominou: de 706 para 614 sequências. A seção 12.4 mostra como investigar o que aconteceu num dos contigs mais cortados.
 
 ### 12.4 Verificar o que houve para que aumentasse tanto o número de scaffolds (OPCIONAL)
 
@@ -5668,7 +5671,7 @@ cd 10.Scaffolding-Longstitch/${PREFIX}
 awk '{split($4,a,"-"); print a[1]}' draft.*breaktigs.fa.bed | sort | uniq -c | sort -rn | head -5
 
 # 2) extrai o contig mais suspeito (troque pelo nome que apareceu acima)
-CONTIG=contig_108
+CONTIG=contig_108_1
 samtools faidx draft.fa ${CONTIG} > ${CONTIG}.fa
 
 # 3) blast local contra a referência inteira (16 cromossomos)
@@ -5688,11 +5691,11 @@ cd ../..
 
     ```bash
     $ awk '{split($4,a,"-"); print a[1]}' draft.*breaktigs.fa.bed | sort | uniq -c | sort -rn | head -5
-         21 contig_108
-          9 contig_80
-          7 contig_16
-          7 contig_100
-          5 scaffold_33
+         19 contig_108_1
+          7 contig_13_1
+          7 contig_100_1
+          5 contig_16_1
+          5 contig_12_1
     ```
 
 Na saída do BLAST, as colunas são: cromossomo da referência (`sseqid`), identidade (%), comprimento do alinhamento, início e fim no contig (`qstart`, `qend`), e-value e bitscore. O `LC_ALL=C` antes do `sort` é necessário em computadores configurados em português: nesse idioma, o `sort -n` trata o ponto como separador de milhar (e "99.0" vira 990), embaralhando a ordem.
@@ -5700,7 +5703,7 @@ Na saída do BLAST, as colunas são: cromossomo da referência (`sseqid`), ident
 ??? note "Ver saída dos passos 2 a 4"
 
     ```bash
-    $ CONTIG=contig_108
+    $ CONTIG=contig_108_1
     $ samtools faidx draft.fa ${CONTIG} > ${CONTIG}.fa
 
     $ blastn -query ${CONTIG}.fa -subject ../../ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna \
@@ -5710,28 +5713,30 @@ Na saída do BLAST, as colunas são: cromossomo da referência (`sseqid`), ident
     NC_001142.9	98.532	6881	1	6841	0.0	12107
     NC_001141.2	98.503	6881	1	6841	0.0	12096
     NC_001139.9	97.301	6668	7861	14513	0.0	11289
-    NC_001139.9	95.226	6012	1880	7861	0.0	9441
-    NC_001137.3	95.524	5831	1880	7691	0.0	9243
-    NC_001148.4	95.169	5837	1880	7688	0.0	9138
-    NC_001147.6	94.995	5854	1880	7691	0.0	9077
+    NC_001139.9	95.243	6012	1880	7861	0.0	9446
+    NC_001137.3	95.541	5831	1880	7691	0.0	9249
+    NC_001148.4	95.186	5837	1880	7688	0.0	9143
+    NC_001147.6	95.012	5854	1880	7691	0.0	9082
     NC_001146.8	96.724	5037	1880	6891	0.0	8362
-    NC_001144.5	96.555	5051	1880	6891	0.0	8307
     NC_001136.10	96.555	5051	1880	6891	0.0	8307
+    NC_001144.5	96.555	5051	1880	6891	0.0	8307
     NC_001142.9	98.273	4574	23629	28202	0.0	7991
     NC_001147.6	95.781	4053	16258	20301	0.0	6523
     NC_001137.3	96.841	3102	1689	4771	0.0	5158
     NC_001147.6	97.129	2891	13353	16238	0.0	4867
     NC_001144.5	96.556	2904	1880	4771	0.0	4789
-    NC_001134.8	93.730	2472	5253	7688	0.0	3648
+    NC_001134.8	93.770	2472	5253	7688	0.0	3653
+    NC_001148.4	95.216	2153	1761	3910	0.0	3402
+    NC_001144.5	95.123	2153	1761	3910	0.0	3391
     (...)
 
     $ grep -w "${CONTIG}" ../../10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
-    NC_001141.2_RagTag	1	32745	1	W	contig_108	1	32745	+
+    NC_001141.2_RagTag	1	32745	1	W	contig_108_1	1	32745	+
     ```
 
     Os identificadores `NC_...` são os cromossomos da referência S288C: NC_001133 = I, NC_001134 = II, NC_001136 = IV, NC_001137 = V, NC_001139 = VII, NC_001141 = IX, NC_001142 = X, NC_001144 = XII, NC_001146 = XIV, NC_001147 = XV, NC_001148 = XVI.
 
-| Trecho do contig_108 (32,7 kb) | Melhor alinhamento na referência | Identidade |
+| Trecho do contig_108_1 (32,7 kb) | Melhor alinhamento na referência | Identidade |
 |---|---|---|
 | 1–6.841 | cromossomos IX **e** X (mesma sequência nos dois) | 98,5% |
 | 1.880–7.861 | **oito cromossomos diferentes** (IV, V, VII, XII, XIV, XV, XVI...) | 95–97% |
@@ -5739,10 +5744,10 @@ Na saída do BLAST, as colunas são: cromossomo da referência (`sseqid`), ident
 | 20.319–30.576 | cromossomo XV | 97,2% |
 | 23.629–32.566 | cromossomo IX | 98,2% |
 
-!!! question "O que aconteceu com o contig_108?"
+!!! question "O que aconteceu com o contig_108_1?"
     - **É um mosaico de sequências repetitivas.** Trechos diferentes do contig se parecem com regiões de cromossomos diferentes, e um deles aparece em oito cromossomos. Em *S. cerevisiae*, as regiões próximas aos telômeros (**subtelômeros**) compartilham elementos repetidos entre vários cromossomos e são as partes do genoma que mais variam entre linhagens.
-    - **A identidade de 95–98% é baixa para a mesma espécie** (o normal fica acima de 99%). Este contig também apareceu como problemático em outras análises: na Etapa 11.3, teve o pior QV pela régua Illumina (≈ 15, ou seja, quase não aparece nas reads Illumina), e a cobertura Nanopore dele é de só 19×, um terço da média.
-    - **RagTag e LongStitch discordam.** O LongStitch (Tigmint) **cortou** o contig em 21 pedaços, porque as reads longas da amostra não sustentam a continuidade dele. O RagTag, guiado pela referência, colocou o contig **inteiro** no início do cromossomo IX (`NC_001141.2_RagTag`, posições 1–32.745), por ser o melhor alinhamento.
+    - **A identidade de 95–98% é baixa para a mesma espécie** (o normal fica acima de 99%). Este contig também apareceu na Etapa 11.3: teve o pior QV pela régua Illumina (≈ 15), porque as reads Illumina cobrem menos da metade dele, e a cobertura Nanopore é de 28×, cerca de metade da média do genoma (54×). Lá concluímos que é uma sequência subtelomérica presente na cultura sequenciada com Nanopore, mas muito diferente (ou ausente) na cultura sequenciada com Illumina.
+    - **RagTag e LongStitch discordam.** O LongStitch (Tigmint) **cortou** o contig em 19 pontos, porque as reads longas da amostra não sustentam a continuidade dele. O RagTag, guiado pela referência, colocou o contig **inteiro** no início do cromossomo IX (`NC_001141.2_RagTag`, posições 1–32.745), por ser o melhor alinhamento.
     - **Lição:** regiões repetitivas, como os subtelômeros, são onde os montadores mais erram e onde as ferramentas de scaffolding mais discordam. É também por isso que o número de sequências do LongStitch aumentou (12.3): muitos cortes caem nessas regiões. Antes de confiar na estrutura de uma região assim, confira por mais de um método.
 
 
@@ -5752,7 +5757,7 @@ Na saída do BLAST, as colunas são: cromossomo da referência (`sseqid`), ident
 Tabelas e números resumem bem, mas um **dotplot** mostra de uma vez como a montagem se relaciona com a referência. Cada alinhamento entre a montagem (eixo Y) e a referência (eixo X) vira um segmento no gráfico:
 
 - **diagonal contínua**: a montagem segue a referência naquele trecho;
-- **diagonal invertida** (descendo): inversão em relação à referência;
+- **diagonal invertida** (descendo): o trecho está na fita oposta à da referência. Se for um contig **inteiro** descendo, isso só quer dizer que o montador o escreveu na outra orientação (o montador não sabe qual fita é a "certa"). Se for um pedaço **no meio** de uma diagonal que sobe, é uma inversão;
 - **segmento fora da diagonal**: o trecho pertence a outro cromossomo da referência (translocação, ou erro de montagem);
 - **vários segmentos na mesma altura**: sequência repetida, que alinha em vários lugares.
 
@@ -5767,17 +5772,61 @@ scp $P/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta Scer1_Flye_ragta
 scp $P/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa Scer1_Flye_longstitch.fasta
 ```
 
-No D-GENIES, em **Run**: escolha `S288C_referencia.fasta` como **Target** e uma das montagens como **Query**, e clique em **Submit**. Repita para as três versões e compare:
+!!! tip "Arquivos para o dotplot"
+    Se não tiver acesso ao servidor, baixe os mesmos arquivos do repositório:
+    [:material-dna: S288C_R64_referencia.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/S288C_R64_referencia.fasta) ·
+    [:material-dna: Scer1_Flye_hibrido.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_hibrido.fasta) (contigs, sem scaffolding) ·
+    [:material-dna: Scer1_Flye_ragtag_scaffold.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_ragtag_scaffold.fasta) ·
+    [:material-dna: Scer1_Flye_longstitch_scaffold.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_longstitch_scaffold.fasta)
 
-- **Contigs (sem scaffolding):** cada cromossomo da referência aparece coberto por um ou poucos segmentos; as quebras entre eles são os pontos onde o montador parou.
-- **RagTag:** uma diagonal limpa por cromossomo, porque o RagTag ordenou os contigs **pela referência**. Isso parece perfeito, mas é em parte circular: a ordem veio da própria referência.
-- **LongStitch:** mais pedaços do que nos contigs, por causa dos cortes do Tigmint (12.2), mas cada junção foi feita com base nas reads da própria amostra.
-- **O contig_108 (12.4):** no gráfico dos contigs, procure um contig pequeno (~33 kb) com segmentos em vários cromossomos diferentes, sempre perto das pontas (subtelômeros).
+No D-GENIES, em **Run**: escolha a referência como **Target** e uma das montagens como **Query**, e clique em **Submit**. Repita para as três versões. Para salvar a figura, use **Export** → **PNG**.
 
-!!! tip "Pela linha de comando"
-    Se preferir não usar a web, o mesmo alinhamento pode ser feito no servidor com `minimap2 -x asm5 referencia.fasta montagem.fasta > alinhamento.paf`. O arquivo PAF pode ser carregado no D-GENIES (opção **Plot**) ou desenhado com pacotes como o `pafr` (R).
+=== "Contigs (sem scaffolding)"
 
-<!-- SAÍDA: imagem do dotplot (opcional) -->
+    ![Dotplot: contigs Scer1 Flye contra S288C](outputs/dotplot/dotplot_Scer1_Flye_contigs.png){ width="700" }
+
+=== "RagTag"
+
+    ![Dotplot: scaffolds RagTag Scer1 Flye contra S288C](outputs/dotplot/dotplot_Scer1_Flye_ragtag.png){ width="700" }
+
+=== "LongStitch"
+
+    ![Dotplot: scaffolds LongStitch Scer1 Flye contra S288C](outputs/dotplot/dotplot_Scer1_Flye_longstitch.png){ width="700" }
+
+No eixo X estão os 16 cromossomos da referência (de `NC_001133`, cromossomo I, a `NC_001148`, cromossomo XVI); no eixo Y, as sequências da montagem, que o D-GENIES ordena para formar a melhor diagonal possível. A cor indica a identidade do alinhamento: verde-escuro é alta, amarelo e laranja são mais baixas.
+
+- **Contigs:** cada cromossomo da referência é coberto por um ou poucos contigs. O `contig_13_1`, por exemplo, cobre sozinho praticamente todo o cromossomo IV (`NC_001136`, 1,5 Mb). Muitos segmentos descem, mas são contigs inteiros na orientação oposta, e não inversões. As quebras entre contigs são os pontos onde o montador parou.
+- **RagTag:** uma única diagonal limpa, subindo de ponta a ponta. O RagTag ordenou **e orientou** os contigs pela referência, por isso nenhum segmento desce. Parece perfeito, mas é em parte circular: a ordem veio da própria referência. A faixa cinza no topo do eixo Y são os contigs que ele não posicionou, e os pontos soltos na linha de cima são esses contigs alinhando em vários cromossomos (sequências repetitivas, como os da Etapa 11.3).
+- **LongStitch:** mais pedaços do que nos contigs, por causa dos cortes do Tigmint (12.2), mas cada junção foi feita com base nas reads da própria amostra, e não na referência.
+- **Pontos soltos fora da diagonal**, nos três gráficos: sequências repetidas (elementos Ty, subtelômeros) que também alinham em outros lugares do genoma.
+
+**Algum scaffold junta cromossomos diferentes?** No gráfico do LongStitch, algumas faixas do eixo Y parecem conter pedaços de mais de um cromossomo. Para não depender só do olho, contamos, para cada sequência, quantos kb alinham em cada cromossomo da referência (só alinhamentos de 10 kb ou mais) e listamos as que têm 50 kb ou mais em dois cromossomos diferentes. Fazemos isso nos contigs e nos scaffolds do LongStitch, para saber quem criou a junção:
+
+```bash
+conda activate polimento
+REF=ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna
+for f in 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta \
+         10.Scaffolding-Longstitch/Scer1_q10_l500_Flye/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa; do
+  echo "== $f  (sequências com >= 50 kb alinhados em mais de um cromossomo)"
+  minimap2 -x asm5 -t 24 $REF $f 2>/dev/null \
+    | awk '$11>=10000{b[$1"\t"$6]+=$11} END{for(k in b) if(b[k]>=50000) print k"\t"int(b[k]/1000)"kb"}' \
+    | sort -k1,1 -k3,3nr \
+    | awk '{n[$1]++; l[$1]=l[$1]" "$2"("$3")"} END{for(s in n) if(n[s]>1) print s":"l[s]}'
+done
+conda deactivate
+```
+
+```text
+== 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta  (sequências com >= 50 kb alinhados em mais de um cromossomo)
+contig_13_1: NC_001136.10(1558kb) NC_001144.5(52kb)
+== 10.Scaffolding-Longstitch/Scer1_q10_l500_Flye/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa  (sequências com >= 50 kb alinhados em mais de um cromossomo)
+ntLink_1: NC_001137.3(520kb) NC_001135.5(310kb)
+contig_13_1-1::contig_13_1:0-459546: NC_001136.10(443kb) NC_001144.5(52kb)
+```
+
+- **`ntLink_1` foi criado pelo ntLink:** ele juntou um trecho de 520 kb do cromossomo V (`NC_001137`) com praticamente o cromossomo III inteiro (`NC_001135`, 316 kb). Nos contigs, esses dois cromossomos estavam separados. Lembre que o n ótimo escolhido para esta montagem foi 2 (12.2): bastaram **duas reads** ligando as pontas para o ntLink fazer a junção. Ela pode ser um erro, por exemplo uma ligação através de repetições subteloméricas, que são parecidas entre cromossomos, ou um rearranjo real da CBS7963. Só com estes dados não dá para decidir. É o tipo de junção que precisa ser conferida antes de ser aceita: por exemplo, contando quantas reads atravessam o ponto de junção, ou procurando o mesmo rearranjo em outra montagem independente.
+- **`contig_13_1` já vinha assim do Flye:** além de cobrir o cromossomo IV inteiro, ele tem 52 kb que alinham no cromossomo XII (`NC_001144`). O Tigmint cortou esse contig em alguns pontos, mas não neste: o pedaço que tem os dois (`contig_13_1:0-459546`) continuou inteiro. Isso quer dizer que as reads longas sustentam a continuidade, um indício de que a estrutura existe de fato no genoma da CBS7963, e não de erro de montagem. Mas, de novo, confirmar exigiria olhar o ponto exato e as reads que passam por ele.
+- **Lição:** o dotplot e a contagem por cromossomo são boas formas de **encontrar** junções suspeitas. Decidir se são reais ou erros já exige olhar as reads que passam pelo ponto de junção.
 
 ### Checklist da Etapa 12
 
