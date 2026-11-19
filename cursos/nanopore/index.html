@@ -10640,6 +10640,40 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-178-15"><a id="__codelineno-178-15" name="__codelineno-178-15" href="#__codelineno-178-15"></a>ctg000260_1   918772  60      918758  NC_001148.4  9617    948048
 </span></code></pre></div>
 <p>Tanto no Flye quanto no NextDenovo, o <strong>chrXVI</strong> (<code>contig_93_1</code>, <code>ctg000260_1</code>) e o <strong>chrXIV</strong> (<code>contig_103_1</code>, <code>ctg000120_1</code>) estão inteiros, sem quebra em 851 kb nem em 102 kb. E os dois quebram o chrV no mesmo lugar, por volta de 436–449 kb: o pedaço da direita sempre começa em 436.624.</p>
+<p><strong>Teste 3: olhar as reads no IGV.</strong> Os números ficam mais claros quando vemos as reads. Para não baixar o BAM inteiro, recortamos só as regiões de interesse: as duas junções e um controle.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-179-1"><a id="__codelineno-179-1" name="__codelineno-179-1" href="#__codelineno-179-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>polimento
+</span><span id="__span-179-2"><a id="__codelineno-179-2" name="__codelineno-179-2" href="#__codelineno-179-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/igv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/igv
+</span><span id="__span-179-3"><a id="__codelineno-179-3" name="__codelineno-179-3" href="#__codelineno-179-3"></a>samtools<span class="w"> </span>view<span class="w"> </span>-b<span class="w"> </span>../../13.Contaminantes/Scer1_q10_l500_hifiasm.bam<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-179-4"><a id="__codelineno-179-4" name="__codelineno-179-4" href="#__codelineno-179-4"></a><span class="w">  </span>ptg000007l_1:190000-215000<span class="w"> </span>ptg000007l_1:430000-470000<span class="w"> </span>ptg000023l_1:110000-145000<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-179-5"><a id="__codelineno-179-5" name="__codelineno-179-5" href="#__codelineno-179-5"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span>-o<span class="w"> </span>hifiasm_juncoes.bam<span class="w">       </span><span class="c1"># o IGV exige o BAM ordenado e indexado</span>
+</span><span id="__span-179-6"><a id="__codelineno-179-6" name="__codelineno-179-6" href="#__codelineno-179-6"></a>samtools<span class="w"> </span>index<span class="w"> </span>hifiasm_juncoes.bam
+</span><span id="__span-179-7"><a id="__codelineno-179-7" name="__codelineno-179-7" href="#__codelineno-179-7"></a>samtools<span class="w"> </span>faidx<span class="w"> </span>../../9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta<span class="w"> </span>ptg000007l_1<span class="w"> </span>ptg000023l_1<span class="w"> </span>&gt;<span class="w"> </span>hifiasm_chrV.fasta
+</span><span id="__span-179-8"><a id="__codelineno-179-8" name="__codelineno-179-8" href="#__codelineno-179-8"></a>samtools<span class="w"> </span>faidx<span class="w"> </span>hifiasm_chrV.fasta
+</span><span id="__span-179-9"><a id="__codelineno-179-9" name="__codelineno-179-9" href="#__codelineno-179-9"></a><span class="nb">cd</span><span class="w"> </span>../..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>conda<span class="w"> </span>deactivate
+</span></code></pre></div>
+<p>Copie os quatro arquivos para o seu computador (<code>scp</code>). Se preferir, baixe os que já preparamos: <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_chrV.fasta"><code>hifiasm_chrV.fasta</code></a>, <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_chrV.fasta.fai"><code>.fai</code></a>, <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_juncoes.bam"><code>hifiasm_juncoes.bam</code></a> e <a href="https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/igv/hifiasm_juncoes.bam.bai"><code>.bai</code></a>. Depois abra o <a href="https://igv.org/app" target="_blank">IGV no navegador</a>, sem precisar instalar nada:</p>
+<ol>
+<li><strong>Genome → Local File</strong>: selecione o <code>hifiasm_chrV.fasta</code> <strong>e</strong> o <code>.fai</code> juntos;</li>
+<li><strong>Tracks → Local File</strong>: selecione o <code>hifiasm_juncoes.bam</code> <strong>e</strong> o <code>.bai</code> juntos;</li>
+<li>digite cada região na caixa de busca: <code>ptg000007l_1:445,000-458,000</code> (junção chrV|chrXVI), <code>ptg000007l_1:196,000-211,000</code> (controle) e <code>ptg000023l_1:122,000-133,000</code> (junção chrV|chrXIV).</li>
+</ol>
+<p>No IGV, cada barra é uma read. <strong>Cinza</strong> são as reads com alinhamento único; <strong>brancas</strong> (transparentes) são as com MAPQ 0, que alinham igualmente bem em mais de um lugar da montagem. Os traços roxos e coloridos são indels e diferenças de base, normais em reads Nanopore. O gráfico cinza acima das reads é a cobertura (o número à esquerda é o máximo da escala).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Junção chrV|chrXVI</label><label for="__tabbed_8_2">Controle (meio do chrV)</label><label for="__tabbed_8_3">Junção chrV|chrXIV</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="IGV: junção chrV|chrXVI no ptg000007l_1" src="outputs/igv/igv_ptg7_juncao_chrV_chrXVI.png" /></p>
+<p>A escala da cobertura vai até 312×. Até ~452 kb, a cobertura fica em ~250–300×, cerca de 5 vezes a média do genoma, e as reads são quase todas brancas. A junção cai dentro de uma <strong>sequência repetida em várias cópias</strong>. Depois de ~452 kb, a cobertura volta ao normal e as reads ficam cinza, mas nenhuma read cinza vem do lado esquerdo atravessando a repetição. Não há nada nas reads que ligue o chrV ao chrXVI.</p>
+</div>
+<div class="tabbed-block">
+<p><img alt="IGV: região controle no ptg000007l_1" src="outputs/igv/igv_ptg7_controle.png" /></p>
+<p>É assim que uma região bem montada aparece: cobertura uniforme de ~55× (a escala vai só até 58), reads cinza e muitas reads longas cruzando a janela inteira, sem cortes.</p>
+</div>
+<div class="tabbed-block">
+<p><img alt="IGV: junção chrV|chrXIV no ptg000023l_1" src="outputs/igv/igv_ptg23_juncao_chrV_chrXIV.png" /></p>
+<p>Do lado esquerdo (chrV), a cobertura é normal e as reads são cinza. A escala vai até 311×, por isso ela parece baixa. Em ~127,7 kb, exatamente na junção, a cobertura salta para ~300× e as reads ficam brancas: começa a mesma região repetida. As reads do chrV entram na repetição, mas daí em diante o alinhamento é ambíguo. Por isso, as 17 reads do Teste 1 não comprovam a ligação com o chrXIV.</p>
+</div>
+</div>
+</div>
 <p><strong>Conclusão:</strong> o mais provável é que o Hifiasm tenha feito <strong>duas junções erradas</strong> numa região repetitiva do chrV, em ~437–449 kb, que nenhum dos três montadores conseguiu atravessar. O Flye e o NextDenovo pararam ali. O Hifiasm "continuou" em cromossomos errados. Portanto, o contig <code>ptg000007l_1</code> tem telômero nas duas pontas, mas não é um cromossomo: é o chrV esquerdo colado à ponta do chrXVI. Na Scer1 Hifiasm, os T2T de verdade são <strong>2</strong> (chrIII e chrX), e não 3.</p>
 <p><strong>Lições:</strong></p>
 <ul>
@@ -10652,7 +10686,7 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <p class="admonition-title">Checagem de rotina: confira as junções com as reads</p>
 <p>Sempre que um contig alinhar em mais de um cromossomo, ou que um T2T parecer bom demais, olhe as reads na região antes de tirar conclusões. Rearranjos reais têm reads atravessando a junção; junções erradas, não. Duas ferramentas ajudam:</p>
 <ul>
-<li><strong><a href="https://igv.org" target="_blank">IGV</a></strong>: abra a montagem (<code>.fasta</code>) e o BAM das reads (o da 13.2) e vá até a junção. Numa junção correta, várias reads passam inteiras de um lado para o outro. Numa junção errada, as reads param na junção ou aparecem cortadas (<em>soft-clipped</em>) exatamente ali, e a cobertura cai.</li>
+<li><strong><a href="https://igv.org" target="_blank">IGV</a></strong>: abra a montagem (<code>.fasta</code>) e o BAM das reads (o da 13.2) e vá até a junção, como no Teste 3 acima. Numa junção correta, várias reads passam inteiras de um lado para o outro. Numa junção errada, as reads param na junção ou aparecem cortadas (<em>soft-clipped</em>) exatamente ali, e a cobertura cai.</li>
 <li><strong><a href="https://github.com/ChongLab/Inspector" target="_blank">Inspector</a></strong>: avalia a montagem inteira a partir das reads longas (aceita Nanopore com <code>--datatype nanopore</code>) e lista as regiões com erros estruturais, sem precisar saber onde procurar. Ele também pode corrigir as que encontrar.</li>
 </ul>
 <p>Um exemplo do que vale olhar: o T2T do chrVI na Flye (<code>contig_10_1</code>) alinha no chrVI no meio, mas as pontas (~11 kb de cada lado) alinham em subtelômeros do chrXII e do chrVIII, com MAPQ baixo (23–33). Pontas de cromossomos de levedura compartilham famílias de sequências subteloméricas, que variam entre linhagens. Por isso, isso provavelmente é uma diferença real da CBS7963, e não um erro, mas só as reads podem confirmar.</p>
