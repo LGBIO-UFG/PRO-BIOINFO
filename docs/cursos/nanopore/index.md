@@ -21,8 +21,9 @@ Ao final deste curso, você será capaz de:
 - [ ] Avaliar montagens com QUAST, Merqury e BUSCO e entender por que essas métricas podem discordar
 - [ ] Polir montagens com Medaka e avaliar quando o polimento realmente ajuda
 - [ ] Realizar scaffolding com referência (RagTag) e sem referência (LongStitch)
+- [ ] Checar contaminação diretamente na montagem com BlobToolKit
 - [ ] Escolher a montagem final com base em múltiplas evidências, não em uma métrica isolada
-- [ ] Checar contaminação diretamente na montagem com BlobTools
+- [ ] Descrever a montagem final cromossomo a cromossomo
 
 ## :material-clock-outline: Carga horária estimada
 
@@ -34,7 +35,7 @@ Ao final deste curso, você será capaz de:
 | ------------------- | ---------------------------------------------------------------------------------- |
 | Curso anterior      | [Bash / Linux para bioinformática](../bash/index.md)                              |
 | Biologia molecular  | Conceitos de sequenciamento, genoma, contig, scaffold                             |
-| Softwares           | SRA Toolkit, NanoPlot, Porechop_ABI, Chopper, Kraken2, Meryl, GenomeScope2, Flye, Hifiasm, NextDenovo, QUAST, Merqury, BUSCO, Medaka, RagTag, LongStitch, minimap2, samtools, BLAST+, BlobTools |
+| Softwares           | SRA Toolkit, NanoPlot, Porechop_ABI, Chopper, Kraken2, Meryl, GenomeScope2, Flye, Hifiasm, NextDenovo, QUAST, Merqury, BUSCO, purge_dups, Medaka, BWA, Polypolish, pypolca, RagTag, LongStitch, minimap2, samtools, tidk, BLAST+, BlobToolKit |
 | Recurso             | Servidor Linux com boa quantidade de RAM/threads e várias dezenas de GB de storage livre |
 
 ## :material-database: Dados do exercício
@@ -76,11 +77,11 @@ Não conseguiu rodar localmente, ou quer conferir se seus resultados batem com o
 
     [:octicons-arrow-right-24: Ver data/exemplos/nanopore/assemblies/](https://github.com/LGBIO-UFG/PRO-BIOINFO/tree/main/data/exemplos/nanopore/assemblies)
 
--   :material-image-multiple: **Blob plots (BlobTools)**
+-   :material-image-multiple: **Blob plots (BlobToolKit)**
 
     Checagem de contaminação nas montagens finais
 
-    [:octicons-arrow-right-24: Ir para a Etapa 14](#etapa-14-checagem-de-contaminantes-na-montagem-blobtools)
+    [:octicons-arrow-right-24: Ir para a Etapa 13](#etapa-13-checagem-e-remocao-de-contaminantes-blobtoolkit)
 </div>
 
 ---
@@ -1412,7 +1413,7 @@ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip 
 ## :material-numeric-4-circle: Etapa 4 — Classificação taxonômica dos reads com Kraken2 :material-flask-outline: *(opcional)*
 
 !!! info "Por que esta etapa é opcional"
-    Em pipelines Illumina, é comum classificar os reads com o Kraken2 e descartar os que parecem contaminantes antes da montagem. Na montagem de genomas de organismos isolados com Nanopore, a verificação de contaminação costuma ser feita **depois da montagem**, com o **BlobTools** (Etapa 14): os contigs são longos e trazem cobertura, conteúdo GC e classificação taxonômica juntos, o que torna a avaliação muito mais confiável do que olhar read por read.
+    Em pipelines Illumina, é comum classificar os reads com o Kraken2 e descartar os que parecem contaminantes antes da montagem. Na montagem de genomas de organismos isolados com Nanopore, a verificação de contaminação costuma ser feita **depois da montagem**, com o **BlobToolKit** (Etapa 13): os contigs são longos e trazem cobertura, conteúdo GC e classificação taxonômica juntos, o que torna a avaliação muito mais confiável do que olhar read por read.
 
     Mostramos o Kraken2 aqui para quem está acostumado com o fluxo Illumina e para ilustrar um cuidado importante: **o resultado depende inteiramente do banco de dados usado**. Os arquivos `*_clean.fastq.gz` gerados nesta etapa **não são usados** no restante do tutorial; as montagens usam `Scer*_q10_l500.fastq.gz`.
 
@@ -1591,14 +1592,14 @@ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip 
 
         Se usássemos os arquivos `*_clean.fastq.gz`, descartaríamos cerca de um terço dos reads de levedura. Para uma classificação confiável, use um banco que inclua fungos (ex.: `PlusPF`) e um limiar de confiança maior (ex.: `--confidence 0.1`).
 
-        As demais espécies classificadas representam <1% cada e também são provavelmente artefatos. O *B. cereus* pode ser artefato ou uma contaminação real em pequena quantidade; a Etapa 14 ajuda a decidir.
+        As demais espécies classificadas representam <1% cada e também são provavelmente artefatos. O *B. cereus* pode ser artefato ou uma contaminação real em pequena quantidade; a Etapa 13 ajuda a decidir.
 
     !!! tip "Resultados pré-computados"
         [:material-file-document: Scer1 Kraken report](outputs/kraken/Scer1_kraken_report.txt) ·
         [:material-file-document: Scer2 Kraken report](outputs/kraken/Scer2_kraken_report.txt)
 
-    !!! note "Compare com a Etapa 14"
-        Seguimos o tutorial **sem** aplicar essa filtragem. Na Etapa 14, o BlobTools avalia a contaminação diretamente nos contigs da montagem, e lá comparamos os dois resultados.
+    !!! note "Compare com a Etapa 13"
+        Seguimos o tutorial **sem** aplicar essa filtragem. Na Etapa 13, o BlobToolKit avalia a contaminação diretamente nos contigs da montagem, e lá comparamos os dois resultados.
 
 
 ## :material-numeric-5-circle: Etapa 5 — Controle de qualidade dos dados filtrados
@@ -4186,7 +4187,7 @@ done
 - **A duplicação caiu sem perda de completude.** No Hifiasm, os genes duplicados passaram de 1,7% (~56 genes) para 0,2% (6 genes), e esses ~50 genes voltaram para a coluna de cópia única (S: 98,0% → 99,5%). O total de completos não mudou: o purge_dups tirou a **segunda cópia**, não o gene.
 - **Flye e NextDenovo quase não mudaram**, porque já tinham pouca duplicação. A diferença de 0,1 ponto no C do Flye equivale a um ou dois genes e está dentro da variação esperada.
 - **Os três indicadores concordam.** Histograma de cobertura, k-mers do Merqury e BUSCO contam a mesma história: o Hifiasm era a montagem com mais falsas duplicações, e o purge_dups as removeu.
-- **O `E:` e o aviso de *stop codons*.** Cerca de 1,6% dos genes completos têm um códon de parada no meio da predição. Erros de indel (bases a mais ou a menos que quebram a fase de leitura) produzem esse sinal, mas compare com a **referência S288C** na Etapa 9.3: ela também tem `E:1,5%` (49 genes), e uma referência de alta qualidade não tem esses erros. Ou seja, quase todo esse valor é um "fundo" que vem da própria predição de genes (o Miniprot), e não da montagem. Voltamos a ele na Etapa 13.1, depois do polimento.
+- **O `E:` e o aviso de *stop codons*.** Cerca de 1,6% dos genes completos têm um códon de parada no meio da predição. Erros de indel (bases a mais ou a menos que quebram a fase de leitura) produzem esse sinal, mas compare com a **referência S288C** na Etapa 9.3: ela também tem `E:1,5%` (49 genes), e uma referência de alta qualidade não tem esses erros. Ou seja, quase todo esse valor é um "fundo" que vem da própria predição de genes (o Miniprot), e não da montagem. Voltamos a ele na Etapa 14.1, depois do polimento.
 
 **Montagens que seguem para o polimento:** as três da Scer1 purgadas e as duas da Scer2 só com a parte nuclear, todas com o mesmo padrão de nome.
 
@@ -4211,7 +4212,7 @@ ls -lh 9.Montagens-purgadas/
 
 ---
 
-## :material-numeric-10-circle: Etapa 10 — Polimento (Medaka e Illumina) :material-flask-outline: *(opcional)*
+## :material-numeric-10-circle: Etapa 10 — Polimento (Medaka e Illumina)
 
 O polimento tem como objetivo corrigir erros residuais da montagem, melhorando a acurácia das bases. O ideal seria usar reads Illumina (muito mais precisas, com padrão de erro diferente do Nanopore) para essa correção, uma abordagem conhecida como polimento híbrido. Quando não há dados Illumina disponíveis, como é o caso da Scer2, é possível usar os próprios reads Nanopore para polir a montagem. O Medaka faz esse polimento a partir de um modelo neural treinado especificamente para reads ONT. Essa abordagem não chega à precisão do polimento híbrido com Illumina, mas ainda pode trazer ganhos de acurácia em relação à montagem bruta. Para a Scer1 existem reads Illumina públicas da mesma linhagem, e faremos o polimento híbrido na Etapa 10.1.
 
@@ -5838,11 +5839,400 @@ contig_13_1-1::contig_13_1:0-459546: NC_001136.10(443kb) NC_001144.5(52kb)
 
 ---
 
-## :material-numeric-9-plus-circle: Etapa 13 — Comparação das montagens candidatas
+## :material-numeric-9-plus-circle: Etapa 13 — Checagem e remoção de contaminantes (BlobToolKit)
 
-Chegamos ao momento de decidir com qual montagem seguir. Note que, embora tenhamos gerado scaffolds com RagTag e LongStitch nas etapas anteriores, a comparação e a escolha aqui são feitas com base nas montagens **sem** scaffolding (os contigs brutos de cada montador). O scaffolding depende de decisões adicionais (sintenia com uma referência, no caso do RagTag, ou suporte de long reads atravessando regiões repetitivas, no caso do LongStitch) que podem introduzir viés ou fragmentar ainda mais a montagem justamente nas regiões repetitivas/subteloméricas, como vimos na investigação anterior. Por isso, preferimos avaliar a qualidade "pura" de cada montador antes de aplicar qualquer scaffolding.
+Mesmo uma montagem com boas métricas de completude e contiguidade pode conter sequências que não pertencem ao organismo de interesse: DNA de bactérias ou de outros organismos presentes na cultura, contaminação humana do laboratório, vetores. Nenhuma das métricas anteriores detecta isso. O BUSCO, por exemplo, só procura genes de levedura e simplesmente ignora um contig bacteriano.
 
-### 13.1 Comparar as estatísticas das montagens polidas (sem scaffolding)
+A abordagem do **BlobToolKit** combina três informações para cada contig:
+
+- **a taxonomia**, pelo melhor resultado de BLAST contra um banco de nucleotídeos de todos os organismos (aqui, o `core_nt` do NCBI);
+- **o conteúdo de GC**, que costuma ser diferente entre organismos distantes;
+- **a cobertura de reads**: um contaminante presente em pequena quantidade na cultura forma contigs com cobertura bem diferente da do genoma principal.
+
+Contigs do organismo de interesse formam um agrupamento (*blob*) compacto, com GC e cobertura parecidos e a mesma taxonomia. Contaminantes aparecem como pontos de outra cor, fora do agrupamento.
+
+Essas informações ficam num banco de dados do BlobToolKit, o *BlobDir*, que vamos reaproveitar no snail plot da Etapa 14.4. A checagem de contaminantes vem **antes** das checagens finais de qualidade. Se houver contigs a remover, BUSCO, telômeros e snail plot devem ser calculados na montagem já limpa, e uma montagem com boas métricas pode perder pontos se carregar contaminantes. Rodamos nas três candidatas da Scer1 e na Scer2 Flye (a Scer2 Hifiasm, com ~87 kb, fica de fora).
+
+!!! note "Bancos usados"
+    - **`core_nt`**: versão do `nt` mantida pelo NCBI desde 2024, sem a maior parte das sequências redundantes de grandes projetos de sequenciamento. É bem menor que o `nt` completo, o que torna o BLAST mais rápido, mas ainda cobre todos os grupos de organismos.
+    - **`new_taxdump`**: a árvore taxonômica do NCBI, que o BlobToolKit usa para converter o identificador de taxonomia de cada hit (`staxids`) em espécie, gênero, filo etc.
+
+    Ajuste os dois caminhos abaixo para o seu servidor. Para baixar o taxdump: `curl -L https://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz | tar xzf -`.
+
+### 13.1 BLAST contra o `core_nt`
+
+Este é o passo mais demorado da etapa: no nosso servidor, com 24 threads, levou de 10 a 26 minutos por montagem (~1h10 para as quatro). O tempo depende muito do disco e da memória disponível para carregar o banco, então rode dentro do `tmux`. O `date` antes e depois de cada montagem registra quanto tempo cada uma levou.
+
+```bash
+DB=/media/hd16-databases/blast_dbs/core_nt/core_nt
+MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"
+mkdir -p 13.Contaminantes
+
+for prefix in $MONTAGENS; do
+  echo "$(date) início $prefix"
+  blastn -task megablast \
+    -query 9.Montagens-polidas/$prefix.fasta \
+    -db $DB \
+    -outfmt "6 qseqid staxids bitscore std" \
+    -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 \
+    -num_threads 24 \
+    -out 13.Contaminantes/$prefix.blastn.out
+  echo "$(date) fim $prefix"
+done 2>&1 | tee 13.Contaminantes/blast.log
+```
+
+O formato de saída `6 qseqid staxids bitscore std` é o que o BlobToolKit espera: o nome do contig, o taxid do hit, o *bitscore* e as colunas padrão do BLAST. O `-task megablast` é o modo mais rápido do `blastn`, adequado para encontrar sequências muito parecidas.
+
+```text
+qui 19 nov 2026 12:10:05 -03 início Scer1_q10_l500_Flye
+qui 19 nov 2026 12:35:44 -03 fim Scer1_q10_l500_Flye
+qui 19 nov 2026 12:35:44 -03 início Scer1_q10_l500_hifiasm
+qui 19 nov 2026 12:57:38 -03 fim Scer1_q10_l500_hifiasm
+qui 19 nov 2026 12:57:38 -03 início Scer1_q10_l500_nextdenovo
+qui 19 nov 2026 13:11:12 -03 fim Scer1_q10_l500_nextdenovo
+qui 19 nov 2026 13:11:12 -03 início Scer2_q10_l500_Flye
+qui 19 nov 2026 13:20:48 -03 fim Scer2_q10_l500_Flye
+```
+
+| Montagem | Tempo |
+|---|---|
+| Scer1 Flye | 25 min 39 s |
+| Scer1 Hifiasm | 21 min 54 s |
+| Scer1 NextDenovo | 13 min 34 s |
+| Scer2 Flye | 9 min 36 s |
+
+O tempo não acompanha só o tamanho da montagem (as três da Scer1 têm ~12 Mb). Pesam também o número de hits de cada contig no banco e, provavelmente, o fato de o primeiro BLAST precisar ler o `core_nt` do disco, enquanto os seguintes aproveitam o banco já em cache na memória. A Scer2, com 8 Mb em 706 contigs curtos, foi a mais rápida.
+
+Para conferir se o BLAST terminou para todos os contigs:
+
+```bash
+wc -l 13.Contaminantes/*.blastn.out
+```
+
+```text
+   370 13.Contaminantes/Scer1_q10_l500_Flye.blastn.out
+   240 13.Contaminantes/Scer1_q10_l500_hifiasm.blastn.out
+   240 13.Contaminantes/Scer1_q10_l500_nextdenovo.blastn.out
+  7038 13.Contaminantes/Scer2_q10_l500_Flye.blastn.out
+  7888 total
+```
+
+Como pedimos `-max_target_seqs 10 -max_hsps 1`, cada contig tem no máximo 10 linhas. As contas fecham: 37 contigs × 10 = 370 na Flye, 24 × 10 = 240 na Hifiasm e na NextDenovo. Ou seja, todos os contigs da Scer1 tiveram 10 hits. Na Scer2 (706 contigs), 7038 linhas significam que pelo menos 704 contigs tiveram hit. Para saber exatamente quantos contigs têm algum hit:
+
+```bash
+cut -f1 13.Contaminantes/Scer1_q10_l500_hifiasm.blastn.out | sort -u | wc -l
+```
+
+```text
+24
+```
+
+Contigs sem nenhum hit não são necessariamente contaminantes. Podem ser sequências repetitivas ou regiões ausentes do banco, e por isso são mantidos na Etapa 13.5.
+
+### 13.2 Cobertura de reads
+
+```bash
+conda activate polimento   # minimap2 e samtools
+for prefix in $MONTAGENS; do
+  sample=${prefix%%_*}
+  minimap2 -ax map-ont -t 24 9.Montagens-polidas/$prefix.fasta 2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz \
+    | samtools sort -@ 8 -o 13.Contaminantes/$prefix.bam
+  samtools index -c 13.Contaminantes/$prefix.bam   # índice .csi, o formato que o BlobToolKit espera
+done
+conda deactivate
+```
+
+!!! warning "Use `samtools index -c`"
+    O BlobToolKit procura o índice no formato `.csi`. Com o índice padrão (`.bai`), ele tenta criar o `.csi` sozinho e falha com `FileNotFoundError: ... .bam.csi`. Em seguida, o blob plot também falha (`Plot axis not defined: y`), porque a cobertura não foi adicionada. A opção `-c` cria o `.csi` direto.
+
+Saída resumida (só as linhas principais de cada montagem):
+
+```text
+[M::main::0.555*2.41] loaded/built the index for 37 target sequence(s)
+[M::worker_pipeline::90.662*5.35] mapped 140416 sequences
+[M::worker_pipeline::96.884*6.20] mapped 90021 sequences
+[M::main] CMD: minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+[M::main] Real time: 97.050 sec; CPU: 600.806 sec; Peak RSS: 4.440 GB
+[bam_sort_core] merging from 0 files and 8 in-memory blocks...
+...
+[M::main::0.411*3.13] loaded/built the index for 24 target sequence(s)
+[M::main] CMD: minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+[M::main] Real time: 33.017 sec; CPU: 578.394 sec; Peak RSS: 4.785 GB
+...
+[M::main::0.415*3.27] loaded/built the index for 24 target sequence(s)
+[M::main] CMD: minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+[M::main] Real time: 25.384 sec; CPU: 403.606 sec; Peak RSS: 4.683 GB
+...
+[M::main::0.274*3.24] loaded/built the index for 706 target sequence(s)
+[M::worker_pipeline::2.619*8.97] mapped 33006 sequences
+[M::main] CMD: minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
+[M::main] Real time: 2.643 sec; CPU: 23.507 sec; Peak RSS: 0.714 GB
+```
+
+Na Scer1, foram 230.437 reads (140.416 + 90.021, em dois lotes) e na Scer2, 33.006. O alinhamento é rápido: menos de 2 minutos por montagem da Scer1 e poucos segundos na Scer2. O `samtools sort` sem `-m` usa 768 MB por thread, por isso tudo coube na memória ("8 in-memory blocks") sem arquivos temporários. Note que `mapped` conta os reads processados, não os que de fato alinharam. A cobertura de cada contig é o que o BlobToolKit vai calcular a partir do BAM no próximo passo.
+
+### 13.3 Juntar tudo no BlobDir e desenhar o blob plot
+
+??? tip "Instalação: ambiente `blobtoolkit`"
+    ```bash
+    conda create -n blobtoolkit -c conda-forge python=3.9
+    conda activate blobtoolkit
+    pip install blobtoolkit blobtk
+    conda deactivate
+    ```
+
+    O pacote `blobtoolkit` cria o banco de dados (*BlobDir*) da montagem; o `blobtk` desenha os gráficos.
+
+    Atenção: o BlobTools **v1**, mais antigo, e o BlobToolKit se chamam `blobtools` na linha de comando. Para saber qual está ativo, rode `blobtools --version`: o v1 responde `1.1.1`; o BlobToolKit, `4.x`.
+
+```bash
+TAXDUMP=/media/hd16-databases/GEP2/DBs/taxdump
+conda activate blobtoolkit
+mkdir -p 13.Contaminantes/blobdir
+
+for prefix in $MONTAGENS; do
+  # 1) criar o BlobDir com as sequências da montagem (tamanho, GC e Ns de cada contig)
+  rm -rf 13.Contaminantes/blobdir/$prefix
+  blobtools create --fasta 9.Montagens-polidas/$prefix.fasta 13.Contaminantes/blobdir/$prefix
+
+  # 2) acrescentar os hits do BLAST (taxonomia) e a cobertura
+  blobtools add \
+    --hits 13.Contaminantes/$prefix.blastn.out \
+    --taxrule bestsumorder \
+    --taxdump $TAXDUMP \
+    --cov 13.Contaminantes/$prefix.bam \
+    --replace \
+    13.Contaminantes/blobdir/$prefix
+done
+ls 13.Contaminantes/blobdir/Scer1_q10_l500_hifiasm/
+```
+
+O `rm -rf` e o `--replace` deixam o comando ser repetido: sem eles, o BlobToolKit não sobrescreve campos que já existem no BlobDir.
+
+```text
+Loading mapping data from 13.Contaminantes/Scer1_q10_l500_hifiasm.bam as Scer1_q10_l500_hifiasm
+[+]        Locating alignments: ████████████████████████████████████████      24/24
+Parsing taxdump
+...
+bestsumorder_class.json
+...
+bestsumorder_genus.json
+...
+bestsumorder_phylum.json
+...
+bestsumorder_species.json
+...
+gc.json
+identifiers.json
+length.json
+meta.json
+ncount.json
+Scer1_q10_l500_hifiasm_cov.json
+```
+
+Além dos campos criados pelo `blobtools create` (`gc`, `length`, `ncount`), o BlobDir tem a cobertura (`*_cov.json`) e a taxonomia de cada contig em todos os níveis, de superreino a espécie (`bestsumorder_*.json`).
+
+Com os dados no BlobDir, desenhe o blob plot:
+
+```bash
+for prefix in $MONTAGENS; do
+  python -c "import blobtk; blobtk.plot.blob(blobdir='13.Contaminantes/blobdir/$prefix', output='13.Contaminantes/${prefix}.blob.png')"
+done
+
+conda deactivate
+ls -lh 13.Contaminantes/*.png
+```
+
+O `--taxrule bestsumorder` soma os *bitscores* dos hits de cada táxon ao longo do contig e atribui o contig ao táxon com a maior soma; é a regra padrão do BlobToolKit.
+
+=== "Scer1 Flye"
+
+    ![Blob plot Scer1 Flye](outputs/blobplot/Scer1_q10_l500_Flye.blob.png){ width="650" }
+
+=== "Scer1 Hifiasm"
+
+    ![Blob plot Scer1 Hifiasm](outputs/blobplot/Scer1_q10_l500_hifiasm.blob.png){ width="650" }
+
+=== "Scer1 NextDenovo"
+
+    ![Blob plot Scer1 NextDenovo](outputs/blobplot/Scer1_q10_l500_nextdenovo.blob.png){ width="650" }
+
+=== "Scer2 Flye"
+
+    ![Blob plot Scer2 Flye](outputs/blobplot/Scer2_q10_l500_Flye.blob.png){ width="650" }
+
+Cada círculo é um contig: a posição horizontal é o GC, a vertical é a cobertura (em escala logarítmica), o tamanho do círculo é proporcional ao comprimento e a cor é o filo atribuído pelo BLAST. Os histogramas nas margens somam o comprimento dos contigs em cada faixa de GC (em cima) e de cobertura (à direita). A legenda mostra, para cada filo, o número de contigs, o tamanho total e o N50.
+
+!!! example "Como ler os blob plots"
+    - **Uma cor só.** Nas quatro montagens, todos os contigs são *Ascomycota*, exceto os `no-hit` (azul-escuro), que já investigamos na 13.4. Um contaminante apareceria como um círculo de outra cor, em geral com GC e cobertura diferentes do agrupamento principal.
+    - **O agrupamento principal.** Na Scer1, os contigs cromossômicos se concentram em GC de ~38–39% e cobertura de ~50–70×. Na Scer2, o agrupamento fica em ~4–8×, reflexo da cobertura baixa dessa amostra.
+    - **Pontos acima do agrupamento são sequências em várias cópias, não contaminantes.** Na Scer1 Hifiasm, o círculo grande perto de 700× é o contig do chrXII com o rDNA, e o ponto azul-escuro perto de 190× é o plasmídeo 2-mícron. Na Scer1 Flye, há um círculo semelhante perto de 250×.
+    - **O ponto isolado no canto superior esquerdo** (GC ~19%, cobertura >2000×) da Scer1 Flye e da Scer1 Hifiasm é um pequeno fragmento de DNA mitocondrial que sobrou nas montagens. O mtDNA da levedura é muito rico em AT e está em muitas cópias por célula, por isso ele aparece longe de todo o resto, mesmo sendo da própria levedura. Na Etapa 15, ele reaparece na tabela por cromossomo como chrMT.
+    - **Na Scer2, um grupo de contigs grandes em ~20–30×** e alguns pontos acima de 100× também ficam fora do agrupamento principal. Todos são *Saccharomyces* e provavelmente correspondem a regiões repetidas (rDNA, elementos Ty, cópias subteloméricas) que o Flye não conseguiu separar com tão pouca cobertura.
+
+    **Lição:** GC ou cobertura fora do padrão, sozinhos, não indicam contaminação. É a combinação com a taxonomia, a cor do ponto, que permite decidir.
+
+### 13.4 Tabela por contig e resumo por filo
+
+```bash
+conda activate blobtoolkit
+for prefix in $MONTAGENS; do
+  blobtools filter \
+    --table 13.Contaminantes/$prefix.contigs.tsv \
+    --table-fields gc,length,${prefix}_cov,bestsumorder_phylum,bestsumorder_genus \
+    13.Contaminantes/blobdir/$prefix
+
+  head -3 13.Contaminantes/$prefix.contigs.tsv
+  echo "===== $prefix (filo: contigs, pb)"
+  awk -F'\t' 'NR==1{for(i=1;i<=NF;i++){if($i=="bestsumorder_phylum")f=i; if($i=="length")l=i}; next}
+               {n[$f]++; b[$f]+=$l} END{for(x in n) print x": "n[x]" contigs, "b[x]" pb"}' \
+    13.Contaminantes/$prefix.contigs.tsv | sort
+  echo "===== $prefix (gênero: contigs)"
+  cut -f7 13.Contaminantes/$prefix.contigs.tsv | tail -n +2 | sort | uniq -c | sort -k1,1nr
+done
+conda deactivate
+```
+
+A tabela tem uma linha por contig:
+
+```text
+index   identifiers     gc      length  Scer1_q10_l500_hifiasm_cov      bestsumorder_phylum       bestsumorder_genus
+0       ptg000003l_1    0.3853  767108  54.0292 Ascomycota      Saccharomyces
+1       ptg000020l_1    0.3898  419705  54.733  Ascomycota      Saccharomyces
+```
+
+Resumo por filo e por gênero:
+
+```text
+===== Scer1_q10_l500_Flye (filo: contigs, pb)
+Ascomycota: 36 contigs, 11970549 pb
+no-hit: 1 contigs, 602 pb
+===== Scer1_q10_l500_Flye (gênero: contigs)
+     36 Saccharomyces
+      1 no-hit
+===== Scer1_q10_l500_hifiasm (filo: contigs, pb)
+Ascomycota: 23 contigs, 12154698 pb
+no-hit: 1 contigs, 12600 pb
+===== Scer1_q10_l500_hifiasm (gênero: contigs)
+     23 Saccharomyces
+      1 no-hit
+===== Scer1_q10_l500_nextdenovo (filo: contigs, pb)
+Ascomycota: 24 contigs, 12015996 pb
+===== Scer1_q10_l500_nextdenovo (gênero: contigs)
+     24 Saccharomyces
+===== Scer2_q10_l500_Flye (filo: contigs, pb)
+Ascomycota: 702 contigs, 8246431 pb
+no-hit: 4 contigs, 5762 pb
+===== Scer2_q10_l500_Flye (gênero: contigs)
+    702 Saccharomyces
+      4 no-hit
+```
+
+**Nenhuma das quatro montagens tem contaminantes.** Todos os contigs com taxonomia atribuída são de *Saccharomyces*. Não há nenhum contig de bactéria, de humano ou de outro fungo. Sobram só alguns poucos contigs `no-hit`, que somam de 602 pb a 12,6 kb por montagem.
+
+!!! example "O que são os contigs `no-hit`?"
+    Pelo `wc -l` da 13.1, todos os contigs da Scer1 tiveram hits no BLAST. Então `no-hit` aqui não significa "sem hit". Para ver quais são os hits desses contigs e a que táxon pertencem:
+
+    ```bash
+    # hits dos contigs no-hit: contig, taxid, identidade, tamanho do alinhamento
+    for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm; do
+      for c in $(awk -F'\t' '$6=="no-hit"{print $2}' 13.Contaminantes/$prefix.contigs.tsv); do
+        echo "===== $prefix  $c"
+        grep -P "^${c}\t" 13.Contaminantes/$prefix.blastn.out | cut -f1,2,6,7 | head -5
+      done
+    done
+
+    # nome de cada taxid no taxdump
+    for t in 2987691 106612 1945504 32630 2986916 2985547; do
+      echo -e "$t\t$(grep -P "^${t}\t" $TAXDUMP/names.dmp | grep 'scientific name' | cut -f3)"
+    done
+    ```
+
+    ```text
+    2987691 Expression vector YHp26352
+    106612  Expression vector pGP100
+    1945504 Yeast expression vector pSCUDT2MFE6L
+    32630   synthetic construct
+    2986916 Expression vector YHp22601
+    2985547 Expression vector YHp17606
+    ```
+
+    Os 10 melhores hits dos dois contigs são **vetores de expressão para levedura**, com 99,1–99,5% de identidade. Vetores não pertencem a nenhum filo ou gênero, então o BlobToolKit não consegue atribuir esses contigs a um táxon e os marca como `no-hit`.
+
+    Isso não quer dizer que a cultura esteja contaminada por um vetor. Muitos vetores de levedura (os YEp) carregam um pedaço do **plasmídeo 2-mícron**, um plasmídeo natural de *S. cerevisiae* com ~6,3 kb. Como pedimos só os 10 melhores hits (`-max_target_seqs 10`) e há muitos vetores com a mesma sequência no banco, eles ocuparam todas as 10 posições e empurraram para fora as entradas de *S. cerevisiae*.
+
+    O contig da Hifiasm, `ptg000045c_1`, confirma a suspeita. O `c` no nome indica que o Hifiasm o montou como **circular**, e seus 12.600 pb são exatamente 2 × 6.300 pb. Alinhando o contig contra ele mesmo:
+
+    ```bash
+    samtools faidx 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta ptg000045c_1 > c45.fa
+    minimap2 -X -c c45.fa c45.fa 2>/dev/null | cut -f1-12
+    ```
+
+    ```text
+    ptg000045c_1  12600  0     3027   +  ptg000045c_1  12600  6300   9327   3027  3027  0
+    ptg000045c_1  12600  5370  6300   +  ptg000045c_1  12600  11670  12600  930   930   60
+    ptg000045c_1  12600  2436  5961   -  ptg000045c_1  12600  8736   12261  3525  3525  60
+    ptg000045c_1  12600  2436  3027   -  ptg000045c_1  12600  5370   5961   591   591   60
+    ptg000045c_1  12600  8736  9327   -  ptg000045c_1  12600  11670  12261  591   591   0
+    ```
+
+    - **Duas metades de 6.300 pb.** O início e o fim de cada metade são idênticos na mesma orientação (`+`).
+    - **Duas repetições invertidas de ~590 pb em cada metade** (2436–3027 × 5370–5961 e o equivalente na outra metade). Elas correspondem às duas repetições invertidas de ~600 pb do 2-mícron.
+    - **A região entre as repetições está invertida de uma metade para a outra** (2436–5961 × 8736–12261, `-`). No 2-mícron, a recombinase FLP inverte essa região, e a célula tem as duas formas do plasmídeo, A e B.
+
+    Ou seja, o Hifiasm montou **as duas formas do plasmídeo 2-mícron**, uma após a outra, em um contig circular. É DNA da própria levedura e não deve ser removido. Também explica por que o RagTag (Etapa 12.1) deixou esse contig sem posição: o 2-mícron não é um cromossomo. O contig `no-hit` da Flye (`contig_128_1`, 602 pb) tem os mesmos vetores como melhores hits. Pelo tamanho, provavelmente é só uma das repetições invertidas do 2-mícron que a Flye não conseguiu resolver.
+
+    **Lição geral:** um `no-hit` precisa ser investigado, não descartado. Aqui, com mais hits por contig (por exemplo, `-max_target_seqs 50`), as entradas de *S. cerevisiae* provavelmente entrariam na soma e o contig seria classificado como *Saccharomyces*.
+
+### 13.5 Remover os contaminantes (só se houver)
+
+!!! tip "Nas nossas amostras, este passo não é necessário"
+    O resumo da 13.4 mostrou que **nenhum contig é de outro organismo**. Todos são *Saccharomyces* ou `no-hit`, e os `no-hit` são o plasmídeo 2-mícron, ou seja, DNA da própria levedura. Não há nada a remover. As montagens de `9.Montagens-polidas/` seguem para a Etapa 14 como estão. Se você remover contigs, use `13.Montagens-descontaminadas/` no lugar de `9.Montagens-polidas/` daqui em diante.
+
+    O passo fica documentado porque o pipeline deve servir para outros organismos e outras culturas, em que contaminantes podem aparecer. Rode-o quando o resumo por filo mostrar contigs fora do filo esperado.
+
+Quando houver contigs a remover, a regra mais simples e transparente é: manter só os contigs atribuídos ao filo do organismo (**Ascomycota**, para *S. cerevisiae*) e os contigs sem nenhum hit (`no-hit`), que serão examinados à parte. Contigs `no-hit` **não são automaticamente contaminantes**: podem ser sequências do próprio organismo ausentes do banco ou, como vimos na 13.4, sequências cujos melhores hits não têm taxonomia. Por isso a regra os mantém, e eles devem ser investigados um a um.
+
+```bash
+FILO=Ascomycota
+mkdir -p 13.Montagens-descontaminadas
+conda activate polimento
+for prefix in $MONTAGENS; do
+  t=13.Contaminantes/$prefix.contigs.tsv
+  rm -f 13.Contaminantes/$prefix.manter.txt 13.Contaminantes/$prefix.removidos.tsv
+  # as colunas são localizadas pelo nome, na primeira linha da tabela
+  awk -F'\t' -v F=$FILO -v M=13.Contaminantes/$prefix.manter.txt -v R=13.Contaminantes/$prefix.removidos.tsv '
+    NR==1 { for(i=1;i<=NF;i++){ if($i=="identifiers")id=i; if($i=="bestsumorder_phylum")f=i;
+                                if($i=="bestsumorder_genus")g=i; if($i=="length")l=i; if($i ~ /_cov$/)c=i }; next }
+    $f==F || $f=="no-hit" { print $id > M; next }
+    { print $id"\t"$f"\t"$g"\t"$l"\t"$c > R }' $t
+  touch 13.Contaminantes/$prefix.removidos.tsv
+  samtools faidx 9.Montagens-polidas/$prefix.fasta -r 13.Contaminantes/$prefix.manter.txt > 13.Montagens-descontaminadas/$prefix.fasta
+  echo "$prefix: $(wc -l < 13.Contaminantes/$prefix.manter.txt) contigs mantidos, $(wc -l < 13.Contaminantes/$prefix.removidos.tsv) removidos"
+  cat 13.Contaminantes/$prefix.removidos.tsv
+done
+conda deactivate
+```
+
+O arquivo `.removidos.tsv` lista, para cada contig removido, o filo, o gênero, o tamanho e a cobertura. **Sempre confira essa lista antes de aceitar a remoção**: um contig da própria levedura pode ter o melhor hit num organismo errado por causa de uma sequência mal anotada no banco, e um contaminante pode estar escondido dentro de um contig grande, sem que o contig inteiro seja atribuído a ele.
+
+!!! note "Comparando com o Kraken2"
+    Vale voltar à Etapa 4 e comparar. O Kraken2 classificou ~24% dos reads como humanos e ~5 a 8% como *B. cereus*, mas usando um banco sem fungos. Nas montagens, **não apareceu nenhum contig de humano nem de *Bacillus***: aquelas classificações eram, em grande parte, falsos positivos, e descartar os reads "contaminados" teria jogado fora dados de levedura. Se houvesse contigs de *Bacillus* com cobertura própria, aí sim seria evidência de contaminação real. É por isso que, em montagens Nanopore, a avaliação nos contigs costuma ser mais confiável que a classificação read a read.
+
+### Checklist da Etapa 13
+
+- [ ] Rodei o BLAST das montagens candidatas contra o `core_nt`
+- [ ] Gerei o blob plot e identifiquei se há contigs fora do agrupamento principal de *Saccharomyces*
+- [ ] Investiguei os contigs `no-hit` e decidi se há contigs a remover (aqui, nenhum)
+- [ ] Comparei com os resultados de contaminação do Kraken2 (Etapa 4)
+
+---
+
+## :material-numeric-9-plus-circle: Etapa 14 — Comparação das montagens candidatas
+
+Chegamos ao momento de decidir com qual montagem seguir. Note que, embora tenhamos gerado scaffolds com RagTag e LongStitch nas etapas anteriores, a comparação e a escolha aqui são feitas com base nas montagens **sem** scaffolding (os contigs de cada montador, já sem duplicatas e polidos). O scaffolding depende de decisões adicionais (sintenia com uma referência, no caso do RagTag, ou suporte de long reads atravessando regiões repetitivas, no caso do LongStitch) que podem introduzir viés ou fragmentar ainda mais a montagem justamente nas regiões repetitivas/subteloméricas, como vimos na investigação anterior. Por isso, preferimos avaliar a qualidade "pura" de cada montador antes de aplicar qualquer scaffolding.
+
+### 14.1 Comparar as estatísticas das montagens polidas (sem scaffolding)
 
 Antes de montar a tabela, precisamos do BUSCO das montagens finais (purgadas, polidas e só com a parte nuclear); na Etapa 9.3, rodamos o BUSCO nas montagens brutas. Corrigir indels pode consertar genes com a fase de leitura quebrada, então vale conferir:
 
@@ -5969,7 +6359,7 @@ column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
     Scer2_q10_l500_hifiasm     medaka   13       86746            7329    37.75  0.608               2              0.5             0.5           0.0               0.1               99.5           32.5242      6.4674                 NA
     ```
 
-### 13.2 Resumo de QC das montagens (Merqury + BUSCO + QUAST)
+### 14.2 Resumo de QC das montagens (Merqury + BUSCO + QUAST)
 
 | Montagem | Versão | Contigs | Tamanho (Mb) | N50 (kb) | Fração do genoma (%) | Misassemblies | BUSCO C / D (%) | QV Nanopore | QV Illumina |
 |---|---|---|---|---|---|---|---|---|---|
@@ -5985,9 +6375,9 @@ column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
     - **O Flye tem menos misassemblies** (132, contra 164–168). Lembre, porém, que boa parte dos "misassemblies" do QUAST são diferenças estruturais reais entre a CBS7963 e a S288C (11.1), e não erros. Um número um pouco maior não é, por si só, motivo para descartar uma montagem.
     - **A régua Nanopore teria escolhido a mesma montagem** (QV 49,7), mas os valores dela são inflados em 7,5 a 9 pontos, e as diferenças entre as montagens são menores do que parecem. Sem as reads Illumina, não teríamos como saber de quanto foi o ganho real.
     - **Na Scer2, a Flye é a única utilizável**, mas é uma montagem incompleta: 705 contigs, 65% do genoma e dois terços dos genes. Com ~6× de cobertura, nenhum montador consegue fazer muito melhor. Os números de completude do Merqury da Scer2 não devem ser usados para comparar com a Scer1 (veja 11.2).
-    - **A escolha depende do objetivo.** Para anotação de genes, o QV e o BUSCO pesam mais; para estudar rearranjos cromossômicos, a contiguidade e a ausência de junções erradas (12.5) pesam mais. A seguir, os telômeros mostram mais um critério: quantos cromossomos foram montados de ponta a ponta. A escolha final fica para depois da checagem de contaminantes (Etapa 14).
+    - **A escolha depende do objetivo.** Para anotação de genes, o QV e o BUSCO pesam mais; para estudar rearranjos cromossômicos, a contiguidade e a ausência de junções erradas (12.5) pesam mais. A seguir, os telômeros mostram mais um critério: quantos cromossomos foram montados de ponta a ponta. A escolha final vem depois dos telômeros e do snail plot.
 
-### 13.3 Telômeros: quantos cromossomos foram montados de ponta a ponta?
+### 14.3 Telômeros: quantos cromossomos foram montados de ponta a ponta?
 
 Nenhuma das métricas anteriores responde a uma pergunta simples: **os cromossomos estão completos**, de um telômero ao outro? Um contig que começa e termina em telômero representa um cromossomo inteiro (*telomere-to-telomere*, T2T). Como *S. cerevisiae* tem 16 cromossomos, o máximo esperado é 16 contigs T2T, ou 32 pontas teloméricas.
 
@@ -6117,12 +6507,12 @@ O resultado é um SVG, que pode ser aberto no navegador. Cada painel é um conti
     - **O NextDenovo quase não tem telômeros** (1 ponta), embora tenha N50 e fração do genoma parecidos com os das outras montagens. Tudo indica que ele não estende os contigs até as pontas dos cromossomos, onde estão as repetições subteloméricas e teloméricas. Isso não aparece em nenhuma das métricas anteriores: é um bom exemplo de por que olhar mais de um critério.
     - **Do bruto para o final, o Hifiasm não perdeu nenhuma ponta; o Flye perdeu duas** (18 → 16). O mais provável é que essas pontas estivessem em trechos removidos pelo purge_dups (Etapa 9.5), que corta pontas de contigs e contigs inteiros classificados como duplicados. É um custo pequeno, mas que vale conhecer.
     - **A Scer2 Flye tem 11 pontas teloméricas**, mesmo com ~6× de cobertura e 705 contigs: alguns pedaços pequenos das pontas dos cromossomos foram montados, só que soltos.
-    - **Este é mais um ponto a favor do Hifiasm** como montagem final da Scer1, somado ao QV (13.2).
+    - **Este é mais um ponto a favor do Hifiasm** como montagem final da Scer1, somado ao QV (14.2).
 
 !!! note "Os parâmetros dependem do organismo"
     O tamanho da janela (`--window`) e o mínimo de cópias (`MIN`) precisam combinar com o tamanho dos telômeros: em vertebrados e plantas, eles têm vários kb e janelas de 10 kb funcionam bem; em levedura, têm só ~300 pb, por isso usamos janelas de 1 kb. Confira sempre o resultado olhando algumas pontas no arquivo `.tsv`. Isso vale especialmente para telômeros irregulares, como o da levedura: comparamos este resultado com um script que procura o padrão irregular TG₁₋₃ por expressão regular, e os dois concordaram (no máximo uma ponta de diferença por montagem).
 
-### 13.4 Snail plot
+### 14.4 Snail plot
 
 O **snail plot** ("gráfico caracol") é a figura de resumo de montagem que aparece em muitas publicações de genomas, como as do Darwin Tree of Life. Ele é produzido pelo [BlobToolKit](https://blobtoolkit.genomehubs.org){ target=_blank } e mostra, numa só imagem:
 
@@ -6131,41 +6521,28 @@ O **snail plot** ("gráfico caracol") é a figura de resumo de montagem que apar
 - **as faixas coloridas**: o maior contig (vermelho), o N50 (laranja-escuro) e o N90 (laranja-claro);
 - **o canto superior direito**: a completude do BUSCO, quando ela é fornecida.
 
-Quanto mais a área cinza se aproxima de um "disco cheio" com bordas regulares, mais contígua é a montagem. Uma montagem fragmentada vira uma espiral fina que desce rápido.
-
-??? tip "Instalação: ambiente `blobtoolkit`"
-    ```bash
-    conda create -n blobtoolkit -c conda-forge python=3.9
-    conda activate blobtoolkit
-    pip install blobtoolkit blobtk
-    conda deactivate
-    ```
-
-    O pacote `blobtoolkit` cria o banco de dados (*BlobDir*) da montagem; o `blobtk` desenha os gráficos.
-
-    Atenção: o BlobTools **v1**, mais antigo, e o BlobToolKit se chamam `blobtools` na linha de comando. Para saber qual está ativo, rode `blobtools --version`: o v1 responde `1.1.1`; o BlobToolKit, `4.x`.
+O snail plot usa o ambiente `blobtoolkit` e o BlobDir criados na Etapa 13.3. Quanto mais a área cinza se aproxima de um "disco cheio" com bordas regulares, mais contígua é a montagem. Uma montagem fragmentada vira uma espiral fina que desce rápido.
 
 ```bash
 conda activate blobtoolkit
-mkdir -p 13.Snailplot
+mkdir -p 14.Snailplot
 
 for f in 9.Montagens-polidas/*.fasta; do
   prefix=$(basename $f .fasta)
+  B=13.Contaminantes/blobdir/$prefix
 
-  # 1) criar o BlobDir com as sequências da montagem (tamanho, GC e Ns de cada contig)
-  #    o rm -rf é importante: o blobtools não sobrescreve campos que já existem no BlobDir
-  rm -rf 13.Snailplot/$prefix
-  blobtools create --fasta $f 13.Snailplot/$prefix
+  # 1) reaproveitar o BlobDir da Etapa 13.3; criar só se ele não existir (aqui, a Scer2 Hifiasm)
+  [ -d $B ] || blobtools create --fasta $f $B
 
-  # 2) acrescentar o resultado do BUSCO (Etapa 13.1)
-  blobtools add --busco 8.QC_montagens/BUSCO/${prefix}_final/run_saccharomycetaceae_odb12/full_table.tsv 13.Snailplot/$prefix
+  # 2) acrescentar o resultado do BUSCO (Etapa 14.1)
+  blobtools add --busco 8.QC_montagens/BUSCO/${prefix}_final/run_saccharomycetaceae_odb12/full_table.tsv --replace $B
 
   # 3) desenhar o snail plot
-  python -c "import blobtk; blobtk.plot.snail(blobdir='13.Snailplot/$prefix', output='13.Snailplot/${prefix}.snail.png')"
+  python -c "import blobtk; blobtk.plot.snail(blobdir='$B', output='14.Snailplot/${prefix}.snail.png')"
 done
 
 conda deactivate
-ls -lh 13.Snailplot/*.png
+ls -lh 14.Snailplot/*.png
 ```
 
 Se o passo 2 der erro (o formato do `full_table.tsv` muda entre versões do BUSCO), o snail plot ainda pode ser gerado sem ele: só o painel do BUSCO fica de fora. Copie os arquivos `.png` para o seu computador (`scp`) para visualizá-los.
@@ -6196,10 +6573,10 @@ Se o passo 2 der erro (o formato do `full_table.tsv` muda entre versões do BUSC
 
 !!! question "Para comparar"
     - Coloque lado a lado a Scer1 Hifiasm e a Scer2 Flye. Na Scer1, 24 contigs cobrem 12,2 Mb, e o N50 (723 kb) aparece como uma faixa laranja larga. Na Scer2, são 706 contigs em 8,25 Mb, com N50 de 16 kb e a espiral cinza descendo até contigs de poucos kb. O BUSCO, no canto superior direito, mostra a mesma diferença: 99,7% contra 66,7%.
-    - Entre as três montagens da Scer1, o que muda no gráfico? Compare o maior contig, o N50, o N90 e o número de contigs na legenda com a tabela da Etapa 13.2.
+    - Entre as três montagens da Scer1, o que muda no gráfico? Compare o maior contig, o N50, o N90 e o número de contigs na legenda com a tabela da Etapa 14.2.
     - Na Scer2 Hifiasm, o snail plot ainda é desenhado, mas representa só ~87 kb. Que informação da legenda deixa isso claro de imediato?
 
-### Checklist da Etapa 13
+### Checklist da Etapa 14
 
 - [ ] Gerei a tabela consolidada de QUAST + Merqury + BUSCO
 - [ ] Entendi por que as três métricas de completude podem divergir
@@ -6209,166 +6586,210 @@ Se o passo 2 der erro (o formato do `full_table.tsv` muda entre versões do BUSC
 
 ---
 
-## :material-numeric-9-plus-circle: Etapa 14 — Checagem e remoção de contaminantes (BlobToolKit)
-
-Mesmo uma montagem com boas métricas de completude e contiguidade pode conter sequências que não pertencem ao organismo de interesse: DNA de bactérias ou de outros organismos presentes na cultura, contaminação humana do laboratório, vetores. Nenhuma das métricas anteriores detecta isso. O BUSCO, por exemplo, só procura genes de levedura e simplesmente ignora um contig bacteriano.
-
-A abordagem do **BlobToolKit** combina três informações para cada contig:
-
-- **a taxonomia**, pelo melhor resultado de BLAST contra um banco de nucleotídeos de todos os organismos (aqui, o `core_nt` do NCBI);
-- **o conteúdo de GC**, que costuma ser diferente entre organismos distantes;
-- **a cobertura de reads**: um contaminante presente em pequena quantidade na cultura forma contigs com cobertura bem diferente da do genoma principal.
-
-Contigs do organismo de interesse formam um agrupamento (*blob*) compacto, com GC e cobertura parecidos e a mesma taxonomia. Contaminantes aparecem como pontos de outra cor, fora do agrupamento.
-
-Vamos acrescentar essas informações ao mesmo *BlobDir* criado na Etapa 13.4, por isso **a 13.4 precisa ter sido rodada antes**. A checagem de contaminantes entra **antes** da escolha final: uma montagem com boas métricas pode perder pontos se carregar contaminantes. Por isso, rodamos nas três candidatas da Scer1 e na Scer2 Flye (a Scer2 Hifiasm, com ~87 kb, fica de fora).
-
-!!! note "Bancos usados"
-    - **`core_nt`**: versão do `nt` mantida pelo NCBI desde 2024, sem a maior parte das sequências redundantes de grandes projetos de sequenciamento. É bem menor que o `nt` completo, o que torna o BLAST mais rápido, mas ainda cobre todos os grupos de organismos.
-    - **`new_taxdump`**: a árvore taxonômica do NCBI, que o BlobToolKit usa para converter o identificador de taxonomia de cada hit (`staxids`) em espécie, gênero, filo etc.
-
-    Ajuste os dois caminhos abaixo para o seu servidor. Para baixar o taxdump: `curl -L https://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz | tar xzf -`.
-
-### 14.1 BLAST contra o `core_nt`
-
-Este é o passo demorado: algumas horas por montagem, ou seja, provavelmente uma noite inteira para as quatro. Rode dentro do `tmux`.
-
-```bash
-DB=/media/hd16-databases/blast_dbs/core_nt/core_nt
-MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"
-mkdir -p 14.Contaminantes
-
-for prefix in $MONTAGENS; do
-  blastn -task megablast \
-    -query 9.Montagens-polidas/$prefix.fasta \
-    -db $DB \
-    -outfmt "6 qseqid staxids bitscore std" \
-    -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 \
-    -num_threads 24 \
-    -out 14.Contaminantes/$prefix.blastn.out
-done
-```
-
-O formato de saída `6 qseqid staxids bitscore std` é o que o BlobToolKit espera: o nome do contig, o taxid do hit, o *bitscore* e as colunas padrão do BLAST. O `-task megablast` é o modo mais rápido do `blastn`, adequado para encontrar sequências muito parecidas.
-
-<!-- SAÍDA: BLAST (tempo, número de linhas) -->
-
-### 14.2 Cobertura de reads
-
-```bash
-conda activate polimento   # minimap2 e samtools
-for prefix in $MONTAGENS; do
-  sample=${prefix%%_*}
-  minimap2 -ax map-ont -t 24 9.Montagens-polidas/$prefix.fasta 2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz \
-    | samtools sort -@ 8 -o 14.Contaminantes/$prefix.bam
-  samtools index 14.Contaminantes/$prefix.bam
-done
-conda deactivate
-```
-
-### 14.3 Juntar tudo no BlobDir e desenhar o blob plot
-
-```bash
-TAXDUMP=/media/hd16-databases/GEP2/DBs/taxdump
-conda activate blobtoolkit
-
-for prefix in $MONTAGENS; do
-  blobtools add \
-    --hits 14.Contaminantes/$prefix.blastn.out \
-    --taxrule bestsumorder \
-    --taxdump $TAXDUMP \
-    --cov 14.Contaminantes/$prefix.bam \
-    13.Snailplot/$prefix
-
-  python -c "import blobtk; blobtk.plot.blob(blobdir='13.Snailplot/$prefix', output='14.Contaminantes/${prefix}.blob.png')"
-done
-
-conda deactivate
-ls -lh 14.Contaminantes/*.png
-```
-
-O `--taxrule bestsumorder` soma os *bitscores* dos hits de cada táxon ao longo do contig e atribui o contig ao táxon com a maior soma; é a regra padrão do BlobToolKit.
-
-<!-- SAÍDA: blob plots -->
-
-### 14.4 Tabela por contig e resumo por filo
-
-```bash
-conda activate blobtoolkit
-for prefix in $MONTAGENS; do
-  blobtools filter \
-    --table 14.Contaminantes/$prefix.contigs.tsv \
-    --table-fields gc,length,${prefix}_cov,bestsumorder_phylum,bestsumorder_genus \
-    13.Snailplot/$prefix
-
-  head -3 14.Contaminantes/$prefix.contigs.tsv
-  echo "===== $prefix (filo: contigs, pb)"
-  awk -F'\t' 'NR==1{for(i=1;i<=NF;i++){if($i=="bestsumorder_phylum")f=i; if($i=="length")l=i}; next}
-               {n[$f]++; b[$f]+=$l} END{for(x in n) print x": "n[x]" contigs, "b[x]" pb"}' \
-    14.Contaminantes/$prefix.contigs.tsv | sort
-done
-conda deactivate
-```
-
-<!-- SAÍDA: resumo por filo -->
-
-### 14.5 Remover os contaminantes
-
-A regra mais simples e transparente: manter só os contigs atribuídos ao filo do organismo (**Ascomycota**, para *S. cerevisiae*) e os contigs sem nenhum hit (`no-hit`), que serão examinados à parte. Contigs sem hit não são automaticamente contaminantes: podem ser sequências da própria levedura que não estão no banco, como as regiões subteloméricas variáveis que vimos na Etapa 11.3.
-
-```bash
-FILO=Ascomycota
-mkdir -p 14.Montagens-descontaminadas
-conda activate polimento
-for prefix in $MONTAGENS; do
-  t=14.Contaminantes/$prefix.contigs.tsv
-  rm -f 14.Contaminantes/$prefix.manter.txt 14.Contaminantes/$prefix.removidos.tsv
-  # as colunas são localizadas pelo nome, na primeira linha da tabela
-  awk -F'\t' -v F=$FILO -v M=14.Contaminantes/$prefix.manter.txt -v R=14.Contaminantes/$prefix.removidos.tsv '
-    NR==1 { for(i=1;i<=NF;i++){ if($i=="identifiers")id=i; if($i=="bestsumorder_phylum")f=i;
-                                if($i=="bestsumorder_genus")g=i; if($i=="length")l=i; if($i ~ /_cov$/)c=i }; next }
-    $f==F || $f=="no-hit" { print $id > M; next }
-    { print $id"\t"$f"\t"$g"\t"$l"\t"$c > R }' $t
-  touch 14.Contaminantes/$prefix.removidos.tsv
-  samtools faidx 9.Montagens-polidas/$prefix.fasta -r 14.Contaminantes/$prefix.manter.txt > 14.Montagens-descontaminadas/$prefix.fasta
-  echo "$prefix: $(wc -l < 14.Contaminantes/$prefix.manter.txt) contigs mantidos, $(wc -l < 14.Contaminantes/$prefix.removidos.tsv) removidos"
-  cat 14.Contaminantes/$prefix.removidos.tsv
-done
-conda deactivate
-```
-
-O arquivo `.removidos.tsv` lista, para cada contig removido, o filo, o gênero, o tamanho e a cobertura. **Sempre confira essa lista antes de aceitar a remoção**: um contig da própria levedura pode ter o melhor hit num organismo errado por causa de uma sequência mal anotada no banco, e um contaminante pode estar escondido dentro de um contig grande, sem que o contig inteiro seja atribuído a ele.
-
-<!-- SAÍDA: contigs removidos -->
-
-!!! note "Comparando com o Kraken2"
-    Vale voltar à Etapa 4 e comparar. O Kraken2 classificou ~24% dos reads como humanos e ~5 a 8% como *B. cereus*, mas usando um banco sem fungos. Se o blob plot não mostrar contigs de humano nem de *Bacillus*, isso reforça que aquelas classificações eram, em grande parte, falsos positivos, e que descartar os reads "contaminados" teria jogado fora dados de levedura. Se aparecerem contigs de *Bacillus* com cobertura própria, aí sim há evidência de contaminação real. É por isso que, em montagens Nanopore, a avaliação nos contigs costuma ser mais confiável que a classificação read a read.
-
-### Checklist da Etapa 14
-
-- [ ] Rodei o BLAST das montagens candidatas contra o `core_nt`
-- [ ] Gerei o blob plot e identifiquei se há contigs fora do agrupamento principal de *Saccharomyces*
-- [ ] Conferi a lista de contigs removidos e tenho as montagens descontaminadas em `14.Montagens-descontaminadas/`
-- [ ] Comparei com os resultados de contaminação do Kraken2 (Etapa 4)
-
----
-
 ## :material-flag-checkered: Escolha da montagem final
 
-Só agora, com a checagem de contaminantes feita, temos todas as informações para escolher a montagem final. Reúna os critérios das etapas anteriores:
+Com a checagem de contaminantes e as comparações feitas, temos todas as informações para escolher a montagem final. Reúna os critérios das etapas anteriores:
 
 | Critério | Onde | O que olhar |
 |---|---|---|
-| Qualidade das bases | 11.3 e 13.2 | QV pela régua **Illumina** (a régua Nanopore infla os valores) |
-| Completude gênica | 13.1 | BUSCO completos e duplicados |
-| Contiguidade | 11.1 e 13.2 | número de contigs, N50, fração do genoma |
-| Cromossomos completos | 13.3 | contigs T2T e pontas teloméricas |
+| Qualidade das bases | 11.3 e 14.2 | QV pela régua **Illumina** (a régua Nanopore infla os valores) |
+| Completude gênica | 14.1 | BUSCO completos e duplicados |
+| Contiguidade | 11.1 e 14.2 | número de contigs, N50, fração do genoma |
+| Cromossomos completos | 14.3 | contigs T2T e pontas teloméricas |
 | Erros estruturais | 11.1, 12.5 | misassemblies (lembrando que muitos são diferenças reais entre linhagens) e junções entre cromossomos |
-| Contaminação | 14 | contigs removidos e quanto da montagem eles representavam |
+| Contaminação | 13 | contigs de outros organismos e quanto da montagem eles representam |
 
-<!-- PENDENTE: tabela final com os números das montagens descontaminadas e a escolha -->
+Como a Etapa 13 não removeu nenhum contig, os números são os da 14.2, agora com os telômeros (14.3) e a contaminação (13):
+
+| Montagem | Contigs | N50 (kb) | BUSCO C (%) | QV Illumina | T2T / pontas teloméricas | Misassemblies | Contaminantes |
+|---|---|---|---|---|---|---|---|
+| Scer1 Flye híbrida | 37 | 755 | 99,6 | 36,2 | 3 / 16 | **132** | nenhum |
+| **Scer1 Hifiasm híbrida** | **24** | 723 | **99,7** | **41,3** | **3 / 22** | 168 | nenhum (+ 2-mícron) |
+| Scer1 NextDenovo híbrida | **24** | **767** | 99,6 | 35,5 | 0 / 1 | 164 | nenhum |
+| Scer2 Flye Medaka | 705 | 16 | 66,7 | — | 0 / 11 | 61 | nenhum |
+
+!!! success "Montagem final"
+    **Scer1: Hifiasm híbrida** (`9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta`). Ela tem o maior QV pela régua independente, com 3 a 4 vezes menos erros que as outras duas, o maior BUSCO, o menor número de contigs e o maior número de pontas teloméricas. Além disso, é a única com o plasmídeo 2-mícron montado completo. A NextDenovo tem o maior N50, mas quase não tem telômeros nas pontas. A Flye tem menos misassemblies, mas boa parte deles são diferenças reais entre linhagens (11.1).
+
+    **Scer2: Flye Medaka**, por ser a única utilizável, mas como um rascunho: 65% do genoma e dois terços dos genes. Para uma montagem completa, é preciso sequenciar mais (~6× é muito pouco).
+
+    Em todas as montagens, a checagem de contaminantes não encontrou nada além de levedura. Isso confirma que os ~24% de reads "humanos" e os ~5–8% de *B. cereus* do Kraken2 (Etapa 4) eram falsos positivos.
 
 Não existe uma regra única: o peso de cada critério depende do objetivo. Para anotação de genes, pesam mais o QV e o BUSCO; para estudar a organização dos cromossomos, a contiguidade, os telômeros e a ausência de junções erradas; para comparar com uma referência, os scaffolds do RagTag (Etapa 12) podem ser mais úteis do que os contigs.
+
+---
+
+## :material-numeric-9-plus-circle: Etapa 15 — Tabela por cromossomo
+
+Com a montagem escolhida, vale descrevê-la cromossomo a cromossomo. Até aqui, olhamos cada critério para a montagem inteira. Esta etapa junta, em **uma linha por contig**, tudo o que já calculamos e diz a qual cromossomo da referência cada contig corresponde. Assim, dá para responder perguntas como: "o cromossomo IV foi montado em um contig só?", "tem telômero nas duas pontas?", "onde estão os genes BUSCO?", "algum contig tem QV ou cobertura fora do padrão?".
+
+| Coluna | De onde vem | Etapa |
+|---|---|---|
+| cromossomo, alinhado_% | alinhamento contra a referência S288C (`minimap2`, novo aqui) | 15 |
+| tamanho_pb, GC_%, cobertura, gênero | tabela do BlobToolKit | 13.4 |
+| telomero_esq, telomero_dir | janelas do `tidk search` (mesmo critério da 14.3: ≥10 cópias na primeira/última janela) | 14.3 |
+| QV | QV por contig do Merqury, régua Illumina (só Scer1) | 11.3 |
+| BUSCO | genes BUSCO completos (únicos ou duplicados) em cada contig | 14.1 |
+
+### 15.1 Alinhar as montagens à referência
+
+```bash
+REF=ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna
+MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"
+mkdir -p 15.Tabela-cromossomos
+
+# nomes dos cromossomos: NC_001133.9 -> chrI, ..., NC_001224.1 -> chrMT
+grep '>' $REF | sed -E 's/^>([^ ]+) .*chromosome ([^,]+),.*/\1\tchr\2/; s/^>([^ ]+) .*mitochondrion.*/\1\tchrMT/' \
+  > 15.Tabela-cromossomos/R64_nomes.tsv
+cat 15.Tabela-cromossomos/R64_nomes.tsv
+
+conda activate polimento
+for P in $MONTAGENS; do
+  minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/$P.fasta \
+    > 15.Tabela-cromossomos/$P.vs_R64.paf
+done
+conda deactivate
+```
+
+Cada contig é atribuído ao cromossomo com o qual ele tem mais bases alinhadas. A coluna `alinhado_%` diz quanto do contig alinhou nesse cromossomo. Um valor bem abaixo de 100% indica um contig que junta pedaços de cromossomos diferentes (como os da Etapa 12.5) ou que tem muita sequência ausente da S288C.
+
+### 15.2 Montar a tabela
+
+O `awk` abaixo lê os cinco arquivos, um depois do outro, e junta as informações pelo nome do contig. Nas tabelas com cabeçalho, as colunas são localizadas pelo nome, então o comando funciona mesmo que a ordem delas mude.
+
+```bash
+for P in $MONTAGENS; do
+  BLOB=13.Contaminantes/$P.contigs.tsv
+  TELO=11.Telomeros/9.Montagens-polidas_${P}_telomeric_repeat_windows.tsv
+  BUSCO=8.QC_montagens/BUSCO/${P}_final/run_saccharomycetaceae_odb12/full_table.tsv
+  QV=8.QC_montagens/merqury_illumina/${P}_hibrido/${P}_hibrido.${P}_hibrido.qv
+  [ -f $QV ] || QV=/dev/null          # a Scer2 não tem Illumina: coluna QV fica "-"
+
+  awk -F'\t' -v OFS='\t' -v MIN=10 '
+    FILENAME==ARGV[1] { nome[$1]=$2; ordem[$1]=FNR; next }                         # referência
+    FILENAME==ARGV[2] { a[$1,$6]+=$11; if(a[$1,$6]>best[$1]){best[$1]=a[$1,$6]; chr[$1]=$6}; next }   # PAF
+    FILENAME==ARGV[3] { if(FNR==1) next; n=$3+$4; if(!($1 in ini)) ini[$1]=n; fim[$1]=n; nj[$1]++; next }  # tidk
+    FILENAME==ARGV[4] { qv[$1]=$4; next }                                           # Merqury
+    FILENAME==ARGV[5] { if($0 ~ /^#/) next; if($2=="Complete" || $2=="Duplicated") bu[$3]++; next }  # BUSCO
+    { sub(/[ \r]+$/, "") }                                                          # tira espaço/\r no fim da linha
+    FNR==1 { for(i=1;i<=NF;i++){ if($i=="identifiers")id=i; if($i=="length")l=i; if($i=="gc")g=i
+                                 if($i ~ /_cov$/)c=i; if($i ~ /bestsumorder_genus/)ge=i }
+             print "ordem","contig","cromossomo","alinhado_%","tamanho_pb","GC_%","cobertura",
+                   "telomero_esq","telomero_dir","QV","BUSCO","genero"; next }
+    { k=$id
+      r = (k in chr) ? nome[chr[k]] : "-"
+      o = (k in chr) ? ordem[chr[k]] : 99
+      pct = (k in chr) ? 100*best[k]/$l : -1; if(pct>100) pct=100
+      te = (ini[k]>=MIN) ? "sim" : "nao"
+      td = (nj[k]>1 && fim[k]>=MIN) ? "sim" : "nao"
+      print o, k, r, (pct<0 ? "-" : sprintf("%.0f",pct)), $l, sprintf("%.1f",100*$g), sprintf("%.0f",$c),
+            te, td, ((k in qv) ? sprintf("%.1f",qv[k]) : "-"), bu[k]+0, $ge }
+  ' 15.Tabela-cromossomos/R64_nomes.tsv 15.Tabela-cromossomos/$P.vs_R64.paf $TELO $QV $BUSCO $BLOB \
+    > 15.Tabela-cromossomos/$P.tmp
+
+  # ordena pela ordem dos cromossomos na referência (I, II, ..., XVI) e, dentro de cada um, pelo tamanho
+  ( head -1 15.Tabela-cromossomos/$P.tmp
+    tail -n +2 15.Tabela-cromossomos/$P.tmp | sort -t$'\t' -k1,1n -k5,5nr ) | cut -f2- \
+    > 15.Tabela-cromossomos/$P.tsv
+  rm 15.Tabela-cromossomos/$P.tmp
+done
+
+column -t 15.Tabela-cromossomos/Scer1_q10_l500_hifiasm.tsv
+```
+
+```text
+contig        cromossomo  alinhado_%  tamanho_pb  GC_%  cobertura  telomero_esq  telomero_dir  QV    BUSCO  genero
+ptg000018l_1  chrI        100         212114      39.5  71         sim           nao           49.5  45     Saccharomyces
+ptg000002l_1  chrII       100         804899      38.4  56         nao           sim           44.4  222    Saccharomyces
+ptg000009l_1  chrIII      100         315378      38.6  61         sim           sim           59.8  74     Saccharomyces
+ptg000001l_1  chrIV       100         1013101     37.8  54         nao           sim           50.1  296    Saccharomyces
+ptg000014l_1  chrIV       95          464614      38.6  71         sim           nao           46.8  128    Saccharomyces
+ptg000058l_1  chrIV       91          62763       37.2  57         nao           nao           50.1  19     Saccharomyces
+ptg000007l_1  chrV        84          547688      38.4  60         sim           sim           47.7  141    Saccharomyces
+ptg000023l_1  chrV        62          228556      38.8  59         sim           nao           54.3  59     Saccharomyces
+ptg000021l_1  chrVI       92          262861      39.1  74         nao           nao           44.3  62     Saccharomyces
+ptg000005l_1  chrVII      100         1078464     38.1  52         nao           sim           34.5  317    Saccharomyces
+ptg000015l_1  chrVIII     100         412697      38.6  56         sim           nao           45.5  112    Saccharomyces
+ptg000024l_1  chrVIII     100         137647      38.8  67         nao           sim           49.6  34     Saccharomyces
+ptg000020l_1  chrIX       98          419705      39.0  55         sim           nao           44.0  105    Saccharomyces
+ptg000003l_1  chrX        99          767108      38.5  54         sim           sim           54.1  201    Saccharomyces
+ptg000006l_1  chrXI       96          709870      38.3  64         sim           nao           51.8  181    Saccharomyces
+ptg000004l_1  chrXII      100         723225      39.3  702        sim           nao           43.2  155    Saccharomyces
+ptg000013l_1  chrXII      100         458450      38.6  70         sim           nao           44.8  119    Saccharomyces
+ptg000017l_1  chrXIII     100         487182      38.2  52         sim           nao           45.5  145    Saccharomyces
+ptg000011l_1  chrXIII     95          455882      38.1  54         sim           nao           32.2  126    Saccharomyces
+ptg000010l_1  chrXIV      100         673501      38.6  51         sim           nao           57.7  203    Saccharomyces
+ptg000008l_1  chrXV       100         1066884     38.3  55         sim           nao           48.4  290    Saccharomyces
+ptg000012l_1  chrXVI      100         850467      38.2  62         nao           nao           41.9  244    Saccharomyces
+ptg000069l_1  chrMT       51          1642        19.1  2260       nao           nao           35.8  0      Saccharomyces
+ptg000045c_1  -           -           12600       39.0  191        nao           nao           +inf  0      no-hit
+```
+
+O `cat` mostra os 17 nomes da referência: `NC_001133.9 chrI` até `NC_001148.4 chrXVI` e `NC_001224.1 chrMT`. O alinhamento leva menos de 1 segundo por montagem.
+
+Para a apresentação (relatório, artigo, slides), a mesma tabela pode ser convertida em Markdown:
+
+```bash
+for P in $MONTAGENS; do
+  awk -F'\t' 'NR==1{ print "| Cromossomo | Contig | Alinhado (%) | Tamanho (pb) | GC (%) | Cobertura (×) | Telômero E / D | BUSCO | QV | Melhor hit |"
+                     print "|---|---|---:|---:|---:|---:|:---:|---:|---:|---|"; next }
+              { e=($7=="sim")?"sim":"não"; d=($8=="sim")?"sim":"não"
+                printf "| %s | `%s` | %s | %s | %s | %s | %s / %s | %s | %s | *%s* |\n", $2,$1,$3,$4,$5,$6,e,d,$10,$9,$11 }' \
+    15.Tabela-cromossomos/$P.tsv > 15.Tabela-cromossomos/$P.md
+done
+```
+
+Na Scer1 Hifiasm, a montagem escolhida, fica assim (cromossomos T2T em negrito):
+
+| Cromossomo | Contig | Alinhado (%) | Tamanho (pb) | GC (%) | Cobertura (×) | Telômero E / D | BUSCO | QV | Melhor hit |
+|---|---|---:|---:|---:|---:|:---:|---:|---:|---|
+| chrI | `ptg000018l_1` | 100 | 212.114 | 39,5 | 71 | sim / não | 45 | 49,5 | *Saccharomyces* |
+| chrII | `ptg000002l_1` | 100 | 804.899 | 38,4 | 56 | não / sim | 222 | 44,4 | *Saccharomyces* |
+| **chrIII** | `ptg000009l_1` | 100 | 315.378 | 38,6 | 61 | sim / sim | 74 | 59,8 | *Saccharomyces* |
+| chrIV | `ptg000001l_1` | 100 | 1.013.101 | 37,8 | 54 | não / sim | 296 | 50,1 | *Saccharomyces* |
+| chrIV | `ptg000014l_1` | 95 | 464.614 | 38,6 | 71 | sim / não | 128 | 46,8 | *Saccharomyces* |
+| chrIV | `ptg000058l_1` | 91 | 62.763 | 37,2 | 57 | não / não | 19 | 50,1 | *Saccharomyces* |
+| **chrV** | `ptg000007l_1` | 84 | 547.688 | 38,4 | 60 | sim / sim | 141 | 47,7 | *Saccharomyces* |
+| chrV | `ptg000023l_1` | 62 | 228.556 | 38,8 | 59 | sim / não | 59 | 54,3 | *Saccharomyces* |
+| chrVI | `ptg000021l_1` | 92 | 262.861 | 39,1 | 74 | não / não | 62 | 44,3 | *Saccharomyces* |
+| chrVII | `ptg000005l_1` | 100 | 1.078.464 | 38,1 | 52 | não / sim | 317 | 34,5 | *Saccharomyces* |
+| chrVIII | `ptg000015l_1` | 100 | 412.697 | 38,6 | 56 | sim / não | 112 | 45,5 | *Saccharomyces* |
+| chrVIII | `ptg000024l_1` | 100 | 137.647 | 38,8 | 67 | não / sim | 34 | 49,6 | *Saccharomyces* |
+| chrIX | `ptg000020l_1` | 98 | 419.705 | 39,0 | 55 | sim / não | 105 | 44,0 | *Saccharomyces* |
+| **chrX** | `ptg000003l_1` | 99 | 767.108 | 38,5 | 54 | sim / sim | 201 | 54,1 | *Saccharomyces* |
+| chrXI | `ptg000006l_1` | 96 | 709.870 | 38,3 | 64 | sim / não | 181 | 51,8 | *Saccharomyces* |
+| chrXII | `ptg000004l_1` | 100 | 723.225 | 39,3 | 702 | sim / não | 155 | 43,2 | *Saccharomyces* |
+| chrXII | `ptg000013l_1` | 100 | 458.450 | 38,6 | 70 | sim / não | 119 | 44,8 | *Saccharomyces* |
+| chrXIII | `ptg000017l_1` | 100 | 487.182 | 38,2 | 52 | sim / não | 145 | 45,5 | *Saccharomyces* |
+| chrXIII | `ptg000011l_1` | 95 | 455.882 | 38,1 | 54 | sim / não | 126 | 32,2 | *Saccharomyces* |
+| chrXIV | `ptg000010l_1` | 100 | 673.501 | 38,6 | 51 | sim / não | 203 | 57,7 | *Saccharomyces* |
+| chrXV | `ptg000008l_1` | 100 | 1.066.884 | 38,3 | 55 | sim / não | 290 | 48,4 | *Saccharomyces* |
+| chrXVI | `ptg000012l_1` | 100 | 850.467 | 38,2 | 62 | não / não | 244 | 41,9 | *Saccharomyces* |
+| chrMT | `ptg000069l_1` | 51 | 1.642 | 19,1 | 2260 | não / não | 0 | 35,8 | *Saccharomyces* |
+| 2-mícron | `ptg000045c_1` | - | 12.600 | 39,0 | 191 | não / não | 0 | +inf | sem hit (vetores) |
+
+!!! example "O que a tabela da Scer1 Hifiasm mostra"
+    - **Os 16 cromossomos estão representados.** Onze foram montados em **um contig só** (I, II, III, VI, VII, IX, X, XI, XIV, XV e XVI). Os outros estão em 2 contigs (V, VIII, XII e XIII) ou em 3 (IV, o maior cromossomo).
+    - **Os três T2T da 14.3 são chrIII, chrV e chrX.** A tabela também mostra os 22 telômeros da 14.3 distribuídos pelos cromossomos. Repare nos pares `sim`/`nao` + `nao`/`sim` em cromossomos quebrados em dois, como o chrVIII: cada metade traz o telômero da sua ponta. O cromossomo está completo, com uma quebra no meio.
+    - **O chrXII tem um contig com cobertura de 702×**, cerca de 13 vezes a média de ~55×. É o **rDNA**: na levedura, ~150 cópias em tandem de uma unidade de 9,1 kb, no chrXII. O montador colapsa todas as cópias em poucas, e as reads de todas elas se acumulam ali. A cobertura é uma forma de estimar o número de cópias.
+    - **Um contig de 1,6 kb do chrMT sobrou** na montagem (`ptg000069l_1`). Ele tem GC de 19% (o mtDNA da levedura é muito rico em AT) e cobertura de 2260×. Ele escapou da separação da mitocôndria na Etapa 9.4, provavelmente porque só ~51% dele alinha no mtDNA de referência. É um bom exemplo de como a tabela por contig revela o que as métricas da montagem inteira escondem.
+    - **O 2-mícron (`ptg000045c_1`, 13.4) tem cobertura de 191×**, ~3,5 vezes a do genoma nuclear, ou seja, várias cópias por célula. O QV `+inf` indica que nenhum k-mer dele está ausente das reads Illumina: zero erros detectados.
+    - **Dois contigs têm QV bem abaixo dos outros** (ptg000005, chrVII, com 34,5, e ptg000011, chrXIII, com 32,2). Nos demais, o QV fica entre 42 e 60. Vale olhar esses dois como fizemos na 11.3.
+    - **`alinhado_%` abaixo de 90%** em dois contigs do chrV (84% e 62%). Parte deles alinha melhor em outro cromossomo ou não existe na S288C: pode ser uma diferença estrutural real da CBS7963, ou uma junção errada. É o tipo de caso que se confere com o dotplot da 12.5.
+
+O arquivo `.tsv` abre direto em planilhas (Excel, LibreOffice, Google Sheets), o que facilita filtrar e colorir.
+
+!!! question "Para explorar a tabela"
+    - Quantos dos 16 cromossomos foram montados em **um contig só**? Quais estão quebrados em vários?
+    - Os contigs com `sim` nas duas colunas de telômero são os T2T da Etapa 14.3. A que cromossomos eles correspondem?
+    - Algum contig tem cobertura muito acima da média (cópias a mais, como rDNA ou Ty) ou QV bem abaixo dos outros (como os da Etapa 11.3)?
+    - Os contigs que o RagTag deixou sem posição (Etapa 12.1) aparecem aqui com `-` ou com `alinhado_%` baixo?
+    - O comando gera a tabela também para as outras candidatas. Compare as tabelas da Flye, da Hifiasm e da NextDenovo: em quais cromossomos uma montadora foi melhor que as outras? Isso confirma a escolha feita acima?
+
+### Checklist da Etapa 15
+
+- [ ] Gerei a tabela por contig da montagem escolhida (e das outras candidatas) em `15.Tabela-cromossomos/`
+- [ ] Identifiquei quais cromossomos estão completos (um contig, com telômeros nas duas pontas)
 
 !!! tip "Próximos passos típicos"
     - **Projetos sem Illumina:** sequenciar uma biblioteca Illumina da mesma linhagem, tanto para o polimento híbrido quanto para ter uma régua independente de qualidade
