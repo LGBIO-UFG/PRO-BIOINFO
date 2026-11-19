@@ -6,7 +6,7 @@
 **Autora:** Profa. Renata de Oliveira Dias
 **Instituição:** Laboratório de Genética & Biodiversidade (LGBio) — Instituto de Ciências Biológicas (ICB) / Universidade Federal de Goiás (UFG)
 **Contato:** [renata_dias@ufg.br](mailto:renata_dias@ufg.br)
-**Última atualização:** Julho de 2026
+**Última atualização:** Novembro de 2026
 
 ## :material-target: Objetivos de aprendizagem
 
@@ -4186,7 +4186,7 @@ done
 - **A duplicação caiu sem perda de completude.** No Hifiasm, os genes duplicados passaram de 1,7% (~56 genes) para 0,2% (6 genes), e esses ~50 genes voltaram para a coluna de cópia única (S: 98,0% → 99,5%). O total de completos não mudou: o purge_dups tirou a **segunda cópia**, não o gene.
 - **Flye e NextDenovo quase não mudaram**, porque já tinham pouca duplicação. A diferença de 0,1 ponto no C do Flye equivale a um ou dois genes e está dentro da variação esperada.
 - **Os três indicadores concordam.** Histograma de cobertura, k-mers do Merqury e BUSCO contam a mesma história: o Hifiasm era a montagem com mais falsas duplicações, e o purge_dups as removeu.
-- **O `E:` e o aviso de *stop codons*.** Cerca de 1,6% dos genes completos têm um códon de parada no meio da predição. Em montagens Nanopore ainda não polidas, isso costuma ser sinal de **erros de indel** (bases a mais ou a menos que quebram a fase de leitura), e não de genes de fato interrompidos. É um dos números que esperamos ver cair depois do polimento com o Medaka, na Etapa 10.
+- **O `E:` e o aviso de *stop codons*.** Cerca de 1,6% dos genes completos têm um códon de parada no meio da predição. Erros de indel (bases a mais ou a menos que quebram a fase de leitura) produzem esse sinal, mas compare com a **referência S288C** na Etapa 9.3: ela também tem `E:1,5%` (49 genes), e uma referência de alta qualidade não tem esses erros. Ou seja, quase todo esse valor é um "fundo" que vem da própria predição de genes (o Miniprot), e não da montagem. Voltamos a ele na Etapa 13.1, depois do polimento.
 
 **Montagens que seguem para o polimento:** as três da Scer1 purgadas e as duas da Scer2 só com a parte nuclear, todas com o mesmo padrão de nome.
 
@@ -4206,9 +4206,9 @@ ls -lh 9.Montagens-purgadas/
 - [ ] Tenho `merqury_summary.tsv` consolidado
 - [ ] Tenho BUSCO `short_summary` de cada montagem e da referência
 - [ ] Entendi por que Merqury, BUSCO e QUAST podem discordar sobre "completude"
-
 - [ ] Separei os contigs mitocondriais (`9.Mitocondria/`) e tenho as montagens nucleares em `9.Montagens-nucleares/`
 - [ ] Rodei o purge_dups nas montagens da Scer1, conferi o histograma e os limites de corte, e tenho as montagens de entrada do polimento em `9.Montagens-purgadas/`
+
 ---
 
 ## :material-numeric-10-circle: Etapa 10 — Polimento (Medaka e Illumina) :material-flask-outline: *(opcional)*
@@ -5834,11 +5834,11 @@ contig_13_1-1::contig_13_1:0-459546: NC_001136.10(443kb) NC_001144.5(52kb)
 - [ ] Tenho scaffolds LongStitch em `10.Scaffolding-Longstitch/`
 - [ ] Comparei número de placed vs. unplaced no RagTag
 - [ ] Entendi por que o número de scaffolds pode aumentar em regiões repetitivas/subteloméricas
-
 - [ ] Comparei os contigs e os dois scaffoldings com a referência num dotplot (D-GENIES)
+
 ---
 
-## :material-numeric-9-plus-circle: Etapa 13 — Escolha da montagem final
+## :material-numeric-9-plus-circle: Etapa 13 — Comparação das montagens candidatas
 
 Chegamos ao momento de decidir com qual montagem seguir. Note que, embora tenhamos gerado scaffolds com RagTag e LongStitch nas etapas anteriores, a comparação e a escolha aqui são feitas com base nas montagens **sem** scaffolding (os contigs brutos de cada montador). O scaffolding depende de decisões adicionais (sintenia com uma referência, no caso do RagTag, ou suporte de long reads atravessando regiões repetitivas, no caso do LongStitch) que podem introduzir viés ou fragmentar ainda mais a montagem justamente nas regiões repetitivas/subteloméricas, como vimos na investigação anterior. Por isso, preferimos avaliar a qualidade "pura" de cada montador antes de aplicar qualquer scaffolding.
 
@@ -5855,7 +5855,42 @@ done
 conda deactivate
 ```
 
-<!-- SAÍDA: BUSCO das montagens polidas -->
+??? note "Ver saída do comando (resumida)"
+
+    ```text
+    # Scer1_q10_l500_Flye (híbrida)
+    |C:99.6%[S:99.6%,D:0.1%],F:0.0%,M:0.4%,n:3282,E:1.5%   |
+    WARNING: 50 of 3270 Complete matches (1.5%) contain internal stop codons in Miniprot gene predictions
+
+    # Scer1_q10_l500_hifiasm (híbrida)
+    |C:99.7%[S:99.5%,D:0.2%],F:0.0%,M:0.3%,n:3282,E:1.6%   |
+    WARNING: 52 of 3272 Complete matches (1.6%) contain internal stop codons in Miniprot gene predictions
+
+    # Scer1_q10_l500_nextdenovo (híbrida)
+    |C:99.6%[S:99.5%,D:0.1%],F:0.0%,M:0.4%,n:3282,E:1.5%   |
+    WARNING: 50 of 3269 Complete matches (1.5%) contain internal stop codons in Miniprot gene predictions
+
+    # Scer2_q10_l500_Flye (Medaka)
+    |C:66.7%[S:66.5%,D:0.2%],F:3.0%,M:30.4%,n:3282,E:1.6%  |
+    WARNING: 34 of 2188 Complete matches (1.6%) contain internal stop codons in Miniprot gene predictions
+
+    # Scer2_q10_l500_hifiasm (Medaka)
+    |C:0.5%[S:0.5%,D:0.0%],F:0.1%,M:99.5%,n:3282           |
+    ```
+
+| Montagem | Completos (C) | Duplicados (D) | Faltando (M) | Genes com *stop codon* interno |
+|---|---|---|---|---|
+| Referência S288C (Etapa 9.3) | 99,9% | 0,0% | 0,1% | 49 (1,5%) |
+| Scer1 Flye: bruta → final | 99,7% → 99,6% | 0,1% → 0,1% | 0,3% → 0,4% | 54 → 50 |
+| Scer1 Hifiasm: bruta → final | 99,7% → 99,7% | 1,7% → 0,2% | 0,3% → 0,3% | 51 → 52 |
+| Scer1 NextDenovo: bruta → final | 99,6% → 99,6% | 0,2% → 0,1% | 0,3% → 0,4% | 52 → 50 |
+| Scer2 Flye: bruta → final | 66,7% → 66,7% | 0,1% → 0,2% | 30,2% → 30,4% | 30 → 34 |
+| Scer2 Hifiasm (final) | 0,5% | 0,0% | 99,5% | — |
+
+- **A completude da Scer1 já era quase máxima e continua assim** (99,6–99,7%, contra 99,9% da referência). O polimento não "achou" genes novos, porque nas montagens brutas quase nenhum estava faltando ou fragmentado.
+- **A duplicação do Hifiasm caiu de 1,7% para 0,2%**: esse é o efeito do purge_dups (Etapa 9.5), e não do polimento.
+- **Os genes com *stop codon* interno quase não mudaram** (50–52 nas montagens finais) e ficaram praticamente iguais aos da **referência** (49). Isso mostra que esse número, aqui, não mede erros de montagem: é um fundo da predição de genes, que aparece até na referência. Ele seria útil para comparar montagens com muitos erros de indel (QV baixo); nas nossas, que já partiam de QV acima de 30, o BUSCO não tem resolução para mostrar o ganho do polimento. Quem mostrou esse ganho foi o Merqury com k-mers Illumina (11.3).
+- **Scer2 Flye: 66,7% completo**, igual à bruta. Com ~6× de cobertura, um terço dos genes simplesmente não foi montado, e o polimento não tem como recuperá-los. A **Scer2 Hifiasm**, com ~87 kb, tem só 15 genes completos.
 
 Agora juntamos QUAST (11.1), BUSCO e Merqury (11.2 e 11.3) das versões polidas numa tabela só:
 
@@ -5926,75 +5961,166 @@ column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
 
     ```bash
     $ column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
-    Sample                     Contigs  Total_length_bp  N50     GC(%)  Genome_fraction(%)  Misassemblies  BUSCO_Complete  BUSCO_Single  BUSCO_Duplicated  BUSCO_Fragmented  BUSCO_Missing  Merqury_QV  Merqury_ErrorRate  Merqury_Completeness
-    Scer1_q10_l500_Flye        76       12268473         684380  37.98  95.748              155            99.7            99.5          0.2               0.0               0.3            43.7133     4.25273e-05        92.6002
-    Scer1_q10_l500_hifiasm     83       12949620         757070  37.66  95.992              200            99.6            97.9          1.7               0.0               0.4            48.6372     1.36863e-05        92.6749
-    Scer1_q10_l500_nextdenovo  23       11038174         760063  38.18  86.765              167            90.6            90.6          0.1               0.0               9.3            40.8752     8.17486e-05        82.7026
-    Scer2_q10_l500_Flye        740      8352850          16256   38.12  65.765              67             66.7            66.4          0.3               3.1               30.2           24.3534     0.00366996         95.594
-    Scer2_q10_l500_hifiasm     14       169194           12224   27.45  1.185               7              0.5             0.5           0.0               0.1               99.5           37.4762     0.000178805        79.6565
-
+    Sample                     Versao   Contigs  Total_length_bp  N50     GC(%)  Genome_fraction(%)  Misassemblies  BUSCO_Complete  BUSCO_Single  BUSCO_Duplicated  BUSCO_Fragmented  BUSCO_Missing  QV_Nanopore  Completeness_Nanopore  QV_Illumina
+    Scer1_q10_l500_Flye        hibrido  37       11971151         754533  38.36  95.000              132            99.6            99.6          0.1               0.0               0.4            44.971       93.0835                36.2018
+    Scer1_q10_l500_hifiasm     hibrido  24       12167298         723225  38.42  95.281              168            99.7            99.5          0.2               0.0               0.3            49.7119      93.0596                41.2846
+    Scer1_q10_l500_nextdenovo  hibrido  24       12015996         766906  38.36  95.394              164            99.6            99.5          0.1               0.0               0.4            43.0445      92.6542                35.4923
+    Scer2_q10_l500_Flye        medaka   705      8251798          15859   38.20  65.310              61             66.7            66.5          0.2               3.0               30.4           25.5501      24.4887                NA
+    Scer2_q10_l500_hifiasm     medaka   13       86746            7329    37.75  0.608               2              0.5             0.5           0.0               0.1               99.5           32.5242      6.4674                 NA
     ```
-
-
 
 ### 13.2 Resumo de QC das montagens (Merqury + BUSCO + QUAST)
 
-| Sample | Contigs | Total_length_bp | N50 | GC(%) | Genome_fraction(%) | Misassemblies | BUSCO_Complete | BUSCO_Single | BUSCO_Duplicated | BUSCO_Fragmented | BUSCO_Missing | Merqury_QV | Merqury_ErrorRate | Merqury_Completeness |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Scer1_q10_l500_Flye | 76 | 12,268,473 | 684,380 | 37.98 | 95.748 | 155 | 99.7 | 99.5 | 0.2 | 0.0 | 0.3 | 43.7133 | 4.25273e-05 | 92.6002 |
-| Scer1_q10_l500_hifiasm | 83 | 12,949,620 | 757,070 | 37.66 | 95.992 | 200 | 99.6 | 97.9 | 1.7 | 0.0 | 0.4 | 48.6372 | 1.36863e-05 | 92.6749 |
-| Scer1_q10_l500_nextdenovo | 23 | 11,038,174 | 760,063 | 38.18 | 86.765 | 167 | 90.6 | 90.6 | 0.1 | 0.0 | 9.3 | 40.8752 | 8.17486e-05 | 82.7026 |
-| Scer2_q10_l500_Flye | 740 | 8,352,850 | 16,256 | 38.12 | 65.765 | 67 | 66.7 | 66.4 | 0.3 | 3.1 | 30.2 | 24.3534 | 0.00366996 | 95.594 |
-| Scer2_q10_l500_hifiasm | 14 | 169,194 | 12,224 | 27.45 | 1.185 | 7 | 0.5 | 0.5 | 0.0 | 0.1 | 99.5 | 37.4762 | 0.000178805 | 79.6565 |
+| Montagem | Versão | Contigs | Tamanho (Mb) | N50 (kb) | Fração do genoma (%) | Misassemblies | BUSCO C / D (%) | QV Nanopore | QV Illumina |
+|---|---|---|---|---|---|---|---|---|---|
+| Scer1 Flye | híbrida | 37 | 11,97 | 755 | 95,0 | **132** | 99,6 / 0,1 | 45,0 | 36,2 |
+| Scer1 Hifiasm | híbrida | **24** | 12,17 | 723 | 95,3 | 168 | **99,7** / 0,2 | 49,7 | **41,3** |
+| Scer1 NextDenovo | híbrida | **24** | 12,02 | **767** | **95,4** | 164 | 99,6 / 0,1 | 43,0 | 35,5 |
+| Scer2 Flye | Medaka | 705 | 8,25 | 16 | 65,3 | 61 | 66,7 / 0,2 | 25,6 | — |
+| Scer2 Hifiasm | Medaka | 13 | 0,09 | 7 | 0,6 | 2 | 0,5 / 0,0 | 32,5 | — |
+
+!!! tip "Qual montagem escolher?"
+    - **Na Scer1, as três montagens chegaram muito perto umas das outras** depois da remoção de duplicatas e do polimento: 24–37 contigs, ~12 Mb, N50 de 720–770 kb, 95% do genoma de referência e BUSCO de 99,6–99,7%. Por essas métricas, qualquer uma delas seria uma boa montagem.
+    - **O que separa as três é a qualidade das bases.** Pela régua independente (k-mers Illumina), o **Hifiasm** tem QV 41,3, contra 36,2 do Flye e 35,5 do NextDenovo, ou seja, cerca de **3 a 4 vezes menos erros**. Ele também empata no menor número de contigs (24). Por isso, ele é a melhor candidata a montagem final da Scer1.
+    - **O Flye tem menos misassemblies** (132, contra 164–168). Lembre, porém, que boa parte dos "misassemblies" do QUAST são diferenças estruturais reais entre a CBS7963 e a S288C (11.1), e não erros. Um número um pouco maior não é, por si só, motivo para descartar uma montagem.
+    - **A régua Nanopore teria escolhido a mesma montagem** (QV 49,7), mas os valores dela são inflados em 7,5 a 9 pontos, e as diferenças entre as montagens são menores do que parecem. Sem as reads Illumina, não teríamos como saber de quanto foi o ganho real.
+    - **Na Scer2, a Flye é a única utilizável**, mas é uma montagem incompleta: 705 contigs, 65% do genoma e dois terços dos genes. Com ~6× de cobertura, nenhum montador consegue fazer muito melhor. Os números de completude do Merqury da Scer2 não devem ser usados para comparar com a Scer1 (veja 11.2).
+    - **A escolha depende do objetivo.** Para anotação de genes, o QV e o BUSCO pesam mais; para estudar rearranjos cromossômicos, a contiguidade e a ausência de junções erradas (12.5) pesam mais. A seguir, os telômeros mostram mais um critério: quantos cromossomos foram montados de ponta a ponta. A escolha final fica para depois da checagem de contaminantes (Etapa 14).
 
 ### 13.3 Telômeros: quantos cromossomos foram montados de ponta a ponta?
 
 Nenhuma das métricas anteriores responde a uma pergunta simples: **os cromossomos estão completos**, de um telômero ao outro? Um contig que começa e termina em telômero representa um cromossomo inteiro (*telomere-to-telomere*, T2T). Como *S. cerevisiae* tem 16 cromossomos, o máximo esperado é 16 contigs T2T, ou 32 pontas teloméricas.
 
-Os telômeros de levedura não são uma repetição fixa, como o `TTAGGG` de vertebrados: são repetições **irregulares** do tipo TG₁₋₃ (algo como `TGTGGGTGTGGTGTG...`). Lida na fita de cima, a ponta esquerda de um cromossomo aparece como o complemento, C₁₋₃A (`CCCACACCCACACA...`), e a ponta direita como TG₁₋₃. Por isso, ferramentas que procuram um motivo fixo funcionam mal em levedura. O script abaixo procura esses padrões nos 150 pb de cada ponta de cada contig:
+Para responder, procuramos a repetição telomérica nas pontas de cada contig com o **tidk** (*telomere identification toolkit*), que funciona para qualquer organismo: primeiro ele descobre qual é a repetição telomérica, depois conta quantas vezes ela aparece ao longo de cada contig.
+
+??? tip "Instalação: ambiente `tidk`"
+    ```bash
+    conda create -n tidk -c conda-forge -c bioconda tidk
+    ```
+
+    Se o tidk já estiver instalado no sistema (teste com `tidk --version`), não é preciso criar nem ativar o ambiente.
+
+**1) Descobrir o motivo telomérico.** O `tidk explore` procura repetições curtas em sequência nas pontas dos contigs e lista as mais frequentes. Em vertebrados e plantas, o primeiro da lista costuma ser óbvio (`TTAGGG`, `TTTAGGG`):
 
 ```bash
-cat > telomeros.py <<'EOF'
-import sys, re
-# Telômeros de S. cerevisiae: C(1-3)A na ponta esquerda e TG(1-3) na ponta direita
-JANELA, MINIMO = 150, 0.6
-rx_esq = re.compile(r'(?:C{1,3}A){3,}')
-rx_dir = re.compile(r'(?:TG{1,3}){3,}')
-def fracao(s, rx):
-    return sum(m.end() - m.start() for m in rx.finditer(s)) / max(len(s), 1)
-seqs, nome = {}, None
-for linha in open(sys.argv[1]):
-    linha = linha.strip()
-    if linha.startswith('>'):
-        nome = linha[1:].split()[0]; seqs[nome] = []
-    elif nome:
-        seqs[nome].append(linha.upper())
-t2t = uma = 0
-for nome, partes in seqs.items():
-    s = ''.join(partes)
-    e = fracao(s[:JANELA], rx_esq) >= MINIMO
-    d = fracao(s[-JANELA:], rx_dir) >= MINIMO
-    if not (e or d):  # o contig pode estar invertido
-        rc = s[::-1].translate(str.maketrans('ACGT', 'TGCA'))
-        e = fracao(rc[:JANELA], rx_esq) >= MINIMO
-        d = fracao(rc[-JANELA:], rx_dir) >= MINIMO
-    t2t += e and d
-    uma += (e or d) and not (e and d)
-print(f"{sys.argv[1]}\tT2T: {t2t}\tuma ponta: {uma}\tpontas teloméricas: {2*t2t + uma}")
-EOF
-
-# montagens brutas
-python3 telomeros.py 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
-python3 telomeros.py 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
-python3 telomeros.py 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta
-python3 telomeros.py 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
-python3 telomeros.py 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa
-
-# montagens finais (purge_dups + polimento, só a parte nuclear)
-for f in 9.Montagens-polidas/*.fasta; do python3 telomeros.py $f; done
+conda activate tidk
+mkdir -p 11.Telomeros
+tidk explore --minimum 5 --maximum 12 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta > 11.Telomeros/explore_Scer1_hifiasm.tsv
+head 11.Telomeros/explore_Scer1_hifiasm.tsv
 ```
 
-<!-- SAÍDA: telômeros -->
+??? note "Ver saída do comando"
+
+    ```text
+    Warning! No clades found in the database. Run 'tidk build' to fetch the latest data.
+
+    [+]     Exploring genome for potential telomeric repeats between lengths 5 and 12.
+    (...)
+    [+]     Finished searching genome
+    [+]     Generating output
+
+    $ head 11.Telomeros/explore_Scer1_hifiasm.tsv
+    canonical_repeat_unit   count_repeat_runs_gt_100
+    ACACACCC        3076
+    ACACCACACCC     2398
+    AAATAGCCCT      2386
+    ACACCC  2241
+    ACACCCACC       1542
+    AAAAG   1478
+    ACACACACCC      1257
+    ACACACC 1189
+    ACGAT   924
+    ```
+
+    O aviso *"No clades found in the database"* se refere ao `tidk find`, outro comando do tidk, que usa um banco de motivos já conhecidos; ele não afeta o `explore` nem o `search`.
+
+O `explore` lista as repetições que aparecem em sequências longas (a coluna conta quantas vezes cada unidade forma um trecho repetido), escritas sempre na fita rica em C. Repare na lista: quase todas as primeiras são **variações da mesma coisa**, `ACACACCC`, `ACACCACACCC`, `ACACCC`, `ACACCCACC`, `ACACACC`... É exatamente o telômero irregular C₁₋₃A da levedura: em vez de um motivo dominante, aparecem vários parecidos. Em um organismo com telômero regular, o primeiro da lista se destacaria muito dos outros. Qual delas usar na busca? Num telômero **regular**, a resposta é simples: a primeira da lista. Num telômero **irregular**, como o da levedura, vale escolher a unidade **mais curta da família** (`ACACCC`). O `tidk search` conta cópias **exatas** do motivo, e um motivo longo como `ACACACCC` quase nunca se repete inteiro várias vezes seguidas numa sequência que "escorrega" o tempo todo entre variantes. Testamos os dois: com `ACACACCC`, o tidk encontrou só 5 cópias na primeira janela de um contig telomérico do Hifiasm e praticamente nenhuma ponta telomérica em todas as montagens; com `ACACCC`, encontrou 35 cópias na mesma janela. O `tidk search` procura também o complemento reverso do motivo (`GGGTGT`) na outra fita.
+
+**2) Contar o motivo ao longo dos contigs.** Com o motivo escolhido, o `tidk search` conta quantas cópias dele aparecem em janelas de 1 kb ao longo de cada contig, nas duas fitas:
+
+```bash
+MOTIVO=ACACCC   # a unidade mais curta da família encontrada no passo 1
+
+for f in 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta \
+         6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa \
+         7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta \
+         9.Montagens-polidas/*.fasta; do
+  p=$(echo $f | tr '/' '_' | sed 's/\.fa.*$//')
+  tidk search --string $MOTIVO --window 1000 --output $p --dir 11.Telomeros $f
+done 2> 11.Telomeros/tidk_search.log   # o progresso (uma linha por contig) vai para o log
+ls 11.Telomeros/
+head -5 11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv
+conda deactivate
+```
+
+??? note "Ver saída do comando"
+
+    ```text
+    $ head -5 11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv
+    id      window  forward_repeat_number   reverse_repeat_number   telomeric_repeat
+    ptg000003l_1    1000    35      0       ACACCC
+    ptg000003l_1    2000    0       0       ACACCC
+    ptg000003l_1    3000    0       0       ACACCC
+    ptg000003l_1    4000    0       2       ACACCC
+    ```
+
+    Cada linha é uma janela de 1 kb: o contig `ptg000003l_1` tem 35 cópias do motivo no primeiro kb (a ponta telomérica) e praticamente nenhuma depois. As colunas `forward` e `reverse` contam o motivo em cada fita: na ponta esquerda de um cromossomo aparece `ACACCC` (forward), e na ponta direita, o complemento `GGGTGT` (reverse).
+
+**3) Resumir: quantas pontas de contig têm telômero?** Uma ponta é considerada telomérica quando a primeira (ou a última) janela de 1 kb do contig tem pelo menos 10 cópias do motivo, somando as duas fitas. Num contig com menos de 1 kb, a primeira e a última janela são a mesma, então ele conta no máximo como uma ponta:
+
+```bash
+for t in 11.Telomeros/*_telomeric_repeat_windows.tsv; do
+  awk -F'\t' -v MIN=10 '
+    NR>1 { n=$3+$4; if(!($1 in prim)) prim[$1]=n; ult[$1]=n; nj[$1]++ }
+    END  { for(c in prim){ e=prim[c]>=MIN; d=(nj[c]>1 && ult[c]>=MIN)   # contig de uma janela só: uma ponta
+                           t2t+=(e&&d); uma+=((e||d)&&!(e&&d)) }
+           printf "%s\tT2T: %d\tuma ponta: %d\tpontas teloméricas: %d\n", FILENAME, t2t, uma, 2*t2t+uma }' $t
+done
+```
+
+??? note "Ver saída do comando"
+
+    ```text
+    11.Telomeros/5.Montagem-Flye_Scer1_q10_l500_assembly_telomeric_repeat_windows.tsv                              T2T: 3  uma ponta: 12  pontas teloméricas: 18
+    11.Telomeros/6.Montagem-hifiasm_Scer1_q10_l500_hifiasm.p_ctg_telomeric_repeat_windows.tsv                     T2T: 3  uma ponta: 16  pontas teloméricas: 22
+    11.Telomeros/7.Montagem-NextDenovo_Scer1_q10_l500_01_rundir_03.ctg_graph_nd.asm_telomeric_repeat_windows.tsv  T2T: 0  uma ponta: 1   pontas teloméricas: 1
+    11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_Flye_telomeric_repeat_windows.tsv                              T2T: 3  uma ponta: 10  pontas teloméricas: 16
+    11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv                           T2T: 3  uma ponta: 16  pontas teloméricas: 22
+    11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_nextdenovo_telomeric_repeat_windows.tsv                        T2T: 0  uma ponta: 1   pontas teloméricas: 1
+    11.Telomeros/9.Montagens-polidas_Scer2_q10_l500_Flye_telomeric_repeat_windows.tsv                              T2T: 0  uma ponta: 11  pontas teloméricas: 11
+    11.Telomeros/9.Montagens-polidas_Scer2_q10_l500_hifiasm_telomeric_repeat_windows.tsv                           T2T: 0  uma ponta: 1   pontas teloméricas: 1
+    ```
+
+| Montagem | Bruta: T2T / pontas | Final: T2T / pontas | Máximo possível |
+|---|---|---|---|
+| Scer1 Flye | 3 / 18 | 3 / 16 | 16 / 32 |
+| Scer1 Hifiasm | 3 / 22 | **3 / 22** | 16 / 32 |
+| Scer1 NextDenovo | 0 / 1 | 0 / 1 | 16 / 32 |
+| Scer2 Flye | — | 0 / 11 | 16 / 32 |
+| Scer2 Hifiasm | — | 0 / 1 | 16 / 32 |
+
+**4) Visualizar.** O `tidk plot` desenha, para cada contig, o número de cópias do motivo ao longo do comprimento:
+
+```bash
+tidk plot --tsv 11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv \
+          --output 11.Telomeros/tidk_Scer1_hifiasm
+```
+
+O resultado é um SVG, que pode ser aberto no navegador. Cada painel é um contig, do início (à esquerda) ao fim (à direita), com o nome e o tamanho embaixo. Um **pico na ponta** é um telômero: com picos nas duas pontas, o contig é T2T; com pico numa ponta só, ele termina num telômero de um lado e foi interrompido do outro. Cuidado com a escala: cada painel tem o seu próprio eixo Y, então num contig **sem** telômero o ruído de fundo (1 ou 2 cópias espalhadas) aparece ampliado e pode parecer importante.
+
+??? example "Ver figura: tidk plot da montagem Scer1 Hifiasm final (24 contigs)"
+
+    ![tidk plot: cópias do motivo telomérico ao longo de cada contig da Scer1 Hifiasm](outputs/telomeros/tidk_Scer1_hifiasm.svg){ width="700" }
+
+!!! tip "Como interpretar"
+    - **Só 3 dos 16 cromossomos saíram inteiros** (T2T) no Flye e no Hifiasm. Mas o Hifiasm chega a 22 das 32 pontas: dois terços dos cromossomos têm pelo menos uma ponta montada até o telômero. O que falta, em geral, é o meio: os cromossomos quebram em repetições internas longas, como o rDNA do cromossomo XII e os elementos Ty, que as reads não conseguem atravessar.
+    - **O NextDenovo quase não tem telômeros** (1 ponta), embora tenha N50 e fração do genoma parecidos com os das outras montagens. Tudo indica que ele não estende os contigs até as pontas dos cromossomos, onde estão as repetições subteloméricas e teloméricas. Isso não aparece em nenhuma das métricas anteriores: é um bom exemplo de por que olhar mais de um critério.
+    - **Do bruto para o final, o Hifiasm não perdeu nenhuma ponta; o Flye perdeu duas** (18 → 16). O mais provável é que essas pontas estivessem em trechos removidos pelo purge_dups (Etapa 9.5), que corta pontas de contigs e contigs inteiros classificados como duplicados. É um custo pequeno, mas que vale conhecer.
+    - **A Scer2 Flye tem 11 pontas teloméricas**, mesmo com ~6× de cobertura e 705 contigs: alguns pedaços pequenos das pontas dos cromossomos foram montados, só que soltos.
+    - **Este é mais um ponto a favor do Hifiasm** como montagem final da Scer1, somado ao QV (13.2).
+
+!!! note "Os parâmetros dependem do organismo"
+    O tamanho da janela (`--window`) e o mínimo de cópias (`MIN`) precisam combinar com o tamanho dos telômeros: em vertebrados e plantas, eles têm vários kb e janelas de 10 kb funcionam bem; em levedura, têm só ~300 pb, por isso usamos janelas de 1 kb. Confira sempre o resultado olhando algumas pontas no arquivo `.tsv`. Isso vale especialmente para telômeros irregulares, como o da levedura: comparamos este resultado com um script que procura o padrão irregular TG₁₋₃ por expressão regular, e os dois concordaram (no máximo uma ponta de diferença por montagem).
 
 ### 13.4 Snail plot
 
@@ -6017,7 +6143,7 @@ Quanto mais a área cinza se aproxima de um "disco cheio" com bordas regulares, 
 
     O pacote `blobtoolkit` cria o banco de dados (*BlobDir*) da montagem; o `blobtk` desenha os gráficos.
 
-    Atenção: o BlobTools **v1** (usado na Etapa 14) e o BlobToolKit se chamam `blobtools` na linha de comando. Para saber qual está ativo, rode `blobtools --version`: o v1 responde `1.1.1`; o BlobToolKit, `4.x`.
+    Atenção: o BlobTools **v1**, mais antigo, e o BlobToolKit se chamam `blobtools` na linha de comando. Para saber qual está ativo, rode `blobtools --version`: o v1 responde `1.1.1`; o BlobToolKit, `4.x`.
 
 ```bash
 conda activate blobtoolkit
@@ -6027,6 +6153,8 @@ for f in 9.Montagens-polidas/*.fasta; do
   prefix=$(basename $f .fasta)
 
   # 1) criar o BlobDir com as sequências da montagem (tamanho, GC e Ns de cada contig)
+  #    o rm -rf é importante: o blobtools não sobrescreve campos que já existem no BlobDir
+  rm -rf 13.Snailplot/$prefix
   blobtools create --fasta $f 13.Snailplot/$prefix
 
   # 2) acrescentar o resultado do BUSCO (Etapa 13.1)
@@ -6042,275 +6170,208 @@ ls -lh 13.Snailplot/*.png
 
 Se o passo 2 der erro (o formato do `full_table.tsv` muda entre versões do BUSCO), o snail plot ainda pode ser gerado sem ele: só o painel do BUSCO fica de fora. Copie os arquivos `.png` para o seu computador (`scp`) para visualizá-los.
 
-<!-- SAÍDA: snail plots (imagens em outputs/snailplot/) -->
+=== "Scer1 Flye"
+
+    ![Snail plot Scer1 Flye](outputs/snailplot/Scer1_q10_l500_Flye.snail.png){ width="650" }
+
+=== "Scer1 Hifiasm"
+
+    ![Snail plot Scer1 Hifiasm](outputs/snailplot/Scer1_q10_l500_hifiasm.snail.png){ width="650" }
+
+=== "Scer1 NextDenovo"
+
+    ![Snail plot Scer1 NextDenovo](outputs/snailplot/Scer1_q10_l500_nextdenovo.snail.png){ width="650" }
+
+=== "Scer2 Flye"
+
+    ![Snail plot Scer2 Flye](outputs/snailplot/Scer2_q10_l500_Flye.snail.png){ width="650" }
+
+=== "Scer2 Hifiasm"
+
+    ![Snail plot Scer2 Hifiasm](outputs/snailplot/Scer2_q10_l500_hifiasm.snail.png){ width="650" }
+
+
+!!! warning "Cuidado com a escala"
+    O raio do círculo cinza é ajustado ao **maior contig de cada montagem**, e o círculo externo, ao tamanho total dela (veja o quadro *Scale*, no canto inferior esquerdo). Na Scer1, o centro do gráfico vale ~1,1 Mb; na Scer2 Flye, só 70 kb. Por isso, os desenhos parecem mais parecidos do que são: compare sempre os números da legenda, e não só a forma.
 
 !!! question "Para comparar"
-    Coloque lado a lado os snail plots da Scer1 Flye e da Scer2 Flye. Na Scer1, a área cinza ocupa quase todo o círculo: poucos contigs grandes cobrem o genoma. Na Scer2, com ~6× de cobertura, o maior contig é pequeno, e a espiral desce rapidamente para centenas de contigs curtos. Que outras diferenças entre as montagens da Scer1 (Flye, Hifiasm, NextDenovo) aparecem no gráfico?
-
-### Pontos de discussão
-
-**"Completude" não é uma medida única.** A tabela traz três definições diferentes de completude, e elas nem sempre concordam. O BUSCO mede presença de genes ortólogos conservados (independe de referência, depende de anotação); o Merqury mede sobreposição de k-mers entre o assembly e os próprios reads (não usa referência nem anotação, só a redundância interna dos dados); o QUAST mede fração da referência coberta por alinhamentos (depende de uma referência externa). O caso mais didático da tabela é o Scer2_q10_l500_hifiasm: Merqury diz 79,66% de completude, enquanto BUSCO diz 0,5% e QUAST diz 1,19%. As duas métricas baseadas em referência/anotação concordam que a montagem é praticamente inexistente; o Merqury "erra" porque sua métrica é uma razão sobre os k-mers sólidos dos próprios reads (com cobertura muito baixa, esse denominador também fica pequeno, e a razão parece artificialmente alta). A lição: nunca confiar em uma métrica de completude isolada.
-
-**Acurácia de base e correção estrutural são eixos independentes.** O hifiasm tem o melhor QV da tabela (48,64, o menor error rate de todos), mas também o maior número de misassemblies (200, contra 155 do Flye) e maior duplicação de BUSCOs (1,7% vs 0,2%). Ou seja, o assembly com bases mais precisas não é necessariamente o mais correto estruturalmente, uma vez que a duplicação indica regiões montadas duas vezes (falsas duplicações, já que a Scer1 é haploide), o que também explica o total_length mais alto (12,95 Mb, cerca de 0,85 Mb acima do esperado ~12,1 Mb).
-
-**O número de misassemblies é alto até nas montagens boas.** 155–200 misassemblies num genoma haploide de ~12 Mb parece muito. Mas cruzando com a investigação de fragmentação que fizemos no LongStitch (contig_59, contig_66 e outros contigs subteloméricos/repetitivos do Scer1_Flye), boa parte disso provavelmente é ambiguidade de mapeamento em regiões repetitivas (elemento Y', genes de família subtelomérica como AWA1) e não erro real de montagem, uma vez que o BLAST desses contigs contra a própria referência mostrou hits fortes em múltiplos cromossomos diferentes, o que naturalmente confunde qualquer comparação estrutural contra uma referência única.
-
-**A causa raiz do Scer2 é cobertura, não escolha de montador.** `seqkit stats` nos reads filtrados (`2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz`) mostrou 79.206.644 bp totais, cerca de 6,5x de cobertura para um genoma de ~12 Mb, bem abaixo do mínimo recomendado (~30x) para assembly de novo com Nanopore. Isso explica toda a cadeia de sintomas: o NextDenovo recusou rodar por dados insuficientes, o hifiasm produziu uma montagem quase vazia (169,2 kb, genome fraction de 1,19%), e o Flye ainda produziu 8,4 Mb mas fragmentados (740 contigs) e com taxa de erro ~86x pior que o Scer1 Flye.
-
-**GC anômalo como pista extra.** O Scer2_hifiasm tem GC de 27,45%, destoando das outras montagens (~38%). Como a montagem é minúscula e a cobertura de origem é baixa, é possível que os poucos contigs remanescentes não representem uma amostra proporcional do genoma nuclear (podem incluir DNA mitocondrial, mais rico em AT, ou serem artefato de baixa cobertura).
-
-### Observação
-
-Vamos seguir com as montagens do Flye (Scer1_q10_l500_Flye e Scer2_q10_l500_Flye) por caráter didático e porque ficaram levemente melhores que hifiasm e nextdenovo nas métricas gerais. O Scer1_Flye entra como referência de "bom resultado" e o Scer2_Flye como contraste proposital de montagem limitada por baixa cobertura, para comparar os dois blob plots lado a lado. Em ambos os casos, usamos as montagens brutas (pré-scaffolding), não os scaffolds do RagTag/LongStitch.
-
-!!! tip "Montagem final escolhida"
-    [:material-dna: Scer1_Flye_assembly.fasta (final)](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Flye_assembly.fasta) ·
-    [:material-dna: Scer2_Flye_assembly.fasta (final)](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer2_Flye_assembly.fasta)
+    - Coloque lado a lado a Scer1 Hifiasm e a Scer2 Flye. Na Scer1, 24 contigs cobrem 12,2 Mb, e o N50 (723 kb) aparece como uma faixa laranja larga. Na Scer2, são 706 contigs em 8,25 Mb, com N50 de 16 kb e a espiral cinza descendo até contigs de poucos kb. O BUSCO, no canto superior direito, mostra a mesma diferença: 99,7% contra 66,7%.
+    - Entre as três montagens da Scer1, o que muda no gráfico? Compare o maior contig, o N50, o N90 e o número de contigs na legenda com a tabela da Etapa 13.2.
+    - Na Scer2 Hifiasm, o snail plot ainda é desenhado, mas representa só ~87 kb. Que informação da legenda deixa isso claro de imediato?
 
 ### Checklist da Etapa 13
 
 - [ ] Gerei a tabela consolidada de QUAST + Merqury + BUSCO
 - [ ] Entendi por que as três métricas de completude podem divergir
-- [ ] Escolhi a montagem final com justificativa (não apenas pelo maior N50)
-
+- [ ] Comparei as montagens candidatas por mais de um critério (não apenas pelo maior N50)
 - [ ] Contei os telômeros e os cromossomos montados de ponta a ponta (T2T) em cada montagem
 - [ ] Gerei o snail plot de cada montagem final
+
 ---
 
-## :material-numeric-9-plus-circle: Etapa 14 — Checagem de contaminantes na montagem (BlobTools)
+## :material-numeric-9-plus-circle: Etapa 14 — Checagem e remoção de contaminantes (BlobToolKit)
 
-Mesmo uma montagem com boas métricas de completude e contiguidade pode conter sequências que não pertencem ao organismo de interesse (ex.: DNA de outros microrganismos presentes na amostra, vetores de laboratório, ou artefatos de baixa cobertura). O BlobTools é uma ferramenta de visualização que cruza três informações por contig (cobertura de leitura, conteúdo de GC e classificação taxonômica (via BLAST contra um banco de referência)) em um gráfico (*blob plot*), permitindo identificar visualmente grupos de contigs (*blobs*) que destoam do restante da montagem e que podem indicar contaminação ou problemas de montagem.
+Mesmo uma montagem com boas métricas de completude e contiguidade pode conter sequências que não pertencem ao organismo de interesse: DNA de bactérias ou de outros organismos presentes na cultura, contaminação humana do laboratório, vetores. Nenhuma das métricas anteriores detecta isso. O BUSCO, por exemplo, só procura genes de levedura e simplesmente ignora um contig bacteriano.
 
-### 14.1 Rodar o BlobTools
+A abordagem do **BlobToolKit** combina três informações para cada contig:
+
+- **a taxonomia**, pelo melhor resultado de BLAST contra um banco de nucleotídeos de todos os organismos (aqui, o `core_nt` do NCBI);
+- **o conteúdo de GC**, que costuma ser diferente entre organismos distantes;
+- **a cobertura de reads**: um contaminante presente em pequena quantidade na cultura forma contigs com cobertura bem diferente da do genoma principal.
+
+Contigs do organismo de interesse formam um agrupamento (*blob*) compacto, com GC e cobertura parecidos e a mesma taxonomia. Contaminantes aparecem como pontos de outra cor, fora do agrupamento.
+
+Vamos acrescentar essas informações ao mesmo *BlobDir* criado na Etapa 13.4, por isso **a 13.4 precisa ter sido rodada antes**. A checagem de contaminantes entra **antes** da escolha final: uma montagem com boas métricas pode perder pontos se carregar contaminantes. Por isso, rodamos nas três candidatas da Scer1 e na Scer2 Flye (a Scer2 Hifiasm, com ~87 kb, fica de fora).
+
+!!! note "Bancos usados"
+    - **`core_nt`**: versão do `nt` mantida pelo NCBI desde 2024, sem a maior parte das sequências redundantes de grandes projetos de sequenciamento. É bem menor que o `nt` completo, o que torna o BLAST mais rápido, mas ainda cobre todos os grupos de organismos.
+    - **`new_taxdump`**: a árvore taxonômica do NCBI, que o BlobToolKit usa para converter o identificador de taxonomia de cada hit (`staxids`) em espécie, gênero, filo etc.
+
+    Ajuste os dois caminhos abaixo para o seu servidor. Para baixar o taxdump: `curl -L https://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz | tar xzf -`.
+
+### 14.1 BLAST contra o `core_nt`
+
+Este é o passo demorado: algumas horas por montagem, ou seja, provavelmente uma noite inteira para as quatro. Rode dentro do `tmux`.
+
 ```bash
-# Criar diretórios
-mkdir -p 11.Blobtools/Scer1_q10_l500_Flye
-mkdir -p 11.Blobtools/Scer2_q10_l500_Flye
+DB=/media/hd16-databases/blast_dbs/core_nt/core_nt
+MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"
+mkdir -p 14.Contaminantes
 
-# 1. Mapear reads nas montagems
-### Scer1
-minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-samtools index 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-### Scer2
-minimap2 -ax map-ont -t 24 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
-samtools index 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
-
-# 2. BLAST contra nt
-### Scer1
-blastn -query 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
-### Scer2
-blastn -query 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
-
-# Criar blobdb
-conda activate blobtools
-BASE=$(pwd)
-
-for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye; do
-  blobtools create \
-    -i ${BASE}/9.Montagens-polidas/${prefix}.fasta \
-    -b ${BASE}/11.Blobtools/${prefix}/${prefix}.bam \
-    -t ${BASE}/11.Blobtools/${prefix}/assembly.blastn.out \
-    -o ${BASE}/11.Blobtools/${prefix}/${prefix}
+for prefix in $MONTAGENS; do
+  blastn -task megablast \
+    -query 9.Montagens-polidas/$prefix.fasta \
+    -db $DB \
+    -outfmt "6 qseqid staxids bitscore std" \
+    -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 \
+    -num_threads 24 \
+    -out 14.Contaminantes/$prefix.blastn.out
 done
-  
-# Gerar tabela
-### Scer1
-BASE=$(pwd)
-blobtools view -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
-### Scer2
-blobtools view -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
-
-# Gerar plot
-### Scer1
-BASE=$(pwd)
-blobtools plot -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
-### Scer2
-blobtools plot -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
-    
 ```
 
-??? note "Ver saída do comando"
+O formato de saída `6 qseqid staxids bitscore std` é o que o BlobToolKit espera: o nome do contig, o taxid do hit, o *bitscore* e as colunas padrão do BLAST. O `-task megablast` é o modo mais rápido do `blastn`, adequado para encontrar sequências muito parecidas.
 
-    ```bash
-    $ minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-    [M::mm_idx_gen::0.329*1.01] collected minimizers
-    [M::mm_idx_gen::0.392*3.97] sorted minimizers
-    [M::main::0.392*3.97] loaded/built the index for 78 target sequence(s)
-    [M::mm_mapopt_update::0.434*3.68] mid_occ = 30
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 78
-    [M::mm_idx_stat::0.467*3.49] distinct minimizers: 2095775 (94.98% are singletons); average occurrences: 1.097; average spacing: 5.335; total length: 12269450
-    [M::worker_pipeline::36.180*15.53] mapped 140424 sequences
-    [M::worker_pipeline::37.814*14.90] mapped 90009 sequences
-    [M::main] Version: 2.24-r1122
-    [M::main] CMD: minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-    [M::main] Real time: 37.931 sec; CPU: 563.700 sec; Peak RSS: 7.692 GB
-    [bam_sort_core] merging from 1 files and 1 in-memory blocks...
-    $ samtools index 11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-    $ ### Scer2
-    $ minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz | samtools sort -o 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
-    [M::mm_idx_gen::0.221*1.02] collected minimizers
-    [M::mm_idx_gen::0.264*3.68] sorted minimizers
-    [M::main::0.264*3.68] loaded/built the index for 740 target sequence(s)
-    [M::mm_mapopt_update::0.292*3.42] mid_occ = 15
-    [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 740
-    [M::mm_idx_stat::0.314*3.26] distinct minimizers: 1484126 (96.14% are singletons); average occurrences: 1.054; average spacing: 5.342; total length: 8352850
-    [M::worker_pipeline::3.335*12.09] mapped 33007 sequences
-    [M::main] Version: 2.24-r1122
-    [M::main] CMD: minimap2 -ax map-ont -t 24 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
-    [M::main] Real time: 3.358 sec; CPU: 40.346 sec; Peak RSS: 1.057 GB
-    $ samtools index 11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
+<!-- SAÍDA: BLAST (tempo, número de linhas) -->
 
-    $ blastn -query 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
-    $ ### Scer2
-    $ blastn -query 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -db /media/lgbio-nas1/hectorromao/lgbio-database/nt_09-10-25/nt -outfmt "6 qseqid staxids bitscore std" -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 -num_threads 24 -out 11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
+### 14.2 Cobertura de reads
 
-    $ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye; do
-    >   base=${prefix%_*}
-    > 
-    >   blobtools create \
-    >     -i ${BASE}/5.Montagem-Flye/${base}/assembly.fasta \
-    >     -b ${BASE}/11.Blobtools/${prefix}/${prefix}.bam \
-    >     -t ${BASE}/11.Blobtools/${prefix}/assembly.blastn.out \
-    >     -o ${BASE}/11.Blobtools/${prefix}/${prefix}
-    > done
-    [+] Parsing FASTA - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
-    [+] names.dmp/nodes.dmp not specified. Retrieving nodesDB from /home/lgbio/programas/blobtools/lib/../data/nodesDB.txt
-    [%] :   0%|                                                                                                                               [%] :   3%|████▉                                                                                                                          [%] :   7%|█████████▉                                                                                                                     [%] :  10%|███████████████▋                                                                                                               [%] :  14%|████████████████████▉                                                                                                          [%] :  17%|█████████████████████████▌                                                                                                     [%] :  20%|███████████████████████████████▏                                                                                               [%] :  24%|████████████████████████████████████▋                                                                                          [%] :  27%|█████████████████████████████████████████▊                                                                                     [%] :  31%|██████████████████████████████████████████████▋                                                                                [%] :  34%|███████████████████████████████████████████████████▎                                                                           [%] :  37%|████████████████████████████████████████████████████████▎                                                                      [%] :  40%|█████████████████████████████████████████████████████████████▎                                                                 [%] :  43%|██████████████████████████████████████████████████████████████████                                                             [%] :  47%|███████████████████████████████████████████████████████████████████████▎                                                       [%] :  50%|████████████████████████████████████████████████████████████████████████████▏                                                  [%] :  53%|████████████████████████████████████████████████████████████████████████████████▌                                              [%] :  56%|█████████████████████████████████████████████████████████████████████████████████████▍                                         [%] :  60%|██████████████████████████████████████████████████████████████████████████████████████████▌                                    [%] :  63%|███████████████████████████████████████████████████████████████████████████████████████████████▎                               [%] :  66%|███████████████████████████████████████████████████████████████████████████████████████████████████▋                           [%] :  69%|████████████████████████████████████████████████████████████████████████████████████████████████████████▎                      [%] :  72%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                 [%] :  75%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍            [%] :  79%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌       [%] :  82%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊  [%] :  86%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  89%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  92%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.84M/2.84M [00:03<00:00, 771kit/s]
-    [+] Parsing tax0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/assembly.blastn.out
-    [+] Computing taxonomy using taxrule(s) bestsum
-    [%] :   0%|                                                                                                                               [%] : 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 48.8kit/s]
-    [+] Parsing bam0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.bam
-    [+] -> 100.00 (78/78) of sequences have reads aligned to them.
-    [+] -> 99.85 (403256/403846) of reads are mapped.
-    [%] :   0%|                                                                                                                               [%] :   1%|█▉                                                                                                                             [%] :   6%|█████████▊                                                                                                                     [%] :  13%|███████████████████▋                                                                                                           [%] :  19%|█████████████████████████████▌                                                                                                 [%] :  22%|█████████████████████████████████▌                                                                                             [%] :  24%|█████████████████████████████████████▌                                                                                         [%] :  27%|█████████████████████████████████████████▍                                                                                     [%] :  32%|█████████████████████████████████████████████████▎                                                                             [%] :  41%|███████████████████████████████████████████████████████████████▏                                                               [%] :  47%|█████████████████████████████████████████████████████████████████████████                                                      [%] :  55%|████████████████████████████████████████████████████████████████████████████████████▉                                          [%] :  59%|██████████████████████████████████████████████████████████████████████████████████████████▊                                    [%] :  64%|██████████████████████████████████████████████████████████████████████████████████████████████████▋                            [%] :  69%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▌                    [%] :  78%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍      [%] :  86%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  91%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:04<00:00, 18.7it/s]
-    [+] Generating data for view
-    [%] :   0%|                                                                                                                               [%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 562kit/s]
-    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.bam.cov
-    [+] Generating BlobDB and writing to file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
-    [+] Parsing FASTA - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
-    [+] names.dmp/nodes.dmp not specified. Retrieving nodesDB from /home/lgbio/programas/blobtools/lib/../data/nodesDB.txt
-    [%] :   0%|                                                                                                                               [%] :   3%|████▉                                                                                                                          [%] :   6%|█████████▊                                                                                                                     [%] :  10%|███████████████▌                                                                                                               [%] :  14%|████████████████████▊                                                                                                          [%] :  17%|█████████████████████████▍                                                                                                     [%] :  20%|███████████████████████████████                                                                                                [%] :  24%|████████████████████████████████████▌                                                                                          [%] :  27%|█████████████████████████████████████████▌                                                                                     [%] :  30%|██████████████████████████████████████████████▍                                                                                [%] :  33%|██████████████████████████████████████████████████▉                                                                            [%] :  37%|███████████████████████████████████████████████████████▉                                                                       [%] :  40%|█████████████████████████████████████████████████████████████▏                                                                 [%] :  43%|█████████████████████████████████████████████████████████████████▉                                                             [%] :  47%|███████████████████████████████████████████████████████████████████████▏                                                       [%] :  50%|███████████████████████████████████████████████████████████████████████████▉                                                   [%] :  53%|████████████████████████████████████████████████████████████████████████████████▏                                              [%] :  56%|█████████████████████████████████████████████████████████████████████████████████████                                          [%] :  59%|██████████████████████████████████████████████████████████████████████████████████████████▎                                    [%] :  62%|██████████████████████████████████████████████████████████████████████████████████████████████▋                                [%] :  65%|██████████████████████████████████████████████████████████████████████████████████████████████████▊                            [%] :  68%|███████████████████████████████████████████████████████████████████████████████████████████████████████▋                       [%] :  71%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                  [%] :  75%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌             [%] :  78%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋        [%] :  81%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊   [%] :  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  88%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  92%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] :  98%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.84M/2.84M [00:03<00:00, 768kit/s]
-    [+] Parsing tax0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/assembly.blastn.out
-    [+] Computing taxonomy using taxrule(s) bestsum
-    [%] :   0%|                                                                                                                               [%] : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 54.3kit/s]
-    [+] Parsing bam0 - /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.bam
-    [+] -> 100.00 (740/740) of sequences have reads aligned to them.
-    [+] -> 90.05 (40220/44663) of reads are mapped.
-    [%] :   0%|                                                                                                                               [%] :  19%|█████████████████████████████▎                                                                                                 [%] :  36%|████████████████████████████████████████████████████████▏                                                                      [%] :  55%|█████████████████████████████████████████████████████████████████████████████████████▉                                         [%] :  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████[%] : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 1.49kit/s]
-    [+] Generating data for view
-    [%] :   0%|                                                                                                                               [%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 941kit/s]
-    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.bam.cov
-    [+] Generating BlobDB and writing to file /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
+```bash
+conda activate polimento   # minimap2 e samtools
+for prefix in $MONTAGENS; do
+  sample=${prefix%%_*}
+  minimap2 -ax map-ont -t 24 9.Montagens-polidas/$prefix.fasta 2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz \
+    | samtools sort -@ 8 -o 14.Contaminantes/$prefix.bam
+  samtools index 14.Contaminantes/$prefix.bam
+done
+conda deactivate
+```
 
-    $ blobtools view -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
-    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
-    [+] 	Loading BlobDB into memory ...
-    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-    [+] 	Finished in 0.0015523433685302734s
-    [+] Preparing view(s) ...
-    [+] Generating data for view
-    [%] :   0%|                                                                                                                               [%] : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 78.0/78.0 [00:00<00:00, 117kit/s]
-    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.table.txt
-    [+] Writing output ...
-    (blobtools) $ ### Scer2
-    (blobtools) $ blobtools view -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r all --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
-    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
-    [+] 	Loading BlobDB into memory ...
-    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-    [+] 	Finished in 0.012794971466064453s
-    [+] Preparing view(s) ...
-    [+] Generating data for view
-    [%] :   0%|                                                                                                                               [%] : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 740/740 [00:00<00:00, 130kit/s]
-    [+] 	Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.table.txt
-    [+] Writing output ...
+### 14.3 Juntar tudo no BlobDir e desenhar o blob plot
 
-    $ blobtools plot -i ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye
-    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.blobDB.json
-    [+] 	Loading BlobDB into memory ...
-    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-    [+] 	Finished in 0.0018384456634521484s
-    [+] Extracting data for plots ...
-    [I]	Saccharomyces : sequences = 76, span = 12.27 MB, N50 = 684,380 nt
-    [I]	undef : sequences = 1, span = 0.0 MB, N50 = 2,347 nt
-    [I]	no-hit : sequences = 1, span = 0.0 MB, N50 = 493 nt
-    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png
-    /home/lgbio/programas/blobtools/lib/BtPlot.py:525: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-      ax_main.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_main.get_yticks()])
-    /home/lgbio/programas/blobtools/lib/BtPlot.py:534: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-      ax_group.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_group.get_yticks()])
-    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png
-    [+] Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.Scer1_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.stats.txt
-    (blobtools) $ ### Scer2
-    (blobtools) $ blobtools plot -i ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json -r genus --out ${BASE}/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye
-    [+] Reading BlobDB /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.blobDB.json
-    [+] 	Loading BlobDB into memory ...
-    [+] 	Deserialising BlobDB (using 'json' module) (this may take a while, consider installing the 'ujson' module) ...
-    [+] 	Finished in 0.012654781341552734s
-    [+] Extracting data for plots ...
-    [I]	Saccharomyces : sequences = 735, span = 8.34 MB, N50 = 16,256 nt
-    [I]	no-hit : sequences = 4, span = 0.01 MB, N50 = 1,382 nt
-    [I]	undef : sequences = 1, span = 0.0 MB, N50 = 2,747 nt
-    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png
-    /home/lgbio/programas/blobtools/lib/BtPlot.py:525: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-      ax_main.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_main.get_yticks()])
-    /home/lgbio/programas/blobtools/lib/BtPlot.py:534: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
-      ax_group.set_yticklabels(['{:.0f}%'.format(x*100) for x in ax_group.get_yticks()])
-    [+] Plotting /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png
-    [+] Writing /media/hd15-cursos/nanopore_lgbio_2026/grupo_1/11.Blobtools/Scer2_q10_l500_Flye/Scer2_q10_l500_Flye.Scer2_q10_l500_Flye.blobDB.json.bestsum.genus.p8.span.100.blobplot.stats.txt
+```bash
+TAXDUMP=/media/hd16-databases/GEP2/DBs/taxdump
+conda activate blobtoolkit
 
-    ```
+for prefix in $MONTAGENS; do
+  blobtools add \
+    --hits 14.Contaminantes/$prefix.blastn.out \
+    --taxrule bestsumorder \
+    --taxdump $TAXDUMP \
+    --cov 14.Contaminantes/$prefix.bam \
+    13.Snailplot/$prefix
 
+  python -c "import blobtk; blobtk.plot.blob(blobdir='13.Snailplot/$prefix', output='14.Contaminantes/${prefix}.blob.png')"
+done
 
+conda deactivate
+ls -lh 14.Contaminantes/*.png
+```
 
-### 14.2 Interpretar o blob plot
+O `--taxrule bestsumorder` soma os *bitscores* dos hits de cada táxon ao longo do contig e atribui o contig ao táxon com a maior soma; é a regra padrão do BlobToolKit.
 
-Cada ponto no blob plot é um contig da montagem, posicionado por cobertura de leitura (eixo Y) e conteúdo de GC (eixo X), colorido pela classificação taxonômica de melhor hit no BLAST. Contigs que formam um agrupamento (*blob*) compacto e homogêneo em cobertura/GC/taxonomia tendem a representar o genoma-alvo; contigs isolados, com cobertura muito diferente do grupo principal ou classificados em táxons distantes de *Saccharomyces*, são candidatos a contaminação ou artefato de montagem.
+<!-- SAÍDA: blob plots -->
 
-=== "Scer1"
+### 14.4 Tabela por contig e resumo por filo
 
-    ![Blob plot — Scer1_Flye](outputs/blobtools/Scer1_q10_l500_Flye.blobplot.genus.png)
+```bash
+conda activate blobtoolkit
+for prefix in $MONTAGENS; do
+  blobtools filter \
+    --table 14.Contaminantes/$prefix.contigs.tsv \
+    --table-fields gc,length,${prefix}_cov,bestsumorder_phylum,bestsumorder_genus \
+    13.Snailplot/$prefix
 
-    [:material-download: Baixar imagem em alta resolução](outputs/blobtools/Scer1_q10_l500_Flye.blobplot.genus.png){ target=_blank }
+  head -3 14.Contaminantes/$prefix.contigs.tsv
+  echo "===== $prefix (filo: contigs, pb)"
+  awk -F'\t' 'NR==1{for(i=1;i<=NF;i++){if($i=="bestsumorder_phylum")f=i; if($i=="length")l=i}; next}
+               {n[$f]++; b[$f]+=$l} END{for(x in n) print x": "n[x]" contigs, "b[x]" pb"}' \
+    14.Contaminantes/$prefix.contigs.tsv | sort
+done
+conda deactivate
+```
 
-=== "Scer2"
+<!-- SAÍDA: resumo por filo -->
 
-    ![Blob plot — Scer2_Flye](outputs/blobtools/Scer2_q10_l500_Flye.blobplot.genus.png)
+### 14.5 Remover os contaminantes
 
-    [:material-download: Baixar imagem em alta resolução](outputs/blobtools/Scer2_q10_l500_Flye.blobplot.genus.png){ target=_blank }
+A regra mais simples e transparente: manter só os contigs atribuídos ao filo do organismo (**Ascomycota**, para *S. cerevisiae*) e os contigs sem nenhum hit (`no-hit`), que serão examinados à parte. Contigs sem hit não são automaticamente contaminantes: podem ser sequências da própria levedura que não estão no banco, como as regiões subteloméricas variáveis que vimos na Etapa 11.3.
 
-!!! tip "Resultados pré-computados"
-    [:material-image: Blob plot Scer1 (PNG)](outputs/blobtools/Scer1_q10_l500_Flye.blobplot.genus.png){ target=_blank } ·
-    [:material-image: Blob plot Scer2 (PNG)](outputs/blobtools/Scer2_q10_l500_Flye.blobplot.genus.png){ target=_blank } ·
-    [:material-file-document: Tabela BlobTools Scer1 (view)](outputs/blobtools/Scer1_q10_l500_Flye.blobDB.table.txt) ·
-    [:material-file-document: Tabela BlobTools Scer2 (view)](outputs/blobtools/Scer2_q10_l500_Flye.blobDB.table.txt)
+```bash
+FILO=Ascomycota
+mkdir -p 14.Montagens-descontaminadas
+conda activate polimento
+for prefix in $MONTAGENS; do
+  t=14.Contaminantes/$prefix.contigs.tsv
+  rm -f 14.Contaminantes/$prefix.manter.txt 14.Contaminantes/$prefix.removidos.tsv
+  # as colunas são localizadas pelo nome, na primeira linha da tabela
+  awk -F'\t' -v F=$FILO -v M=14.Contaminantes/$prefix.manter.txt -v R=14.Contaminantes/$prefix.removidos.tsv '
+    NR==1 { for(i=1;i<=NF;i++){ if($i=="identifiers")id=i; if($i=="bestsumorder_phylum")f=i;
+                                if($i=="bestsumorder_genus")g=i; if($i=="length")l=i; if($i ~ /_cov$/)c=i }; next }
+    $f==F || $f=="no-hit" { print $id > M; next }
+    { print $id"\t"$f"\t"$g"\t"$l"\t"$c > R }' $t
+  touch 14.Contaminantes/$prefix.removidos.tsv
+  samtools faidx 9.Montagens-polidas/$prefix.fasta -r 14.Contaminantes/$prefix.manter.txt > 14.Montagens-descontaminadas/$prefix.fasta
+  echo "$prefix: $(wc -l < 14.Contaminantes/$prefix.manter.txt) contigs mantidos, $(wc -l < 14.Contaminantes/$prefix.removidos.tsv) removidos"
+  cat 14.Contaminantes/$prefix.removidos.tsv
+done
+conda deactivate
+```
+
+O arquivo `.removidos.tsv` lista, para cada contig removido, o filo, o gênero, o tamanho e a cobertura. **Sempre confira essa lista antes de aceitar a remoção**: um contig da própria levedura pode ter o melhor hit num organismo errado por causa de uma sequência mal anotada no banco, e um contaminante pode estar escondido dentro de um contig grande, sem que o contig inteiro seja atribuído a ele.
+
+<!-- SAÍDA: contigs removidos -->
 
 !!! note "Comparando com o Kraken2"
     Vale voltar à Etapa 4 e comparar. O Kraken2 classificou ~24% dos reads como humanos e ~5 a 8% como *B. cereus*, mas usando um banco sem fungos. Se o blob plot não mostrar contigs de humano nem de *Bacillus*, isso reforça que aquelas classificações eram, em grande parte, falsos positivos, e que descartar os reads "contaminados" teria jogado fora dados de levedura. Se aparecerem contigs de *Bacillus* com cobertura própria, aí sim há evidência de contaminação real. É por isso que, em montagens Nanopore, a avaliação nos contigs costuma ser mais confiável que a classificação read a read.
 
 ### Checklist da Etapa 14
 
-- [ ] Gerei o blob plot para Scer1_Flye e Scer2_Flye
-- [ ] Identifiquei se há contigs fora do agrupamento principal de *Saccharomyces*
+- [ ] Rodei o BLAST das montagens candidatas contra o `core_nt`
+- [ ] Gerei o blob plot e identifiquei se há contigs fora do agrupamento principal de *Saccharomyces*
+- [ ] Conferi a lista de contigs removidos e tenho as montagens descontaminadas em `14.Montagens-descontaminadas/`
 - [ ] Comparei com os resultados de contaminação do Kraken2 (Etapa 4)
 
 ---
 
-## :material-flag-checkered: Resumo final — qual versão escolher?
+## :material-flag-checkered: Escolha da montagem final
 
-A "melhor" montagem depende do que você quer fazer:
+Só agora, com a checagem de contaminantes feita, temos todas as informações para escolher a montagem final. Reúna os critérios das etapas anteriores:
 
-| Objetivo | Versão recomendada |
-|---|---|
-| **Uso didático / referência de bom resultado** | Scer1_Flye (polida, pré-scaffolding) |
-| **Comparação de acurácia de base** | Hifiasm (maior QV no Merqury) |
-| **Anotação gênica / completude** | Flye (melhor BUSCO Complete) |
-| **Comparação sintênica com uma referência** | RagTag scaffold |
-| **Estudo de novidades estruturais, sem referência** | LongStitch |
-| **Checagem final de contaminação** | Sempre rodar BlobTools na montagem escolhida |
+| Critério | Onde | O que olhar |
+|---|---|---|
+| Qualidade das bases | 11.3 e 13.2 | QV pela régua **Illumina** (a régua Nanopore infla os valores) |
+| Completude gênica | 13.1 | BUSCO completos e duplicados |
+| Contiguidade | 11.1 e 13.2 | número de contigs, N50, fração do genoma |
+| Cromossomos completos | 13.3 | contigs T2T e pontas teloméricas |
+| Erros estruturais | 11.1, 12.5 | misassemblies (lembrando que muitos são diferenças reais entre linhagens) e junções entre cromossomos |
+| Contaminação | 14 | contigs removidos e quanto da montagem eles representavam |
+
+<!-- PENDENTE: tabela final com os números das montagens descontaminadas e a escolha -->
+
+Não existe uma regra única: o peso de cada critério depende do objetivo. Para anotação de genes, pesam mais o QV e o BUSCO; para estudar a organização dos cromossomos, a contiguidade, os telômeros e a ausência de junções erradas; para comparar com uma referência, os scaffolds do RagTag (Etapa 12) podem ser mais úteis do que os contigs.
 
 !!! tip "Próximos passos típicos"
     - **Projetos sem Illumina:** sequenciar uma biblioteca Illumina da mesma linhagem, tanto para o polimento híbrido quanto para ter uma régua independente de qualidade
-    - **Análise de telômeros:** confirmar contigs telômero-a-telômero (T2T) com `seqtk telo` ou `tidk`
     - **Detecção de elementos repetitivos:** RepeatModeler + RepeatMasker
     - **Anotação estrutural:** BRAKER3 ou MAKER
     - **Anotação funcional:** InterProScan, eggNOG-mapper
