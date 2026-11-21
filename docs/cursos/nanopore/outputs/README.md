@@ -14,7 +14,7 @@ Coloque os arquivos exatamente com os nomes abaixo (ou ajuste os links no `index
 - `Scer1_kraken_report.txt`, `Scer2_kraken_report.txt` — relatório Kraken2 (Etapa 4, opcional)
 
 ## genomescope/
-- `Scer1_Oxford_Nanopore_linear_plot.png`, `Scer2_Oxford_Nanopore_linear_plot.png` — GenomeScope2 (Etapa 5.2)
+- `Scer1_Oxford_Nanopore_linear_plot.png`, `Scer2_Oxford_Nanopore_linear_plot.png` — GenomeScope2 (Etapa 5.3)
 
 ## bandage/
 - `Scer1_Flye_bandage.png`, `Scer2_Flye_bandage.png` e os grafos `.gfa` — grafos de montagem (Etapa 6)
@@ -26,6 +26,7 @@ Coloque os arquivos exatamente com os nomes abaixo (ou ajuste os links no `index
 - `merqury_summary.tsv` — Merqury das montagens brutas (Etapa 9.2)
 - `merqury_summary_polimento.tsv` — Merqury com k-mers Nanopore: bruta, purgada, Medaka e híbrida (Etapa 11.2)
 - `merqury_illumina_summary.tsv` — Merqury com k-mers Illumina, só Scer1 (Etapa 11.3)
+- `spectra-cn/<montagem>[_purgada|_medaka|_hibrido].spectra-cn.png` — gráficos de espectro de k-mers (Etapas 9.2 e 11.2)
 
 ## busco/
 - `short_summary.specific.saccharomycetaceae_odb12.<montagem>.txt` — BUSCO das montagens brutas (Etapa 9.3)

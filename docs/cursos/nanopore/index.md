@@ -320,7 +320,7 @@ Esta etapa é dividida em duas partes: remoção de adaptadores residuais e filt
 O Porechop_ABI usa uma abordagem *ab initio*. Ele descobre os adaptadores diretamente nas reads sem precisar de um banco de dados externo, o que é útil quando o kit de sequenciamento não é conhecido.
 
 !!! warning "Atenção aos avisos"
-    Mensagens como *"this file is already trimmed"* indicam que o basecaller (Dorado) já removeu parte dos adaptadores. O Porechop_ABI ainda consegue remover resíduos remanescentes. Veja no resultado que adaptadores SQK-NSK007 foram encontrados e removidos em ambas as amostras.
+    Mensagens como *"this file is already trimmed"* indicam que o basecaller já removeu parte dos adaptadores. O Porechop_ABI ainda consegue remover resíduos remanescentes. Veja no resultado que adaptadores SQK-NSK007 foram encontrados e removidos em ambas as amostras.
 
 ```bash
 conda init
@@ -1413,7 +1413,7 @@ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip 
 ## :material-numeric-4-circle: Etapa 4 — Classificação taxonômica dos reads com Kraken2 :material-flask-outline: *(opcional)*
 
 !!! info "Por que esta etapa é opcional"
-    Em pipelines Illumina, é comum classificar os reads com o Kraken2 e descartar os que parecem contaminantes antes da montagem. Na montagem de genomas de organismos isolados com Nanopore, a verificação de contaminação costuma ser feita **depois da montagem**, com o **BlobToolKit** (Etapa 13): os contigs são longos e trazem cobertura, conteúdo GC e classificação taxonômica juntos, o que torna a avaliação muito mais confiável do que olhar read por read.
+    Em pipelines Illumina, é comum classificar os reads com o Kraken2 e descartar os que parecem contaminantes antes da montagem. Na montagem de genomas de organismos isolados com Nanopore, a verificação de contaminação costuma ser feita **depois da montagem**, com o **BlobToolKit** (Etapa 13): os contigs são longos e trazem cobertura, conteúdo GC e classificação taxonômica juntos, o que torna a avaliação muito mais confiável do que olhar read por read. Outra ferramenta cada vez mais usada para isso é o [**FCS-GX**](https://github.com/ncbi/fcs) (*Foreign Contamination Screen*, do NCBI), que é a mesma triagem que o NCBI aplica aos genomas submetidos ao GenBank.
 
     Mostramos o Kraken2 aqui para quem está acostumado com o fluxo Illumina e para ilustrar um cuidado importante: **o resultado depende inteiramente do banco de dados usado**. Os arquivos `*_clean.fastq.gz` gerados nesta etapa **não são usados** no restante do tutorial; as montagens usam `Scer*_q10_l500.fastq.gz`.
 
@@ -1766,9 +1766,7 @@ cat 4.QC_dadosfiltrados/Scer2_q10_l500_NanoStats.txt
     [:material-file-chart: Relatório NanoPlot Scer1 filtrado (HTML)](outputs/qc/Scer1_q10_l500_NanoPlot-report.html){ target=_blank } ·
     [:material-file-chart: Relatório NanoPlot Scer2 filtrado (HTML)](outputs/qc/Scer2_q10_l500_NanoPlot-report.html){ target=_blank }
 
-### 5.2 Checar a qualidade dos dados filtrados pela distribuição de k-mers
-
-### Contagem de k-mers (k=21) com Meryl
+### 5.2 Contagem de k-mers (k=21) com Meryl
 ```bash
 meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz output 4.QC_dadosfiltrados/Scer1_q10_l500.meryl
 meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz output 4.QC_dadosfiltrados/Scer2_q10_l500.meryl
@@ -1975,9 +1973,9 @@ meryl histogram 4.QC_dadosfiltrados/Scer2_q10_l500.meryl | sed 's/\t/ /g' > 4.QC
     ```
 
 
-### Rodar o GenomeScope2:
+### 5.3 Estimativa do tamanho do genoma com GenomeScope2
 
-O GenomeScope2 não descobre a ploidia sozinho: ela é informada com `-p`, e o programa ajusta o modelo correspondente. Antes de rodar, vale procurar o que já se sabe sobre a linhagem.
+A partir do histograma de k-mers, o GenomeScope2 estima o **tamanho do genoma**, a heterozigosidade, a taxa de erro dos reads e a cobertura de k-mers. O GenomeScope2 não descobre a ploidia sozinho: ela é informada com `-p`, e o programa ajusta o modelo correspondente. Antes de rodar, vale procurar o que já se sabe sobre a linhagem.
 
 !!! info "Qual é a ploidia da Scer1?"
     As duas linhagens fazem parte do projeto *1002 Yeast Genomes* ([Peter et al., 2018, *Nature*](https://doi.org/10.1038/s41586-018-0030-5){ target=_blank }), cuja tabela suplementar traz a ploidia (medida por citometria de fluxo) e a heterozigosidade de cada isolado:
@@ -2071,6 +2069,18 @@ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer2_q10_l5
 
 conda deactivate
 ```
+
+!!! warning "Atenção: `--nano-hq` ou `--nano-raw`? Escolha pelos seus dados"
+    O Flye tem dois modos para reads Nanopore. Segundo a [documentação](https://github.com/mikolmogorov/Flye/blob/flye/docs/USAGE.md){ target=_blank }:
+
+    | Modo | Para quais reads |
+    |---|---|
+    | `--nano-hq` | basecalling Guppy5+/Dorado no modo SUP, ou reads Q20+ (menos de ~5% de erro) |
+    | `--nano-raw` | reads mais antigas ou de menor qualidade (até ~20% de erro) |
+
+    Nossos dados ficam **no limite**: depois da filtragem, a qualidade média é Q13,3 nas duas amostras (Etapa 5.1), ou seja, cerca de 5% de erro, abaixo do Q20 citado na documentação. Usamos `--nano-hq` e a montagem do Scer1 saiu muito boa, mas `--nano-raw` também seria uma escolha defensável.
+
+    **Numa montagem nova, não copie a opção sem olhar os dados.** Se o sequenciamento é seu, confira o basecaller e o modo usados (SUP, HAC ou FAST). Em dados baixados do SRA, como os nossos, essa informação muitas vezes não está disponível, e a qualidade média no NanoPlot passa a ser o principal guia. Reads Q20+ ou SUP recentes ficam com `--nano-hq`. Reads com qualidade média bem abaixo de Q20, ou de basecallers antigos, vão com `--nano-raw`. Na dúvida, monte com os dois modos e compare com QUAST e BUSCO (Etapa 9).
 
 ??? note "Ver saída do comando"
 
@@ -3090,6 +3100,32 @@ cd ../../..
 
 
 
+
+**O que o Merqury gera**
+
+Cada pasta (por exemplo, `8.QC_montagens/merqury/Scer1_q10_l500_Flye/`) recebe vários arquivos. Os dois que usamos na tabela são:
+
+- **`<prefixo>.qv`**: a **qualidade das bases** (*consensus quality value*). O Merqury conta os k-mers da montagem que **não aparecem nas reads**. Cada um deles indica um provável erro na montagem, já que uma base errada cria k-mers que não existem no genoma real. Uma linha por montagem, com 5 colunas:
+
+    | Coluna | Conteúdo |
+    |---|---|
+    | 1 | nome da montagem (o nome do FASTA) |
+    | 2 | k-mers presentes só na montagem (prováveis erros) |
+    | 3 | total de k-mers da montagem |
+    | 4 | **QV** |
+    | 5 | taxa de erro por base |
+
+    O QV está em escala Phred: QV = −10 × log₁₀(taxa de erro). **QV 30 = 1 erro a cada 1.000 bases; QV 40 = 1 a cada 10.000; QV 50 = 1 a cada 100.000.** Há também um `<prefixo>.<montagem>.qv`, com as mesmas colunas **por contig**, útil para achar contigs com qualidade muito abaixo dos outros.
+
+- **`<prefixo>.completeness.stats`**: a **completude por k-mers**. Dos k-mers "sólidos" das reads (os que aparecem vezes suficientes para não serem erro de leitura), qual porcentagem está na montagem? Uma linha com 5 colunas: nome da montagem, o conjunto avaliado (`all`), k-mers sólidos encontrados na montagem, total de k-mers sólidos nas reads e a **completude (%)**.
+
+O loop abaixo pega a 4ª e a 5ª colunas do `.qv` e a 5ª do `.completeness.stats`.
+
+O Merqury também gera os **gráficos de espectro de k-mers** (`*.spectra-cn.*.png` e `*.spectra-asm.*.png`). Eles mostram, para cada nível de cobertura nas reads, quantos k-mers aparecem 0, 1, 2 ou mais vezes na montagem. Veja como lê-los logo depois da tabela.
+
+!!! warning "Os k-mers vêm das reads Nanopore"
+    Aqui o banco do Meryl foi feito com as **mesmas reads Nanopore** usadas na montagem, que têm ~5% de erro. Erros sistemáticos das reads (comuns em homopolímeros) entram no banco como se fossem k-mers reais, então o QV tende a sair **otimista**. Por isso, na Etapa 11 também usamos k-mers de reads Illumina da Scer1, uma régua independente.
+
 **Juntar os resultados do Merqury em um arquivo:**
 
 ```bash
@@ -3124,6 +3160,55 @@ cd ../..
 !!! tip "Resultado pré-computado"
     [:material-file-document: merqury_summary.tsv](outputs/merqury/merqury_summary.tsv)
 
+**Gráficos de espectro de k-mers (`spectra-cn`)**
+
+Para cada montagem, o Merqury gera `<prefixo>.<montagem>.spectra-cn.fl.png`. Como ler:
+
+- **Eixo x** (*kmer_multiplicity*): quantas vezes o k-mer aparece **nas reads**. Os k-mers do genoma formam um pico na cobertura de k-mers (~30× na Scer1, a mesma `kcov` do GenomeScope2 na Etapa 5.3).
+- **Eixo y**: quantos k-mers distintos têm aquela multiplicidade.
+- **As cores** dizem quantas vezes o k-mer aparece **na montagem**:
+    - **cinza (*read-only*)**: está nas reads, mas não na montagem. O grande pico à esquerda são erros de leitura, como esperado. Já o cinza **embaixo do pico do genoma** são k-mers reais que ficaram de fora: é isso que baixa a completude.
+    - **vermelho (1)**: o k-mer está uma vez na montagem. Num genoma haploide, o ideal é que o pico principal seja todo vermelho.
+    - **azul (2), verde (3) e acima**: o k-mer está 2, 3 ou mais vezes na montagem. Um pico azul na mesma posição do vermelho indica **falsas duplicações** (a mesma região montada duas vezes). Em k-mers de alta multiplicidade (repetições reais, como o rDNA), é normal haver várias cópias.
+- **Barra em x = 0**: k-mers que estão **só na montagem** e não aparecem nas reads. São os prováveis erros que entram no cálculo do QV.
+
+=== "Scer1 Flye"
+
+    ![Scer1 Flye](outputs/merqury/spectra-cn/Scer1_Flye.spectra-cn.png)
+
+    [:material-download: Baixar imagem em alta resolução](outputs/merqury/spectra-cn/Scer1_Flye.spectra-cn.png){ target=_blank }
+
+=== "Scer1 Hifiasm"
+
+    ![Scer1 Hifiasm](outputs/merqury/spectra-cn/Scer1_hifiasm.spectra-cn.png)
+
+    [:material-download: Baixar imagem em alta resolução](outputs/merqury/spectra-cn/Scer1_hifiasm.spectra-cn.png){ target=_blank }
+
+=== "Scer1 NextDenovo"
+
+    ![Scer1 NextDenovo](outputs/merqury/spectra-cn/Scer1_nextdenovo.spectra-cn.png)
+
+    [:material-download: Baixar imagem em alta resolução](outputs/merqury/spectra-cn/Scer1_nextdenovo.spectra-cn.png){ target=_blank }
+
+=== "Scer2 Flye"
+
+    ![Scer2 Flye](outputs/merqury/spectra-cn/Scer2_Flye.spectra-cn.png)
+
+    [:material-download: Baixar imagem em alta resolução](outputs/merqury/spectra-cn/Scer2_Flye.spectra-cn.png){ target=_blank }
+
+=== "Scer2 Hifiasm"
+
+    ![Scer2 Hifiasm](outputs/merqury/spectra-cn/Scer2_hifiasm.spectra-cn.png)
+
+    [:material-download: Baixar imagem em alta resolução](outputs/merqury/spectra-cn/Scer2_hifiasm.spectra-cn.png){ target=_blank }
+
+**O que os gráficos mostram:**
+
+- *Scer1, as três montagens:* um único pico vermelho em ~30×, bem separado dos erros de leitura, como se espera de um genoma haploide bem montado. As diferenças estão nos detalhes, perto da base do gráfico:
+    - O **Hifiasm** tem uma pequena "corcova" **azul** sob o pico, entre ~25× e 45×: k-mers de cópia única nas reads que aparecem **duas vezes** na montagem. São falsas duplicações, coerentes com os 12,98 Mb do Hifiasm (contra ~12,1 Mb da referência). Voltamos a elas no purge_dups.
+    - A **barra em x = 0** é visível no Flye e no NextDenovo e bem menor no Hifiasm. É a mesma diferença do QV na tabela (43 e 42 contra 49).
+- *Scer2:* com ~6× de cobertura, **não há pico do genoma separado dos erros**. Os k-mers reais ficam em 2 a 5×, misturados com os erros de leitura, e a barra em x = 0 é grande (QV 25 no Flye). O gráfico do Hifiasm tem uma escala cem vezes menor, porque a montagem tem só 189 kb, a maior parte mitocôndria: quase todos os k-mers das reads ficam de fora (cinza). Aqui o gráfico confirma o que a tabela já sugeria: com essa cobertura, o espectro de k-mers não serve para avaliar a montagem.
+
 ### 9.3 Completude de genes conservados (BUSCO)
 
 O BUSCO (*Benchmarking Universal Single-Copy Orthologs*) avalia a completude do assembly a partir de um conjunto curado de genes esperados como cópia única em quase todas as espécies de uma linhagem específica. Nesse tutorial, utilizaremos o banco `saccharomycetaceae_odb12`, adequado para leveduras. Diferente do Merqury (que usa só os reads, sem referência) e do QUAST (que depende de um genoma de referência), o BUSCO não precisa de nenhum dos dois: ele busca os genes conservados diretamente na montagem, via alinhamento de proteínas e modelos HMM.
@@ -3146,6 +3231,22 @@ busco -i 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -l saccharomycetacea
 busco -i 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm
 busco -i 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_nextdenovo
 ```
+
+!!! warning "Atenção: o download do banco do BUSCO pode demorar"
+    Na primeira execução, o BUSCO baixa o banco escolhido (`-l`) para uma pasta `busco_downloads/` **no diretório onde o comando é rodado**. Isso pode levar vários minutos e depende da internet do servidor. Se cada aluno rodar numa pasta diferente, cada um baixa uma cópia.
+
+    Se o banco já estiver baixado no servidor (pergunte ao responsável onde ele fica), aponte para ele em vez de baixar de novo:
+
+    ```bash
+    # opção 1: indicar a pasta que contém o busco_downloads/
+    busco -i montagem.fasta -l saccharomycetaceae_odb12 -m genome -o saida \
+          --download_path /caminho/para/busco_downloads --offline
+
+    # opção 2: passar o caminho do próprio banco no -l
+    busco -i montagem.fasta -l /caminho/para/busco_downloads/lineages/saccharomycetaceae_odb12 -m genome -o saida --offline
+    ```
+
+    O `--offline` impede o BUSCO de tentar checar ou baixar atualizações. Para deixar o banco pronto antes da aula: `busco --download saccharomycetaceae_odb12`.
 
 ??? note "Ver exemplo de saída do comando"
 
@@ -3567,36 +3668,34 @@ conda activate polimento   # para o samtools
 
 samtools faidx ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna NC_001224.1 > 9.Mitocondria/mito_referencia.fasta
 
-declare -A bruta=(
-  [Scer1_q10_l500_Flye]="5.Montagem-Flye/Scer1_q10_l500/assembly.fasta"
-  [Scer1_q10_l500_hifiasm]="6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa"
-  [Scer1_q10_l500_nextdenovo]="7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta"
-  [Scer2_q10_l500_Flye]="5.Montagem-Flye/Scer2_q10_l500/assembly.fasta"
-  [Scer2_q10_l500_hifiasm]="6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa"
-)
+# montagem a processar: troque as duas linhas e rode o bloco de novo para cada montagem
+prefix=Scer1_q10_l500_Flye
+bruta=5.Montagem-Flye/Scer1_q10_l500/assembly.fasta
+#   Scer1_q10_l500_hifiasm      6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
+#   Scer1_q10_l500_nextdenovo   7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta
+#   Scer2_q10_l500_Flye         5.Montagem-Flye/Scer2_q10_l500/assembly.fasta
+#   Scer2_q10_l500_hifiasm      6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa
 
-for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye Scer2_q10_l500_hifiasm; do
-  f=9.Mitocondria/${prefix}_completa.fasta
-  cp ${bruta[$prefix]} $f
+f=9.Mitocondria/${prefix}_completa.fasta
+cp $bruta $f
 
-  # contigs com >= 50% do comprimento alinhado ao mitocondrial da referência
-  minimap2 -x asm10 -t 8 9.Mitocondria/mito_referencia.fasta $f 2>/dev/null \
-    | awk '{cob[$1]+=$4-$3; tam[$1]=$2} END{for(c in cob) if(cob[c]/tam[c]>=0.5) print c}' \
-    | sort > 9.Mitocondria/${prefix}.mito.ids
+# contigs com >= 50% do comprimento alinhado ao mitocondrial da referência
+minimap2 -x asm10 -t 8 9.Mitocondria/mito_referencia.fasta $f 2>/dev/null \
+  | awk '{cob[$1]+=$4-$3; tam[$1]=$2} END{for(c in cob) if(cob[c]/tam[c]>=0.5) print c}' \
+  | sort > 9.Mitocondria/${prefix}.mito.ids
 
-  # separar: mitocondrial para um arquivo, nuclear para outro
-  samtools faidx $f
-  cut -f1 $f.fai | grep -vxF -f 9.Mitocondria/${prefix}.mito.ids > 9.Mitocondria/${prefix}.nuclear.ids
-  samtools faidx $f -r 9.Mitocondria/${prefix}.nuclear.ids > 9.Montagens-nucleares/${prefix}.fasta
-  if [ -s 9.Mitocondria/${prefix}.mito.ids ]; then
-    samtools faidx $f -r 9.Mitocondria/${prefix}.mito.ids > 9.Mitocondria/${prefix}_mito.fasta
-  fi
-  echo "$prefix: $(wc -l < 9.Mitocondria/${prefix}.mito.ids) contigs mitocondriais"
-done
+# separar: mitocondrial para um arquivo, nuclear para outro
+samtools faidx $f
+cut -f1 $f.fai | grep -vxF -f 9.Mitocondria/${prefix}.mito.ids > 9.Mitocondria/${prefix}.nuclear.ids
+samtools faidx $f -r 9.Mitocondria/${prefix}.nuclear.ids > 9.Montagens-nucleares/${prefix}.fasta
+if [ -s 9.Mitocondria/${prefix}.mito.ids ]; then
+  samtools faidx $f -r 9.Mitocondria/${prefix}.mito.ids > 9.Mitocondria/${prefix}_mito.fasta
+fi
+echo "$prefix: $(wc -l < 9.Mitocondria/${prefix}.mito.ids) contigs mitocondriais"
 
 conda deactivate
 
-# conferir: tamanho e GC de cada contig classificado como mitocondrial
+# depois de processar todas: tamanho e GC de cada contig classificado como mitocondrial
 for f in 9.Mitocondria/*_mito.fasta; do
   echo "== $f"
   awk '/^>/{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l; n=substr($1,2); l=0; g=0; next}
@@ -3604,6 +3703,19 @@ for f in 9.Mitocondria/*_mito.fasta; do
        END{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l}' $f
 done
 ```
+
+!!! tip "Uma montagem por vez: troque a variável e rode de novo"
+    A partir daqui, quando um programa precisa rodar em várias montagens, ele roda **uma montagem por vez**. Assim dá para rodar todas ou, se faltar tempo, **só a montagem que você vai seguir** (por exemplo, a Scer1 Hifiasm). Os resultados das outras estão nas tabelas do tutorial.
+
+    - **Comandos de uma linha** (BUSCO, Medaka, RagTag, Merqury) aparecem **uma vez por montagem**. Rode as linhas que quiser.
+    - **Comandos com vários passos**, como este, começam com uma **variável** que guarda o nome da montagem. Os comandos seguintes usam essa variável (`$prefix`, `$s` ou `$p`). Para a próxima montagem, **troque o valor da variável e rode o bloco de novo**. Os nomes das outras montagens estão no comentário ao lado.
+
+    ```bash
+    prefix=Scer1_q10_l500_Flye     # 1ª vez
+    prefix=Scer1_q10_l500_hifiasm  # 2ª vez, e assim por diante
+    ```
+
+    Os loops que sobraram (`for ... do ... done`) só leem e resumem resultados, e levam segundos.
 
 ??? note "Ver saída do comando (resumida)"
     ```
@@ -3699,27 +3811,26 @@ Uma duplicata é removida quando as duas condições se combinam. (O purge_dups 
 ```bash
 conda activate purge_dups_env
 R=2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-
 mkdir -p 9.Purge_dups
-for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  echo "===== $s ====="
-  O=9.Purge_dups/$s
-  mkdir -p $O
-  cp 9.Montagens-nucleares/$s.fasta $O/$s.fasta   # montagem bruta, já sem a mitocôndria
 
-  # 1) cobertura: alinhar as reads na montagem e calcular os limites de corte
-  minimap2 -x map-ont -t 24 $O/$s.fasta $R > $O/reads.paf
-  pbcstat -O $O $O/reads.paf
-  calcuts $O/PB.stat > $O/cutoffs 2> $O/calcuts.log
+s=Scer1_q10_l500_Flye   # troque e rode o bloco de novo para: Scer1_q10_l500_hifiasm, Scer1_q10_l500_nextdenovo
+echo "===== $s ====="
+O=9.Purge_dups/$s
+mkdir -p $O
+cp 9.Montagens-nucleares/$s.fasta $O/$s.fasta   # montagem bruta, já sem a mitocôndria
 
-  # 2) similaridade: alinhar a montagem contra ela mesma
-  split_fa $O/$s.fasta > $O/$s.split.fasta
-  minimap2 -x asm5 -DP -t 24 $O/$s.split.fasta $O/$s.split.fasta > $O/$s.split.self.paf
+# 1) cobertura: alinhar as reads na montagem e calcular os limites de corte
+minimap2 -x map-ont -t 24 $O/$s.fasta $R > $O/reads.paf
+pbcstat -O $O $O/reads.paf
+calcuts $O/PB.stat > $O/cutoffs 2> $O/calcuts.log
 
-  # 3) decidir o que é duplicata e separar as sequências
-  purge_dups -2 -T $O/cutoffs -c $O/PB.base.cov $O/$s.split.self.paf > $O/dups.bed 2> $O/purge_dups.log
-  get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
-done 2>&1 | tee 9.Purge_dups/purge_dups.log
+# 2) similaridade: alinhar a montagem contra ela mesma
+split_fa $O/$s.fasta > $O/$s.split.fasta
+minimap2 -x asm5 -DP -t 24 $O/$s.split.fasta $O/$s.split.fasta > $O/$s.split.self.paf
+
+# 3) decidir o que é duplicata e separar as sequências
+purge_dups -2 -T $O/cutoffs -c $O/PB.base.cov $O/$s.split.self.paf > $O/dups.bed 2> $O/purge_dups.log
+get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
 
 conda deactivate
 ```
@@ -3768,7 +3879,7 @@ A opção `-e` do `get_seqs` só remove duplicatas nas **pontas** dos contigs (o
     [M::main] Real time: 0.559 sec; CPU: 2.806 sec; Peak RSS: 0.202 GB
     ```
 
-O log mostra, para cada montagem, as duas etapas de alinhamento: as **reads** contra a montagem (`map-ont`, 230.437 reads), seguidas do `pbcstat` ("Program finished successfully"), e a montagem **contra ela mesma** (`asm5`). As montagens já entram sem a mitocôndria (Etapa 9.4): o Flye tem 46 sequências (12,08 Mb), o Hifiasm 38 (12,50 Mb) e o NextDenovo, que não tinha mitocôndria, continua com 29 (12,12 Mb). No Flye, o alinhamento contra si mesma mostra **48** sequências, e não 46: o `split_fa` quebra os contigs nos trechos de `N` (os 2 *gaps* que o Flye deixou), como o QUAST já havia indicado. O `purge_dups` e o `get_seqs` não escrevem nada na tela: as mensagens deles ficam em `9.Purge_dups/<montagem>/purge_dups.log`, e o resultado aparece nos comandos a seguir.
+A saída mostra, para cada montagem, as duas etapas de alinhamento: as **reads** contra a montagem (`map-ont`, 230.437 reads), seguidas do `pbcstat` ("Program finished successfully"), e a montagem **contra ela mesma** (`asm5`). As montagens já entram sem a mitocôndria (Etapa 9.4): o Flye tem 46 sequências (12,08 Mb), o Hifiasm 38 (12,50 Mb) e o NextDenovo, que não tinha mitocôndria, continua com 29 (12,12 Mb). No Flye, o alinhamento contra si mesma mostra **48** sequências, e não 46: o `split_fa` quebra os contigs nos trechos de `N` (os 2 *gaps* que o Flye deixou), como o QUAST já havia indicado. O `purge_dups` e o `get_seqs` não escrevem nada na tela: as mensagens deles ficam em `9.Purge_dups/<montagem>/purge_dups.log`, e o resultado aparece nos comandos a seguir.
 
 **Quanto foi removido?**
 
@@ -3935,15 +4046,16 @@ Não é preciso refazer os alinhamentos: o `PB.stat`, o `PB.base.cov` e o `.spli
 
 ```bash
 conda activate purge_dups_env
-for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  echo "===== $s"
-  O=9.Purge_dups/$s
-  cp -n $O/cutoffs $O/cutoffs.auto          # guarda os limites automáticos
-  calcuts -l 5 -m 37 -u 147 $O/PB.stat > $O/cutoffs 2> $O/calcuts.log
-  cat $O/cutoffs
-  purge_dups -2 -T $O/cutoffs -c $O/PB.base.cov $O/$s.split.self.paf > $O/dups.bed 2> $O/purge_dups.log
-  get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
-done
+
+s=Scer1_q10_l500_Flye   # troque e rode o bloco de novo para: Scer1_q10_l500_hifiasm, Scer1_q10_l500_nextdenovo
+echo "===== $s"
+O=9.Purge_dups/$s
+cp -n $O/cutoffs $O/cutoffs.auto          # guarda os limites automáticos
+calcuts -l 5 -m 37 -u 147 $O/PB.stat > $O/cutoffs 2> $O/calcuts.log
+cat $O/cutoffs
+purge_dups -2 -T $O/cutoffs -c $O/PB.base.cov $O/$s.split.self.paf > $O/dups.bed 2> $O/purge_dups.log
+get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
+
 conda deactivate
 ```
 
@@ -4085,14 +4197,13 @@ O Merqury oferece uma régua independente para o mesmo problema. O script `false
 
 ```bash
 cd 8.QC_montagens/merqury
+K=../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl
+P=../../../9.Purge_dups
 
-for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  mkdir -p ${s}_purgada && cd ${s}_purgada
-  merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
-             ../../../9.Purge_dups/$s/$s.purged.fa \
-             ${s}_purgada
-  cd ..
-done
+# cada linha: define o nome (n), cria a pasta, entra nela, roda o Merqury e volta
+n=Scer1_q10_l500_Flye_purgada;       mkdir -p $n; cd $n; merqury.sh $K $P/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.purged.fa $n; cd ..
+n=Scer1_q10_l500_hifiasm_purgada;    mkdir -p $n; cd $n; merqury.sh $K $P/Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm.purged.fa $n; cd ..
+n=Scer1_q10_l500_nextdenovo_purgada; mkdir -p $n; cd $n; merqury.sh $K $P/Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo.purged.fa $n; cd ..
 
 # falsas duplicações: bruta x purgada
 for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
@@ -4141,11 +4252,12 @@ Na saída, as colunas `1`, `2`, `3`, `4` e `>4` contam os k-mers de cópia únic
 
 ```bash
 conda activate busco
-for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  busco -i 9.Purge_dups/$s/$s.purged.fa -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/${s}_purgada -c 24
-done
+busco -i 9.Purge_dups/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.purged.fa             -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_Flye_purgada -c 24
+busco -i 9.Purge_dups/Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm.purged.fa       -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_hifiasm_purgada -c 24
+busco -i 9.Purge_dups/Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo.purged.fa -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_nextdenovo_purgada -c 24
 conda deactivate
 
+# comparar bruta x purgada
 for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
   echo "$s  bruta:    $(grep -h 'C:' 8.QC_montagens/BUSCO/$s/short_summary*.txt | tr -d '\t ')"
   echo "$s  purgada:  $(grep -h 'C:' 8.QC_montagens/BUSCO/${s}_purgada/short_summary*.txt | tr -d '\t ')"
@@ -4193,10 +4305,10 @@ done
 
 ```bash
 mkdir -p 9.Montagens-purgadas
-for a in Flye hifiasm nextdenovo; do
-  cp 9.Purge_dups/Scer1_q10_l500_$a/Scer1_q10_l500_$a.purged.fa 9.Montagens-purgadas/Scer1_q10_l500_$a.fasta
-done
-cp 9.Montagens-nucleares/Scer2_q10_l500_Flye.fasta 9.Montagens-purgadas/
+cp 9.Purge_dups/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye.purged.fa             9.Montagens-purgadas/Scer1_q10_l500_Flye.fasta
+cp 9.Purge_dups/Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm.purged.fa       9.Montagens-purgadas/Scer1_q10_l500_hifiasm.fasta
+cp 9.Purge_dups/Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo.purged.fa 9.Montagens-purgadas/Scer1_q10_l500_nextdenovo.fasta
+cp 9.Montagens-nucleares/Scer2_q10_l500_Flye.fasta    9.Montagens-purgadas/
 cp 9.Montagens-nucleares/Scer2_q10_l500_hifiasm.fasta 9.Montagens-purgadas/
 ls -lh 9.Montagens-purgadas/
 ```
@@ -4258,21 +4370,25 @@ Para o nosso caso, os modelos mais próximos são:
 - **Scer1** (PromethION, R9.4.1): `-m r941_prom_hac_g507`
 - **Scer2** (PromethION, R10.4.1): `-m r1041_e82_400bps_hac_g615`
 
+Como baixamos os FASTQ do SRA, não sabemos em qual modo o basecalling foi feito (FAST, HAC ou SUP). Usamos os modelos HAC, um meio-termo. Se o sequenciamento for seu, use o modelo que corresponde ao basecaller e ao modo que você usou (por exemplo, `r941_prom_sup_g507` para SUP).
+
 **Comando para rodar o Medaka**
 
 ```bash
 mkdir -p 9.Polimento-Medaka
 conda activate medaka
 
-for prefix in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye Scer2_q10_l500_hifiasm; do
-  sample=${prefix%%_*}
-  # modelo de acordo com a flowcell: Scer1 = R9.4.1, Scer2 = R10.4.1
-  if [ "$sample" = "Scer1" ]; then modelo=r941_prom_hac_g507; else modelo=r1041_e82_400bps_hac_g615; fi
-  rm -rf 9.Polimento-Medaka/$prefix
-  medaka_consensus -i 2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz \
-    -d 9.Montagens-purgadas/${prefix}.fasta \
-    -o 9.Polimento-Medaka/$prefix -t 24 -m $modelo
-done 2>&1 | tee 9.Polimento-Medaka/medaka.log
+# reads e modelo de cada amostra (o modelo depende da flowcell)
+R1=2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz;  M1=r941_prom_hac_g507           # Scer1: R9.4.1
+R2=2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz;  M2=r1041_e82_400bps_hac_g615    # Scer2: R10.4.1
+
+# uma linha por montagem (o tee -a junta tudo num log só)
+# para rodar de novo, apague antes a pasta de saída: rm -rf 9.Polimento-Medaka/<montagem>
+medaka_consensus -i $R1 -d 9.Montagens-purgadas/Scer1_q10_l500_Flye.fasta       -o 9.Polimento-Medaka/Scer1_q10_l500_Flye       -t 24 -m $M1 2>&1 | tee -a 9.Polimento-Medaka/medaka.log
+medaka_consensus -i $R1 -d 9.Montagens-purgadas/Scer1_q10_l500_hifiasm.fasta    -o 9.Polimento-Medaka/Scer1_q10_l500_hifiasm    -t 24 -m $M1 2>&1 | tee -a 9.Polimento-Medaka/medaka.log
+medaka_consensus -i $R1 -d 9.Montagens-purgadas/Scer1_q10_l500_nextdenovo.fasta -o 9.Polimento-Medaka/Scer1_q10_l500_nextdenovo -t 24 -m $M1 2>&1 | tee -a 9.Polimento-Medaka/medaka.log
+medaka_consensus -i $R2 -d 9.Montagens-purgadas/Scer2_q10_l500_Flye.fasta       -o 9.Polimento-Medaka/Scer2_q10_l500_Flye       -t 24 -m $M2 2>&1 | tee -a 9.Polimento-Medaka/medaka.log
+medaka_consensus -i $R2 -d 9.Montagens-purgadas/Scer2_q10_l500_hifiasm.fasta    -o 9.Polimento-Medaka/Scer2_q10_l500_hifiasm    -t 24 -m $M2 2>&1 | tee -a 9.Polimento-Medaka/medaka.log
 
 conda deactivate
 ```
@@ -4451,44 +4567,42 @@ conda activate polimento
 D=0.DadosBrutos/illumina
 mkdir -p 9.Polimento-Illumina
 
-for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  echo "===== $s ====="
-  O=9.Polimento-Illumina/$s
-  # apaga resultados anteriores: o pypolca não sobrescreve uma pasta existente
-  rm -rf $O
-  mkdir -p $O
+s=Scer1_q10_l500_Flye   # troque e rode o bloco de novo para: Scer1_q10_l500_hifiasm, Scer1_q10_l500_nextdenovo
+echo "===== $s ====="
+O=9.Polimento-Illumina/$s
+# apaga resultados anteriores: o pypolca não sobrescreve uma pasta existente
+rm -rf $O
+mkdir -p $O
 
-  # montagem polida com Medaka (Etapa 10)
-  cp 9.Polimento-Medaka/$s/consensus.fasta $O/${s}_medaka.fasta
+# montagem polida com Medaka (Etapa 10)
+cp 9.Polimento-Medaka/$s/consensus.fasta $O/${s}_medaka.fasta
 
-  # alinhamento: cada arquivo de reads separadamente, com todos os alinhamentos (-a)
-  bwa index $O/${s}_medaka.fasta
-  bwa mem -t 24 -a $O/${s}_medaka.fasta $D/Scer1_ilmn_40x_1.fq.gz > $O/aln_1.sam
-  bwa mem -t 24 -a $O/${s}_medaka.fasta $D/Scer1_ilmn_40x_2.fq.gz > $O/aln_2.sam
+# alinhamento: cada arquivo de reads separadamente, com todos os alinhamentos (-a)
+bwa index $O/${s}_medaka.fasta
+bwa mem -t 24 -a $O/${s}_medaka.fasta $D/Scer1_ilmn_40x_1.fq.gz > $O/aln_1.sam
+bwa mem -t 24 -a $O/${s}_medaka.fasta $D/Scer1_ilmn_40x_2.fq.gz > $O/aln_2.sam
 
-  # Polypolish
-  polypolish filter --in1 $O/aln_1.sam --in2 $O/aln_2.sam --out1 $O/filt_1.sam --out2 $O/filt_2.sam
-  polypolish polish $O/${s}_medaka.fasta $O/filt_1.sam $O/filt_2.sam \
-    > $O/${s}_polypolish.fasta 2> $O/polypolish.log
+# Polypolish
+polypolish filter --in1 $O/aln_1.sam --in2 $O/aln_2.sam --out1 $O/filt_1.sam --out2 $O/filt_2.sam
+polypolish polish $O/${s}_medaka.fasta $O/filt_1.sam $O/filt_2.sam \
+  > $O/${s}_polypolish.fasta 2> $O/polypolish.log
 
-  # pypolca
-  pypolca run -a $O/${s}_polypolish.fasta -1 $D/Scer1_ilmn_40x_1.fq.gz -2 $D/Scer1_ilmn_40x_2.fq.gz \
-    -t 24 -o $O/pypolca --careful
-  cp $O/pypolca/pypolca_corrected.fasta $O/${s}_hibrido.fasta
+# pypolca
+pypolca run -a $O/${s}_polypolish.fasta -1 $D/Scer1_ilmn_40x_1.fq.gz -2 $D/Scer1_ilmn_40x_2.fq.gz \
+  -t 24 -o $O/pypolca --careful
+cp $O/pypolca/pypolca_corrected.fasta $O/${s}_hibrido.fasta
 
-  # os SAM são grandes e só servem de entrada para o Polypolish
-  rm $O/aln_*.sam $O/filt_*.sam
-done 2>&1 | tee 9.Polimento-Illumina/polimento_hibrido.log
+# os SAM são grandes e só servem de entrada para o Polypolish
+rm $O/aln_*.sam $O/filt_*.sam
 
 conda deactivate
 ```
 
-O `2>&1 | tee` grava tudo o que aparece na tela em `9.Polimento-Illumina/polimento_hibrido.log`, para você consultar depois. Ao final, cada montagem terá três versões: a bruta (Etapas 5–7), a polida com Medaka (`9.Polimento-Medaka/<montagem>/consensus.fasta`) e a polida com Medaka + Illumina (`9.Polimento-Illumina/<montagem>/<montagem>_hibrido.fasta`).
+Rode o bloco uma vez para cada montagem, trocando a linha `s=`. Ao final, cada montagem terá três versões: a bruta (Etapas 5–7), a polida com Medaka (`9.Polimento-Medaka/<montagem>/consensus.fasta`) e a polida com Medaka + Illumina (`9.Polimento-Illumina/<montagem>/<montagem>_hibrido.fasta`).
 
 ??? note "Ver saída do comando (resumida)"
 
     ```bash
-    $ cat 9.Polimento-Illumina/polimento_hibrido.log
     ===== Scer1_q10_l500_Flye =====
     [main] CMD: bwa index 9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_medaka.fasta
     [main] Real time: 11.882 sec
@@ -4919,35 +5033,25 @@ Como na Etapa 9.2, usamos os k-mers das reads Nanopore filtradas. As montagens b
 
 ```bash
 cd 8.QC_montagens/merqury
+K1=../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl
+K2=../../../4.QC_dadosfiltrados/Scer2_q10_l500.meryl
+MED=../../../9.Polimento-Medaka
+ILM=../../../9.Polimento-Illumina
+
+# cada linha: define o nome (n), cria a pasta, entra nela, roda o Merqury e volta
+# (o rm -rf apaga resultados antigos: o Merqury reaproveita arquivos existentes)
 
 # Scer1: versões Medaka e híbrida (a versão purgada já foi avaliada na Etapa 9.5)
-for sample in Scer1_q10_l500_Flye_medaka Scer1_q10_l500_hifiasm_medaka Scer1_q10_l500_nextdenovo_medaka; do
-  rm -rf $sample   # apaga resultados antigos: o Merqury reaproveita arquivos existentes
-  mkdir -p $sample && cd $sample
-  merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
-             ../../../9.Polimento-Medaka/${sample%_medaka}/consensus.fasta \
-             $sample
-  cd ..
-done
-
-for sample in Scer1_q10_l500_Flye_hibrido Scer1_q10_l500_hifiasm_hibrido Scer1_q10_l500_nextdenovo_hibrido; do
-  rm -rf $sample
-  mkdir -p $sample && cd $sample
-  merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl \
-             ../../../9.Polimento-Illumina/${sample%_hibrido}/${sample}.fasta \
-             $sample
-  cd ..
-done
+n=Scer1_q10_l500_Flye_medaka;        rm -rf $n; mkdir $n; cd $n; merqury.sh $K1 $MED/Scer1_q10_l500_Flye/consensus.fasta $n; cd ..
+n=Scer1_q10_l500_hifiasm_medaka;     rm -rf $n; mkdir $n; cd $n; merqury.sh $K1 $MED/Scer1_q10_l500_hifiasm/consensus.fasta $n; cd ..
+n=Scer1_q10_l500_nextdenovo_medaka;  rm -rf $n; mkdir $n; cd $n; merqury.sh $K1 $MED/Scer1_q10_l500_nextdenovo/consensus.fasta $n; cd ..
+n=Scer1_q10_l500_Flye_hibrido;       rm -rf $n; mkdir $n; cd $n; merqury.sh $K1 $ILM/Scer1_q10_l500_Flye/$n.fasta $n; cd ..
+n=Scer1_q10_l500_hifiasm_hibrido;    rm -rf $n; mkdir $n; cd $n; merqury.sh $K1 $ILM/Scer1_q10_l500_hifiasm/$n.fasta $n; cd ..
+n=Scer1_q10_l500_nextdenovo_hibrido; rm -rf $n; mkdir $n; cd $n; merqury.sh $K1 $ILM/Scer1_q10_l500_nextdenovo/$n.fasta $n; cd ..
 
 # Scer2: versão Medaka
-for sample in Scer2_q10_l500_Flye_medaka Scer2_q10_l500_hifiasm_medaka; do
-  rm -rf $sample
-  mkdir -p $sample && cd $sample
-  merqury.sh ../../../4.QC_dadosfiltrados/Scer2_q10_l500.meryl \
-             ../../../9.Polimento-Medaka/${sample%_medaka}/consensus.fasta \
-             $sample
-  cd ..
-done
+n=Scer2_q10_l500_Flye_medaka;        rm -rf $n; mkdir $n; cd $n; merqury.sh $K2 $MED/Scer2_q10_l500_Flye/consensus.fasta $n; cd ..
+n=Scer2_q10_l500_hifiasm_medaka;     rm -rf $n; mkdir $n; cd $n; merqury.sh $K2 $MED/Scer2_q10_l500_hifiasm/consensus.fasta $n; cd ..
 
 cd ../..
 ```
@@ -4994,7 +5098,7 @@ cd ../..
 
     O Merqury não mostra os resultados na tela: o QV e a completude ficam nos arquivos `.qv` e `.completeness.stats` dentro da pasta de cada amostra, que vamos juntar a seguir. Repare que, para as versões Medaka, a montagem aparece sempre como `consensus.fasta`; é por isso que cada amostra roda em uma pasta própria.
 
-O `${sample%_medaka}` remove o sufixo `_medaka` do nome da amostra (por exemplo, `Scer1_q10_l500_Flye_medaka` vira `Scer1_q10_l500_Flye`), que é o nome da pasta de saída do Medaka. O `${sample%_hibrido}` faz o mesmo com o sufixo `_hibrido`.
+Cada linha faz o mesmo que os blocos da Etapa 9.2, só que numa linha: guarda o nome da saída em `n`, cria a pasta, entra nela, roda o Merqury e volta (`cd ..`). As variáveis `K1`, `K2`, `MED` e `ILM` só encurtam os caminhos. Eles começam com `../../../` porque o Merqury roda três pastas abaixo da pasta principal (`8.QC_montagens/merqury/<nome>/`).
 
 **Juntar os resultados do Merqury em um arquivo:**
 
@@ -5091,6 +5195,31 @@ Na Scer2 não há versão purgada: a coluna "Medaka" já é só a parte nuclear 
 !!! warning "Quando o Medaka não melhora"
     Em dados R9.4.1 com montadores que já fazem polimento interno (Flye, Hifiasm), o ganho do Medaka pode ser marginal ou até negativo. O Medaka é mais útil em dados R10.4+ ou quando usado com montadores sem polimento interno. Sempre compare o QV antes e depois usando o Merqury.
 
+**Os gráficos de espectro antes e depois (Scer1 Hifiasm)**
+
+O Hifiasm é a montagem em que a mudança aparece melhor. Compare as quatro versões, olhando a **base** do gráfico:
+
+=== "Bruta"
+
+    ![Scer1 Hifiasm bruta](outputs/merqury/spectra-cn/Scer1_hifiasm.spectra-cn.png)
+
+=== "Purgada"
+
+    ![Scer1 Hifiasm purgada](outputs/merqury/spectra-cn/Scer1_hifiasm_purgada.spectra-cn.png)
+
+=== "Medaka"
+
+    ![Scer1 Hifiasm Medaka](outputs/merqury/spectra-cn/Scer1_hifiasm_medaka.spectra-cn.png)
+
+=== "Híbrida (Medaka + Illumina)"
+
+    ![Scer1 Hifiasm híbrida](outputs/merqury/spectra-cn/Scer1_hifiasm_hibrido.spectra-cn.png)
+
+- **Bruta → purgada:** a corcova **azul** sob o pico principal (falsas duplicações) **desaparece**. É a confirmação visual do que o purge_dups fez.
+- **Purgada → Medaka → híbrida:** os gráficos ficam praticamente iguais. O polimento muda algumas centenas a milhares de bases em 12 Mb, pouco demais para aparecer nesta escala. Para medir o efeito do polimento, use o QV, e de preferência o QV com k-mers Illumina (11.3).
+
+Os gráficos das outras montagens, em todas as versões, estão em [`outputs/merqury/spectra-cn/`](https://github.com/LGBIO-UFG/PRO-BIOINFO/tree/main/docs/cursos/nanopore/outputs/merqury/spectra-cn){ target=_blank }. No Flye e no NextDenovo, que quase não tinham falsas duplicações, as quatro versões são praticamente idênticas.
+
 ### 11.3 Qualidade das bases com k-mers Illumina (Merqury, só Scer1)
 
 Os k-mers das reads Nanopore têm os mesmos vieses de erro das montagens feitas com elas: um erro sistemático do Nanopore (como os de homopolímeros) aparece tanto na montagem quanto na régua e não é contado. Os k-mers das reads Illumina são uma régua **independente** e mais confiável. Vamos medir as três versões de cada montagem da Scer1 com eles.
@@ -5101,30 +5230,26 @@ meryl k=21 memory=24 threads=24 count $D/Scer1_ilmn_40x_1.fq.gz $D/Scer1_ilmn_40
 
 mkdir -p 8.QC_montagens/merqury_illumina && cd 8.QC_montagens/merqury_illumina
 M=../../../4.QC_dadosfiltrados/Scer1_ilmn.meryl
+PUR=../../../9.Montagens-purgadas
+MED=../../../9.Polimento-Medaka
+ILM=../../../9.Polimento-Illumina
 
+# cada linha: define o nome (n), cria a pasta, entra nela, roda o Merqury e volta (como na 11.2)
 # montagens brutas (os caminhos são diferentes para cada montador)
-mkdir -p Scer1_q10_l500_Flye && cd Scer1_q10_l500_Flye
-merqury.sh $M ../../../5.Montagem-Flye/Scer1_q10_l500/assembly.fasta Scer1_q10_l500_Flye
-cd ..
-mkdir -p Scer1_q10_l500_hifiasm && cd Scer1_q10_l500_hifiasm
-merqury.sh $M ../../../6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa Scer1_q10_l500_hifiasm
-cd ..
-mkdir -p Scer1_q10_l500_nextdenovo && cd Scer1_q10_l500_nextdenovo
-merqury.sh $M ../../../7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta Scer1_q10_l500_nextdenovo
-cd ..
+n=Scer1_q10_l500_Flye;       rm -rf $n; mkdir $n; cd $n; merqury.sh $M ../../../5.Montagem-Flye/Scer1_q10_l500/assembly.fasta $n; cd ..
+n=Scer1_q10_l500_hifiasm;    rm -rf $n; mkdir $n; cd $n; merqury.sh $M ../../../6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa $n; cd ..
+n=Scer1_q10_l500_nextdenovo; rm -rf $n; mkdir $n; cd $n; merqury.sh $M ../../../7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta $n; cd ..
 
 # versões purgada, Medaka e híbrida
-for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  rm -rf ${s}_purgada; mkdir -p ${s}_purgada && cd ${s}_purgada
-  merqury.sh $M ../../../9.Montagens-purgadas/$s.fasta ${s}_purgada
-  cd ..
-  rm -rf ${s}_medaka; mkdir -p ${s}_medaka && cd ${s}_medaka
-  merqury.sh $M ../../../9.Polimento-Medaka/$s/consensus.fasta ${s}_medaka
-  cd ..
-  rm -rf ${s}_hibrido; mkdir -p ${s}_hibrido && cd ${s}_hibrido
-  merqury.sh $M ../../../9.Polimento-Illumina/$s/${s}_hibrido.fasta ${s}_hibrido
-  cd ..
-done
+n=Scer1_q10_l500_Flye_purgada;       rm -rf $n; mkdir $n; cd $n; merqury.sh $M $PUR/Scer1_q10_l500_Flye.fasta $n; cd ..
+n=Scer1_q10_l500_Flye_medaka;        rm -rf $n; mkdir $n; cd $n; merqury.sh $M $MED/Scer1_q10_l500_Flye/consensus.fasta $n; cd ..
+n=Scer1_q10_l500_Flye_hibrido;       rm -rf $n; mkdir $n; cd $n; merqury.sh $M $ILM/Scer1_q10_l500_Flye/$n.fasta $n; cd ..
+n=Scer1_q10_l500_hifiasm_purgada;    rm -rf $n; mkdir $n; cd $n; merqury.sh $M $PUR/Scer1_q10_l500_hifiasm.fasta $n; cd ..
+n=Scer1_q10_l500_hifiasm_medaka;     rm -rf $n; mkdir $n; cd $n; merqury.sh $M $MED/Scer1_q10_l500_hifiasm/consensus.fasta $n; cd ..
+n=Scer1_q10_l500_hifiasm_hibrido;    rm -rf $n; mkdir $n; cd $n; merqury.sh $M $ILM/Scer1_q10_l500_hifiasm/$n.fasta $n; cd ..
+n=Scer1_q10_l500_nextdenovo_purgada; rm -rf $n; mkdir $n; cd $n; merqury.sh $M $PUR/Scer1_q10_l500_nextdenovo.fasta $n; cd ..
+n=Scer1_q10_l500_nextdenovo_medaka;  rm -rf $n; mkdir $n; cd $n; merqury.sh $M $MED/Scer1_q10_l500_nextdenovo/consensus.fasta $n; cd ..
+n=Scer1_q10_l500_nextdenovo_hibrido; rm -rf $n; mkdir $n; cd $n; merqury.sh $M $ILM/Scer1_q10_l500_nextdenovo/$n.fasta $n; cd ..
 
 # resumo
 echo -e "Sample\tQV\tError_rate\tCompleteness" > merqury_illumina_summary.tsv
@@ -5348,14 +5473,13 @@ rm -rf 9.Montagens-polidas
 mkdir -p 9.Montagens-polidas
 
 # Scer1: purge_dups + Medaka + Illumina
-for a in Flye hifiasm nextdenovo; do
-  cp 9.Polimento-Illumina/Scer1_q10_l500_$a/Scer1_q10_l500_${a}_hibrido.fasta 9.Montagens-polidas/Scer1_q10_l500_$a.fasta
-done
+cp 9.Polimento-Illumina/Scer1_q10_l500_Flye/Scer1_q10_l500_Flye_hibrido.fasta             9.Montagens-polidas/Scer1_q10_l500_Flye.fasta
+cp 9.Polimento-Illumina/Scer1_q10_l500_hifiasm/Scer1_q10_l500_hifiasm_hibrido.fasta       9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta
+cp 9.Polimento-Illumina/Scer1_q10_l500_nextdenovo/Scer1_q10_l500_nextdenovo_hibrido.fasta 9.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta
 
 # Scer2: Medaka
-for a in Flye hifiasm; do
-  cp 9.Polimento-Medaka/Scer2_q10_l500_$a/consensus.fasta 9.Montagens-polidas/Scer2_q10_l500_$a.fasta
-done
+cp 9.Polimento-Medaka/Scer2_q10_l500_Flye/consensus.fasta    9.Montagens-polidas/Scer2_q10_l500_Flye.fasta
+cp 9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta 9.Montagens-polidas/Scer2_q10_l500_hifiasm.fasta
 
 ls -lh 9.Montagens-polidas/
 ```
@@ -5391,12 +5515,15 @@ Nesse caso, como temos um genoma de referência da própria espécie, vamos test
 
 ```bash
 mkdir -p 10.Scaffolding
+REF=ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna
 
-for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  # apaga resultados anteriores: o RagTag reaproveita o alinhamento (.paf) que encontrar na pasta
-  rm -rf 10.Scaffolding/${prefix}
-  ragtag.py scaffold ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna 9.Montagens-polidas/${prefix}.fasta -o 10.Scaffolding/${prefix} -t 24
-done
+# uma linha por montagem. Para rodar de novo, apague antes a pasta de saída (rm -rf 10.Scaffolding/<montagem>):
+# o RagTag reaproveita o alinhamento (.paf) que encontrar na pasta
+ragtag.py scaffold $REF 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta       -o 10.Scaffolding/Scer1_q10_l500_Flye       -t 24
+ragtag.py scaffold $REF 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta       -o 10.Scaffolding/Scer2_q10_l500_Flye       -t 24
+ragtag.py scaffold $REF 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta    -o 10.Scaffolding/Scer1_q10_l500_hifiasm    -t 24
+ragtag.py scaffold $REF 9.Montagens-polidas/Scer2_q10_l500_hifiasm.fasta    -o 10.Scaffolding/Scer2_q10_l500_hifiasm    -t 24
+ragtag.py scaffold $REF 9.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
 ```
 ??? note "Ver saída do comando (resumida)"
 
@@ -5482,23 +5609,27 @@ done
 
 ```bash
 mkdir -p 10.Scaffolding-Longstitch
-
 BASE=$(pwd)
 
-for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Scer2_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; do
-  sample=${prefix%%_*}
-  # apaga resultados anteriores: o LongStitch (make) pula etapas cujos arquivos já existem
-  rm -rf 10.Scaffolding-Longstitch/${prefix}
-  mkdir -p 10.Scaffolding-Longstitch/${prefix}
-  cd 10.Scaffolding-Longstitch/${prefix}
-  ln -sf ${BASE}/9.Montagens-polidas/${prefix}.fasta draft.fa
-  ln -sf ${BASE}/2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz ${sample}_q10_l500.fastq.gz
-  longstitch run \
-    draft=draft \
-    reads=${sample}_q10_l500 \
-    G=12000000 t=24
-  cd ${BASE}
-done 2>&1 | tee 10.Scaffolding-Longstitch/longstitch.log
+# montagem a processar: troque as duas linhas e rode o bloco de novo para cada montagem
+prefix=Scer1_q10_l500_Flye
+sample=Scer1
+#   Scer2_q10_l500_Flye        Scer2
+#   Scer1_q10_l500_hifiasm     Scer1
+#   Scer2_q10_l500_hifiasm     Scer2
+#   Scer1_q10_l500_nextdenovo  Scer1
+
+# apaga resultados anteriores: o LongStitch (make) pula etapas cujos arquivos já existem
+rm -rf 10.Scaffolding-Longstitch/${prefix}
+mkdir -p 10.Scaffolding-Longstitch/${prefix}
+cd 10.Scaffolding-Longstitch/${prefix}
+ln -sf ${BASE}/9.Montagens-polidas/${prefix}.fasta draft.fa
+ln -sf ${BASE}/2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz ${sample}_q10_l500.fastq.gz
+longstitch run \
+  draft=draft \
+  reads=${sample}_q10_l500 \
+  G=12000000 t=24 2>&1 | tee -a ../longstitch.log    # o log de todas as montagens fica em 10.Scaffolding-Longstitch/
+cd ${BASE}
 ```
 
 A saída do LongStitch é muito longa e passa do limite de rolagem do terminal. O `2>&1 | tee` grava tudo em `10.Scaffolding-Longstitch/longstitch.log`, para consultar depois (por exemplo, `grep -E 'Attempted corrections|Optimal n' 10.Scaffolding-Longstitch/longstitch.log`).
@@ -5853,6 +5984,14 @@ Contigs do organismo de interesse formam um agrupamento (*blob*) compacto, com G
 
 Essas informações ficam num banco de dados do BlobToolKit, o *BlobDir*, que vamos reaproveitar no snail plot da Etapa 14.4. A checagem de contaminantes vem **antes** das checagens finais de qualidade. Se houver contigs a remover, BUSCO, telômeros e snail plot devem ser calculados na montagem já limpa, e uma montagem com boas métricas pode perder pontos se carregar contaminantes. Rodamos nas três candidatas da Scer1 e na Scer2 Flye (a Scer2 Hifiasm, com ~87 kb, fica de fora).
 
+!!! warning "Numa montagem nova, faça esta checagem mais cedo"
+    Aqui a checagem veio depois do polimento e do scaffolding, e isso **não mudou nada**: nenhum contig precisou ser removido. Mas, se houver contaminação, a ordem importa. O ideal é checar logo depois da montagem, antes do purge_dups, do polimento e do scaffolding:
+
+    - **Scaffolding:** um contig contaminante pode ser ligado a um contig do genoma, sobretudo no scaffolding sem referência (LongStitch). Remover um contig solto é só tirá-lo do FASTA. Separar um contaminante de dentro de um scaffold exige quebrar o scaffold.
+    - **Polimento:** polir contaminantes é tempo de processamento perdido. Além disso, reads do contaminante podem alinhar em regiões parecidas do genoma e atrapalhar a correção.
+
+    Mesmo checando cedo, vale repetir no fim, antes de submeter o genoma: é rápido e confirma que a versão final está limpa. O NCBI também faz essa triagem na submissão, com o FCS-GX (Etapa 4).
+
 !!! note "Bancos usados"
     - **`core_nt`**: versão do `nt` mantida pelo NCBI desde 2024, sem a maior parte das sequências redundantes de grandes projetos de sequenciamento. É bem menor que o `nt` completo, o que torna o BLAST mais rápido, mas ainda cobre todos os grupos de organismos.
     - **`new_taxdump`**: a árvore taxonômica do NCBI, que o BlobToolKit usa para converter o identificador de taxonomia de cada hit (`staxids`) em espécie, gênero, filo etc.
@@ -5865,20 +6004,19 @@ Este é o passo mais demorado da etapa: no nosso servidor, com 24 threads, levou
 
 ```bash
 DB=/media/hd16-databases/blast_dbs/core_nt/core_nt
-MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"
+MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"   # usada nos resumos adiante
 mkdir -p 13.Contaminantes
 
-for prefix in $MONTAGENS; do
-  echo "$(date) início $prefix"
-  blastn -task megablast \
-    -query 9.Montagens-polidas/$prefix.fasta \
-    -db $DB \
-    -outfmt "6 qseqid staxids bitscore std" \
-    -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 \
-    -num_threads 24 \
-    -out 13.Contaminantes/$prefix.blastn.out
-  echo "$(date) fim $prefix"
-done 2>&1 | tee 13.Contaminantes/blast.log
+p=Scer1_q10_l500_Flye   # troque e rode o bloco de novo para: Scer1_q10_l500_hifiasm, Scer1_q10_l500_nextdenovo, Scer2_q10_l500_Flye
+echo "$(date) início $p" | tee -a 13.Contaminantes/blast.log
+blastn -task megablast \
+  -query 9.Montagens-polidas/$p.fasta \
+  -db $DB \
+  -outfmt "6 qseqid staxids bitscore std" \
+  -max_target_seqs 10 -max_hsps 1 -evalue 1e-25 \
+  -num_threads 24 \
+  -out 13.Contaminantes/$p.blastn.out
+echo "$(date) fim $p" | tee -a 13.Contaminantes/blast.log
 ```
 
 O formato de saída `6 qseqid staxids bitscore std` é o que o BlobToolKit espera: o nome do contig, o taxid do hit, o *bitscore* e as colunas padrão do BLAST. O `-task megablast` é o modo mais rápido do `blastn`, adequado para encontrar sequências muito parecidas.
@@ -5933,12 +6071,13 @@ Contigs sem nenhum hit não são necessariamente contaminantes. Podem ser sequê
 
 ```bash
 conda activate polimento   # minimap2 e samtools
-for prefix in $MONTAGENS; do
-  sample=${prefix%%_*}
-  minimap2 -ax map-ont -t 24 9.Montagens-polidas/$prefix.fasta 2.Filtragem-dadosbrutos/${sample}_q10_l500.fastq.gz \
-    | samtools sort -@ 8 -o 13.Contaminantes/$prefix.bam
-  samtools index -c 13.Contaminantes/$prefix.bam   # índice .csi, o formato que o BlobToolKit espera
-done
+
+p=Scer1_q10_l500_Flye   # troque e rode o bloco de novo para: Scer1_q10_l500_hifiasm, Scer1_q10_l500_nextdenovo, Scer2_q10_l500_Flye
+R=2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz   # na Scer2_q10_l500_Flye, use Scer2_q10_l500.fastq.gz
+minimap2 -ax map-ont -t 24 9.Montagens-polidas/$p.fasta $R \
+  | samtools sort -@ 8 -o 13.Contaminantes/$p.bam
+samtools index -c 13.Contaminantes/$p.bam   # índice .csi, o formato que o BlobToolKit espera
+
 conda deactivate
 ```
 
@@ -5990,21 +6129,22 @@ TAXDUMP=/media/hd16-databases/GEP2/DBs/taxdump
 conda activate blobtoolkit
 mkdir -p 13.Contaminantes/blobdir
 
-for prefix in $MONTAGENS; do
-  # 1) criar o BlobDir com as sequências da montagem (tamanho, GC e Ns de cada contig)
-  rm -rf 13.Contaminantes/blobdir/$prefix
-  blobtools create --fasta 9.Montagens-polidas/$prefix.fasta 13.Contaminantes/blobdir/$prefix
+p=Scer1_q10_l500_Flye   # troque e rode o bloco de novo para: Scer1_q10_l500_hifiasm, Scer1_q10_l500_nextdenovo, Scer2_q10_l500_Flye
 
-  # 2) acrescentar os hits do BLAST (taxonomia) e a cobertura
-  blobtools add \
-    --hits 13.Contaminantes/$prefix.blastn.out \
-    --taxrule bestsumorder \
-    --taxdump $TAXDUMP \
-    --cov 13.Contaminantes/$prefix.bam \
-    --replace \
-    13.Contaminantes/blobdir/$prefix
-done
-ls 13.Contaminantes/blobdir/Scer1_q10_l500_hifiasm/
+# 1) criar o BlobDir com as sequências da montagem (tamanho, GC e Ns de cada contig)
+rm -rf 13.Contaminantes/blobdir/$p
+blobtools create --fasta 9.Montagens-polidas/$p.fasta 13.Contaminantes/blobdir/$p
+
+# 2) acrescentar os hits do BLAST (taxonomia) e a cobertura
+blobtools add \
+  --hits 13.Contaminantes/$p.blastn.out \
+  --taxrule bestsumorder \
+  --taxdump $TAXDUMP \
+  --cov 13.Contaminantes/$p.bam \
+  --replace \
+  13.Contaminantes/blobdir/$p
+
+ls 13.Contaminantes/blobdir/$p/
 ```
 
 O `rm -rf` e o `--replace` deixam o comando ser repetido: sem eles, o BlobToolKit não sobrescreve campos que já existem no BlobDir.
@@ -6035,9 +6175,10 @@ Além dos campos criados pelo `blobtools create` (`gc`, `length`, `ncount`), o B
 Com os dados no BlobDir, desenhe o blob plot:
 
 ```bash
-for prefix in $MONTAGENS; do
-  python -c "import blobtk; blobtk.plot.blob(blobdir='13.Contaminantes/blobdir/$prefix', output='13.Contaminantes/${prefix}.blob.png')"
-done
+python -c "import blobtk; blobtk.plot.blob(blobdir='13.Contaminantes/blobdir/Scer1_q10_l500_Flye', output='13.Contaminantes/Scer1_q10_l500_Flye.blob.png')"
+python -c "import blobtk; blobtk.plot.blob(blobdir='13.Contaminantes/blobdir/Scer1_q10_l500_hifiasm', output='13.Contaminantes/Scer1_q10_l500_hifiasm.blob.png')"
+python -c "import blobtk; blobtk.plot.blob(blobdir='13.Contaminantes/blobdir/Scer1_q10_l500_nextdenovo', output='13.Contaminantes/Scer1_q10_l500_nextdenovo.blob.png')"
+python -c "import blobtk; blobtk.plot.blob(blobdir='13.Contaminantes/blobdir/Scer2_q10_l500_Flye', output='13.Contaminantes/Scer2_q10_l500_Flye.blob.png')"
 
 conda deactivate
 ls -lh 13.Contaminantes/*.png
@@ -6238,10 +6379,11 @@ Antes de montar a tabela, precisamos do BUSCO das montagens finais (purgadas, po
 
 ```bash
 conda activate busco
-for f in 9.Montagens-polidas/*.fasta; do
-  prefix=$(basename $f .fasta)
-  busco -i $f -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/${prefix}_final -c 24
-done
+busco -i 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta       -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_Flye_final -c 24
+busco -i 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta    -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_hifiasm_final -c 24
+busco -i 9.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_nextdenovo_final -c 24
+busco -i 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta       -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_Flye_final -c 24
+busco -i 9.Montagens-polidas/Scer2_q10_l500_hifiasm.fasta    -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm_final -c 24
 conda deactivate
 ```
 
@@ -6528,19 +6670,18 @@ O snail plot usa o ambiente `blobtoolkit` e o BlobDir criados na Etapa 13.3. Qua
 conda activate blobtoolkit
 mkdir -p 14.Snailplot
 
-for f in 9.Montagens-polidas/*.fasta; do
-  prefix=$(basename $f .fasta)
-  B=13.Contaminantes/blobdir/$prefix
+p=Scer1_q10_l500_Flye   # troque e rode o bloco de novo para: Scer1_q10_l500_hifiasm, Scer1_q10_l500_nextdenovo,
+                        #                                     Scer2_q10_l500_Flye, Scer2_q10_l500_hifiasm
+B=13.Contaminantes/blobdir/$p
 
-  # 1) reaproveitar o BlobDir da Etapa 13.3; criar só se ele não existir (aqui, a Scer2 Hifiasm)
-  [ -d $B ] || blobtools create --fasta $f $B
+# 1) reaproveitar o BlobDir da Etapa 13.3; criar só se ele não existir (aqui, a Scer2 Hifiasm)
+[ -d $B ] || blobtools create --fasta 9.Montagens-polidas/$p.fasta $B
 
-  # 2) acrescentar o resultado do BUSCO (Etapa 14.1)
-  blobtools add --busco 8.QC_montagens/BUSCO/${prefix}_final/run_saccharomycetaceae_odb12/full_table.tsv --replace $B
+# 2) acrescentar o resultado do BUSCO (Etapa 14.1)
+blobtools add --busco 8.QC_montagens/BUSCO/${p}_final/run_saccharomycetaceae_odb12/full_table.tsv --replace $B
 
-  # 3) desenhar o snail plot
-  python -c "import blobtk; blobtk.plot.snail(blobdir='$B', output='14.Snailplot/${prefix}.snail.png')"
-done
+# 3) desenhar o snail plot
+python -c "import blobtk; blobtk.plot.snail(blobdir='$B', output='14.Snailplot/$p.snail.png')"
 
 conda deactivate
 ls -lh 14.Snailplot/*.png
@@ -6638,7 +6779,7 @@ Com a montagem escolhida, vale descrevê-la cromossomo a cromossomo. Até aqui, 
 
 ```bash
 REF=ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna
-MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"
+MONTAGENS="Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo Scer2_q10_l500_Flye"   # usada no passo 15.2
 mkdir -p 15.Tabela-cromossomos
 
 # nomes dos cromossomos: NC_001133.9 -> chrI, ..., NC_001224.1 -> chrMT
@@ -6647,10 +6788,10 @@ grep '>' $REF | sed -E 's/^>([^ ]+) .*chromosome ([^,]+),.*/\1\tchr\2/; s/^>([^ 
 cat 15.Tabela-cromossomos/R64_nomes.tsv
 
 conda activate polimento
-for P in $MONTAGENS; do
-  minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/$P.fasta \
-    > 15.Tabela-cromossomos/$P.vs_R64.paf
-done
+minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta       > 15.Tabela-cromossomos/Scer1_q10_l500_Flye.vs_R64.paf
+minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta    > 15.Tabela-cromossomos/Scer1_q10_l500_hifiasm.vs_R64.paf
+minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta > 15.Tabela-cromossomos/Scer1_q10_l500_nextdenovo.vs_R64.paf
+minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta       > 15.Tabela-cromossomos/Scer2_q10_l500_Flye.vs_R64.paf
 conda deactivate
 ```
 
