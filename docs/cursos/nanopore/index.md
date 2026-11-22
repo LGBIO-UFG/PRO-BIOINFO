@@ -4524,7 +4524,7 @@ Na saída, as colunas `1`, `2`, `3`, `4` e `>4` contam os k-mers de cópia únic
 
     Em algumas linhas as colunas parecem "desalinhadas": quando não há k-mers em 4 ou mais cópias, o script simplesmente não imprime essas colunas, e os números seguintes andam para a esquerda. Na tabela abaixo, os valores já estão nas colunas certas.
 
-`cutoff` (45) é a contagem nas reads abaixo da qual o script considera um k-mer como de **cópia única** no genoma.
+`cutoff` (45) é o limite **superior** usado pelo script para separar os k-mers de **cópia única** no genoma. Ele pega o pico dos k-mers que aparecem uma vez na montagem (~30× nas reads) e multiplica por 1,5. Entram na conta todos os k-mers que aparecem **menos de 45 vezes** nas reads (de 1 a 44). Um k-mer visto 44 vezes, portanto, conta como cópia única, não como erro. Os que aparecem 45 vezes ou mais ficam de fora, porque podem ser de regiões que existem em duas cópias no genoma, e aí aparecer duas vezes na montagem estaria certo. O script não tem limite inferior: os k-mers de erro de sequenciamento, com contagem baixa, quase não entram porque, em geral, não existem na montagem.
 
 | Montagem | Versão | 1 cópia | 2 cópias | 3 cópias | 4+ cópias | dup% |
 |---|---|---|---|---|---|---|
