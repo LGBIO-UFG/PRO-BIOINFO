@@ -93,13 +93,21 @@ Os dados estão disponíveis no ENA. O download pode ser feito via SRA Toolkit (
 **Opção 1 — SRA Toolkit (recomendado para arquivos grandes):**
 
 ```bash
-mkdir 0.DadosBrutos
+mkdir -p 0.DadosBrutos
 prefetch ERR13367646 -O 0.DadosBrutos
 fasterq-dump 0.DadosBrutos/ERR13367646/ERR13367646.sra --outdir 0.DadosBrutos --outfile Scer1.fastq --progress && gzip 0.DadosBrutos/Scer1.fastq
 
 prefetch ERR13375657 -O 0.DadosBrutos
 fasterq-dump 0.DadosBrutos/ERR13375657/ERR13375657.sra --outdir 0.DadosBrutos --outfile Scer2.fastq --progress && gzip 0.DadosBrutos/Scer2.fastq
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p 0.DadosBrutos` | Cria a pasta dos dados brutos. O `-p` evita erro se a pasta já existir. |
+    | `prefetch ERR... -O 0.DadosBrutos` | Baixa do SRA o arquivo `.sra` da corrida indicada (`ERR...`) para a pasta dada em `-O`. |
+    | `fasterq-dump ... --outdir --outfile --progress` | Converte o `.sra` em FASTQ, com o nome definido em `--outfile`. O `--progress` mostra o andamento. |
+    | `&& gzip ...` | O `&&` só roda o `gzip` se o comando anterior terminou sem erro. O `gzip` comprime o FASTQ (`.fastq.gz`). |
 
 ??? note "Ver saída do comando"
 
@@ -146,7 +154,7 @@ fasterq-dump 0.DadosBrutos/ERR13375657/ERR13375657.sra --outdir 0.DadosBrutos --
 **Opção 2 — wget direto do ENA (mais simples):**
 
 ```bash
-mkdir 0.DadosBrutos
+mkdir -p 0.DadosBrutos
 wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/046/ERR13367646/ERR13367646.fastq.gz
 wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
 
@@ -154,6 +162,13 @@ wget -P 0.DadosBrutos ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/
 mv 0.DadosBrutos/ERR13367646.fastq.gz 0.DadosBrutos/Scer1.fastq.gz
 mv 0.DadosBrutos/ERR13375657.fastq.gz 0.DadosBrutos/Scer2.fastq.gz
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p 0.DadosBrutos` | Cria a pasta dos dados brutos. O `-p` evita erro se a pasta já existir. |
+    | `wget -P 0.DadosBrutos <endereço>` | Baixa o arquivo do FTP do ENA e salva na pasta dada em `-P`. |
+    | `mv <antigo> <novo>` | Renomeia o arquivo (`ERR...fastq.gz` → `Scer1.fastq.gz`), para os nomes ficarem padronizados no resto do tutorial. |
 
 ??? note "Ver saída do comando"
 
@@ -198,6 +213,12 @@ gzip -t 0.DadosBrutos/Scer1.fastq.gz && echo "OK" || echo "CORROMPIDO"
 gzip -t 0.DadosBrutos/Scer2.fastq.gz && echo "OK" || echo "CORROMPIDO"
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `gzip -t <arquivo>` | Testa se o arquivo comprimido está íntegro, sem descomprimir. |
+    | `&& echo "OK" || echo "CORROMPIDO"` | Se o teste passou (`&&`), escreve OK; se falhou (`||`), escreve CORROMPIDO. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -218,12 +239,26 @@ NanoPlot --fastq 0.DadosBrutos/Scer1.fastq.gz -o 1.QC_dadosbrutos/ --prefix Scer
 NanoPlot --fastq 0.DadosBrutos/Scer2.fastq.gz -o 1.QC_dadosbrutos/ --prefix Scer2_ --threads 20 --loglength
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir 1.QC_dadosbrutos/` | Cria a pasta dos relatórios de qualidade. |
+    | `NanoPlot --fastq <reads>` | Calcula estatísticas e gera gráficos de qualidade e comprimento das reads. |
+    | `-o` / `--prefix` | Pasta de saída e prefixo dos arquivos (para não misturar Scer1 e Scer2 na mesma pasta). |
+    | `--threads 20` | Número de processadores usados. |
+    | `--loglength` | Usa escala logarítmica no eixo do comprimento, o que facilita ver reads curtas e longas no mesmo gráfico. |
+
 **Visualizar estatísticas**
 
 ```bash
 more 1.QC_dadosbrutos/Scer1_NanoStats.txt
 more 1.QC_dadosbrutos/Scer2_NanoStats.txt 
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `more <arquivo>` | Mostra o arquivo na tela, uma página por vez (espaço avança, `q` sai). O `NanoStats.txt` é o resumo numérico do NanoPlot. |
 
 ??? note "Ver saída do comando"
 
@@ -331,6 +366,17 @@ porechop_abi -abi -i 0.DadosBrutos/Scer1.fastq.gz -o 2.Filtragem-dadosbrutos/Sce
 porechop_abi -abi -i 0.DadosBrutos/Scer2.fastq.gz -o 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz --format fastq.gz -t 20 
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `conda init` + `source ~/.bashrc` | Configuram o terminal para usar o `conda activate` (só é preciso na primeira vez). |
+    | `mkdir -p 2.Filtragem-dadosbrutos` | Cria a pasta das reads filtradas. |
+    | `conda activate porechop_abi_env` | Entra no ambiente onde o Porechop_ABI está instalado. |
+    | `porechop_abi -abi` | Remove adaptadores. O `-abi` (*ab initio*) descobre os adaptadores a partir das próprias reads, sem depender de uma lista fixa. |
+    | `-i` / `-o` / `--format fastq.gz` | Arquivo de entrada, arquivo de saída e formato da saída (FASTQ comprimido). |
+    | `-t 20` | Número de processadores usados. |
+    | `conda deactivate` | Sai do ambiente. |
 
 ??? note "Ver saída do comando"
 
@@ -1348,18 +1394,28 @@ conda deactivate
 
 
 ```bash
-chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz | gzip > 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip > 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
+gunzip -c 2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz | chopper -q 10 -l 500 -t 32 | gzip > 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+gunzip -c 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | chopper -q 10 -l 500 -t 32 | gzip > 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `gunzip -c <arquivo.gz>` | Descomprime o arquivo e manda o conteúdo para o próximo comando, sem criar um arquivo descomprimido no disco. |
+    | `| chopper` | O `|` (*pipe*) passa as reads para o Chopper, que filtra cada uma. |
+    | `-q 10` | Descarta reads com qualidade média abaixo de Q10. |
+    | `-l 500` | Descarta reads com menos de 500 pb. |
+    | `-t 32` | Número de processadores usados. |
+    | `| gzip > <saída>` | Comprime as reads que passaram no filtro e salva no arquivo de saída. |
 
 ??? note "Ver saída do comando"
 
     ```bash
-    $ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz | gzip > 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+    $ gunzip -c 2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz | chopper -q 10 -l 500 -t 32 | gzip > 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
 
     Kept 230437 reads out of 349286 reads
    
-    $ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip > 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
+    $ gunzip -c 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | chopper -q 10 -l 500 -t 32 | gzip > 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
     Kept 33006 reads out of 57784 reads
 
 
@@ -1381,8 +1437,8 @@ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip 
     **Opção 1 (recomendada): Chopper com `--contam`.** O próprio Chopper alinha cada read contra a referência de lambda e descarta as que alinham, no mesmo passo do filtro de qualidade e tamanho:
 
     ```bash
-    chopper -q 10 -l 500 -t 32 --contam 0.DadosBrutos/reference/lambda_NC_001416.1.fasta \
-      < 2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz \
+    gunzip -c 2.Filtragem-dadosbrutos/Scer1_trim.fastq.gz \
+      | chopper -q 10 -l 500 -t 32 --contam 0.DadosBrutos/reference/lambda_NC_001416.1.fasta \
       2> 2.Filtragem-dadosbrutos/Scer1_chopper.log \
       | gzip > 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
 
@@ -1402,7 +1458,7 @@ chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer2_trim.fastq.gz | gzip 
 
         cat 2.Filtragem-dadosbrutos/Scer1_nanolyse.log
 
-        chopper -q 10 -l 500 -t 32 < 2.Filtragem-dadosbrutos/Scer1_trim_no_lambda.fastq.gz | gzip > 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+        gunzip -c 2.Filtragem-dadosbrutos/Scer1_trim_no_lambda.fastq.gz | chopper -q 10 -l 500 -t 32 | gzip > 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
         ```
 
     Repita para cada amostra que tiver o pico (troque `Scer1` pelo nome da amostra).
@@ -1612,6 +1668,12 @@ NanoPlot --fastq  2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz -o 4.QC_dadosf
 NanoPlot --fastq  2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz -o 4.QC_dadosfiltrados/ --prefix Scer2_q10_l500_ --threads 20 --loglength
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir 4.QC_dadosfiltrados/` | Cria a pasta dos relatórios das reads filtradas. |
+    | `NanoPlot --fastq <reads filtradas> ...` | Mesmo comando da Etapa 2, agora nas reads filtradas, para comparar antes e depois. |
+
 **Visualizar estatísticas**
 
 !!! tip "O que observar"
@@ -1623,6 +1685,11 @@ cat 4.QC_dadosfiltrados/Scer1_q10_l500_NanoStats.txt
 cat 1.QC_dadosbrutos/Scer2_NanoStats.txt
 cat 4.QC_dadosfiltrados/Scer2_q10_l500_NanoStats.txt
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `cat <arquivo>` | Mostra o arquivo inteiro na tela. Aqui, os resumos do NanoPlot antes (`1.QC_dadosbrutos`) e depois (`4.QC_dadosfiltrados`) da filtragem. |
 
 ??? note "Ver saída do comando"
 
@@ -1771,6 +1838,14 @@ cat 4.QC_dadosfiltrados/Scer2_q10_l500_NanoStats.txt
 meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz output 4.QC_dadosfiltrados/Scer1_q10_l500.meryl
 meryl k=21 memory=24 threads=20 count 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz output 4.QC_dadosfiltrados/Scer2_q10_l500.meryl
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `meryl count` | Conta todos os k-mers das reads. |
+    | `k=21` | Tamanho do k-mer (21 bases). |
+    | `memory=24 threads=20` | Memória máxima (em GB) e número de processadores. |
+    | `output <pasta>.meryl` | Pasta onde o Meryl guarda a contagem (um banco de k-mers, usado de novo no Merqury). |
 
 ??? note "Ver saída do comando"
 
@@ -1959,6 +2034,13 @@ meryl histogram 4.QC_dadosfiltrados/Scer1_q10_l500.meryl | sed 's/\t/ /g' > 4.QC
 meryl histogram 4.QC_dadosfiltrados/Scer2_q10_l500.meryl | sed 's/\t/ /g' > 4.QC_dadosfiltrados/Scer2_q10_l500.hist
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `meryl histogram <banco>.meryl` | Gera o histograma: quantos k-mers distintos aparecem 1 vez, 2 vezes, 3 vezes... |
+    | `| sed 's/\t/ /g'` | Troca as tabulações por espaços, formato aceito pelo GenomeScope2. |
+    | `> <arquivo>.hist` | Salva o histograma em arquivo. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -2000,6 +2082,16 @@ genomescope2 -i 4.QC_dadosfiltrados/Scer1_q10_l500.hist -o 4.QC_dadosfiltrados/S
 genomescope2 -i 4.QC_dadosfiltrados/Scer2_q10_l500.hist -o 4.QC_dadosfiltrados/Scer2_q10_l500_genomescope -k 21 -p 2 --name_prefix "Scer2_Oxford_Nanopore"
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `conda activate genomescope2_env` | Entra no ambiente do GenomeScope2. |
+    | `genomescope2 -i <hist> -o <pasta>` | Ajusta um modelo ao histograma de k-mers e estima tamanho do genoma, heterozigosidade e repetições. |
+    | `-k 21` | Tamanho do k-mer usado na contagem (tem que ser o mesmo do Meryl). |
+    | `-p 1` / `-p 2` | Ploidia: 1 para a Scer1 (haploide), 2 para a Scer2 (diploide). |
+    | `--name_prefix` | Título que aparece nos gráficos. |
+    | `conda deactivate` | Sai do ambiente. |
 
 ??? note "Ver saída do comando"
 
@@ -2070,17 +2162,28 @@ flye --genome-size 12M --scaffold --nano-hq 2.Filtragem-dadosbrutos/Scer2_q10_l5
 conda deactivate
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir ...` | Cria a pasta do Flye e uma subpasta para cada amostra. |
+    | `conda activate flye_env` | Entra no ambiente do Flye. |
+    | `flye --genome-size 12M` | Monta o genoma. O `--genome-size` é o tamanho estimado (12 Mb, como no GenomeScope2). |
+    | `--scaffold` | Permite unir contigs em scaffolds, com trechos de `N` no lugar das regiões não resolvidas. |
+    | `--nano-hq <reads>` | Modo para reads Nanopore de alta qualidade (veja o aviso abaixo). |
+    | `-o` / `-t 24` | Pasta de saída e número de processadores. |
+    | `conda deactivate` | Sai do ambiente. |
+
 !!! warning "Atenção: `--nano-hq` ou `--nano-raw`? Escolha pelos seus dados"
     O Flye tem dois modos para reads Nanopore. Segundo a [documentação](https://github.com/mikolmogorov/Flye/blob/flye/docs/USAGE.md){ target=_blank }:
 
     | Modo | Para quais reads |
     |---|---|
-    | `--nano-hq` | basecalling Guppy5+/Dorado no modo SUP, ou reads Q20+ (menos de ~5% de erro) |
+    | `--nano-hq` | basecalling Guppy5+/Dorado no modo SUP, ou reads da química "Q20+" da ONT; a documentação fala em menos de 5% de erro |
     | `--nano-raw` | reads mais antigas ou de menor qualidade (até ~20% de erro) |
 
-    Nossos dados ficam **no limite**: depois da filtragem, a qualidade média é Q13,3 nas duas amostras (Etapa 5.1), ou seja, cerca de 5% de erro, abaixo do Q20 citado na documentação. Usamos `--nano-hq` e a montagem do Scer1 saiu muito boa, mas `--nano-raw` também seria uma escolha defensável.
+    Nossos dados ficam **no limite**: depois da filtragem, a qualidade média é Q13,3 nas duas amostras (Etapa 5.1). Pela escala Phred, isso dá 10^(-13,3/10) ≈ 4,7% de erro: logo abaixo do limite de 5% da documentação, mas longe de Q20 no sentido Phred, que seria 1% de erro. (O "Q20+" da documentação é o nome da química de sequenciamento da ONT, não um valor exato de Phred.) Usamos `--nano-hq` e a montagem do Scer1 saiu muito boa, mas `--nano-raw` também seria uma escolha defensável.
 
-    **Numa montagem nova, não copie a opção sem olhar os dados.** Se o sequenciamento é seu, confira o basecaller e o modo usados (SUP, HAC ou FAST). Em dados baixados do SRA, como os nossos, essa informação muitas vezes não está disponível, e a qualidade média no NanoPlot passa a ser o principal guia. Reads Q20+ ou SUP recentes ficam com `--nano-hq`. Reads com qualidade média bem abaixo de Q20, ou de basecallers antigos, vão com `--nano-raw`. Na dúvida, monte com os dois modos e compare com QUAST e BUSCO (Etapa 9).
+    **Numa montagem nova, não copie a opção sem olhar os dados.** Se o sequenciamento é seu, confira o basecaller e o modo usados (SUP, HAC ou FAST). Em dados baixados do SRA, como os nossos, essa informação muitas vezes não está disponível, e a qualidade média no NanoPlot passa a ser o principal guia. Reads SUP recentes ou da química Q20+ ficam com `--nano-hq`. Reads com mais de ~5% de erro (qualidade média abaixo de ~Q13), ou de basecallers antigos, vão com `--nano-raw`. Na dúvida, monte com os dois modos e compare com QUAST e BUSCO (Etapa 9).
 
 ??? note "Ver saída do comando"
 
@@ -2287,6 +2390,17 @@ hifiasm -o 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm -t 12 --primary --write-ec 
 hifiasm -o 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm -t 12 --primary --write-ec --ont 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz 2> 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.log
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir 6.Montagem-hifiasm` | Cria a pasta do Hifiasm. |
+    | `hifiasm -o <prefixo>` | Monta o genoma. O `-o` define o prefixo de todos os arquivos de saída. |
+    | `-t 12` | Número de processadores usados. |
+    | `--primary` | Gera uma montagem primária e uma alternativa (`p_ctg` e `a_ctg`), em vez de separar os dois haplótipos. |
+    | `--write-ec` | Salva também as reads corrigidas pelo Hifiasm. |
+    | `--ont <reads>` | Indica que as reads são Nanopore. |
+    | `2> <arquivo>.log` | Guarda as mensagens do programa (que saem pelo canal de erro, `2>`) num arquivo de log. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -2304,6 +2418,12 @@ awk '/^S/{print ">"$2"\n"$3}' 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.gf
 awk '/^S/{print ">"$2"\n"$3}' 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.gfa > 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa
 
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `awk '/^S/{print ">"$2"\n"$3}'` | No GFA, as linhas que começam com `S` são as sequências: a coluna 2 é o nome e a 3 é a sequência. O `awk` escreve cada uma no formato FASTA (`>nome` e, na linha seguinte, a sequência). |
+    | `> <arquivo>.fa` | Salva o resultado em FASTA. |
 
 !!! tip "FASTAs disponíveis no repositório"
     [:material-dna: Scer1_Hifiasm_assembly.fa](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Hifiasm_assembly.fa) ·
@@ -2328,6 +2448,15 @@ realpath 2.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz > 7.Montagem-NextDenovo
 cp /home/lgbio/programas/NextDenovo/doc/run.cfg 7.Montagem-NextDenovo/Scer1_q10_l500/.
 nano 7.Montagem-NextDenovo/Scer1_q10_l500/run.cfg 
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir ...` | Cria a pasta do NextDenovo e a subpasta da Scer1. |
+    | `realpath <reads> > input.fofn` | Escreve o caminho completo das reads no `input.fofn` (*file of file names*), a lista de arquivos de entrada que o NextDenovo lê. |
+    | `cp .../run.cfg <pasta>/.` | Copia o arquivo de configuração modelo que vem com o NextDenovo. |
+    | `nano <pasta>/run.cfg` | Abre o arquivo de configuração no editor de texto, para ajustar os parâmetros listados abaixo. |
+
 Edite o arquivo `run.cfg` alterando os seguintes parâmetros
 
 ```
@@ -2339,6 +2468,12 @@ genome_size = 12m
 ```bash
 nextDenovo 7.Montagem-NextDenovo/Scer1_q10_l500/run.cfg
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `nextDenovo <pasta>/run.cfg` | Roda a montagem com os parâmetros do arquivo de configuração. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -2637,6 +2772,12 @@ realpath 2.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz > 7.Montagem-NextDenovo
 cp /home/lgbio/programas/NextDenovo/doc/run.cfg 7.Montagem-NextDenovo/Scer2_q10_l500/.
 nano 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg 
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir` / `realpath` / `cp` / `nano` | Os mesmos passos da Scer1: cria a pasta, escreve o `input.fofn` com o caminho das reads, copia o `run.cfg` modelo e abre para edição. |
+
 Edite o arquivo `run.cfg` alterando os seguintes parâmetros:
 
 ```
@@ -2648,6 +2789,11 @@ genome_size = 12m
 ```bash
 nextDenovo 7.Montagem-NextDenovo/Scer2_q10_l500/run.cfg
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `nextDenovo <pasta>/run.cfg` | Roda a montagem da Scer2 com os parâmetros do arquivo de configuração. |
 
 
 ??? note "Ver saída do comando"
@@ -2744,12 +2890,20 @@ Utilizamos três ferramentas complementares:
 | BUSCO | Completude de genes conservados |
 
 
-* Fazer download do genoma de referência: *
-  
+**Baixar o genoma de referência (S288C, R64), usado pelo QUAST:**
+
 ```bash
 datasets download genome accession GCF_000146045.2 --include genome --filename Scer_reference.zip
 unzip Scer_reference.zip
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `datasets download genome accession GCF_000146045.2` | Baixa do NCBI o genoma de referência de *S. cerevisiae* S288C (R64). |
+    | `--include genome` | Baixa só a sequência do genoma (sem anotação, proteínas etc.). |
+    | `--filename <arquivo>.zip` | Nome do arquivo baixado. |
+    | `unzip <arquivo>.zip` | Descompacta. A sequência fica em `ncbi_dataset/data/GCF_000146045.2/`. |
 
 ### 9.1 Estatísticas básicas (QUAST)
 
@@ -2759,6 +2913,15 @@ unzip Scer_reference.zip
 ```bash
 quast.py -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -s 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -o 8.QC_montagens/quast_q10_l500 -t 24 --labels "Scer1_Flye,Scer1_Hifiasm,Scer1_NextDenovo,Scer2_Flye,Scer2_Hifiasm"
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `quast.py -r <referência>` | Calcula as estatísticas das montagens e compara cada uma com a referência. |
+    | `-s` | Avalia também os scaffolds quebrados nos trechos de `N`, mostrando os contigs separadamente. |
+    | `<montagem1> <montagem2> ...` | As montagens a avaliar, todas no mesmo relatório. |
+    | `-o` / `-t 24` | Pasta de saída e número de processadores. |
+    | `--labels "..."` | Nomes curtos das montagens nas tabelas, na mesma ordem dos arquivos. |
 
 ??? note "Ver saída do comando"
 
@@ -2925,6 +3088,11 @@ quast.py -r ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -s
 cat 8.QC_montagens/quast_q10_l500/report.tsv 
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `cat <pasta>/report.tsv` | Mostra a tabela-resumo do QUAST na tela. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -3028,6 +3196,14 @@ cd 8.QC_montagens/merqury/Scer1_q10_l500_nextdenovo
 merqury.sh ../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl ../../../7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta Scer1_q10_l500_nextdenovo
 cd ../../..
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p` + `cd` | Cria uma pasta para cada montagem e entra nela (o Merqury escreve os arquivos na pasta atual). |
+    | `merqury.sh <banco>.meryl <montagem> <prefixo>` | Compara os k-mers das reads (Etapa 5.2) com os da montagem e calcula QV e completude. O terceiro argumento é o prefixo dos arquivos de saída. |
+    | `../../../` | Como entramos três pastas abaixo do projeto, os caminhos sobem três níveis. |
+    | `cd ../../..` | Volta para a pasta do projeto, antes da próxima montagem. |
 
 ??? note "Ver saída do comando"
 
@@ -3145,6 +3321,17 @@ cat merqury_summary.tsv
 cd ../..
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `cd 8.QC_montagens/merqury` | Entra na pasta dos resultados do Merqury. |
+    | `echo -e "..." > <tabela>` | Cria a tabela com a linha de cabeçalho. O `-e` faz o `\t` virar tabulação. |
+    | `for prefix in ...; do ... done` | Repete os comandos de dentro para cada montagem. |
+    | `awk 'END{print $4}' <arquivo>.qv` | Pega a coluna 4 (QV) da última linha do `.qv`. O `$5` pega a taxa de erro; no `.completeness.stats`, a coluna 5 é a completude. |
+    | `2>/dev/null` | Esconde a mensagem de erro se o arquivo não existir. |
+    | `>> <tabela>` | Acrescenta as linhas ao fim da tabela, sem apagar o cabeçalho. |
+    | `cat` + `cd ../..` | Mostra a tabela e volta para a pasta do projeto. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -3231,6 +3418,15 @@ busco -i 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -l saccharomycetacea
 busco -i 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm
 busco -i 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_nextdenovo
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `busco --list-datasets` | Lista os conjuntos de genes conservados (linhagens) disponíveis. |
+    | `busco -i <montagem>` | Procura, na montagem, os genes de cópia única esperados para a linhagem. |
+    | `-l saccharomycetaceae_odb12` | Linhagem usada (família Saccharomycetaceae). |
+    | `-m genome` | Modo para sequências genômicas (não transcritos nem proteínas). |
+    | `-o <pasta>` | Pasta de saída. A primeira linha avalia a referência, como comparação. |
 
 !!! warning "Atenção: o download do banco do BUSCO pode demorar"
     Na primeira execução, o BUSCO baixa o banco escolhido (`-l`) para uma pasta `busco_downloads/` **no diretório onde o comando é rodado**. Isso pode levar vários minutos e depende da internet do servidor. Se cada aluno rodar numa pasta diferente, cada um baixa uma cópia.
@@ -3591,7 +3787,20 @@ grep -H "C:" 8.QC_montagens/BUSCO/summaries/short_summary*.txt \
 # Gerar o gráfico comparativo
 conda activate busco
 python /home/lgbio/busco/scripts/generate_plot.py -wd 8.QC_montagens/BUSCO/summaries/
+conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir` + `cp .../short_summary*.txt` | Junta numa pasta só o resumo (`short_summary`) de cada BUSCO. |
+    | `grep -H "C:" ...` | Pega a linha de resultado (`C:...%[S:...,D:...],F:...,M:...`) de cada resumo, com o nome do arquivo na frente (`-H`). |
+    | `sed -E 's/.../'` (primeiro) | Separa os números (C, S, D, F, M, n, E) em colunas. |
+    | `sed -E 's#^.*/##; ...'` (segundo) | Limpa o nome do arquivo, deixando só o nome da montagem. |
+    | `{ echo -e "Sample..."; cat; }` | Põe uma linha de cabeçalho antes dos dados. |
+    | `column -t -s $'\t'` | Alinha as colunas para facilitar a leitura. |
+    | `conda activate busco` + `generate_plot.py -wd <pasta>` | Gera o gráfico de barras comparando todos os resumos da pasta. |
+    | `conda deactivate` | Sai do ambiente. |
 
 ??? note "Ver saída do comando"
 
@@ -3680,6 +3889,7 @@ f=9.Mitocondria/${prefix}_completa.fasta
 cp $bruta $f
 
 # contigs com >= 50% do comprimento alinhado ao mitocondrial da referência
+# -x asm10: modo do minimap2 para comparar montagens com até cerca de 10% de divergência
 minimap2 -x asm10 -t 8 9.Mitocondria/mito_referencia.fasta $f 2>/dev/null \
   | awk '{cob[$1]+=$4-$3; tam[$1]=$2} END{for(c in cob) if(cob[c]/tam[c]>=0.5) print c}' \
   | sort > 9.Mitocondria/${prefix}.mito.ids
@@ -3703,6 +3913,23 @@ for f in 9.Mitocondria/*_mito.fasta; do
        END{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l}' $f
 done
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p ...` + `conda activate polimento` | Cria as pastas e entra no ambiente que tem o `samtools` e o `minimap2`. |
+    | `samtools faidx <referência> NC_001224.1` | Extrai da referência só o cromossomo mitocondrial (NC_001224.1). |
+    | `prefix=` / `bruta=` | Nome e arquivo da montagem a processar. Troque e rode de novo para as outras (lista no comentário). |
+    | `f=...` + `cp $bruta $f` | Faz uma cópia da montagem bruta, para não mexer no original. |
+    | `minimap2 -x asm10 <mito> $f` | Alinha os contigs da montagem contra o mitocondrial da referência. |
+    | `awk '{cob[$1]+=$4-$3; tam[$1]=$2} ...'` | Soma, para cada contig, o comprimento alinhado (colunas 3 e 4 do PAF) e divide pelo tamanho do contig (coluna 2). Imprime os contigs com 50% ou mais alinhados. |
+    | `sort > ...mito.ids` | Salva a lista dos contigs mitocondriais. |
+    | `samtools faidx $f` | Indexa a montagem. O índice (`.fai`) tem o nome de cada contig na coluna 1. |
+    | `cut -f1 ... | grep -vxF -f <mito.ids>` | Lista todos os contigs e tira os mitocondriais: `-v` inverte, `-x` exige a linha inteira igual e `-F` trata o nome como texto, não como padrão. |
+    | `samtools faidx $f -r <lista>` | Extrai os contigs da lista: os nucleares vão para `9.Montagens-nucleares/`, os mitocondriais para `9.Mitocondria/`. |
+    | `if [ -s ... ]; then ... fi` | Só cria o arquivo mitocondrial se a lista não estiver vazia (o NextDenovo não montou a mitocôndria). |
+    | `echo "...$(wc -l < ...)"` | Escreve quantos contigs foram classificados como mitocondriais. |
+    | `for f in ...; do awk ...; done` | Depois de processar todas: mostra o tamanho e o GC de cada contig mitocondrial. |
 
 !!! tip "Uma montagem por vez: troque a variável e rode de novo"
     A partir daqui, quando um programa precisa rodar em várias montagens, ele roda **uma montagem por vez**. Assim dá para rodar todas ou, se faltar tempo, **só a montagem que você vai seguir** (por exemplo, a Scer1 Hifiasm). Os resultados das outras estão nas tabelas do tutorial.
@@ -3835,6 +4062,23 @@ get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
 conda deactivate
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `R=...` | Guarda o caminho das reads filtradas da Scer1, usadas para medir a cobertura. |
+    | `s=...` | Nome da montagem que será processada. Troque e rode o bloco de novo para as outras. |
+    | `echo "===== $s ====="` | Escreve o nome da montagem na tela, para separar a saída de cada rodada. |
+    | `O=9.Purge_dups/$s` + `mkdir -p $O` | Cria uma pasta só para essa montagem. |
+    | `cp ...` | Copia a montagem nuclear (sem a mitocôndria, Etapa 9.4) para essa pasta. |
+    | `minimap2 -x map-ont` | Alinha as reads Nanopore contra a montagem. O arquivo `reads.paf` diz onde cada read alinhou. |
+    | `pbcstat` | Calcula, a partir do `reads.paf`, a cobertura de cada posição (`PB.base.cov`) e o histograma de cobertura (`PB.stat`: quantas bases têm cada valor de cobertura). |
+    | `calcuts` | Lê o histograma e escolhe os limites de cobertura (`cutoffs`): o que é baixo demais, o que é "metade" (provável duplicata) e o que é alto demais. Os detalhes vão para o `calcuts.log`. |
+    | `split_fa` | Quebra os contigs nos trechos de `N` (gaps), para que o alinhamento seguinte não atravesse um gap. |
+    | `minimap2 -x asm5 -DP` | Alinha a montagem **contra ela mesma** para achar trechos repetidos. `asm5` é o modo para sequências quase idênticas (até cerca de 5% de divergência); `-D` ignora o alinhamento de cada sequência com ela própria; `-P` guarda todos os alinhamentos, não só o melhor. |
+    | `purge_dups -2 -T ... -c ...` | Junta as duas informações (cobertura e similaridade) e decide o que é duplicata. `-T` recebe os limites, `-c` a cobertura por posição e `-2` faz o encadeamento dos alinhamentos em duas rodadas. A saída, `dups.bed`, lista os trechos a remover e o motivo (`HAPLOTIG`, `JUNK`, `HIGHCOV`...). |
+    | `get_seqs -e ... -p $O/$s` | Remove da montagem os trechos do `dups.bed`. `-e` só remove duplicatas nas pontas dos contigs (ou contigs inteiros); `-p` define o prefixo dos arquivos de saída (`.purged.fa` e `.hap.fa`). |
+    | `conda deactivate` | Sai do ambiente `purge_dups_env`. |
+
 Para cada montagem, o purge_dups gera dois arquivos:
 
 - **`<montagem>.purged.fa`**: a montagem sem as duplicatas, que segue no pipeline;
@@ -3894,6 +4138,13 @@ for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; d
 done
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for s in ...; do ... done` | Repete o resumo para cada montagem da Scer1. |
+    | `cat $O/cutoffs` | Mostra os limites de cobertura escolhidos pelo `calcuts`. |
+    | `awk '/^>/{n++; next}{b+=length($0)} ...'` | Conta as sequências (linhas que começam com `>`) e soma as bases. Roda na montagem antes, na purgada (`.purged.fa`) e no que foi removido (`.hap.fa`). |
+
 ??? note "Ver saída do comando (primeira rodada, limites automáticos)"
     ```
     ===== Scer1_q10_l500_Flye
@@ -3944,6 +4195,13 @@ for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; d
   echo
 done
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for s in ...; do ... done` | Repete para cada montagem da Scer1. |
+    | `awk -v cortes="$(cat $O/cutoffs)" '...' $O/PB.stat` | Lê o histograma de cobertura (`PB.stat`), agrupa as coberturas de 3 em 3 até 150×, desenha uma barra de `#` proporcional ao número de bases e marca onde caem os limites do `calcuts`. |
+    | `cat $O/calcuts.log` | Mostra como o `calcuts` encontrou os picos e calculou os limites. |
 
 Cada linha agrupa 3 valores de cobertura, e o comprimento da barra é proporcional ao número de bases com aquela cobertura. O `calcuts.log` mostra quantos picos o `calcuts` encontrou e como calculou os limites.
 
@@ -4059,6 +4317,15 @@ get_seqs -e $O/dups.bed $O/$s.fasta -p $O/$s
 conda deactivate
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `s=...` + `O=...` | Montagem a processar e a pasta dela. Troque e rode de novo para as outras. |
+    | `cp -n $O/cutoffs $O/cutoffs.auto` | Guarda uma cópia dos limites automáticos. O `-n` não sobrescreve a cópia se ela já existir. |
+    | `calcuts -l 5 -m 37 -u 147` | Recalcula os limites com valores definidos por nós: `-l` limite inferior, `-m` divisa entre metade e cobertura cheia, `-u` limite superior. |
+    | `cat $O/cutoffs` | Mostra os novos limites. |
+    | `purge_dups ...` + `get_seqs ...` | Repete a remoção de duplicatas com os novos limites (os mesmos comandos do bloco anterior). |
+
 O `get_seqs` sobrescreve o `.purged.fa` e o `.hap.fa`. Rode de novo o comando **"Quanto foi removido?"** para ver o novo resultado:
 
 ??? note "Ver saída do comando (limites manuais)"
@@ -4107,6 +4374,12 @@ for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; d
 done
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for s in ...; do ... done` | Repete para cada montagem da Scer1. |
+    | `awk '{n[$4]++; b[$4]+=$3-$2} ...' dups.bed` | Agrupa as regiões do `dups.bed` pelo tipo (coluna 4: `HAPLOTIG`, `JUNK`, `HIGHCOV`...) e mostra quantas regiões e quantas bases há de cada tipo. |
+
 ??? note "Ver saída do comando"
     ```
     ===== Scer1_q10_l500_Flye
@@ -4143,6 +4416,15 @@ for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm; do
 done
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `REF=...` | Caminho da referência. |
+    | `awk '$4=="HIGHCOV"' ... | tee $O/highcov.bed` | Filtra as regiões marcadas como cobertura alta. O `tee` mostra na tela e salva em arquivo ao mesmo tempo. |
+    | `awk 'NR==FNR{...} ...' highcov.bed montagem` | Lê primeiro a lista de contigs (`NR==FNR` é verdadeiro só no primeiro arquivo) e depois extrai da montagem as sequências desses contigs. |
+    | `minimap2 -x asm10 $REF ...` | Alinha esses contigs contra a referência, para ver de onde vêm. |
+    | `cut -f1-11 | sort -k10,10nr | head -5` | Mantém as colunas principais do PAF, ordena pelo número de bases iguais (coluna 10, do maior para o menor) e mostra os 5 melhores alinhamentos. |
 
 ??? note "Ver saída do comando"
     ```
@@ -4215,6 +4497,16 @@ done | awk 'NR==1 || !/^hist/' | column -t
 cd ../..
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `cd` + `K=` / `P=` | Entra na pasta do Merqury e guarda os caminhos do banco de k-mers (`K`) e das montagens purgadas (`P`). |
+    | `n=...; mkdir -p $n; cd $n; merqury.sh ...; cd ..` | Cada linha: guarda o nome, cria a pasta, entra nela, roda o Merqury na montagem purgada e volta. |
+    | `for s ...; for v in $s ${s}_purgada` | Para cada montagem, roda nas versões bruta e purgada. |
+    | `bash $MERQURY/eval/false_duplications.sh <hist>` | Script do Merqury que lê o histograma `spectra-cn` e calcula a fração de k-mers que aparecem duplicados na montagem sem estar duplicados no genoma. |
+    | `awk 'NR==1 || !/^hist/' | column -t` | Mantém só um cabeçalho (o script escreve um por rodada) e alinha as colunas. |
+    | `cd ../..` | Volta para a pasta do projeto. |
+
 O script usa a variável `$MERQURY`, que aponta para a pasta de instalação do Merqury (a mesma usada pelo `merqury.sh`). Se ela estiver vazia, use o caminho completo (no nosso servidor, `/home/lgbio/programas/merqury/eval/false_duplications.sh`).
 
 Na saída, as colunas `1`, `2`, `3`, `4` e `>4` contam os k-mers de cópia única nas reads que aparecem 1, 2, 3, 4 ou mais vezes na montagem; `dup%` é a porcentagem que aparece mais de uma vez, ou seja, a taxa de falsas duplicações.
@@ -4263,6 +4555,12 @@ for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; d
   echo "$s  purgada:  $(grep -h 'C:' 8.QC_montagens/BUSCO/${s}_purgada/short_summary*.txt | tr -d '\t ')"
 done
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `busco -i <purgada> ... -c 24` | Roda o BUSCO nas montagens purgadas. O `-c` é o número de processadores; os outros parâmetros são os da Etapa 9.3. |
+    | `for s ...; grep -h 'C:' ... | tr -d '\t '` | Mostra lado a lado a linha de resultado do BUSCO da montagem bruta e da purgada. O `tr -d` apaga tabulações e espaços, para a linha ficar compacta. |
 
 ??? example "Saída: BUSCO bruta x purgada"
 
@@ -4313,6 +4611,14 @@ cp 9.Montagens-nucleares/Scer2_q10_l500_hifiasm.fasta 9.Montagens-purgadas/
 ls -lh 9.Montagens-purgadas/
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p 9.Montagens-purgadas` | Cria a pasta com a versão de cada montagem que segue para o polimento. |
+    | `cp <purgada> 9.Montagens-purgadas/<nome>.fasta` | Scer1: copia a montagem purgada com um nome padronizado. |
+    | `cp 9.Montagens-nucleares/Scer2_...` | Scer2: copia a montagem só sem a mitocôndria (sem purge_dups). |
+    | `ls -lh` | Lista os arquivos com o tamanho em formato legível (K, M). |
+
 ### Checklist da Etapa 9
 
 - [ ] Tenho relatórios QUAST (HTML) para as cinco montagens
@@ -4335,6 +4641,11 @@ zcat 0.DadosBrutos/Scer1.fastq.gz | head -1
 zcat 0.DadosBrutos/Scer2.fastq.gz | head -1
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `zcat <reads> | head -1` | Mostra o cabeçalho da primeira read, onde às vezes aparecem o basecaller e o modelo usados. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -4351,6 +4662,11 @@ Listar modelos disponíveis no Medaka para confirmar qual usar:
 ```bash
 medaka tools list_models
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `medaka tools list_models` | Lista os modelos disponíveis na versão instalada do Medaka. |
 
 ??? note "Ver exemplo de saída do comando"
 
@@ -4392,6 +4708,16 @@ medaka_consensus -i $R2 -d 9.Montagens-purgadas/Scer2_q10_l500_hifiasm.fasta    
 
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p` + `conda activate medaka` | Cria a pasta e entra no ambiente do Medaka. |
+    | `R1=...; M1=...` / `R2=...; M2=...` | Reads e modelo de cada amostra. O modelo depende da flowcell (R9.4.1 na Scer1, R10.4.1 na Scer2). |
+    | `medaka_consensus -i <reads> -d <montagem>` | Alinha as reads na montagem e corrige as bases com uma rede neural treinada para o tipo de dado. |
+    | `-o` / `-t 24` / `-m <modelo>` | Pasta de saída, número de processadores e modelo. |
+    | `2>&1 | tee -a <log>` | Junta as mensagens de erro (`2>`) com a saída normal, mostra na tela e acrescenta (`-a`) ao log, sem apagar o que as linhas anteriores escreveram. |
+    | `conda deactivate` | Sai do ambiente. |
 
 O Medaka parte das montagens de `9.Montagens-purgadas/` (Etapa 9.5): todas sem a mitocôndria, e as da Scer1 também sem duplicatas. O `rm -rf` antes de cada execução é importante: se a pasta de saída já existir, o Medaka reaproveita o alinhamento antigo em vez de refazê-lo.
 
@@ -4448,6 +4774,11 @@ Ao final, cada pasta tem um `consensus.fasta`, a montagem polida:
 ```bash
 ls -l 9.Polimento-Medaka/*/consensus.fasta
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `ls -l 9.Polimento-Medaka/*/consensus.fasta` | Lista a montagem polida (`consensus.fasta`) de cada pasta. O `*` vale para qualquer nome de pasta. |
 
 ??? example "Saída: arquivos polidos"
 
@@ -4516,6 +4847,17 @@ for r in 1 2; do echo "R$r: $(( $(zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_$r.
 zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_1.fq.gz | head -1
 zcat 0.DadosBrutos/illumina/Scer1_ilmn_40x_2.fq.gz | head -1
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p` + `URL=...` | Cria a pasta das reads Illumina e guarda o endereço da corrida no ENA. |
+    | `for r in 1 2; do ... done` | Repete para os dois arquivos do par (R1 e R2). |
+    | `wget -qO- <endereço>` | Baixa o arquivo sem mensagens (`-q`) e manda o conteúdo para o próximo comando (`-O-`), sem salvar no disco. |
+    | `zcat | head -n 9600000 | gzip > ...` | Descomprime, fica só com as primeiras 9.600.000 linhas (2,4 milhões de reads, já que cada read ocupa 4 linhas; cerca de 40× do genoma) e comprime de novo. |
+    | `ls -lh` | Mostra os arquivos e os tamanhos. |
+    | `echo "R$r: $(( $(zcat ... | wc -l) / 4 )) reads"` | Conta as linhas de cada arquivo e divide por 4 para ter o número de reads. |
+    | `zcat ... | head -1` | Mostra o cabeçalho da primeira read de cada arquivo, para conferir que os dois arquivos formam um par. |
 
 Mensagens como *"gzip: stdout: Broken pipe"* são esperadas: indicam apenas que o `head` fechou a leitura quando chegou ao número de linhas pedido. Para conferir que os pares estão corretos, as duas últimas linhas devem mostrar o **mesmo nome de read** em R1 e R2.
 
@@ -4597,6 +4939,23 @@ rm $O/aln_*.sam $O/filt_*.sam
 
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `conda activate polimento` + `D=...` | Entra no ambiente e guarda a pasta das reads Illumina. |
+    | `s=...` + `O=...` | Montagem a processar e a pasta dela. Troque e rode de novo para as outras. |
+    | `rm -rf $O` + `mkdir -p $O` | Apaga resultados anteriores e recria a pasta (o pypolca não sobrescreve uma pasta existente). |
+    | `cp .../consensus.fasta ..._medaka.fasta` | Copia a montagem polida com o Medaka, ponto de partida deste polimento. |
+    | `bwa index` | Indexa a montagem para o alinhamento. |
+    | `bwa mem -t 24 -a` | Alinha as reads Illumina na montagem, um arquivo do par de cada vez. O `-a` guarda todos os alinhamentos de cada read, o que o Polypolish usa para corrigir regiões repetidas. |
+    | `polypolish filter --in1 --in2 --out1 --out2` | Descarta alinhamentos em que os dois lados do par não batem em distância e orientação. |
+    | `polypolish polish` | Corrige as bases da montagem usando os alinhamentos filtrados. As mensagens vão para `polypolish.log`. |
+    | `pypolca run -a <montagem> -1 <R1> -2 <R2>` | Segunda correção, com outro método, sobre a saída do Polypolish. |
+    | `-t 24 -o <pasta> --careful` | Processadores, pasta de saída e modo cuidadoso (só corrige quando a evidência é forte). |
+    | `cp .../pypolca_corrected.fasta ..._hibrido.fasta` | Salva o resultado final com o nome `_hibrido`. |
+    | `rm $O/aln_*.sam $O/filt_*.sam` | Apaga os alinhamentos, que são grandes e não são mais necessários. |
+    | `conda deactivate` | Sai do ambiente. |
 
 Rode o bloco uma vez para cada montagem, trocando a linha `s=`. Ao final, cada montagem terá três versões: a bruta (Etapas 5–7), a polida com Medaka (`9.Polimento-Medaka/<montagem>/consensus.fasta`) e a polida com Medaka + Illumina (`9.Polimento-Illumina/<montagem>/<montagem>_hibrido.fasta`).
 
@@ -4769,6 +5128,13 @@ for s in Scer1_q10_l500_Flye Scer1_q10_l500_hifiasm Scer1_q10_l500_nextdenovo; d
 done
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for s in ...; do ... done` | Repete para cada montagem da Scer1. |
+    | `awk '/positions? changed/ {...}' polypolish.log` | Soma o número de posições alteradas pelo Polypolish em todos os contigs. |
+    | `grep -E 'Substitution|Insertion' ... | sed 's/^/pypolca - /'` | Mostra as linhas de substituições e inserções do relatório do pypolca, com `pypolca -` na frente de cada linha. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -4862,6 +5228,14 @@ quast.py \
   6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa \
   9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `quast.py -r <referência>` | Mesmo QUAST da Etapa 9.1, agora com todas as versões de cada montagem: bruta, purgada, Medaka e híbrida. |
+    | `-o` / `-s` / `-t 24` | Pasta de saída, avaliação também dos scaffolds quebrados nos `N` e número de processadores. |
+    | `--labels "..."` | Nomes das versões nas tabelas, na mesma ordem dos arquivos listados depois. |
+    | `\` no fim da linha | Continua o comando na linha de baixo (o comando é um só, quebrado em várias linhas para facilitar a leitura). |
 
 Abra os arquivos report.html e icarus.html no seu navegador de internet.
 
@@ -4997,6 +5371,11 @@ grep -E '^Assembly|^# contigs  |^Genome fraction|^Duplication|^# misassemblies|^
   8.QC_montagens/quast-polimento_q10_l500/report.txt
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `grep -E '^Assembly|^# contigs  |...' report.txt` | Mostra só as linhas do relatório do QUAST que começam com os nomes listados (`^` indica início da linha; `|` separa as opções). |
+
 | Montagem | Versão | Contigs | Fração do genoma (%) | Duplicação | Misassemblies | Mismatches /100 kb | Indels /100 kb |
 |---|---|---|---|---|---|---|---|
 | Scer1 Flye | bruta | 79 | 95,69 | 1,033 | 155 | 503 | 83,5 |
@@ -5055,6 +5434,13 @@ n=Scer2_q10_l500_hifiasm_medaka;     rm -rf $n; mkdir $n; cd $n; merqury.sh $K2 
 
 cd ../..
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `cd` + `K1=` / `K2=` / `MED=` / `ILM=` | Entra na pasta do Merqury e guarda os caminhos dos bancos de k-mers de cada amostra e das pastas de polimento. |
+    | `n=...; rm -rf $n; mkdir $n; cd $n; merqury.sh ...; cd ..` | Cada linha: guarda o nome, apaga resultados antigos, cria a pasta, entra nela, roda o Merqury e volta. |
+    | `cd ../..` | Volta para a pasta do projeto. |
 
 ??? note "Ver saída do comando (resumida)"
 
@@ -5122,6 +5508,13 @@ column -t merqury_summary_polimento.tsv
 
 cd ../..
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `cd` + `echo -e "..." > <tabela>` | Entra na pasta e cria a tabela com o cabeçalho. |
+    | `for prefix in ...; do ... done >> <tabela>` | Para cada versão, lê QV e taxa de erro (colunas 4 e 5 do `.qv`) e completude (coluna 5 do `.completeness.stats`) e acrescenta uma linha à tabela, como na Etapa 9.2. |
+    | `column -t` + `cd ../..` | Mostra a tabela com as colunas alinhadas e volta para a pasta do projeto. |
 
 ??? note "Ver saída do comando"
 
@@ -5265,6 +5658,16 @@ column -t merqury_illumina_summary.tsv
 
 cd ../..
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `meryl k=21 ... count <R1> <R2> output ...` | Conta os k-mers das reads Illumina (os dois arquivos do par juntos). |
+    | `mkdir -p ... && cd ...` | Cria a pasta e entra nela (o `&&` só entra se a pasta foi criada). |
+    | `M=` / `PUR=` / `MED=` / `ILM=` | Guardam os caminhos do banco Illumina e das pastas de cada versão. |
+    | `n=...; rm -rf $n; mkdir $n; cd $n; merqury.sh ...; cd ..` | Cada linha avalia uma versão, como na Etapa 11.2, agora com os k-mers Illumina. |
+    | `for s ...; for prefix in $s ${s}_purgada ...` | Monta a tabela-resumo: para cada montagem, percorre as quatro versões e lê QV, erro e completude. |
+    | `column -t` + `cd ../..` | Mostra a tabela e volta para a pasta do projeto. |
 
 Cada versão é avaliada numa pasta própria. Isso evita um problema do Merqury: ele guarda os k-mers de cada montagem num banco com o **nome do arquivo FASTA** (por exemplo, `consensus.meryl`) e reaproveita esse banco, sem avisar, se ele já existir na pasta. Como várias montagens têm o mesmo nome de arquivo (`consensus.fasta`), avaliá-las na mesma pasta faria a segunda receber o resultado da primeira.
 
@@ -5484,6 +5887,13 @@ cp 9.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta 9.Montagens-polidas
 ls -lh 9.Montagens-polidas/
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `rm -rf` + `mkdir -p 9.Montagens-polidas` | Apaga a pasta antiga (e os índices `.fai` desatualizados) e cria de novo. |
+    | `cp <versão escolhida> 9.Montagens-polidas/<nome>.fasta` | Copia a versão que segue no tutorial com um nome padronizado: híbrida na Scer1, Medaka na Scer2. |
+    | `ls -lh` | Lista os arquivos e os tamanhos. |
+
 ??? example "Saída: ls 9.Montagens-polidas"
 
     ```text
@@ -5525,6 +5935,14 @@ ragtag.py scaffold $REF 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta    -o 1
 ragtag.py scaffold $REF 9.Montagens-polidas/Scer2_q10_l500_hifiasm.fasta    -o 10.Scaffolding/Scer2_q10_l500_hifiasm    -t 24
 ragtag.py scaffold $REF 9.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta -o 10.Scaffolding/Scer1_q10_l500_nextdenovo -t 24
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `mkdir -p` + `REF=...` | Cria a pasta e guarda o caminho da referência. |
+    | `ragtag.py scaffold $REF <montagem>` | Alinha os contigs na referência e os ordena e orienta em scaffolds, um por cromossomo. |
+    | `-o` / `-t 24` | Pasta de saída e número de processadores. |
+
 ??? note "Ver saída do comando (resumida)"
 
     ```bash
@@ -5558,6 +5976,11 @@ for prefix in Scer1_q10_l500_Flye Scer2_q10_l500_Flye Scer1_q10_l500_hifiasm Sce
   echo
 done
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for prefix ...; cat .../ragtag.scaffold.stats` | Mostra, para cada montagem, quantos contigs e bases o RagTag conseguiu posicionar. |
 
 ??? note "Ver saída do comando"
 
@@ -5632,6 +6055,18 @@ longstitch run \
 cd ${BASE}
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `BASE=$(pwd)` | Guarda o caminho da pasta do projeto, para voltar depois e montar caminhos completos. |
+    | `prefix=` / `sample=` | Montagem e amostra a processar. Troque e rode de novo para as outras (combinações no comentário). |
+    | `rm -rf` + `mkdir -p` + `cd` | Apaga resultados anteriores, cria a pasta da montagem e entra nela. |
+    | `ln -sf <arquivo> <nome>` | Cria um atalho (*link* simbólico) com o nome que o LongStitch espera, sem copiar o arquivo: `draft.fa` para a montagem e `<amostra>_q10_l500.fastq.gz` para as reads. |
+    | `longstitch run draft=draft reads=...` | Corrige erros de montagem (Tigmint) e une contigs (ntLink) usando as reads longas. Os nomes vão sem a extensão. |
+    | `G=12000000 t=24` | Tamanho do genoma e número de processadores. |
+    | `2>&1 | tee -a ../longstitch.log` | Mostra a saída na tela e acrescenta ao log comum de todas as montagens. |
+    | `cd ${BASE}` | Volta para a pasta do projeto. |
+
 A saída do LongStitch é muito longa e passa do limite de rolagem do terminal. O `2>&1 | tee` grava tudo em `10.Scaffolding-Longstitch/longstitch.log`, para consultar depois (por exemplo, `grep -E 'Attempted corrections|Optimal n' 10.Scaffolding-Longstitch/longstitch.log`).
 
 ??? note "Ver exemplo de saída do comando (Scer1 NextDenovo, resumida)"
@@ -5690,6 +6125,11 @@ A saída do LongStitch é muito longa e passa do limite de rolagem do terminal. 
 ```bash
 grep -E 'tigmint-make|Attempted corrections|Optimal n|Done LongStitch' 10.Scaffolding-Longstitch/longstitch.log
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `grep -E '...' longstitch.log` | Mostra só as linhas importantes do log: início do Tigmint, número de correções, parâmetro escolhido e fim de cada rodada. |
 
 ??? note "Ver saída do comando"
 
@@ -5765,6 +6205,14 @@ done >> scaffolding_summary.tsv
 cat scaffolding_summary.tsv
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `echo -e "..." > scaffolding_summary.tsv` | Cria a tabela com o cabeçalho. |
+    | `grep -c "^>" <fasta>` | Conta as sequências do arquivo: contigs antes do scaffolding e scaffolds do LongStitch. |
+    | `awk 'NR==2{print $1}' ragtag.scaffold.stats` | Lê a segunda linha das estatísticas do RagTag: contigs posicionados (`$1`), bases posicionadas (`$2`) e contigs não posicionados (`$3`). |
+    | `done >> ...` + `cat` | Acrescenta uma linha por montagem e mostra a tabela. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -5818,6 +6266,18 @@ grep -w "${CONTIG}" ../../10.Scaffolding/${PREFIX}/ragtag.scaffold.agp
 cd ../..
 
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `PREFIX=` + `cd` | Montagem a investigar; entra na pasta dela no LongStitch. |
+    | `awk '{split($4,a,"-"); print a[1]}' ... | sort | uniq -c | sort -rn | head -5` | Lê os pontos de quebra do Tigmint, tira o sufixo de cada pedaço para ficar com o nome do contig original, conta quantas quebras cada contig teve e mostra os 5 com mais quebras. |
+    | `CONTIG=` + `samtools faidx draft.fa ${CONTIG}` | Extrai a sequência do contig suspeito. |
+    | `blastn -query <contig> -subject <referência>` | Compara o contig com a referência inteira, sem precisar de um banco BLAST (`-subject` usa o arquivo direto). |
+    | `-outfmt "6 ..."` / `-max_target_seqs 10` | Saída em tabela com as colunas escolhidas; no máximo 10 sequências da referência. |
+    | `LC_ALL=C sort -k7,7gr | head -20` | Ordena pelo *bitscore* (coluna 7, do maior para o menor) e mostra os 20 melhores alinhamentos. |
+    | `grep -w "${CONTIG}" ragtag.scaffold.agp` | Mostra onde o RagTag colocou esse contig. O `-w` busca a palavra inteira. |
+    | `cd ../..` | Volta para a pasta do projeto. |
 
 ??? note "Ver saída do comando"
 
@@ -5904,6 +6364,12 @@ scp $P/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta Scer1_Flye_ragta
 scp $P/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa Scer1_Flye_longstitch.fasta
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `P=usuario@servidor:caminho/do/projeto` | Guarda o endereço do projeto no servidor (ajuste para o seu). |
+    | `scp $P/<arquivo> <nome local>` | Copia o arquivo do servidor para o seu computador, já com um nome mais curto. Rode no terminal do **seu computador**, não no servidor. |
+
 !!! tip "Arquivos para o dotplot"
     Se não tiver acesso ao servidor, baixe os mesmos arquivos do repositório:
     [:material-dna: S288C_R64_referencia.fasta](https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/S288C_R64_referencia.fasta) ·
@@ -5947,6 +6413,16 @@ for f in 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta \
 done
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `conda activate polimento` + `REF=...` | Entra no ambiente com o `minimap2` e guarda o caminho da referência. |
+    | `for f in <contigs> <scaffolds>; do ... done` | Repete para os contigs e para os scaffolds do LongStitch. |
+    | `minimap2 -x asm5 $REF $f` | Alinha as sequências na referência. |
+    | `awk '$11>=10000{...} ...'` | Considera só alinhamentos de 10 kb ou mais (coluna 11) e soma, para cada par sequência–cromossomo, o total alinhado; guarda os pares com 50 kb ou mais. |
+    | `sort ... | awk '{n[$1]++; ...}'` | Lista só as sequências que alinham em mais de um cromossomo (possíveis uniões erradas). |
+    | `conda deactivate` | Sai do ambiente. |
 
 ```text
 == 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta  (sequências com >= 50 kb alinhados em mais de um cromossomo)
@@ -6019,6 +6495,18 @@ blastn -task megablast \
 echo "$(date) fim $p" | tee -a 13.Contaminantes/blast.log
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `DB=` / `MONTAGENS=` | Caminho do banco `core_nt` e lista das montagens (usada nos resumos adiante). |
+    | `p=...` | Montagem a processar. Troque e rode de novo para as outras. |
+    | `echo "$(date) início $p" | tee -a blast.log` | Anota no log a hora de início (o BLAST demora; assim dá para acompanhar). |
+    | `blastn -task megablast` | Modo rápido do BLAST, para sequências muito parecidas. |
+    | `-query` / `-db` | Montagem a comparar e banco de dados. |
+    | `-outfmt "6 qseqid staxids bitscore std"` | Tabela com o contig, o identificador taxonômico do hit, o *bitscore* e as colunas padrão: o formato que o BlobToolKit espera. |
+    | `-max_target_seqs 10 -max_hsps 1 -evalue 1e-25` | No máximo 10 sequências do banco por contig, um alinhamento por par e só hits muito significativos. |
+    | `-num_threads 24` / `-out` | Número de processadores e arquivo de saída. |
+
 O formato de saída `6 qseqid staxids bitscore std` é o que o BlobToolKit espera: o nome do contig, o taxid do hit, o *bitscore* e as colunas padrão do BLAST. O `-task megablast` é o modo mais rápido do `blastn`, adequado para encontrar sequências muito parecidas.
 
 ```text
@@ -6047,6 +6535,11 @@ Para conferir se o BLAST terminou para todos os contigs:
 wc -l 13.Contaminantes/*.blastn.out
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `wc -l 13.Contaminantes/*.blastn.out` | Conta as linhas (hits) de cada resultado do BLAST. |
+
 ```text
    370 13.Contaminantes/Scer1_q10_l500_Flye.blastn.out
    240 13.Contaminantes/Scer1_q10_l500_hifiasm.blastn.out
@@ -6060,6 +6553,11 @@ Como pedimos `-max_target_seqs 10 -max_hsps 1`, cada contig tem no máximo 10 li
 ```bash
 cut -f1 13.Contaminantes/Scer1_q10_l500_hifiasm.blastn.out | sort -u | wc -l
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `cut -f1 ... | sort -u | wc -l` | Pega a coluna 1 (nome do contig), remove as repetições (`sort -u`) e conta quantos contigs tiveram pelo menos um hit. |
 
 ```text
 24
@@ -6080,6 +6578,16 @@ samtools index -c 13.Contaminantes/$p.bam   # índice .csi, o formato que o Blob
 
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `conda activate polimento` | Entra no ambiente com o `minimap2` e o `samtools`. |
+    | `p=` / `R=` | Montagem e reads da amostra correspondente. Troque e rode de novo para as outras. |
+    | `minimap2 -ax map-ont` | Alinha as reads Nanopore na montagem. O `-a` gera a saída em SAM. |
+    | `| samtools sort -@ 8 -o <arquivo>.bam` | Ordena os alinhamentos por posição e salva em BAM (formato binário, menor). O `-@` é o número de processadores. |
+    | `samtools index -c` | Cria o índice `.csi` do BAM, o formato que o BlobToolKit espera. |
+    | `conda deactivate` | Sai do ambiente. |
 
 !!! warning "Use `samtools index -c`"
     O BlobToolKit procura o índice no formato `.csi`. Com o índice padrão (`.bai`), ele tenta criar o `.csi` sozinho e falha com `FileNotFoundError: ... .bam.csi`. Em seguida, o blob plot também falha (`Plot axis not defined: y`), porque a cobertura não foi adicionada. A opção `-c` cria o `.csi` direto.
@@ -6147,6 +6655,18 @@ blobtools add \
 ls 13.Contaminantes/blobdir/$p/
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `TAXDUMP=...` + `conda activate blobtoolkit` | Caminho da taxonomia do NCBI e ambiente do BlobToolKit. |
+    | `p=...` | Montagem a processar. Troque e rode de novo para as outras. |
+    | `rm -rf` + `blobtools create --fasta <montagem> <pasta>` | Apaga um BlobDir antigo e cria um novo, com tamanho, GC e Ns de cada contig. |
+    | `blobtools add --hits <blast>` | Acrescenta os hits do BLAST. |
+    | `--taxrule bestsumorder --taxdump <pasta>` | Regra para atribuir a taxonomia de cada contig e base de taxonomia usada (explicada abaixo). |
+    | `--cov <bam>` | Acrescenta a cobertura de reads de cada contig. |
+    | `--replace` | Substitui os campos se eles já existirem (permite rodar de novo). |
+    | `ls <pasta>` | Lista os arquivos do BlobDir, um por campo. |
+
 O `rm -rf` e o `--replace` deixam o comando ser repetido: sem eles, o BlobToolKit não sobrescreve campos que já existem no BlobDir.
 
 ```text
@@ -6183,6 +6703,12 @@ python -c "import blobtk; blobtk.plot.blob(blobdir='13.Contaminantes/blobdir/Sce
 conda deactivate
 ls -lh 13.Contaminantes/*.png
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `python -c "import blobtk; blobtk.plot.blob(...)"` | Roda uma linha de Python que desenha o blob plot a partir do BlobDir (`blobdir=`) e salva a imagem (`output=`). |
+    | `conda deactivate` + `ls -lh *.png` | Sai do ambiente e lista as imagens geradas. |
 
 O `--taxrule bestsumorder` soma os *bitscores* dos hits de cada táxon ao longo do contig e atribui o contig ao táxon com a maior soma; é a regra padrão do BlobToolKit.
 
@@ -6233,6 +6759,15 @@ for prefix in $MONTAGENS; do
 done
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for prefix in $MONTAGENS; do ... done` | Repete para cada montagem (a variável `MONTAGENS` foi definida na Etapa 13.1). |
+    | `blobtools filter --table <arquivo> --table-fields ...` | Exporta do BlobDir uma tabela com um contig por linha e as colunas escolhidas (GC, tamanho, cobertura, filo e gênero). |
+    | `head -3` | Mostra as três primeiras linhas da tabela. |
+    | `awk -F'\t' 'NR==1{...} {n[$f]++; b[$f]+=$l} ...'` | Localiza as colunas pelo nome, no cabeçalho, e soma contigs e bases por filo. |
+    | `cut -f7 | tail -n +2 | sort | uniq -c | sort -k1,1nr` | Pega a coluna do gênero, pula o cabeçalho e conta quantos contigs há de cada gênero, do mais comum para o menos comum. |
 
 A tabela tem uma linha por contig:
 
@@ -6355,6 +6890,18 @@ done
 conda deactivate
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `FILO=Ascomycota` | Filo esperado para a levedura: contigs desse filo são mantidos. |
+    | `mkdir -p` + `conda activate polimento` | Cria a pasta de saída e entra no ambiente com o `samtools`. |
+    | `for prefix in $MONTAGENS; do ... done` | Repete para cada montagem. |
+    | `rm -f ...` | Apaga listas de uma rodada anterior. |
+    | `awk -F'\t' -v F=... -v M=... -v R=... '...'` | Localiza as colunas pelo nome e separa os contigs: os do filo esperado ou sem hit (`no-hit`) vão para a lista de manter; os outros vão para a tabela de removidos. |
+    | `touch <removidos>.tsv` | Cria a tabela vazia se nenhum contig foi removido, para os comandos seguintes não darem erro. |
+    | `samtools faidx <montagem> -r <manter.txt>` | Extrai só os contigs da lista de manter. |
+    | `echo ...` + `cat <removidos>.tsv` | Mostra quantos contigs ficaram e quantos saíram, e lista os removidos. |
+
 O arquivo `.removidos.tsv` lista, para cada contig removido, o filo, o gênero, o tamanho e a cobertura. **Sempre confira essa lista antes de aceitar a remoção**: um contig da própria levedura pode ter o melhor hit num organismo errado por causa de uma sequência mal anotada no banco, e um contaminante pode estar escondido dentro de um contig grande, sem que o contig inteiro seja atribuído a ele.
 
 !!! note "Comparando com o Kraken2"
@@ -6386,6 +6933,11 @@ busco -i 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta       -l saccharomycetace
 busco -i 9.Montagens-polidas/Scer2_q10_l500_hifiasm.fasta    -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm_final -c 24
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `busco -i 9.Montagens-polidas/<montagem> ... -o ..._final -c 24` | Roda o BUSCO nas versões finais (polidas) de cada montagem, com os mesmos parâmetros da Etapa 9.3. |
 
 ??? note "Ver saída do comando (resumida)"
 
@@ -6489,6 +7041,20 @@ done >> 8.QC_montagens/qc_summary.tsv
 column -t -s $'\t' 8.QC_montagens/qc_summary.tsv
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `QREPORT=` / `MERQURY=` / `MERQURY_ILMN=` | Caminhos das tabelas do QUAST e do Merqury (Nanopore e Illumina) de onde os valores serão lidos. |
+    | `declare -A versao=(...)` | Cria um dicionário (*array* associativo): para cada montagem, a versão escolhida na Etapa 11.4. |
+    | `declare -A quast_label=(...)` | Outro dicionário: o nome de cada montagem no relatório do QUAST. |
+    | `get_quast_value () { ... }` | Função que recebe o nome da montagem e o da métrica e devolve o valor: acha a coluna da montagem no cabeçalho e a linha da métrica. |
+    | `echo -e "Sample..." > qc_summary.tsv` | Cria a tabela com o cabeçalho. |
+    | `v=${versao[$prefix]}` | Busca no dicionário a versão da montagem atual. |
+    | `grep -oP 'C:\K[0-9.]+'` | Extrai o número logo depois de `C:` na linha do BUSCO (o `\K` descarta o `C:` do resultado). O mesmo para S, D, F e M. |
+    | `read qv comp <<< $(awk ...)` | Lê QV e completude do Merqury e guarda nas variáveis `qv` e `comp`. |
+    | `${qv:-NA}` | Usa NA se a variável estiver vazia (a Scer2 não tem QV Illumina). |
+    | `column -t -s $'\t'` | Mostra a tabela com as colunas alinhadas. |
+
 ??? note "Ver saída do comando"
 
     ```bash
@@ -6541,6 +7107,13 @@ tidk explore --minimum 5 --maximum 12 9.Montagens-polidas/Scer1_q10_l500_hifiasm
 head 11.Telomeros/explore_Scer1_hifiasm.tsv
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `conda activate tidk` + `mkdir -p` | Entra no ambiente do tidk e cria a pasta. |
+    | `tidk explore --minimum 5 --maximum 12` | Procura as sequências repetidas em tandem mais frequentes, de 5 a 12 pb, candidatas a repetição telomérica. |
+    | `head` | Mostra as primeiras linhas, com os candidatos mais frequentes. |
+
 ??? note "Ver saída do comando"
 
     ```text
@@ -6585,6 +7158,17 @@ head -5 11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat
 conda deactivate
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `MOTIVO=ACACCC` | Repetição telomérica a procurar, escolhida no passo anterior. |
+    | `for f in <montagens>; do ... done` | Repete para as montagens brutas da Scer1 e para todas as polidas. |
+    | `p=$(echo $f | tr '/' '_' | sed 's/\.fa.*$//')` | Cria um nome de saída a partir do caminho: troca `/` por `_` e tira a extensão. |
+    | `tidk search --string $MOTIVO --window 1000` | Conta quantas vezes a repetição aparece em cada janela de 1.000 pb de cada contig. |
+    | `--output $p --dir 11.Telomeros` | Prefixo e pasta dos arquivos de saída. |
+    | `2> tidk_search.log` | Manda as mensagens de progresso para um log, em vez da tela. |
+    | `ls` / `head -5` | Lista os arquivos gerados e mostra o começo de um deles. |
+
 ??? note "Ver saída do comando"
 
     ```text
@@ -6609,6 +7193,14 @@ for t in 11.Telomeros/*_telomeric_repeat_windows.tsv; do
            printf "%s\tT2T: %d\tuma ponta: %d\tpontas teloméricas: %d\n", FILENAME, t2t, uma, 2*t2t+uma }' $t
 done
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for t in ...; do awk ...; done` | Para cada resultado do tidk, conta quantos contigs têm telômero nas duas pontas (T2T) ou só numa. |
+    | `n=$3+$4` | Repetições nas duas fitas (colunas 3 e 4) em cada janela. |
+    | `prim[$1]` / `ult[$1]` | Guardam o valor da primeira e da última janela de cada contig. |
+    | `MIN=10` | Uma ponta conta como telomérica com 10 ou mais repetições. |
 
 ??? note "Ver saída do comando"
 
@@ -6637,6 +7229,11 @@ done
 tidk plot --tsv 11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv \
           --output 11.Telomeros/tidk_Scer1_hifiasm
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `tidk plot --tsv <resultado> --output <prefixo>` | Desenha um gráfico (SVG) com as repetições teloméricas ao longo de cada contig. |
 
 O resultado é um SVG, que pode ser aberto no navegador. Cada painel é um contig, do início (à esquerda) ao fim (à direita), com o nome e o tamanho embaixo. Um **pico na ponta** é um telômero: com picos nas duas pontas, o contig é T2T; com pico numa ponta só, ele termina num telômero de um lado e foi interrompido do outro. Cuidado com a escala: cada painel tem o seu próprio eixo Y, então num contig **sem** telômero o ruído de fundo (1 ou 2 cópias espalhadas) aparece ampliado e pode parecer importante.
 
@@ -6686,6 +7283,16 @@ python -c "import blobtk; blobtk.plot.snail(blobdir='$B', output='14.Snailplot/$
 conda deactivate
 ls -lh 14.Snailplot/*.png
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `conda activate blobtoolkit` + `mkdir -p` | Entra no ambiente e cria a pasta. |
+    | `p=` / `B=` | Montagem a processar e o BlobDir dela. Troque e rode de novo para as outras. |
+    | `[ -d $B ] || blobtools create ...` | Se o BlobDir não existe (`-d` testa se a pasta existe), cria um novo. Se existe, reaproveita o da Etapa 13.3. |
+    | `blobtools add --busco <full_table.tsv> --replace` | Acrescenta ao BlobDir o resultado do BUSCO da versão final. |
+    | `python -c "import blobtk; blobtk.plot.snail(...)"` | Desenha o snail plot e salva a imagem. |
+    | `conda deactivate` + `ls -lh` | Sai do ambiente e lista as imagens. |
 
 Se o passo 2 der erro (o formato do `full_table.tsv` muda entre versões do BUSCO), o snail plot ainda pode ser gerado sem ele: só o painel do BUSCO fica de fora. Copie os arquivos `.png` para o seu computador (`scp`) para visualizá-los.
 
@@ -6788,12 +7395,22 @@ grep '>' $REF | sed -E 's/^>([^ ]+) .*chromosome ([^,]+),.*/\1\tchr\2/; s/^>([^ 
 cat 15.Tabela-cromossomos/R64_nomes.tsv
 
 conda activate polimento
+# -x asm10: modo do minimap2 para comparar montagens com até cerca de 10% de divergência
 minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta       > 15.Tabela-cromossomos/Scer1_q10_l500_Flye.vs_R64.paf
 minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta    > 15.Tabela-cromossomos/Scer1_q10_l500_hifiasm.vs_R64.paf
 minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta > 15.Tabela-cromossomos/Scer1_q10_l500_nextdenovo.vs_R64.paf
 minimap2 -x asm10 --secondary=no -t 24 $REF 9.Montagens-polidas/Scer2_q10_l500_Flye.fasta       > 15.Tabela-cromossomos/Scer2_q10_l500_Flye.vs_R64.paf
 conda deactivate
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `REF=` / `MONTAGENS=` / `mkdir -p` | Referência, lista das montagens (usada no passo 15.2) e pasta de saída. |
+    | `grep '>' $REF | sed -E '...'` | Pega os cabeçalhos da referência e transforma cada um em `identificador<TAB>nome curto` (`NC_001133.9` → `chrI`; o mitocondrial vira `chrMT`). |
+    | `cat R64_nomes.tsv` | Mostra a tabela de nomes. |
+    | `minimap2 -x asm10 --secondary=no` | Alinha cada montagem na referência. O `--secondary=no` mantém só o melhor alinhamento de cada trecho. |
+    | `> <montagem>.vs_R64.paf` | Salva o alinhamento em PAF, uma linha por alinhamento. |
 
 Cada contig é atribuído ao cromossomo com o qual ele tem mais bases alinhadas. A coluna `alinhado_%` diz quanto do contig alinhou nesse cromossomo. Um valor bem abaixo de 100% indica um contig que junta pedaços de cromossomos diferentes (como os da Etapa 12.5) ou que tem muita sequência ausente da S288C.
 
@@ -6841,6 +7458,17 @@ done
 column -t 15.Tabela-cromossomos/Scer1_q10_l500_hifiasm.tsv
 ```
 
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for P in $MONTAGENS; do ... done` | Monta uma tabela para cada montagem. |
+    | `BLOB=` / `TELO=` / `BUSCO=` / `QV=` | Arquivos de onde vêm as colunas: tabela do BlobToolKit, telômeros, BUSCO e QV por contig. |
+    | `[ -f $QV ] || QV=/dev/null` | Se não existe o arquivo de QV (Scer2, sem Illumina), usa um arquivo vazio; a coluna QV fica `-`. |
+    | `awk ... FILENAME==ARGV[1] ...` | O `awk` lê os seis arquivos em sequência e trata cada um de um jeito: nomes dos cromossomos, PAF (o cromossomo com mais bases alinhadas é o de cada contig), tidk (telômero na primeira e na última janela), Merqury (QV), BUSCO (genes completos por contig) e, por último, a tabela do BlobToolKit, que dá uma linha por contig. |
+    | `sort -t$'\t' -k1,1n -k5,5nr` | Ordena pela ordem dos cromossomos na referência e, dentro de cada um, do maior contig para o menor. |
+    | `cut -f2-` | Tira a coluna de ordem, usada só para ordenar. |
+    | `rm ... .tmp` + `column -t` | Apaga o arquivo temporário e mostra a tabela da Scer1 Hifiasm. |
+
 ```text
 contig        cromossomo  alinhado_%  tamanho_pb  GC_%  cobertura  telomero_esq  telomero_dir  QV    BUSCO  genero
 ptg000018l_1  chrI        100         212114      39.5  71         sim           nao           49.5  45     Saccharomyces
@@ -6882,6 +7510,13 @@ for P in $MONTAGENS; do
     15.Tabela-cromossomos/$P.tsv > 15.Tabela-cromossomos/$P.md
 done
 ```
+
+??? info "O que faz cada comando"
+    | Comando | O que faz |
+    |---|---|
+    | `for P in $MONTAGENS; do awk ...; done` | Converte cada tabela `.tsv` numa tabela Markdown (`.md`), pronta para colar num relatório ou no GitHub. |
+    | `NR==1{ print "| Cromossomo | ..." }` | Na primeira linha, escreve o cabeçalho e a linha de alinhamento das colunas. |
+    | `printf "| %s | ..."` | Nas outras, escreve os valores de cada contig entre barras verticais, com o nome do contig em código e o gênero em itálico. |
 
 Na Scer1 Hifiasm, a montagem escolhida, fica assim (cromossomos T2T em negrito):
 
