@@ -2666,13 +2666,42 @@
 <h2 id="etapa-1-obtencao-dos-dados-publicos"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7v2h2v8h2V7zm2-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 1 — Obtenção dos dados públicos<a class="headerlink" href="#etapa-1-obtencao-dos-dados-publicos" title="Permanent link">&para;</a></h2>
 <p>Os dados estão disponíveis no ENA. O download pode ser feito via SRA Toolkit (<code>prefetch</code> + <code>fasterq-dump</code>) ou diretamente via FTP do ENA, que costuma ser mais rápido.</p>
 <p><strong>Opção 1 — SRA Toolkit (recomendado para arquivos grandes):</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span><span class="m">0</span>.DadosBrutos
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="m">0</span>.DadosBrutos
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>prefetch<span class="w"> </span>ERR13367646<span class="w"> </span>-O<span class="w"> </span><span class="m">0</span>.DadosBrutos
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>fasterq-dump<span class="w"> </span><span class="m">0</span>.DadosBrutos/ERR13367646/ERR13367646.sra<span class="w"> </span>--outdir<span class="w"> </span><span class="m">0</span>.DadosBrutos<span class="w"> </span>--outfile<span class="w"> </span>Scer1.fastq<span class="w"> </span>--progress<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>gzip<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>prefetch<span class="w"> </span>ERR13375657<span class="w"> </span>-O<span class="w"> </span><span class="m">0</span>.DadosBrutos
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>fasterq-dump<span class="w"> </span><span class="m">0</span>.DadosBrutos/ERR13375657/ERR13375657.sra<span class="w"> </span>--outdir<span class="w"> </span><span class="m">0</span>.DadosBrutos<span class="w"> </span>--outfile<span class="w"> </span>Scer2.fastq<span class="w"> </span>--progress<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>gzip<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer2.fastq
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p 0.DadosBrutos</code></td>
+<td>Cria a pasta dos dados brutos. O <code>-p</code> evita erro se a pasta já existir.</td>
+</tr>
+<tr>
+<td><code>prefetch ERR... -O 0.DadosBrutos</code></td>
+<td>Baixa do SRA o arquivo <code>.sra</code> da corrida indicada (<code>ERR...</code>) para a pasta dada em <code>-O</code>.</td>
+</tr>
+<tr>
+<td><code>fasterq-dump ... --outdir --outfile --progress</code></td>
+<td>Converte o <code>.sra</code> em FASTQ, com o nome definido em <code>--outfile</code>. O <code>--progress</code> mostra o andamento.</td>
+</tr>
+<tr>
+<td><code>&amp;&amp; gzip ...</code></td>
+<td>O <code>&amp;&amp;</code> só roda o <code>gzip</code> se o comando anterior terminou sem erro. O <code>gzip</code> comprime o FASTQ (<code>.fastq.gz</code>).</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>prefetch<span class="w"> </span>ERR13367646<span class="w"> </span>-O<span class="w"> </span><span class="m">0</span>.DadosBrutos
@@ -2713,7 +2742,7 @@
 </span></code></pre></div>
 </details>
 <p><strong>Opção 2 — wget direto do ENA (mais simples):</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span><span class="m">0</span>.DadosBrutos
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="m">0</span>.DadosBrutos
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>wget<span class="w"> </span>-P<span class="w"> </span><span class="m">0</span>.DadosBrutos<span class="w"> </span>ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/046/ERR13367646/ERR13367646.fastq.gz
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>wget<span class="w"> </span>-P<span class="w"> </span><span class="m">0</span>.DadosBrutos<span class="w"> </span>ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/057/ERR13375657/ERR13375657.fastq.gz
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
@@ -2721,6 +2750,31 @@
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>mv<span class="w"> </span><span class="m">0</span>.DadosBrutos/ERR13367646.fastq.gz<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq.gz
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>mv<span class="w"> </span><span class="m">0</span>.DadosBrutos/ERR13375657.fastq.gz<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer2.fastq.gz
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p 0.DadosBrutos</code></td>
+<td>Cria a pasta dos dados brutos. O <code>-p</code> evita erro se a pasta já existir.</td>
+</tr>
+<tr>
+<td><code>wget -P 0.DadosBrutos &lt;endereço&gt;</code></td>
+<td>Baixa o arquivo do FTP do ENA e salva na pasta dada em <code>-P</code>.</td>
+</tr>
+<tr>
+<td><code>mv &lt;antigo&gt; &lt;novo&gt;</code></td>
+<td>Renomeia o arquivo (<code>ERR...fastq.gz</code> → <code>Scer1.fastq.gz</code>), para os nomes ficarem padronizados no resto do tutorial.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>wget<span class="w"> </span>-P<span class="w"> </span><span class="m">0</span>.DadosBrutos<span class="w"> </span>ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR133/046/ERR13367646/ERR13367646.fastq.gz
@@ -2761,6 +2815,27 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>gzip<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"CORROMPIDO"</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>gzip<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer2.fastq.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"CORROMPIDO"</span>
 </span></code></pre></div></p>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gzip -t &lt;arquivo&gt;</code></td>
+<td>Testa se o arquivo comprimido está íntegro, sem descomprimir.</td>
+</tr>
+<tr>
+<td><code>&amp;&amp; echo "OK" || echo "CORROMPIDO"</code></td>
+<td>Se o teste passou (<code>&amp;&amp;</code>), escreve OK; se falhou (<code>||</code>), escreve CORROMPIDO.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>gzip<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"CORROMPIDO"</span>
@@ -2775,10 +2850,60 @@
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>NanoPlot<span class="w"> </span>--fastq<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq.gz<span class="w"> </span>-o<span class="w"> </span><span class="m">1</span>.QC_dadosbrutos/<span class="w"> </span>--prefix<span class="w"> </span>Scer1_<span class="w"> </span>--threads<span class="w"> </span><span class="m">20</span><span class="w"> </span>--loglength
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>NanoPlot<span class="w"> </span>--fastq<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer2.fastq.gz<span class="w"> </span>-o<span class="w"> </span><span class="m">1</span>.QC_dadosbrutos/<span class="w"> </span>--prefix<span class="w"> </span>Scer2_<span class="w"> </span>--threads<span class="w"> </span><span class="m">20</span><span class="w"> </span>--loglength
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir 1.QC_dadosbrutos/</code></td>
+<td>Cria a pasta dos relatórios de qualidade.</td>
+</tr>
+<tr>
+<td><code>NanoPlot --fastq &lt;reads&gt;</code></td>
+<td>Calcula estatísticas e gera gráficos de qualidade e comprimento das reads.</td>
+</tr>
+<tr>
+<td><code>-o</code> / <code>--prefix</code></td>
+<td>Pasta de saída e prefixo dos arquivos (para não misturar Scer1 e Scer2 na mesma pasta).</td>
+</tr>
+<tr>
+<td><code>--threads 20</code></td>
+<td>Número de processadores usados.</td>
+</tr>
+<tr>
+<td><code>--loglength</code></td>
+<td>Usa escala logarítmica no eixo do comprimento, o que facilita ver reads curtas e longas no mesmo gráfico.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p><strong>Visualizar estatísticas</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>more<span class="w"> </span><span class="m">1</span>.QC_dadosbrutos/Scer1_NanoStats.txt
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>more<span class="w"> </span><span class="m">1</span>.QC_dadosbrutos/Scer2_NanoStats.txt<span class="w"> </span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>more &lt;arquivo&gt;</code></td>
+<td>Mostra o arquivo na tela, uma página por vez (espaço avança, <code>q</code> sai). O <code>NanoStats.txt</code> é o resumo numérico do NanoPlot.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>more<span class="w"> </span><span class="m">1</span>.QC_dadosbrutos/Scer1_NanoStats.txt<span class="w"> </span>
@@ -2876,6 +3001,47 @@
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>porechop_abi<span class="w"> </span>-abi<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer2.fastq.gz<span class="w"> </span>-o<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_trim.fastq.gz<span class="w"> </span>--format<span class="w"> </span>fastq.gz<span class="w"> </span>-t<span class="w"> </span><span class="m">20</span><span class="w"> </span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda init</code> + <code>source ~/.bashrc</code></td>
+<td>Configuram o terminal para usar o <code>conda activate</code> (só é preciso na primeira vez).</td>
+</tr>
+<tr>
+<td><code>mkdir -p 2.Filtragem-dadosbrutos</code></td>
+<td>Cria a pasta das reads filtradas.</td>
+</tr>
+<tr>
+<td><code>conda activate porechop_abi_env</code></td>
+<td>Entra no ambiente onde o Porechop_ABI está instalado.</td>
+</tr>
+<tr>
+<td><code>porechop_abi -abi</code></td>
+<td>Remove adaptadores. O <code>-abi</code> (<em>ab initio</em>) descobre os adaptadores a partir das próprias reads, sem depender de uma lista fixa.</td>
+</tr>
+<tr>
+<td><code>-i</code> / <code>-o</code> / <code>--format fastq.gz</code></td>
+<td>Arquivo de entrada, arquivo de saída e formato da saída (FASTQ comprimido).</td>
+</tr>
+<tr>
+<td><code>-t 20</code></td>
+<td>Número de processadores usados.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>porechop_abi<span class="w"> </span>-abi<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq.gz<span class="w"> </span>-o<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim.fastq.gz<span class="w"> </span>--format<span class="w"> </span>fastq.gz<span class="w"> </span>-t<span class="w"> </span><span class="m">20</span><span class="w"> </span>
@@ -3935,16 +4101,53 @@
 </tbody>
 </table>
 </details>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>&lt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>&lt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>gunzip<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>gunzip<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gunzip -c &lt;arquivo.gz&gt;</code></td>
+<td>Descomprime o arquivo e manda o conteúdo para o próximo comando, sem criar um arquivo descomprimido no disco.</td>
+</tr>
+<tr>
+<td><code>| chopper</code></td>
+<td>O <code>|</code> (<em>pipe</em>) passa as reads para o Chopper, que filtra cada uma.</td>
+</tr>
+<tr>
+<td><code>-q 10</code></td>
+<td>Descarta reads com qualidade média abaixo de Q10.</td>
+</tr>
+<tr>
+<td><code>-l 500</code></td>
+<td>Descarta reads com menos de 500 pb.</td>
+</tr>
+<tr>
+<td><code>-t 32</code></td>
+<td>Número de processadores usados.</td>
+</tr>
+<tr>
+<td><code>| gzip &gt; &lt;saída&gt;</code></td>
+<td>Comprime as reads que passaram no filtro e salva no arquivo de saída.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>&lt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>gunzip<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>Kept<span class="w"> </span><span class="m">230437</span><span class="w"> </span>reads<span class="w"> </span>out<span class="w"> </span>of<span class="w"> </span><span class="m">349286</span><span class="w"> </span>reads
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>$<span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>&lt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>$<span class="w"> </span>gunzip<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_trim.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>Kept<span class="w"> </span><span class="m">33006</span><span class="w"> </span>reads<span class="w"> </span>out<span class="w"> </span>of<span class="w"> </span><span class="m">57784</span><span class="w"> </span>reads
 </span></code></pre></div>
 </details>
@@ -3960,8 +4163,8 @@
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="s2">"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&amp;id=NC_001416.1&amp;rettype=fasta&amp;retmode=text"</span>
 </span></code></pre></div>
 <p><strong>Opção 1 (recomendada): Chopper com <code>--contam</code>.</strong> O próprio Chopper alinha cada read contra a referência de lambda e descarta as que alinham, no mesmo passo do filtro de qualidade e tamanho:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>--contam<span class="w"> </span><span class="m">0</span>.DadosBrutos/reference/lambda_NC_001416.1.fasta<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span>&lt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim.fastq.gz<span class="w"> </span><span class="se">\</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>gunzip<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim.fastq.gz<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>--contam<span class="w"> </span><span class="m">0</span>.DadosBrutos/reference/lambda_NC_001416.1.fasta<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="m">2</span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_chopper.log<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
 </span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
@@ -3978,7 +4181,7 @@
 </span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
 </span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>cat<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_nanolyse.log
 </span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>&lt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim_no_lambda.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>gunzip<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_trim_no_lambda.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>chopper<span class="w"> </span>-q<span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span><span class="m">500</span><span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz
 </span></code></pre></div>
 </details>
 <p>Repita para cada amostra que tiver o pico (troque <code>Scer1</code> pelo nome da amostra).</p>
@@ -4189,6 +4392,27 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>NanoPlot<span class="w"> </span>--fastq<span class="w">  </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz<span class="w"> </span>-o<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/<span class="w"> </span>--prefix<span class="w"> </span>Scer1_q10_l500_<span class="w"> </span>--threads<span class="w"> </span><span class="m">20</span><span class="w"> </span>--loglength
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>NanoPlot<span class="w"> </span>--fastq<span class="w">  </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz<span class="w"> </span>-o<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/<span class="w"> </span>--prefix<span class="w"> </span>Scer2_q10_l500_<span class="w"> </span>--threads<span class="w"> </span><span class="m">20</span><span class="w"> </span>--loglength
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir 4.QC_dadosfiltrados/</code></td>
+<td>Cria a pasta dos relatórios das reads filtradas.</td>
+</tr>
+<tr>
+<td><code>NanoPlot --fastq &lt;reads filtradas&gt; ...</code></td>
+<td>Mesmo comando da Etapa 2, agora nas reads filtradas, para comparar antes e depois.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p><strong>Visualizar estatísticas</strong></p>
 <div class="admonition tip">
 <p class="admonition-title">O que observar</p>
@@ -4199,6 +4423,23 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>cat<span class="w"> </span><span class="m">1</span>.QC_dadosbrutos/Scer2_NanoStats.txt
 </span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>cat<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer2_q10_l500_NanoStats.txt
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat &lt;arquivo&gt;</code></td>
+<td>Mostra o arquivo inteiro na tela. Aqui, os resumos do NanoPlot antes (<code>1.QC_dadosbrutos</code>) e depois (<code>4.QC_dadosfiltrados</code>) da filtragem.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">### Scer1 - Bruto</span>
@@ -4382,6 +4623,35 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>meryl<span class="w"> </span><span class="nv">k</span><span class="o">=</span><span class="m">21</span><span class="w"> </span><span class="nv">memory</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="nv">threads</span><span class="o">=</span><span class="m">20</span><span class="w"> </span>count<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz<span class="w"> </span>output<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500.meryl
 </span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>meryl<span class="w"> </span><span class="nv">k</span><span class="o">=</span><span class="m">21</span><span class="w"> </span><span class="nv">memory</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="nv">threads</span><span class="o">=</span><span class="m">20</span><span class="w"> </span>count<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz<span class="w"> </span>output<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer2_q10_l500.meryl
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meryl count</code></td>
+<td>Conta todos os k-mers das reads.</td>
+</tr>
+<tr>
+<td><code>k=21</code></td>
+<td>Tamanho do k-mer (21 bases).</td>
+</tr>
+<tr>
+<td><code>memory=24 threads=20</code></td>
+<td>Memória máxima (em GB) e número de processadores.</td>
+</tr>
+<tr>
+<td><code>output &lt;pasta&gt;.meryl</code></td>
+<td>Pasta onde o Meryl guarda a contagem (um banco de k-mers, usado de novo no Merqury).</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>$<span class="w"> </span>meryl<span class="w"> </span><span class="nv">k</span><span class="o">=</span><span class="m">21</span><span class="w"> </span><span class="nv">memory</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="nv">threads</span><span class="o">=</span><span class="m">20</span><span class="w"> </span>count<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz<span class="w"> </span>output<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500.meryl
@@ -4562,6 +4832,31 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>meryl<span class="w"> </span>histogram<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500.meryl<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/\t/ /g'</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500.hist
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>meryl<span class="w"> </span>histogram<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer2_q10_l500.meryl<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/\t/ /g'</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer2_q10_l500.hist
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meryl histogram &lt;banco&gt;.meryl</code></td>
+<td>Gera o histograma: quantos k-mers distintos aparecem 1 vez, 2 vezes, 3 vezes...</td>
+</tr>
+<tr>
+<td><code>| sed 's/\t/ /g'</code></td>
+<td>Troca as tabulações por espaços, formato aceito pelo GenomeScope2.</td>
+</tr>
+<tr>
+<td><code>&gt; &lt;arquivo&gt;.hist</code></td>
+<td>Salva o histograma em arquivo.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>$<span class="w"> </span>meryl<span class="w"> </span>histogram<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500.meryl<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/\t/ /g'</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500.hist
@@ -4630,6 +4925,43 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 </span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>genomescope2<span class="w"> </span>-i<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer2_q10_l500.hist<span class="w"> </span>-o<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer2_q10_l500_genomescope<span class="w"> </span>-k<span class="w"> </span><span class="m">21</span><span class="w"> </span>-p<span class="w"> </span><span class="m">2</span><span class="w"> </span>--name_prefix<span class="w"> </span><span class="s2">"Scer2_Oxford_Nanopore"</span>
 </span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda activate genomescope2_env</code></td>
+<td>Entra no ambiente do GenomeScope2.</td>
+</tr>
+<tr>
+<td><code>genomescope2 -i &lt;hist&gt; -o &lt;pasta&gt;</code></td>
+<td>Ajusta um modelo ao histograma de k-mers e estima tamanho do genoma, heterozigosidade e repetições.</td>
+</tr>
+<tr>
+<td><code>-k 21</code></td>
+<td>Tamanho do k-mer usado na contagem (tem que ser o mesmo do Meryl).</td>
+</tr>
+<tr>
+<td><code>-p 1</code> / <code>-p 2</code></td>
+<td>Ploidia: 1 para a Scer1 (haploide), 2 para a Scer2 (diploide).</td>
+</tr>
+<tr>
+<td><code>--name_prefix</code></td>
+<td>Título que aparece nos gráficos.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$<span class="w"> </span>genomescope2<span class="w"> </span>-i<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500.hist<span class="w"> </span>-o<span class="w"> </span><span class="m">4</span>.QC_dadosfiltrados/Scer1_q10_l500_genomescope<span class="w"> </span>-k<span class="w"> </span><span class="m">21</span><span class="w"> </span>-p<span class="w"> </span><span class="m">1</span><span class="w"> </span>--name_prefix<span class="w"> </span><span class="s2">"Scer1_Oxford_Nanopore"</span>
@@ -4688,6 +5020,47 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 </span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
 </span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir ...</code></td>
+<td>Cria a pasta do Flye e uma subpasta para cada amostra.</td>
+</tr>
+<tr>
+<td><code>conda activate flye_env</code></td>
+<td>Entra no ambiente do Flye.</td>
+</tr>
+<tr>
+<td><code>flye --genome-size 12M</code></td>
+<td>Monta o genoma. O <code>--genome-size</code> é o tamanho estimado (12 Mb, como no GenomeScope2).</td>
+</tr>
+<tr>
+<td><code>--scaffold</code></td>
+<td>Permite unir contigs em scaffolds, com trechos de <code>N</code> no lugar das regiões não resolvidas.</td>
+</tr>
+<tr>
+<td><code>--nano-hq &lt;reads&gt;</code></td>
+<td>Modo para reads Nanopore de alta qualidade (veja o aviso abaixo).</td>
+</tr>
+<tr>
+<td><code>-o</code> / <code>-t 24</code></td>
+<td>Pasta de saída e número de processadores.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="admonition warning">
 <p class="admonition-title">Atenção: <code>--nano-hq</code> ou <code>--nano-raw</code>? Escolha pelos seus dados</p>
 <p>O Flye tem dois modos para reads Nanopore. Segundo a <a href="https://github.com/mikolmogorov/Flye/blob/flye/docs/USAGE.md" target="_blank">documentação</a>:</p>
@@ -4701,7 +5074,7 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 <tbody>
 <tr>
 <td><code>--nano-hq</code></td>
-<td>basecalling Guppy5+/Dorado no modo SUP, ou reads Q20+ (menos de ~5% de erro)</td>
+<td>basecalling Guppy5+/Dorado no modo SUP, ou reads da química "Q20+" da ONT; a documentação fala em menos de 5% de erro</td>
 </tr>
 <tr>
 <td><code>--nano-raw</code></td>
@@ -4709,8 +5082,8 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 </tr>
 </tbody>
 </table>
-<p>Nossos dados ficam <strong>no limite</strong>: depois da filtragem, a qualidade média é Q13,3 nas duas amostras (Etapa 5.1), ou seja, cerca de 5% de erro, abaixo do Q20 citado na documentação. Usamos <code>--nano-hq</code> e a montagem do Scer1 saiu muito boa, mas <code>--nano-raw</code> também seria uma escolha defensável.</p>
-<p><strong>Numa montagem nova, não copie a opção sem olhar os dados.</strong> Se o sequenciamento é seu, confira o basecaller e o modo usados (SUP, HAC ou FAST). Em dados baixados do SRA, como os nossos, essa informação muitas vezes não está disponível, e a qualidade média no NanoPlot passa a ser o principal guia. Reads Q20+ ou SUP recentes ficam com <code>--nano-hq</code>. Reads com qualidade média bem abaixo de Q20, ou de basecallers antigos, vão com <code>--nano-raw</code>. Na dúvida, monte com os dois modos e compare com QUAST e BUSCO (Etapa 9).</p>
+<p>Nossos dados ficam <strong>no limite</strong>: depois da filtragem, a qualidade média é Q13,3 nas duas amostras (Etapa 5.1). Pela escala Phred, isso dá 10^(-13,3/10) ≈ 4,7% de erro: logo abaixo do limite de 5% da documentação, mas longe de Q20 no sentido Phred, que seria 1% de erro. (O "Q20+" da documentação é o nome da química de sequenciamento da ONT, não um valor exato de Phred.) Usamos <code>--nano-hq</code> e a montagem do Scer1 saiu muito boa, mas <code>--nano-raw</code> também seria uma escolha defensável.</p>
+<p><strong>Numa montagem nova, não copie a opção sem olhar os dados.</strong> Se o sequenciamento é seu, confira o basecaller e o modo usados (SUP, HAC ou FAST). Em dados baixados do SRA, como os nossos, essa informação muitas vezes não está disponível, e a qualidade média no NanoPlot passa a ser o principal guia. Reads SUP recentes ou da química Q20+ ficam com <code>--nano-hq</code>. Reads com mais de ~5% de erro (qualidade média abaixo de ~Q13), ou de basecallers antigos, vão com <code>--nano-raw</code>. Na dúvida, monte com os dois modos e compare com QUAST e BUSCO (Etapa 9).</p>
 </div>
 <details class="note">
 <summary>Ver saída do comando</summary>
@@ -4906,6 +5279,47 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 </span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
 </span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>hifiasm<span class="w"> </span>-o<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm<span class="w"> </span>-t<span class="w"> </span><span class="m">12</span><span class="w"> </span>--primary<span class="w"> </span>--write-ec<span class="w"> </span>--ont<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm.log
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir 6.Montagem-hifiasm</code></td>
+<td>Cria a pasta do Hifiasm.</td>
+</tr>
+<tr>
+<td><code>hifiasm -o &lt;prefixo&gt;</code></td>
+<td>Monta o genoma. O <code>-o</code> define o prefixo de todos os arquivos de saída.</td>
+</tr>
+<tr>
+<td><code>-t 12</code></td>
+<td>Número de processadores usados.</td>
+</tr>
+<tr>
+<td><code>--primary</code></td>
+<td>Gera uma montagem primária e uma alternativa (<code>p_ctg</code> e <code>a_ctg</code>), em vez de separar os dois haplótipos.</td>
+</tr>
+<tr>
+<td><code>--write-ec</code></td>
+<td>Salva também as reads corrigidas pelo Hifiasm.</td>
+</tr>
+<tr>
+<td><code>--ont &lt;reads&gt;</code></td>
+<td>Indica que as reads são Nanopore.</td>
+</tr>
+<tr>
+<td><code>2&gt; &lt;arquivo&gt;.log</code></td>
+<td>Guarda as mensagens do programa (que saem pelo canal de erro, <code>2&gt;</code>) num arquivo de log.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1">### Scer1</span>
@@ -4918,6 +5332,27 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>awk<span class="w"> </span><span class="s1">'/^S/{print "&gt;"$2"\n"$3}'</span><span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.gfa<span class="w"> </span>&gt;<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa
 </span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>awk<span class="w"> </span><span class="s1">'/^S/{print "&gt;"$2"\n"$3}'</span><span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.gfa<span class="w"> </span>&gt;<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>awk '/^S/{print "&gt;"$2"\n"$3}'</code></td>
+<td>No GFA, as linhas que começam com <code>S</code> são as sequências: a coluna 2 é o nome e a 3 é a sequência. O <code>awk</code> escreve cada uma no formato FASTA (<code>&gt;nome</code> e, na linha seguinte, a sequência).</td>
+</tr>
+<tr>
+<td><code>&gt; &lt;arquivo&gt;.fa</code></td>
+<td>Salva o resultado em FASTA.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="admonition tip">
 <p class="admonition-title">FASTAs disponíveis no repositório</p>
 <p><a href="https://github.com/LGBIO-UFG/PRO-BIOINFO/blob/main/data/exemplos/nanopore/assemblies/Scer1_Hifiasm_assembly.fa"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2h2v2c0 1.44.68 2.61 1.88 3.78.86.83 2.01 1.63 3.21 2.42l-1.83 1.19C8.27 10.72 7.31 10 6.5 9.21 5.07 7.82 4 6.1 4 4zm14 0h2v2c0 2.1-1.07 3.82-2.5 5.21-1.41 1.38-3.21 2.52-4.96 3.63-1.75 1.12-3.45 2.21-4.66 3.38C6.68 17.39 6 18.56 6 20v2H4v-2c0-2.1 1.07-3.82 2.5-5.21 1.41-1.38 3.21-2.52 4.96-3.63 1.75-1.12 3.45-2.21 4.66-3.38C17.32 6.61 18 5.44 18 4zm-3.26 10.61c.99.67 1.95 1.39 2.76 2.18C18.93 16.18 20 17.9 20 20v2h-2v-2c0-1.44-.68-2.61-1.88-3.78-.86-.83-2.01-1.63-3.21-2.42zM7 3h10v1l-.06.5H7.06L7 4zm.68 3h8.64c-.24.34-.52.69-.9 1.06l-.51.44H9.07l-.49-.44c-.38-.37-.66-.72-.9-1.06m1.41 10.5h5.84l.49.44c.38.37.66.72.9 1.06H7.68c.24-.34.52-.69.9-1.06zm-2.03 3h9.88l.06.5v1H7v-1z"/></svg></span> Scer1_Hifiasm_assembly.fa</a> ·
@@ -4931,19 +5366,65 @@ O arquivo <code>kraken_report.txt</code> tem 6 colunas:</p>
 <h2 id="etapa-8-montagem-com-nextdenovo"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13h2v2h-2zm0-4h2v2h-2zm0 8h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m1-15a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> Etapa 8 — Montagem com NextDenovo<a class="headerlink" href="#etapa-8-montagem-com-nextdenovo" title="Permanent link">&para;</a></h2>
 <p>O NextDenovo faz uma etapa de correção de erros nas reads (baseada em sobreposições entre elas) antes da montagem propriamente dita, o que ajuda a compensar reads mais ruidosas ou com cobertura mais baixa. Para rodar o NextDenovo, primeiro precisamos preparar um arquivo de configuração (<code>run.cfg</code>).</p>
 <p><strong>Criar o arquivo de configuração</strong></p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>mkdir<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>mkdir<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/
 </span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>mkdir<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500
 </span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>realpath<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer1_q10_l500.fastq.gz<span class="w"> </span>&gt;<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/input.fofn
 </span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>cp<span class="w"> </span>/home/lgbio/programas/NextDenovo/doc/run.cfg<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/.
 </span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>nano<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/run.cfg<span class="w"> </span>
 </span></code></pre></div>
-Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros</p>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir ...</code></td>
+<td>Cria a pasta do NextDenovo e a subpasta da Scer1.</td>
+</tr>
+<tr>
+<td><code>realpath &lt;reads&gt; &gt; input.fofn</code></td>
+<td>Escreve o caminho completo das reads no <code>input.fofn</code> (<em>file of file names</em>), a lista de arquivos de entrada que o NextDenovo lê.</td>
+</tr>
+<tr>
+<td><code>cp .../run.cfg &lt;pasta&gt;/.</code></td>
+<td>Copia o arquivo de configuração modelo que vem com o NextDenovo.</td>
+</tr>
+<tr>
+<td><code>nano &lt;pasta&gt;/run.cfg</code></td>
+<td>Abre o arquivo de configuração no editor de texto, para ajustar os parâmetros listados abaixo.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>read_type = ont
 </span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>genome_size = 12m
 </span></code></pre></div>
 <p><strong>Comando para rodar:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>nextDenovo<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/run.cfg
 </span></code></pre></div></p>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nextDenovo &lt;pasta&gt;/run.cfg</code></td>
+<td>Roda a montagem com os parâmetros do arquivo de configuração.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>$<span class="w"> </span>nextDenovo<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/run.cfg
@@ -5236,14 +5717,48 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros</p>
 </span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>realpath<span class="w"> </span><span class="m">2</span>.Filtragem-dadosbrutos/Scer2_q10_l500.fastq.gz<span class="w"> </span>&gt;<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer2_q10_l500/input.fofn
 </span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>cp<span class="w"> </span>/home/lgbio/programas/NextDenovo/doc/run.cfg<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer2_q10_l500/.
 </span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>nano<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer2_q10_l500/run.cfg<span class="w"> </span>
-</span></code></pre></div>
-Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
+</span></code></pre></div></p>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir</code> / <code>realpath</code> / <code>cp</code> / <code>nano</code></td>
+<td>Os mesmos passos da Scer1: cria a pasta, escreve o <code>input.fofn</code> com o caminho das reads, copia o <code>run.cfg</code> modelo e abre para edição.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>read_type = ont
 </span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>genome_size = 12m
 </span></code></pre></div>
 <p><strong>Comando para rodar:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>nextDenovo<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer2_q10_l500/run.cfg
 </span></code></pre></div></p>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nextDenovo &lt;pasta&gt;/run.cfg</code></td>
+<td>Roda a montagem da Scer2 com os parâmetros do arquivo de configuração.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>$<span class="w"> </span>nextDenovo<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer2_q10_l500/run.cfg
@@ -5349,12 +5864,39 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>Fazer download do genoma de referência: *</li>
-</ul>
+<p><strong>Baixar o genoma de referência (S288C, R64), usado pelo QUAST:</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>datasets<span class="w"> </span>download<span class="w"> </span>genome<span class="w"> </span>accession<span class="w"> </span>GCF_000146045.2<span class="w"> </span>--include<span class="w"> </span>genome<span class="w"> </span>--filename<span class="w"> </span>Scer_reference.zip
 </span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>unzip<span class="w"> </span>Scer_reference.zip
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>datasets download genome accession GCF_000146045.2</code></td>
+<td>Baixa do NCBI o genoma de referência de <em>S. cerevisiae</em> S288C (R64).</td>
+</tr>
+<tr>
+<td><code>--include genome</code></td>
+<td>Baixa só a sequência do genoma (sem anotação, proteínas etc.).</td>
+</tr>
+<tr>
+<td><code>--filename &lt;arquivo&gt;.zip</code></td>
+<td>Nome do arquivo baixado.</td>
+</tr>
+<tr>
+<td><code>unzip &lt;arquivo&gt;.zip</code></td>
+<td>Descompacta. A sequência fica em <code>ncbi_dataset/data/GCF_000146045.2/</code>.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h3 id="91-estatisticas-basicas-quast">9.1 Estatísticas básicas (QUAST)<a class="headerlink" href="#91-estatisticas-basicas-quast" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Ao rodar o QUAST de novo</p>
@@ -5362,6 +5904,39 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>quast.py<span class="w"> </span>-r<span class="w"> </span>ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna<span class="w"> </span>-s<span class="w"> </span><span class="m">5</span>.Montagem-Flye/Scer1_q10_l500/assembly.fasta<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta<span class="w"> </span><span class="m">5</span>.Montagem-Flye/Scer2_q10_l500/assembly.fasta<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa<span class="w"> </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/quast_q10_l500<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span>--labels<span class="w"> </span><span class="s2">"Scer1_Flye,Scer1_Hifiasm,Scer1_NextDenovo,Scer2_Flye,Scer2_Hifiasm"</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quast.py -r &lt;referência&gt;</code></td>
+<td>Calcula as estatísticas das montagens e compara cada uma com a referência.</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>Avalia também os scaffolds quebrados nos trechos de <code>N</code>, mostrando os contigs separadamente.</td>
+</tr>
+<tr>
+<td><code>&lt;montagem1&gt; &lt;montagem2&gt; ...</code></td>
+<td>As montagens a avaliar, todas no mesmo relatório.</td>
+</tr>
+<tr>
+<td><code>-o</code> / <code>-t 24</code></td>
+<td>Pasta de saída e número de processadores.</td>
+</tr>
+<tr>
+<td><code>--labels "..."</code></td>
+<td>Nomes curtos das montagens nas tabelas, na mesma ordem dos arquivos.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>$<span class="w"> </span>quast.py<span class="w"> </span>-r<span class="w"> </span>ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna<span class="w"> </span>-s<span class="w"> </span><span class="m">5</span>.Montagem-Flye/Scer1_q10_l500/assembly.fasta<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta<span class="w"> </span><span class="m">5</span>.Montagem-Flye/Scer2_q10_l500/assembly.fasta<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa<span class="w"> </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/quast_q10_l500<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span>--labels<span class="w"> </span><span class="s2">"Scer1_Flye,Scer1_Hifiasm,Scer1_NextDenovo,Scer2_Flye,Scer2_Hifiasm"</span>
@@ -5522,6 +6097,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <h3 id="imprimir-os-resultados-de-estatistica-do-quast-na-tela">Imprimir os resultados de estatística do quast na tela<a class="headerlink" href="#imprimir-os-resultados-de-estatistica-do-quast-na-tela" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>cat<span class="w"> </span><span class="m">8</span>.QC_montagens/quast_q10_l500/report.tsv<span class="w"> </span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat &lt;pasta&gt;/report.tsv</code></td>
+<td>Mostra a tabela-resumo do QUAST na tela.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>$<span class="w"> </span>cat<span class="w"> </span><span class="m">8</span>.QC_montagens/quast_q10_l500/report.tsv<span class="w"> </span>
@@ -5620,6 +6212,35 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-53-29"><a id="__codelineno-53-29" name="__codelineno-53-29" href="#__codelineno-53-29"></a>merqury.sh<span class="w"> </span>../../../4.QC_dadosfiltrados/Scer1_q10_l500.meryl<span class="w"> </span>../../../7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta<span class="w"> </span>Scer1_q10_l500_nextdenovo
 </span><span id="__span-53-30"><a id="__codelineno-53-30" name="__codelineno-53-30" href="#__codelineno-53-30"></a><span class="nb">cd</span><span class="w"> </span>../../..
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p</code> + <code>cd</code></td>
+<td>Cria uma pasta para cada montagem e entra nela (o Merqury escreve os arquivos na pasta atual).</td>
+</tr>
+<tr>
+<td><code>merqury.sh &lt;banco&gt;.meryl &lt;montagem&gt; &lt;prefixo&gt;</code></td>
+<td>Compara os k-mers das reads (Etapa 5.2) com os da montagem e calcula QV e completude. O terceiro argumento é o prefixo dos arquivos de saída.</td>
+</tr>
+<tr>
+<td><code>../../../</code></td>
+<td>Como entramos três pastas abaixo do projeto, os caminhos sobem três níveis.</td>
+</tr>
+<tr>
+<td><code>cd ../../..</code></td>
+<td>Volta para a pasta do projeto, antes da próxima montagem.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1">### Scer1 - Flye</span>
@@ -5751,6 +6372,47 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-55-13"><a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a>
 </span><span id="__span-55-14"><a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a><span class="nb">cd</span><span class="w"> </span>../..
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd 8.QC_montagens/merqury</code></td>
+<td>Entra na pasta dos resultados do Merqury.</td>
+</tr>
+<tr>
+<td><code>echo -e "..." &gt; &lt;tabela&gt;</code></td>
+<td>Cria a tabela com a linha de cabeçalho. O <code>-e</code> faz o <code>\t</code> virar tabulação.</td>
+</tr>
+<tr>
+<td><code>for prefix in ...; do ... done</code></td>
+<td>Repete os comandos de dentro para cada montagem.</td>
+</tr>
+<tr>
+<td><code>awk 'END{print $4}' &lt;arquivo&gt;.qv</code></td>
+<td>Pega a coluna 4 (QV) da última linha do <code>.qv</code>. O <code>$5</code> pega a taxa de erro; no <code>.completeness.stats</code>, a coluna 5 é a completude.</td>
+</tr>
+<tr>
+<td><code>2&gt;/dev/null</code></td>
+<td>Esconde a mensagem de erro se o arquivo não existir.</td>
+</tr>
+<tr>
+<td><code>&gt;&gt; &lt;tabela&gt;</code></td>
+<td>Acrescenta as linhas ao fim da tabela, sem apagar o cabeçalho.</td>
+</tr>
+<tr>
+<td><code>cat</code> + <code>cd ../..</code></td>
+<td>Mostra a tabela e volta para a pasta do projeto.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>$<span class="w"> </span>cat<span class="w"> </span>merqury_summary.tsv
@@ -5830,6 +6492,39 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a>busco<span class="w"> </span>-i<span class="w"> </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa<span class="w"> </span>-l<span class="w"> </span>saccharomycetaceae_odb12<span class="w"> </span>-m<span class="w"> </span>genome<span class="w"> </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm
 </span><span id="__span-57-9"><a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a>busco<span class="w"> </span>-i<span class="w"> </span><span class="m">7</span>.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta<span class="w"> </span>-l<span class="w"> </span>saccharomycetaceae_odb12<span class="w"> </span>-m<span class="w"> </span>genome<span class="w"> </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/Scer1_q10_l500_nextdenovo
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>busco --list-datasets</code></td>
+<td>Lista os conjuntos de genes conservados (linhagens) disponíveis.</td>
+</tr>
+<tr>
+<td><code>busco -i &lt;montagem&gt;</code></td>
+<td>Procura, na montagem, os genes de cópia única esperados para a linhagem.</td>
+</tr>
+<tr>
+<td><code>-l saccharomycetaceae_odb12</code></td>
+<td>Linhagem usada (família Saccharomycetaceae).</td>
+</tr>
+<tr>
+<td><code>-m genome</code></td>
+<td>Modo para sequências genômicas (não transcritos nem proteínas).</td>
+</tr>
+<tr>
+<td><code>-o &lt;pasta&gt;</code></td>
+<td>Pasta de saída. A primeira linha avalia a referência, como comparação.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="admonition warning">
 <p class="admonition-title">Atenção: o download do banco do BUSCO pode demorar</p>
 <p>Na primeira execução, o BUSCO baixa o banco escolhido (<code>-l</code>) para uma pasta <code>busco_downloads/</code> <strong>no diretório onde o comando é rodado</strong>. Isso pode levar vários minutos e depende da internet do servidor. Se cada aluno rodar numa pasta diferente, cada um baixa uma cópia.</p>
@@ -6182,7 +6877,53 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-60-18"><a id="__codelineno-60-18" name="__codelineno-60-18" href="#__codelineno-60-18"></a><span class="c1"># Gerar o gráfico comparativo</span>
 </span><span id="__span-60-19"><a id="__codelineno-60-19" name="__codelineno-60-19" href="#__codelineno-60-19"></a>conda<span class="w"> </span>activate<span class="w"> </span>busco
 </span><span id="__span-60-20"><a id="__codelineno-60-20" name="__codelineno-60-20" href="#__codelineno-60-20"></a>python<span class="w"> </span>/home/lgbio/busco/scripts/generate_plot.py<span class="w"> </span>-wd<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/summaries/
+</span><span id="__span-60-21"><a id="__codelineno-60-21" name="__codelineno-60-21" href="#__codelineno-60-21"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir</code> + <code>cp .../short_summary*.txt</code></td>
+<td>Junta numa pasta só o resumo (<code>short_summary</code>) de cada BUSCO.</td>
+</tr>
+<tr>
+<td><code>grep -H "C:" ...</code></td>
+<td>Pega a linha de resultado (<code>C:...%[S:...,D:...],F:...,M:...</code>) de cada resumo, com o nome do arquivo na frente (<code>-H</code>).</td>
+</tr>
+<tr>
+<td><code>sed -E 's/.../'</code> (primeiro)</td>
+<td>Separa os números (C, S, D, F, M, n, E) em colunas.</td>
+</tr>
+<tr>
+<td><code>sed -E 's#^.*/##; ...'</code> (segundo)</td>
+<td>Limpa o nome do arquivo, deixando só o nome da montagem.</td>
+</tr>
+<tr>
+<td><code>{ echo -e "Sample..."; cat; }</code></td>
+<td>Põe uma linha de cabeçalho antes dos dados.</td>
+</tr>
+<tr>
+<td><code>column -t -s $'\t'</code></td>
+<td>Alinha as colunas para facilitar a leitura.</td>
+</tr>
+<tr>
+<td><code>conda activate busco</code> + <code>generate_plot.py -wd &lt;pasta&gt;</code></td>
+<td>Gera o gráfico de barras comparando todos os resumos da pasta.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>Sample<span class="w">                     </span>Complete<span class="w">  </span>Single<span class="w">  </span>Duplicated<span class="w">  </span>Fragmented<span class="w">  </span>Missing<span class="w">  </span>n<span class="w">     </span>E
@@ -6332,29 +7073,95 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-62-15"><a id="__codelineno-62-15" name="__codelineno-62-15" href="#__codelineno-62-15"></a>cp<span class="w"> </span><span class="nv">$bruta</span><span class="w"> </span><span class="nv">$f</span>
 </span><span id="__span-62-16"><a id="__codelineno-62-16" name="__codelineno-62-16" href="#__codelineno-62-16"></a>
 </span><span id="__span-62-17"><a id="__codelineno-62-17" name="__codelineno-62-17" href="#__codelineno-62-17"></a><span class="c1"># contigs com &gt;= 50% do comprimento alinhado ao mitocondrial da referência</span>
-</span><span id="__span-62-18"><a id="__codelineno-62-18" name="__codelineno-62-18" href="#__codelineno-62-18"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>.Mitocondria/mito_referencia.fasta<span class="w"> </span><span class="nv">$f</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-62-19"><a id="__codelineno-62-19" name="__codelineno-62-19" href="#__codelineno-62-19"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{cob[$1]+=$4-$3; tam[$1]=$2} END{for(c in cob) if(cob[c]/tam[c]&gt;=0.5) print c}'</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-62-20"><a id="__codelineno-62-20" name="__codelineno-62-20" href="#__codelineno-62-20"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids
-</span><span id="__span-62-21"><a id="__codelineno-62-21" name="__codelineno-62-21" href="#__codelineno-62-21"></a>
-</span><span id="__span-62-22"><a id="__codelineno-62-22" name="__codelineno-62-22" href="#__codelineno-62-22"></a><span class="c1"># separar: mitocondrial para um arquivo, nuclear para outro</span>
-</span><span id="__span-62-23"><a id="__codelineno-62-23" name="__codelineno-62-23" href="#__codelineno-62-23"></a>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="nv">$f</span>
-</span><span id="__span-62-24"><a id="__codelineno-62-24" name="__codelineno-62-24" href="#__codelineno-62-24"></a>cut<span class="w"> </span>-f1<span class="w"> </span><span class="nv">$f</span>.fai<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-vxF<span class="w"> </span>-f<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.nuclear.ids
-</span><span id="__span-62-25"><a id="__codelineno-62-25" name="__codelineno-62-25" href="#__codelineno-62-25"></a>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="nv">$f</span><span class="w"> </span>-r<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.nuclear.ids<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Montagens-nucleares/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.fasta
-</span><span id="__span-62-26"><a id="__codelineno-62-26" name="__codelineno-62-26" href="#__codelineno-62-26"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-s<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-62-27"><a id="__codelineno-62-27" name="__codelineno-62-27" href="#__codelineno-62-27"></a><span class="w">  </span>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="nv">$f</span><span class="w"> </span>-r<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_mito.fasta
-</span><span id="__span-62-28"><a id="__codelineno-62-28" name="__codelineno-62-28" href="#__codelineno-62-28"></a><span class="k">fi</span>
-</span><span id="__span-62-29"><a id="__codelineno-62-29" name="__codelineno-62-29" href="#__codelineno-62-29"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$prefix</span><span class="s2">: </span><span class="k">$(</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="k">)</span><span class="s2"> contigs mitocondriais"</span>
-</span><span id="__span-62-30"><a id="__codelineno-62-30" name="__codelineno-62-30" href="#__codelineno-62-30"></a>
-</span><span id="__span-62-31"><a id="__codelineno-62-31" name="__codelineno-62-31" href="#__codelineno-62-31"></a>conda<span class="w"> </span>deactivate
-</span><span id="__span-62-32"><a id="__codelineno-62-32" name="__codelineno-62-32" href="#__codelineno-62-32"></a>
-</span><span id="__span-62-33"><a id="__codelineno-62-33" name="__codelineno-62-33" href="#__codelineno-62-33"></a><span class="c1"># depois de processar todas: tamanho e GC de cada contig classificado como mitocondrial</span>
-</span><span id="__span-62-34"><a id="__codelineno-62-34" name="__codelineno-62-34" href="#__codelineno-62-34"></a><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">9</span>.Mitocondria/*_mito.fasta<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-62-35"><a id="__codelineno-62-35" name="__codelineno-62-35" href="#__codelineno-62-35"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"== </span><span class="nv">$f</span><span class="s2">"</span>
-</span><span id="__span-62-36"><a id="__codelineno-62-36" name="__codelineno-62-36" href="#__codelineno-62-36"></a><span class="w">  </span>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l; n=substr($1,2); l=0; g=0; next}</span>
-</span><span id="__span-62-37"><a id="__codelineno-62-37" name="__codelineno-62-37" href="#__codelineno-62-37"></a><span class="s1">       {l+=length($0); g+=gsub(/[GCgc]/,"")}</span>
-</span><span id="__span-62-38"><a id="__codelineno-62-38" name="__codelineno-62-38" href="#__codelineno-62-38"></a><span class="s1">       END{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l}'</span><span class="w"> </span><span class="nv">$f</span>
-</span><span id="__span-62-39"><a id="__codelineno-62-39" name="__codelineno-62-39" href="#__codelineno-62-39"></a><span class="k">done</span>
+</span><span id="__span-62-18"><a id="__codelineno-62-18" name="__codelineno-62-18" href="#__codelineno-62-18"></a><span class="c1"># -x asm10: modo do minimap2 para comparar montagens com até cerca de 10% de divergência</span>
+</span><span id="__span-62-19"><a id="__codelineno-62-19" name="__codelineno-62-19" href="#__codelineno-62-19"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>.Mitocondria/mito_referencia.fasta<span class="w"> </span><span class="nv">$f</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-62-20"><a id="__codelineno-62-20" name="__codelineno-62-20" href="#__codelineno-62-20"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{cob[$1]+=$4-$3; tam[$1]=$2} END{for(c in cob) if(cob[c]/tam[c]&gt;=0.5) print c}'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-62-21"><a id="__codelineno-62-21" name="__codelineno-62-21" href="#__codelineno-62-21"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids
+</span><span id="__span-62-22"><a id="__codelineno-62-22" name="__codelineno-62-22" href="#__codelineno-62-22"></a>
+</span><span id="__span-62-23"><a id="__codelineno-62-23" name="__codelineno-62-23" href="#__codelineno-62-23"></a><span class="c1"># separar: mitocondrial para um arquivo, nuclear para outro</span>
+</span><span id="__span-62-24"><a id="__codelineno-62-24" name="__codelineno-62-24" href="#__codelineno-62-24"></a>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="nv">$f</span>
+</span><span id="__span-62-25"><a id="__codelineno-62-25" name="__codelineno-62-25" href="#__codelineno-62-25"></a>cut<span class="w"> </span>-f1<span class="w"> </span><span class="nv">$f</span>.fai<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-vxF<span class="w"> </span>-f<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.nuclear.ids
+</span><span id="__span-62-26"><a id="__codelineno-62-26" name="__codelineno-62-26" href="#__codelineno-62-26"></a>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="nv">$f</span><span class="w"> </span>-r<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.nuclear.ids<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Montagens-nucleares/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.fasta
+</span><span id="__span-62-27"><a id="__codelineno-62-27" name="__codelineno-62-27" href="#__codelineno-62-27"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-s<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-62-28"><a id="__codelineno-62-28" name="__codelineno-62-28" href="#__codelineno-62-28"></a><span class="w">  </span>samtools<span class="w"> </span>faidx<span class="w"> </span><span class="nv">$f</span><span class="w"> </span>-r<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="w"> </span>&gt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>_mito.fasta
+</span><span id="__span-62-29"><a id="__codelineno-62-29" name="__codelineno-62-29" href="#__codelineno-62-29"></a><span class="k">fi</span>
+</span><span id="__span-62-30"><a id="__codelineno-62-30" name="__codelineno-62-30" href="#__codelineno-62-30"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$prefix</span><span class="s2">: </span><span class="k">$(</span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span><span class="m">9</span>.Mitocondria/<span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.mito.ids<span class="k">)</span><span class="s2"> contigs mitocondriais"</span>
+</span><span id="__span-62-31"><a id="__codelineno-62-31" name="__codelineno-62-31" href="#__codelineno-62-31"></a>
+</span><span id="__span-62-32"><a id="__codelineno-62-32" name="__codelineno-62-32" href="#__codelineno-62-32"></a>conda<span class="w"> </span>deactivate
+</span><span id="__span-62-33"><a id="__codelineno-62-33" name="__codelineno-62-33" href="#__codelineno-62-33"></a>
+</span><span id="__span-62-34"><a id="__codelineno-62-34" name="__codelineno-62-34" href="#__codelineno-62-34"></a><span class="c1"># depois de processar todas: tamanho e GC de cada contig classificado como mitocondrial</span>
+</span><span id="__span-62-35"><a id="__codelineno-62-35" name="__codelineno-62-35" href="#__codelineno-62-35"></a><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">9</span>.Mitocondria/*_mito.fasta<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-62-36"><a id="__codelineno-62-36" name="__codelineno-62-36" href="#__codelineno-62-36"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"== </span><span class="nv">$f</span><span class="s2">"</span>
+</span><span id="__span-62-37"><a id="__codelineno-62-37" name="__codelineno-62-37" href="#__codelineno-62-37"></a><span class="w">  </span>awk<span class="w"> </span><span class="s1">'/^&gt;/{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l; n=substr($1,2); l=0; g=0; next}</span>
+</span><span id="__span-62-38"><a id="__codelineno-62-38" name="__codelineno-62-38" href="#__codelineno-62-38"></a><span class="s1">       {l+=length($0); g+=gsub(/[GCgc]/,"")}</span>
+</span><span id="__span-62-39"><a id="__codelineno-62-39" name="__codelineno-62-39" href="#__codelineno-62-39"></a><span class="s1">       END{if(n)printf "%s\t%d pb\tGC %.1f%%\n",n,l,100*g/l}'</span><span class="w"> </span><span class="nv">$f</span>
+</span><span id="__span-62-40"><a id="__codelineno-62-40" name="__codelineno-62-40" href="#__codelineno-62-40"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p ...</code> + <code>conda activate polimento</code></td>
+<td>Cria as pastas e entra no ambiente que tem o <code>samtools</code> e o <code>minimap2</code>.</td>
+</tr>
+<tr>
+<td><code>samtools faidx &lt;referência&gt; NC_001224.1</code></td>
+<td>Extrai da referência só o cromossomo mitocondrial (NC_001224.1).</td>
+</tr>
+<tr>
+<td><code>prefix=</code> / <code>bruta=</code></td>
+<td>Nome e arquivo da montagem a processar. Troque e rode de novo para as outras (lista no comentário).</td>
+</tr>
+<tr>
+<td><code>f=...</code> + <code>cp $bruta $f</code></td>
+<td>Faz uma cópia da montagem bruta, para não mexer no original.</td>
+</tr>
+<tr>
+<td><code>minimap2 -x asm10 &lt;mito&gt; $f</code></td>
+<td>Alinha os contigs da montagem contra o mitocondrial da referência.</td>
+</tr>
+<tr>
+<td><code>awk '{cob[$1]+=$4-$3; tam[$1]=$2} ...'</code></td>
+<td>Soma, para cada contig, o comprimento alinhado (colunas 3 e 4 do PAF) e divide pelo tamanho do contig (coluna 2). Imprime os contigs com 50% ou mais alinhados.</td>
+</tr>
+<tr>
+<td><code>sort &gt; ...mito.ids</code></td>
+<td>Salva a lista dos contigs mitocondriais.</td>
+</tr>
+<tr>
+<td><code>samtools faidx $f</code></td>
+<td>Indexa a montagem. O índice (<code>.fai</code>) tem o nome de cada contig na coluna 1.</td>
+</tr>
+<tr>
+<td><code>cut -f1 ... | grep -vxF -f &lt;mito.ids&gt;</code></td>
+<td>Lista todos os contigs e tira os mitocondriais: <code>-v</code> inverte, <code>-x</code> exige a linha inteira igual e <code>-F</code> trata o nome como texto, não como padrão.</td>
+</tr>
+<tr>
+<td><code>samtools faidx $f -r &lt;lista&gt;</code></td>
+<td>Extrai os contigs da lista: os nucleares vão para <code>9.Montagens-nucleares/</code>, os mitocondriais para <code>9.Mitocondria/</code>.</td>
+</tr>
+<tr>
+<td><code>if [ -s ... ]; then ... fi</code></td>
+<td>Só cria o arquivo mitocondrial se a lista não estiver vazia (o NextDenovo não montou a mitocôndria).</td>
+</tr>
+<tr>
+<td><code>echo "...$(wc -l &lt; ...)"</code></td>
+<td>Escreve quantos contigs foram classificados como mitocondriais.</td>
+</tr>
+<tr>
+<td><code>for f in ...; do awk ...; done</code></td>
+<td>Depois de processar todas: mostra o tamanho e o GC de cada contig mitocondrial.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="admonition tip">
 <p class="admonition-title">Uma montagem por vez: troque a variável e rode de novo</p>
 <p>A partir daqui, quando um programa precisa rodar em várias montagens, ele roda <strong>uma montagem por vez</strong>. Assim dá para rodar todas ou, se faltar tempo, <strong>só a montagem que você vai seguir</strong> (por exemplo, a Scer1 Hifiasm). Os resultados das outras estão nas tabelas do tutorial.</p>
@@ -6514,6 +7321,71 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-66-23"><a id="__codelineno-66-23" name="__codelineno-66-23" href="#__codelineno-66-23"></a>
 </span><span id="__span-66-24"><a id="__codelineno-66-24" name="__codelineno-66-24" href="#__codelineno-66-24"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R=...</code></td>
+<td>Guarda o caminho das reads filtradas da Scer1, usadas para medir a cobertura.</td>
+</tr>
+<tr>
+<td><code>s=...</code></td>
+<td>Nome da montagem que será processada. Troque e rode o bloco de novo para as outras.</td>
+</tr>
+<tr>
+<td><code>echo "===== $s ====="</code></td>
+<td>Escreve o nome da montagem na tela, para separar a saída de cada rodada.</td>
+</tr>
+<tr>
+<td><code>O=9.Purge_dups/$s</code> + <code>mkdir -p $O</code></td>
+<td>Cria uma pasta só para essa montagem.</td>
+</tr>
+<tr>
+<td><code>cp ...</code></td>
+<td>Copia a montagem nuclear (sem a mitocôndria, Etapa 9.4) para essa pasta.</td>
+</tr>
+<tr>
+<td><code>minimap2 -x map-ont</code></td>
+<td>Alinha as reads Nanopore contra a montagem. O arquivo <code>reads.paf</code> diz onde cada read alinhou.</td>
+</tr>
+<tr>
+<td><code>pbcstat</code></td>
+<td>Calcula, a partir do <code>reads.paf</code>, a cobertura de cada posição (<code>PB.base.cov</code>) e o histograma de cobertura (<code>PB.stat</code>: quantas bases têm cada valor de cobertura).</td>
+</tr>
+<tr>
+<td><code>calcuts</code></td>
+<td>Lê o histograma e escolhe os limites de cobertura (<code>cutoffs</code>): o que é baixo demais, o que é "metade" (provável duplicata) e o que é alto demais. Os detalhes vão para o <code>calcuts.log</code>.</td>
+</tr>
+<tr>
+<td><code>split_fa</code></td>
+<td>Quebra os contigs nos trechos de <code>N</code> (gaps), para que o alinhamento seguinte não atravesse um gap.</td>
+</tr>
+<tr>
+<td><code>minimap2 -x asm5 -DP</code></td>
+<td>Alinha a montagem <strong>contra ela mesma</strong> para achar trechos repetidos. <code>asm5</code> é o modo para sequências quase idênticas (até cerca de 5% de divergência); <code>-D</code> ignora o alinhamento de cada sequência com ela própria; <code>-P</code> guarda todos os alinhamentos, não só o melhor.</td>
+</tr>
+<tr>
+<td><code>purge_dups -2 -T ... -c ...</code></td>
+<td>Junta as duas informações (cobertura e similaridade) e decide o que é duplicata. <code>-T</code> recebe os limites, <code>-c</code> a cobertura por posição e <code>-2</code> faz o encadeamento dos alinhamentos em duas rodadas. A saída, <code>dups.bed</code>, lista os trechos a remover e o motivo (<code>HAPLOTIG</code>, <code>JUNK</code>, <code>HIGHCOV</code>...).</td>
+</tr>
+<tr>
+<td><code>get_seqs -e ... -p $O/$s</code></td>
+<td>Remove da montagem os trechos do <code>dups.bed</code>. <code>-e</code> só remove duplicatas nas pontas dos contigs (ou contigs inteiros); <code>-p</code> define o prefixo dos arquivos de saída (<code>.purged.fa</code> e <code>.hap.fa</code>).</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente <code>purge_dups_env</code>.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Para cada montagem, o purge_dups gera dois arquivos:</p>
 <ul>
 <li><strong><code>&lt;montagem&gt;.purged.fa</code></strong>: a montagem sem as duplicatas, que segue no pipeline;</li>
@@ -6568,6 +7440,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-68-7"><a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a><span class="w">  </span>awk<span class="w"> </span><span class="s1">'/^&gt;/{n++; next}{b+=length($0)} END{printf "removido: %d sequências, %d pb\n", n, b}'</span><span class="w"> </span><span class="nv">$O</span>/<span class="nv">$s</span>.hap.fa
 </span><span id="__span-68-8"><a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for s in ...; do ... done</code></td>
+<td>Repete o resumo para cada montagem da Scer1.</td>
+</tr>
+<tr>
+<td><code>cat $O/cutoffs</code></td>
+<td>Mostra os limites de cobertura escolhidos pelo <code>calcuts</code>.</td>
+</tr>
+<tr>
+<td><code>awk '/^&gt;/{n++; next}{b+=length($0)} ...'</code></td>
+<td>Conta as sequências (linhas que começam com <code>&gt;</code>) e soma as bases. Roda na montagem antes, na purgada (<code>.purged.fa</code>) e no que foi removido (<code>.hap.fa</code>).</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando (primeira rodada, limites automáticos)</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>===== Scer1_q10_l500_Flye
@@ -6643,6 +7540,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-70-12"><a id="__codelineno-70-12" name="__codelineno-70-12" href="#__codelineno-70-12"></a><span class="w">  </span><span class="nb">echo</span>
 </span><span id="__span-70-13"><a id="__codelineno-70-13" name="__codelineno-70-13" href="#__codelineno-70-13"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for s in ...; do ... done</code></td>
+<td>Repete para cada montagem da Scer1.</td>
+</tr>
+<tr>
+<td><code>awk -v cortes="$(cat $O/cutoffs)" '...' $O/PB.stat</code></td>
+<td>Lê o histograma de cobertura (<code>PB.stat</code>), agrupa as coberturas de 3 em 3 até 150×, desenha uma barra de <code>#</code> proporcional ao número de bases e marca onde caem os limites do <code>calcuts</code>.</td>
+</tr>
+<tr>
+<td><code>cat $O/calcuts.log</code></td>
+<td>Mostra como o <code>calcuts</code> encontrou os picos e calculou os limites.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Cada linha agrupa 3 valores de cobertura, e o comprimento da barra é proporcional ao número de bases com aquela cobertura. O <code>calcuts.log</code> mostra quantos picos o <code>calcuts</code> encontrou e como calculou os limites.</p>
 <details class="note">
 <summary>Ver saída do comando (resumida)</summary>
@@ -6753,6 +7675,39 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-74-11"><a id="__codelineno-74-11" name="__codelineno-74-11" href="#__codelineno-74-11"></a>
 </span><span id="__span-74-12"><a id="__codelineno-74-12" name="__codelineno-74-12" href="#__codelineno-74-12"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s=...</code> + <code>O=...</code></td>
+<td>Montagem a processar e a pasta dela. Troque e rode de novo para as outras.</td>
+</tr>
+<tr>
+<td><code>cp -n $O/cutoffs $O/cutoffs.auto</code></td>
+<td>Guarda uma cópia dos limites automáticos. O <code>-n</code> não sobrescreve a cópia se ela já existir.</td>
+</tr>
+<tr>
+<td><code>calcuts -l 5 -m 37 -u 147</code></td>
+<td>Recalcula os limites com valores definidos por nós: <code>-l</code> limite inferior, <code>-m</code> divisa entre metade e cobertura cheia, <code>-u</code> limite superior.</td>
+</tr>
+<tr>
+<td><code>cat $O/cutoffs</code></td>
+<td>Mostra os novos limites.</td>
+</tr>
+<tr>
+<td><code>purge_dups ...</code> + <code>get_seqs ...</code></td>
+<td>Repete a remoção de duplicatas com os novos limites (os mesmos comandos do bloco anterior).</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O <code>get_seqs</code> sobrescreve o <code>.purged.fa</code> e o <code>.hap.fa</code>. Rode de novo o comando <strong>"Quanto foi removido?"</strong> para ver o novo resultado:</p>
 <details class="note">
 <summary>Ver saída do comando (limites manuais)</summary>
@@ -6845,6 +7800,27 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-76-3"><a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a><span class="w">  </span>awk<span class="w"> </span><span class="s1">'{n[$4]++; b[$4]+=$3-$2} END{for(k in n) printf "   %-9s %3d regiões %8d pb\n", k, n[k], b[k]}'</span><span class="w"> </span><span class="m">9</span>.Purge_dups/<span class="nv">$s</span>/dups.bed
 </span><span id="__span-76-4"><a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for s in ...; do ... done</code></td>
+<td>Repete para cada montagem da Scer1.</td>
+</tr>
+<tr>
+<td><code>awk '{n[$4]++; b[$4]+=$3-$2} ...' dups.bed</code></td>
+<td>Agrupa as regiões do <code>dups.bed</code> pelo tipo (coluna 4: <code>HAPLOTIG</code>, <code>JUNK</code>, <code>HIGHCOV</code>...) e mostra quantas regiões e quantas bases há de cada tipo.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>===== Scer1_q10_l500_Flye
@@ -6880,6 +7856,39 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-78-9"><a id="__codelineno-78-9" name="__codelineno-78-9" href="#__codelineno-78-9"></a><span class="k">done</span>
 </span><span id="__span-78-10"><a id="__codelineno-78-10" name="__codelineno-78-10" href="#__codelineno-78-10"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REF=...</code></td>
+<td>Caminho da referência.</td>
+</tr>
+<tr>
+<td><code>awk '$4=="HIGHCOV"' ... | tee $O/highcov.bed</code></td>
+<td>Filtra as regiões marcadas como cobertura alta. O <code>tee</code> mostra na tela e salva em arquivo ao mesmo tempo.</td>
+</tr>
+<tr>
+<td><code>awk 'NR==FNR{...} ...' highcov.bed montagem</code></td>
+<td>Lê primeiro a lista de contigs (<code>NR==FNR</code> é verdadeiro só no primeiro arquivo) e depois extrai da montagem as sequências desses contigs.</td>
+</tr>
+<tr>
+<td><code>minimap2 -x asm10 $REF ...</code></td>
+<td>Alinha esses contigs contra a referência, para ver de onde vêm.</td>
+</tr>
+<tr>
+<td><code>cut -f1-11 | sort -k10,10nr | head -5</code></td>
+<td>Mantém as colunas principais do PAF, ordena pelo número de bases iguais (coluna 10, do maior para o menor) e mostra os 5 melhores alinhamentos.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a>===== Scer1_q10_l500_Flye
@@ -6944,6 +7953,43 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-81-16"><a id="__codelineno-81-16" name="__codelineno-81-16" href="#__codelineno-81-16"></a>
 </span><span id="__span-81-17"><a id="__codelineno-81-17" name="__codelineno-81-17" href="#__codelineno-81-17"></a><span class="nb">cd</span><span class="w"> </span>../..
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd</code> + <code>K=</code> / <code>P=</code></td>
+<td>Entra na pasta do Merqury e guarda os caminhos do banco de k-mers (<code>K</code>) e das montagens purgadas (<code>P</code>).</td>
+</tr>
+<tr>
+<td><code>n=...; mkdir -p $n; cd $n; merqury.sh ...; cd ..</code></td>
+<td>Cada linha: guarda o nome, cria a pasta, entra nela, roda o Merqury na montagem purgada e volta.</td>
+</tr>
+<tr>
+<td><code>for s ...; for v in $s ${s}_purgada</code></td>
+<td>Para cada montagem, roda nas versões bruta e purgada.</td>
+</tr>
+<tr>
+<td><code>bash $MERQURY/eval/false_duplications.sh &lt;hist&gt;</code></td>
+<td>Script do Merqury que lê o histograma <code>spectra-cn</code> e calcula a fração de k-mers que aparecem duplicados na montagem sem estar duplicados no genoma.</td>
+</tr>
+<tr>
+<td><code>awk 'NR==1 || !/^hist/' | column -t</code></td>
+<td>Mantém só um cabeçalho (o script escreve um por rodada) e alinha as colunas.</td>
+</tr>
+<tr>
+<td><code>cd ../..</code></td>
+<td>Volta para a pasta do projeto.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O script usa a variável <code>$MERQURY</code>, que aponta para a pasta de instalação do Merqury (a mesma usada pelo <code>merqury.sh</code>). Se ela estiver vazia, use o caminho completo (no nosso servidor, <code>/home/lgbio/programas/merqury/eval/false_duplications.sh</code>).</p>
 <p>Na saída, as colunas <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> e <code>&gt;4</code> contam os k-mers de cópia única nas reads que aparecem 1, 2, 3, 4 ou mais vezes na montagem; <code>dup%</code> é a porcentagem que aparece mais de uma vez, ou seja, a taxa de falsas duplicações.</p>
 <details class="note">
@@ -7047,6 +8093,27 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-83-10"><a id="__codelineno-83-10" name="__codelineno-83-10" href="#__codelineno-83-10"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$s</span><span class="s2">  purgada:  </span><span class="k">$(</span>grep<span class="w"> </span>-h<span class="w"> </span><span class="s1">'C:'</span><span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/<span class="si">${</span><span class="nv">s</span><span class="si">}</span>_purgada/short_summary*.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">'\t '</span><span class="k">)</span><span class="s2">"</span>
 </span><span id="__span-83-11"><a id="__codelineno-83-11" name="__codelineno-83-11" href="#__codelineno-83-11"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>busco -i &lt;purgada&gt; ... -c 24</code></td>
+<td>Roda o BUSCO nas montagens purgadas. O <code>-c</code> é o número de processadores; os outros parâmetros são os da Etapa 9.3.</td>
+</tr>
+<tr>
+<td><code>for s ...; grep -h 'C:' ... | tr -d '\t '</code></td>
+<td>Mostra lado a lado a linha de resultado do BUSCO da montagem bruta e da purgada. O <code>tr -d</code> apaga tabulações e espaços, para a linha ficar compacta.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="example">
 <summary>Saída: BUSCO bruta x purgada</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-84-1"><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>Scer1_q10_l500_Flye  bruta:    C:99.7%[S:99.6%,D:0.1%],F:0.0%,M:0.3%,n:3282,E:1.7%
@@ -7143,6 +8210,35 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-86-6"><a id="__codelineno-86-6" name="__codelineno-86-6" href="#__codelineno-86-6"></a>cp<span class="w"> </span><span class="m">9</span>.Montagens-nucleares/Scer2_q10_l500_hifiasm.fasta<span class="w"> </span><span class="m">9</span>.Montagens-purgadas/
 </span><span id="__span-86-7"><a id="__codelineno-86-7" name="__codelineno-86-7" href="#__codelineno-86-7"></a>ls<span class="w"> </span>-lh<span class="w"> </span><span class="m">9</span>.Montagens-purgadas/
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p 9.Montagens-purgadas</code></td>
+<td>Cria a pasta com a versão de cada montagem que segue para o polimento.</td>
+</tr>
+<tr>
+<td><code>cp &lt;purgada&gt; 9.Montagens-purgadas/&lt;nome&gt;.fasta</code></td>
+<td>Scer1: copia a montagem purgada com um nome padronizado.</td>
+</tr>
+<tr>
+<td><code>cp 9.Montagens-nucleares/Scer2_...</code></td>
+<td>Scer2: copia a montagem só sem a mitocôndria (sem purge_dups).</td>
+</tr>
+<tr>
+<td><code>ls -lh</code></td>
+<td>Lista os arquivos com o tamanho em formato legível (K, M).</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h3 id="checklist-da-etapa-9">Checklist da Etapa 9<a class="headerlink" href="#checklist-da-etapa-9" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tenho relatórios QUAST (HTML) para as cinco montagens</li>
@@ -7159,6 +8255,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>zcat<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </span><span id="__span-87-2"><a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a>zcat<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer2.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zcat &lt;reads&gt; | head -1</code></td>
+<td>Mostra o cabeçalho da primeira read, onde às vezes aparecem o basecaller e o modelo usados.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>$<span class="w"> </span>zcat<span class="w"> </span><span class="m">0</span>.DadosBrutos/Scer1.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
@@ -7171,6 +8284,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <p>Listar modelos disponíveis no Medaka para confirmar qual usar:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>medaka<span class="w"> </span>tools<span class="w"> </span>list_models
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>medaka tools list_models</code></td>
+<td>Lista os modelos disponíveis na versão instalada do Medaka.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver exemplo de saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a>$<span class="w"> </span>medaka<span class="w"> </span>tools<span class="w"> </span>list_models
@@ -7205,6 +8335,43 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-91-15"><a id="__codelineno-91-15" name="__codelineno-91-15" href="#__codelineno-91-15"></a>
 </span><span id="__span-91-16"><a id="__codelineno-91-16" name="__codelineno-91-16" href="#__codelineno-91-16"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p</code> + <code>conda activate medaka</code></td>
+<td>Cria a pasta e entra no ambiente do Medaka.</td>
+</tr>
+<tr>
+<td><code>R1=...; M1=...</code> / <code>R2=...; M2=...</code></td>
+<td>Reads e modelo de cada amostra. O modelo depende da flowcell (R9.4.1 na Scer1, R10.4.1 na Scer2).</td>
+</tr>
+<tr>
+<td><code>medaka_consensus -i &lt;reads&gt; -d &lt;montagem&gt;</code></td>
+<td>Alinha as reads na montagem e corrige as bases com uma rede neural treinada para o tipo de dado.</td>
+</tr>
+<tr>
+<td><code>-o</code> / <code>-t 24</code> / <code>-m &lt;modelo&gt;</code></td>
+<td>Pasta de saída, número de processadores e modelo.</td>
+</tr>
+<tr>
+<td><code>2&gt;&amp;1 | tee -a &lt;log&gt;</code></td>
+<td>Junta as mensagens de erro (<code>2&gt;</code>) com a saída normal, mostra na tela e acrescenta (<code>-a</code>) ao log, sem apagar o que as linhas anteriores escreveram.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O Medaka parte das montagens de <code>9.Montagens-purgadas/</code> (Etapa 9.5): todas sem a mitocôndria, e as da Scer1 também sem duplicatas. O <code>rm -rf</code> antes de cada execução é importante: se a pasta de saída já existir, o Medaka reaproveita o alinhamento antigo em vez de refazê-lo.</p>
 <p>O log fica em <code>9.Polimento-Medaka/medaka.log</code>. Ele é longo (mais de mil linhas para as cinco montagens), então abaixo está só a execução da Scer1 Flye, resumida:</p>
 <details class="example">
@@ -7255,6 +8422,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <p>Ao final, cada pasta tem um <code>consensus.fasta</code>, a montagem polida:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="m">9</span>.Polimento-Medaka/*/consensus.fasta
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls -l 9.Polimento-Medaka/*/consensus.fasta</code></td>
+<td>Lista a montagem polida (<code>consensus.fasta</code>) de cada pasta. O <code>*</code> vale para qualquer nome de pasta.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="example">
 <summary>Saída: arquivos polidos</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a>-rw-rw-r--+ 1 renata renata 11972061 nov 18 21:26 9.Polimento-Medaka/Scer1_q10_l500_Flye/consensus.fasta
@@ -7329,6 +8513,47 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-96-9"><a id="__codelineno-96-9" name="__codelineno-96-9" href="#__codelineno-96-9"></a>zcat<span class="w"> </span><span class="m">0</span>.DadosBrutos/illumina/Scer1_ilmn_40x_1.fq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </span><span id="__span-96-10"><a id="__codelineno-96-10" name="__codelineno-96-10" href="#__codelineno-96-10"></a>zcat<span class="w"> </span><span class="m">0</span>.DadosBrutos/illumina/Scer1_ilmn_40x_2.fq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p</code> + <code>URL=...</code></td>
+<td>Cria a pasta das reads Illumina e guarda o endereço da corrida no ENA.</td>
+</tr>
+<tr>
+<td><code>for r in 1 2; do ... done</code></td>
+<td>Repete para os dois arquivos do par (R1 e R2).</td>
+</tr>
+<tr>
+<td><code>wget -qO- &lt;endereço&gt;</code></td>
+<td>Baixa o arquivo sem mensagens (<code>-q</code>) e manda o conteúdo para o próximo comando (<code>-O-</code>), sem salvar no disco.</td>
+</tr>
+<tr>
+<td><code>zcat | head -n 9600000 | gzip &gt; ...</code></td>
+<td>Descomprime, fica só com as primeiras 9.600.000 linhas (2,4 milhões de reads, já que cada read ocupa 4 linhas; cerca de 40× do genoma) e comprime de novo.</td>
+</tr>
+<tr>
+<td><code>ls -lh</code></td>
+<td>Mostra os arquivos e os tamanhos.</td>
+</tr>
+<tr>
+<td><code>echo "R$r: $(( $(zcat ... | wc -l) / 4 )) reads"</code></td>
+<td>Conta as linhas de cada arquivo e divide por 4 para ter o número de reads.</td>
+</tr>
+<tr>
+<td><code>zcat ... | head -1</code></td>
+<td>Mostra o cabeçalho da primeira read de cada arquivo, para conferir que os dois arquivos formam um par.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Mensagens como <em>"gzip: stdout: Broken pipe"</em> são esperadas: indicam apenas que o <code>head</code> fechou a leitura quando chegou ao número de linhas pedido. Para conferir que os pares estão corretos, as duas últimas linhas devem mostrar o <strong>mesmo nome de read</strong> em R1 e R2.</p>
 <details class="tip">
 <summary>Alternativa: baixar tudo e sortear</summary>
@@ -7401,6 +8626,71 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-99-32"><a id="__codelineno-99-32" name="__codelineno-99-32" href="#__codelineno-99-32"></a>
 </span><span id="__span-99-33"><a id="__codelineno-99-33" name="__codelineno-99-33" href="#__codelineno-99-33"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda activate polimento</code> + <code>D=...</code></td>
+<td>Entra no ambiente e guarda a pasta das reads Illumina.</td>
+</tr>
+<tr>
+<td><code>s=...</code> + <code>O=...</code></td>
+<td>Montagem a processar e a pasta dela. Troque e rode de novo para as outras.</td>
+</tr>
+<tr>
+<td><code>rm -rf $O</code> + <code>mkdir -p $O</code></td>
+<td>Apaga resultados anteriores e recria a pasta (o pypolca não sobrescreve uma pasta existente).</td>
+</tr>
+<tr>
+<td><code>cp .../consensus.fasta ..._medaka.fasta</code></td>
+<td>Copia a montagem polida com o Medaka, ponto de partida deste polimento.</td>
+</tr>
+<tr>
+<td><code>bwa index</code></td>
+<td>Indexa a montagem para o alinhamento.</td>
+</tr>
+<tr>
+<td><code>bwa mem -t 24 -a</code></td>
+<td>Alinha as reads Illumina na montagem, um arquivo do par de cada vez. O <code>-a</code> guarda todos os alinhamentos de cada read, o que o Polypolish usa para corrigir regiões repetidas.</td>
+</tr>
+<tr>
+<td><code>polypolish filter --in1 --in2 --out1 --out2</code></td>
+<td>Descarta alinhamentos em que os dois lados do par não batem em distância e orientação.</td>
+</tr>
+<tr>
+<td><code>polypolish polish</code></td>
+<td>Corrige as bases da montagem usando os alinhamentos filtrados. As mensagens vão para <code>polypolish.log</code>.</td>
+</tr>
+<tr>
+<td><code>pypolca run -a &lt;montagem&gt; -1 &lt;R1&gt; -2 &lt;R2&gt;</code></td>
+<td>Segunda correção, com outro método, sobre a saída do Polypolish.</td>
+</tr>
+<tr>
+<td><code>-t 24 -o &lt;pasta&gt; --careful</code></td>
+<td>Processadores, pasta de saída e modo cuidadoso (só corrige quando a evidência é forte).</td>
+</tr>
+<tr>
+<td><code>cp .../pypolca_corrected.fasta ..._hibrido.fasta</code></td>
+<td>Salva o resultado final com o nome <code>_hibrido</code>.</td>
+</tr>
+<tr>
+<td><code>rm $O/aln_*.sam $O/filt_*.sam</code></td>
+<td>Apaga os alinhamentos, que são grandes e não são mais necessários.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Rode o bloco uma vez para cada montagem, trocando a linha <code>s=</code>. Ao final, cada montagem terá três versões: a bruta (Etapas 5–7), a polida com Medaka (<code>9.Polimento-Medaka/&lt;montagem&gt;/consensus.fasta</code>) e a polida com Medaka + Illumina (<code>9.Polimento-Illumina/&lt;montagem&gt;/&lt;montagem&gt;_hibrido.fasta</code>).</p>
 <details class="note">
 <summary>Ver saída do comando (resumida)</summary>
@@ -7602,6 +8892,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-101-5"><a id="__codelineno-101-5" name="__codelineno-101-5" href="#__codelineno-101-5"></a><span class="w">  </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'Substitution|Insertion'</span><span class="w"> </span><span class="nv">$O</span>/pypolca/pypolca.report<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/^/pypolca - /'</span>
 </span><span id="__span-101-6"><a id="__codelineno-101-6" name="__codelineno-101-6" href="#__codelineno-101-6"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for s in ...; do ... done</code></td>
+<td>Repete para cada montagem da Scer1.</td>
+</tr>
+<tr>
+<td><code>awk '/positions? changed/ {...}' polypolish.log</code></td>
+<td>Soma o número de posições alteradas pelo Polypolish em todos os contigs.</td>
+</tr>
+<tr>
+<td><code>grep -E 'Substitution|Insertion' ... | sed 's/^/pypolca - /'</code></td>
+<td>Mostra as linhas de substituições e inserções do relatório do pypolca, com <code>pypolca -</code> na frente de cada linha.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a><span class="o">=====</span><span class="w"> </span>Scer1_q10_l500_Flye
@@ -7720,6 +9035,35 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-104-21"><a id="__codelineno-104-21" name="__codelineno-104-21" href="#__codelineno-104-21"></a><span class="w">  </span><span class="m">6</span>.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-104-22"><a id="__codelineno-104-22" name="__codelineno-104-22" href="#__codelineno-104-22"></a><span class="w">  </span><span class="m">9</span>.Polimento-Medaka/Scer2_q10_l500_hifiasm/consensus.fasta
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quast.py -r &lt;referência&gt;</code></td>
+<td>Mesmo QUAST da Etapa 9.1, agora com todas as versões de cada montagem: bruta, purgada, Medaka e híbrida.</td>
+</tr>
+<tr>
+<td><code>-o</code> / <code>-s</code> / <code>-t 24</code></td>
+<td>Pasta de saída, avaliação também dos scaffolds quebrados nos <code>N</code> e número de processadores.</td>
+</tr>
+<tr>
+<td><code>--labels "..."</code></td>
+<td>Nomes das versões nas tabelas, na mesma ordem dos arquivos listados depois.</td>
+</tr>
+<tr>
+<td><code>\</code> no fim da linha</td>
+<td>Continua o comando na linha de baixo (o comando é um só, quebrado em várias linhas para facilitar a leitura).</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Abra os arquivos report.html e icarus.html no seu navegador de internet.</p>
 <div class="admonition note">
 <p class="admonition-title">QUAST reaproveita alinhamentos</p>
@@ -7958,6 +9302,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-106-1"><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'^Assembly|^# contigs  |^Genome fraction|^Duplication|^# misassemblies|^# mismatches|^# indels'</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-106-2"><a id="__codelineno-106-2" name="__codelineno-106-2" href="#__codelineno-106-2"></a><span class="w">  </span><span class="m">8</span>.QC_montagens/quast-polimento_q10_l500/report.txt
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grep -E '^Assembly|^# contigs  |...' report.txt</code></td>
+<td>Mostra só as linhas do relatório do QUAST que começam com os nomes listados (<code>^</code> indica início da linha; <code>|</code> separa as opções).</td>
+</tr>
+</tbody>
+</table>
+</details>
 <table>
 <thead>
 <tr>
@@ -8174,6 +9535,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-107-21"><a id="__codelineno-107-21" name="__codelineno-107-21" href="#__codelineno-107-21"></a>
 </span><span id="__span-107-22"><a id="__codelineno-107-22" name="__codelineno-107-22" href="#__codelineno-107-22"></a><span class="nb">cd</span><span class="w"> </span>../..
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd</code> + <code>K1=</code> / <code>K2=</code> / <code>MED=</code> / <code>ILM=</code></td>
+<td>Entra na pasta do Merqury e guarda os caminhos dos bancos de k-mers de cada amostra e das pastas de polimento.</td>
+</tr>
+<tr>
+<td><code>n=...; rm -rf $n; mkdir $n; cd $n; merqury.sh ...; cd ..</code></td>
+<td>Cada linha: guarda o nome, apaga resultados antigos, cria a pasta, entra nela, roda o Merqury e volta.</td>
+</tr>
+<tr>
+<td><code>cd ../..</code></td>
+<td>Volta para a pasta do projeto.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando (resumida)</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-108-1"><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a><span class="c1"># Scer1: versões Medaka</span>
@@ -8235,6 +9621,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-109-17"><a id="__codelineno-109-17" name="__codelineno-109-17" href="#__codelineno-109-17"></a>
 </span><span id="__span-109-18"><a id="__codelineno-109-18" name="__codelineno-109-18" href="#__codelineno-109-18"></a><span class="nb">cd</span><span class="w"> </span>../..
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd</code> + <code>echo -e "..." &gt; &lt;tabela&gt;</code></td>
+<td>Entra na pasta e cria a tabela com o cabeçalho.</td>
+</tr>
+<tr>
+<td><code>for prefix in ...; do ... done &gt;&gt; &lt;tabela&gt;</code></td>
+<td>Para cada versão, lê QV e taxa de erro (colunas 4 e 5 do <code>.qv</code>) e completude (coluna 5 do <code>.completeness.stats</code>) e acrescenta uma linha à tabela, como na Etapa 9.2.</td>
+</tr>
+<tr>
+<td><code>column -t</code> + <code>cd ../..</code></td>
+<td>Mostra a tabela com as colunas alinhadas e volta para a pasta do projeto.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-110-1"><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a>$<span class="w"> </span>column<span class="w"> </span>-t<span class="w"> </span>merqury_summary_polimento.tsv
@@ -8405,6 +9816,43 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-113-38"><a id="__codelineno-113-38" name="__codelineno-113-38" href="#__codelineno-113-38"></a>
 </span><span id="__span-113-39"><a id="__codelineno-113-39" name="__codelineno-113-39" href="#__codelineno-113-39"></a><span class="nb">cd</span><span class="w"> </span>../..
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meryl k=21 ... count &lt;R1&gt; &lt;R2&gt; output ...</code></td>
+<td>Conta os k-mers das reads Illumina (os dois arquivos do par juntos).</td>
+</tr>
+<tr>
+<td><code>mkdir -p ... &amp;&amp; cd ...</code></td>
+<td>Cria a pasta e entra nela (o <code>&amp;&amp;</code> só entra se a pasta foi criada).</td>
+</tr>
+<tr>
+<td><code>M=</code> / <code>PUR=</code> / <code>MED=</code> / <code>ILM=</code></td>
+<td>Guardam os caminhos do banco Illumina e das pastas de cada versão.</td>
+</tr>
+<tr>
+<td><code>n=...; rm -rf $n; mkdir $n; cd $n; merqury.sh ...; cd ..</code></td>
+<td>Cada linha avalia uma versão, como na Etapa 11.2, agora com os k-mers Illumina.</td>
+</tr>
+<tr>
+<td><code>for s ...; for prefix in $s ${s}_purgada ...</code></td>
+<td>Monta a tabela-resumo: para cada montagem, percorre as quatro versões e lê QV, erro e completude.</td>
+</tr>
+<tr>
+<td><code>column -t</code> + <code>cd ../..</code></td>
+<td>Mostra a tabela e volta para a pasta do projeto.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Cada versão é avaliada numa pasta própria. Isso evita um problema do Merqury: ele guarda os k-mers de cada montagem num banco com o <strong>nome do arquivo FASTA</strong> (por exemplo, <code>consensus.meryl</code>) e reaproveita esse banco, sem avisar, se ele já existir na pasta. Como várias montagens têm o mesmo nome de arquivo (<code>consensus.fasta</code>), avaliá-las na mesma pasta faria a segunda receber o resultado da primeira.</p>
 <details class="note">
 <summary>Ver saída do comando (resumida)</summary>
@@ -8703,6 +10151,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-120-13"><a id="__codelineno-120-13" name="__codelineno-120-13" href="#__codelineno-120-13"></a>
 </span><span id="__span-120-14"><a id="__codelineno-120-14" name="__codelineno-120-14" href="#__codelineno-120-14"></a>ls<span class="w"> </span>-lh<span class="w"> </span><span class="m">9</span>.Montagens-polidas/
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rm -rf</code> + <code>mkdir -p 9.Montagens-polidas</code></td>
+<td>Apaga a pasta antiga (e os índices <code>.fai</code> desatualizados) e cria de novo.</td>
+</tr>
+<tr>
+<td><code>cp &lt;versão escolhida&gt; 9.Montagens-polidas/&lt;nome&gt;.fasta</code></td>
+<td>Copia a versão que segue no tutorial com um nome padronizado: híbrida na Scer1, Medaka na Scer2.</td>
+</tr>
+<tr>
+<td><code>ls -lh</code></td>
+<td>Lista os arquivos e os tamanhos.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="example">
 <summary>Saída: ls 9.Montagens-polidas</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-121-1"><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a>total 44M
@@ -8736,6 +10209,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-122-9"><a id="__codelineno-122-9" name="__codelineno-122-9" href="#__codelineno-122-9"></a>ragtag.py<span class="w"> </span>scaffold<span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer2_q10_l500_hifiasm.fasta<span class="w">    </span>-o<span class="w"> </span><span class="m">10</span>.Scaffolding/Scer2_q10_l500_hifiasm<span class="w">    </span>-t<span class="w"> </span><span class="m">24</span>
 </span><span id="__span-122-10"><a id="__codelineno-122-10" name="__codelineno-122-10" href="#__codelineno-122-10"></a>ragtag.py<span class="w"> </span>scaffold<span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta<span class="w"> </span>-o<span class="w"> </span><span class="m">10</span>.Scaffolding/Scer1_q10_l500_nextdenovo<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p</code> + <code>REF=...</code></td>
+<td>Cria a pasta e guarda o caminho da referência.</td>
+</tr>
+<tr>
+<td><code>ragtag.py scaffold $REF &lt;montagem&gt;</code></td>
+<td>Alinha os contigs na referência e os ordena e orienta em scaffolds, um por cromossomo.</td>
+</tr>
+<tr>
+<td><code>-o</code> / <code>-t 24</code></td>
+<td>Pasta de saída e número de processadores.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando (resumida)</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-123-1"><a id="__codelineno-123-1" name="__codelineno-123-1" href="#__codelineno-123-1"></a>Thu<span class="w"> </span>Nov<span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">10</span>:50:15<span class="w"> </span><span class="m">2026</span><span class="w"> </span>---<span class="w"> </span>VERSION:<span class="w"> </span>RagTag<span class="w"> </span>v2.1.0
@@ -8766,6 +10264,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-124-4"><a id="__codelineno-124-4" name="__codelineno-124-4" href="#__codelineno-124-4"></a><span class="w">  </span><span class="nb">echo</span>
 </span><span id="__span-124-5"><a id="__codelineno-124-5" name="__codelineno-124-5" href="#__codelineno-124-5"></a><span class="k">done</span>
 </span></code></pre></div></p>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for prefix ...; cat .../ragtag.scaffold.stats</code></td>
+<td>Mostra, para cada montagem, quantos contigs e bases o RagTag conseguiu posicionar.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-125-1"><a id="__codelineno-125-1" name="__codelineno-125-1" href="#__codelineno-125-1"></a><span class="o">===</span><span class="w"> </span><span class="nv">Scer1_q10_l500_Flye</span><span class="w"> </span><span class="o">===</span>
@@ -8891,6 +10406,51 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-126-21"><a id="__codelineno-126-21" name="__codelineno-126-21" href="#__codelineno-126-21"></a><span class="w">  </span><span class="nv">G</span><span class="o">=</span><span class="m">12000000</span><span class="w"> </span><span class="nv">t</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>../longstitch.log<span class="w">    </span><span class="c1"># o log de todas as montagens fica em 10.Scaffolding-Longstitch/</span>
 </span><span id="__span-126-22"><a id="__codelineno-126-22" name="__codelineno-126-22" href="#__codelineno-126-22"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">BASE</span><span class="si">}</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BASE=$(pwd)</code></td>
+<td>Guarda o caminho da pasta do projeto, para voltar depois e montar caminhos completos.</td>
+</tr>
+<tr>
+<td><code>prefix=</code> / <code>sample=</code></td>
+<td>Montagem e amostra a processar. Troque e rode de novo para as outras (combinações no comentário).</td>
+</tr>
+<tr>
+<td><code>rm -rf</code> + <code>mkdir -p</code> + <code>cd</code></td>
+<td>Apaga resultados anteriores, cria a pasta da montagem e entra nela.</td>
+</tr>
+<tr>
+<td><code>ln -sf &lt;arquivo&gt; &lt;nome&gt;</code></td>
+<td>Cria um atalho (<em>link</em> simbólico) com o nome que o LongStitch espera, sem copiar o arquivo: <code>draft.fa</code> para a montagem e <code>&lt;amostra&gt;_q10_l500.fastq.gz</code> para as reads.</td>
+</tr>
+<tr>
+<td><code>longstitch run draft=draft reads=...</code></td>
+<td>Corrige erros de montagem (Tigmint) e une contigs (ntLink) usando as reads longas. Os nomes vão sem a extensão.</td>
+</tr>
+<tr>
+<td><code>G=12000000 t=24</code></td>
+<td>Tamanho do genoma e número de processadores.</td>
+</tr>
+<tr>
+<td><code>2&gt;&amp;1 | tee -a ../longstitch.log</code></td>
+<td>Mostra a saída na tela e acrescenta ao log comum de todas as montagens.</td>
+</tr>
+<tr>
+<td><code>cd ${BASE}</code></td>
+<td>Volta para a pasta do projeto.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>A saída do LongStitch é muito longa e passa do limite de rolagem do terminal. O <code>2&gt;&amp;1 | tee</code> grava tudo em <code>10.Scaffolding-Longstitch/longstitch.log</code>, para consultar depois (por exemplo, <code>grep -E 'Attempted corrections|Optimal n' 10.Scaffolding-Longstitch/longstitch.log</code>).</p>
 <details class="note">
 <summary>Ver exemplo de saída do comando (Scer1 NextDenovo, resumida)</summary>
@@ -8944,6 +10504,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <p><strong>Resumo do LongStitch para as cinco montagens</strong>, a partir do log:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-128-1"><a id="__codelineno-128-1" name="__codelineno-128-1" href="#__codelineno-128-1"></a>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'tigmint-make|Attempted corrections|Optimal n|Done LongStitch'</span><span class="w"> </span><span class="m">10</span>.Scaffolding-Longstitch/longstitch.log
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grep -E '...' longstitch.log</code></td>
+<td>Mostra só as linhas importantes do log: início do Tigmint, número de correções, parâmetro escolhido e fim de cada rodada.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-129-1"><a id="__codelineno-129-1" name="__codelineno-129-1" href="#__codelineno-129-1"></a><span class="c1"># na ordem do laço: Scer1 Flye, Scer2 Flye, Scer1 Hifiasm, Scer2 Hifiasm, Scer1 NextDenovo</span>
@@ -9058,6 +10635,35 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-130-13"><a id="__codelineno-130-13" name="__codelineno-130-13" href="#__codelineno-130-13"></a>
 </span><span id="__span-130-14"><a id="__codelineno-130-14" name="__codelineno-130-14" href="#__codelineno-130-14"></a>cat<span class="w"> </span>scaffolding_summary.tsv
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>echo -e "..." &gt; scaffolding_summary.tsv</code></td>
+<td>Cria a tabela com o cabeçalho.</td>
+</tr>
+<tr>
+<td><code>grep -c "^&gt;" &lt;fasta&gt;</code></td>
+<td>Conta as sequências do arquivo: contigs antes do scaffolding e scaffolds do LongStitch.</td>
+</tr>
+<tr>
+<td><code>awk 'NR==2{print $1}' ragtag.scaffold.stats</code></td>
+<td>Lê a segunda linha das estatísticas do RagTag: contigs posicionados (<code>$1</code>), bases posicionadas (<code>$2</code>) e contigs não posicionados (<code>$3</code>).</td>
+</tr>
+<tr>
+<td><code>done &gt;&gt; ...</code> + <code>cat</code></td>
+<td>Acrescenta uma linha por montagem e mostra a tabela.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-131-1"><a id="__codelineno-131-1" name="__codelineno-131-1" href="#__codelineno-131-1"></a>$<span class="w"> </span>cat<span class="w"> </span>scaffolding_summary.tsv
@@ -9146,6 +10752,51 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-132-20"><a id="__codelineno-132-20" name="__codelineno-132-20" href="#__codelineno-132-20"></a>
 </span><span id="__span-132-21"><a id="__codelineno-132-21" name="__codelineno-132-21" href="#__codelineno-132-21"></a><span class="nb">cd</span><span class="w"> </span>../..
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PREFIX=</code> + <code>cd</code></td>
+<td>Montagem a investigar; entra na pasta dela no LongStitch.</td>
+</tr>
+<tr>
+<td><code>awk '{split($4,a,"-"); print a[1]}' ... | sort | uniq -c | sort -rn | head -5</code></td>
+<td>Lê os pontos de quebra do Tigmint, tira o sufixo de cada pedaço para ficar com o nome do contig original, conta quantas quebras cada contig teve e mostra os 5 com mais quebras.</td>
+</tr>
+<tr>
+<td><code>CONTIG=</code> + <code>samtools faidx draft.fa ${CONTIG}</code></td>
+<td>Extrai a sequência do contig suspeito.</td>
+</tr>
+<tr>
+<td><code>blastn -query &lt;contig&gt; -subject &lt;referência&gt;</code></td>
+<td>Compara o contig com a referência inteira, sem precisar de um banco BLAST (<code>-subject</code> usa o arquivo direto).</td>
+</tr>
+<tr>
+<td><code>-outfmt "6 ..."</code> / <code>-max_target_seqs 10</code></td>
+<td>Saída em tabela com as colunas escolhidas; no máximo 10 sequências da referência.</td>
+</tr>
+<tr>
+<td><code>LC_ALL=C sort -k7,7gr | head -20</code></td>
+<td>Ordena pelo <em>bitscore</em> (coluna 7, do maior para o menor) e mostra os 20 melhores alinhamentos.</td>
+</tr>
+<tr>
+<td><code>grep -w "${CONTIG}" ragtag.scaffold.agp</code></td>
+<td>Mostra onde o RagTag colocou esse contig. O <code>-w</code> busca a palavra inteira.</td>
+</tr>
+<tr>
+<td><code>cd ../..</code></td>
+<td>Volta para a pasta do projeto.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-133-1"><a id="__codelineno-133-1" name="__codelineno-133-1" href="#__codelineno-133-1"></a>$<span class="w"> </span>awk<span class="w"> </span><span class="s1">'{split($4,a,"-"); print a[1]}'</span><span class="w"> </span>draft.*breaktigs.fa.bed<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
@@ -9252,6 +10903,27 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-135-5"><a id="__codelineno-135-5" name="__codelineno-135-5" href="#__codelineno-135-5"></a>scp<span class="w"> </span><span class="nv">$P</span>/10.Scaffolding/Scer1_q10_l500_Flye/ragtag.scaffold.fasta<span class="w"> </span>Scer1_Flye_ragtag.fasta
 </span><span id="__span-135-6"><a id="__codelineno-135-6" name="__codelineno-135-6" href="#__codelineno-135-6"></a>scp<span class="w"> </span><span class="nv">$P</span>/10.Scaffolding-Longstitch/Scer1_q10_l500_Flye/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa<span class="w"> </span>Scer1_Flye_longstitch.fasta
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>P=usuario@servidor:caminho/do/projeto</code></td>
+<td>Guarda o endereço do projeto no servidor (ajuste para o seu).</td>
+</tr>
+<tr>
+<td><code>scp $P/&lt;arquivo&gt; &lt;nome local&gt;</code></td>
+<td>Copia o arquivo do servidor para o seu computador, já com um nome mais curto. Rode no terminal do <strong>seu computador</strong>, não no servidor.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="admonition tip">
 <p class="admonition-title">Arquivos para o dotplot</p>
 <p>Se não tiver acesso ao servidor, baixe os mesmos arquivos do repositório:
@@ -9294,6 +10966,43 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-136-10"><a id="__codelineno-136-10" name="__codelineno-136-10" href="#__codelineno-136-10"></a><span class="k">done</span>
 </span><span id="__span-136-11"><a id="__codelineno-136-11" name="__codelineno-136-11" href="#__codelineno-136-11"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda activate polimento</code> + <code>REF=...</code></td>
+<td>Entra no ambiente com o <code>minimap2</code> e guarda o caminho da referência.</td>
+</tr>
+<tr>
+<td><code>for f in &lt;contigs&gt; &lt;scaffolds&gt;; do ... done</code></td>
+<td>Repete para os contigs e para os scaffolds do LongStitch.</td>
+</tr>
+<tr>
+<td><code>minimap2 -x asm5 $REF $f</code></td>
+<td>Alinha as sequências na referência.</td>
+</tr>
+<tr>
+<td><code>awk '$11&gt;=10000{...} ...'</code></td>
+<td>Considera só alinhamentos de 10 kb ou mais (coluna 11) e soma, para cada par sequência–cromossomo, o total alinhado; guarda os pares com 50 kb ou mais.</td>
+</tr>
+<tr>
+<td><code>sort ... | awk '{n[$1]++; ...}'</code></td>
+<td>Lista só as sequências que alinham em mais de um cromossomo (possíveis uniões erradas).</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-137-1"><a id="__codelineno-137-1" name="__codelineno-137-1" href="#__codelineno-137-1"></a>== 9.Montagens-polidas/Scer1_q10_l500_Flye.fasta  (sequências com &gt;= 50 kb alinhados em mais de um cromossomo)
 </span><span id="__span-137-2"><a id="__codelineno-137-2" name="__codelineno-137-2" href="#__codelineno-137-2"></a>contig_13_1: NC_001136.10(1558kb) NC_001144.5(52kb)
 </span><span id="__span-137-3"><a id="__codelineno-137-3" name="__codelineno-137-3" href="#__codelineno-137-3"></a>== 10.Scaffolding-Longstitch/Scer1_q10_l500_Flye/draft.k32.w100.tigmint-ntLink.longstitch-scaffolds.fa  (sequências com &gt;= 50 kb alinhados em mais de um cromossomo)
@@ -9358,6 +11067,51 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-138-13"><a id="__codelineno-138-13" name="__codelineno-138-13" href="#__codelineno-138-13"></a><span class="w">  </span>-out<span class="w"> </span><span class="m">13</span>.Contaminantes/<span class="nv">$p</span>.blastn.out
 </span><span id="__span-138-14"><a id="__codelineno-138-14" name="__codelineno-138-14" href="#__codelineno-138-14"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>date<span class="k">)</span><span class="s2"> fim </span><span class="nv">$p</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="m">13</span>.Contaminantes/blast.log
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DB=</code> / <code>MONTAGENS=</code></td>
+<td>Caminho do banco <code>core_nt</code> e lista das montagens (usada nos resumos adiante).</td>
+</tr>
+<tr>
+<td><code>p=...</code></td>
+<td>Montagem a processar. Troque e rode de novo para as outras.</td>
+</tr>
+<tr>
+<td><code>echo "$(date) início $p" | tee -a blast.log</code></td>
+<td>Anota no log a hora de início (o BLAST demora; assim dá para acompanhar).</td>
+</tr>
+<tr>
+<td><code>blastn -task megablast</code></td>
+<td>Modo rápido do BLAST, para sequências muito parecidas.</td>
+</tr>
+<tr>
+<td><code>-query</code> / <code>-db</code></td>
+<td>Montagem a comparar e banco de dados.</td>
+</tr>
+<tr>
+<td><code>-outfmt "6 qseqid staxids bitscore std"</code></td>
+<td>Tabela com o contig, o identificador taxonômico do hit, o <em>bitscore</em> e as colunas padrão: o formato que o BlobToolKit espera.</td>
+</tr>
+<tr>
+<td><code>-max_target_seqs 10 -max_hsps 1 -evalue 1e-25</code></td>
+<td>No máximo 10 sequências do banco por contig, um alinhamento por par e só hits muito significativos.</td>
+</tr>
+<tr>
+<td><code>-num_threads 24</code> / <code>-out</code></td>
+<td>Número de processadores e arquivo de saída.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O formato de saída <code>6 qseqid staxids bitscore std</code> é o que o BlobToolKit espera: o nome do contig, o taxid do hit, o <em>bitscore</em> e as colunas padrão do BLAST. O <code>-task megablast</code> é o modo mais rápido do <code>blastn</code>, adequado para encontrar sequências muito parecidas.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-139-1"><a id="__codelineno-139-1" name="__codelineno-139-1" href="#__codelineno-139-1"></a>qui 19 nov 2026 12:10:05 -03 início Scer1_q10_l500_Flye
 </span><span id="__span-139-2"><a id="__codelineno-139-2" name="__codelineno-139-2" href="#__codelineno-139-2"></a>qui 19 nov 2026 12:35:44 -03 fim Scer1_q10_l500_Flye
@@ -9398,6 +11152,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <p>Para conferir se o BLAST terminou para todos os contigs:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-140-1"><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a>wc<span class="w"> </span>-l<span class="w"> </span><span class="m">13</span>.Contaminantes/*.blastn.out
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wc -l 13.Contaminantes/*.blastn.out</code></td>
+<td>Conta as linhas (hits) de cada resultado do BLAST.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-141-1"><a id="__codelineno-141-1" name="__codelineno-141-1" href="#__codelineno-141-1"></a>   370 13.Contaminantes/Scer1_q10_l500_Flye.blastn.out
 </span><span id="__span-141-2"><a id="__codelineno-141-2" name="__codelineno-141-2" href="#__codelineno-141-2"></a>   240 13.Contaminantes/Scer1_q10_l500_hifiasm.blastn.out
 </span><span id="__span-141-3"><a id="__codelineno-141-3" name="__codelineno-141-3" href="#__codelineno-141-3"></a>   240 13.Contaminantes/Scer1_q10_l500_nextdenovo.blastn.out
@@ -9407,6 +11178,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <p>Como pedimos <code>-max_target_seqs 10 -max_hsps 1</code>, cada contig tem no máximo 10 linhas. As contas fecham: 37 contigs × 10 = 370 na Flye, 24 × 10 = 240 na Hifiasm e na NextDenovo. Ou seja, todos os contigs da Scer1 tiveram 10 hits. Na Scer2 (706 contigs), 7038 linhas significam que pelo menos 704 contigs tiveram hit. Para saber exatamente quantos contigs têm algum hit:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-142-1"><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a>cut<span class="w"> </span>-f1<span class="w"> </span><span class="m">13</span>.Contaminantes/Scer1_q10_l500_hifiasm.blastn.out<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cut -f1 ... | sort -u | wc -l</code></td>
+<td>Pega a coluna 1 (nome do contig), remove as repetições (<code>sort -u</code>) e conta quantos contigs tiveram pelo menos um hit.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-143-1"><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a>24
 </span></code></pre></div>
 <p>Contigs sem nenhum hit não são necessariamente contaminantes. Podem ser sequências repetitivas ou regiões ausentes do banco, e por isso são mantidos na Etapa 13.5.</p>
@@ -9421,6 +11209,43 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-144-8"><a id="__codelineno-144-8" name="__codelineno-144-8" href="#__codelineno-144-8"></a>
 </span><span id="__span-144-9"><a id="__codelineno-144-9" name="__codelineno-144-9" href="#__codelineno-144-9"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda activate polimento</code></td>
+<td>Entra no ambiente com o <code>minimap2</code> e o <code>samtools</code>.</td>
+</tr>
+<tr>
+<td><code>p=</code> / <code>R=</code></td>
+<td>Montagem e reads da amostra correspondente. Troque e rode de novo para as outras.</td>
+</tr>
+<tr>
+<td><code>minimap2 -ax map-ont</code></td>
+<td>Alinha as reads Nanopore na montagem. O <code>-a</code> gera a saída em SAM.</td>
+</tr>
+<tr>
+<td><code>| samtools sort -@ 8 -o &lt;arquivo&gt;.bam</code></td>
+<td>Ordena os alinhamentos por posição e salva em BAM (formato binário, menor). O <code>-@</code> é o número de processadores.</td>
+</tr>
+<tr>
+<td><code>samtools index -c</code></td>
+<td>Cria o índice <code>.csi</code> do BAM, o formato que o BlobToolKit espera.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code></td>
+<td>Sai do ambiente.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="admonition warning">
 <p class="admonition-title">Use <code>samtools index -c</code></p>
 <p>O BlobToolKit procura o índice no formato <code>.csi</code>. Com o índice padrão (<code>.bai</code>), ele tenta criar o <code>.csi</code> sozinho e falha com <code>FileNotFoundError: ... .bam.csi</code>. Em seguida, o blob plot também falha (<code>Plot axis not defined: y</code>), porque a cobertura não foi adicionada. A opção <code>-c</code> cria o <code>.csi</code> direto.</p>
@@ -9479,6 +11304,51 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-147-19"><a id="__codelineno-147-19" name="__codelineno-147-19" href="#__codelineno-147-19"></a>
 </span><span id="__span-147-20"><a id="__codelineno-147-20" name="__codelineno-147-20" href="#__codelineno-147-20"></a>ls<span class="w"> </span><span class="m">13</span>.Contaminantes/blobdir/<span class="nv">$p</span>/
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TAXDUMP=...</code> + <code>conda activate blobtoolkit</code></td>
+<td>Caminho da taxonomia do NCBI e ambiente do BlobToolKit.</td>
+</tr>
+<tr>
+<td><code>p=...</code></td>
+<td>Montagem a processar. Troque e rode de novo para as outras.</td>
+</tr>
+<tr>
+<td><code>rm -rf</code> + <code>blobtools create --fasta &lt;montagem&gt; &lt;pasta&gt;</code></td>
+<td>Apaga um BlobDir antigo e cria um novo, com tamanho, GC e Ns de cada contig.</td>
+</tr>
+<tr>
+<td><code>blobtools add --hits &lt;blast&gt;</code></td>
+<td>Acrescenta os hits do BLAST.</td>
+</tr>
+<tr>
+<td><code>--taxrule bestsumorder --taxdump &lt;pasta&gt;</code></td>
+<td>Regra para atribuir a taxonomia de cada contig e base de taxonomia usada (explicada abaixo).</td>
+</tr>
+<tr>
+<td><code>--cov &lt;bam&gt;</code></td>
+<td>Acrescenta a cobertura de reads de cada contig.</td>
+</tr>
+<tr>
+<td><code>--replace</code></td>
+<td>Substitui os campos se eles já existirem (permite rodar de novo).</td>
+</tr>
+<tr>
+<td><code>ls &lt;pasta&gt;</code></td>
+<td>Lista os arquivos do BlobDir, um por campo.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O <code>rm -rf</code> e o <code>--replace</code> deixam o comando ser repetido: sem eles, o BlobToolKit não sobrescreve campos que já existem no BlobDir.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-148-1"><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a>Loading mapping data from 13.Contaminantes/Scer1_q10_l500_hifiasm.bam as Scer1_q10_l500_hifiasm
 </span><span id="__span-148-2"><a id="__codelineno-148-2" name="__codelineno-148-2" href="#__codelineno-148-2"></a>[+]        Locating alignments: ████████████████████████████████████████      24/24
@@ -9509,6 +11379,27 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-149-6"><a id="__codelineno-149-6" name="__codelineno-149-6" href="#__codelineno-149-6"></a>conda<span class="w"> </span>deactivate
 </span><span id="__span-149-7"><a id="__codelineno-149-7" name="__codelineno-149-7" href="#__codelineno-149-7"></a>ls<span class="w"> </span>-lh<span class="w"> </span><span class="m">13</span>.Contaminantes/*.png
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>python -c "import blobtk; blobtk.plot.blob(...)"</code></td>
+<td>Roda uma linha de Python que desenha o blob plot a partir do BlobDir (<code>blobdir=</code>) e salva a imagem (<code>output=</code>).</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code> + <code>ls -lh *.png</code></td>
+<td>Sai do ambiente e lista as imagens geradas.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O <code>--taxrule bestsumorder</code> soma os <em>bitscores</em> dos hits de cada táxon ao longo do contig e atribui o contig ao táxon com a maior soma; é a regra padrão do BlobToolKit.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:4"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Scer1 Flye</label><label for="__tabbed_8_2">Scer1 Hifiasm</label><label for="__tabbed_8_3">Scer1 NextDenovo</label><label for="__tabbed_8_4">Scer2 Flye</label></div>
 <div class="tabbed-content">
@@ -9556,6 +11447,39 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-150-15"><a id="__codelineno-150-15" name="__codelineno-150-15" href="#__codelineno-150-15"></a><span class="k">done</span>
 </span><span id="__span-150-16"><a id="__codelineno-150-16" name="__codelineno-150-16" href="#__codelineno-150-16"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for prefix in $MONTAGENS; do ... done</code></td>
+<td>Repete para cada montagem (a variável <code>MONTAGENS</code> foi definida na Etapa 13.1).</td>
+</tr>
+<tr>
+<td><code>blobtools filter --table &lt;arquivo&gt; --table-fields ...</code></td>
+<td>Exporta do BlobDir uma tabela com um contig por linha e as colunas escolhidas (GC, tamanho, cobertura, filo e gênero).</td>
+</tr>
+<tr>
+<td><code>head -3</code></td>
+<td>Mostra as três primeiras linhas da tabela.</td>
+</tr>
+<tr>
+<td><code>awk -F'\t' 'NR==1{...} {n[$f]++; b[$f]+=$l} ...'</code></td>
+<td>Localiza as colunas pelo nome, no cabeçalho, e soma contigs e bases por filo.</td>
+</tr>
+<tr>
+<td><code>cut -f7 | tail -n +2 | sort | uniq -c | sort -k1,1nr</code></td>
+<td>Pega a coluna do gênero, pula o cabeçalho e conta quantos contigs há de cada gênero, do mais comum para o menos comum.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>A tabela tem uma linha por contig:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-151-1"><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a>index   identifiers     gc      length  Scer1_q10_l500_hifiasm_cov      bestsumorder_phylum       bestsumorder_genus
 </span><span id="__span-151-2"><a id="__codelineno-151-2" name="__codelineno-151-2" href="#__codelineno-151-2"></a>0       ptg000003l_1    0.3853  767108  54.0292 Ascomycota      Saccharomyces
@@ -9655,6 +11579,51 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-157-17"><a id="__codelineno-157-17" name="__codelineno-157-17" href="#__codelineno-157-17"></a><span class="k">done</span>
 </span><span id="__span-157-18"><a id="__codelineno-157-18" name="__codelineno-157-18" href="#__codelineno-157-18"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FILO=Ascomycota</code></td>
+<td>Filo esperado para a levedura: contigs desse filo são mantidos.</td>
+</tr>
+<tr>
+<td><code>mkdir -p</code> + <code>conda activate polimento</code></td>
+<td>Cria a pasta de saída e entra no ambiente com o <code>samtools</code>.</td>
+</tr>
+<tr>
+<td><code>for prefix in $MONTAGENS; do ... done</code></td>
+<td>Repete para cada montagem.</td>
+</tr>
+<tr>
+<td><code>rm -f ...</code></td>
+<td>Apaga listas de uma rodada anterior.</td>
+</tr>
+<tr>
+<td><code>awk -F'\t' -v F=... -v M=... -v R=... '...'</code></td>
+<td>Localiza as colunas pelo nome e separa os contigs: os do filo esperado ou sem hit (<code>no-hit</code>) vão para a lista de manter; os outros vão para a tabela de removidos.</td>
+</tr>
+<tr>
+<td><code>touch &lt;removidos&gt;.tsv</code></td>
+<td>Cria a tabela vazia se nenhum contig foi removido, para os comandos seguintes não darem erro.</td>
+</tr>
+<tr>
+<td><code>samtools faidx &lt;montagem&gt; -r &lt;manter.txt&gt;</code></td>
+<td>Extrai só os contigs da lista de manter.</td>
+</tr>
+<tr>
+<td><code>echo ...</code> + <code>cat &lt;removidos&gt;.tsv</code></td>
+<td>Mostra quantos contigs ficaram e quantos saíram, e lista os removidos.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O arquivo <code>.removidos.tsv</code> lista, para cada contig removido, o filo, o gênero, o tamanho e a cobertura. <strong>Sempre confira essa lista antes de aceitar a remoção</strong>: um contig da própria levedura pode ter o melhor hit num organismo errado por causa de uma sequência mal anotada no banco, e um contaminante pode estar escondido dentro de um contig grande, sem que o contig inteiro seja atribuído a ele.</p>
 <div class="admonition note">
 <p class="admonition-title">Comparando com o Kraken2</p>
@@ -9680,6 +11649,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-158-6"><a id="__codelineno-158-6" name="__codelineno-158-6" href="#__codelineno-158-6"></a>busco<span class="w"> </span>-i<span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer2_q10_l500_hifiasm.fasta<span class="w">    </span>-l<span class="w"> </span>saccharomycetaceae_odb12<span class="w"> </span>-m<span class="w"> </span>genome<span class="w"> </span>-o<span class="w"> </span><span class="m">8</span>.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm_final<span class="w"> </span>-c<span class="w"> </span><span class="m">24</span>
 </span><span id="__span-158-7"><a id="__codelineno-158-7" name="__codelineno-158-7" href="#__codelineno-158-7"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>busco -i 9.Montagens-polidas/&lt;montagem&gt; ... -o ..._final -c 24</code></td>
+<td>Roda o BUSCO nas versões finais (polidas) de cada montagem, com os mesmos parâmetros da Etapa 9.3.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando (resumida)</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-159-1"><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a># Scer1_q10_l500_Flye (híbrida)
@@ -9825,6 +11811,59 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-160-59"><a id="__codelineno-160-59" name="__codelineno-160-59" href="#__codelineno-160-59"></a>
 </span><span id="__span-160-60"><a id="__codelineno-160-60" name="__codelineno-160-60" href="#__codelineno-160-60"></a>column<span class="w"> </span>-t<span class="w"> </span>-s<span class="w"> </span><span class="s1">$'\t'</span><span class="w"> </span><span class="m">8</span>.QC_montagens/qc_summary.tsv
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>QREPORT=</code> / <code>MERQURY=</code> / <code>MERQURY_ILMN=</code></td>
+<td>Caminhos das tabelas do QUAST e do Merqury (Nanopore e Illumina) de onde os valores serão lidos.</td>
+</tr>
+<tr>
+<td><code>declare -A versao=(...)</code></td>
+<td>Cria um dicionário (<em>array</em> associativo): para cada montagem, a versão escolhida na Etapa 11.4.</td>
+</tr>
+<tr>
+<td><code>declare -A quast_label=(...)</code></td>
+<td>Outro dicionário: o nome de cada montagem no relatório do QUAST.</td>
+</tr>
+<tr>
+<td><code>get_quast_value () { ... }</code></td>
+<td>Função que recebe o nome da montagem e o da métrica e devolve o valor: acha a coluna da montagem no cabeçalho e a linha da métrica.</td>
+</tr>
+<tr>
+<td><code>echo -e "Sample..." &gt; qc_summary.tsv</code></td>
+<td>Cria a tabela com o cabeçalho.</td>
+</tr>
+<tr>
+<td><code>v=${versao[$prefix]}</code></td>
+<td>Busca no dicionário a versão da montagem atual.</td>
+</tr>
+<tr>
+<td><code>grep -oP 'C:\K[0-9.]+'</code></td>
+<td>Extrai o número logo depois de <code>C:</code> na linha do BUSCO (o <code>\K</code> descarta o <code>C:</code> do resultado). O mesmo para S, D, F e M.</td>
+</tr>
+<tr>
+<td><code>read qv comp &lt;&lt;&lt; $(awk ...)</code></td>
+<td>Lê QV e completude do Merqury e guarda nas variáveis <code>qv</code> e <code>comp</code>.</td>
+</tr>
+<tr>
+<td><code>${qv:-NA}</code></td>
+<td>Usa NA se a variável estiver vazia (a Scer2 não tem QV Illumina).</td>
+</tr>
+<tr>
+<td><code>column -t -s $'\t'</code></td>
+<td>Mostra a tabela com as colunas alinhadas.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-161-1"><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a>$<span class="w"> </span>column<span class="w"> </span>-t<span class="w"> </span>-s<span class="w"> </span><span class="s1">$'\t'</span><span class="w"> </span><span class="m">8</span>.QC_montagens/qc_summary.tsv
@@ -9941,6 +11980,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-163-3"><a id="__codelineno-163-3" name="__codelineno-163-3" href="#__codelineno-163-3"></a>tidk<span class="w"> </span>explore<span class="w"> </span>--minimum<span class="w"> </span><span class="m">5</span><span class="w"> </span>--maximum<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta<span class="w"> </span>&gt;<span class="w"> </span><span class="m">11</span>.Telomeros/explore_Scer1_hifiasm.tsv
 </span><span id="__span-163-4"><a id="__codelineno-163-4" name="__codelineno-163-4" href="#__codelineno-163-4"></a>head<span class="w"> </span><span class="m">11</span>.Telomeros/explore_Scer1_hifiasm.tsv
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda activate tidk</code> + <code>mkdir -p</code></td>
+<td>Entra no ambiente do tidk e cria a pasta.</td>
+</tr>
+<tr>
+<td><code>tidk explore --minimum 5 --maximum 12</code></td>
+<td>Procura as sequências repetidas em tandem mais frequentes, de 5 a 12 pb, candidatas a repetição telomérica.</td>
+</tr>
+<tr>
+<td><code>head</code></td>
+<td>Mostra as primeiras linhas, com os candidatos mais frequentes.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-164-1"><a id="__codelineno-164-1" name="__codelineno-164-1" href="#__codelineno-164-1"></a>Warning! No clades found in the database. Run 'tidk build' to fetch the latest data.
@@ -9979,6 +12043,47 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-165-11"><a id="__codelineno-165-11" name="__codelineno-165-11" href="#__codelineno-165-11"></a>head<span class="w"> </span>-5<span class="w"> </span><span class="m">11</span>.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv
 </span><span id="__span-165-12"><a id="__codelineno-165-12" name="__codelineno-165-12" href="#__codelineno-165-12"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MOTIVO=ACACCC</code></td>
+<td>Repetição telomérica a procurar, escolhida no passo anterior.</td>
+</tr>
+<tr>
+<td><code>for f in &lt;montagens&gt;; do ... done</code></td>
+<td>Repete para as montagens brutas da Scer1 e para todas as polidas.</td>
+</tr>
+<tr>
+<td><code>p=$(echo $f | tr '/' '_' | sed 's/\.fa.*$//')</code></td>
+<td>Cria um nome de saída a partir do caminho: troca <code>/</code> por <code>_</code> e tira a extensão.</td>
+</tr>
+<tr>
+<td><code>tidk search --string $MOTIVO --window 1000</code></td>
+<td>Conta quantas vezes a repetição aparece em cada janela de 1.000 pb de cada contig.</td>
+</tr>
+<tr>
+<td><code>--output $p --dir 11.Telomeros</code></td>
+<td>Prefixo e pasta dos arquivos de saída.</td>
+</tr>
+<tr>
+<td><code>2&gt; tidk_search.log</code></td>
+<td>Manda as mensagens de progresso para um log, em vez da tela.</td>
+</tr>
+<tr>
+<td><code>ls</code> / <code>head -5</code></td>
+<td>Lista os arquivos gerados e mostra o começo de um deles.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-166-1"><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a>$ head -5 11.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv
@@ -9999,6 +12104,35 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-167-6"><a id="__codelineno-167-6" name="__codelineno-167-6" href="#__codelineno-167-6"></a><span class="s1">           printf "%s\tT2T: %d\tuma ponta: %d\tpontas teloméricas: %d\n", FILENAME, t2t, uma, 2*t2t+uma }'</span><span class="w"> </span><span class="nv">$t</span>
 </span><span id="__span-167-7"><a id="__codelineno-167-7" name="__codelineno-167-7" href="#__codelineno-167-7"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for t in ...; do awk ...; done</code></td>
+<td>Para cada resultado do tidk, conta quantos contigs têm telômero nas duas pontas (T2T) ou só numa.</td>
+</tr>
+<tr>
+<td><code>n=$3+$4</code></td>
+<td>Repetições nas duas fitas (colunas 3 e 4) em cada janela.</td>
+</tr>
+<tr>
+<td><code>prim[$1]</code> / <code>ult[$1]</code></td>
+<td>Guardam o valor da primeira e da última janela de cada contig.</td>
+</tr>
+<tr>
+<td><code>MIN=10</code></td>
+<td>Uma ponta conta como telomérica com 10 ou mais repetições.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <details class="note">
 <summary>Ver saída do comando</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-168-1"><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a>11.Telomeros/5.Montagem-Flye_Scer1_q10_l500_assembly_telomeric_repeat_windows.tsv                              T2T: 3  uma ponta: 12  pontas teloméricas: 18
@@ -10057,6 +12191,23 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-169-1"><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a>tidk<span class="w"> </span>plot<span class="w"> </span>--tsv<span class="w"> </span><span class="m">11</span>.Telomeros/9.Montagens-polidas_Scer1_q10_l500_hifiasm_telomeric_repeat_windows.tsv<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-169-2"><a id="__codelineno-169-2" name="__codelineno-169-2" href="#__codelineno-169-2"></a><span class="w">          </span>--output<span class="w"> </span><span class="m">11</span>.Telomeros/tidk_Scer1_hifiasm
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tidk plot --tsv &lt;resultado&gt; --output &lt;prefixo&gt;</code></td>
+<td>Desenha um gráfico (SVG) com as repetições teloméricas ao longo de cada contig.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>O resultado é um SVG, que pode ser aberto no navegador. Cada painel é um contig, do início (à esquerda) ao fim (à direita), com o nome e o tamanho embaixo. Um <strong>pico na ponta</strong> é um telômero: com picos nas duas pontas, o contig é T2T; com pico numa ponta só, ele termina num telômero de um lado e foi interrompido do outro. Cuidado com a escala: cada painel tem o seu próprio eixo Y, então num contig <strong>sem</strong> telômero o ruído de fundo (1 ou 2 cópias espalhadas) aparece ampliado e pode parecer importante.</p>
 <details class="example">
 <summary>Ver figura: tidk plot da montagem Scer1 Hifiasm final (24 contigs)</summary>
@@ -10105,6 +12256,43 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-170-17"><a id="__codelineno-170-17" name="__codelineno-170-17" href="#__codelineno-170-17"></a>conda<span class="w"> </span>deactivate
 </span><span id="__span-170-18"><a id="__codelineno-170-18" name="__codelineno-170-18" href="#__codelineno-170-18"></a>ls<span class="w"> </span>-lh<span class="w"> </span><span class="m">14</span>.Snailplot/*.png
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda activate blobtoolkit</code> + <code>mkdir -p</code></td>
+<td>Entra no ambiente e cria a pasta.</td>
+</tr>
+<tr>
+<td><code>p=</code> / <code>B=</code></td>
+<td>Montagem a processar e o BlobDir dela. Troque e rode de novo para as outras.</td>
+</tr>
+<tr>
+<td><code>[ -d $B ] || blobtools create ...</code></td>
+<td>Se o BlobDir não existe (<code>-d</code> testa se a pasta existe), cria um novo. Se existe, reaproveita o da Etapa 13.3.</td>
+</tr>
+<tr>
+<td><code>blobtools add --busco &lt;full_table.tsv&gt; --replace</code></td>
+<td>Acrescenta ao BlobDir o resultado do BUSCO da versão final.</td>
+</tr>
+<tr>
+<td><code>python -c "import blobtk; blobtk.plot.snail(...)"</code></td>
+<td>Desenha o snail plot e salva a imagem.</td>
+</tr>
+<tr>
+<td><code>conda deactivate</code> + <code>ls -lh</code></td>
+<td>Sai do ambiente e lista as imagens.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Se o passo 2 der erro (o formato do <code>full_table.tsv</code> muda entre versões do BUSCO), o snail plot ainda pode ser gerado sem ele: só o painel do BUSCO fica de fora. Copie os arquivos <code>.png</code> para o seu computador (<code>scp</code>) para visualizá-los.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:5"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Scer1 Flye</label><label for="__tabbed_9_2">Scer1 Hifiasm</label><label for="__tabbed_9_3">Scer1 NextDenovo</label><label for="__tabbed_9_4">Scer2 Flye</label><label for="__tabbed_9_5">Scer2 Hifiasm</label></div>
 <div class="tabbed-content">
@@ -10304,12 +12492,46 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-171-8"><a id="__codelineno-171-8" name="__codelineno-171-8" href="#__codelineno-171-8"></a>cat<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/R64_nomes.tsv
 </span><span id="__span-171-9"><a id="__codelineno-171-9" name="__codelineno-171-9" href="#__codelineno-171-9"></a>
 </span><span id="__span-171-10"><a id="__codelineno-171-10" name="__codelineno-171-10" href="#__codelineno-171-10"></a>conda<span class="w"> </span>activate<span class="w"> </span>polimento
-</span><span id="__span-171-11"><a id="__codelineno-171-11" name="__codelineno-171-11" href="#__codelineno-171-11"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_Flye.fasta<span class="w">       </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_Flye.vs_R64.paf
-</span><span id="__span-171-12"><a id="__codelineno-171-12" name="__codelineno-171-12" href="#__codelineno-171-12"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta<span class="w">    </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_hifiasm.vs_R64.paf
-</span><span id="__span-171-13"><a id="__codelineno-171-13" name="__codelineno-171-13" href="#__codelineno-171-13"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta<span class="w"> </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_nextdenovo.vs_R64.paf
-</span><span id="__span-171-14"><a id="__codelineno-171-14" name="__codelineno-171-14" href="#__codelineno-171-14"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer2_q10_l500_Flye.fasta<span class="w">       </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer2_q10_l500_Flye.vs_R64.paf
-</span><span id="__span-171-15"><a id="__codelineno-171-15" name="__codelineno-171-15" href="#__codelineno-171-15"></a>conda<span class="w"> </span>deactivate
+</span><span id="__span-171-11"><a id="__codelineno-171-11" name="__codelineno-171-11" href="#__codelineno-171-11"></a><span class="c1"># -x asm10: modo do minimap2 para comparar montagens com até cerca de 10% de divergência</span>
+</span><span id="__span-171-12"><a id="__codelineno-171-12" name="__codelineno-171-12" href="#__codelineno-171-12"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_Flye.fasta<span class="w">       </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_Flye.vs_R64.paf
+</span><span id="__span-171-13"><a id="__codelineno-171-13" name="__codelineno-171-13" href="#__codelineno-171-13"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_hifiasm.fasta<span class="w">    </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_hifiasm.vs_R64.paf
+</span><span id="__span-171-14"><a id="__codelineno-171-14" name="__codelineno-171-14" href="#__codelineno-171-14"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer1_q10_l500_nextdenovo.fasta<span class="w"> </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_nextdenovo.vs_R64.paf
+</span><span id="__span-171-15"><a id="__codelineno-171-15" name="__codelineno-171-15" href="#__codelineno-171-15"></a>minimap2<span class="w"> </span>-x<span class="w"> </span>asm10<span class="w"> </span>--secondary<span class="o">=</span>no<span class="w"> </span>-t<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="nv">$REF</span><span class="w"> </span><span class="m">9</span>.Montagens-polidas/Scer2_q10_l500_Flye.fasta<span class="w">       </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer2_q10_l500_Flye.vs_R64.paf
+</span><span id="__span-171-16"><a id="__codelineno-171-16" name="__codelineno-171-16" href="#__codelineno-171-16"></a>conda<span class="w"> </span>deactivate
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REF=</code> / <code>MONTAGENS=</code> / <code>mkdir -p</code></td>
+<td>Referência, lista das montagens (usada no passo 15.2) e pasta de saída.</td>
+</tr>
+<tr>
+<td><code>grep '&gt;' $REF | sed -E '...'</code></td>
+<td>Pega os cabeçalhos da referência e transforma cada um em <code>identificador&lt;TAB&gt;nome curto</code> (<code>NC_001133.9</code> → <code>chrI</code>; o mitocondrial vira <code>chrMT</code>).</td>
+</tr>
+<tr>
+<td><code>cat R64_nomes.tsv</code></td>
+<td>Mostra a tabela de nomes.</td>
+</tr>
+<tr>
+<td><code>minimap2 -x asm10 --secondary=no</code></td>
+<td>Alinha cada montagem na referência. O <code>--secondary=no</code> mantém só o melhor alinhamento de cada trecho.</td>
+</tr>
+<tr>
+<td><code>&gt; &lt;montagem&gt;.vs_R64.paf</code></td>
+<td>Salva o alinhamento em PAF, uma linha por alinhamento.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Cada contig é atribuído ao cromossomo com o qual ele tem mais bases alinhadas. A coluna <code>alinhado_%</code> diz quanto do contig alinhou nesse cromossomo. Um valor bem abaixo de 100% indica um contig que junta pedaços de cromossomos diferentes (como os da Etapa 12.5) ou que tem muita sequência ausente da S288C.</p>
 <h3 id="152-montar-a-tabela">15.2 Montar a tabela<a class="headerlink" href="#152-montar-a-tabela" title="Permanent link">&para;</a></h3>
 <p>O <code>awk</code> abaixo lê os cinco arquivos, um depois do outro, e junta as informações pelo nome do contig. Nas tabelas com cabeçalho, as colunas são localizadas pelo nome, então o comando funciona mesmo que a ordem delas mude.</p>
@@ -10351,6 +12573,47 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-172-36"><a id="__codelineno-172-36" name="__codelineno-172-36" href="#__codelineno-172-36"></a>
 </span><span id="__span-172-37"><a id="__codelineno-172-37" name="__codelineno-172-37" href="#__codelineno-172-37"></a>column<span class="w"> </span>-t<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/Scer1_q10_l500_hifiasm.tsv
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for P in $MONTAGENS; do ... done</code></td>
+<td>Monta uma tabela para cada montagem.</td>
+</tr>
+<tr>
+<td><code>BLOB=</code> / <code>TELO=</code> / <code>BUSCO=</code> / <code>QV=</code></td>
+<td>Arquivos de onde vêm as colunas: tabela do BlobToolKit, telômeros, BUSCO e QV por contig.</td>
+</tr>
+<tr>
+<td><code>[ -f $QV ] || QV=/dev/null</code></td>
+<td>Se não existe o arquivo de QV (Scer2, sem Illumina), usa um arquivo vazio; a coluna QV fica <code>-</code>.</td>
+</tr>
+<tr>
+<td><code>awk ... FILENAME==ARGV[1] ...</code></td>
+<td>O <code>awk</code> lê os seis arquivos em sequência e trata cada um de um jeito: nomes dos cromossomos, PAF (o cromossomo com mais bases alinhadas é o de cada contig), tidk (telômero na primeira e na última janela), Merqury (QV), BUSCO (genes completos por contig) e, por último, a tabela do BlobToolKit, que dá uma linha por contig.</td>
+</tr>
+<tr>
+<td><code>sort -t$'\t' -k1,1n -k5,5nr</code></td>
+<td>Ordena pela ordem dos cromossomos na referência e, dentro de cada um, do maior contig para o menor.</td>
+</tr>
+<tr>
+<td><code>cut -f2-</code></td>
+<td>Tira a coluna de ordem, usada só para ordenar.</td>
+</tr>
+<tr>
+<td><code>rm ... .tmp</code> + <code>column -t</code></td>
+<td>Apaga o arquivo temporário e mostra a tabela da Scer1 Hifiasm.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a>contig        cromossomo  alinhado_%  tamanho_pb  GC_%  cobertura  telomero_esq  telomero_dir  QV    BUSCO  genero
 </span><span id="__span-173-2"><a id="__codelineno-173-2" name="__codelineno-173-2" href="#__codelineno-173-2"></a>ptg000018l_1  chrI        100         212114      39.5  71         sim           nao           49.5  45     Saccharomyces
 </span><span id="__span-173-3"><a id="__codelineno-173-3" name="__codelineno-173-3" href="#__codelineno-173-3"></a>ptg000002l_1  chrII       100         804899      38.4  56         nao           sim           44.4  222    Saccharomyces
@@ -10387,6 +12650,31 @@ Edite o arquivo <code>run.cfg</code> alterando os seguintes parâmetros:</p>
 </span><span id="__span-174-6"><a id="__codelineno-174-6" name="__codelineno-174-6" href="#__codelineno-174-6"></a><span class="w">    </span><span class="m">15</span>.Tabela-cromossomos/<span class="nv">$P</span>.tsv<span class="w"> </span>&gt;<span class="w"> </span><span class="m">15</span>.Tabela-cromossomos/<span class="nv">$P</span>.md
 </span><span id="__span-174-7"><a id="__codelineno-174-7" name="__codelineno-174-7" href="#__codelineno-174-7"></a><span class="k">done</span>
 </span></code></pre></div>
+<details class="info">
+<summary>O que faz cada comando</summary>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for P in $MONTAGENS; do awk ...; done</code></td>
+<td>Converte cada tabela <code>.tsv</code> numa tabela Markdown (<code>.md</code>), pronta para colar num relatório ou no GitHub.</td>
+</tr>
+<tr>
+<td><code>NR==1{ print "| Cromossomo | ..." }</code></td>
+<td>Na primeira linha, escreve o cabeçalho e a linha de alinhamento das colunas.</td>
+</tr>
+<tr>
+<td><code>printf "| %s | ..."</code></td>
+<td>Nas outras, escreve os valores de cada contig entre barras verticais, com o nome do contig em código e o gênero em itálico.</td>
+</tr>
+</tbody>
+</table>
+</details>
 <p>Na Scer1 Hifiasm, a montagem escolhida, fica assim (cromossomos T2T em negrito):</p>
 <table>
 <thead>
