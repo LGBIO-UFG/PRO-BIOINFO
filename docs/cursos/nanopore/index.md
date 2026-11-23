@@ -3411,12 +3411,12 @@ O resultado classifica cada gene esperado em quatro categorias:
 # Escolha o dataset mais adequado
 busco --list-datasets
 # Nesse caso, podemos usar o saccharomycetaceae_odb12.2
-busco -i ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer_referencia
-busco -i 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_Flye
-busco -i 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_Flye
-busco -i 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_hifiasm
-busco -i 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm
-busco -i 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -l saccharomycetaceae_odb12 -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_nextdenovo
+busco -i ncbi_dataset/data/GCF_000146045.2/GCF_000146045.2_R64_genomic.fna -l /media/hd16-databases/usuarios/renatadias/curso-nanopore/busco_downloads/lineages/saccharomycetaceae_odb12 -offline -m genome -o 8.QC_montagens/BUSCO/Scer_referencia
+busco -i 5.Montagem-Flye/Scer1_q10_l500/assembly.fasta -l /media/hd16-databases/usuarios/renatadias/curso-nanopore/busco_downloads/lineages/saccharomycetaceae_odb12 -offline -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_Flye
+busco -i 5.Montagem-Flye/Scer2_q10_l500/assembly.fasta -l /media/hd16-databases/usuarios/renatadias/curso-nanopore/busco_downloads/lineages/saccharomycetaceae_odb12 -offline -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_Flye
+busco -i 6.Montagem-hifiasm/Scer1_q10_l500_hifiasm.p_ctg.fa -l /media/hd16-databases/usuarios/renatadias/curso-nanopore/busco_downloads/lineages/saccharomycetaceae_odb12 -offline -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_hifiasm
+busco -i 6.Montagem-hifiasm/Scer2_q10_l500_hifiasm.p_ctg.fa -l /media/hd16-databases/usuarios/renatadias/curso-nanopore/busco_downloads/lineages/saccharomycetaceae_odb12 -offline -m genome -o 8.QC_montagens/BUSCO/Scer2_q10_l500_hifiasm
+busco -i 7.Montagem-NextDenovo/Scer1_q10_l500/01_rundir/03.ctg_graph/nd.asm.fasta -l /media/hd16-databases/usuarios/renatadias/curso-nanopore/busco_downloads/lineages/saccharomycetaceae_odb12 -offline -m genome -o 8.QC_montagens/BUSCO/Scer1_q10_l500_nextdenovo
 ```
 
 ??? info "O que faz cada comando"
