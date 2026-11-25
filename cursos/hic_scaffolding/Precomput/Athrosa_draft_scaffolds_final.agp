@@ -1,0 +1,26 @@
+scaffold_1	1	10000000	1	W	Chr1.1	1	10000000	+
+scaffold_1	10000001	10000100	2	U	100	scaffold	yes	proximity_ligation
+scaffold_1	10000101	22000100	3	W	Chr1.2	1	12000000	+
+scaffold_1	22000101	22000200	4	U	100	scaffold	yes	proximity_ligation
+scaffold_1	22000201	32626517	5	W	Chr1.3	1	10626317	+
+scaffold_2	1	10340798	1	W	Chr2.2	1	10340798	-
+scaffold_2	10340799	10340898	2	U	100	scaffold	yes	proximity_ligation
+scaffold_2	10340899	32361258	3	W	Chr2.1	1	22020360	-
+scaffold_3	1	8843170	1	W	Chr8	1	8843170	-
+scaffold_3	8843171	8843270	2	U	100	scaffold	yes	proximity_ligation
+scaffold_3	8843271	25438043	3	W	Chr7	1	16594773	+
+scaffold_4	1	15530710	1	W	Chr3.1	1	15530710	+
+scaffold_4	15530711	15530810	2	U	100	scaffold	yes	proximity_ligation
+scaffold_4	15530811	25061522	3	W	Chr3.2	1	9530712	+
+scaffold_5	1	19729607	1	W	Chr4	1	19729607	+
+scaffold_6	1	5484318	1	W	Chr5.1	1	5484318	-
+scaffold_6	5484319	5484418	2	U	100	scaffold	yes	proximity_ligation
+scaffold_6	5484419	18484419	3	W	Chr5.2	1	13000001	+
+scaffold_7	1	4211935	1	W	Chr6.1	1	4211935	+
+scaffold_7	4211936	4212035	2	U	100	scaffold	yes	proximity_ligation
+scaffold_7	4212036	9093156	3	W	Chr6.2	1	4881121	+
+scaffold_7	9093157	9093256	4	U	100	scaffold	yes	proximity_ligation
+scaffold_7	9093257	14289288	5	W	Chr6.3	1	5196032	+
+scaffold_7	14289289	14289388	6	U	100	scaffold	yes	proximity_ligation
+scaffold_7	14289389	18094563	7	W	Chr6.4	1	3805175	+
+	
